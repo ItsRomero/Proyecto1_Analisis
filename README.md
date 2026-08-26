@@ -1,150 +1,291 @@
-sistema-gestion-microcredito-p1
-
-<!-- Auto-generated improved README by assistant -->
-
-   
-
-comprobar consistencia y trazabilidad entre artefactos.
-
-Tabla de contenido
-
-Descripción
-
-Instalación
-
-Uso rápido
-
-Scripts útiles
-
-API / OpenAPI
-
-Estructura del repositorio
-
-Contribuir
-
-Autores
-
-Licencia
-
-Descripción
-
-Extracto del README original:
-
 # Sistema de Gestión de Microcrédito — Proyecto 1
 
-Núcleo de dominio para la gestión de microcréditos de **Crédito Vecino, S. A.**, acompañado por requisitos trazables, modelos arquitectónicos, diagramas editables, contratos API y pruebas automatizadas.
+Núcleo de dominio para la gestión de microcréditos de **Crédito Vecino, S. A.**, construido con reglas de negocio trazables, arquitectura hexagonal, diagramas editables, contratos de API y una suite de pruebas automatizadas completa.
+
+<p align="left">
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-%3E%3D20-339933?logo=node.js&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript&logoColor=white">
+  <img alt="Vitest" src="https://img.shields.io/badge/Vitest-Tests-6E9F18?logo=vitest&logoColor=white">
+  <img alt="Zod" src="https://img.shields.io/badge/Zod-Validation-3E67B1?logo=zod&logoColor=white">
+  <img alt="OpenAPI" src="https://img.shields.io/badge/OpenAPI-3.1-6BA539?logo=openapiinitiative&logoColor=white">
+  <img alt="decimal.js" src="https://img.shields.io/badge/decimal.js-Precisi%C3%B3n%20exacta-informational">
+  <img alt="date-fns" src="https://img.shields.io/badge/date--fns-Fechas-770C56?logo=datefns&logoColor=white">
+  <img alt="PlantUML" src="https://img.shields.io/badge/PlantUML-Diagramas-blueviolet">
+</p>
+
+<p align="left">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-205%20passing-brightgreen">
+  <img alt="Test files" src="https://img.shields.io/badge/archivos%20de%20prueba-10-brightgreen">
+  <img alt="Status" src="https://img.shields.io/badge/estado-P1%20completado-blue">
+</p>
+
+---
+
+## Tabla de contenido
+
+1. [Descripción](#1-descripción)
+2. [Objetivo](#2-objetivo)
+3. [Alcance de P1](#3-alcance-de-p1)
+4. [Arquitectura](#4-arquitectura)
+5. [Stack tecnológico](#5-stack-tecnológico)
+6. [Estructura de carpetas](#6-estructura-de-carpetas)
+7. [Instalación](#7-instalación)
+8. [Ejecución](#8-ejecución)
+9. [Pruebas](#9-pruebas)
+10. [Casos financieros de referencia](#10-casos-financieros-de-referencia)
+11. [Diagramas](#11-diagramas)
+12. [Decisiones arquitectónicas (ADR)](#12-decisiones-arquitectónicas-adr)
+13. [Decisiones de diseño](#13-decisiones-de-diseño)
+14. [Restricciones](#14-restricciones)
+15. [Trazabilidad y documentación](#15-trazabilidad-y-documentación)
+16. [Autores](#16-autores)
+17. [Herramientas de IA utilizadas](#17-herramientas-de-ia-utilizadas)
+
+---
 
 ## 1. Descripción
 
-Este repositorio modela las reglas críticas de un sistema de microcrédito: representación exacta del dinero, generación de planes de amortización, cálculo de mora, aplicación de pagos, estados del crédito, idempotencia y cartera en riesgo.
+Este repositorio modela las reglas críticas de un sistema de microcrédito: representación exacta del dinero, generación de planes de amortización, cálculo de mora, aplicación de pagos, control del ciclo de vida del crédito, idempotencia en operaciones sensibles y medición de la cartera en riesgo.
 
-El proyecto prioriza exactitud financiera, auditabilidad e independencia de infraestructura. Los importes no se procesan con punto flotante binario y las reglas del negocio pueden probarse sin una base de datos, un servidor HTTP ni servicios externos.
+El proyecto prioriza tres cualidades por encima de todo: **exactitud financiera**, **auditabilidad** e **independencia de infraestructura**. Esto significa que los importes nunca se procesan con punto flotante binario (evitando errores de redondeo típicos de `number` en JavaScript) y que todas las reglas del negocio pueden probarse de forma aislada, sin necesidad de una base de datos, un servidor HTTP ni servicios externos.
 
 ## 2. Objetivo
 
+El objetivo de este proyecto es diseñar y validar un núcleo de microcrédito mantenible que:
 
-Este repositorio implementa el núcleo de dominio para un sistema de microcréditos. Está diseñado para ser:
+- preserve las invariantes monetarias y contables en todo momento;
+- haga explícitas las políticas financieras (tasas, mora, prelación de pagos) en lugar de dejarlas implícitas en el código;
+- permita sustituir canales e infraestructura en el futuro mediante el patrón de puertos y adaptadores;
+- mantenga trazabilidad completa desde los requisitos hasta el código y las pruebas;
+- sirva como base sólida para futuras etapas de implementación (persistencia, API HTTP, autenticación, etc.).
 
-Preciso en representaciones monetarias (sin uso de number para importes).
+## 3. Alcance de P1
 
-Auditables y con invariantes verificadas por pruebas automatizadas.
+Esta primera fase del proyecto (**P1**) incluye:
 
-Independiente de infraestructura: no requiere servidor ni BD para validar reglas de negocio.
+- análisis del dominio: requisitos, reglas, políticas e invariantes financieras;
+- Arquitectura Hexagonal organizada como Monolito Modular;
+- modelos UML, C4 y 4+1 documentados en PlantUML editable;
+- un objeto de valor `Dinero` con precisión decimal exacta;
+- un plan de amortización bajo el sistema francés, con ajuste en la última cuota;
+- cálculo de mora simple por cuota, bajo la convención Actual/360;
+- prelación de pagos mediante el patrón Chain of Responsibility, y tratamiento de excedentes mediante Strategy;
+- ciclo de estados del crédito modelado con el patrón State;
+- cálculo de cartera en riesgo, incluyendo la exclusión de créditos incobrables;
+- registro idempotente de pagos en el caso de uso implementado;
+- contratos OpenAPI 3.1 y esquemas Zod para las capacidades principales del sistema;
+- pruebas unitarias, contractuales y transversales de invariantes.
 
-Instalación
+## 4. Arquitectura
 
-Requisitos:
+La solución adopta el estilo **Arquitectura Hexagonal + Monolito Modular**, donde todas las dependencias apuntan hacia el centro del sistema:
 
-Node.js >=20.0.0+
+```text
+Canales y adaptadores futuros
+            │
+            ▼
+   Casos de uso / aplicación
+            │
+            ▼
+       Núcleo de dominio
+            ▲
+            │
+ Puertos implementados por infraestructura futura
+```
 
-npm compatible con Node.js
+Bajo este modelo, el **dominio** concentra las decisiones del negocio y no depende de ningún detalle técnico externo; la capa de **aplicación** coordina los casos de uso orquestando al dominio; y la capa de **contratos** valida las representaciones externas (Zod, OpenAPI) sin filtrar reglas financieras hacia los canales. Esto permite, por ejemplo, añadir en el futuro una API REST o una base de datos sin tocar una sola línea de las reglas de negocio.
 
-Instalación:
+La documentación completa de este modelo arquitectónico se encuentra dentro de la carpeta `docs/arquitectura/`.
 
+## 5. Stack tecnológico
+
+| Tecnología | Insignia | Uso en el proyecto |
+|---|---|---|
+| Node.js 20 o superior | ![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white) | Entorno de ejecución de todo el proyecto. |
+| TypeScript, modo estricto | ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript&logoColor=white) | Implementación del dominio y verificación estática de tipos. |
+| Vitest | ![Vitest](https://img.shields.io/badge/Vitest-Tests-6E9F18?logo=vitest&logoColor=white) | Motor de pruebas automatizadas (unitarias, contractuales y de invariantes). |
+| `decimal.js` | ![decimal.js](https://img.shields.io/badge/decimal.js-Precisi%C3%B3n%20exacta-informational) | Aritmética decimal exacta, encapsulada por el objeto `Dinero`. |
+| `date-fns` | ![date-fns](https://img.shields.io/badge/date--fns-Fechas-770C56?logo=datefns&logoColor=white) | Operaciones de fechas controladas (plazos, mora, vencimientos). |
+| Zod | ![Zod](https://img.shields.io/badge/Zod-Validation-3E67B1?logo=zod&logoColor=white) | Definición de contratos ejecutables y validación de datos externos. |
+| OpenAPI 3.1 / YAML | ![OpenAPI](https://img.shields.io/badge/OpenAPI-3.1-6BA539?logo=openapiinitiative&logoColor=white) | Especificación de la futura interfaz HTTP del sistema. |
+| PlantUML | ![PlantUML](https://img.shields.io/badge/PlantUML-Diagramas-blueviolet) | Diagramas textuales y editables (UML, C4, 4+1). |
+
+## 6. Estructura de carpetas
+
+```text
+proyecto-analisis2/
+├── README.md
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+├── vitest.config.ts
+├── src/
+│   ├── aplicacion/        # Orquestación de casos de uso
+│   ├── contratos/         # Esquemas Zod y tipos externos
+│   └── dominio/           # Reglas, objetos de valor y políticas
+├── tests/                 # Suite automatizada
+└── docs/
+    ├── adr/               # Decisiones arquitectónicas
+    ├── analisis/          # Requisitos y reglas
+    ├── api/               # OpenAPI y contratos
+    ├── arquitectura/      # Arquitectura y atributos de calidad
+    ├── configuracion/     # Configuración técnica
+    ├── diagramas/         # Fuentes PlantUML editables
+    ├── diseno/            # Principios y patrones
+    ├── implementacion/    # Evidencia por fase
+    └── trazabilidad/      # Matriz integral
+```
+
+Un inventario detallado, carpeta por carpeta, se encuentra documentado dentro de `docs/arquitectura/`.
+
+## 7. Instalación
+
+### Requisitos previos
+
+- Node.js `>=20.0.0`.
+- npm compatible con la versión instalada de Node.js.
+
+### Pasos
+
+Clona el repositorio e instala las dependencias desde la raíz del proyecto:
+
+```bash
+git clone https://github.com/ItsRomero/Proyecto1_Analisis.git
+cd Proyecto1_Analisis
 npm install
+```
 
-Uso rápido
+El archivo `package-lock.json` fija las versiones exactas resueltas de cada dependencia. En entornos de integración continua se recomienda usar `npm ci` en lugar de `npm install`, ya que realiza una instalación limpia y perfectamente reproducible a partir del lockfile.
 
-Verificación completa (tipos + tests):
+## 8. Ejecución
 
+Es importante entender que P1 entrega un **núcleo de dominio**, no un servidor ni una aplicación de línea de comandos. Por lo tanto, su ejecución "observable" se realiza a través de la verificación de tipos y la suite de pruebas:
+
+```bash
 npm run verify
+```
 
-Scripts útiles
+Este comando ejecuta, en secuencia, la comprobación de tipos y toda la suite de pruebas. Otros comandos disponibles:
 
-Los scripts detectados en package.json son:
+| Comando | Resultado |
+|---|---|
+| `npm run typecheck` | Comprueba TypeScript sin emitir archivos. |
+| `npm test` | Ejecuta una vez toda la suite de pruebas. |
+| `npm run test:watch` | Ejecuta Vitest en modo interactivo (útil durante el desarrollo). |
+| `npm run verify` | Ejecuta tipos y pruebas en secuencia; es el comando recomendado antes de un commit. |
 
-Script
+## 9. Pruebas
 
-Descripción
+La suite de pruebas cubre, con distintos niveles de granularidad, todas las reglas críticas del sistema:
 
-typecheck
+- exactitud, redondeo, moneda e inmutabilidad del objeto `Dinero`;
+- amortización francesa, caso de tasa cero y ajuste correcto en la última cuota;
+- cálculo de mora, fechas límite y verificación independiente por cuota;
+- prelación de pagos, pagos parciales y las distintas estrategias para excedentes;
+- transiciones válidas e inválidas (guardas) del estado del crédito;
+- cálculo de cartera en riesgo, casos frontera y exclusiones correctas;
+- idempotencia de pagos, comportamiento ante reintentos (replay) y detección de conflictos;
+- invariantes transversales que deben cumplirse en todo el sistema;
+- equivalencia y validez de los contratos definidos en Zod y OpenAPI.
 
-tsc --noEmit
+Para ejecutar la suite completa:
 
-test
+```bash
+npm test
+```
 
-vitest run --passWithNoTests
+**Estado verificado al cerrar esta fase:** 10 archivos de prueba y 205 pruebas aprobadas, sin fallos.
 
-test:watch
+## 10. Casos financieros de referencia
 
-vitest
+Estos casos documentan, con números reales, el comportamiento esperado y verificado del sistema. Sirven tanto como ejemplos de uso como evidencia de que las reglas financieras se cumplen correctamente:
 
-verify
+| Caso | Entrada principal | Resultado esperado y verificado |
+|---|---|---|
+| CA-01 | Q10,000.00, TNA 36%, 12 meses | 11 cuotas de Q1,004.62; última cuota Q1,004.63; total pagado Q12,055.45; interés total Q2,055.45; saldo final Q0.00. |
+| CA-02 | Q725.76, TNA moratoria 24%, Actual/360, 15 días de atraso | Interés moratorio calculado: Q7.26. |
+| CA-03 | Pago exacto de Q1,011.88 | Se aplican Q7.26 a mora, Q278.86 a interés y Q725.76 a capital; remanente Q0.00. |
+| CA-04 | Pago parcial de Q500.00 | Se aplican Q7.26 a mora, Q278.86 a interés y Q213.88 a capital; capital pendiente Q511.88. |
+| CA-05 | Pago de Q3,000.00 | La obligación de Q1,011.88 queda saldada y el excedente de Q1,988.12 se conserva según la estrategia definida. |
+| CA-06 | Cartera activa de Q800,000.00; riesgo de Q56,000.00 | Cartera en riesgo del 7.00%. |
+| CA-07 | Cartera activa de Q792,000.00; riesgo de Q48,000.00 tras excluir el crédito C-005 | Cartera en riesgo del 6.06%. |
 
-npm run typecheck && npm test
+El detalle matemático y normativo completo de estos casos, junto con su evidencia integral, se encuentra documentado dentro de `docs/analisis/` y `docs/trazabilidad/`.
 
-API / OpenAPI
+## 11. Diagramas
 
-Se detectaron especificaciones OpenAPI en el repositorio. Puedes usar Swagger UI o herramientas como Postman para importar el YAML y probar los contratos.
+El repositorio contiene **18 fuentes `.puml` editables**, organizadas por tipo de vista dentro de `docs/diagramas/`:
 
-Estructura del repositorio (resumen)
+| Vista | Contenido |
+|---|---|
+| UML | Diagramas de clases, secuencia y objetos del dominio. |
+| C4 | Contexto, contenedores y componentes del sistema. |
+| Modelo 4+1 | Vistas lógica, de procesos, de desarrollo, física y de escenarios. |
+| Arquitectura | Representación general de la arquitectura hexagonal. |
+| Diseño modular | Organización interna de los módulos del dominio y la aplicación. |
+| Patrones | Chain of Responsibility, Strategy y State aplicados al sistema. |
 
-Proyecto1_Analisis-main
+Los archivos `.puml` son los artefactos fuente del proyecto y pueden renderizarse con cualquier extensión de PlantUML para el editor de código, o con las herramientas oficiales de PlantUML. La entrega no depende de imágenes PNG como único formato de consulta.
 
-Para un inventario detallado revisa docs/ en el repositorio.
+## 12. Decisiones arquitectónicas (ADR)
 
-Contribuir
+Las decisiones principales del proyecto están registradas formalmente, incluyendo su contexto, las alternativas consideradas y sus consecuencias. Estos registros (Architecture Decision Records) se encuentran dentro de `docs/adr/` e incluyen, entre otros:
 
-Abrir un issue para discutir cambios grandes.
+- **ADR-001** — Justificación de la Arquitectura Hexagonal con Monolito Modular.
+- **ADR-002** — Representación exacta de valores monetarios mediante el objeto `Dinero`.
+- **ADR-003** — Amortización francesa con ajuste en la última cuota.
 
-Crear una rama feat/... o fix/... desde main.
+## 13. Decisiones de diseño
 
-Enviar PR con descripción, tests y referencia a la matriz de trazabilidad si aplica.
+- **Dinero exacto:** los importes se representan como cadenas decimales o unidades menores en `bigint`; nunca se reciben ni se procesan como `number`, para evitar errores de precisión.
+- **Redondeo único:** se aplican exactamente dos decimales con la estrategia `ROUND_HALF_UP` únicamente al momento de materializar un valor monetario final.
+- **Moneda explícita:** las operaciones monetarias rechazan monedas incompatibles entre sí y el sistema nunca realiza conversiones de divisa de forma implícita.
+- **Amortización auditable:** la última cuota del plan absorbe cualquier diferencia de redondeo acumulada, garantizando que el capital se conserve y el saldo final sea exactamente cero.
+- **Mora simple:** el interés moratorio se calcula exclusivamente sobre el capital vencido, sin aplicar interés sobre interés.
+- **Pagos extensibles:** el patrón Chain of Responsibility define el orden de prelación (mora, interés, capital), mientras que Strategy determina cómo se procesa cualquier excedente del pago.
+- **Ciclo de vida protegido:** el patrón State concentra todas las transiciones y guardas válidas del ciclo de vida de un crédito, evitando estados inconsistentes.
+- **Reintentos seguros:** el uso de una `Idempotency-Key` evita que un pago se aplique dos veces por error y permite detectar reutilizaciones conflictivas de la misma clave.
+- **Contratos independientes:** Zod y OpenAPI describen únicamente los límites de entrada y salida del sistema, sin trasladar ninguna regla financiera hacia la capa de contratos o el canal de comunicación.
 
-Autores
+## 14. Restricciones
 
-Nombre
+Es importante aclarar qué queda explícitamente **fuera** del alcance de esta fase (P1):
 
-Rol
+- servidor HTTP, controladores o cualquier forma de despliegue de API real;
+- base de datos, ORM, migraciones o adaptadores de persistencia reales;
+- interfaz web, móvil, chatbot o integración tipo MCP;
+- autenticación, autorización o gestión real de usuarios;
+- integraciones bancarias, contables o de notificaciones;
+- conversión entre distintas monedas;
+- fechas contractuales completas dentro del plan de amortización;
+- cierres mensuales, mayor contable y versionado persistente de políticas financieras;
+- generación del documento PDF final del proyecto.
 
-Perfil
+Los contratos OpenAPI incluidos representan una interfaz **futura**; su existencia no implica que haya un servicio HTTP ejecutable en esta fase.
 
-CHRISTOPHER DAVID HERRERA PÉREZ
+## 15. Trazabilidad y documentación
 
-Implementación / Pruebas
+Toda la documentación de requisitos funcionales y no funcionales, reglas de negocio, invariantes, casos de uso, diagramas, módulos, pruebas, casos de aceptación y decisiones pendientes está relacionada de forma integral dentro de una matriz de trazabilidad, disponible en `docs/trazabilidad/`.
 
-https://miumg.instructure.com/courses/208556/users/202078
+Además, toda la documentación del proyecto está organizada por fase, lo que permite conservar la evolución de las decisiones a lo largo del tiempo y distinguir claramente entre análisis, diseño, implementación ya verificada y trabajo pendiente para futuras etapas.
 
-ERWIN ALBERTO RAMIREZ RACANCOJ
+## 16. Autores
 
-Diseño / Documentación
+| Autor | Rol en el proyecto |
+|---|---|
+| Christopher David Herrera Pérez | Implementación / Pruebas |
+| Erwin Alberto Ramírez Racancoj | Pruebas / Trazabilidad |
+| Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño / Documentación |
+| Oliver Fernando Romero Esquite | Coordinación / Integración |
 
-https://miumg.instructure.com/courses/208556/users/157988
+## 17. Herramientas de IA utilizadas
 
-GABRIELA ELÍZABETH NOEMÍ AGUILAR VÁSQUEZ
+Se utilizó **OpenAI Codex** como herramienta de asistencia durante el desarrollo del proyecto, específicamente para:
 
-Pruebas / Trazabilidad
+- analizar y estructurar los requisitos del sistema;
+- proponer y revisar documentación técnica y diagramas en PlantUML;
+- apoyar la implementación del código en TypeScript;
+- generar y revisar pruebas automatizadas;
+- verificar la consistencia y trazabilidad entre los distintos artefactos del proyecto.
 
-https://miumg.instructure.com/courses/208556/users/171820
-
-OLIVER FERNANDO ROMERO ESQUITE
-
-Coordinación / Integración
-
-https://miumg.instructure.com/courses/208556/users/171758
-
-Puedes editar los roles si prefieren etiquetas diferentes (Autor principal, QA, Docs, etc.).
-
-Licencia
-
-Este proyecto está bajo la licencia UNLICENSED. Reemplaza o especifica otra licencia si corresponde.
+La inteligencia artificial se empleó únicamente como apoyo técnico durante el proceso de desarrollo. Todos los resultados generados se validaron mediante revisión manual de los archivos, compilación estricta de TypeScript y ejecución automatizada de la suite de pruebas; la responsabilidad final sobre la entrega y sus decisiones permanece enteramente en el equipo autor.
