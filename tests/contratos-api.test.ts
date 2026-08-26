@@ -74,12 +74,24 @@ describe("contratos Zod", () => {
     }).success).toBe(true);
   });
 
-  it("valida la estructura uniforme de errores", () => {
+  it("valida la estructura uniforme de errores (RFC 9457)", () => {
+    expect(errorApiSchema.safeParse({
+      type: "https://api.example.invalid/probs/validation-error",
+      title: "Solicitud inválida",
+      status: 400,
+      detail: "La solicitud no cumple las reglas.",
+      errorCode: "SOLICITUD_INVALIDA",
+      details: [{ campo: "monto.importe", codigo: "FUERA_DE_RANGO", mensaje: "Fuera de rango." }],
+      traceId: "traza-001",
+      timestamp: "2026-04-25T10:00:00.000Z",
+    }).success).toBe(true);
+  });
+
+  it("rechaza un error sin los campos obligatorios de RFC 9457", () => {
     expect(errorApiSchema.safeParse({
       codigo: "SOLICITUD_INVALIDA",
-      mensaje: "La solicitud no cumple las reglas.",
-      detalles: [{ campo: "monto.importe", razon: "Fuera de rango." }],
+      mensaje: "Forma legada, ya no admitida.",
       traceId: "traza-001",
-    }).success).toBe(true);
+    }).success).toBe(false);
   });
 });

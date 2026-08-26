@@ -21,16 +21,23 @@ export const dineroSchema = z.strictObject({
   moneda: monedaSchema,
 });
 
-export const problemaDetalleSchema = z.strictObject({
-  campo: z.string().min(1).optional(),
-  razon: z.string().min(1),
+export const problemDetailFieldSchema = z.strictObject({
+  campo: z.string().min(1),
+  codigo: z.string().regex(/^[A-Z][A-Z0-9_]{2,63}$/),
+  mensaje: z.string().min(1),
 });
 
 export const errorApiSchema = z.strictObject({
-  codigo: z.string().regex(/^[A-Z][A-Z0-9_]{2,63}$/),
-  mensaje: z.string().min(1),
-  detalles: z.array(problemaDetalleSchema).readonly().default([]),
+  type: z.string().min(1),
+  title: z.string().min(1),
+  status: z.number().int(),
+  detail: z.string().min(1),
+  instance: z.string().min(1).optional(),
+  errorCode: z.string().regex(/^[A-Z][A-Z0-9_]{2,63}$/),
+  scope: z.enum(["FIELD", "DOMAIN", "AUTH", "INFRA"]).optional(),
+  details: z.array(problemDetailFieldSchema).readonly().optional(),
   traceId: z.string().min(1),
+  timestamp: z.string().min(1),
 });
 
 export const identificadorLegalSchema = z.strictObject({

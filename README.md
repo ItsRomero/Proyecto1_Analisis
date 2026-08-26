@@ -14,7 +14,7 @@ Núcleo de dominio para la gestión de microcréditos de **Crédito Vecino, S. A
 </p>
 
 <p align="left">
-  <img alt="Tests" src="https://img.shields.io/badge/tests-205%20passing-brightgreen">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-206%20passing-brightgreen">
   <img alt="Test files" src="https://img.shields.io/badge/archivos%20de%20prueba-10-brightgreen">
   <img alt="Status" src="https://img.shields.io/badge/estado-P1%20completado-blue">
 </p>
@@ -194,7 +194,7 @@ Para ejecutar la suite completa:
 npm test
 ```
 
-**Estado verificado al cerrar esta fase:** 10 archivos de prueba y 205 pruebas aprobadas, sin fallos.
+**Estado verificado al cerrar esta fase:** 10 archivos de prueba y 206 pruebas aprobadas, sin fallos.
 
 ## 10. Casos financieros de referencia
 

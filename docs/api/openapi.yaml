@@ -457,31 +457,31 @@ components:
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/ProblemDetailsExtended'
+            $ref: '#/components/schemas/ErrorApi'
     NoEncontrado:
       description: El recurso no existe
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/ProblemDetailsExtended'
+            $ref: '#/components/schemas/ErrorApi'
     Conflicto:
       description: Conflicto de unicidad o repetición
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/ProblemDetailsExtended'
+            $ref: '#/components/schemas/ErrorApi'
     ConflictoEstado:
       description: La operación no está permitida en el estado actual
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/ProblemDetailsExtended'
+            $ref: '#/components/schemas/ErrorApi'
     ReglaNegocio:
       description: Entrada bien formada que incumple una regla del dominio
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/ProblemDetailsExtended'
+            $ref: '#/components/schemas/ErrorApi'
 
   schemas:
 
@@ -894,18 +894,6 @@ components:
         carteraRiesgo:
           $ref: '#/components/schemas/CarteraRiesgo'
 
-    ProblemaDetalle:
-      type: object
-      additionalProperties: false
-      required: [razon]
-      properties:
-        campo:
-          type: string
-          minLength: 1
-        razon:
-          type: string
-          minLength: 1
-
     ProblemDetailField:
       type: object
       additionalProperties: false
@@ -921,14 +909,15 @@ components:
           type: string
           description: Mensaje legible para mostrar al usuario
 
-    ProblemDetailsExtended:
+    ErrorApi:
       type: object
       additionalProperties: false
+      description: "Estructura uniforme de error de la API, alineada con RFC 9457 (Problem Details)."
       required: [type, title, status, detail, errorCode, timestamp, traceId]
       properties:
         type:
           type: string
-          description: URI que identifica el tipo de error (RFC7807)
+          description: URI que identifica el tipo de error (RFC 9457)
           example: "https://api.example.invalid/probs/validation-error"
         title:
           type: string
@@ -961,23 +950,6 @@ components:
           type: string
           format: date-time
           description: Fecha/hora en UTC del error
-
-    ErrorApi:
-      deprecated: true
-      type: object
-      additionalProperties: false
-      description: "Esquema legado; use ProblemDetailsExtended para respuestas de error."
-      properties:
-        codigo:
-          type: string
-        mensaje:
-          type: string
-        detalles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProblemaDetalle'
-        traceId:
-          type: string
 
   examples:
     CrearClienteEjemplo:
