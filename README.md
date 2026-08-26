@@ -284,8 +284,6 @@ Se utilizó OpenAI Codex como apoyo durante el desarrollo del proyecto para:
 
 - analizar y organizar los requisitos del sistema
 - ayudar a redactar documentación técnica y diagramas en PlantUML
-- apoyar la implementación del código en TypeScript
-- generar y revisar pruebas automatizadas
 - verificar la coherencia entre los diferentes artefactos del proyecto
 
 La inteligencia artificial se utilizó únicamente como herramienta de apoyo. Todo el código, documentación y decisiones del proyecto fueron revisados y validados manualmente por el equipo mediante compilación en TypeScript y ejecución de pruebas.
