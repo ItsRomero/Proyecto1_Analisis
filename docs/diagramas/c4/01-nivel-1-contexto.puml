@@ -1,0 +1,35 @@
+@startuml 01-c4-contexto
+!include <C4/C4_Context>
+
+title C4 Nivel 1 — Contexto del Sistema de Gestión de Microcrédito
+
+LAYOUT_LEFT_RIGHT()
+
+Person(cliente, "Cliente", "Solicita crédito, recibe desembolso y realiza pagos.")
+Person(asesor, "Asesor de crédito", "Registra clientes y solicitudes; consulta su seguimiento.")
+Person(analista, "Analista / Aprobador", "Evalúa y decide solicitudes conforme a políticas.")
+Person(cobros, "Gestor de cobros", "Registra pagos y regularizaciones.")
+Person(riesgos, "Gestor de riesgos", "Consulta mora, cartera en riesgo y deterioro.")
+Person(financiero, "Encargado financiero", "Genera cierres y consulta movimientos y provisiones.")
+Person(auditor, "Auditor", "Consulta evidencia histórica sin modificarla.")
+
+System(sgm, "Sistema de Gestión de Microcrédito", "Gestiona originación, cálculos financieros exactos, cartera, cobros, mora, riesgo y cierres auditables.")
+
+System_Ext(contabilidad, "Sistema contable institucional", "Recibirá movimientos y cierres para integración contable. Futuro, fuera de P1.")
+System_Ext(identidad, "Proveedor de identidad institucional", "Autenticará usuarios y entregará identidad/roles. Futuro, fuera de P1.")
+System_Ext(notificaciones, "Servicio de notificaciones", "Enviará avisos de decisión, vencimiento y pago. Futuro, fuera de P1.")
+
+Rel(cliente, sgm, "Presenta solicitudes y pagos; consulta información", "Canal futuro")
+Rel(asesor, sgm, "Registra clientes/solicitudes y consulta créditos")
+Rel(analista, sgm, "Evalúa, aprueba o rechaza")
+Rel(cobros, sgm, "Registra pagos y regularizaciones")
+Rel(riesgos, sgm, "Consulta mora/riesgo y gestiona deterioro")
+Rel(financiero, sgm, "Genera cierres y consulta cartera")
+Rel(auditor, sgm, "Consulta historial y movimientos")
+
+Rel(sgm, contabilidad, "Publicará movimientos/cierres confirmados", "Contrato futuro")
+Rel(sgm, identidad, "Validará identidad y permisos en el borde", "Contrato futuro")
+Rel(sgm, notificaciones, "Publicará solicitudes de notificación", "Contrato futuro")
+
+SHOW_LEGEND()
+@enduml

@@ -1,0 +1,173 @@
+@startuml 01-hexagonal-monolito-modular
+title Arquitectura Hexagonal + Monolito Modular
+left to right direction
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+package "Adaptadores primarios futuros\n(fuera de P1)" #EEEEEE {
+  component "API REST" as Api <<future adapter>>
+  component "Interfaz / Chat" as UiChat <<future adapter>>
+  component "Servidor MCP" as Mcp <<future adapter>>
+  component "CLI / Pruebas" as Cli <<test adapter>>
+  component "Proceso programado" as Scheduler <<future adapter>>
+}
+
+package "Núcleo de aplicación" #DDEEFF {
+  interface "RegistrarCliente" as PRegistrarCliente <<primary port>>
+  interface "SolicitarCredito" as PSolicitarCredito <<primary port>>
+  interface "EvaluarCredito" as PEvaluarCredito <<primary port>>
+  interface "DesembolsarCredito" as PDesembolsar <<primary port>>
+  interface "RegistrarPago" as PRegistrarPago <<primary port>>
+  interface "GenerarCierre" as PGenerarCierre <<primary port>>
+  interface "ConsultarCarteraEnRiesgo" as PConsultarRiesgo <<primary port>>
+
+  component "Servicios de aplicación" as Application {
+    component "Originación" as AppOriginacion
+    component "Cartera y cobros" as AppCobros
+    component "Cierres y consultas" as AppCierres
+  }
+}
+
+package "Núcleo de dominio" #E4F4E4 {
+  component "Originación" as DomainOriginacion {
+    [Cliente]
+    [SolicitudCredito]
+    [EvaluacionCredito]
+  }
+
+  component "Cálculo financiero\n(funciones puras)" as DomainCalculo {
+    [Dinero]
+    [PlanAmortizacion]
+    [CalculadoraMora]
+  }
+
+  component "Cartera y cobros" as DomainCartera {
+    [Credito / State]
+    [PrelacionPago / Chain]
+    [PoliticaExcedente / Strategy]
+  }
+
+  component "Cierres y riesgo" as DomainCierres {
+    [Movimiento / Mayor]
+    [Cierre]
+    [CarteraRiesgo]
+  }
+
+  component "Políticas institucionales" as DomainPoliticas {
+    [PoliticaFinanciera]
+    [SelectorPolitica]
+  }
+}
+
+package "Puertos secundarios" #FFF2CC {
+  interface "RepositorioClientes" as RClientes <<secondary port>>
+  interface "RepositorioSolicitudes" as RSolicitudes <<secondary port>>
+  interface "RepositorioCreditos" as RCreditos <<secondary port>>
+  interface "RepositorioPagos" as RPagos <<secondary port>>
+  interface "RepositorioCierres" as RCierres <<secondary port>>
+  interface "RepositorioMovimientos" as RMovimientos <<secondary port>>
+  interface "RepositorioPoliticas" as RPoliticas <<secondary port>>
+  interface "Reloj" as Reloj <<secondary port>>
+  interface "GeneradorIds" as GeneradorIds <<secondary port>>
+  interface "UnidadDeTrabajo" as Uow <<secondary port>>
+}
+
+package "Adaptadores secundarios futuros\n(fuera de P1)" #EEEEEE {
+  component "Persistencia SQL" as Sql <<future adapter>>
+  component "Reloj del sistema" as SystemClock <<future adapter>>
+  component "Generador UUID" as Uuid <<future adapter>>
+  component "Bus / integración contable" as Integration <<future adapter>>
+}
+
+Api --> PRegistrarCliente
+Api --> PSolicitarCredito
+Api --> PEvaluarCredito
+Api --> PDesembolsar
+Api --> PRegistrarPago
+Api --> PGenerarCierre
+Api --> PConsultarRiesgo
+UiChat --> PRegistrarCliente
+UiChat --> PSolicitarCredito
+UiChat --> PRegistrarPago
+UiChat --> PConsultarRiesgo
+Mcp --> PRegistrarCliente
+Mcp --> PSolicitarCredito
+Mcp --> PRegistrarPago
+Mcp --> PConsultarRiesgo
+Cli --> PDesembolsar
+Cli --> PRegistrarPago
+Cli --> PGenerarCierre
+Scheduler --> PGenerarCierre
+
+PRegistrarCliente --> AppOriginacion
+PSolicitarCredito --> AppOriginacion
+PEvaluarCredito --> AppOriginacion
+PDesembolsar --> AppOriginacion
+PRegistrarPago --> AppCobros
+PGenerarCierre --> AppCierres
+PConsultarRiesgo --> AppCierres
+
+AppOriginacion --> DomainOriginacion
+AppOriginacion --> DomainCalculo
+AppOriginacion --> DomainPoliticas
+AppCobros --> DomainCartera
+AppCobros --> DomainCalculo
+AppCobros --> DomainPoliticas
+AppCierres --> DomainCierres
+AppCierres --> DomainCartera
+AppCierres --> DomainPoliticas
+
+AppOriginacion --> RClientes
+AppOriginacion --> RSolicitudes
+AppOriginacion --> RCreditos
+AppOriginacion --> RPoliticas
+AppOriginacion --> Reloj
+AppOriginacion --> GeneradorIds
+AppOriginacion --> Uow
+AppCobros --> RCreditos
+AppCobros --> RPagos
+AppCobros --> RMovimientos
+AppCobros --> Reloj
+AppCobros --> GeneradorIds
+AppCobros --> Uow
+AppCierres --> RCreditos
+AppCierres --> RCierres
+AppCierres --> RMovimientos
+AppCierres --> RPoliticas
+AppCierres --> Reloj
+AppCierres --> Uow
+
+Sql ..|> RClientes
+Sql ..|> RSolicitudes
+Sql ..|> RCreditos
+Sql ..|> RPagos
+Sql ..|> RCierres
+Sql ..|> RMovimientos
+Sql ..|> RPoliticas
+Sql ..|> Uow
+SystemClock ..|> Reloj
+Uuid ..|> GeneradorIds
+Integration ..> RMovimientos : consume hechos futuros
+
+DomainOriginacion --> DomainCalculo : usa tipos exactos
+DomainCartera --> DomainCalculo : usa cálculos puros
+DomainCartera --> DomainPoliticas : usa abstracciones
+DomainCierres --> DomainCalculo : agrega importes exactos
+
+note bottom of DomainCalculo
+  No depende de aplicación, puertos,
+  adaptadores ni fecha del sistema.
+end note
+
+note bottom of Application
+  Orquesta casos de uso y límites transaccionales;
+  no contiene fórmulas financieras.
+end note
+
+note bottom of Sql
+  No se implementa en Proyecto 1.
+  Las flechas de implementación apuntan
+  hacia contratos definidos por el núcleo.
+end note
+@enduml

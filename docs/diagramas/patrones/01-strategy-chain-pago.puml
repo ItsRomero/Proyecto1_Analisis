@@ -1,0 +1,89 @@
+@startuml 01-strategy-chain-pago
+title Patrones — Chain of Responsibility + Strategy en Registrar Pago
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class RegistrarPago <<context>> {
+  -cadena: EslabonPrelacion
+  -politicaExcedente: PoliticaExcedente
+  +ejecutar(comando): ResultadoPago
+}
+
+class ContextoAplicacionPago <<context>> {
+  -pendienteGastos: Dinero
+  -pendienteMoratorio: Dinero
+  -pendienteCorriente: Dinero
+  -pendienteCapital: Dinero
+  -aplicaciones: AplicacionesPorConcepto
+}
+
+interface EslabonPrelacion <<GoF Chain>> {
+  +aplicar(contexto, remanente): Dinero
+  +establecerSiguiente(siguiente): EslabonPrelacion
+}
+
+abstract class EslabonConceptoBase <<template support>> {
+  -siguiente: EslabonPrelacion?
+  +aplicar(contexto, remanente): Dinero
+  #pendiente(contexto): Dinero
+  #registrarAplicacion(contexto, monto): void
+}
+
+class Gastos <<handler>>
+class Moratorio <<handler>>
+class InteresCorriente <<handler>>
+class Capital <<handler>>
+
+interface PoliticaExcedente <<GoF Strategy>> {
+  +procesar(credito, excedente, fecha): ResultadoExcedente
+}
+
+class AmortizacionDirectaCapital <<strategy>>
+class PagoAnticipadoCuotas <<strategy>>
+
+class Pago <<aggregate>> {
+  -importe: Dinero
+  -aplicacion: AplicacionPago
+}
+
+class AplicacionPago <<value object>> {
+  -gastos: Dinero
+  -moratorio: Dinero
+  -corriente: Dinero
+  -capital: Dinero
+  -excedente: Dinero
+  +conserva(importe): boolean
+}
+
+RegistrarPago --> EslabonPrelacion : configura/invoca
+RegistrarPago --> PoliticaExcedente : inyecta/invoca
+RegistrarPago --> Pago : coordina
+EslabonPrelacion <|.. EslabonConceptoBase
+EslabonConceptoBase <|-- Gastos
+EslabonConceptoBase <|-- Moratorio
+EslabonConceptoBase <|-- InteresCorriente
+EslabonConceptoBase <|-- Capital
+Gastos --> Moratorio : siguiente
+Moratorio --> InteresCorriente : siguiente
+InteresCorriente --> Capital : siguiente
+EslabonConceptoBase --> ContextoAplicacionPago
+PoliticaExcedente <|.. AmortizacionDirectaCapital
+PoliticaExcedente <|.. PagoAnticipadoCuotas
+Pago *-- AplicacionPago
+
+note right of EslabonConceptoBase
+  Consumo uniforme:
+  min(remanente, pendiente).
+  Devuelve el resto exacto.
+end note
+
+note bottom of Capital
+  El orden institucional se compone una vez:
+  Gastos → Moratorio → Corriente → Capital.
+end note
+
+note bottom of PoliticaExcedente
+  Solo se invoca si queda remanente.
+  Toda Strategy conserva el excedente.
+end note
+@enduml

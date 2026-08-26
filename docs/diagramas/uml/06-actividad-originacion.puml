@@ -1,0 +1,57 @@
+@startuml 06-actividad-originacion
+title Actividad — Proceso de originación y desembolso
+skinparam shadowing false
+
+start
+:Recibir datos del cliente;
+if (¿Cliente registrado?) then (no)
+  :Validar identidad y datos;
+  if (¿Datos válidos y no duplicados?) then (sí)
+    :Registrar Cliente;
+  else (no)
+    :Informar errores de registro;
+    stop
+  endif
+endif
+
+:Capturar monto y plazo solicitados;
+if (¿Q1,000–Q25,000 y 3–24 meses?) then (sí)
+  :Crear SolicitudCredito en SOLICITADO;
+else (no)
+  :Rechazar datos fuera del producto;
+  stop
+endif
+
+:Evaluar solicitud con política versionada;
+:Conservar criterios, resultado, fecha y analista;
+if (¿Aprobación autorizada?) then (sí)
+  :Registrar decisión y transición a APROBADO;
+  if (¿Cliente desiste o aprobación expira?) then (sí)
+    :Registrar motivo y transición a ANULADO;
+    stop
+  else (no)
+    :Obtener fecha de desembolso del Reloj;
+    :Seleccionar política vigente;
+    if (¿Existe exactamente una política?) then (sí)
+      :Conservar versión e instantánea;
+      :Generar plan francés;
+      :Ajustar última cuota;
+      if (¿Amortizaciones = capital y saldo final = 0?) then (sí)
+        :Registrar desembolso y movimiento;
+        :Transición APROBADO → DESEMBOLSADO;
+        :Activar crédito;
+        :Transición DESEMBOLSADO → VIGENTE;
+      else (no)
+        :Abortar sin efecto financiero;
+        stop
+      endif
+    else (no)
+      :Abortar por política ausente o superpuesta;
+      stop
+    endif
+  endif
+else (no)
+  :Registrar motivo y transición a RECHAZADO;
+endif
+stop
+@enduml

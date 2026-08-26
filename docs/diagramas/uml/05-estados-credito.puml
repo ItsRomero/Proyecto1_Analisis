@@ -1,0 +1,56 @@
+@startuml 05-estados-credito
+title Ciclo de vida completo del crédito
+skinparam shadowing false
+hide empty description
+
+[*] --> SOLICITADO : crear solicitud
+
+SOLICITADO --> APROBADO : aprobar\n[evaluación concluida y actor autorizado]
+SOLICITADO --> RECHAZADO : rechazar\n[motivo obligatorio]
+
+APROBADO --> DESEMBOLSADO : desembolsar\n[aprobación vigente / fijar política y capital]
+APROBADO --> ANULADO : desistir o expirar\n[sin desembolso]
+DESEMBOLSADO --> VIGENTE : activar\n[plan válido y saldo reconocido]
+
+VIGENTE --> EN_MORA : detectar cuota impagada\n[díasAtraso > 0]
+VIGENTE --> CANCELADO : registrar pago\n[saldo total = 0]
+
+EN_MORA --> EN_MORA : registrar pago parcial\n[queda vencido pendiente]
+EN_MORA --> VIGENTE : regularizar\n[todo vencido pagado y díasAtraso = 0]\n/reactivar devengo si política lo permite
+EN_MORA --> REESTRUCTURADO : reestructurar\n[autorización válida / conservar historia]
+EN_MORA --> INCOBRABLE : declarar incobrable\n[díasAtraso > 120 y actor autorizado]\n/salida de cartera activa
+
+REESTRUCTURADO --> EN_MORA : detectar nuevo atraso\n[díasAtraso > 0]
+REESTRUCTURADO --> CANCELADO : registrar última cuota\n[saldo total = 0]
+
+RECHAZADO --> [*]
+ANULADO --> [*]
+CANCELADO --> [*]
+INCOBRABLE --> [*] : salida contable irreversible
+
+note right of EN_MORA
+  Clasificación derivada por días:
+  1–30 MORA_1
+  31–60 MORA_2
+  61–90 MORA_3
+  91–120 VENCIDO
+  >120 elegible como INCOBRABLE
+
+  Estos tramos NO son estados principales.
+  A partir de 91 días se suspende
+  el interés corriente.
+end note
+
+note right of INCOBRABLE
+  Una recuperación posterior genera
+  movimientos contables, pero nunca
+  reactiva el crédito.
+end note
+
+note bottom
+  Cada transición agrega al historial:
+  estado anterior, estado nuevo, fecha,
+  usuario/proceso y motivo.
+  Toda transición no mostrada es inválida.
+end note
+@enduml

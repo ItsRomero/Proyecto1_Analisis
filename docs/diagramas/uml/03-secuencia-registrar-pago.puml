@@ -1,0 +1,85 @@
+@startuml 03-secuencia-registrar-pago
+title Secuencia — Registrar pago de cuota
+skinparam shadowing false
+autonumber
+
+actor "Cajero / Gestor" as Cajero
+participant RegistrarPago
+participant Reloj
+participant RepositorioPagos
+participant RepositorioCreditos
+participant Credito
+participant Pago
+participant Gastos
+participant Moratorio
+participant InteresCorriente
+participant Capital
+participant PoliticaExcedente
+participant MayorMovimientos
+
+Cajero -> RegistrarPago : ejecutar(creditoId, importe, claveIdempotencia)
+RegistrarPago -> RepositorioPagos : buscarPorClave(claveIdempotencia)
+
+alt clave existente con los mismos datos
+  RepositorioPagos --> RegistrarPago : Pago previo
+  RegistrarPago --> Cajero : aplicación previa (sin nuevo efecto)
+else clave existente con datos diferentes
+  RepositorioPagos --> RegistrarPago : Pago incompatible
+  RegistrarPago --> Cajero : conflicto de idempotencia
+else clave nueva
+  RepositorioPagos --> RegistrarPago : no encontrado
+  RegistrarPago -> Reloj : hoy()
+  Reloj --> RegistrarPago : fechaCorte
+  RegistrarPago -> RepositorioCreditos : obtener(creditoId)
+  RepositorioCreditos --> RegistrarPago : Credito
+  RegistrarPago -> Credito : validarQuePermitePago()
+
+  alt estado no admite pago
+    Credito --> RegistrarPago : error TransicionInvalida
+    RegistrarPago --> Cajero : rechazo sin movimientos
+  else estado admite pago
+    Credito --> RegistrarPago : obligaciones exigibles
+    create Pago
+    RegistrarPago -> Pago : crear(importe, fechaCorte, clave)
+
+    note over Pago,Capital
+      Cadena obligatoria:
+      Pago → Gastos → Moratorio → Interés corriente → Capital
+    end note
+
+    Pago -> Gastos : aplicar(obligaciones, importe)
+    Gastos -> Gastos : consumir hasta gastos pendientes
+    Gastos -> Moratorio : aplicar(obligaciones, remanente)
+    Moratorio -> Moratorio : consumir hasta interés moratorio
+    Moratorio -> InteresCorriente : aplicar(obligaciones, remanente)
+    InteresCorriente -> InteresCorriente : consumir hasta interés corriente
+    InteresCorriente -> Capital : aplicar(obligaciones, remanente)
+    Capital -> Capital : consumir hasta capital exigible
+    Capital --> Pago : AplicacionPago + excedente
+
+    opt excedente > Q0.00
+      Pago -> PoliticaExcedente : procesar(Credito, excedente, fechaCorte)
+      PoliticaExcedente -> Credito : amortizar capital / anticipar cuotas
+      Credito --> PoliticaExcedente : ResultadoExcedente
+      PoliticaExcedente --> Pago : resultado íntegro
+    end
+
+    Pago -> Pago : verificar conservación del importe
+    RegistrarPago -> Credito : registrarPago(Pago, fechaCorte)
+
+    alt cubre todo lo vencido y atraso = 0
+      Credito -> Credito : EN_MORA → VIGENTE
+    else saldo total = Q0.00
+      Credito -> Credito : VIGENTE/REESTRUCTURADO → CANCELADO
+    else quedan vencidos pendientes
+      Credito -> Credito : conservar EN_MORA
+    end
+
+    RegistrarPago -> RepositorioCreditos : guardar(Credito)
+    RegistrarPago -> RepositorioPagos : guardar(Pago)
+    RegistrarPago -> MayorMovimientos : registrar(movimientos por concepto)
+    MayorMovimientos --> RegistrarPago : confirmado
+    RegistrarPago --> Cajero : AplicacionPago y saldo actualizado
+  end
+end
+@enduml

@@ -1,0 +1,52 @@
+@startuml 04-secuencia-desembolsar-credito
+title Secuencia — Desembolsar crédito
+skinparam shadowing false
+autonumber
+
+actor "Encargado de desembolsos" as Encargado
+participant DesembolsarCredito
+participant Reloj
+participant RepositorioSolicitudes
+participant SolicitudCredito
+participant SelectorPoliticaFinanciera
+participant FabricaPlanAmortizacion
+participant PlanAmortizacion
+participant GeneradorIds
+participant Credito
+participant RepositorioCreditos
+participant MayorMovimientos
+
+Encargado -> DesembolsarCredito : ejecutar(solicitudId, claveOperacion)
+DesembolsarCredito -> Reloj : hoy()
+Reloj --> DesembolsarCredito : fechaDesembolso
+DesembolsarCredito -> RepositorioSolicitudes : obtener(solicitudId)
+RepositorioSolicitudes --> DesembolsarCredito : SolicitudCredito
+DesembolsarCredito -> SolicitudCredito : validarAprobadaYVigente(fechaDesembolso)
+
+alt solicitud no aprobada, anulada o expirada
+  SolicitudCredito --> DesembolsarCredito : error TransicionInvalida
+  DesembolsarCredito --> Encargado : rechazo sin desembolso
+else solicitud aprobada y vigente
+  SolicitudCredito --> DesembolsarCredito : monto, plazo y condiciones
+  DesembolsarCredito -> SelectorPoliticaFinanciera : seleccionar(tipo, producto, fechaDesembolso)
+  SelectorPoliticaFinanciera --> DesembolsarCredito : política versionada + instantánea
+  DesembolsarCredito -> FabricaPlanAmortizacion : crearFrances(monto, tasa, plazo, calendario)
+  create PlanAmortizacion
+  FabricaPlanAmortizacion -> PlanAmortizacion : construir cuotas y ajustar última
+  PlanAmortizacion -> PlanAmortizacion : validar Σ amortización = capital
+  PlanAmortizacion -> PlanAmortizacion : validar saldo final = Q0.00
+  FabricaPlanAmortizacion --> DesembolsarCredito : PlanAmortizacion
+  DesembolsarCredito -> GeneradorIds : siguiente("Credito")
+  GeneradorIds --> DesembolsarCredito : creditoId
+  create Credito
+  DesembolsarCredito -> Credito : crearDesde(solicitud, política, plan)
+  DesembolsarCredito -> Credito : desembolsar(actor, fecha, motivo)
+  Credito -> Credito : APROBADO → DESEMBOLSADO
+  DesembolsarCredito -> Credito : activar(actor, fecha, motivo)
+  Credito -> Credito : DESEMBOLSADO → VIGENTE
+  DesembolsarCredito -> RepositorioCreditos : guardar(Credito)
+  DesembolsarCredito -> MayorMovimientos : registrar(movimiento de desembolso)
+  MayorMovimientos --> DesembolsarCredito : confirmado
+  DesembolsarCredito --> Encargado : creditoId, plan y estado VIGENTE
+end
+@enduml

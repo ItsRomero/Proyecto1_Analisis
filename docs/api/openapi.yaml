@@ -1,0 +1,992 @@
+openapi: 3.1.0
+info:
+  title: API del Sistema de Gestion de Microcredito
+  version: 1.0.0
+  description: Contrato E5. No implica la existencia de un servidor.
+servers:
+  - url: "https://api.example.invalid/v1"
+    description: "URL ilustrativa, no desplegada"
+
+tags:
+  - name: Clientes
+  - name: Solicitudes
+  - name: Creditos
+  - name: Pagos
+  - name: Mora
+  - name: Cierres
+  - name: Cartera
+
+paths:
+  /clientes:
+    post:
+      tags: [Clientes]
+      operationId: crearCliente
+      summary: Registrar un cliente
+      description: Crea un cliente con identidad legal única.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrearCliente'
+            examples:
+              nuevoCliente:
+                summary: Cliente de ejemplo
+                value:
+                  nombreCompleto: "Juan Pérez"
+                  identificadorLegal:
+                    tipo: "DPI"
+                    valor: "1234567890101"
+      responses:
+        '201':
+          description: Cliente registrado
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '409': { $ref: '#/components/responses/Conflicto' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+  /clientes/{clienteId}:
+    get:
+      tags: [Clientes]
+      operationId: obtenerCliente
+      summary: Consultar un cliente
+      parameters:
+        - $ref: '#/components/parameters/ClienteId'
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+
+  /solicitudes:
+    post:
+      tags: [Solicitudes]
+      operationId: crearSolicitudCredito
+      summary: Crear una solicitud de crédito
+      description: Registra una solicitud en GTQ con monto de Q1,000.00 a Q25,000.00 y plazo de 3 a 24 meses.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrearSolicitud'
+            examples:
+              solicitudEjemplo:
+                summary: Solicitud de ejemplo
+                value:
+                  clienteId: "C123"
+                  monto:
+                    importe: "1500.00"
+                    moneda: "GTQ"
+                  plazoMeses: 12
+      responses:
+        '201':
+          description: Solicitud creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolicitudCredito'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+  /solicitudes/{solicitudId}:
+    get:
+      tags: [Solicitudes]
+      operationId: obtenerSolicitudCredito
+      summary: Consultar una solicitud
+      parameters:
+        - $ref: '#/components/parameters/SolicitudId'
+      responses:
+        '200':
+          description: Solicitud encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolicitudCredito'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+
+  /solicitudes/{solicitudId}/decision:
+    post:
+      tags: [Solicitudes]
+      operationId: decidirSolicitudCredito
+      summary: Aprobar o rechazar una solicitud
+      description: Registra decisión, fecha, usuario o proceso y motivo auditable.
+      parameters:
+        - $ref: '#/components/parameters/SolicitudId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecidirSolicitud'
+            examples:
+              aprobacionEjemplo:
+                summary: Aprobacion
+                value:
+                  decision: "APROBAR"
+                  usuarioProceso: "analista_01"
+                  motivo: "Evaluacion crediticia satisfactoria"
+                  fecha: "2026-08-25"
+      responses:
+        '200':
+          description: Decisión aplicada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SolicitudCredito'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+        '409': { $ref: '#/components/responses/ConflictoEstado' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+  /creditos/{creditoId}/desembolso:
+    post:
+      tags: [Créditos]
+      operationId: desembolsarCredito
+      summary: Desembolsar y activar un crédito aprobado
+      description: Fija politica contractual, genera el plan y reconoce el saldo inicial.
+      parameters:
+        - $ref: '#/components/parameters/CreditoId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DesembolsarCredito'
+            examples:
+              desembolsoEjemplo:
+                summary: Desembolso
+                value:
+                  fechaDesembolso: "2026-08-25"
+                  usuarioProceso: "disbursal_user"
+                  politicaVersion: "POL-2026-08"
+                  tasaNominalAnual: "0.24"
+      responses:
+        '200':
+          description: Crédito desembolsado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credito'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+        '409': { $ref: '#/components/responses/ConflictoEstado' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+  /creditos/{creditoId}:
+    get:
+      tags: [Créditos]
+      operationId: obtenerCredito
+      summary: Consultar crédito, plan, saldo e historial
+      parameters:
+        - $ref: '#/components/parameters/CreditoId'
+      responses:
+        '200':
+          description: Detalle integral del crédito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credito'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+
+  /creditos/{creditoId}/pagos:
+    post:
+      tags: [Pagos]
+      operationId: registrarPago
+      summary: Registrar y aplicar un pago
+      description: Aplica gastos, moratorio, corriente y capital; conserva cualquier excedente. La clave de idempotencia tiene alcance por crédito.
+      parameters:
+        - $ref: '#/components/parameters/CreditoId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrarPago'
+            examples:
+              pagoEjemplo:
+                summary: Pago de ejemplo
+                value:
+                  importe: "1500.00"
+                  moneda: "GTQ"
+                  fechaPago: "2026-08-25"
+                  usuarioProceso: "cajero_01"
+      responses:
+        '201':
+          description: Pago nuevo registrado y aplicado
+          headers:
+            Idempotency-Replayed:
+              $ref: '#/components/headers/Idempotency-Replayed-False'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pago'
+        '200':
+          description: Reintento identico; se devuelve el pago registrado previamente sin nuevos efectos
+          headers:
+            Idempotency-Replayed:
+              $ref: '#/components/headers/Idempotency-Replayed-True'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pago'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+        '409': { $ref: '#/components/responses/Conflicto' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+    get:
+      tags: [Pagos]
+      operationId: listarPagosCredito
+      summary: Listar pagos de un crédito
+      parameters:
+        - $ref: '#/components/parameters/CreditoId'
+      responses:
+        '200':
+          description: Pagos ordenados por registro
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pago'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+
+  /creditos/{creditoId}/mora:
+    get:
+      tags: [Mora]
+      operationId: consultarMoraCredito
+      summary: Calcular mora a una fecha de corte
+      description: Calcula dias, tramo e interés moratorio independientemente por cuota vencida.
+      parameters:
+        - $ref: '#/components/parameters/CreditoId'
+        - $ref: '#/components/parameters/FechaCorte'
+      responses:
+        '200':
+          description: Mora calculada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsultaMora'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+  /cierres/diarios:
+    post:
+      tags: [Cierres]
+      operationId: generarCierreDiario
+      summary: Solicitar un cierre diario
+      description: Contrato de diseño; no implementa motor ni persistencia de cierres.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerarCierre'
+            examples:
+              cierreDiario:
+                summary: Solicitud de cierre diario
+                value:
+                  fechaCorte: "2026-08-25"
+                  usuarioProceso: "admin_cierres"
+      responses:
+        '201':
+          description: Cierre diario generado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cierre'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '409': { $ref: '#/components/responses/Conflicto' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+  /cierres/mensuales:
+    post:
+      tags: [Cierres]
+      operationId: generarCierreMensual
+      summary: Solicitar un cierre mensual
+      description: Consolida informacion diaria y cartera en riesgo; las provisiones dependen de política versionada futura.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerarCierre'
+            examples:
+              cierreMensual:
+                summary: Solicitud de cierre mensual
+                value:
+                  fechaCorte: "2026-08-31"
+                  usuarioProceso: "admin_cierres"
+      responses:
+        '201':
+          description: Cierre mensual generado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cierre'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '409': { $ref: '#/components/responses/Conflicto' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+  /cierres/{cierreId}:
+    get:
+      tags: [Cierres]
+      operationId: obtenerCierre
+      summary: Consultar un cierre
+      parameters:
+        - $ref: '#/components/parameters/CierreId'
+      responses:
+        '200':
+          description: Cierre encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cierre'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '404': { $ref: '#/components/responses/NoEncontrado' }
+
+  /cartera-riesgo:
+    get:
+      tags: [Cartera]
+      operationId: consultarCarteraRiesgo
+      summary: Consultar cartera en riesgo
+      description: Usa saldo completo, incluye reestructurados y excluye incobrables.
+      parameters:
+        - $ref: '#/components/parameters/FechaCorte'
+      responses:
+        '200':
+          description: Resultado con razon o SIN_CARTERA_ACTIVA
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CarteraRiesgo'
+        '400': { $ref: '#/components/responses/SolicitudMalFormada' }
+        '422': { $ref: '#/components/responses/ReglaNegocio' }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "Autenticacion mediante JWT Bearer token."
+
+  parameters:
+    ClienteId:
+      name: clienteId
+      in: path
+      required: true
+      description: Identificador estable del cliente
+      schema:
+        $ref: '#/components/schemas/Id'
+    SolicitudId:
+      name: solicitudId
+      in: path
+      required: true
+      description: Identificador estable de la solicitud
+      schema:
+        $ref: '#/components/schemas/Id'
+    CreditoId:
+      name: creditoId
+      in: path
+      required: true
+      description: Identificador estable del crédito
+      schema:
+        $ref: '#/components/schemas/Id'
+    CierreId:
+      name: cierreId
+      in: path
+      required: true
+      description: Identificador estable del cierre
+      schema:
+        $ref: '#/components/schemas/Id'
+    FechaCorte:
+      name: fechaCorte
+      in: query
+      required: true
+      description: Fecha civil explícita del calculo (YYYY-MM-DD)
+      schema:
+        $ref: '#/components/schemas/FechaCivil'
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      description: >
+        Identidad del intento de pago; ASCII visible, 1 a 255 caracteres, con alcance dentro del crédito indicado en la ruta.
+        TTL/expiracion de la clave: la implementacion debe documentar el periodo; sugerido 24 horas.
+      schema:
+        type: string
+        pattern: '^[\x21-\x7E]{1,255}$'
+
+  headers:
+    Location:
+      description: Ruta del recurso creado (Location header).
+      schema:
+        type: string
+    Idempotency-Replayed-False:
+      description: Indica que no hubo replay (nuevo efecto).
+      schema:
+        type: boolean
+        const: false
+    Idempotency-Replayed-True:
+      description: Indica que el reintento fue detectado y no tuvo efecto adicional.
+      schema:
+        type: boolean
+        const: true
+
+  responses:
+    SolicitudMalFormada:
+      description: JSON o parametros con formato inválido
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsExtended'
+    NoEncontrado:
+      description: El recurso no existe
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsExtended'
+    Conflicto:
+      description: Conflicto de unicidad o repetición
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsExtended'
+    ConflictoEstado:
+      description: La operación no está permitida en el estado actual
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsExtended'
+    ReglaNegocio:
+      description: Entrada bien formada que incumple una regla del dominio
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsExtended'
+
+  schemas:
+
+    # utilitarios
+    Id:
+      type: string
+      pattern: '^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$'
+      example: "ABC123"
+
+    FechaCivil:
+      type: string
+      format: date
+      pattern: '^\d{4}-\d{2}-\d{2}$'
+      example: "2026-08-25"
+
+    Importe:
+      type: string
+      pattern: '^(0|[1-9]\d*)\.\d{2}$'
+      examples: ['725.76']
+
+    Tasa:
+      type: string
+      pattern: '^(0|[1-9]\d*)(\.\d+)?$'
+      examples: ['0.24']
+
+    Porcentaje:
+      type: string
+      pattern: '^(0|[1-9]\d*)(\.\d+)?$'
+      examples: ['0.12']
+      description: "Porcentaje expresado como fraccion (ej. 0.12 = 12%)."
+
+    Dinero:
+      type: object
+      additionalProperties: false
+      required: [importe, moneda]
+      properties:
+        importe:
+          $ref: '#/components/schemas/Importe'
+        moneda:
+          type: string
+          pattern: '^[A-Z]{3}$'
+          example: "GTQ"
+
+    IdentificadorLegal:
+      type: object
+      additionalProperties: false
+      required: [tipo, valor]
+      properties:
+        tipo:
+          type: string
+          minLength: 1
+          maxLength: 40
+          example: "DPI"
+        valor:
+          type: string
+          minLength: 1
+          maxLength: 80
+          example: "1234567890101"
+
+    # clientes
+    CrearCliente:
+      type: object
+      additionalProperties: false
+      required: [nombreCompleto, identificadorLegal]
+      properties:
+        nombreCompleto:
+          type: string
+          minLength: 1
+          maxLength: 200
+        identificadorLegal:
+          $ref: '#/components/schemas/IdentificadorLegal'
+
+    Cliente:
+      allOf:
+        - $ref: '#/components/schemas/CrearCliente'
+        - type: object
+          required: [clienteId, fechaRegistro]
+          properties:
+            clienteId:
+              $ref: '#/components/schemas/Id'
+              readOnly: true
+            fechaRegistro:
+              $ref: '#/components/schemas/FechaCivil'
+              readOnly: true
+
+    # solicitudes / creditos
+    CrearSolicitud:
+      type: object
+      additionalProperties: false
+      required: [clienteId, monto, plazoMeses]
+      properties:
+        clienteId:
+          $ref: '#/components/schemas/Id'
+        monto:
+          allOf:
+            - $ref: '#/components/schemas/Dinero'
+            - type: object
+              properties:
+                importe:
+                  type: string
+                  pattern: '^(0|[1-9]\d*)\.\d{2}$'
+                  description: "Entre 1000.00 y 25000.00"
+                moneda:
+                  const: "GTQ"
+        plazoMeses:
+          type: integer
+          minimum: 3
+          maximum: 24
+
+    SolicitudCredito:
+      allOf:
+        - $ref: '#/components/schemas/CrearSolicitud'
+        - type: object
+          required: [solicitudId, estado, fechaSolicitud]
+          properties:
+            solicitudId:
+              $ref: '#/components/schemas/Id'
+              readOnly: true
+            estado:
+              type: string
+              enum: [SOLICITADO, APROBADO, RECHAZADO, ANULADO]
+              readOnly: true
+            fechaSolicitud:
+              $ref: '#/components/schemas/FechaCivil'
+              readOnly: true
+
+    DecidirSolicitud:
+      type: object
+      additionalProperties: false
+      required: [decision, usuarioProceso, motivo, fecha]
+      properties:
+        decision:
+          type: string
+          enum: [APROBAR, RECHAZAR]
+        usuarioProceso:
+          type: string
+          minLength: 1
+          maxLength: 100
+        motivo:
+          type: string
+          minLength: 1
+          maxLength: 500
+        fecha:
+          $ref: '#/components/schemas/FechaCivil'
+
+    EstadoCredito:
+      type: string
+      enum:
+        - SOLICITADO
+        - APROBADO
+        - RECHAZADO
+        - DESEMBOLSADO
+        - VIGENTE
+        - EN_MORA
+        - REESTRUCTURADO
+        - ANULADO
+        - CANCELADO
+        - INCOBRABLE
+
+    DesembolsarCredito:
+      type: object
+      additionalProperties: false
+      required: [fechaDesembolso, usuarioProceso, politicaVersion, tasaNominalAnual]
+      properties:
+        fechaDesembolso:
+          $ref: '#/components/schemas/FechaCivil'
+        usuarioProceso:
+          type: string
+          minLength: 1
+          maxLength: 100
+        politicaVersion:
+          $ref: '#/components/schemas/Id'
+        tasaNominalAnual:
+          $ref: '#/components/schemas/Tasa'
+
+    Cuota:
+      type: object
+      additionalProperties: false
+      required: [numero, saldoAnterior, interes, amortizacion, importe, saldoPosterior]
+      properties:
+        numero:
+          type: integer
+          minimum: 1
+        saldoAnterior:
+          $ref: '#/components/schemas/Dinero'
+        interes:
+          $ref: '#/components/schemas/Dinero'
+        amortizacion:
+          $ref: '#/components/schemas/Dinero'
+        importe:
+          $ref: '#/components/schemas/Dinero'
+        saldoPosterior:
+          $ref: '#/components/schemas/Dinero'
+
+    TransicionEstado:
+      type: object
+      additionalProperties: false
+      required: [estadoAnterior, estadoNuevo, fecha, usuarioProceso, motivo]
+      properties:
+        estadoAnterior:
+          $ref: '#/components/schemas/EstadoCredito'
+        estadoNuevo:
+          $ref: '#/components/schemas/EstadoCredito'
+        fecha:
+          $ref: '#/components/schemas/FechaCivil'
+        usuarioProceso:
+          type: string
+          minLength: 1
+        motivo:
+          type: string
+          minLength: 1
+
+    Credito:
+      type: object
+      additionalProperties: false
+      required: [creditoId, solicitudId, estado, capitalOriginal, saldoCapital, plazoMeses, tasaNominalAnual, politicaVersion, plan, historial]
+      properties:
+        creditoId:
+          $ref: '#/components/schemas/Id'
+          readOnly: true
+        solicitudId:
+          $ref: '#/components/schemas/Id'
+          readOnly: true
+        estado:
+          $ref: '#/components/schemas/EstadoCredito'
+        capitalOriginal:
+          $ref: '#/components/schemas/Dinero'
+        saldoCapital:
+          $ref: '#/components/schemas/Dinero'
+        plazoMeses:
+          type: integer
+          minimum: 3
+          maximum: 24
+        tasaNominalAnual:
+          $ref: '#/components/schemas/Tasa'
+        politicaVersion:
+          $ref: '#/components/schemas/Id'
+        plan:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cuota'
+        historial:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransicionEstado'
+
+    RegistrarPago:
+      type: object
+      additionalProperties: false
+      required: [importe, moneda, fechaPago, usuarioProceso]
+      properties:
+        importe:
+          $ref: '#/components/schemas/Importe'
+          description: Debe ser mayor que 0.00
+        moneda:
+          const: "GTQ"
+        fechaPago:
+          $ref: '#/components/schemas/FechaCivil'
+        usuarioProceso:
+          type: string
+          minLength: 1
+          maxLength: 100
+
+    AplicacionPago:
+      type: object
+      additionalProperties: false
+      required: [gastosComisiones, interesMoratorio, interesCorriente, capital, excedente]
+      properties:
+        gastosComisiones:
+          $ref: '#/components/schemas/Dinero'
+        interesMoratorio:
+          $ref: '#/components/schemas/Dinero'
+        interesCorriente:
+          $ref: '#/components/schemas/Dinero'
+        capital:
+          $ref: '#/components/schemas/Dinero'
+        excedente:
+          $ref: '#/components/schemas/Dinero'
+
+    Pago:
+      allOf:
+        - $ref: '#/components/schemas/RegistrarPago'
+        - type: object
+          required: [pagoId, creditoId, idempotencyKey, aplicacion]
+          properties:
+            pagoId:
+              $ref: '#/components/schemas/Id'
+              readOnly: true
+            creditoId:
+              $ref: '#/components/schemas/Id'
+            idempotencyKey:
+              type: string
+              pattern: '^[\x21-\x7E]{1,255}$'
+            aplicacion:
+              $ref: '#/components/schemas/AplicacionPago'
+
+    TramoMora:
+      type: string
+      enum: [SIN_MORA, MORA_1, MORA_2, MORA_3, VENCIDO, INCOBRABLE]
+
+    MoraCuota:
+      type: object
+      additionalProperties: false
+      required: [referencia, fechaVencimiento, diasAtraso, tramo, capitalVencido, interesMoratorio]
+      properties:
+        referencia:
+          $ref: '#/components/schemas/Id'
+        fechaVencimiento:
+          $ref: '#/components/schemas/FechaCivil'
+        diasAtraso:
+          type: integer
+          minimum: 0
+        tramo:
+          $ref: '#/components/schemas/TramoMora'
+        capitalVencido:
+          $ref: '#/components/schemas/Dinero'
+        interesMoratorio:
+          $ref: '#/components/schemas/Dinero'
+
+    ConsultaMora:
+      type: object
+      additionalProperties: false
+      required: [creditoId, fechaCorte, cuotas]
+      properties:
+        creditoId:
+          $ref: '#/components/schemas/Id'
+        fechaCorte:
+          $ref: '#/components/schemas/FechaCivil'
+        cuotas:
+          type: array
+          items:
+            $ref: '#/components/schemas/MoraCuota'
+
+    CarteraConRazon:
+      type: object
+      additionalProperties: false
+      required: [tipo, fechaCorte, carteraActiva, capitalEnRiesgo, razon, porcentaje]
+      properties:
+        tipo:
+          const: "CON_RAZON"
+        fechaCorte:
+          $ref: '#/components/schemas/FechaCivil'
+        carteraActiva:
+          $ref: '#/components/schemas/Dinero'
+        capitalEnRiesgo:
+          $ref: '#/components/schemas/Dinero'
+        razon:
+          $ref: '#/components/schemas/Tasa'
+        porcentaje:
+          $ref: '#/components/schemas/Porcentaje'
+
+    CarteraSinActiva:
+      type: object
+      additionalProperties: false
+      required: [tipo, fechaCorte, carteraActiva, capitalEnRiesgo]
+      properties:
+        tipo:
+          const: "SIN_CARTERA_ACTIVA"
+        fechaCorte:
+          $ref: '#/components/schemas/FechaCivil'
+        carteraActiva:
+          $ref: '#/components/schemas/Dinero'
+        capitalEnRiesgo:
+          $ref: '#/components/schemas/Dinero'
+
+    CarteraRiesgo:
+      oneOf:
+        - $ref: '#/components/schemas/CarteraConRazon'
+        - $ref: '#/components/schemas/CarteraSinActiva'
+      discriminator:
+        propertyName: tipo
+
+    GenerarCierre:
+      type: object
+      additionalProperties: false
+      required: [fechaCorte, usuarioProceso]
+      properties:
+        fechaCorte:
+          $ref: '#/components/schemas/FechaCivil'
+        usuarioProceso:
+          type: string
+          minLength: 1
+          maxLength: 100
+
+    Cierre:
+      type: object
+      additionalProperties: false
+      required: [cierreId, tipo, fechaCorte, estado, desembolsos, recuperaciones, devengo, mora, saldoCartera]
+      properties:
+        cierreId:
+          $ref: '#/components/schemas/Id'
+          readOnly: true
+        tipo:
+          type: string
+          enum: [DIARIO, MENSUAL]
+        fechaCorte:
+          $ref: '#/components/schemas/FechaCivil'
+        estado:
+          const: "GENERADO"
+        desembolsos:
+          $ref: '#/components/schemas/Dinero'
+        recuperaciones:
+          $ref: '#/components/schemas/Dinero'
+        devengo:
+          $ref: '#/components/schemas/Dinero'
+        mora:
+          $ref: '#/components/schemas/Dinero'
+        saldoCartera:
+          $ref: '#/components/schemas/Dinero'
+        carteraRiesgo:
+          $ref: '#/components/schemas/CarteraRiesgo'
+
+    ProblemaDetalle:
+      type: object
+      additionalProperties: false
+      required: [razon]
+      properties:
+        campo:
+          type: string
+          minLength: 1
+        razon:
+          type: string
+          minLength: 1
+
+    ProblemDetailField:
+      type: object
+      additionalProperties: false
+      required: [campo, codigo, mensaje]
+      properties:
+        campo:
+          type: string
+          description: Nombre del campo (si aplica)
+        codigo:
+          type: string
+          description: Codigo de error por campo (p. ej. "MONTO_MINIMO")
+        mensaje:
+          type: string
+          description: Mensaje legible para mostrar al usuario
+
+    ProblemDetailsExtended:
+      type: object
+      additionalProperties: false
+      required: [type, title, status, detail, errorCode, timestamp, traceId]
+      properties:
+        type:
+          type: string
+          description: URI que identifica el tipo de error (RFC7807)
+          example: "https://api.example.invalid/probs/validation-error"
+        title:
+          type: string
+          description: Titulo corto
+        status:
+          type: integer
+          description: Codigo HTTP
+          example: 400
+        detail:
+          type: string
+          description: Mensaje legible
+        instance:
+          type: string
+          description: URI del recurso/instancia
+        errorCode:
+          type: string
+          description: Codigo interno estable (p. ej. "CLI_001", "PAGO_010")
+        scope:
+          type: string
+          enum: [FIELD, DOMAIN, AUTH, INFRA]
+          description: Ambito del error para manejarlo programaticamente
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemDetailField'
+        traceId:
+          type: string
+          description: ID para correlacion (traza)
+        timestamp:
+          type: string
+          format: date-time
+          description: Fecha/hora en UTC del error
+
+    ErrorApi:
+      deprecated: true
+      type: object
+      additionalProperties: false
+      description: "Esquema legado; use ProblemDetailsExtended para respuestas de error."
+      properties:
+        codigo:
+          type: string
+        mensaje:
+          type: string
+        detalles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemaDetalle'
+        traceId:
+          type: string
+
+  examples:
+    CrearClienteEjemplo:
+      summary: Ejemplo Cliente
+      value:
+        nombreCompleto: "Juanito Perez"
+        identificadorLegal:
+          tipo: "DPI"
+          valor: "9876543210101"
+
+security:
+  - bearerAuth: []

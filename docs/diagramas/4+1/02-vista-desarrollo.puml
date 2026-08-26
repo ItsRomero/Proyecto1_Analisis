@@ -1,0 +1,99 @@
+@startuml 02-vista-desarrollo
+title Modelo 4+1 — Vista de desarrollo
+top to bottom direction
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+folder "src" {
+  folder "dominio" as SrcDominio {
+    folder "compartido" as Compartido {
+      file "dinero.ts" as DineroTs
+      file "tipos de fecha/tasa" as TiposCompartidos
+    }
+    folder "originacion" as DOriginacion
+    folder "calculo-financiero" as DCalculo {
+      file "plan-amortizacion.ts" as PlanTs
+      file "calculadora-mora.ts" as MoraTs
+    }
+    folder "cartera-cobros" as DCartera {
+      file "prelacion-pago.ts" as PrelacionTs
+      file "credito/estados" as EstadosTs
+      file "cartera.ts" as CarteraTs
+    }
+    folder "cierres-riesgo" as DCierres
+    folder "politicas" as DPoliticas
+  }
+
+  folder "aplicacion" as SrcAplicacion {
+    folder "originacion" as AOriginacion
+    folder "cartera-cobros" as ACartera
+    folder "cierres-riesgo" as ACierres
+    folder "politicas" as APoliticas
+  }
+
+  folder "puertos" as SrcPuertos {
+    folder "primarios" as PuertosPrimarios
+    folder "secundarios" as PuertosSecundarios
+  }
+
+  folder "contratos" as SrcContratos {
+    file "esquemas Zod futuros" as ZodSchemas
+  }
+}
+
+folder "tests" as Tests {
+  folder "dominio" as TestsDominio
+  folder "aplicacion" as TestsAplicacion
+}
+
+folder "docs" as Docs {
+  folder "analisis"
+  folder "arquitectura"
+  folder "diagramas"
+  folder "trazabilidad"
+  folder "api"
+  folder "adr"
+}
+
+DOriginacion --> Compartido
+DCalculo --> Compartido
+DCartera --> Compartido
+DCartera --> DCalculo
+DCartera --> DPoliticas
+DCierres --> Compartido
+DCierres --> DCalculo
+DCierres --> DPoliticas
+
+AOriginacion --> DOriginacion
+AOriginacion --> DCalculo
+AOriginacion --> DPoliticas
+ACartera --> DCartera
+ACartera --> DCalculo
+ACierres --> DCierres
+ACierres --> DCartera
+APoliticas --> DPoliticas
+
+SrcAplicacion --> PuertosSecundarios : usa interfaces
+PuertosPrimarios --> SrcAplicacion : expone casos
+SrcContratos --> PuertosPrimarios : traduce e invoca
+TestsDominio --> SrcDominio
+TestsAplicacion --> SrcAplicacion
+TestsAplicacion --> SrcPuertos : usa dobles
+Docs ..> SrcDominio : especifica y traza
+
+note right of SrcDominio
+  Regla: nunca importa aplicación,
+  contratos ni adaptadores.
+end note
+
+note right of SrcContratos
+  No contiene fórmulas ni transiciones.
+  No existe servidor HTTP en P1.
+end note
+
+note bottom of Compartido
+  Solo conceptos universales.
+  No es una carpeta para lógica residual.
+end note
+@enduml

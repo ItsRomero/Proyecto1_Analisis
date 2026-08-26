@@ -1,0 +1,174 @@
+@startuml 01-componentes-e3
+title E3 — Diseño modular y contratos internos
+left to right direction
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+package "Puertos primarios" as Primary {
+  interface "RegistrarCliente" as IRegistrarCliente
+  interface "SolicitarCredito" as ISolicitarCredito
+  interface "EvaluarYDecidirSolicitud" as IEvaluarDecidir
+  interface "DesembolsarCredito" as IDesembolsar
+  interface "RegistrarPago" as IRegistrarPago
+  interface "ActualizarMora" as IActualizarMora
+  interface "ReestructurarCredito" as IReestructurar
+  interface "GenerarCierre" as IGenerarCierre
+  interface "ConsultarCarteraEnRiesgo" as IConsultarRiesgo
+  interface "AdministrarPolitica" as IAdministrarPolitica
+}
+
+package "Aplicación" as Application {
+  component "Casos de uso\nde Originación" as AppOriginacion
+  component "Casos de uso\nde Cartera/Cobros" as AppCobros
+  component "Casos de uso\nde Cierres/Riesgo" as AppCierres
+  component "Casos de uso\nde Políticas" as AppPoliticas
+}
+
+package "Dominio" as Domain {
+  package "Compartido" as Shared {
+    component "Dinero y Moneda" as Money
+    component "FechaCorte" as CutoffDate
+    component "Errores de dominio" as DomainErrors
+  }
+
+  package "Originación" as Origination {
+    component "Cliente" as Customer
+    component "SolicitudCredito" as ApplicationAggregate
+    component "EvaluacionCredito" as Evaluation
+    component "Servicio de desembolso\ndel dominio" as DisbursementDomain
+  }
+
+  package "Cálculo financiero" as Financial {
+    component "Tasa" as Rate
+    component "Fábrica de Plan" as ScheduleFactory
+    component "PlanAmortizacion / Cuota" as Schedule
+    component "CalculadoraMora" as ArrearsCalculator
+  }
+
+  package "Cartera y cobros" as Collections {
+    component "Credito / State" as Credit
+    component "Pago / AplicacionPago" as Payment
+    component "Prelación / Chain" as AllocationChain
+    component "Excedente / Strategy" as SurplusStrategy
+    component "Servicio Cartera" as Portfolio
+  }
+
+  package "Cierres y riesgo" as Closing {
+    component "Movimiento / Mayor" as Ledger
+    component "CierreDiario" as DailyClose
+    component "CierreMensual" as MonthlyClose
+    component "ResultadoCarteraRiesgo" as RiskResult
+  }
+
+  package "Políticas" as Policies {
+    component "PoliticaFinanciera" as Policy
+    component "SelectorPolitica" as PolicySelector
+  }
+}
+
+package "Puertos secundarios" as Secondary {
+  interface "RepositorioClientes" as RCustomers
+  interface "RepositorioSolicitudes" as RApplications
+  interface "RepositorioCreditos" as RCredits
+  interface "RepositorioPagos" as RPayments
+  interface "RepositorioMovimientos" as RLedger
+  interface "RepositorioCierres" as RClosings
+  interface "RepositorioPoliticas" as RPolicies
+  interface "Reloj" as Clock
+  interface "GeneradorIds" as IdGenerator
+  interface "UnidadDeTrabajo" as UnitOfWork
+}
+
+IRegistrarCliente --> AppOriginacion
+ISolicitarCredito --> AppOriginacion
+IEvaluarDecidir --> AppOriginacion
+IDesembolsar --> AppOriginacion
+IRegistrarPago --> AppCobros
+IActualizarMora --> AppCobros
+IReestructurar --> AppCobros
+IGenerarCierre --> AppCierres
+IConsultarRiesgo --> AppCierres
+IAdministrarPolitica --> AppPoliticas
+
+AppOriginacion --> Customer
+AppOriginacion --> ApplicationAggregate
+AppOriginacion --> DisbursementDomain
+AppOriginacion --> ScheduleFactory
+AppOriginacion --> PolicySelector
+AppCobros --> Credit
+AppCobros --> Payment
+AppCobros --> AllocationChain
+AppCobros --> SurplusStrategy
+AppCobros --> ArrearsCalculator
+AppCierres --> DailyClose
+AppCierres --> MonthlyClose
+AppCierres --> Portfolio
+AppCierres --> Ledger
+AppPoliticas --> Policy
+AppPoliticas --> PolicySelector
+
+ApplicationAggregate *-- Evaluation
+DisbursementDomain --> Credit : crea condiciones
+ScheduleFactory --> Schedule : crea y valida
+ScheduleFactory --> Rate
+Schedule --> Money
+ArrearsCalculator --> Schedule
+ArrearsCalculator --> Rate
+ArrearsCalculator --> CutoffDate
+Credit *-- Schedule
+Credit --> Payment
+Credit o-- AllocationChain
+AllocationChain --> SurplusStrategy
+Portfolio --> Credit
+Portfolio --> RiskResult
+Ledger --> Money
+DailyClose --> Ledger
+MonthlyClose --> DailyClose
+MonthlyClose --> RiskResult
+MonthlyClose --> PolicySelector
+PolicySelector --> Policy
+Customer --> DomainErrors
+ApplicationAggregate --> DomainErrors
+Credit --> DomainErrors
+
+AppOriginacion --> RCustomers
+AppOriginacion --> RApplications
+AppOriginacion --> RCredits
+AppOriginacion --> RPolicies
+AppOriginacion --> Clock
+AppOriginacion --> IdGenerator
+AppOriginacion --> UnitOfWork
+AppCobros --> RCredits
+AppCobros --> RPayments
+AppCobros --> RLedger
+AppCobros --> RPolicies
+AppCobros --> Clock
+AppCobros --> IdGenerator
+AppCobros --> UnitOfWork
+AppCierres --> RCredits
+AppCierres --> RLedger
+AppCierres --> RClosings
+AppCierres --> RPolicies
+AppCierres --> Clock
+AppCierres --> UnitOfWork
+AppPoliticas --> RPolicies
+AppPoliticas --> Clock
+AppPoliticas --> IdGenerator
+AppPoliticas --> UnitOfWork
+
+note bottom of Financial
+  Funciones puras: no usa puertos,
+  repositorios ni fecha global.
+end note
+
+note bottom of Application
+  Orquesta transacciones e idempotencia;
+  no contiene fórmulas financieras.
+end note
+
+note bottom of Secondary
+  Interfaces definidas por las necesidades
+  del núcleo; adaptadores concretos fuera de P1.
+end note
+@enduml

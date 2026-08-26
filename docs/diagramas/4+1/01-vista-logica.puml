@@ -1,0 +1,88 @@
+@startuml 01-vista-logica
+title Modelo 4+1 — Vista lógica
+left to right direction
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+package "Originación" as Originacion {
+  component Cliente
+  component SolicitudCredito
+  component EvaluacionCredito
+  component "Servicios de originación" as ServiciosOriginacion
+}
+
+package "Cálculo financiero" as Calculo {
+  component Dinero
+  component Tasa
+  component PlanAmortizacion
+  component CalculadoraMora
+}
+
+package "Cartera y cobros" as Cartera {
+  component Credito
+  component Pago
+  component "State del crédito" as State
+  component "Chain de prelación" as Chain
+  component "Strategy de excedente" as Strategy
+}
+
+package "Cierres y riesgo" as Cierres {
+  component Movimiento
+  component Mayor
+  component Cierre
+  component CarteraRiesgo
+}
+
+package "Políticas institucionales" as Politicas {
+  component PoliticaFinanciera
+  component SelectorPolitica
+}
+
+package "Aplicación y puertos" as Aplicacion {
+  component "Casos de uso" as CasosUso
+  component "Puertos primarios" as Primarios
+  component "Puertos secundarios" as Secundarios
+}
+
+Cliente --> SolicitudCredito : presenta
+SolicitudCredito *-- EvaluacionCredito
+SolicitudCredito --> Credito : origina tras desembolso
+Credito *-- PlanAmortizacion
+Credito --> Pago : recibe
+Credito o-- State : delega comportamiento
+Pago --> Chain : aplica conceptos
+Chain --> Strategy : procesa excedente
+Pago --> Movimiento : origina efectos
+Cierre o-- Movimiento : consolida
+CarteraRiesgo --> Credito : evalúa saldo/estado
+
+ServiciosOriginacion --> Calculo : solicita plan exacto
+ServiciosOriginacion --> Politicas : selecciona versión
+Cartera --> Calculo : usa cálculos puros
+Cartera --> Politicas : usa políticas versionadas
+Cierres --> Calculo : agrega importes exactos
+Cierres --> Politicas : usa provisiones versionadas
+
+Primarios --> CasosUso
+CasosUso --> Originacion
+CasosUso --> Cartera
+CasosUso --> Cierres
+CasosUso --> Politicas
+CasosUso --> Secundarios : depende de abstracciones
+
+note bottom of Calculo
+  Cohesión matemática alta:
+  sin repositorios, I/O ni fecha global.
+end note
+
+note bottom of Cierres
+  Movimiento es append-only.
+  Los cierres son idempotentes.
+end note
+
+note bottom of Aplicacion
+  Los canales futuros invocan los mismos
+  puertos primarios; no duplican reglas.
+end note
+@enduml

@@ -1,0 +1,79 @@
+@startuml 03-c4-componentes
+!include <C4/C4_Component>
+
+title C4 Nivel 3 — Componentes del núcleo de dominio y aplicación
+
+LAYOUT_LEFT_RIGHT()
+
+Container_Boundary(canales, "Adaptadores primarios — futuros, fuera de P1") {
+  Component(apiAdapter, "Adaptador API REST", "Adaptador primario", "Convierte OpenAPI/Zod en comandos y resultados.", $tags="Futuro")
+  Component(uiChatAdapter, "Adaptador UI / Chat", "Adaptador primario", "Canal futuro; no contiene fórmulas.", $tags="Futuro")
+  Component(mcpAdapter, "Adaptador MCP", "Adaptador primario", "Herramientas futuras sobre los mismos casos de uso.", $tags="Futuro")
+  Component(schedulerAdapter, "Adaptador programado", "Adaptador primario", "Dispara mora y cierres con fecha explícita.", $tags="Futuro")
+}
+
+Container_Boundary(core, "Núcleo de dominio y aplicación — P1") {
+  Component(primaryPorts, "Puertos primarios", "Interfaces de aplicación", "DesembolsarCredito, RegistrarPago, GenerarCierre, ConsultarCarteraEnRiesgo y demás casos públicos.", $tags="P1")
+
+  Component(appOriginacion, "Aplicación de Originación", "Servicios de aplicación", "Coordina cliente, solicitud, evaluación, decisión y desembolso.", $tags="P1")
+  Component(appCobros, "Aplicación de Cartera y Cobros", "Servicios de aplicación", "Coordina pagos idempotentes, deterioro, regularización y reestructuración.", $tags="P1")
+  Component(appCierres, "Aplicación de Cierres y Consultas", "Servicios de aplicación", "Coordina cierres idempotentes y consultas de riesgo.", $tags="P1")
+  Component(appPoliticas, "Aplicación de Políticas", "Servicios de aplicación", "Administra y selecciona versiones institucionales.", $tags="P1")
+
+  Component(domainOriginacion, "Dominio de Originación", "Entidades/agregados", "Cliente, SolicitudCredito y EvaluacionCredito.", $tags="P1")
+  Component(domainCalculo, "Cálculo Financiero", "Funciones y servicios puros", "Dinero, tasas, plan francés, interés corriente y moratorio.", $tags="P1")
+  Component(domainCartera, "Dominio de Cartera y Cobros", "Agregados y patrones", "Credito/State, Pago, Chain de prelación, Strategy de excedente y mora.", $tags="P1")
+  Component(domainCierres, "Dominio de Cierres y Riesgo", "Entidades/servicios", "Movimiento append-only, cierres, provisiones y cartera en riesgo.", $tags="P1")
+  Component(domainPoliticas, "Dominio de Políticas", "Entidades/servicios", "Política versionada, vigencia, huella y selección determinista.", $tags="P1")
+
+  Component(secondaryPorts, "Puertos secundarios", "Interfaces", "Repositorios, Reloj, GeneradorIds y UnidadDeTrabajo.", $tags="P1")
+}
+
+Container_Boundary(secondaryAdapters, "Adaptadores secundarios — futuros, fuera de P1") {
+  Component(persistenceAdapter, "Adaptador de persistencia", "PostgreSQL/ORM por decidir", "Implementará repositorios y UoW.", $tags="Futuro")
+  Component(clockAdapter, "Reloj del sistema", "Adaptador secundario", "Implementará el puerto Reloj.", $tags="Futuro")
+  Component(idAdapter, "Generador UUID", "Adaptador secundario", "Implementará GeneradorIds.", $tags="Futuro")
+  Component(integrationAdapter, "Integración contable", "Adaptador secundario", "Publicará movimientos confirmados.", $tags="Futuro")
+}
+
+Rel(apiAdapter, primaryPorts, "Invoca")
+Rel(uiChatAdapter, primaryPorts, "Invoca")
+Rel(mcpAdapter, primaryPorts, "Invoca")
+Rel(schedulerAdapter, primaryPorts, "Invoca")
+
+Rel(primaryPorts, appOriginacion, "Delega comandos de originación")
+Rel(primaryPorts, appCobros, "Delega pagos/cartera")
+Rel(primaryPorts, appCierres, "Delega cierres/consultas")
+Rel(primaryPorts, appPoliticas, "Delega administración")
+
+Rel(appOriginacion, domainOriginacion, "Coordina")
+Rel(appOriginacion, domainCalculo, "Solicita plan exacto")
+Rel(appOriginacion, domainPoliticas, "Selecciona política")
+Rel(appCobros, domainCartera, "Coordina")
+Rel(appCobros, domainCalculo, "Calcula mora/intereses")
+Rel(appCobros, domainPoliticas, "Obtiene estrategias/versiones")
+Rel(appCierres, domainCierres, "Coordina")
+Rel(appCierres, domainCartera, "Consulta saldo/estado")
+Rel(appCierres, domainPoliticas, "Obtiene provisiones")
+Rel(appPoliticas, domainPoliticas, "Administra")
+
+Rel(domainOriginacion, domainCalculo, "Usa Dinero/tipos exactos")
+Rel(domainCartera, domainCalculo, "Usa cálculos puros")
+Rel(domainCartera, domainPoliticas, "Usa contratos de política")
+Rel(domainCierres, domainCalculo, "Agrega importes exactos")
+
+Rel(appOriginacion, secondaryPorts, "Usa abstracciones")
+Rel(appCobros, secondaryPorts, "Usa abstracciones")
+Rel(appCierres, secondaryPorts, "Usa abstracciones")
+Rel(appPoliticas, secondaryPorts, "Usa abstracciones")
+
+Rel(persistenceAdapter, secondaryPorts, "Implementa repositorios/UoW")
+Rel(clockAdapter, secondaryPorts, "Implementa Reloj")
+Rel(idAdapter, secondaryPorts, "Implementa GeneradorIds")
+Rel(integrationAdapter, secondaryPorts, "Consume/publica mediante contrato")
+
+AddElementTag("P1", $bgColor="#D5E8D4", $fontColor="#000000", $borderColor="#82B366")
+AddElementTag("Futuro", $bgColor="#F2F2F2", $fontColor="#666666", $borderColor="#999999")
+
+SHOW_LEGEND()
+@enduml

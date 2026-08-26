@@ -1,0 +1,47 @@
+@startuml 07-actividad-cierre-mensual
+title Actividad — Generar cierre mensual idempotente
+skinparam shadowing false
+
+start
+:Recibir período y ámbito institucional;
+:Construir identidad idempotente del cierre;
+if (¿Cierre ya existe?) then (sí)
+  if (¿Misma entrada/huella?) then (sí)
+    :Devolver cierre previo sin nuevos movimientos;
+  else (no)
+    :Reportar conflicto de idempotencia;
+  endif
+  stop
+else (no)
+  :Obtener fecha de corte mediante Reloj;
+  :Leer movimientos append-only del período;
+  :Consolidar cierres diarios;
+  fork
+    :Calcular desembolsos y cobros por concepto;
+  fork again
+    :Calcular devengo y mora;
+  fork again
+    :Calcular saldo de cartera y créditos activos;
+  fork again
+    :Identificar próximos vencimientos;
+  end fork
+  :Excluir créditos INCOBRABLES de cartera activa;
+  :Incluir saldo completo si atraso > 30 días;
+  :Incluir reestructurados aunque estén al día;
+  :Evitar contar dos veces un mismo crédito;
+  if (¿Existe cartera activa?) then (sí)
+    :Calcular capitalEnRiesgo / carteraActiva;
+    :Validar razón en [0,1];
+  else (no)
+    :Marcar SIN_CARTERA_ACTIVA;
+  endif
+  :Calcular riesgo por tramo;
+  :Consolidar incobrables del período;
+  :Seleccionar política de provisión vigente;
+  :Calcular provisiones y conservar versión;
+  :Crear huella del alcance y congelar resultado;
+  :Guardar cierre sin sobrescribir movimientos;
+  :Devolver CierreMensual;
+endif
+stop
+@enduml

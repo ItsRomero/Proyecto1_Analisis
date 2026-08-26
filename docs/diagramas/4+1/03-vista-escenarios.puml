@@ -1,0 +1,72 @@
+@startuml 03-vista-escenarios
+title Modelo 4+1 — Vista de escenarios
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Asesor de crédito" as Asesor
+actor "Analista / Aprobador" as Analista
+actor "Encargado de desembolso" as Desembolsador
+actor "Cajero / Gestor" as Cajero
+actor "Gestor de riesgos" as Riesgos
+actor "Encargado financiero" as Financiero
+actor "Proceso programado" as Proceso
+
+rectangle "Núcleo de casos de uso" {
+  usecase "E1\nOriginar crédito" as E1
+  usecase "E2\nDesembolsar crédito" as E2
+  usecase "E3\nRegistrar pago" as E3
+  usecase "E4\nDeteriorar y regularizar" as E4
+  usecase "E5\nConsultar cartera en riesgo" as E5
+  usecase "E6\nGenerar cierre mensual" as E6
+}
+
+Asesor --> E1
+Analista --> E1
+Desembolsador --> E2
+Cajero --> E3
+Riesgos --> E4
+Riesgos --> E5
+Financiero --> E5
+Financiero --> E6
+Proceso --> E4
+Proceso --> E6
+
+E1 ..> E2 : habilita tras aprobación
+E2 ..> E3 : crea crédito pagable
+E3 ..> E4 : pago parcial o regularización
+E4 ..> E5 : cambia composición de riesgo
+E3 ..> E6 : aporta cobros/movimientos
+E2 ..> E6 : aporta desembolso/movimiento
+E5 ..> E6 : <<include>>
+
+note bottom of E1
+  Cliente → Solicitud → Evaluación
+  → Aprobado/Rechazado
+end note
+
+note bottom of E2
+  Política vigente → Plan exacto
+  → APROBADO → DESEMBOLSADO → VIGENTE
+end note
+
+note bottom of E3
+  Idempotencia → State → Chain
+  → Strategy → UoW → Mayor
+end note
+
+note bottom of E4
+  VIGENTE ↔ EN_MORA;
+  reestructuración e incobrable autorizados
+end note
+
+note bottom of E5
+  Saldo completo si atraso >30 días
+  o reestructurado; excluye incobrable
+end note
+
+note bottom of E6
+  Idempotente, append-only,
+  provisión versionada y congelamiento
+end note
+@enduml

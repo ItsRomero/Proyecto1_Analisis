@@ -1,0 +1,96 @@
+@startuml 02-state-credito
+title Patrón GoF State — Ciclo del Crédito
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class Credito <<context>> {
+  -estado: EstadoCreditoComportamiento
+  -saldoCapital: Dinero
+  -historial: TransicionEstado[]
+  +aprobar(datos): void
+  +rechazar(datos): void
+  +desembolsar(datos): void
+  +activar(datos): void
+  +registrarAtraso(datos): void
+  +registrarPago(datos): void
+  +regularizar(datos): void
+  +reestructurar(datos): void
+  +cancelar(datos): void
+  +declararIncobrable(datos): void
+  -transicionarA(nuevo, datos): void
+}
+
+interface EstadoCreditoComportamiento <<GoF State>> {
+  +nombre(): EstadoCredito
+  +permitePago(): boolean
+  +aprobar(contexto, datos): void
+  +rechazar(contexto, datos): void
+  +desembolsar(contexto, datos): void
+  +activar(contexto, datos): void
+  +registrarAtraso(contexto, datos): void
+  +regularizar(contexto, datos): void
+  +reestructurar(contexto, datos): void
+  +cancelar(contexto, datos): void
+  +declararIncobrable(contexto, datos): void
+}
+
+abstract class EstadoBase <<state support>> {
+  #transicionInvalida(evento): never
+}
+
+class EstadoSolicitado
+class EstadoAprobado
+class EstadoRechazado
+class EstadoDesembolsado
+class EstadoVigente
+class EstadoEnMora
+class EstadoReestructurado
+class EstadoAnulado
+class EstadoCancelado
+class EstadoIncobrable
+
+class TransicionEstado <<entity>> {
+  -anterior: EstadoCredito
+  -nuevo: EstadoCredito
+  -fecha: FechaCorte
+  -actor: ActorId
+  -motivo: string
+}
+
+Credito o-- EstadoCreditoComportamiento : delega comportamiento
+Credito *-- "1..*" TransicionEstado : conserva historial
+EstadoCreditoComportamiento <|.. EstadoBase
+EstadoBase <|-- EstadoSolicitado
+EstadoBase <|-- EstadoAprobado
+EstadoBase <|-- EstadoRechazado
+EstadoBase <|-- EstadoDesembolsado
+EstadoBase <|-- EstadoVigente
+EstadoBase <|-- EstadoEnMora
+EstadoBase <|-- EstadoReestructurado
+EstadoBase <|-- EstadoAnulado
+EstadoBase <|-- EstadoCancelado
+EstadoBase <|-- EstadoIncobrable
+
+EstadoSolicitado ..> EstadoAprobado : aprobar
+EstadoSolicitado ..> EstadoRechazado : rechazar
+EstadoAprobado ..> EstadoDesembolsado : desembolsar
+EstadoAprobado ..> EstadoAnulado : desistir/expirar
+EstadoDesembolsado ..> EstadoVigente : activar
+EstadoVigente ..> EstadoEnMora : cuota impagada
+EstadoVigente ..> EstadoCancelado : saldo = 0
+EstadoEnMora ..> EstadoVigente : regularizar
+EstadoEnMora ..> EstadoReestructurado : autorizar
+EstadoEnMora ..> EstadoIncobrable : atraso > 120 + declarar
+EstadoReestructurado ..> EstadoEnMora : nuevo atraso
+EstadoReestructurado ..> EstadoCancelado : saldo = 0
+
+note bottom of EstadoCreditoComportamiento
+  Una operación válida transiciona y agrega historial.
+  Una operación inválida falla sin efecto parcial.
+end note
+
+note bottom of EstadoIncobrable
+  Terminal para el ciclo del crédito.
+  Recuperaciones posteriores no cambian estado.
+end note
+@enduml

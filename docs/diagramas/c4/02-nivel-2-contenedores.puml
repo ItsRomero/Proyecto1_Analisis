@@ -1,0 +1,44 @@
+@startuml 02-c4-contenedores
+!include <C4/C4_Container>
+
+title C4 Nivel 2 — Contenedores y evolución prevista
+
+LAYOUT_LEFT_RIGHT()
+
+Person(usuario, "Usuario institucional", "Asesor, analista, cobros, riesgos, financiero o auditor.")
+Person(cliente, "Cliente", "Interactuará por canales autorizados.")
+
+System_Boundary(sgm, "Sistema de Gestión de Microcrédito") {
+  Container(core, "Núcleo de dominio y aplicación", "Node.js 20+ / TypeScript", "Único contenedor ejecutable de P1: casos de uso, dominio financiero, puertos y pruebas. Sin servidor ni persistencia real.", $tags="P1")
+
+  Container(api, "API REST", "Tecnología por decidir", "Traducirá HTTP/OpenAPI a los puertos primarios del núcleo. No contendrá reglas financieras.", $tags="Futuro")
+  Container(web, "Interfaz / Chat", "Tecnología por decidir", "Canal para clientes y usuarios; consumirá la API o puertos autorizados.", $tags="Futuro")
+  Container(mcp, "Servidor MCP", "Tecnología por decidir", "Expondrá herramientas que reutilizan los mismos casos de uso del núcleo.", $tags="Futuro")
+  Container(scheduler, "Proceso programado", "Tecnología por decidir", "Invocará mora y cierres con fecha de corte explícita.", $tags="Futuro")
+  ContainerDb(db, "Base de datos", "PostgreSQL / tecnología por decidir", "Implementará repositorios, idempotencia, mayor append-only y control de concurrencia.", $tags="Futuro")
+}
+
+System_Ext(contabilidad, "Sistema contable", "Consumirá movimientos/cierres confirmados. Futuro.")
+System_Ext(identidad, "Proveedor de identidad", "Autenticación/autorización futura.")
+System_Ext(notificaciones, "Notificaciones", "Avisos futuros.")
+
+Rel(usuario, web, "Utiliza", "HTTPS futuro")
+Rel(cliente, web, "Utiliza", "HTTPS futuro")
+Rel(usuario, api, "Podrá utilizar directamente", "HTTPS/JSON futuro")
+
+Rel(web, api, "Invoca contratos", "HTTPS/JSON futuro")
+Rel(api, core, "Invoca puertos primarios", "Llamada en proceso o contrato interno")
+Rel(mcp, core, "Invoca los mismos puertos primarios", "Llamada en proceso o contrato interno")
+Rel(scheduler, core, "Invoca CalcularMora/GenerarCierre", "Llamada programada futura")
+Rel(core, db, "Usará puertos secundarios de repositorio/UoW", "Adaptador futuro")
+
+Rel(api, identidad, "Validará identidad/roles", "OIDC/OAuth futuro")
+Rel(mcp, identidad, "Validará identidad/alcance", "Mecanismo futuro")
+Rel(core, contabilidad, "Publicará movimientos mediante adaptador", "Contrato/Outbox futuro")
+Rel(core, notificaciones, "Emitirá hechos para notificar", "Adaptador futuro")
+
+AddElementTag("P1", $bgColor="#D5E8D4", $fontColor="#000000", $borderColor="#82B366")
+AddElementTag("Futuro", $bgColor="#F2F2F2", $fontColor="#666666", $borderColor="#999999")
+
+SHOW_LEGEND()
+@enduml

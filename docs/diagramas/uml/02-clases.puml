@@ -1,0 +1,443 @@
+@startuml 02-clases
+title Sistema de Gestión de Microcrédito — Diagrama de clases del dominio
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+hide empty members
+
+package "Originación" {
+  class Cliente <<entity>> {
+    -id: ClienteId
+    -nombre: string
+    +actualizarDatos(datos): Cliente
+  }
+
+  class SolicitudCredito <<aggregate root>> {
+    -id: SolicitudCreditoId
+    -clienteId: ClienteId
+    -monto: Dinero
+    -plazo: Plazo
+    -estado: EstadoCredito
+    +agregarEvaluacion(evaluacion): void
+    +aprobar(actor, fecha, motivo): void
+    +rechazar(actor, fecha, motivo): void
+    +anular(actor, fecha, motivo): void
+  }
+
+  class EvaluacionCredito <<entity>> {
+    -id: EvaluacionCreditoId
+    -fecha: FechaCorte
+    -analista: ActorId
+    -resultado: ResultadoEvaluacion
+    -criteriosVersion: VersionPolitica
+  }
+
+  class DesembolsarCredito <<application service>> {
+    +ejecutar(comando): CreditoId
+  }
+
+  class RegistrarCliente <<application service>> {
+    +ejecutar(comando): ClienteId
+  }
+
+  class EvaluarCredito <<application service>> {
+    +ejecutar(comando): EvaluacionCreditoId
+  }
+}
+
+package "Cálculo financiero" {
+  class Dinero <<value object>> {
+    -importe: Decimal
+    -moneda: Moneda
+    {static} +desdeCadena(valor, moneda): Dinero
+    {static} +cero(moneda): Dinero
+    +sumar(otro): Dinero
+    +restar(otro): Dinero
+    +multiplicar(factor): Dinero
+    +dividir(divisor): Dinero
+    +minimo(otro): Dinero
+    +esIgualA(otro): boolean
+    +esCero(): boolean
+    +esNegativo(): boolean
+    +aCadena(): string
+  }
+
+  class Tasa <<value object>> {
+    -valor: Decimal
+    -tipo: TipoTasa
+    -periodicidad: Periodicidad
+    +aMensual(): Decimal
+    +aDiaria(base): Decimal
+  }
+
+  class Moneda <<value object>> {
+    -codigo: CodigoMoneda
+  }
+
+  class Plazo <<value object>> {
+    -meses: integer
+  }
+
+  class PlanAmortizacion <<entity>> {
+    -id: PlanAmortizacionId
+    -capital: Dinero
+    -totalInteres: Dinero
+    -totalPagos: Dinero
+    +cuotas(): ReadonlyList<Cuota>
+    +validarSaldoFinal(): boolean
+  }
+
+  class Cuota <<entity>> {
+    -numero: integer
+    -vencimiento: FechaCorte
+    -saldoAnterior: Dinero
+    -interesCorriente: Dinero
+    -amortizacion: Dinero
+    -importe: Dinero
+    -saldoPosterior: Dinero
+    +capitalVencido(fecha): Dinero
+  }
+
+  class FabricaPlanAmortizacion <<factory>> {
+    +crearFrances(capital, tasa, plazo, calendario): PlanAmortizacion
+  }
+
+  class CalculadoraMora <<domain service>> {
+    +diasAtraso(vencimiento, corte): DiasAtraso
+    +clasificar(dias): TramoMora
+    +calcularPorCuota(cuota, politica, corte): Dinero
+  }
+
+  class DiasAtraso <<value object>> {
+    -valor: integer
+  }
+
+  enum TramoMora <<value object>> {
+    SIN_MORA
+    MORA_1
+    MORA_2
+    MORA_3
+    VENCIDO
+    INCOBRABLE
+  }
+
+  class FechaCorte <<value object>> {
+    -fechaCivil: LocalDate
+  }
+}
+
+package "Cartera y cobros" {
+  class Credito <<aggregate root>> {
+    -id: CreditoId
+    -clienteId: ClienteId
+    -capitalDesembolsado: Dinero
+    -saldoCapital: Dinero
+    -estado: EstadoCredito
+    -politicaVersion: VersionPolitica
+    +desembolsar(datos): void
+    +activar(actor, fecha, motivo): void
+    +registrarPago(pago, corte): AplicacionPago
+    +registrarAtraso(datos): void
+    +regularizar(actor, fecha, motivo): void
+    +reestructurar(datos): void
+    +declararIncobrable(datos): void
+    +cancelar(actor, fecha, motivo): void
+  }
+
+  enum EstadoCredito <<value object>> {
+    SOLICITADO
+    APROBADO
+    RECHAZADO
+    DESEMBOLSADO
+    VIGENTE
+    EN_MORA
+    REESTRUCTURADO
+    ANULADO
+    CANCELADO
+    INCOBRABLE
+  }
+
+  class TransicionEstado <<entity>> {
+    -id: TransicionId
+    -anterior: EstadoCredito
+    -nuevo: EstadoCredito
+    -fecha: FechaCorte
+    -actor: ActorId
+    -motivo: string
+  }
+
+  class Pago <<aggregate root>> {
+    -id: PagoId
+    -creditoId: CreditoId
+    -importe: Dinero
+    -fecha: FechaCorte
+    -clave: ClaveIdempotencia
+    -aplicacion: AplicacionPago
+  }
+
+  class AplicacionPago <<value object>> {
+    -gastos: Dinero
+    -moratorio: Dinero
+    -corriente: Dinero
+    -capital: Dinero
+    -excedente: Dinero
+    +totalAplicado(): Dinero
+    +conserva(importe): boolean
+  }
+
+  class RegistrarPago <<application service>> {
+    +ejecutar(comando): AplicacionPago
+  }
+
+  interface EslabonPrelacion <<chain participant>> {
+    +aplicar(contexto, remanente): ResultadoEslabon
+    +establecerSiguiente(siguiente): EslabonPrelacion
+  }
+
+  class Gastos <<chain handler>>
+  class Moratorio <<chain handler>>
+  class InteresCorriente <<chain handler>>
+  class Capital <<chain handler>>
+
+  interface PoliticaExcedente <<strategy>> {
+    +procesar(credito, excedente, fecha): ResultadoExcedente
+  }
+
+  class AmortizacionDirectaCapital <<strategy>> {
+    +procesar(credito, excedente, fecha): ResultadoExcedente
+  }
+
+  class PagoAnticipadoCuotas <<strategy>> {
+    +procesar(credito, excedente, fecha): ResultadoExcedente
+  }
+
+  interface EstadoCreditoComportamiento <<state>> {
+    +permitePago(): boolean
+    +aprobar(contexto, datos): void
+    +rechazar(contexto, datos): void
+    +desembolsar(contexto, datos): void
+    +registrarAtraso(contexto, datos): void
+    +regularizar(contexto, datos): void
+    +reestructurar(contexto, datos): void
+    +cancelar(contexto, datos): void
+    +declararIncobrable(contexto, datos): void
+  }
+
+  class EstadoSolicitado <<state>>
+  class EstadoAprobado <<state>>
+  class EstadoRechazado <<state>>
+  class EstadoDesembolsado <<state>>
+  class EstadoVigente <<state>>
+  class EstadoEnMora <<state>>
+  class EstadoReestructurado <<state>>
+  class EstadoAnulado <<state>>
+  class EstadoCancelado <<state>>
+  class EstadoIncobrable <<state>>
+
+  class Cartera <<domain service>> {
+    +calcularRiesgo(creditos, corte): ResultadoCarteraRiesgo
+  }
+
+  class ClaveIdempotencia <<value object>> {
+    -valor: string
+  }
+}
+
+package "Políticas institucionales" {
+  class PoliticaFinanciera <<entity, versioned>> {
+    -id: PoliticaId
+    -version: VersionPolitica
+    -tipo: TipoPolitica
+    -vigenteDesde: FechaCorte
+    -vigenteHasta: FechaCorte?
+    -autor: ActorId
+    -parametros: ParametrosPolitica
+    -huella: string
+    +aplicaEn(fecha): boolean
+  }
+
+  class SelectorPoliticaFinanciera <<domain service>> {
+    +seleccionar(tipo, ambito, fecha): PoliticaFinanciera
+  }
+
+  class VersionPolitica <<value object>> {
+    -valor: string
+  }
+}
+
+package "Cierres y riesgo" {
+  class Movimiento <<entity, immutable>> {
+    -id: MovimientoId
+    -fechaEfectiva: FechaCorte
+    -origenId: string
+    -concepto: ConceptoMovimiento
+    -importeFirmado: Dinero
+    -claveIdempotencia: ClaveIdempotencia
+    -compensaA: MovimientoId?
+  }
+
+  class MayorMovimientos <<domain service>> {
+    +registrar(movimientos): void
+    +reproducirSaldo(filtro): Dinero
+  }
+
+  abstract class Cierre <<aggregate root>> {
+    -id: CierreId
+    -periodo: PeriodoCierre
+    -huella: string
+    -fechaGeneracion: FechaCorte
+    +esMismaEjecucion(solicitud): boolean
+  }
+
+  class CierreDiario {
+    -desembolsos: Dinero
+    -cobrosPorConcepto: ResumenCobros
+    -devengo: Dinero
+    -mora: Dinero
+    -saldoCartera: Dinero
+  }
+
+  class CierreMensual {
+    -carteraRiesgo: ResultadoCarteraRiesgo
+    -riesgoPorTramo: ResumenRiesgo
+    -incobrables: Dinero
+    -provisiones: Dinero
+    -creditosActivos: integer
+  }
+
+  class GenerarCierre <<application service>> {
+    +diario(fecha): CierreDiario
+    +mensual(periodo): CierreMensual
+  }
+
+  class ConsultarCarteraEnRiesgo <<application service>> {
+    +ejecutar(fecha): ResultadoCarteraRiesgo
+  }
+
+  class ResultadoCarteraRiesgo <<value object>> {
+    -estado: EstadoResultadoCartera
+    -carteraActiva: Dinero
+    -capitalEnRiesgo: Dinero
+    -razon: Decimal?
+  }
+}
+
+package "Puertos secundarios" {
+  interface RepositorioClientes <<port>> {
+    +guardar(cliente): void
+    +existe(id): boolean
+  }
+
+  interface RepositorioSolicitudes <<port>> {
+    +obtener(id): SolicitudCredito
+    +guardar(solicitud): void
+  }
+
+  interface RepositorioCreditos <<port>> {
+    +obtener(id): Credito
+    +guardar(credito): void
+    +listarActivos(corte): ReadonlyList<Credito>
+  }
+
+  interface RepositorioPagos <<port>> {
+    +buscarPorClave(clave): Pago?
+    +guardar(pago): void
+  }
+
+  interface RepositorioCierres <<port>> {
+    +buscarPorPeriodo(tipo, periodo): Cierre?
+    +guardar(cierre): void
+  }
+
+  interface Reloj <<port>> {
+    +hoy(): FechaCorte
+  }
+
+  interface GeneradorIds <<port>> {
+    +siguiente(tipo): string
+  }
+}
+
+Cliente "1" -- "0..*" SolicitudCredito : presenta >
+SolicitudCredito "1" *-- "0..*" EvaluacionCredito
+SolicitudCredito "1" --> "0..1" Credito : origina >
+Credito "1" *-- "1" PlanAmortizacion
+PlanAmortizacion "1" *-- "3..24" Cuota
+Credito "1" *-- "1..*" TransicionEstado
+Credito "1" -- "0..*" Pago : recibe >
+Pago "1" *-- "1" AplicacionPago
+Pago "1" --> "1..*" Movimiento : origina >
+Credito "1" --> "1..*" PoliticaFinanciera : conserva versión >
+Cierre "1" o-- "0..*" Movimiento : consolida >
+Cierre <|-- CierreDiario
+Cierre <|-- CierreMensual
+
+SolicitudCredito --> Dinero
+SolicitudCredito --> Plazo
+Credito --> Dinero
+PlanAmortizacion --> Dinero
+Cuota --> Dinero
+Cuota --> FechaCorte
+Pago --> Dinero
+Movimiento --> Dinero
+PoliticaFinanciera --> Tasa
+Dinero *-- Moneda
+CalculadoraMora --> DiasAtraso
+CalculadoraMora --> TramoMora
+CalculadoraMora --> Dinero
+FabricaPlanAmortizacion ..> PlanAmortizacion : <<creates>>
+
+EslabonPrelacion <|.. Gastos
+EslabonPrelacion <|.. Moratorio
+EslabonPrelacion <|.. InteresCorriente
+EslabonPrelacion <|.. Capital
+Gastos --> Moratorio : siguiente
+Moratorio --> InteresCorriente : siguiente
+InteresCorriente --> Capital : siguiente
+
+PoliticaExcedente <|.. AmortizacionDirectaCapital
+PoliticaExcedente <|.. PagoAnticipadoCuotas
+RegistrarPago --> EslabonPrelacion
+RegistrarPago --> PoliticaExcedente
+RegistrarPago --> RepositorioCreditos
+RegistrarPago --> RepositorioPagos
+RegistrarPago --> MayorMovimientos
+RegistrarPago --> Reloj
+
+EstadoCreditoComportamiento <|.. EstadoSolicitado
+EstadoCreditoComportamiento <|.. EstadoAprobado
+EstadoCreditoComportamiento <|.. EstadoRechazado
+EstadoCreditoComportamiento <|.. EstadoDesembolsado
+EstadoCreditoComportamiento <|.. EstadoVigente
+EstadoCreditoComportamiento <|.. EstadoEnMora
+EstadoCreditoComportamiento <|.. EstadoReestructurado
+EstadoCreditoComportamiento <|.. EstadoAnulado
+EstadoCreditoComportamiento <|.. EstadoCancelado
+EstadoCreditoComportamiento <|.. EstadoIncobrable
+Credito o-- EstadoCreditoComportamiento : estado actual
+
+DesembolsarCredito --> RepositorioSolicitudes
+DesembolsarCredito --> RepositorioCreditos
+DesembolsarCredito --> SelectorPoliticaFinanciera
+DesembolsarCredito --> FabricaPlanAmortizacion
+DesembolsarCredito --> MayorMovimientos
+DesembolsarCredito --> Reloj
+DesembolsarCredito --> GeneradorIds
+GenerarCierre --> RepositorioCierres
+GenerarCierre --> MayorMovimientos
+GenerarCierre --> Reloj
+ConsultarCarteraEnRiesgo --> RepositorioCreditos
+ConsultarCarteraEnRiesgo --> Cartera
+ConsultarCarteraEnRiesgo --> Reloj
+
+note right of Dinero
+  Inmutable; importe decimal exacto;
+  dos decimales, ROUND_HALF_UP;
+  prohíbe mezclar monedas y no acepta number.
+end note
+
+note bottom of Credito
+  State evita operaciones y transiciones inválidas.
+  TramoMora no sustituye EstadoCredito.
+end note
+@enduml

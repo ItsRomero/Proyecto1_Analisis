@@ -1,0 +1,85 @@
+@startuml 01-casos-de-uso
+title Sistema de Gestión de Microcrédito — Casos de uso
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor Cliente
+actor "Asesor de crédito" as Asesor
+actor "Analista de crédito" as Analista
+actor "Aprobador / Comité" as Aprobador
+actor "Encargado de desembolsos" as Desembolsador
+actor "Cajero / Gestor de cobros" as Cajero
+actor "Gestor de cartera / riesgos" as GestorRiesgo
+actor "Encargado financiero" as Financiero
+actor "Administrador de políticas" as AdminPoliticas
+actor Auditor
+actor "Proceso programado" as Proceso
+
+rectangle "Sistema de Gestión de Microcrédito" {
+  usecase "Registrar cliente" as UC01
+  usecase "Solicitar crédito" as UC02
+  usecase "Evaluar crédito" as UC03
+  usecase "Aprobar solicitud" as UC04
+  usecase "Rechazar solicitud" as UC05
+  usecase "Desembolsar crédito" as UC06
+  usecase "Generar plan de\namortización" as UC06A
+  usecase "Seleccionar política\nvigente" as UC06B
+  usecase "Registrar pago" as UC07
+  usecase "Aplicar prelación" as UC07A
+  usecase "Procesar excedente" as UC07B
+  usecase "Calcular mora" as UC08
+  usecase "Regularizar crédito" as UC09
+  usecase "Reestructurar crédito" as UC10
+  usecase "Declarar incobrable" as UC11
+  usecase "Generar cierre diario" as UC12
+  usecase "Generar cierre mensual" as UC13
+  usecase "Consultar cartera\nen riesgo" as UC14
+  usecase "Consultar crédito\ne historial" as UC15
+  usecase "Administrar políticas\nversionadas" as UC16
+  usecase "Anular crédito aprobado" as UC17
+  usecase "Cancelar crédito" as UC18
+}
+
+Cliente -- UC02
+Cliente -- UC07
+Asesor -- UC01
+Asesor -- UC02
+Asesor -- UC15
+Analista -- UC03
+Aprobador -- UC04
+Aprobador -- UC05
+Aprobador -- UC10
+Aprobador -- UC17
+Desembolsador -- UC06
+Cajero -- UC07
+GestorRiesgo -- UC08
+GestorRiesgo -- UC09
+GestorRiesgo -- UC10
+GestorRiesgo -- UC11
+GestorRiesgo -- UC14
+GestorRiesgo -- UC15
+Financiero -- UC12
+Financiero -- UC13
+Financiero -- UC14
+AdminPoliticas -- UC16
+Auditor -- UC15
+Proceso -- UC08
+Proceso -- UC12
+Proceso -- UC13
+
+UC06 .> UC06A : <<include>>
+UC06 .> UC06B : <<include>>
+UC07 .> UC07A : <<include>>
+UC07B .> UC07 : <<extend>>\n[existe excedente]
+UC09 .> UC07 : <<extend>>\n[paga todo lo vencido]
+UC18 .> UC07 : <<extend>>\n[saldo total = 0]
+UC13 .> UC14 : <<include>>
+UC13 .> UC12 : <<include>>\n[consolidación]
+
+note right of UC08
+  Mora 1, Mora 2, Mora 3 y Vencido
+  son clasificaciones derivadas,
+  no estados principales del crédito.
+end note
+@enduml

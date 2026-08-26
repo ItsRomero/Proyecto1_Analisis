@@ -1,0 +1,92 @@
+@startuml 03-value-object-factory-repository
+title Patrones — Value Object + Factory + Repository
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+package "Value Object" {
+  class Dinero <<Value Object>> {
+    -importe: Decimal
+    -moneda: Moneda
+    {static} +desdeCadena(valor, moneda): Dinero
+    {static} +cero(moneda): Dinero
+    +sumar(otro): Dinero
+    +restar(otro): Dinero
+    +multiplicar(factor): Dinero
+    +esIgualA(otro): boolean
+  }
+
+  class Moneda <<Value Object>> {
+    -codigo: string
+  }
+
+  Dinero *-- Moneda
+}
+
+package "Factory de dominio" {
+  class FabricaPlanAmortizacion <<Factory>> {
+    +crearFrances(capital, tasa, plazo, calendario): PlanAmortizacion
+  }
+
+  class PlanAmortizacion <<entity>> {
+    -capital: Dinero
+    -cuotas: Cuota[]
+    +validarTotales(): boolean
+  }
+
+  class Cuota <<entity>> {
+    -numero: integer
+    -interes: Dinero
+    -amortizacion: Dinero
+    -saldoPosterior: Dinero
+  }
+
+  FabricaPlanAmortizacion ..> PlanAmortizacion : <<creates>>
+  FabricaPlanAmortizacion ..> Cuota : <<creates>>
+  PlanAmortizacion *-- "3..24" Cuota
+  PlanAmortizacion --> Dinero
+  Cuota --> Dinero
+}
+
+package "Repository / puertos" {
+  class RegistrarPago <<application service>>
+  interface RepositorioCreditos <<Repository>> {
+    +obtener(id): Credito
+    +guardar(credito): void
+  }
+  interface RepositorioPagos <<Repository>> {
+    +buscarPorClave(clave): Pago?
+    +guardar(pago): void
+  }
+  class RepositorioCreditosEnMemoria <<test adapter>>
+  class RepositorioCreditosPostgreSQL <<future adapter>>
+  class RepositorioPagosEnMemoria <<test adapter>>
+  class RepositorioPagosPostgreSQL <<future adapter>>
+  class Credito <<aggregate root>>
+  class Pago <<aggregate root>>
+
+  RegistrarPago --> RepositorioCreditos
+  RegistrarPago --> RepositorioPagos
+  RepositorioCreditos <|.. RepositorioCreditosEnMemoria
+  RepositorioCreditos <|.. RepositorioCreditosPostgreSQL
+  RepositorioPagos <|.. RepositorioPagosEnMemoria
+  RepositorioPagos <|.. RepositorioPagosPostgreSQL
+  RepositorioCreditos --> Credito
+  RepositorioPagos --> Pago
+}
+
+note bottom of Dinero
+  Igualdad por importe normalizado + moneda.
+  Inmutable; no acepta number para importes.
+end note
+
+note bottom of FabricaPlanAmortizacion
+  No retorna un plan hasta cumplir:
+  Σ amortización = capital y saldo final = 0.
+end note
+
+note bottom of RepositorioCreditos
+  Contrato del núcleo, no CRUD genérico.
+  El dominio no conoce el adaptador concreto.
+end note
+@enduml
