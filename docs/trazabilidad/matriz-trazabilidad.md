@@ -374,3 +374,10 @@ La matriz solo se considera íntegra cuando:
 ## 14. Resultado esperado
 
 Toda regla conocida puede recorrerse desde su origen hasta un caso de uso, una responsabilidad de dominio, un artefacto UML, una ubicación futura de código y una validación prevista. La matriz queda preparada para actualizarse incrementalmente durante arquitectura, diseño modular, implementación, pruebas, contratos y documentación final.
+## Evolución P2 — requisitos implementados
+
+| Requisito | Regla/diseño | Código | Prueba | Documento/diagrama |
+|---|---|---|---|---|
+| CP-04.1 | Liquidación desde EN_MORA con dos guardas | `src/dominio/credito-estado.ts`: `liquidarConPago`, `EstadoEnMora.cancelar` | `tests/credito-cancelacion-p2.test.ts` | `docs/implementacion/FASE-20-state-credito.md`; `docs/diagramas/uml/05-estados-credito.puml`; `docs/diagramas/patrones/02-state-credito.puml` |
+| CP-04.2 | Suspenso monetario y cortes idempotentes | `src/dominio/devengo-interes.ts`: `DevengoInteres` | `tests/devengo-interes.test.ts` | `docs/implementacion/FASE-20-state-credito.md`; State P2 |
+| CP-04.3 | Contribuciones al riesgo, mora total y bajas del período | `src/dominio/cartera-por-tramo.ts`: `calcularCarteraPorTramo` | `tests/cartera-por-tramo.test.ts` | Oráculo 7.00%, 21.75% y 6.06%; documentación P2 se completa en fase 5 |

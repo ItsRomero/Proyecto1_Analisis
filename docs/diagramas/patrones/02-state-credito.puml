@@ -16,6 +16,7 @@ class Credito <<context>> {
   +regularizar(datos): void
   +reestructurar(datos): void
   +cancelar(datos): void
+  +liquidarConPago(evidencia, saldoTotal: Dinero, cuotasVencidasPendientes: integer): void
   +declararIncobrable(datos): void
   -transicionarA(nuevo, datos): void
 }
@@ -79,6 +80,7 @@ EstadoDesembolsado ..> EstadoVigente : activar
 EstadoVigente ..> EstadoEnMora : cuota impagada
 EstadoVigente ..> EstadoCancelado : saldo = 0
 EstadoEnMora ..> EstadoVigente : regularizar
+EstadoEnMora ..> EstadoCancelado : saldoTotal = 0 y sin cuotas vencidas
 EstadoEnMora ..> EstadoReestructurado : autorizar
 EstadoEnMora ..> EstadoIncobrable : atraso > 120 + declarar
 EstadoReestructurado ..> EstadoEnMora : nuevo atraso
@@ -92,5 +94,17 @@ end note
 note bottom of EstadoIncobrable
   Terminal para el ciclo del crédito.
   Recuperaciones posteriores no cambian estado.
+end note
+
+class DevengoInteres <<implementado P2>> {
+  +ingresoReconocido: Dinero
+  +interesEnSuspenso: Dinero
+  +reconocidoEnPeriodo: Dinero
+  +aplicarCorte(fecha, movimientos, regularizado): DevengoInteres
+}
+note bottom of DevengoInteres
+  Modelo contable separado de State.
+  Cortes crecientes y replay del último corte.
+  El llamador coordina regularización y contabilidad.
 end note
 @enduml
