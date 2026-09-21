@@ -2,7 +2,7 @@
 
 ## Comparación reproducible
 
-Base: `entrega-p1` = `8737d9b782772a5cff9acb07de8d719f4f4e3a16`, `main` local del repositorio ItsRomero. Destino: rama `feat/proyecto-2-evolucion-nucleo`; el núcleo medido está en `17be891` (fases 1–4). Los commits documentales/contractuales posteriores no cambian esas métricas de dominio.
+Base: `entrega-p1` = `8737d9b782772a5cff9acb07de8d719f4f4e3a16`, `main` local del repositorio ItsRomero. Destino: rama `feat/proyecto-2-evolucion-nucleo`; el núcleo medido está en `0d6c1a9` (fases 1–4). Los commits documentales/contractuales posteriores no cambian esas métricas de dominio.
 
 ```bash
 git diff entrega-p1 --name-status -- src/dominio
