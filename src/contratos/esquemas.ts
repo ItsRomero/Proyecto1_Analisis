@@ -158,12 +158,43 @@ export const moraCuotaSchema = z.strictObject({
   tramo: tramoMoraSchema,
   capitalVencido: dineroSchema,
   interesMoratorio: dineroSchema,
+  politicaId: idSchema.optional(),
+  detalle: z.strictObject({
+    totalSinRedondear: tasaSchema,
+    moneda: monedaSchema,
+    tramos: z.array(z.strictObject({
+      nombre: z.string().min(1), dias: z.number().int().nonnegative(),
+      tasa: tasaSchema, importeSinRedondear: tasaSchema,
+    })).readonly(),
+  }).optional(),
 });
 
 export const consultaMoraSchema = z.strictObject({
   creditoId: idSchema,
   fechaCorte: fechaCivilSchema,
   cuotas: z.array(moraCuotaSchema).readonly(),
+  politicaId: idSchema.optional(),
+  corteDevengo: fechaCivilSchema.optional(),
+});
+
+export const resumenCarteraSchema = z.strictObject({
+  cantidadCreditos: z.number().int().nonnegative(),
+  saldoCapital: dineroSchema,
+  porcentaje: importeSchema.nullable(),
+});
+
+export const desgloseCarteraSchema = z.strictObject({
+  inicioPeriodo: fechaCivilSchema,
+  cantidadActiva: z.number().int().nonnegative(),
+  tramosEnRiesgo: z.array(resumenCarteraSchema.extend({
+    tramo: z.enum(["MORA_1", "MORA_2", "MORA_3", "VENCIDO", "REESTRUCTURADO"]),
+  })).length(5).readonly(),
+  carteraEnMora: resumenCarteraSchema,
+  totalEnRiesgo: resumenCarteraSchema,
+  incobrablesDelPeriodo: z.strictObject({
+    cantidadCreditos: z.number().int().nonnegative(), saldoCapital: dineroSchema,
+    creditos: z.array(z.strictObject({ creditoId: idSchema, fecha: fechaCivilSchema, saldoCapital: dineroSchema })).readonly(),
+  }),
 });
 
 export const carteraConRazonSchema = z.strictObject({
@@ -173,6 +204,7 @@ export const carteraConRazonSchema = z.strictObject({
   capitalEnRiesgo: dineroSchema,
   razon: tasaSchema,
   porcentaje: importeSchema,
+  desglose: desgloseCarteraSchema.optional(),
 });
 
 export const carteraSinActivaSchema = z.strictObject({
@@ -180,6 +212,7 @@ export const carteraSinActivaSchema = z.strictObject({
   fechaCorte: fechaCivilSchema,
   carteraActiva: dineroSchema,
   capitalEnRiesgo: dineroSchema,
+  desglose: desgloseCarteraSchema.optional(),
 });
 
 export const carteraRiesgoSchema = z.discriminatedUnion("tipo", [

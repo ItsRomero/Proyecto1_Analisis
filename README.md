@@ -1,4 +1,32 @@
-# Sistema de Gestión de Microcrédito — Proyecto 1
+# Sistema de Gestión de Microcrédito — Proyectos 1 y 2
+
+## Evolución del Proyecto 2
+
+P2 amplía el núcleo existente con mora escalonada versionada, gasto de gestión idempotente, liquidación desde EN_MORA, interés corriente en suspenso y cartera desglosada. Los otorgamientos anteriores a **2026-10-01** conservan `POL-2024-01` (24% plana); desde esa fecha se selecciona `POL-2026-10` (18/24/30/36% por tramos hasta 120 días). El cálculo recibe las fechas explícitamente y conserva el moratorio acumulado después del día 120.
+
+La entrada integrada es `src/aplicacion/consultar-mora.ts`; las respuestas JSON se preparan en `src/contratos/presentadores-p2.ts`. Se conservan las APIs P1, sus diez archivos de pruebas y los contratos de errores. No hay servidor HTTP ni frontend.
+
+```bash
+npm ci
+npm test
+npm run typecheck
+npm run verify
+npm run test:watch
+```
+
+En PowerShell con ejecución de scripts restringida, usar `npm.cmd` en lugar de `npm`. La suite P2 verifica **263 pruebas en 18 archivos**, incluidas las 206 originales. No existe comando de cobertura instrumentada ni proveedor de cobertura instalado; no se publica un porcentaje de cobertura. Los resultados y las particularidades del entorno están en la validación final.
+
+- [Auditoría y línea base P1](docs/proyecto2/00-auditoria-inicial.md)
+- [Evolución del núcleo: fórmulas, ejemplos, compatibilidad y límites](docs/proyecto2/01-evolucion-nucleo.md)
+- [Arquitectura móvil/offline conceptual](docs/proyecto2/02-arquitectura-movil-offline.md)
+- [Validación final](docs/proyecto2/03-validacion-final.md)
+- [ADR-004: políticas de mora](docs/adr/ADR-004-politica-mora-escalonada.md)
+- [Impacto SOLID y métricas del diff](docs/informe-impacto-solid.md)
+- [Strategy de mora](docs/diagramas/patrones/04-strategy-mora.puml), [secuencia de cálculo](docs/diagramas/uml/08-secuencia-politica-mora.puml) y [gasto idempotente](docs/diagramas/uml/09-secuencia-gasto-idempotente.puml)
+
+La documentación siguiente conserva la entrega P1 y sus cifras históricas. Las afirmaciones de revisión humana y distribución del equipo pertenecen a esa documentación heredada: este trabajo P2 fue realizado con Codex, con verificaciones automatizadas, sin atribuir una revisión humana nueva ni commits a integrantes.
+
+---
 
 Núcleo de dominio para la gestión de microcréditos de **Crédito Vecino, S. A.**, construido con reglas de negocio trazables, arquitectura hexagonal, diagramas editables, contratos de API y una suite de pruebas automatizadas completa.
 
@@ -269,7 +297,7 @@ Toda la documentación de requisitos funcionales y no funcionales, reglas de neg
 
 Además, toda la documentación del proyecto está organizada por fase, lo que permite conservar la evolución de las decisiones a lo largo del tiempo y distinguir claramente entre análisis, diseño, implementación ya verificada y trabajo pendiente para futuras etapas.
 
-## 16. Autores
+## 16. Autores declarados en la entrega P1
 
 | Autor | Rol en el proyecto |
 |---|---|
@@ -278,7 +306,7 @@ Además, toda la documentación del proyecto está organizada por fase, lo que p
 | Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño / Documentación |
 | Oliver Fernando Romero Esquite | Coordinación / Integración |
 
-## 17. Herramientas de IA utilizadas
+## 17. Herramientas de IA utilizadas (declaración histórica P1)
 
 Se utilizó OpenAI Codex como apoyo durante el desarrollo del proyecto para:
 

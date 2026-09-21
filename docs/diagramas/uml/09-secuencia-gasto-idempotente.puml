@@ -1,0 +1,23 @@
+@startuml 09-secuencia-gasto-idempotente
+title Gasto de gestión puro e idempotente por cuota
+actor Llamador
+participant generarGastoGestion
+participant incorporarGastoGestion
+participant ProcesadorPrelacionPago
+Llamador -> generarGastoGestion : crédito, cuota, vencimiento, corte, ids registrados
+generarGastoGestion -> generarGastoGestion : clave = [crédito, cuota, GESTION_COBRO]
+alt atraso >=31 y clave ausente
+  generarGastoGestion --> Llamador : nuevo evento Q25 e ids actualizados
+else antes de 31 o ya registrado
+  generarGastoGestion --> Llamador : nuevo=null, copia de ids
+end
+Llamador -> incorporarGastoGestion : saldos, resultado
+incorporarGastoGestion --> Llamador : saldos con solo el gasto nuevo
+note over Llamador
+  Conserva conjuntamente saldos e ids.
+  Reejecuta con la fotografía actualizada.
+  Persistencia y atomicidad externa son futuras.
+end note
+Llamador -> ProcesadorPrelacionPago : pago, saldos
+ProcesadorPrelacionPago --> Llamador : gastos, moratorio, corriente, capital
+@enduml

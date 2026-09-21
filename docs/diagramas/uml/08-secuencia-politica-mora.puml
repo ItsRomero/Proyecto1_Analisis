@@ -1,0 +1,25 @@
+@startuml 08-secuencia-politica-mora
+title Selección y cálculo P2 sin reloj implícito
+actor Llamador
+participant consultarMora
+participant resolverPolitica
+participant CalculadoraMora
+participant "PoliticaMora seleccionada" as Politica
+participant Dinero
+Llamador -> consultarMora : crédito, estado, otorgamiento, corte, cuotas
+consultarMora -> resolverPolitica : fechaOtorgamiento
+resolverPolitica --> consultarMora : plana o escalonada
+consultarMora -> CalculadoraMora : constructor(politica)
+opt crédito declarado INCOBRABLE
+  consultarMora -> consultarMora : validar fecha de baja y congelar corteDevengo
+end
+loop cada cuota, vencimiento propio
+  consultarMora -> CalculadoraMora : calcularPorCuota(cuota, corteDevengo)
+  CalculadoraMora -> Politica : calcular(capitalVencido, dias)
+  Politica --> CalculadoraMora : total sin redondear, moneda, tramos
+  CalculadoraMora -> Dinero : desdeCadena(total, moneda)
+  Dinero --> CalculadoraMora : total redondeado una vez
+  CalculadoraMora --> consultarMora : resultado y detalle
+end
+consultarMora --> Llamador : corte solicitado, corteDevengo, política y cuotas
+@enduml

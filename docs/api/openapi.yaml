@@ -509,9 +509,9 @@ components:
 
     Porcentaje:
       type: string
-      pattern: '^(0|[1-9]\d*)(\.\d+)?$'
-      examples: ['0.12']
-      description: "Porcentaje expresado como fraccion (ej. 0.12 = 12%)."
+      pattern: '^(0|[1-9]\d*)\.\d{2}$'
+      examples: ['7.00']
+      description: "Porcentaje sobre 100 (7.00 = 7%); razon expresa la fracción 0.07."
 
     Dinero:
       type: object
@@ -800,6 +800,10 @@ components:
           $ref: '#/components/schemas/Dinero'
         interesMoratorio:
           $ref: '#/components/schemas/Dinero'
+        politicaId:
+          $ref: '#/components/schemas/Id'
+        detalle:
+          $ref: '#/components/schemas/DetallePoliticaMora'
 
     ConsultaMora:
       type: object
@@ -814,6 +818,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MoraCuota'
+        politicaId:
+          $ref: '#/components/schemas/Id'
+        corteDevengo:
+          $ref: '#/components/schemas/FechaCivil'
 
     CarteraConRazon:
       type: object
@@ -832,6 +840,8 @@ components:
           $ref: '#/components/schemas/Tasa'
         porcentaje:
           $ref: '#/components/schemas/Porcentaje'
+        desglose:
+          $ref: '#/components/schemas/DesgloseCartera'
 
     CarteraSinActiva:
       type: object
@@ -846,6 +856,116 @@ components:
           $ref: '#/components/schemas/Dinero'
         capitalEnRiesgo:
           $ref: '#/components/schemas/Dinero'
+        desglose:
+          $ref: '#/components/schemas/DesgloseCartera'
+
+    DetallePoliticaMora:
+      type: object
+      additionalProperties: false
+      required: [totalSinRedondear, moneda, tramos]
+      properties:
+        totalSinRedondear:
+          $ref: '#/components/schemas/Tasa'
+        moneda:
+          type: string
+          pattern: '^[A-Z]{3}$'
+        tramos:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [nombre, dias, tasa, importeSinRedondear]
+            properties:
+              nombre:
+                type: string
+                minLength: 1
+              dias:
+                type: integer
+                minimum: 0
+              tasa:
+                $ref: '#/components/schemas/Tasa'
+              importeSinRedondear:
+                $ref: '#/components/schemas/Tasa'
+
+    ResumenCarteraP2:
+      type: object
+      additionalProperties: false
+      required: [cantidadCreditos, saldoCapital, porcentaje]
+      properties:
+        cantidadCreditos:
+          type: integer
+          minimum: 0
+        saldoCapital:
+          $ref: '#/components/schemas/Dinero'
+        porcentaje:
+          type: [string, 'null']
+          pattern: '^(?:0|[1-9]\d*)\.\d{2}$'
+          description: Porcentaje conciliado; null cuando no hay cartera activa.
+
+    TramoCarteraP2:
+      type: object
+      additionalProperties: false
+      required: [tramo, cantidadCreditos, saldoCapital, porcentaje]
+      properties:
+        tramo:
+          type: string
+          enum: [MORA_1, MORA_2, MORA_3, VENCIDO, REESTRUCTURADO]
+        cantidadCreditos:
+          type: integer
+          minimum: 0
+        saldoCapital:
+          $ref: '#/components/schemas/Dinero'
+        porcentaje:
+          type: [string, 'null']
+          pattern: '^(?:0|[1-9]\d*)\.\d{2}$'
+
+    BajaIncobrableP2:
+      type: object
+      additionalProperties: false
+      required: [creditoId, fecha, saldoCapital]
+      properties:
+        creditoId:
+          $ref: '#/components/schemas/Id'
+        fecha:
+          $ref: '#/components/schemas/FechaCivil'
+        saldoCapital:
+          $ref: '#/components/schemas/Dinero'
+
+    DesgloseCartera:
+      type: object
+      additionalProperties: false
+      required: [inicioPeriodo, cantidadActiva, tramosEnRiesgo, carteraEnMora, totalEnRiesgo, incobrablesDelPeriodo]
+      properties:
+        inicioPeriodo:
+          $ref: '#/components/schemas/FechaCivil'
+        cantidadActiva:
+          type: integer
+          minimum: 0
+        tramosEnRiesgo:
+          type: array
+          minItems: 5
+          maxItems: 5
+          description: Contribuciones al riesgo. Mora 1 aporta cero; su saldo atrasado sí integra carteraEnMora.
+          items:
+            $ref: '#/components/schemas/TramoCarteraP2'
+        carteraEnMora:
+          $ref: '#/components/schemas/ResumenCarteraP2'
+        totalEnRiesgo:
+          $ref: '#/components/schemas/ResumenCarteraP2'
+        incobrablesDelPeriodo:
+          type: object
+          additionalProperties: false
+          required: [cantidadCreditos, saldoCapital, creditos]
+          properties:
+            cantidadCreditos:
+              type: integer
+              minimum: 0
+            saldoCapital:
+              $ref: '#/components/schemas/Dinero'
+            creditos:
+              type: array
+              items:
+                $ref: '#/components/schemas/BajaIncobrableP2'
 
     CarteraRiesgo:
       oneOf:
