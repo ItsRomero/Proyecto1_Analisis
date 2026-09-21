@@ -51,7 +51,7 @@ Para la instalación exitosa se exportaron certificados públicos del almacén d
 - Zod expone detalle de mora y respuesta de cartera. Cualquier extensión deberá mantener coherencia con OpenAPI y con las pruebas originales de contrato.
 - La matriz y algunos diagramas combinan diseño conceptual y estado histórico P1: la documentación P2 debe distinguir implementación real y propuestas futuras.
 
-## Contradicción pendiente de resolución
+## Contradicción inicial y resolución
 
 El invariante 2 pide que la mora escalonada sea menor o igual a la retroactiva del tramo actual sin delimitar días. La política retroactiva debe aplicar la tasa actual a todos los días y el tramo posterior a 120 tiene tasa 0 %. Por tanto, al día 121:
 
@@ -61,7 +61,7 @@ El invariante 2 pide que la mora escalonada sea menor o igual a la retroactiva d
 
 Se consultó al usuario si la comparación debe limitarse a los días 0–120, verificando por separado la congelación de la escalonada desde el día 121, o si desea redefinir la retroactiva. No se ha supuesto una respuesta ni alterado el dominio para ocultar la contradicción.
 
-La sección «Forma de trabajo» del encargo indica: «Detente ante una contradicción que cambie materialmente el dominio o requiera inventar información». Por ello las fases 1–6 quedan pendientes de esta decisión. No se ha modificado código productivo ni ninguna prueba original.
+La sección «Forma de trabajo» del encargo indica: «Detente ante una contradicción que cambie materialmente el dominio o requiera inventar información». La ejecución inicial se detuvo sin modificar código ni pruebas. El usuario aportó después `Prompt_Proyecto_2_Evolucion_Repositorio (2).md` y ordenó continuar: limita expresamente la comparación a 1–120 y exige conservar Q65.32 desde el día 121. Se reanudan las fases con esa versión; la base Git y las 206 pruebas originales siguen siendo las mismas.
 
 ## Pendiente fuera del repositorio
 
