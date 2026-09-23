@@ -1,0 +1,38 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='400' height='790' viewBox='0 0 400 790'>
+<rect width='100%' height='100%' fill='#f5f5f5'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#333'>S04 · Solicitud de crédito</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#777'>Móvil 360×720 · skeleton (baja fidelidad)</text>
+<g transform='translate(20,56)'>
+<rect x='0' y='0' width='360' height='720' rx='16' fill='#ffffff' stroke='#9a9a9a' stroke-width='2'/>
+<rect x='0' y='0' width='360' height='22' rx='0' fill='#efefef'/>
+<rect x='12' y='7' width='30' height='8' rx='4.0' fill='#e4e4e4'/>
+<rect x='290' y='7' width='58' height='8' rx='4.0' fill='#e4e4e4'/>
+<rect x='0' y='22' width='360' height='56' rx='0' fill='#f0f0f0'/>
+<circle cx='26' cy='50' r='10' fill='#e4e4e4'/>
+<rect x='48' y='44' width='150' height='12' rx='6.0' fill='#e4e4e4'/>
+<circle cx='334' cy='50' r='10' fill='#e4e4e4'/>
+<text x='334' y='72' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='middle'>ayuda</text>
+<rect x='16' y='92' width='90' height='8' rx='4.0' fill='#e4e4e4'/>
+<rect x='16' y='106' width='328' height='56' rx='8' fill='#fff' stroke='#d2d2d2' stroke-width='1.5'/>
+<rect x='28' y='128.0' width='120' height='12' rx='6.0' fill='#e4e4e4'/>
+<text x='334' y='138.0' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='end'>monto (Q, con límites)</text>
+<rect x='16' y='168' width='200' height='8' rx='4.0' fill='#e4e4e4'/>
+<rect x='16.0' y='184' width='59.2' height='38' rx='8' fill='#e4e4e4'/>
+<rect x='83.2' y='184' width='59.2' height='38' rx='8' fill='#e4e4e4'/>
+<rect x='150.4' y='184' width='59.2' height='38' rx='8' fill='#d2d2d2'/>
+<rect x='217.60000000000002' y='184' width='59.2' height='38' rx='8' fill='#e4e4e4'/>
+<rect x='284.8' y='184' width='59.2' height='38' rx='8' fill='#e4e4e4'/>
+<text x='16' y='236' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='start'>plazo en meses (botones)</text>
+<rect x='16' y='246' width='90' height='8' rx='4.0' fill='#e4e4e4'/>
+<rect x='16' y='260' width='328' height='44' rx='8' fill='#fff' stroke='#d2d2d2' stroke-width='1.5'/>
+<rect x='28' y='276.0' width='120' height='12' rx='6.0' fill='#e4e4e4'/>
+<text x='334' y='286.0' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='end'>destino del crédito</text>
+<rect x='16' y='316' width='328' height='100' rx='12' fill='#fff' stroke='#d2d2d2' stroke-width='1.5'/>
+<rect x='32' y='334' width='110' height='9' rx='4.5' fill='#e4e4e4'/>
+<rect x='32' y='354' width='180' height='28' rx='8' fill='#d2d2d2'/>
+<rect x='32' y='394' width='140' height='9' rx='4.5' fill='#e4e4e4'/>
+<text x='332' y='408' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='end'>cuota estimada y total</text>
+<rect x='16' y='656' width='328' height='50' rx='10' fill='#bdbdbd'/>
+<rect x='120.0' y='676' width='120' height='10' rx='5.0' fill='#e4e4e4'/>
+<text x='180.0' y='700' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='middle'>ver plan de pagos</text>
+</g></svg>
