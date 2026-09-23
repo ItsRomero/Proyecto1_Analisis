@@ -23,6 +23,8 @@ info={
  '8486b6e':('Documentación','E1–E7','Documento de entrega unificado, generado desde los documentos del repositorio'),
  '53689ef':('Documentación','E2 · E6','Primeros skeletons, diagrama de casos de uso y ADR-005 (PWA)'),
  'cdc92c4':('Documentación','E2 · E6 · E7','Documento de complementos con enlaces a GitHub'),
+ 'd1b2166':('Documentación','E7','Regeneración de los complementos con el historial actualizado'),
+ '321eb61':('Documentación','E2','Galería de wireframes en orden P01–P14 → G01–G07 con los títulos de Figma'),
  '2e6e9c6':('Documentación','E2 · E3','Alineación con Figma: wireframes P01–P14 y guías G01–G07; mapa, casos de uso y documentos con los mismos códigos'),
 }
 def principales(h):

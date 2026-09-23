@@ -4,6 +4,7 @@
 
 | Entregable | Documento | Contenido |
 |---|---|---|
+| **Documento final** | [P2-documento-final.md](P2-documento-final.md) | **Versión para entregar:** el documento de entrega con los complementos (casos de uso, skeletons, ADR-004/005 y commits con hipervínculos) insertados en su capítulo. Se genera con `generar_documento_final.py` |
 | **Entrega** | [P2-documento-entrega.md](P2-documento-entrega.md) | Documento completo para el catedrático: E1 a E7 con todo el detalle técnico, revisión del prototipo de Figma, evaluación E5, informe SOLID, tabla de commits y lista de verificación. Se genera con `python3 docs/proyecto2/generar_documento_entrega.py` a partir de `fuente-documento-entrega.md` y los documentos de cada entregable |
 | **Todo** | [documentacion-completa.md](documentacion-completa.md) | Todos los documentos de esta tabla unidos en un solo archivo. Se regenera con `python3 docs/proyecto2/generar_documentacion_completa.py` |
 | **Historial** | [historial-cambios.md](historial-cambios.md) | Cada commit desde `entrega-p1`: qué agregó y si ya estaba documentado |
