@@ -1,0 +1,114 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1340' height='974' viewBox='0 0 1340 974'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='28' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222'>W11 · Tablero gerencial (ConsultarCarteraEnRiesgo)</text>
+<text x='20' y='46' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#777'>Escritorio 1280×760 · wireframe baja fidelidad</text>
+<g transform='translate(20,60)'>
+<rect x='0' y='0' width='1280' height='760' rx='14' fill='#fff' stroke='#222' stroke-width='2'/>
+<rect x='0' y='0' width='1280' height='56' rx='0' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='20' y='35' font-family='Helvetica, Arial, sans-serif' font-size='17' font-weight='bold' fill='#222' text-anchor='start'>Crédito Vecino</text>
+<text x='200' y='35' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222' text-anchor='start'>Tablero</text>
+<line x1='200' y1='50' x2='320' y2='50' stroke='#222' stroke-width='3'/>
+<text x='370' y='35' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='normal' fill='#222' text-anchor='start'>Bandeja del comité</text>
+<text x='540' y='35' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='normal' fill='#222' text-anchor='start'>Cierres</text>
+<text x='710' y='35' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='normal' fill='#222' text-anchor='start'>Créditos</text>
+<text x='1260' y='35' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#222' text-anchor='end'>Andrea Morales · ?</text>
+<text x='20' y='86' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#777' text-anchor='start'>Cartera al corte del 30/09/2026 · cierre mensual congelado ✓ · política de cálculo por fecha de otorgamiento</text>
+<line x1='1274' y1='82' x2='1286' y2='82' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='82' r='10' fill='#222'/>
+<text x='1296' y='86' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<rect x='20' y='104' width='300' height='140' rx='4' fill='#fff' stroke='#222' stroke-width='3'/>
+<text x='36' y='132' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222' text-anchor='start'>▲ Cartera en RIESGO</text>
+<text x='36' y='184' font-family='Helvetica, Arial, sans-serif' font-size='40' font-weight='bold' fill='#222' text-anchor='start'>7.00 %</text>
+<text x='36' y='210' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>Q56,000 de Q800,000 activos</text>
+<text x='36' y='228' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>Más de 30 días + reestructurados</text>
+<rect x='336' y='104' width='250' height='140' rx='4' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='352' y='132' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222' text-anchor='start'>✕ Dado por incobrable</text>
+<text x='352' y='184' font-family='Helvetica, Arial, sans-serif' font-size='40' font-weight='bold' fill='#222' text-anchor='start'>C-007</text>
+<text x='352' y='210' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>Bajas del período (del cierre)</text>
+<text x='352' y='228' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>Sale de la base: no es cobro</text>
+<rect x='602' y='104' width='280' height='140' rx='4' fill='#fff' stroke='#222' stroke-width='1.5' stroke-dasharray='6 4'/>
+<text x='618' y='132' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222' text-anchor='start'>● Cartera en MORA</text>
+<text x='618' y='184' font-family='Helvetica, Arial, sans-serif' font-size='40' font-weight='bold' fill='#222' text-anchor='start'>21.75 %</text>
+<text x='618' y='210' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>Q174,000 de Q800,000 activos</text>
+<text x='618' y='228' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>Cualquier atraso ≥ 1 día</text>
+<line x1='1274' y1='104' x2='1286' y2='104' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='104' r='10' fill='#222'/>
+<text x='1296' y='108' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+<line x1='1274' y1='104' x2='1286' y2='104' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='104' r='10' fill='#222'/>
+<text x='1296' y='108' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>3</text>
+<line x1='1274' y1='104' x2='1286' y2='104' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='104' r='10' fill='#222'/>
+<text x='1296' y='108' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>4</text>
+<rect x='20' y='262' width='862' height='262' rx='4' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='36' y='290' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222' text-anchor='start'>Cartera en riesgo por tramo · clic para ver los créditos</text>
+<text x='36' y='334' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#222' text-anchor='start'>Mora 2 · 31–60 días</text>
+<text x='230' y='334' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>1 crédito</text>
+<text x='330' y='334' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#222' text-anchor='start'>Q24,000.00</text>
+<rect x='460' y='320' width='300.0' height='20' rx='2' fill='#999' stroke='#222' stroke-width='1.5'/>
+<text x='850' y='334' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222' text-anchor='end'>3.00 %</text>
+<text x='866' y='334' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold' fill='#222' text-anchor='end'>›</text>
+<line x1='36' y1='350' x2='866' y2='350' stroke='#bbb' stroke-width='1'/>
+<text x='36' y='376' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#222' text-anchor='start'>Mora 3 · 61–90 días</text>
+<text x='230' y='376' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>1 crédito</text>
+<text x='330' y='376' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#222' text-anchor='start'>Q18,000.00</text>
+<rect x='460' y='362' width='225.0' height='20' rx='2' fill='#666' stroke='#222' stroke-width='1.5'/>
+<text x='850' y='376' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222' text-anchor='end'>2.25 %</text>
+<text x='866' y='376' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold' fill='#222' text-anchor='end'>›</text>
+<line x1='36' y1='392' x2='866' y2='392' stroke='#bbb' stroke-width='1'/>
+<text x='36' y='418' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#222' text-anchor='start'>Vencido · 91–120 días</text>
+<text x='230' y='418' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>1 crédito</text>
+<text x='330' y='418' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#222' text-anchor='start'>Q8,000.00</text>
+<rect x='460' y='404' width='100.0' height='20' rx='2' fill='#222' stroke='#222' stroke-width='1.5'/>
+<text x='850' y='418' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222' text-anchor='end'>1.00 %</text>
+<text x='866' y='418' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold' fill='#222' text-anchor='end'>›</text>
+<line x1='36' y1='434' x2='866' y2='434' stroke='#bbb' stroke-width='1'/>
+<text x='36' y='460' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#222' text-anchor='start'>Reestructurado al día</text>
+<text x='230' y='460' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>1 crédito</text>
+<text x='330' y='460' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#222' text-anchor='start'>Q6,000.00</text>
+<rect x='460' y='446' width='75.0' height='20' rx='2' fill='#bbb' stroke='#222' stroke-width='1.5'/>
+<text x='850' y='460' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222' text-anchor='end'>0.75 %</text>
+<text x='866' y='460' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold' fill='#222' text-anchor='end'>›</text>
+<line x1='36' y1='476' x2='866' y2='476' stroke='#bbb' stroke-width='1'/>
+<text x='36' y='504' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#222' text-anchor='start'>Total cartera en riesgo: 4 créditos · Q56,000.00</text>
+<text x='850' y='504' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222' text-anchor='end'>7.00 %</text>
+<text x='36' y='524' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>Mora 1 (1–30 días) no es riesgo: Q124,000 con atraso ≤ 30 días se ven en &#x27;Cartera en mora&#x27;.</text>
+<line x1='1274' y1='300' x2='1286' y2='300' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='300' r='10' fill='#222'/>
+<text x='1296' y='304' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>5</text>
+<rect x='20' y='540' width='420' height='190' rx='4' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='36' y='566' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222' text-anchor='start'>Desembolsos del período</text>
+<rect x='36' y='580' width='388' height='134' rx='4' fill='#e6e6e6' stroke='#777' stroke-width='1'/>
+<line x1='36' y1='580' x2='424' y2='714' stroke='#777' stroke-width='1'/>
+<line x1='424' y1='580' x2='36' y2='714' stroke='#777' stroke-width='1'/>
+<text x='230.0' y='651.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#222' text-anchor='middle'>Serie mensual · cifras del cierre</text>
+<rect x='462' y='540' width='420' height='190' rx='4' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='478' y='566' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222' text-anchor='start'>Recuperaciones del período</text>
+<rect x='478' y='580' width='388' height='134' rx='4' fill='#e6e6e6' stroke='#777' stroke-width='1'/>
+<line x1='478' y1='580' x2='866' y2='714' stroke='#777' stroke-width='1'/>
+<line x1='866' y1='580' x2='478' y2='714' stroke='#777' stroke-width='1'/>
+<text x='672.0' y='651.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#222' text-anchor='middle'>Serie mensual · cifras del cierre</text>
+<line x1='1274' y1='540' x2='1286' y2='540' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='540' r='10' fill='#222'/>
+<text x='1296' y='544' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>6</text>
+<rect x='904' y='104' width='356' height='626' rx='4' fill='#e6e6e6' stroke='#222' stroke-width='1.5' stroke-dasharray='6 4'/>
+<text x='1082' y='140' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222' text-anchor='middle'>Asistente (Proyecto Final)</text>
+<text x='1082' y='164' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='middle'>Panel reservado, plegable</text>
+<rect x='924' y='186' width='316' height='440' rx='4' fill='#e6e6e6' stroke='#777' stroke-width='1'/>
+<line x1='924' y1='186' x2='1240' y2='626' stroke='#777' stroke-width='1'/>
+<line x1='1240' y1='186' x2='924' y2='626' stroke='#777' stroke-width='1'/>
+<text x='1082.0' y='410.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#222' text-anchor='middle'>Conversación con fuentes citadas</text>
+<rect x='924' y='646' width='316' height='44' rx='4' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='940' y='673' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>Pregunte: ¿por qué subió la mora de…?</text>
+<line x1='1274' y1='116' x2='1286' y2='116' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='116' r='10' fill='#222'/>
+<text x='1296' y='120' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>7</text>
+</g>
+<text x='20' y='844' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>1.</tspan> Fecha de corte y estado del cierre en la primera línea: el contexto antes que la cifra.</text>
+<text x='20' y='860' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>2.</tspan> Riesgo primero y con borde grueso: es el indicador de decisión del comité.</text>
+<text x='20' y='876' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>3.</tspan> Incobrables junto al riesgo: una baja reduce el % sin cobrar (7.00 → 6.06 %).</text>
+<text x='20' y='892' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>4.</tspan> Mora con borde discontinuo, otro símbolo y definición distinta: nunca el mismo rótulo.</text>
+<text x='20' y='908' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>5.</tspan> Desglose del núcleo (calcularCarteraPorTramo): 3.00+2.25+1.00+0.75 = 7.00 %. La UI no recalcula.</text>
+<text x='20' y='924' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>6.</tspan> Actividad del período abajo: se consulta después de entender el riesgo.</text>
+<text x='20' y='940' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>7.</tspan> Chat a la derecha: no tapa las cifras; cita la misma fuente (núcleo) que el tablero (6.3).</text>
+</svg>

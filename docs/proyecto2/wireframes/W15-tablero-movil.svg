@@ -1,0 +1,57 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='918' viewBox='0 0 420 918'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='28' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222'>W15 · Tablero gerencial en teléfono (responsivo)</text>
+<text x='20' y='46' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#777'>Móvil 360×720 · wireframe baja fidelidad</text>
+<g transform='translate(20,60)'>
+<rect x='0' y='0' width='360' height='720' rx='14' fill='#fff' stroke='#222' stroke-width='2'/>
+<rect x='0' y='0' width='360' height='24' rx='0' fill='#e6e6e6' stroke='#e6e6e6' stroke-width='1.5'/>
+<text x='12' y='16' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#222' text-anchor='start'>9:41</text>
+<text x='348' y='16' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#222' text-anchor='end'>● En línea</text>
+<rect x='0' y='24' width='360' height='52' rx='0' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='16' y='56' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='bold' fill='#222' text-anchor='start'>←</text>
+<text x='48' y='57' font-family='Helvetica, Arial, sans-serif' font-size='17' font-weight='bold' fill='#222' text-anchor='start'>Tablero · corte 30/09</text>
+<text x='344' y='57' font-family='Helvetica, Arial, sans-serif' font-size='18' font-weight='bold' fill='#222' text-anchor='end'>?</text>
+<rect x='16' y='92' width='328' height='110' rx='4' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='28' y='118' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222' text-anchor='start'>▲ Cartera en RIESGO</text>
+<text x='28' y='158' font-family='Helvetica, Arial, sans-serif' font-size='32' font-weight='bold' fill='#222' text-anchor='start'>7.00 %</text>
+<text x='28' y='182' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#777' text-anchor='start'>Más de 30 días + reestructurados</text>
+<rect x='16' y='210' width='328' height='56' rx='4' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='28' y='234' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#222' text-anchor='start'>✕ Incobrable del período</text>
+<text x='28' y='254' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#777' text-anchor='start'>C-007 · sale de la base</text>
+<rect x='16' y='274' width='328' height='80' rx='4' fill='#fff' stroke='#222' stroke-width='1.5' stroke-dasharray='6 4'/>
+<text x='28' y='298' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#222' text-anchor='start'>● Cartera en MORA</text>
+<text x='28' y='328' font-family='Helvetica, Arial, sans-serif' font-size='22' font-weight='bold' fill='#222' text-anchor='start'>21.75 %</text>
+<text x='332' y='328' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#777' text-anchor='end'>atraso ≥ 1 día</text>
+<line x1='354' y1='120' x2='366' y2='120' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='120' r='10' fill='#222'/>
+<text x='376' y='124' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<text x='16' y='378' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#222' text-anchor='start'>Riesgo por tramo</text>
+<text x='16' y='402' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>Mora 2 · 31–60 d  ›</text>
+<text x='344' y='402' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>3.00 %</text>
+<line x1='16' y1='410' x2='344' y2='410' stroke='#bbb' stroke-width='1'/>
+<text x='16' y='430' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>Mora 3 · 61–90 d  ›</text>
+<text x='344' y='430' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>2.25 %</text>
+<line x1='16' y1='438' x2='344' y2='438' stroke='#bbb' stroke-width='1'/>
+<text x='16' y='458' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>Vencido · 91–120 d  ›</text>
+<text x='344' y='458' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>1.00 %</text>
+<line x1='16' y1='466' x2='344' y2='466' stroke='#bbb' stroke-width='1'/>
+<text x='16' y='486' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>Reestructurado  ›</text>
+<text x='344' y='486' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>0.75 %</text>
+<line x1='16' y1='494' x2='344' y2='494' stroke='#bbb' stroke-width='1'/>
+<line x1='354' y1='430' x2='366' y2='430' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='430' r='10' fill='#222'/>
+<text x='376' y='434' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+<text x='16' y='512' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#777' text-anchor='start' font-style='italic'>Sin gráficos de series ni exportación en el teléfono.</text>
+<rect x='284' y='644' width='56' height='56' rx='28' fill='#222' stroke='#222' stroke-width='1.5'/>
+<text x='312' y='678' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>Chat</text>
+<line x1='354' y1='670' x2='366' y2='670' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='670' r='10' fill='#222'/>
+<text x='376' y='674' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>3</text>
+</g>
+<text x='20' y='804' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>1.</tspan> Mismo orden y mismas formas que en escritorio; las</text>
+<text x='34' y='820' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'>tarjetas se apilan en una columna.</text>
+<text x='20' y='836' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>2.</tspan> Barras y montos en Q se sustituyen por lista con %; el</text>
+<text x='34' y='852' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'>detalle se abre al tocar.</text>
+<text x='20' y='868' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>3.</tspan> Asistente como botón flotante; se abre a pantalla</text>
+<text x='34' y='884' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'>completa.</text>
+</svg>

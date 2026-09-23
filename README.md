@@ -31,12 +31,15 @@ Ejecutar desde la raíz del repositorio, después de instalar las dependencias. 
 
 Las selecciones se superponen y ejecutan archivos completos: sus cantidades no deben sumarse como pruebas distintas. `npm test` ejecuta la suite completa; `npm run verify` agrega la revisión de tipos. Para ejecutar únicamente las 13 pruebas transversales: `npm test -- tests/invariantes.test.ts`.
 
-Ejemplo en PowerShell: `npm.cmd run test:cartera`. Los inputs, outputs, criterios de aprobación y límites de cada selección están en la [documentación de pruebas](docs/proyecto2/04-pruebas-unitarias-mora-escalonada.md).
+Ejemplo en PowerShell: `npm.cmd run test:cartera`. Los inputs, outputs, criterios de aprobación y límites de cada selección están en la [documentación de pruebas](docs/proyecto2/e6-03-pruebas-mora-escalonada.md).
 
-- [Auditoría y línea base P1](docs/proyecto2/00-auditoria-inicial.md)
-- [Evolución del núcleo: fórmulas, ejemplos, compatibilidad y límites](docs/proyecto2/01-evolucion-nucleo.md)
-- [Arquitectura móvil/offline conceptual](docs/proyecto2/02-arquitectura-movil-offline.md)
-- [Validación final](docs/proyecto2/03-validacion-final.md)
+- **[Índice de la documentación del Proyecto 2 por entregable (E1–E6)](docs/proyecto2/README.md)**
+- [E1 · Personas, journey map y momentos críticos](docs/proyecto2/e1-investigacion-usuario.md)
+- [E2 · Arquitectura de información y wireframes](docs/proyecto2/e2-arquitectura-informacion.md)
+- [E4 · Decisión móvil/web (PWA) y trabajo sin conexión](docs/proyecto2/e4-decision-movil-web.md)
+- [E6 · Auditoría y línea base P1](docs/proyecto2/e6-01-auditoria-inicial.md)
+- [E6 · Evolución del núcleo: fórmulas, ejemplos, compatibilidad y límites](docs/proyecto2/e6-02-evolucion-nucleo.md)
+- [E6 · Validación final](docs/proyecto2/e6-04-validacion-final.md)
 - [ADR-004: políticas de mora](docs/adr/ADR-004-politica-mora-escalonada.md)
 - [Impacto SOLID y métricas del diff](docs/informe-impacto-solid.md)
 - [Strategy de mora](docs/diagramas/patrones/04-strategy-mora.puml), [secuencia de cálculo](docs/diagramas/uml/08-secuencia-politica-mora.puml) y [gasto idempotente](docs/diagramas/uml/09-secuencia-gasto-idempotente.puml)
@@ -334,3 +337,11 @@ Se utilizó OpenAI Codex como apoyo durante el desarrollo del proyecto para:
 - verificar la coherencia entre los diferentes artefactos del proyecto
 
 La inteligencia artificial se utilizó únicamente como herramienta de apoyo. Todo el código, documentación y decisiones del proyecto fueron revisados y validados manualmente por el equipo mediante compilación en TypeScript y ejecución de pruebas.
+## 18. Herramientas de IA utilizadas en el Proyecto 2 (sección 15 del enunciado)
+
+| Herramienta | Uso | Artefactos |
+|---|---|---|
+| OpenAI Codex | Apoyo en la evolución del núcleo (CP-01 a CP-04), pruebas y documentación técnica de E6 | `src/dominio/`, `tests/`, `docs/proyecto2/e6-*` |
+| Claude (Anthropic) | Apoyo en la redacción de E1, E2 y E4, en la generación de los wireframes de baja fidelidad (script `docs/proyecto2/wireframes/generar_wireframes.py`), en la consolidación del informe de impacto SOLID según el Anexo D y en la revisión de la coherencia entre documentos | `docs/proyecto2/e1-*`, `e2-*`, `e4-*`, `wireframes/`, `docs/informe-impacto-solid.md` |
+
+Las decisiones de diseño y su justificación corresponden al equipo, que debe revisarlas y poder explicarlas en la defensa. Los rasgos de las personas marcados como hipótesis (HIP) no provienen de entrevistas y deben validarse con los instrumentos de E1.

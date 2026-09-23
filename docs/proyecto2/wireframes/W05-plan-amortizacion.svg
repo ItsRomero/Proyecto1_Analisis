@@ -1,0 +1,94 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='838' viewBox='0 0 420 838'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='28' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222'>W05 · Simulación / Plan de amortización</text>
+<text x='20' y='46' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#777'>Móvil 360×720 · wireframe baja fidelidad</text>
+<g transform='translate(20,60)'>
+<rect x='0' y='0' width='360' height='720' rx='14' fill='#fff' stroke='#222' stroke-width='2'/>
+<rect x='0' y='0' width='360' height='24' rx='0' fill='#e6e6e6' stroke='#e6e6e6' stroke-width='1.5'/>
+<text x='12' y='16' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#222' text-anchor='start'>9:41</text>
+<text x='348' y='16' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#222' text-anchor='end'>● En línea</text>
+<rect x='0' y='24' width='360' height='52' rx='0' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='16' y='56' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='bold' fill='#222' text-anchor='start'>←</text>
+<text x='48' y='57' font-family='Helvetica, Arial, sans-serif' font-size='17' font-weight='bold' fill='#222' text-anchor='start'>Plan de pagos</text>
+<text x='344' y='57' font-family='Helvetica, Arial, sans-serif' font-size='18' font-weight='bold' fill='#222' text-anchor='end'>?</text>
+<text x='16' y='104' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>Q10,000.00 · 12 meses · 3 % al mes</text>
+<text x='16' y='122' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#222' text-anchor='start'>#</text>
+<text x='44' y='122' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#222' text-anchor='start'>Pago</text>
+<text x='140' y='122' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#222' text-anchor='start'>Interés</text>
+<text x='220' y='122' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#222' text-anchor='start'>Capital</text>
+<text x='344' y='122' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#222' text-anchor='end'>Queda</text>
+<text x='16' y='144' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1</text>
+<text x='44' y='144' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='144' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>300.00</text>
+<text x='220' y='144' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>704.62</text>
+<text x='344' y='144' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>9,295.38</text>
+<text x='16' y='170' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>2</text>
+<text x='44' y='170' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='170' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>278.86</text>
+<text x='220' y='170' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>725.76</text>
+<text x='344' y='170' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>8,569.62</text>
+<text x='16' y='196' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>3</text>
+<text x='44' y='196' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='196' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>257.09</text>
+<text x='220' y='196' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>747.53</text>
+<text x='344' y='196' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>7,822.09</text>
+<text x='16' y='222' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>4</text>
+<text x='44' y='222' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='222' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>234.66</text>
+<text x='220' y='222' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>769.96</text>
+<text x='344' y='222' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>7,052.13</text>
+<text x='16' y='248' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>5</text>
+<text x='44' y='248' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='248' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>211.56</text>
+<text x='220' y='248' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>793.06</text>
+<text x='344' y='248' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>6,259.07</text>
+<text x='16' y='274' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>6</text>
+<text x='44' y='274' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='274' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>187.77</text>
+<text x='220' y='274' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>816.85</text>
+<text x='344' y='274' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>5,442.22</text>
+<text x='16' y='300' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>7</text>
+<text x='44' y='300' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='300' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>163.27</text>
+<text x='220' y='300' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>841.35</text>
+<text x='344' y='300' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>4,600.87</text>
+<text x='16' y='326' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>8</text>
+<text x='44' y='326' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='326' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>138.03</text>
+<text x='220' y='326' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>866.59</text>
+<text x='344' y='326' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>3,734.28</text>
+<text x='16' y='352' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>9</text>
+<text x='44' y='352' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='352' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>112.03</text>
+<text x='220' y='352' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>892.59</text>
+<text x='344' y='352' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>2,841.69</text>
+<text x='16' y='378' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>10</text>
+<text x='44' y='378' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='378' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>85.25</text>
+<text x='220' y='378' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>919.37</text>
+<text x='344' y='378' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>1,922.32</text>
+<text x='16' y='404' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>11</text>
+<text x='44' y='404' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>1,004.62</text>
+<text x='140' y='404' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>57.67</text>
+<text x='220' y='404' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='start'>946.95</text>
+<text x='344' y='404' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#222' text-anchor='end'>975.37</text>
+<rect x='10' y='414' width='340' height='24' rx='4' fill='#e6e6e6' stroke='#222' stroke-width='1.5'/>
+<text x='16' y='430' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#222' text-anchor='start'>12</text>
+<text x='44' y='430' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#222' text-anchor='start'>1,004.63</text>
+<text x='140' y='430' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#222' text-anchor='start'>29.26</text>
+<text x='220' y='430' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#222' text-anchor='start'>975.37</text>
+<text x='344' y='430' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#222' text-anchor='end'>0.00</text>
+<line x1='354' y1='404' x2='366' y2='404' stroke='#222' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='404' r='10' fill='#222'/>
+<text x='376' y='408' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<rect x='16' y='446' width='328' height='56' rx='4' fill='#fff' stroke='#222' stroke-width='1.5' stroke-dasharray='4 3'/>
+<text x='28' y='468' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#222' text-anchor='start'>¿Por qué la última cuota es 1 centavo más?</text>
+<text x='28' y='488' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#777' text-anchor='start'>Para que el saldo cierre exacto en Q0.00.</text>
+<text x='16' y='524' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#777' text-anchor='start' font-style='italic'>Cifras calculadas por el núcleo (plan-amortizacion.ts).</text>
+<rect x='16' y='592' width='328' height='52' rx='8' fill='#fff' stroke='#222' stroke-width='1.5'/>
+<text x='180.0' y='624' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#222' text-anchor='middle'>Cambiar monto o plazo</text>
+<rect x='16' y='652' width='328' height='52' rx='8' fill='#222' stroke='#222' stroke-width='1.5'/>
+<text x='180.0' y='684' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#fff' text-anchor='middle'>Confirmar solicitud</text>
+</g>
+<text x='20' y='804' font-family='Helvetica, Arial, sans-serif' font-size='12' fill='#222'><tspan font-weight='bold'>1.</tspan> Cuota 12 resaltada: Q1,004.63.</text>
+</svg>
