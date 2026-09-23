@@ -37,10 +37,10 @@ Repositorio: https://github.com/ItsRomero/Proyecto1_Analisis
 Este documento recorre **todos los commits** hechos después de la entrega del Proyecto 1 y, para cada uno, indica **qué agregó** y **si ya estaba documentado en algún `.md`**. Al final resume qué documentación faltaba y cómo se completó.
 
 - **Base P1:** `8737d9b` (etiqueta `entrega-p1`, 26/08/2026).
-- **Estado actual:** rama `docs/proyecto2-ux`, tres commits por encima de `main` (`13aa167`).
+- **Estado actual:** rama `docs/proyecto2-ux`, cuatro commits por encima de `main` (`13aa167`).
 - **Total desde el P1:** 62 archivos, +4,951 / −108 líneas. De ellas, el último commit de documentación aporta 32 archivos, +2,413 / −232.
 
-> **Sobre los hashes.** Los hashes de los commits 0 a 11 ya están en GitHub y son definitivos. Los commits 12 a 14 existen solo en la rama `docs/proyecto2-ux`; si se aplican con `git am`, Git les asigna un hash nuevo. En ese caso, búsquelos por su mensaje (`git log --oneline -3`).
+> **Sobre los hashes.** Los hashes de los commits 0 a 11 ya están en GitHub y son definitivos. Los commits 12 a 15 existen solo en la rama `docs/proyecto2-ux`; si se aplican con `git am`, Git les asigna un hash nuevo. En ese caso, búsquelos por su mensaje (`git log --oneline -3`).
 
 Comandos para reproducir cualquier fila:
 
@@ -73,9 +73,10 @@ La columna **"¿Documentado antes en .md?"** indica si el trabajo del commit apa
 | 11 | `13aa167` | 2026-09-22 | Erwin | Actualizacion del README | **modifica** `README.md`: sección "Comandos de pruebas por tema" (tabla de los 6 scripts con pruebas/archivos) y enlace a la documentación de pruebas | **Sí**: documenta el commit 7 |
 | 12 | `16f983f` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): documentar E1, E2 y E4 y consolidar el informe SOLID | Ver la sección 2 | Es el commit que completa la documentación |
 | 13 | `4ba9e55` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): agregar historial de cambios y documento consolidado | **+** `historial-cambios.md` (este archivo), **+** `documentacion-completa.md` | — |
-| 14 | *(este commit)* | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): documento de entrega con enlace de Figma y revisión del prototipo | **+** `P2-documento-entrega.md`: lista de verificación contra el enunciado, historia del repositorio narrada, revisión del prototipo de Figma y evaluación E5 preliminar; enlace de Figma en el README y en el índice | — |
+| 14 | `00709f9` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): documento de entrega con enlace de Figma y revisión del prototipo | **+** `P2-documento-entrega.md`: lista de verificación contra el enunciado, historia del repositorio narrada, revisión del prototipo de Figma y evaluación E5 preliminar; enlace de Figma en el README y en el índice | — |
+| 15 | *(este commit)* | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): unificar el documento de entrega | `P2-documento-entrega.md` pasa a generarse desde `fuente-documento-entrega.md` e incluye completos E1, E2, E4 y el informe SOLID, más E3, E5, la tabla de commits, el reparto y la lista de verificación | — |
 
-**Registro por fases.** `e6-04-validacion-final.md` registra las fases 0 a 6 (commits 0 a 6). Los commits 7 a 14 solo quedan registrados en esta tabla.
+**Registro por fases.** `e6-04-validacion-final.md` registra las fases 0 a 6 (commits 0 a 6). Los commits 7 a 15 solo quedan registrados en esta tabla.
 
 ### 2. Qué agregó el commit de documentación `16f983f`
 
@@ -379,7 +380,7 @@ Los tres flujos navegables que exige E3 recorren este mapa así:
 
 #### 3.1 Tabla obligatoria de la sección 6.1
 
-| Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, §8) | Caso de uso P1 | Pantalla P2 | Wireframe |
+| Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, sección 8) | Caso de uso P1 | Pantalla P2 | Wireframe |
 |---|---|---|---|---|
 | RegistrarCliente | `RegistrarCliente` | CU-01 Registrar cliente | Alta de cliente | W03 |
 | SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Solicitud de crédito (+ simulación del plan) | W04, W05 |
@@ -523,13 +524,13 @@ Este documento responde al entregable E4: elección entre app nativa, híbrida o
 
 | Restricción | Perfil | Fuente | Qué exige |
 |---|---|---|---|
-| Señal intermitente o nula durante parte de la ruta | Asesora | Enunciado §3; IICA/BID (conectividad rural) | Trabajar sin conexión: consultar la cartera de la ruta, capturar solicitudes y registrar pagos |
-| Teléfono Android de gama media, poca memoria | Asesora | Enunciado §3 | App ligera, sin descargas grandes para actualizar |
-| Uso con una mano, de pie y bajo el sol | Asesora | Enunciado §3 | Objetivos táctiles grandes, alto contraste, poco tecleo (depende del diseño, no de la tecnología) |
-| Escritorio con pantalla grande y conexión estable | Gerencia | Enunciado §3 | Alta densidad de información; acceso por navegador sin instalar nada |
+| Señal intermitente o nula durante parte de la ruta | Asesora | Enunciado, sección 3; IICA/BID (conectividad rural) | Trabajar sin conexión: consultar la cartera de la ruta, capturar solicitudes y registrar pagos |
+| Teléfono Android de gama media, poca memoria | Asesora | Enunciado, sección 3 | App ligera, sin descargas grandes para actualizar |
+| Uso con una mano, de pie y bajo el sol | Asesora | Enunciado, sección 3 | Objetivos táctiles grandes, alto contraste, poco tecleo (depende del diseño, no de la tecnología) |
+| Escritorio con pantalla grande y conexión estable | Gerencia | Enunciado, sección 3 | Alta densidad de información; acceso por navegador sin instalar nada |
 | Consulta ocasional desde el teléfono | Gerencia | E1 (hipótesis) | El mismo tablero, adaptado |
 | El cliente puede no tener datos móviles | Cliente | DataReportal 2024 (60.3 % usa internet) | Los avisos al cliente van por SMS, no por la app (MC-4) |
-| El Proyecto Final debe implementarse en 4 semanas con React y Tailwind | Equipo | Enunciado §2.1 y §14 | Un solo código web |
+| El Proyecto Final debe implementarse en 4 semanas con React y Tailwind | Equipo | Enunciado, secciones 2.1 y 14 | Un solo código web |
 
 ### 2. Decisión: una PWA única, mobile-first
 

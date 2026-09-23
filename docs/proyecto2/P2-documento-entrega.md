@@ -1,494 +1,1061 @@
+<!-- Archivo generado por generar_documento_entrega.py a partir de fuente-documento-entrega.md. No editar a mano. -->
 # Proyecto 2 · UX/UI, movilidad y evolución del núcleo
 
 **Sistema de Gestión de Microcrédito — Crédito Vecino, S. A.**
-Análisis de Sistemas II (037) · Universidad Mariano Gálvez de Guatemala · Segundo semestre 2026
+Análisis de Sistemas II (037) · Universidad Mariano Gálvez de Guatemala · Segundo semestre 2026 · Modalidad sabatina
 
-| | |
+| Dato | Valor |
 |---|---|
 | **Integrantes** | Christopher David Herrera Pérez · Erwin Alberto Ramírez Racancoj · Gabriela Elízabeth Noemí Aguilar Vásquez · Oliver Fernando Romero Esquite |
-| **Grupo / carnés / sección** | *(completar antes de exportar el PDF)* |
+| **Grupo · carnés · sección** | *(completar antes de exportar el PDF)* |
+| **Docente** | *(completar)* |
 | **Prototipo navegable (Figma)** | https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1 |
 | **Repositorio** | https://github.com/ItsRomero/Proyecto1_Analisis |
+| **Commit de entrega del Proyecto 1** | `8737d9b` (etiqueta `entrega-p1`) |
 | **Fecha de entrega** | Viernes 25 de septiembre de 2026 |
 
 ---
 
-## Índice
+# 1. Introducción
 
-1. [Antes de empezar: qué es este documento](#1-antes-de-empezar-qué-es-este-documento)
-2. [¿Está todo lo que pide el enunciado? Lista de verificación](#2-está-todo-lo-que-pide-el-enunciado-lista-de-verificación)
-3. [Cómo trabajamos: la historia del repositorio, commit por commit](#3-cómo-trabajamos-la-historia-del-repositorio-commit-por-commit)
-4. [E1 · Investigación de usuario](#4-e1--investigación-de-usuario)
-5. [E2 · Arquitectura de información y wireframes](#5-e2--arquitectura-de-información-y-wireframes)
-6. [E3 · Prototipo navegable en Figma](#6-e3--prototipo-navegable-en-figma)
-7. [E4 · Decisión móvil/web y diseño responsivo](#7-e4--decisión-móvilweb-y-diseño-responsivo)
-8. [E5 · Evaluación heurística y de accesibilidad](#8-e5--evaluación-heurística-y-de-accesibilidad)
-9. [E6 · Evolución del núcleo e informe de impacto SOLID](#9-e6--evolución-del-núcleo-e-informe-de-impacto-solid)
-10. [Reparto del trabajo](#10-reparto-del-trabajo)
-11. [Declaración de uso de herramientas de IA](#11-declaración-de-uso-de-herramientas-de-ia)
-12. [Dónde encontrar cada cosa en el repositorio](#12-dónde-encontrar-cada-cosa-en-el-repositorio)
+## 1.1 Qué responde este proyecto
 
----
+El Proyecto 1 respondió a la pregunta *¿cómo está construido el sistema por dentro?* Definimos la arquitectura hexagonal, los componentes y un núcleo de dominio en TypeScript que calcula el dinero: plan de amortización, prelación de pagos, mora e indicadores de cartera. El Proyecto 2 trabaja sobre **el mismo sistema, el mismo repositorio y el mismo equipo** (regla de incrementalidad) y agrega dos preguntas.
 
-## 1. Antes de empezar: qué es este documento
+**¿Cómo se usa el sistema?** Un motor de cálculo impecable produce créditos mal capturados si la asesora, de pie bajo el sol y con una mano ocupada, tiene que escribir el monto en un campo ambiguo. En una financiera, la interfaz es donde se originan la mayoría de los errores de datos. Por eso investigamos a los usuarios (E1), organizamos la información y dibujamos los wireframes (E2), construimos un prototipo navegable en Figma (E3), decidimos cómo debe funcionar la aplicación en el teléfono y sin señal (E4) y evaluamos el prototipo con las heurísticas de Nielsen y WCAG 2.2 (E5).
 
-El Proyecto 1 respondió a la pregunta *¿cómo está construido el sistema por dentro?* Este Proyecto 2 responde a dos preguntas nuevas.
+**¿Resiste el diseño un cambio de requisito real?** El comité de Crédito Vecino (Acta 09-2026) decidió que, desde el 1 de octubre de 2026, la mora deja de cobrarse con una tasa plana del 24 % y pasa a cobrarse **por tramos recorridos**: 18 %, 24 %, 30 % y 36 % anual según los días de atraso. Los créditos anteriores conservan la política vieja. Implementamos ese cambio en el núcleo del Proyecto 1 (E6) y medimos, con el historial de Git como evidencia, cuánto tuvimos que modificar. Ese es el informe de impacto SOLID.
 
-La primera es **¿cómo se usa?** Un motor de cálculo perfecto no sirve de mucho si la asesora, de pie bajo el sol y con una mano ocupada, escribe Q1,000 cuando quería escribir Q10,000. En una financiera, la interfaz es el lugar donde nacen la mayoría de los errores de dinero. Por eso investigamos a nuestros usuarios, diseñamos la navegación, construimos un prototipo en Figma y decidimos cómo debe funcionar la aplicación cuando no hay señal.
+## 1.2 Cómo leer este documento
 
-La segunda es **¿aguantó el diseño un cambio real?** El comité de Crédito Vecino decidió que, desde el 1 de octubre de 2026, la mora ya no se cobra con una tasa única del 24 %, sino por tramos: 18 %, 24 %, 30 % y 36 % según los días de atraso. Implementamos ese cambio en el núcleo del Proyecto 1 y medimos, con el historial de Git como evidencia, cuánto tuvimos que modificar.
+Cada capítulo corresponde a un entregable del enunciado (sección 9) y sigue el orden E1 → E7. Tres convenciones se repiten en todo el documento:
 
-Este documento es la versión narrativa y consolidada de todo el trabajo. Cada sección resume lo esencial y enlaza al documento técnico completo del repositorio, donde están las tablas y los cálculos en detalle. Siempre que aparece una cifra (Q1,004.62, Q18.14, 7.00 %…), sale del núcleo de cálculo y de sus pruebas, no de una estimación.
+- **Las cifras salen del núcleo.** Q1,004.62, Q18.14, Q50.80, 7.00 % y 21.75 % son resultados de `src/dominio` verificados por las pruebas (`npm test`), no estimaciones (regla 6.2 del enunciado).
+- **Cada afirmación dice de dónde sale.** En la investigación distinguimos lo que viene del enunciado, de fuentes documentadas, del núcleo y lo que todavía es una hipótesis por validar.
+- **Somos transparentes con lo que falta.** El capítulo 10 contrasta el trabajo con la lista de verificación de la sección 12.2 del enunciado.
+
+La sección 8.2 presenta en una tabla ordenada **todos los commits** hechos desde la entrega del Proyecto 1, con lo que aportó cada uno.
 
 ---
 
-## 2. ¿Está todo lo que pide el enunciado? Lista de verificación
+# 2. E1 · Investigación de usuario
 
-Revisamos la lista de la sección 12.2 del enunciado punto por punto. Marcamos con ✅ lo que está completo, con ⚠️ lo que existe pero necesita un ajuste antes de entregar y con ❌ lo que todavía falta.
+Este capítulo responde al entregable E1: personas fundamentadas, journey map del flujo principal y los momentos en que un error de interfaz se convierte en un error de dinero. Incluye el cuarto momento que el enunciado exige: el instante en que el cliente descubre que su mora subió de tramo.
 
-| # | Requisito (sección 12.2) | Estado | Dónde está / qué falta |
+## 2.1 Método y estado de la evidencia
+
+La investigación combina tres fuentes, y cada afirmación de este documento indica de cuál proviene:
+
+| Código | Tipo de fuente | Qué aporta | Estado |
 |---|---|---|---|
-| 1 | Personas fundamentadas y journey map con puntos de dolor concretos, incluido el cambio de tramo | ⚠️ | Hechos en §4. Se basan en el enunciado y en fuentes documentadas; **faltan las entrevistas u observación de campo** para validar los rasgos marcados como hipótesis |
-| 2 | Tabla pantalla ↔ caso de uso completa y coherente con los puertos del P1 | ✅ | §5.3 |
-| 3 | Las siete pantallas obligatorias y los tres flujos navegables con clics | ⚠️ | El prototipo tiene el flujo del asesor (originación y cobro). **Faltan en Figma: tablero gerencial, cierre diario/mensual y confirmación de desembolso**, y con ellos el flujo 3 (consulta gerencial). Ver §6.3 |
-| 4 | Plan de amortización con el caso de referencia real y la cuota 12 de Q1,004.63 explicada | ⚠️ | La pantalla de Figma muestra las 12 cuotas correctas y resalta la cuota 12, pero **no explica** por qué es un centavo mayor. Falta agregar la nota |
-| 5 | Detalle de la mora con el desglose por tramos recorridos del caso M-3 | ❌ | La pantalla existe, pero **usa tasas y montos que no son los del núcleo** (0.5 % a 2 % mensual sobre Q6,240.50). Debe mostrar el caso M-3: Q725.76, 100 días, total Q50.80. Ver §6.4 |
-| 6 | El tablero distingue cartera en mora (21.75 %) y cartera en riesgo (7.00 %), con el desglose por tramo | ⚠️ | Diseñado y justificado en el wireframe W11 (§5.5); **falta construirlo en Figma** |
-| 7 | Decisión móvil/web argumentada, con pérdida de conexión, idempotencia y puerto Reloj | ✅ | §7 |
-| 8 | ≥ 8 hallazgos heurísticos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | §8 trae 14 hallazgos preliminares sobre el prototipo actual. **Falta** que los cuatro integrantes evalúen por separado, consolidar, corregir en Figma y capturar el antes/después |
-| 9 | Auditoría de los seis criterios A/AA nuevos de WCAG 2.2 y del 3.3.4 | ⚠️ | §8.3 trae la auditoría preliminar; falta confirmarla sobre la versión corregida |
-| 10 | Qué se incorporó del design review y qué se rechazó, con argumento | ❌ | Depende de las notas de la sesión 9 del equipo |
-| 11 | `npm install && npm test` corre en limpio; pasan M-1 a M-5, la coexistencia y la suite del P1 | ✅ | 263 pruebas en 18 archivos (§9). Conviene volver a correr `npm run verify` sobre el commit final |
-| 12 | Informe de impacto SOLID con métricas respaldadas por el diff y una respuesta por principio | ✅ | §9 y `docs/informe-impacto-solid.md` |
-| 13 | Commit de entrega del P1 etiquetado o su hash en el informe | ⚠️ | El hash `8737d9b` está en el informe. La etiqueta `entrega-p1` **existe solo en una computadora local**; hay que publicarla con `git push origin entrega-p1` |
-| 14 | Enlaces de Figma y del repositorio abren sin pedir permisos | ✅ / ⚠️ | El prototipo abre sin iniciar sesión (lo comprobamos). Confirmar que el repositorio sea público |
-| 15 | Tabla de reparto del trabajo | ⚠️ | §10 propone la tabla a partir del historial de Git; **el equipo debe confirmarla** |
+| **ENU** | Enunciado P2, sección 3 (contexto de los tres perfiles) | Condiciones de trabajo del asesor, necesidades del cliente y de gerencia | Requisito del caso |
+| **DOC** | Fuentes documentadas: SIB (ENIF 2024-2027), Banco Mundial (Global Findex 2025, panorama Guatemala), DataReportal *Digital 2024: Guatemala*, IICA/BID sobre conectividad rural | Contexto nacional de inclusión financiera, uso de teléfono e internet y brecha territorial | Documentado |
+| **NÚC** | Núcleo de cálculo del repositorio (`src/dominio`) y sus pruebas | Cifras exactas con las que se construyen los escenarios (Q1,004.62, Q18.14, 7.00 %, etc.) | Verificado por `npm test` |
+| **HIP** | Hipótesis de diseño derivadas de las anteriores | Conductas concretas que el equipo espera encontrar en campo | **Pendiente de validar** con los instrumentos de `e1-instrumentos-investigacion.md` |
 
-**En resumen:** la parte técnica (E4 y E6) y la arquitectura de información (E2) están completas. Lo que más urge antes del viernes es **corregir en Figma la pantalla de detalle de la mora, construir el tablero gerencial, el cierre y el desembolso**, y hacer la evaluación E5 entre los cuatro. La sección 6 y la sección 8 dicen exactamente qué cambiar.
+Hallazgos del contexto documentado que sustentan las personas:
 
----
+- **Hay muchos teléfonos, pero no tanta internet.** En enero de 2024 Guatemala tenía 20.65 millones de conexiones móviles (113.3 % de la población), pero solo el 60.3 % de la población usaba internet (DataReportal, *Digital 2024: Guatemala*). *Implicación:* el cliente casi siempre tiene un teléfono, pero no se puede suponer que tenga datos móviles. Los avisos al cliente no pueden depender solo de una app.
+- **La conectividad rural es baja.** El IICA, con apoyo del BID y Microsoft, ubica a Guatemala entre los nueve países de América Latina y el Caribe con menor conectividad rural. También señala que una alta penetración de teléfonos móviles no equivale a conectividad, porque esta se concentra en zonas urbanas (Prensa Libre, 2020). *Implicación:* el asesor que visita negocios fuera de la cabecera trabajará sin señal durante parte de su ruta (ENU lo confirma: "señal intermitente o nula").
+- **Digitalizar es una prioridad nacional.** La Estrategia Nacional de Inclusión Financiera 2024-2027 de la SIB prioriza el uso de canales digitales en los servicios financieros. *Implicación:* la digitalización del cobro en campo está alineada con la política pública, pero debe incluir a clientes con poca experiencia digital.
 
-## 3. Cómo trabajamos: la historia del repositorio, commit por commit
+> **Límite declarado.** A la fecha de este documento el equipo **no ha aplicado todavía** las entrevistas ni la observación de campo. Los instrumentos están listos en [e1-instrumentos-investigacion.md](e1-instrumentos-investigacion.md). Las personas son **provisionales**: sus rasgos marcados como HIP deben confirmarse o corregirse antes de cerrar el prototipo de alta fidelidad (E3). No presentamos hipótesis como hallazgos de campo.
 
-El enunciado pide que el historial permita comparar el estado de entrega del P1 con el del P2, y advierte que alterarlo es falta de integridad. No reescribimos nada: todo lo que se hizo está en commits separados y se puede revisar con `git log`.
+## 2.2 Personas
 
-### 3.1 El punto de partida
+Las tres personas siguen la plantilla del Anexo A del enunciado. La edad no se usa como indicador de habilidad digital.
 
-El Proyecto 1 se entregó en el commit **`8737d9b`** (26 de agosto de 2026). Al empezar el P2 lo marcamos con la etiqueta `entrega-p1` y abrimos la rama `feat/proyecto-2-evolucion-nucleo`. En ese momento el núcleo tenía 7 archivos de dominio y 206 pruebas, todas pasando.
+### 2.2.1 Mariela López, asesora de crédito en campo
 
-### 3.2 La evolución, en el orden en que ocurrió
-
-**21 de septiembre: el núcleo se adapta al cambio de requisito.** Fue un día intenso de trabajo por fases, cada una con su propio commit:
-
-- **Fase 0 · `71a5179`** (Christopher Herrera). Antes de tocar código, auditamos el repositorio y registramos la línea base: qué archivos existían, cuántas pruebas pasaban y con qué versiones. Esto quedó en `e6-01-auditoria-inicial.md`.
-- **Fase 1 · `ec2a436`** (Christopher Herrera). El cambio central: creamos el puerto `PoliticaMora` y tres implementaciones (plana, escalonada y retroactiva), más un catálogo que elige la política según la fecha de otorgamiento. Aquí tuvimos que **abrir el motor** `calculadora-mora.ts` (+32/−19 líneas); explicamos por qué en §9.
-- **Fase 2 · `d3b30f5`** (Christopher Herrera). El gasto de gestión de cobro: Q25.00 por cuota vencida, que se genera una sola vez al día 31 aunque el cierre se ejecute varias veces.
-- **Fase 3 · `5752b55`** (Christopher Herrera). Las tres correcciones de CP-04: la transición `en_mora → cancelado`, la suspensión del devengo después del día 90 y el desglose de la cartera en riesgo por tramo.
-- **Fase 4 · `0d6c1a9`** (ERAMR18). Las pruebas de contrato: la misma batería corre contra las tres políticas (prueba de Liskov) y una suite de regresión integrada. **Este es el commit que usamos para medir el impacto**, porque después ya no cambia `src/dominio`.
-- **Fase 5 · `958e70f`** (ERAMR18). Documentación y contratos: ADR-004, el primer informe SOLID, diagramas UML nuevos y esquemas Zod/OpenAPI.
-- **Fase 6 · `8112e57`** (ERAMR18). Validación desde una instalación limpia: 263 pruebas en 18 archivos y la revisión de tipos, sin errores.
-
-**22 de septiembre: se integra todo a `main`.**
-
-- **`5e73d12`** (Christopher Herrera) agregó seis comandos de prueba por tema en `package.json` (`test:mora`, `test:cp04`, etc.), para que cualquiera del equipo pueda verificar una parte específica durante la defensa.
-- **`9e06c37`** (Elízabeth) agregó el documento de pruebas unitarias de la mora escalonada, con entradas, salidas y criterios de cada caso, y un segundo informe de verificación SOLID.
-- **`8e421a6`** (Elízabeth) sincronizó la rama local con la remota.
-- **`183dc71`** (Oliver Romero) integró la rama completa a `main` mediante el **Pull Request #1**: 42 archivos, +2,751 / −108 líneas.
-- **`13aa167`** (Erwin) documentó en el README los comandos de prueba por tema.
-
-**23 de septiembre: se completa la documentación de experiencia de usuario.**
-
-- **`16f983f`** (Oliver Romero, con apoyo de IA declarado). Agregó E1, E2 y E4, los 15 wireframes y el mapa de navegación. Reorganizó el informe SOLID según el Anexo D del enunciado y renombró los documentos por entregable.
-- **Commits siguientes** (Oliver Romero, con apoyo de IA declarado): el historial de cambios, el documento consolidado y este documento de entrega, con el enlace del prototipo y la revisión del prototipo de Figma.
-
-### 3.3 Qué faltaba documentar y cómo lo resolvimos
-
-Al revisar el historial encontramos que varias cosas se habían hecho pero no estaban bien documentadas:
-
-| Qué encontramos | Cómo lo resolvimos |
-|---|---|
-| Tres documentos afirmaban que "el enunciado no define CP-03". En realidad, CP-03 es la sección 7.6, *Coexistencia de políticas* | Corregido en `e6-02`, `e6-04` y en la matriz de trazabilidad |
-| La validación final decía "sin push, PR ni merge", pero luego sí hubo un PR | Actualizado para reflejar el PR #1 |
-| El documento de pruebas no tenía extensión `.md`, así que GitHub lo mostraba como texto plano | Renombrado a `e6-03-pruebas-mora-escalonada.md` |
-| Había dos informes SOLID que se contradecían en detalles (13 frente a 12 atrasos probados) | Fusionados en uno solo, con la cifra correcta: 12 atrasos y 288 combinaciones |
-| Los comandos de prueba (commit 7) y los merges (commits 9 y 10) no aparecían en ningún documento | Registrados en `historial-cambios.md` y en esta sección |
-| E1, E2 y E4 casi no existían; el documento móvil no tomaba una decisión | Escritos desde cero (§4, §5 y §7) |
-
-El detalle archivo por archivo está en `docs/proyecto2/historial-cambios.md`.
-
----
-
-## 4. E1 · Investigación de usuario
-
-### 4.1 Cómo investigamos, y qué no hicimos todavía
-
-Trabajamos con tres tipos de fuentes y marcamos cada afirmación con su origen:
-
-- **El enunciado (sección 3)**, que describe el contexto real de los tres perfiles.
-- **Fuentes documentadas** sobre Guatemala: la Estrategia Nacional de Inclusión Financiera 2024-2027 de la SIB, el Global Findex 2025 del Banco Mundial, *Digital 2024: Guatemala* de DataReportal y el estudio de conectividad rural del IICA y el BID.
-- **El núcleo de cálculo**, que nos da las cifras exactas de cada escenario.
-
-Tres datos marcaron el diseño:
-
-1. En enero de 2024 Guatemala tenía **20.65 millones de conexiones móviles (113.3 % de la población)**, pero solo el **60.3 % usaba internet**. Casi todos los clientes tienen teléfono, pero no podemos suponer que tengan datos. Por eso los avisos al cliente van por SMS.
-2. Guatemala está entre los nueve países de la región con **menor conectividad rural**, y que haya muchos teléfonos no significa que haya señal. La asesora va a trabajar sin conexión en parte de su ruta.
-3. La digitalización es una prioridad nacional, pero tiene que incluir a personas con poca experiencia digital.
-
-Somos honestos con una limitación: **todavía no hemos aplicado las entrevistas ni la observación de campo**. Los instrumentos ya están listos (guías para asesor, cliente y gerencia, una encuesta de 20 preguntas y una lista de observación, en `e1-instrumentos-investigacion.md`). Mientras tanto, los rasgos que no salen del enunciado ni de las fuentes están marcados como **hipótesis** y no los presentamos como hallazgos.
-
-### 4.2 Las tres personas
-
-**Mariela López, asesora de crédito en campo.** Visita de 8 a 12 clientes al día en negocios y casas, casi siempre de pie, bajo el sol y con el cartapacio o el efectivo en una mano. Usa un Android de gama media que le da la empresa y pierde la señal cuando sale de la cabecera municipal. Maneja WhatsApp y la cámara sin problema, pero no tiene por qué saber qué significa "sincronizar". Quiere tres cosas: terminar la visita sin volver a pedirle datos al cliente, estar segura de que el pago quedó registrado *una sola vez* y poder explicarle al cliente a dónde se fue su dinero. Hoy anota los pagos en papel y los transcribe al volver a la oficina, así que la fecha que queda registrada es la de la transcripción, no la del pago.
-> *"Si la app me hace escribir el DPI dos veces, el cliente piensa que no sé lo que hago."* (cita hipotética, a validar en entrevista)
-
-**Carlos Chávez, cliente de microcrédito.** Tiene una tienda de barrio y pidió **Q10,000 a 12 meses** para surtir inventario: es exactamente el caso de referencia del P1, con cuota de **Q1,004.62** y la última de **Q1,004.63**. Tiene un teléfono prepago; a veces tiene datos y a veces no, pero los SMS siempre le llegan. Lee mensajes y usa WhatsApp, pero palabras como "TNA" o "prelación" no le dicen nada. Lo que quiere saber es cuánto debe, cuándo paga y cuánto le falta. Si un día le dicen "debe Q1,040.99" sin explicación, siente que le están cobrando una multa, que es justo lo que el comité quiere evitar con la nueva política.
-> *"Si me explican, pago; si me cae de sorpresa, siento que me están robando."* (hipotética)
-
-**Andrea Morales, gerente de cartera y miembro del comité.** Trabaja en oficina, con un monitor grande, y revisa el teléfono en reuniones. Es muy buena con las hojas de cálculo y con los números. Necesita saber en 30 segundos si la cartera se está deteriorando y poder bajar del porcentaje a los créditos concretos. Su frustración es que las hojas actuales llaman "mora" a dos cosas distintas, y que cuando se da de baja un crédito el indicador de riesgo baja (de 7.00 % a 6.06 %) como si fuera una buena noticia, aunque no se cobró nada.
-> *"No me muestre un número sin decirme qué número es."* (hipotética)
-
-### 4.3 El recorrido de Carlos: de la solicitud a la primera cuota
-
-| Etapa | Qué pasa | Cómo se siente | Dónde le puede fallar la interfaz | Qué proponemos |
-|---|---|---|---|---|
-| 1. Solicitud | Carlos dice cuánto necesita | Expectativa, duda | Mariela escribe "10000" en un campo sin formato y un cero de más o de menos pasa desapercibido | Monto con prefijo Q, separadores en vivo y rango Q1,000–Q25,000 visible |
-| 2. Captura | Mariela registra DPI y datos del negocio | Prisa | Se cae la señal, la sesión expira y hay que **volver a capturar el DPI** frente al cliente | Borrador guardado en el teléfono campo por campo |
-| 3. Evaluación | El comité revisa | Incertidumbre | Nadie puede decirle a Carlos en qué va su solicitud | Estado visible: solicitado → en evaluación → aprobado |
-| 4. Aprobación | Le avisan que sí | Alivio | Le dicen "aprobado" sin decirle que pagará **Q2,055.45 de interés** | Resumen con cuota y total a pagar antes de confirmar |
-| 5. Plan de pagos | Revisan las 12 cuotas | Control | La cuota 12 es **Q1,004.63** y Carlos cree que es un error | Nota: "un centavo más para cerrar el saldo exacto" |
-| 6. Desembolso | Se entrega el dinero | Alegría | Un doble toque con señal lenta puede generar **dos desembolsos** | Pantalla de revisión y botón que se bloquea después del primer toque |
-| 7. Seguimiento | Carlos pregunta cuánto debe | Neutral | El saldo que ve Mariela sin señal es de ayer y no lo dice | Toda cifra lleva su fecha de corte |
-| 8. Recordatorio | Aviso de la primera cuota | Neutral | El aviso llega por una app que Carlos no abre sin datos | SMS tres días antes y el día del vencimiento |
-| 9. Pago | Mariela recibe Q1,004.62 | Tensión | Sin señal, Mariela no sabe si se registró y teme **cobrarlo dos veces** | "Pendiente de enviar", con la misma clave en cada reintento |
-| 10. Comprobante | Carlos recibe su constancia | Confianza | "Pagado Q1,004.62" no dice cuánto fue a interés (Q300.00) y cuánto a capital (Q704.62) | Comprobante con la prelación y el saldo que queda (Q9,295.38) |
-
-### 4.4 Los cuatro momentos en que un error de pantalla se vuelve un error de dinero
-
-1. **MC-1 · El monto de la solicitud.** Un cero de menos convierte un crédito de Q10,000 en uno de Q1,000 y cambia las 12 cuotas.
-2. **MC-2 · El pago sin señal.** Si la app no dice qué pasó con el pago, Mariela lo vuelve a registrar y Carlos paga Q1,004.62 dos veces.
-3. **MC-3 · El tablero gerencial.** Si "cartera en mora" (21.75 %) y "cartera en riesgo" (7.00 %) se ven iguales, el comité decide sobre el número equivocado.
-4. **MC-4 · El día en que la mora sube de tramo.** Este es el momento que el enunciado pide analizar a fondo.
-
-**¿Carlos se entera antes o después? ¿Por qué canal?** Hoy se entera **después** y **en persona**. El día 31 de atraso pasan dos cosas a la vez: la cuota entra en Mora 2 y se genera el gasto de gestión de cobro de Q25.00, que es precisamente el costo de la visita de la asesora. Así que el primer contacto de Carlos con el nuevo tramo es Mariela en la puerta, cobrando un total que ya subió.
-
-Con la cuota 2 (capital en mora Q725.76) el salto se ve así:
-
-| Días de atraso | Tramo | Mora | Gasto de cobro | Total de la cuota |
-|---|---|---|---|---|
-| 28 | Mora 1 | Q10.16 | — | Q1,014.78 |
-| 30 | Mora 1 | Q10.89 | — | **Q1,015.51** |
-| **31** | **Mora 2** | Q11.37 | **Q25.00** | **Q1,040.99** |
-| 45 | Mora 2 | Q18.14 | Q25.00 | Q1,047.76 |
-
-En un solo día la cuota sube **Q25.48**. Además, la mora diaria pasa de Q0.36 a Q0.48, y eso explica por qué "este mes la mora creció más rápido que el anterior".
-
-**Lo que proponemos es que se entere antes, por dos canales:** un **SMS el día 28** ("si paga en los próximos 2 días debe Q1,015.51; después se agrega un cargo de visita de Q25.00"), otro **SMS el día 31** confirmando el cambio y, en la visita, la **pantalla de detalle de la mora** para que Carlos pueda verificar tramo por tramo. Elegimos SMS porque llega sin datos móviles. El umbral de tres días y la redacción exacta se validarán con las preguntas 9 y 10 de la guía de entrevista al cliente.
-
-Documento completo: `docs/proyecto2/e1-investigacion-usuario.md`.
-
----
-
-## 5. E2 · Arquitectura de información y wireframes
-
-### 5.1 Una aplicación, tres puertas de entrada
-
-El error que el enunciado nos pide evitar es diseñar "una pantalla para todos". Nuestra solución es que cada rol tenga su propio inicio: la asesora entra a su **Ruta del día**, el comité a su **Bandeja** y la gerencia al **Tablero**. Además, fijamos cinco reglas para todas las pantallas:
-
-- Cada pantalla invoca un puerto del P1 y nunca calcula cifras por su cuenta.
-- El estado de conexión siempre está a la vista en el teléfono.
-- Cada cifra lleva su fecha de corte.
-- La ayuda está siempre en el mismo lugar.
-- Los montos siempre llevan "Q" y separador de miles.
-
-### 5.2 Mapa de navegación
-
-![Mapa de navegación](wireframes/mapa-navegacion.svg)
-
-Los tres flujos que exige el E3 recorren el mapa así:
-
-- **Originación:** solicitud → simulación del plan → decisión del comité → confirmación de desembolso.
-- **Cobro en campo:** buscar cliente → saldo y tramo → detalle de la mora → registrar pago → comprobante.
-- **Consulta gerencial:** tablero → cartera en riesgo por tramo → créditos de ese tramo.
-
-### 5.3 Tabla de correspondencia pantalla ↔ caso de uso (sección 6.1)
-
-| Puerto del enunciado | Puerto del P1 | Caso de uso | Pantalla | Wireframe |
-|---|---|---|---|---|
-| RegistrarCliente | `RegistrarCliente` | CU-01 | Alta de cliente | W03 |
-| SolicitarCredito | `SolicitarCredito` | CU-02 | Solicitud + simulación del plan | W04, W05 |
-| EvaluarSolicitud | `EvaluarCredito` + `DecidirSolicitud` | CU-03, CU-04, CU-05 | Bandeja del comité | W13 |
-| DesembolsarCredito | `DesembolsarCredito` | CU-06 | Confirmación de desembolso | W06 |
-| RegistrarPago | `RegistrarPago` | CU-07 | Registro de pago + comprobante | W09, W10 |
-| ConsultarCarteraEnRiesgo | `ConsultarCarteraEnRiesgo` | CU-14 | Tablero gerencial + detalle de tramo | W11, W12, W15 |
-| GenerarCierre | `GenerarCierre` | CU-12, CU-13 | Cierre diario / mensual | W14 |
-
-Una aclaración: en el P1 dividimos el puerto que el enunciado llama `EvaluarSolicitud` en dos: `EvaluarCredito`, cuando el analista registra la evaluación, y `DecidirSolicitud`, cuando el comité aprueba o rechaza. La Bandeja del comité usa los dos. No cambiamos los nombres para respetar la regla de incrementalidad.
-
-También trazamos las pantallas de apoyo, porque una pantalla sin caso de uso resta 0.5 puntos. Ruta del día, Buscar y Detalle del crédito corresponden a `ConsultarCredito` (CU-15); Detalle de la mora, a `CalcularMora` (CU-08); Plan de amortización, a la simulación de `SolicitarCredito` (CU-02).
-
-### 5.4 Los wireframes
-
-Dibujamos 15 wireframes de baja fidelidad en escala de grises, antes del prototipo, con anotaciones numeradas que explican cada decisión: 10 para el teléfono de la asesora y 5 para el escritorio de gerencia y comité. Están en `docs/proyecto2/wireframes/` y en el anexo del documento Word. Los más importantes son:
-
-- **W08, Detalle de la mora.** Es la pantalla más difícil. Si solo muestra "Mora: Q50.80", el cliente no puede verificar nada; si muestra la fórmula completa, no la entiende. Nuestro punto medio es una fila por tramo con el rango de días en palabras ("Días 31–60"), la tasa anual ("24 % al año"), los días recorridos y una barra proporcional. Debajo va una **nota de redondeo**: si alguien suma las filas redondeadas obtiene Q50.81, pero el total oficial es Q50.80, porque se redondea una sola vez al final.
-- **W09, Registro de pago.** Muestra la prelación (gastos → mora → interés → capital) **antes** de confirmar, no después.
-- **W11, Tablero gerencial.** Se explica en el punto siguiente.
-
-### 5.5 Por qué el tablero se ve así
-
-El tablero se lee de izquierda a derecha y de arriba abajo, en el orden de las preguntas que Andrea lleva al comité:
-
-1. **Primero, el contexto:** fecha de corte, "cierre congelado ✓" y la aclaración de que la política se aplica según la fecha de otorgamiento.
-2. **Después, la cartera en riesgo (7.00 %)**, en la tarjeta principal con borde grueso, porque es la cifra con la que decide el comité.
-3. **Junto a ella, lo dado por incobrable en el período.** El enunciado lo exige, y con razón: dar de baja un crédito baja el riesgo sin cobrar un centavo.
-4. **En tercer lugar, la cartera en mora (21.75 %)**, que sirve como alerta temprana.
-5. **Luego, el desglose por tramo:** 3.00 + 2.25 + 1.00 + 0.75 = 7.00 %. Cada fila abre la lista de sus créditos.
-6. **Al final, desembolsos y recuperaciones.**
-7. **A la derecha, un panel plegable** reservado para el asistente conversacional del Proyecto Final.
-
-Confundir mora con riesgo es un hallazgo de severidad 4 y resta 0.5 puntos, así que no dependemos de una sola señal para distinguirlos: usamos **cinco a la vez**. Tienen nombre distinto ("RIESGO" frente a "MORA"), una definición visible bajo la cifra ("más de 30 días + reestructurados" frente a "cualquier atraso ≥ 1 día"), un símbolo distinto (▲ frente a ●), un borde distinto (grueso frente a discontinuo) y una posición separada. Ninguna de estas señales depende solo del color.
-
-Documento completo: `docs/proyecto2/e2-arquitectura-informacion.md`.
-
----
-
-## 6. E3 · Prototipo navegable en Figma
-
-**Enlace al prototipo:** https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1
-
-El enlace abre sin iniciar sesión en Figma, como pide la sección 13. El archivo se llama *Microcréditos App* y la pantalla inicial es *Asesor de Crédito – Móvil*.
-
-### 6.1 Cómo recorrerlo
-
-1. **Iniciar sesión** → *Ingresar*.
-2. **Mis Clientes.** Lista ordenada por prioridad, con la etiqueta de tramo de cada cliente (Incobrable, Mora 3, Mora 2, Mora 1, Al día) y los días de atraso.
-3. **Flujo de cobro:** tocar la tarjeta de *Pedro Xol Cux* → *Detalle del crédito* → *Detalle mora* o *Plan de pago* → *Registrar pago* → tocar el monto → *Revisar y confirmar* → *Aplicar pago* → comprobante *Pago aplicado*.
-4. **Variante sin señal:** en *Confirmar pago*, tocar *Simular pago sin señal (demo)* y luego *Aplicar pago*. Aparece la pantalla *Sin señal* con el pago en cola y el botón *Sincronizar ahora*.
-5. **Flujo de originación:** desde *Mis Clientes*, botón **+** → *Nueva solicitud* (cliente, monto, plazo) → *Simulación de pago* → *Confirmar solicitud* → *Solicitud enviada*.
-6. **Perfil:** tocar las iniciales *MA*.
-
-### 6.2 Lo que el prototipo resuelve bien
-
-Recorrimos el prototipo completo y estas decisiones cumplen lo que pide el enunciado:
-
-- **La captura del monto es difícil de equivocar:** botones − y +, montos rápidos (Q2k, Q5k, Q10k…) y el rango "Q1,000 – Q25,000 en pasos de Q500" siempre visible. Esto responde a MC-1.
-- **El plazo se elige con botones** (3 a 24 meses), sin teclado.
-- **Antes de confirmar, siempre hay revisión:** la solicitud tiene tres pasos, y el pago una pantalla "Confirme antes de aplicar" con salida "← Modificar monto". Esto cumple WCAG 3.3.4.
-- **La prelación se ve antes de aplicar el pago**, con barras por concepto.
-- **El plan de amortización usa el caso de referencia real:** Q10,000 al 3 % mensual, las 12 cuotas, interés total Q2,055.45, total Q12,055.45 y la **cuota 12 de Q1,004.63 resaltada**.
-- **La simulación de Q5,000 a 12 meses también es correcta** (cuota Q502.31, la mitad exacta del caso de referencia).
-- **Existe un flujo sin señal** con el pago en cola, estado "Pendiente", folio y botón "Sincronizar ahora". Esto responde a MC-2 y a E4.
-- Los objetivos táctiles son grandes y el contraste de los botones principales es alto.
-
-### 6.3 Lo que falta construir en Figma
-
-| Requisito del E3 | ¿Está en el prototipo? | Qué hacer |
+| Campo | Contenido | Fuente |
 |---|---|---|
-| Solicitud de crédito (asesor, móvil) | ✅ | — |
-| Detalle del crédito (cliente/asesor, móvil) | ✅ | Agregar el tramo en lenguaje llano ("lleva 45 días de atraso") |
-| Registro de pago con prelación | ✅ | Corregir cifras (§6.4) |
-| Plan de amortización con cuota 12 explicada | ⚠️ | Agregar la nota que explica el centavo de diferencia |
-| Detalle de la mora con el caso M-3 | ❌ | Rehacer con las cifras del núcleo (§6.4) |
-| **Tablero gerencial (escritorio)** | ❌ | Construir a partir del wireframe W11 |
-| **Cierre diario / mensual (escritorio)** | ❌ | Construir a partir del wireframe W14 |
-| Confirmación de desembolso (tabla 6.1) | ❌ | Agregar después de "Solicitud enviada", a partir de W06 |
-| Bandeja del comité (tabla 6.1) | ❌ | Recomendable, a partir de W13 |
-| Alta de cliente (tabla 6.1) | ❌ | Recomendable, a partir de W03 |
-| Flujo 1: solicitud → simulación → confirmación → **desembolso** | ⚠️ | Hoy termina en "Solicitud enviada" |
-| Flujo 2: cobro en campo | ✅ | — |
-| **Flujo 3: consulta gerencial** | ❌ | Depende del tablero |
-| *Mi perfil* | Existe, pero no corresponde a ningún caso de uso del P1 | Justificarla como pantalla de soporte de sesión o quitarla (hay penalización de −0.5 por pantallas sin caso de uso) |
+| Rol y contexto | Asesora de Crédito Vecino. Visita entre 8 y 12 clientes al día en sus negocios o casas, origina solicitudes y cobra cuotas atrasadas. Trabaja de pie, a menudo bajo el sol, y con una mano ocupada (cartapacio, efectivo o documentos del cliente). | ENU |
+| Dispositivo | Teléfono Android de gama media proporcionado por la empresa: pantalla de unas 6", poca memoria libre y batería que debe durar toda la jornada. | ENU · HIP (modelo concreto) |
+| Conectividad | Intermitente o nula en parte de la ruta. Buena señal solo en la oficina y en la cabecera municipal. | ENU · DOC |
+| Iluminación | Luz solar directa: los grises claros y los textos pequeños no se leen. | ENU |
+| Manos libres | Opera con el pulgar de una sola mano durante la visita; teclea poco y mal cuando está de pie. | ENU |
+| Alfabetización digital | Operativa: usa WhatsApp, cámara y apps bancarias. No conoce el concepto de "sincronización" ni tiene por qué conocerlo. | HIP |
+| Objetivos (en sus palabras) | "Terminar la visita sin volver a pedirle nada al cliente." · "Saber que el pago quedó registrado una sola vez." · "Poder explicarle al cliente a dónde se fue su dinero." | ENU · HIP |
+| Frustraciones actuales (hojas de cálculo) | Anota el pago en papel y lo transcribe al volver a la oficina, a veces al día siguiente; la fecha que queda registrada es la de la transcripción, no la del pago. Cuando la hoja compartida no abre sin internet, lleva una copia impresa que ya está desactualizada. | HIP |
+| Relación con la mora | Debe explicar por qué un cliente debe más este mes. Con la política escalonada tiene que explicar tramos, no una sola tasa. | ENU |
+| Cita representativa | *"Si la app me hace escribir el DPI dos veces, el cliente piensa que no sé lo que hago."* | HIP (cita a validar en entrevista) |
 
-### 6.4 Cifras que no coinciden con el núcleo (atención: penalización de la sección 6.2)
+**Qué exige a la interfaz:** diseño mobile-first con objetivos táctiles de 48 px o más (por encima del mínimo de 24 px de WCAG 2.5.8), alto contraste y un modo de trabajo sin conexión con estado visible ("Guardado en el teléfono · pendiente de enviar"). Montos siempre con el prefijo **Q** y separador de miles, y el menor tecleo posible.
 
-Esta es la corrección más importante antes de entregar. El enunciado penaliza con −0.5 las cifras inventadas y con otro −0.5 la política retroactiva o mal aplicada.
+### 2.2.2 Carlos Chávez, cliente de microcrédito
+
+| Campo | Contenido | Fuente |
+|---|---|---|
+| Rol y contexto | Tiene una tienda de barrio. Pidió **Q10,000 a 12 meses** para surtir inventario: es el caso de referencia del P1, con una cuota de **Q1,004.62** y la cuota 12 de **Q1,004.63**. | ENU · NÚC |
+| Dispositivo | Teléfono propio con saldo prepago. A veces tiene datos y a veces no; los SMS siempre le llegan. | DOC · HIP |
+| Conectividad | Variable; en su zona la señal de datos es débil dentro del local. | DOC |
+| Iluminación y entorno | Atiende la tienda mientras habla con la asesora; lo interrumpen clientes. | HIP |
+| Alfabetización digital | Baja a media: lee mensajes y usa WhatsApp, pero no navega por menús complejos ni entiende "TNA", "Actual/360" ni "prelación". | ENU · HIP |
+| Objetivos (en sus palabras) | "Saber cuánto debo, cuándo pago y cuánto me falta." · "Que me avisen antes, no cuando ya me cobraron más." · "Tener un papel o un mensaje que diga que ya pagué." | ENU |
+| Frustraciones actuales | Recibe un solo número ("debe Q1,040.99") sin saber por qué subió. Desconfía de lo que no entiende y lo percibe como una multa arbitraria, exactamente lo que el Acta 09-2026 del comité quiere evitar. | ENU (sección 7.1) · HIP |
+| Relación con la mora | Sabe que atrasarse cuesta más, pero no sabe **cuánto por día** ni que al día 31 se agrega un **gasto de gestión de cobro de Q25.00**. | ENU · NÚC |
+| Cita representativa | *"Si me explican, pago; si me cae de sorpresa, siento que me están robando."* | HIP |
+
+**Qué exige a la interfaz:** lenguaje llano ("lleva 45 días de atraso", no "Mora 2"), cifras que no se puedan malinterpretar, desglose progresivo (primero el total y, al tocarlo, los tramos) y avisos **antes** de cada cambio de tramo por un canal que no dependa de tener datos (SMS).
+
+### 2.2.3 Andrea Morales, gerente de cartera y miembro del comité
+
+| Campo | Contenido | Fuente |
+|---|---|---|
+| Rol y contexto | Gerente de cartera; integra el comité de crédito. Revisa indicadores a diario y presenta el cierre mensual al comité. | ENU |
+| Dispositivo | Computadora de escritorio con monitor grande en oficina; consulta rápida desde el teléfono cuando está en reunión o fuera de la oficina. | ENU · HIP (uso móvil) |
+| Conectividad | Estable en oficina. | ENU |
+| Alfabetización digital | Alta en hojas de cálculo; alta alfabetización financiera. | HIP |
+| Objetivos (en sus palabras) | "En 30 segundos saber si la cartera se está deteriorando." · "Pasar del porcentaje a los créditos concretos." · "Confiar en que el cierre no se duplicó." | ENU · HIP |
+| Frustraciones actuales | Las hojas de cálculo rotulan como "mora" tanto la cartera con cualquier atraso como la cartera en riesgo. Cuando se da de baja un crédito, el indicador de riesgo baja (7.00 % → 6.06 %) y parece una mejora aunque no se cobró nada. | ENU (sección 7.8) · NÚC |
+| Relación con la mora | Decide con cartera en mora (21.75 %), cartera en riesgo (7.00 %), el desglose por tramo e incobrables del período. | ENU · NÚC |
+| Cita representativa | *"No me muestre un número sin decirme qué número es."* | HIP |
+
+**Qué exige a la interfaz:** diseño responsivo pensado para escritorio, densidad alta pero con jerarquía clara, **rótulos y definiciones distintos** para cada indicador, lo dado por incobrable junto a la cartera en riesgo, y navegación de lo general al detalle del crédito (drill-down).
+
+## 2.3 Journey map del flujo principal: de la solicitud a la primera cuota
+
+Escenario: Carlos solicita Q10,000 a 12 meses con Mariela y paga su primera cuota de Q1,004.62. En la variante con atraso (etapas 9b y 9c), la cuota vencida usa el capital de la cuota 2 del caso de referencia (Q725.76), igual que los oráculos M-1 a M-5 del enunciado. Escala emocional: −2 muy negativa … +2 muy positiva.
+
+```mermaid
+journey
+  title Carlos y Mariela: de la solicitud a la primera cuota
+  section Originación
+    1 Solicitud en el negocio: 0: Carlos, Mariela
+    2 Captura de datos y DPI: -1: Mariela
+    3 Evaluación del comité: -1: Carlos
+    4 Aprobación y condiciones: 1: Carlos
+    5 Simulación del plan: 1: Carlos, Mariela
+    6 Desembolso: 2: Carlos
+  section Antes de pagar
+    7 Consulta de saldo: 0: Carlos
+    8 Recordatorio de cuota: 0: Carlos
+  section Pago
+    9 Pago de la primera cuota: -1: Carlos, Mariela
+    10 Comprobante: 1: Carlos
+```
+
+| # | Etapa | Actor | Acción | Emoción | Punto de dolor concreto | Oportunidad de diseño | Pantalla | Fuente |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Solicitud | Carlos, Mariela | Carlos dice cuánto necesita y en cuánto tiempo | 0: expectativa y duda | Mariela escribe "10000" en un campo sin formato; un cero de más (Q100,000) o de menos (Q1,000) no se detecta porque el campo no muestra separador de miles ni los límites Q1,000–Q25,000. | Campo con prefijo Q, formato en vivo "Q10,000.00", rango visible y validación inmediata; plazo con botones de 3 a 24 meses, no teclado. | Solicitud de crédito | ENU · HIP |
+| 2 | Captura | Mariela | Registra DPI, datos del negocio y foto | −1: prisa | La señal se cae a mitad del formulario; al reintentar, la sesión expiró y Mariela debe **recapturar el DPI y los datos del negocio** frente al cliente. | Borrador guardado en el teléfono campo por campo; la sesión no expira mientras hay un borrador; aviso "Guardado en el teléfono". Cumple WCAG 3.3.7 (no pedir de nuevo un dato ya capturado). | Alta de cliente | ENU · HIP |
+| 3 | Evaluación | Comité, Carlos | El comité revisa la solicitud | −1: incertidumbre | Carlos no sabe si su solicitud "está en algún lado". Mariela no puede decirle en qué estado está porque la hoja no guarda el historial. | Estado visible (Solicitado → En evaluación → Aprobado) consultable por la asesora; la bandeja del comité muestra el motivo si se rechaza. | Bandeja del comité | ENU · NÚC (estados) |
+| 4 | Aprobación | Carlos | Recibe la noticia | +1: alivio | Le comunican "aprobado" sin la cuota ni el costo total; Carlos acepta sin saber que pagará **Q2,055.45 de interés**. | Resumen con monto, plazo, tasa en lenguaje llano ("3 % al mes"), cuota y total a pagar antes de confirmar. | Solicitud → simulación | NÚC |
+| 5 | Simulación del plan | Carlos, Mariela | Revisan las 12 cuotas | +1: control | La cuota 12 dice **Q1,004.63** y Carlos cree que hay un error de un centavo. Si la pantalla la oculta o la iguala a Q1,004.62, el plan mostrado no coincide con el cobrado. | Plan con las 12 filas del núcleo y una nota junto a la cuota 12: "1 centavo más para cerrar el saldo exacto". | Plan de amortización | NÚC |
+| 6 | Desembolso | Encargado, Carlos | Se confirma y se entrega el dinero | +2: alegría | Un doble toque en "Desembolsar" con la señal lenta puede generar **dos desembolsos** si la operación no es idempotente. | Pantalla de revisión y confirmación explícita (WCAG 3.3.4), botón deshabilitado tras el primer toque y clave de operación única. | Confirmación de desembolso | ENU · NÚC |
+| 7 | Seguimiento | Carlos | Pregunta cuánto debe | 0 | La cifra que ve Mariela sin señal es de ayer y no dice de qué fecha es; Carlos recibe un saldo desactualizado. | Todo saldo muestra su fecha de corte: "Saldo al 23/09/2026". Sin conexión se rotula como "calculado con datos del 22/09". | Detalle del crédito | ENU · HIP |
+| 8 | Recordatorio | Carlos | Recibe aviso de su primera cuota | 0 | El aviso llega por una app que Carlos no abre sin datos, o llega **el mismo día** del vencimiento. | SMS 3 días antes y el día del vencimiento con monto y fecha; canal a validar con la encuesta (pregunta 12). | (Notificación) | DOC · HIP |
+| 9 | Pago | Mariela, Carlos | Mariela recibe Q1,004.62 y lo registra | −1: tensión | Mariela registra el pago sin señal. La app no dice si se envió; Mariela lo vuelve a intentar y teme **cobrarlo dos veces**. | Estado "Pendiente de enviar · se enviará solo al tener señal", misma clave de idempotencia en cada reintento y comprobante provisional. | Registro de pago en campo | ENU · NÚC |
+| 9b | (Variante) Pago con atraso de 45 días | Mariela, Carlos | La cuota vencida suma Q1,047.76 | −2: sorpresa | Carlos esperaba pagar Q1,004.62 y le piden **Q1,047.76** sin explicación: Q25.00 de gasto + Q18.14 de mora + Q278.86 de interés + Q725.76 de capital. | Desglose en el orden de la prelación, con "¿por qué?" en cada concepto. | Detalle de la mora | NÚC (M-5) |
+| 9c | (Variante) Cambio de tramo | Carlos | Pasa del día 30 al 31 | −2: enojo | En un día, el total de la cuota pasa de **Q1,015.51 a Q1,040.99** (+Q25.48) y Carlos se entera en la visita de cobro, cuando ya ocurrió. | Momento crítico MC-4 (§2.4.1). | Detalle de la mora + aviso | NÚC · HIP |
+| 10 | Comprobante | Carlos | Recibe comprobante | +1: confianza | Un comprobante que solo dice "Pagado Q1,004.62" no permite comprobar cuánto fue a interés (Q300.00) y cuánto a capital (Q704.62). | Comprobante con la prelación aplicada y el saldo resultante (Q9,295.38), enviado por SMS o impreso. | Registro de pago → comprobante | NÚC |
+
+Cifras de la primera cuota según el núcleo: interés Q300.00 + capital Q704.62 = Q1,004.62; el saldo pasa de Q10,000.00 a Q9,295.38.
+
+## 2.4 Momentos críticos: error de interfaz → error de dinero
+
+Cada momento indica la causa en la interfaz, la consecuencia monetaria con cifras del núcleo y el control de diseño que la previene.
+
+| ID | Momento | Error de interfaz | Consecuencia en dinero | Prevención (diseño) | Recuperación |
+|---|---|---|---|---|---|
+| **MC-1** | Captura del monto en la solicitud | Campo numérico sin formato ni límites; se teclea "1000" en lugar de "10000" o se escribe un punto decimal como separador de miles | Un crédito de Q1,000 en vez de Q10,000 cambia **las 12 cuotas** (de Q1,004.62 a unos Q100.46) y el contrato firmado no refleja lo solicitado | Prefijo Q, formato en vivo, rango Q1,000–Q25,000 visible, resumen "Diez mil quetzales" en letras antes de confirmar | Botón "Editar" en la pantalla de revisión; nada se envía sin confirmación (WCAG 3.3.4) |
+| **MC-2** | Registro de un pago sin señal | La app no muestra el estado del envío y Mariela toca "Registrar" otra vez o captura el pago de nuevo | **Doble cobro**: Q1,004.62 × 2; el cliente pierde la confianza | Cola local con **la misma Idempotency-Key** en cada reintento; estado visible Pendiente / Enviado / Confirmado; el botón se bloquea tras el primer toque (ver E4) | Si el servidor responde que la clave ya existe, se muestra el pago original y no se crea otro |
+| **MC-3** | Lectura del tablero gerencial | Rotular igual "cartera en mora" (21.75 %) y "cartera en riesgo" (7.00 %), o mostrar solo uno sin decir cuál es | El comité decide sobre el número equivocado: provisiona o restringe la colocación por 21.75 % cuando el riesgo real es 7.00 %, o celebra un 6.06 % que solo bajó por la baja de C-005 | Dos tarjetas con nombre, definición y forma distintos; incobrables del período junto al riesgo (ver §3.5) | Enlace "¿Qué incluye?" en cada indicador, que abre el desglose por tramo |
+| **MC-4** | **El cliente descubre que su mora subió de tramo** | Sin aviso previo: el cliente se entera después y por la persona que le cobra | +Q25.48 en un día (Q1,015.51 → Q1,040.99), percibidos como multa arbitraria; más probabilidad de disputa y de dejar de pagar | Aviso preventivo por SMS y detalle por tramos (ver §2.4.1) | La pantalla de detalle de la mora permite verificar tramo por tramo |
+
+### 2.4.1 MC-4 en detalle: el cambio de tramo
+
+El enunciado pregunta: *¿Se enteró antes o después? ¿Por qué canal?*
+
+**Situación actual (con hojas de cálculo):** Carlos se entera **después** y **en persona**. La política escalonada genera el gasto de gestión de cobro precisamente al entrar en Mora 2 (día 31), que es también cuando "se activa la gestión de cobro en campo" (sección 7.2). Por eso el primer contacto de Carlos con el nuevo tramo es la visita de Mariela, que llega a cobrar un total que ya subió.
+
+| Día de atraso de la cuota 2 (capital Q725.76) | Tramo | Mora acumulada | Gasto de cobro | Total de la cuota (gasto + mora + Q278.86 + Q725.76) |
+|---|---|---|---|---|
+| 15 | Mora 1 | Q5.44 | Q0.00 | Q1,010.06 |
+| 28 | Mora 1 | Q10.16 | Q0.00 | Q1,014.78 |
+| 30 | Mora 1 | Q10.89 | Q0.00 | Q1,015.51 |
+| **31** | **Mora 2** | **Q11.37** | **Q25.00** | **Q1,040.99** |
+| 45 | Mora 2 | Q18.14 | Q25.00 | Q1,047.76 |
+| 60 | Mora 2 | Q25.40 | Q25.00 | Q1,055.02 |
+| 61 | Mora 3 | Q26.01 | Q25.00 | Q1,055.63 |
+| 91 | Vencido | Q44.27 | Q25.00 | Q1,073.89 |
+
+Además, en los días 1 a 30 la mora crece Q0.36 por día y en los días 31 a 60 crece Q0.48 por día. Esto responde a la pregunta del objetivo de aprendizaje: *por qué su mora creció más rápido este mes que el anterior*.
+
+**Situación propuesta: Carlos se entera antes, por dos canales.**
+
+| Cuándo | Canal | Mensaje (lenguaje llano, a validar con clientes) | Por qué ese canal |
+|---|---|---|---|
+| Día 28 de atraso | **SMS** | "Crédito Vecino: su cuota 2 lleva 28 días de atraso. Si paga en los próximos 2 días debe Q1,015.51. Después se agrega un cargo de visita de cobro de Q25.00." | Llega sin datos móviles; hay más conexiones móviles que usuarios de internet (DOC) |
+| Día 31 (al entrar en Mora 2) | **SMS** + visita de la asesora | "Su cuota 2 pasó a más de 30 días de atraso. Ahora debe Q1,040.99. Pida a su asesora el detalle." | Confirma el cambio; el detalle se explica en persona |
+| En la visita | **Pantalla "Detalle de la mora"**, en el teléfono de la asesora | Desglose por tramos recorridos: "30 días a 18 % al año → Q10.89 · 1 día a 24 % → Q0.48 · total redondeado una vez → Q11.37" | El cliente puede verificar; la asesora no tiene que improvisar la explicación |
+
+El sistema calcula el plazo con la fecha de vencimiento real de la cuota más 30 días, a partir de la fecha de corte que recibe como parámetro. El núcleo expone el tramo (`clasificarTramoMora`) y el desglose (`detalle.tramos`), así que la interfaz no recalcula nada: solo presenta. El umbral de "3 días antes" y la redacción son hipótesis que se validan con las preguntas 9 y 10 de la guía de cliente y con las preguntas 11 y 12 de la encuesta.
+
+## 2.5 Oportunidades priorizadas y trazabilidad hacia E2–E4
+
+| ID | Oportunidad | Perfil | Prioridad | Dónde se resuelve |
+|---|---|---|---|---|
+| OP-1 | Borrador local y cola de pagos idempotente | Asesora | Alta | §5.4 · pantallas Alta de cliente y Registro de pago |
+| OP-2 | Revisión de monto, plazo y cuota antes de confirmar | Asesora, cliente | Alta | E2 · Solicitud, Simulación y Confirmación de desembolso |
+| OP-3 | Mora explicada por tramos y avisada antes | Cliente | Alta | E2 · Detalle de la mora; aviso por SMS (MC-4) |
+| OP-4 | Indicadores de mora y de riesgo claramente diferenciados | Gerencia | Alta | §3.5 · Tablero gerencial |
+| OP-5 | Objetivos táctiles grandes y alto contraste | Asesora | Media-alta | §5.3 · sistema responsivo |
+| OP-6 | Comprobante con la prelación aplicada | Cliente | Media-alta | E2 · Comprobante |
+
+## 2.6 Plan de validación pendiente
+
+1. Aplicar al menos una entrevista por perfil (guías en `e1-instrumentos-investigacion.md`) y una observación de una tarea de captura o cobro al aire libre.
+2. Actualizar la columna "Fuente" de cada rasgo marcado HIP a **Validado**, **Corregido** o **Descartado**, con el código anónimo del participante.
+3. Probar la comprensión de la pantalla "Detalle de la mora" (caso M-3) con al menos tres personas sin formación financiera.
+
+## 2.7 Referencias
+
+- Banco Mundial (2025). *The Global Findex Database 2025: Connectivity and Financial Inclusion in the Digital Economy*. https://www.worldbank.org/en/publication/globalfindex
+- Banco Mundial (2025). *Guatemala 2024 Global Findex Microdata*. https://doi.org/10.48529/ad4w-j084
+- Grupo Banco Mundial (2026). *Guatemala: panorama general*. https://www.bancomundial.org/ext/es/country/guatemala
+- DataReportal (2024). *Digital 2024: Guatemala*. https://datareportal.com/reports/digital-2024-guatemala
+- Prensa Libre (2020). *Guatemala, entre los nueve países con baja conectividad rural*, con datos de IICA, BID y Microsoft. https://www.prensalibre.com/economia/guatemala-entre-los-nueve-paises-con-baja-conectividad-rural-y-las-claves-para-ampliar-la-cobertura/
+- Superintendencia de Bancos de Guatemala (2024). *Estrategia Nacional de Inclusión Financiera 2024-2027*. https://www.sib.gob.gt/estrategia-nacional-de-inclusion-financiera-guatemala-2024-2027/
+- Universidad Mariano Gálvez de Guatemala (2026). *Enunciado del Proyecto 2*, secciones 3, 7 y 9.
+
+---
+
+# 3. E2 · Arquitectura de información y wireframes
+
+Con las personas definidas, organizamos la aplicación. Este capítulo presenta el mapa de navegación, la tabla de correspondencia pantalla ↔ caso de uso que exige la sección 6.1 y los wireframes de baja fidelidad. Los wireframes se produjeron **antes** del prototipo de alta fidelidad y están completos en el Anexo A. Al final se justifica la jerarquía del tablero gerencial y cómo se distinguen la cartera en mora y la cartera en riesgo.
+
+## 3.1 Principios que ordenan la información
+
+Cada principio sale de un hallazgo de [E1](e1-investigacion-usuario.md):
+
+1. **Una aplicación, tres puertas de entrada.** Al iniciar sesión, cada rol ve su propio inicio: la asesora ve su **Ruta del día**, la gerencia el **Tablero** y el comité su **Bandeja**. No hay una "pantalla para todos" (enunciado, sección 3).
+2. **Cada pantalla invoca un puerto primario del P1.** La interfaz no calcula cifras: presenta lo que devuelve el núcleo (sección 6.2). Por eso cada wireframe indica de qué función sale cada número.
+3. **El estado de envío siempre está a la vista** en el móvil: En línea, Sin señal · N pendientes o Enviando (heurística 1 de Nielsen, OP-1).
+4. **Toda cifra muestra su fecha de corte.** El tramo depende de la fecha, y la fecha de corte es un parámetro (puerto `Reloj`), no "hoy".
+5. **La ayuda (?) está en el mismo lugar en todas las pantallas** (WCAG 3.2.6).
+
+## 3.2 Mapa de navegación
+
+```mermaid
+flowchart TB
+  L[Inicio de sesión] --> R{Rol}
+
+  R -->|Asesora| W01[W01 Ruta del día]
+  W01 --> W02[W02 Buscar cliente o crédito]
+  W01 --> PEND[Pendientes de envío]
+  W02 --> W07[W07 Detalle del crédito]
+  W02 -->|no existe| W03[W03 Alta de cliente]
+  W03 --> W04[W04 Solicitud de crédito]
+  W04 --> W05[W05 Simulación / plan de pagos]
+  W05 -->|cambiar monto o plazo| W04
+  W05 -->|confirmar| COLA[(Solicitud enviada al comité)]
+  W07 --> W08[W08 Detalle de la mora]
+  W07 --> W05b[W05 Plan de pagos]
+  W07 --> W09[W09 Registro de pago]
+  W09 --> REV[Revisión y confirmación]
+  REV --> W10[W10 Comprobante]
+  W10 --> W01
+
+  R -->|Comité| W13[W13 Bandeja del comité]
+  W13 -->|aprobar| W06[W06 Confirmación de desembolso]
+  W13 -->|rechazar con motivo| W13
+
+  R -->|Gerencia| W11[W11 Tablero gerencial]
+  W11 --> W12[W12 Detalle de un tramo]
+  W12 --> W07g[W07 Detalle del crédito · solo lectura]
+  W11 --> W14[W14 Cierre diario / mensual]
+  W11 -.-> CHAT[[Asistente · Proyecto Final]]
+```
+
+Versión en imagen, con carriles por perfil: [wireframes/mapa-navegacion.svg](wireframes/mapa-navegacion.svg).
+
+Los tres flujos navegables que exige E3 recorren este mapa así:
+
+| Flujo E3 | Recorrido en el mapa |
+|---|---|
+| 1. Originación | W04 Solicitud → W05 Simulación → W13 Decisión del comité → W06 Confirmación de desembolso |
+| 2. Cobro en campo | W02 Buscar → W07 Saldo y tramo → W08 Desglose de la mora → W09 Registrar pago → W10 Comprobante |
+| 3. Consulta gerencial | W11 Tablero → tramo de la cartera en riesgo → W12 Créditos de ese tramo |
+
+## 3.3 Tabla de correspondencia pantalla ↔ caso de uso
+
+### 3.3.1 Tabla obligatoria de la sección 6.1
+
+| Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, sección 8) | Caso de uso P1 | Pantalla P2 | Wireframe |
+|---|---|---|---|---|
+| RegistrarCliente | `RegistrarCliente` | CU-01 Registrar cliente | Alta de cliente | W03 |
+| SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Solicitud de crédito (+ simulación del plan) | W04, W05 |
+| EvaluarSolicitud | `EvaluarCredito` + `DecidirSolicitud` | CU-03 Evaluar, CU-04 Aprobar, CU-05 Rechazar | Bandeja del comité | W13 |
+| DesembolsarCredito | `DesembolsarCredito` | CU-06 Desembolsar crédito | Confirmación de desembolso | W06 |
+| RegistrarPago | `RegistrarPago` | CU-07 Registrar pago | Registro de pago en campo (+ comprobante) | W09, W10 |
+| ConsultarCarteraEnRiesgo | `ConsultarCarteraEnRiesgo` | CU-14 Consultar cartera en riesgo | Tablero gerencial (+ detalle de tramo) | W11, W12, W15 |
+| GenerarCierre | `GenerarCierre` | CU-12 Cierre diario, CU-13 Cierre mensual | Cierre diario / mensual | W14 |
+
+> **Nota de coherencia.** En el P1 el puerto que el enunciado llama `EvaluarSolicitud` quedó dividido en dos puertos: `EvaluarCredito` (el analista registra la evaluación) y `DecidirSolicitud` (el comité aprueba o rechaza). La Bandeja del comité usa ambos. No se cambia el nombre de los puertos del P1, para respetar la regla de incrementalidad.
+
+### 3.3.2 Pantallas de apoyo: también corresponden a un caso de uso
+
+La penalización de la sección 10 aplica a pantallas **sin** caso de uso. Por eso se trazan también las pantallas que no aparecen en la tabla 6.1:
+
+| Pantalla | Puerto P1 | Caso de uso | Wireframe | Función del núcleo que provee las cifras |
+|---|---|---|---|---|
+| Ruta del día | `ConsultarCredito` (lista filtrada por asesora) | CU-15 | W01 | `consultarMora` (días y tramo por cuota) |
+| Buscar cliente o crédito | `ConsultarCredito` | CU-15 | W02 | — |
+| Detalle del crédito | `ConsultarCredito` + `CalcularMora` | CU-15, CU-08 | W07 | `consultarMora`, `clasificarTramoMora` |
+| Plan de amortización | `SolicitarCredito` (simulación) / `ConsultarCredito` | CU-02, CU-15 | W05 | `plan-amortizacion.ts` |
+| Detalle de la mora | `CalcularMora` | CU-08 | W08 | `CalculadoraMora.calcular` → `detalle.tramos` |
+| Comprobante | `RegistrarPago` (resultado) | CU-07 | W10 | `prelacion-pago.ts`, `gasto-gestion-cobro.ts` |
+| Tablero en teléfono | `ConsultarCarteraEnRiesgo` | CU-14 | W15 | `calcularCarteraPorTramo` |
+
+Ningún caso de uso principal queda sin pantalla. `ReestructurarCredito` (CU-10), `DeclararIncobrable` (CU-11), `AnularCredito` (CU-17) y `AdministrarPolitica` (CU-16) son operaciones administrativas que el enunciado no exige prototipar. Se accederán desde el detalle del crédito en la vista de gerencia (W12 → W07) en el Proyecto Final. CU-18 Cancelar crédito no tiene pantalla propia porque ocurre como resultado de un pago que deja el saldo en Q0.00 (CP-04.1).
+
+## 3.4 Wireframes de baja fidelidad
+
+Los wireframes están en [`wireframes/`](wireframes) en formato SVG, en escala de grises, y cada uno lleva anotaciones numeradas que explican las decisiones. Son evidencia del proceso: preceden al prototipo de alta fidelidad en Figma (E3), donde se aplicarán color, tipografía y componentes. Todas las cifras son las del caso de referencia y las de los oráculos del núcleo.
+
+### 3.4.1 Asesora y cliente (móvil, 360 × 720)
+
+| # | Pantalla | Decisión principal | Archivo |
+|---|---|---|---|
+| W01 | Ruta del día | Aviso de conexión fijo arriba; cada tarjeta de cliente completa es el objetivo táctil | ![W01](wireframes/W01-ruta-del-dia.svg) |
+| W02 | Buscar | Búsqueda por nombre parcial, DPI o número de crédito; funciona sin señal sobre la cartera de la ruta | ![W02](wireframes/W02-buscar-cliente.svg) |
+| W03 | Alta de cliente | Foto del DPI para autocompletar; borrador guardado en el teléfono por campo | ![W03](wireframes/W03-alta-cliente.svg) |
+| W04 | Solicitud | Monto con prefijo Q, formato en vivo, rango y monto en letras; plazo con botones | ![W04](wireframes/W04-solicitud-credito.svg) |
+| W05 | Plan de pagos | Las 12 cuotas del núcleo; la cuota 12 de Q1,004.63 resaltada y explicada | ![W05](wireframes/W05-plan-amortizacion.svg) |
+| W06 | Confirmación de desembolso | Resumen completo + casilla "el cliente revisó" + salida "Volver y corregir" | ![W06](wireframes/W06-confirmacion-desembolso.svg) |
+| W07 | Detalle del crédito | Lo que debe hoy va primero; tramo en lenguaje llano; aviso del siguiente tramo | ![W07](wireframes/W07-detalle-credito.svg) |
+| W08 | Detalle de la mora | Caso M-3: una fila por tramo recorrido y un total redondeado una sola vez | ![W08](wireframes/W08-detalle-mora.svg) |
+| W09 | Registro de pago | Prelación visible **antes** de confirmar; aviso sin conexión | ![W09](wireframes/W09-registro-pago.svg) |
+| W10 | Comprobante | Estados Pendiente / Enviado / Confirmado; clave de operación visible | ![W10](wireframes/W10-comprobante.svg) |
+
+### 3.4.2 Gerencia y comité (escritorio, 1280 × 760)
+
+| # | Pantalla | Archivo |
+|---|---|---|
+| W11 | Tablero gerencial | ![W11](wireframes/W11-tablero-gerencial.svg) |
+| W12 | Detalle de un tramo | ![W12](wireframes/W12-detalle-tramo.svg) |
+| W13 | Bandeja del comité | ![W13](wireframes/W13-bandeja-comite.svg) |
+| W14 | Cierre diario / mensual | ![W14](wireframes/W14-cierre.svg) |
+| W15 | Tablero en teléfono (ver E4) | ![W15](wireframes/W15-tablero-movil.svg) |
+
+### 3.4.3 La pantalla difícil: Detalle de la mora (W08)
+
+El enunciado advierte que mostrar solo "Mora: Q50.80" no permite verificar nada, y que mostrar la fórmula completa no se entiende. El punto intermedio elegido:
+
+| Qué muestra | Qué oculta | Por qué |
+|---|---|---|
+| Rango de días de cada tramo ("Días 31–60") | La palabra "Mora 2" | El cliente entiende días, no nombres de tramo (heurística 2 de Nielsen) |
+| Tasa **anual** ("24 % al año") | La tasa diaria 0.000666667 | Una tasa diaria no significa nada para Carlos |
+| Días recorridos en cada tramo y una barra proporcional | La fórmula Σ capital × tasa × días / 360 | La barra muestra que el último tramo tiene solo 10 días |
+| Importe por tramo a 2 decimales con asterisco | Los importes con 4 decimales (Q10.8864…) | Legibilidad |
+| **Nota de redondeo**: "Suma exacta Q50.8032, redondeada una sola vez al final" | — | Si se redondea cada fila por separado, la suma da **Q50.81**, no Q50.80. Sin la nota, el cliente que suma las filas ve un error de un centavo. La nota hace visible la regla 7.3 en lugar de esconderla |
+| Contraste con la política retroactiva (Q72.58), "no se cobra así" | — | Da confianza: muestra que la regla favorece al cliente |
+
+Los importes por tramo salen de `detalle.tramos[].importeSinRedondear` y el total de `interesMoratorio`. La interfaz solo formatea: nunca suma ni redondea por su cuenta.
+
+## 3.5 Jerarquía del tablero gerencial (W11)
+
+### 3.5.1 Qué se ve primero y por qué
+
+El tablero se lee en forma de Z, de izquierda a derecha y de arriba abajo. El orden sigue las preguntas que Andrea trae al comité (§2.2.3):
+
+| Orden | Zona | Contenido (cifras del núcleo) | Pregunta que responde | Por qué en ese lugar |
+|---|---|---|---|---|
+| 0 | Línea de contexto | Fecha de corte, "cierre congelado ✓" y política por fecha de otorgamiento | ¿De cuándo son estos números? ¿Son definitivos? | Un indicador sin fecha no sirve para decidir; con la mora escalonada, el tramo depende de la fecha |
+| 1 | Tarjeta principal, arriba a la izquierda | **Cartera en riesgo 7.00 %** (Q56,000 de Q800,000) | ¿Cuánto de la cartera está en deterioro real? | Es el indicador sobre el que decide el comité (provisiones, restricciones de colocación) |
+| 2 | Junto al riesgo | **Dado por incobrable en el período** (C-007) | ¿El riesgo bajó porque cobramos o porque dimos de baja? | El enunciado exige mostrarlo junto al riesgo: declarar incobrable a C-005 bajaría el indicador de 7.00 % a 6.06 % sin cobrar nada |
+| 3 | Tercera tarjeta | **Cartera en mora 21.75 %** (Q174,000) | ¿Cuántos clientes tienen algún atraso? | Es una alerta temprana útil, pero no es la base de la decisión de riesgo; por eso va después |
+| 4 | Bloque central | Riesgo por tramo: 3.00 + 2.25 + 1.00 + 0.75 = **7.00 %** | ¿Dónde está concentrado el riesgo? | Explica la tarjeta 1 y es la entrada al detalle (flujo 3 de E3) |
+| 5 | Parte inferior | Desembolsos y recuperaciones del período | ¿Cómo se movió la cartera en el período? | Contexto de actividad; se consulta después de entender el riesgo |
+| — | Panel derecho plegable | Asistente conversacional (Proyecto Final) | "¿Por qué subió la mora de…?" | Ver §3.5.3 |
+
+### 3.5.2 Cómo se distinguen la cartera en mora y la cartera en riesgo
+
+Confundir estos dos indicadores es un hallazgo de severidad 4 y una penalización de −0.5 puntos (sección 10). El diseño los separa con **cinco señales independientes**, para que ninguna dependa solo del color (WCAG 1.4.1):
+
+| Señal | Cartera en RIESGO | Cartera en MORA |
+|---|---|---|
+| Rótulo | "Cartera en **RIESGO**" | "Cartera en **MORA**" (la palabra distinta, en mayúsculas) |
+| Definición visible bajo la cifra | "Más de 30 días + reestructurados" | "Cualquier atraso ≥ 1 día" |
+| Símbolo | ▲ | ● |
+| Borde de la tarjeta | Grueso y continuo (indicador principal) | Discontinuo |
+| Posición | Primera, junto a incobrables | Tercera, separada por la tarjeta de incobrables |
+| Color en alta fidelidad (E3) | Color de alerta del sistema de diseño | Neutro / informativo |
+
+Además, el bloque de tramos explica expresamente por qué Mora 1 no forma parte del riesgo ("Q124,000 con atraso ≤ 30 días se ven en *Cartera en mora*"). Así, un lector que sume los tramos no busca el 21.75 % en ese bloque.
+
+Origen de las cifras: `calcularCarteraPorTramo` devuelve `carteraActiva`, `tramosEnRiesgo[]`, `totalEnRiesgo`, `carteraEnMora` e `incobrablesDelPeriodo`. Los porcentajes llegan ya conciliados para que sumen exactamente el total (invariante 7 de la sección 7.9). El tablero no recalcula nada (CP-04.3). El enunciado no da el saldo de C-007; el tablero lo toma de `incobrablesDelPeriodo` del cierre, por eso el wireframe no muestra un monto inventado.
+
+> **Observación para el equipo.** En `tests/cartera-por-tramo.test.ts` los créditos se llaman C-001, C-002… con las cifras de la sección 7.8, pero los identificadores no coinciden con los del enunciado (C-003 con 45 días, C-004 con 75 días, etc.). Los montos y porcentajes sí coinciden. El prototipo usa los identificadores del enunciado; conviene alinear el fixture para que la defensa no se preste a confusión.
+
+### 3.5.3 El lugar del asistente (sección 6.3)
+
+El chat del Proyecto Final ocupa una **columna derecha plegable** (W11) y, en el teléfono, un botón flotante que abre el chat a pantalla completa (W15). Justificación:
+
+- **No tapa las cifras**: las tarjetas y el desglose quedan a la izquierda, en el recorrido natural de lectura.
+- **Convive con el tablero**: la gerencia puede preguntar "¿por qué C-004 está en Mora 3?" mientras ve el tramo. El asistente responde con la misma fuente que el tablero (el núcleo) y cita de dónde sale cada cifra.
+- **Plegable**: si no se usa, el tablero recupera ancho sin reorganizarse.
+
+## 3.6 Qué se validará en E3 y E5
+
+- Prueba de lectura del tablero (cinco segundos): ¿qué porcentaje reporta el participante como "riesgo"?
+- Prueba de comprensión de W08 con tres personas sin formación financiera: ¿pueden explicar por qué la mora de los días 91–100 es de Q7.26 si son solo 10 días?
+- Tiempo para registrar un pago con una mano, de pie (W09): objetivo de menos de 30 segundos y 4 toques desde W07.
+
+*Uso de IA declarado (sección 15):* los SVG de baja fidelidad se generaron con apoyo de un asistente de IA a partir de las decisiones del equipo, mediante el script `wireframes/generar_wireframes.py`, que es editable. Las decisiones de jerarquía y su justificación son del equipo y deben revisarse antes de la entrega.
+
+---
+
+# 4. E3 · Prototipo navegable en Figma
+
+## 4.1 Enlace y acceso
+
+**Prototipo:** https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1
+
+El enlace abre sin iniciar sesión en Figma, como pide la sección 13. El archivo se llama *Microcréditos App* y la pantalla inicial es *Asesor de Crédito – Móvil*. Es un prototipo navegable, no una serie de imágenes: cada flujo se recorre haciendo clic.
+
+## 4.2 Cómo recorrerlo
+
+| Paso | Qué hacer | Qué se ve |
+|---|---|---|
+| 1 | *Ingresar* en la pantalla de inicio de sesión | **Mis Clientes**: cartera de la asesora ordenada por prioridad, con la etiqueta de tramo (Incobrable, Mora 3, Mora 2, Mora 1, Al día) y los días de atraso |
+| 2 | **Flujo de cobro:** tocar la tarjeta de *Pedro Xol Cux* | **Detalle del crédito**: estado, saldo, próxima cuota, monto original, plazo y tasa |
+| 3 | Botón *Plan de pago* | **Plan de amortización** del caso de referencia: Q10,000, 12 meses, 3 % mensual, con la cuota 12 de Q1,004.63 resaltada |
+| 4 | Botón *Detalle mora* | **Detalle de mora** por tramo recorrido |
+| 5 | *Registrar pago* → tocar el monto → *Revisar y confirmar* | **Registrar pago** con la prelación visible antes de aplicar (gastos → mora → interés → capital) |
+| 6 | *Aplicar pago* | **Pago aplicado**: comprobante con número y distribución del pago, más opciones para enviarlo por WhatsApp o imprimirlo |
+| 7 | **Variante sin señal:** en *Confirmar pago*, tocar *Simular pago sin señal (demo)* y luego *Aplicar pago* | **Sin señal**: pago en cola, estado "Pendiente", folio y botón *Sincronizar ahora* |
+| 8 | **Flujo de originación:** en *Mis Clientes*, botón **+** | **Nueva solicitud** (cliente, monto con límites y plazo) → **Simulación de pago** → **Confirmar solicitud** → **Solicitud enviada** |
+| 9 | Tocar las iniciales *MA* | **Mi perfil** de la asesora: zona, ruta, cartera asignada y estado de sincronización |
+
+## 4.3 Lo que el prototipo resuelve bien
+
+Recorrimos el prototipo completo el 23 de septiembre de 2026. Estas decisiones cumplen lo que pide el enunciado y lo que encontramos en la investigación (E1):
+
+- **La captura del monto es difícil de equivocar:** botones − y +, montos rápidos (Q2k, Q5k, Q10k…) y el rango "Q1,000 – Q25,000 en pasos de Q500" siempre visible. Esto responde al momento crítico MC-1.
+- **El plazo se elige con botones** (3 a 24 meses), sin teclado.
+- **Siempre hay una revisión antes de confirmar.** La solicitud tiene tres pasos, y el pago pasa por "Confirme antes de aplicar", con la salida "← Modificar monto". Esto cumple WCAG 3.3.4 (prevención de errores en transacciones financieras).
+- **La prelación se ve antes de aplicar el pago**, con una barra por concepto.
+- **El plan de amortización usa el caso de referencia real:** Q10,000 al 3 % mensual, las 12 cuotas, interés total Q2,055.45, total Q12,055.45 y la cuota 12 de Q1,004.63 resaltada.
+- **La simulación de Q5,000 a 12 meses coincide con el núcleo:** cuota de Q502.31, exactamente la mitad del caso de referencia.
+- **Hay un flujo sin señal** con el pago en cola, su estado y un botón manual de sincronización. Esto responde a MC-2 y a la estrategia del E4.
+- Los objetivos táctiles son grandes y los botones principales tienen alto contraste, algo importante para trabajar bajo el sol.
+
+## 4.4 Correspondencia con las pantallas y los flujos obligatorios
+
+| Requisito del E3 | Perfil / formato | Estado en el prototipo | Acción pendiente |
+|---|---|---|---|
+| Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ Nueva solicitud + Simulación de pago | — |
+| Detalle del crédito | Cliente/Asesor · móvil | ✅ | Agregar el tramo en lenguaje llano ("lleva 45 días de atraso") |
+| Registro de pago con desglose de la prelación | Asesor · móvil | ✅ | Corregir las cifras (§4.5) |
+| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ La cuota 12 está resaltada, pero sin explicación | Agregar la nota "1 centavo más para cerrar el saldo exacto en Q0.00" |
+| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ Muestra tasas y montos que no son los del núcleo | Rehacer con el caso M-3 (§4.5) |
+| Tablero gerencial | Gerencia · escritorio | ❌ No existe todavía | Construir a partir del wireframe W11 |
+| Cierre diario / mensual | Gerencia · escritorio | ❌ No existe todavía | Construir a partir del wireframe W14 |
+| Confirmación de desembolso (tabla 6.1) | Encargado · móvil | ❌ | Agregar después de "Solicitud enviada", a partir de W06 |
+| Bandeja del comité y Alta de cliente (tabla 6.1) | Comité / Asesor | ❌ | Recomendable, a partir de W13 y W03 |
+| Flujo 1: solicitud → simulación → confirmación → desembolso | — | ⚠️ Termina en "Solicitud enviada" | Agregar el desembolso |
+| Flujo 2: buscar → saldo y tramo → mora → pago → comprobante | — | ✅ | — |
+| Flujo 3: tablero → riesgo por tramo → créditos del tramo | — | ❌ | Depende del tablero |
+| *Mi perfil* | — | Existe, pero no corresponde a ningún caso de uso | Justificarla como soporte de sesión o retirarla (la sección 10 resta 0.5 puntos por pantalla sin caso de uso) |
+
+## 4.5 Cifras que deben coincidir con el núcleo (sección 6.2)
+
+El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal la política de mora. Estas son las diferencias encontradas y cómo corregirlas.
 
 **Pantalla "Detalle de mora"**
 
-| Lo que muestra hoy | Lo que dice la política | Cómo corregirlo |
+| Lo que muestra hoy | Lo que dice la política y calcula el núcleo | Corrección |
 |---|---|---|
-| "Tasa adicional mensual" de 0.5 %, 1.0 %, 1.5 % y 2.0 % | Tasas **anuales** de 18 %, 24 %, 30 % y 36 % (1.5 %, 2 %, 2.5 % y 3 % mensual) | Mostrar "18 % al año", "24 % al año", etc. |
-| Recargo calculado sobre el **saldo total** (Q6,240.50) | Sobre el **capital en mora de la cuota vencida**, cuota por cuota | Usar el caso M-3: capital Q725.76 |
-| Total de recargos Q228.81 | M-3 = **Q50.80** (Q10.8864 + Q14.5152 + Q18.1440 + Q7.2576, redondeado una vez) | Poner Q10.89 · Q14.52 · Q18.14 · Q7.26 y la nota de redondeo (Q50.80, no Q50.81) |
-| "Total a pagar hoy Q6,469.31" (saldo + recargos) | Lo exigible de la cuota: gastos + mora + interés corriente + capital | Para 45 días: Q25.00 + Q18.14 + Q278.86 + Q725.76 = **Q1,047.76** (M-5) |
-| Entra desde el crédito de Pedro (132 días, incobrable), pero muestra 100 días y el saldo de Rosa | Un crédito incobrable deja de generar mora después del día 120 | Enlazar desde un crédito con 100 días de atraso, o mostrar la mora congelada en Q65.32 si el crédito ya es incobrable |
+| "Tasa adicional mensual" de 0.5 %, 1.0 %, 1.5 % y 2.0 % | Tasas **anuales** de 18 %, 24 %, 30 % y 36 % (1.5 %, 2 %, 2.5 % y 3 % mensual), base Actual/360 | Mostrar "18 % al año", "24 % al año", etc. |
+| Recargo calculado sobre el **saldo total** (Q6,240.50) | Se calcula sobre el **capital en mora de cada cuota vencida**, por separado | Usar el caso M-3: capital Q725.76 |
+| Total de recargos Q228.81 | M-3 = **Q50.80** (10.8864 + 14.5152 + 18.1440 + 7.2576 = 50.8032, redondeado una sola vez) | Mostrar Q10.89 · Q14.52 · Q18.14 · Q7.26 con la nota de redondeo: Q50.80, no Q50.81 |
+| "Total a pagar hoy Q6,469.31" (saldo + recargos) | Lo exigible de la cuota: gastos + mora + interés corriente + capital | A 45 días: Q25.00 + Q18.14 + Q278.86 + Q725.76 = **Q1,047.76** (caso M-5) |
+| Se abre desde un crédito incobrable (132 días), pero muestra 100 días y el saldo de otro cliente | Después de 120 días el crédito es incobrable y deja de generar mora (invariante 8) | Abrirla desde un crédito con 100 días de atraso, o mostrar la mora congelada en Q65.32 |
 
 **Otras pantallas**
 
-- **Registrar pago:** muestra "Gastos de gestión Q150.00". La política es **Q25.00 por cuota vencida**, generado una sola vez al día 31.
-- **Solicitud enviada:** el cliente cambia de *Carlos Martínez Ixcot* (el seleccionado) a *Juan Pablo Pérez Xol*.
-- **Pantalla sin señal:** el folio cambia de *PAG-251250* a *PAG-309097* al tocar "Sincronizar ahora". El folio representa la **clave de idempotencia**, que **debe ser la misma en cada reintento** (E4 §7.4). Si cambia, la pantalla contradice nuestra propia estrategia contra el doble cobro.
+| Pantalla | Diferencia | Corrección |
+|---|---|---|
+| Registrar pago | "Gastos de gestión Q150.00" | La política es **Q25.00 por cuota vencida**, generado una sola vez al día 31 (CP-02) |
+| Solicitud enviada | El cliente cambia de *Carlos Martínez Ixcot* (el seleccionado) a *Juan Pablo Pérez Xol* | Mantener el cliente elegido en el paso 1 |
+| Sin señal | El folio cambia de *PAG-251250* a *PAG-309097* al tocar "Sincronizar ahora" | El folio representa la **clave de idempotencia** y debe ser el mismo en todos los reintentos (E4, §5.4.2) |
 
 ---
 
-## 7. E4 · Decisión móvil/web y diseño responsivo
+# 5. E4 · Decisión de arquitectura móvil/web y diseño responsivo
 
-### 7.1 Decidimos: una sola aplicación web progresiva (PWA)
+Este capítulo decide cómo se construye la aplicación: nativa, híbrida o PWA. La decisión se argumenta contra el contexto real de cada perfil. Explica también cómo se transforma el tablero entre el teléfono y el escritorio, y qué pasa cuando la asesora registra un pago sin señal. Esa última decisión solo funciona gracias a dos piezas del Proyecto 1: la clave de idempotencia y el puerto `Reloj`.
 
-Evaluamos tres caminos: una app nativa (Kotlin/Swift), una app híbrida (React con Capacitor) y una PWA. Elegimos la **PWA**, una sola aplicación instalable que se diseña primero para el teléfono y sirve a los tres perfiles. Estas son nuestras razones, pensadas desde cada usuario:
+**Alcance.** En el P2 no se implementan frontend, service worker, API ni almacenamiento del dispositivo (sección 5 del enunciado). Esta es una decisión de arquitectura que el Proyecto Final implementará con React + Vite + Tailwind (sección 14). Las restricciones de contexto provienen de [E1](e1-investigacion-usuario.md).
 
-- **Mariela** necesita trabajar sin señal. Una PWA lo logra con un *service worker*, que guarda la app y los datos, y con una cola persistente en IndexedDB. Pero lo importante no es "tener señal": es **no perder ni duplicar un pago cuando no la hay**, y eso depende de cómo diseñemos la cola y la API, no de que la app sea nativa. En su Android de gama media, la PWA se instala desde Chrome, ocupa poco y se actualiza sola, sin pasar por una tienda.
-- **Andrea** trabaja en escritorio con buena conexión. Para ella la PWA es simplemente la web; no hace falta construir un segundo producto.
-- **El equipo** debe implementar el Proyecto Final en React + Vite + Tailwind en cuatro semanas. Una PWA es exactamente ese stack; la opción nativa agregaría dos lenguajes más.
+## 5.1 Restricciones que decide la arquitectura
 
-No escondemos los riesgos. El navegador puede borrar datos guardados (por eso pedimos almacenamiento persistente y vaciamos la cola en cuanto hay señal), y la sincronización en segundo plano no existe en todos los navegadores (por eso no la prometemos: también reenviamos al recuperar la señal, al abrir la app y con un botón manual). Si en campo la cola se pierde con frecuencia, migramos la app de la asesora a Capacitor sin reescribir el código React.
+| Restricción | Perfil | Fuente | Qué exige |
+|---|---|---|---|
+| Señal intermitente o nula durante parte de la ruta | Asesora | Enunciado, sección 3; IICA/BID (conectividad rural) | Trabajar sin conexión: consultar la cartera de la ruta, capturar solicitudes y registrar pagos |
+| Teléfono Android de gama media, poca memoria | Asesora | Enunciado, sección 3 | App ligera, sin descargas grandes para actualizar |
+| Uso con una mano, de pie y bajo el sol | Asesora | Enunciado, sección 3 | Objetivos táctiles grandes, alto contraste, poco tecleo (depende del diseño, no de la tecnología) |
+| Escritorio con pantalla grande y conexión estable | Gerencia | Enunciado, sección 3 | Alta densidad de información; acceso por navegador sin instalar nada |
+| Consulta ocasional desde el teléfono | Gerencia | E1 (hipótesis) | El mismo tablero, adaptado |
+| El cliente puede no tener datos móviles | Cliente | DataReportal 2024 (60.3 % usa internet) | Los avisos al cliente van por SMS, no por la app (MC-4) |
+| El Proyecto Final debe implementarse en 4 semanas con React y Tailwind | Equipo | Enunciado, secciones 2.1 y 14 | Un solo código web |
 
-### 7.2 Del escritorio al teléfono: qué cambia en el tablero
+## 5.2 Decisión: una PWA única, mobile-first
 
-En el teléfono, las tres tarjetas (riesgo, incobrables, mora) se apilan **en el mismo orden y con las mismas señales visuales** que en el escritorio. El desglose por tramo se convierte en una lista de cuatro filas con porcentaje, y el asistente pasa a ser un botón flotante.
+### 5.2.1 Alternativas evaluadas
 
-**Qué sacrificamos en la pantalla pequeña y por qué es aceptable:** las gráficas de series (en 360 px no se leen), los montos en quetzales dentro del desglose (aparecen al tocar la fila), la exportación a CSV y la ejecución del cierre. El cierre es una operación irreversible y preferimos que no se pueda disparar con un toque accidental.
+| Criterio | Nativa (Kotlin / Swift) | Híbrida (React + Capacitor) | **PWA (React + service worker)** |
+|---|---|---|---|
+| Trabajo sin conexión | Completo | Completo (web + plugins nativos) | Suficiente: service worker para la app y los datos en caché; IndexedDB para la cola de pagos y los borradores |
+| Cola de envío en segundo plano | Completa | Completa | Background Sync en Chrome para Android; en otros navegadores, reenvío al volver la señal o al abrir la app, más un botón manual |
+| Teléfono de gama media | Mejor rendimiento, pero instalador pesado | Contenedor nativo + web | Se instala desde el navegador, ocupa poco, sin tienda de aplicaciones |
+| Escritorio para gerencia | No aplica: exige otro producto | Requiere además la versión web | **El mismo código** en el navegador de escritorio |
+| Actualizaciones (por ejemplo, un cambio de política) | Publicar en la tienda y esperar a que los asesores actualicen | Publicar en la tienda para cambios nativos | Inmediatas al volver a cargar la app |
+| Cámara para la foto del DPI (W03) | Sí | Sí | Sí: `<input type="file" accept="image/*" capture>` o `getUserMedia` |
+| Coherencia con el Proyecto Final (React + Vite + Tailwind en 4 semanas) | Rompe el stack: dos lenguajes más | Compatible, pero agrega compilación, firma y pruebas por plataforma | **Idéntico stack** |
+| Costo de mantenimiento | 2 o 3 bases de código | 1 base de código + contenedores | **1 base de código** |
 
-**Lo que nunca sacrificamos:** la diferencia entre mora y riesgo, los incobrables junto al riesgo y la fecha de corte.
+### 5.2.2 Decisión y justificación
 
-### 7.3 Qué pasa si Mariela registra un pago sin señal
+**Se adopta una PWA única, instalable, mobile-first, para los tres perfiles.** El rol que inicia sesión determina la pantalla de inicio: Ruta del día, Bandeja del comité o Tablero.
 
-Esta decisión de experiencia solo es posible porque dos decisiones del Proyecto 1 la sostienen.
+- **Para la asesora:** su necesidad crítica es trabajar sin señal, y eso lo resuelven el service worker (app y datos en caché) y una cola persistente en IndexedDB. La operación clave no es "tener señal", sino **no perder ni duplicar un pago cuando no la hay**, y eso depende del diseño de la cola y de la API (§5.4), no de que la app sea nativa. En un Android de gama media, una PWA se instala desde Chrome sin pasar por la tienda y se actualiza sola.
+- **Para la gerencia:** trabaja en escritorio con buena conexión. Una PWA es simplemente la web; no se construye un segundo producto.
+- **Para el proyecto:** el Proyecto Final exige React + Vite + Tailwind. Una PWA es ese mismo stack, sin compilar ni firmar por plataforma.
 
-**La clave de idempotencia.** Al tocar "Confirmar", la app genera **una sola vez** una `Idempotency-Key` y la guarda con el pago en el teléfono. Solo después muestra "Pendiente de enviar". Cuando vuelve la señal, envía el pago **con la misma clave y el mismo contenido**, y el contrato OpenAPI del P1 responde de una de tres formas:
+### 5.2.3 Riesgos aceptados y cómo se mitigan
 
-- **201:** el pago es nuevo y queda confirmado.
-- **200 con `Idempotency-Replayed: true`:** el pago ya había llegado (el primer envío llegó, pero se perdió la respuesta). Se confirma sin cobrar de nuevo.
-- **409:** esa clave ya existe con un contenido distinto. La app lo muestra como un conflicto para revisión y **nunca genera una clave nueva automáticamente**.
+| Riesgo de la PWA | Mitigación |
+|---|---|
+| El navegador puede borrar el almacenamiento de un sitio | Solicitar `navigator.storage.persist()` al instalar. La cola se vacía en cuanto hay señal. Aviso visible si quedan pendientes al final del día (W01). Nunca se borra un comando sin confirmación del servidor |
+| Background Sync no existe en todos los navegadores | No se promete sincronización automática universal. Reenvío al recibir el evento `online`, al abrir la app y con el botón "Enviar ahora" en Pendientes. La flota de asesoras usa Android con Chrome (supuesto a confirmar con TI) |
+| iOS limita las PWA | La gerencia en iPhone solo consulta: no necesita cola ni sincronización |
 
-**El puerto Reloj.** Supongamos que la cuota de Carlos tiene 30 días de atraso: Mariela recibe el pago hoy sin señal y el teléfono lo sincroniza mañana. Si el sistema usara la fecha de sincronización, la cuota ya tendría 31 días y Carlos pagaría Q1,040.99 en lugar de Q1,015.51, **Q25.48 de más** por una demora que no es suya. La solución ya estaba en el P1: la fecha es un parámetro, no "hoy". El teléfono fija la `fechaPago` en el momento de confirmar y el núcleo la recibe como parámetro, sin leer nunca el reloj del sistema.
+**Condición de revisión.** Si la validación de campo muestra que Android borra la cola con frecuencia o que la cámara no alcanza para leer el DPI, se migra la app de la asesora a **Capacitor**. Esto conserva el mismo código React y agrega almacenamiento nativo: la decisión es reversible sin reescribir.
 
-**Un ajuste que descubrimos.** El OpenAPI del P1 sugiere que la clave de idempotencia dure 24 horas. Si Mariela pasa más de un día sin señal, su reintento llegaría con la clave vencida y se procesaría como un pago nuevo. Proponemos que la clave dure más que la ventana máxima sin conexión (30 días) y lo dejamos anotado para el Proyecto Final.
+## 5.3 Estrategia responsiva mobile-first
 
-Documento completo: `docs/proyecto2/e4-decision-movil-web.md`.
+Se diseña primero para 360 px (el teléfono de la asesora) y se **agrega** información a medida que crece la pantalla. Puntos de quiebre de Tailwind:
+
+| Ancho | Clase | Uso principal |
+|---|---|---|
+| < 640 px | base | Asesora en campo; gerencia consultando en reunión |
+| ≥ 768 px | `md` | Tableta en oficina de agencia |
+| ≥ 1024 px | `lg` | Escritorio de gerencia |
+| ≥ 1280 px | `xl` | Escritorio con el panel del asistente abierto |
+
+### 5.3.1 Cómo se transforma el tablero gerencial
+
+| Elemento | Teléfono (W15) | Escritorio (W11) |
+|---|---|---|
+| Línea de contexto (fecha de corte, cierre congelado) | En el encabezado: "Tablero · corte 30/09" | Línea completa con estado del cierre y política |
+| Riesgo → incobrables → mora | Tres tarjetas **apiladas en ese mismo orden**, con los mismos rótulos, símbolos (▲ ✕ ●) y bordes | Tres tarjetas en fila |
+| Desglose por tramo | Lista de 4 filas con porcentaje; al tocar una fila se abre el detalle | Tabla con créditos, saldo en Q, barra proporcional y % |
+| Detalle de un tramo (W12) | Tarjetas por crédito | Tabla de 8 columnas |
+| Desembolsos y recuperaciones | Dos cifras del período, sin gráfico | Series mensuales |
+| Asistente (Proyecto Final) | Botón flotante que abre el chat a pantalla completa | Columna derecha plegable |
+| Cierre (W14) | Solo consulta | Consulta y ejecución, con confirmación |
+
+**Qué se sacrifica en la pantalla pequeña, y por qué es aceptable:**
+
+1. **Las series temporales y las barras.** Una gráfica de 12 meses en 360 px no se lee. En el teléfono se contesta "¿cómo estamos hoy?"; las tendencias se ven en escritorio.
+2. **Los montos en quetzales dentro del desglose por tramo.** Se muestra solo el porcentaje para que cada fila quepa en una línea; el monto aparece al tocar la fila.
+3. **La exportación a CSV.** Es una tarea de escritorio.
+4. **Ejecutar el cierre.** Es una operación financiera irreversible (WCAG 3.3.4). Se reserva al escritorio para evitar toques accidentales.
+
+**Lo que no se sacrifica nunca:** la distinción entre cartera en mora y cartera en riesgo, la cifra de incobrables junto al riesgo y la fecha de corte. Quitarlas en el teléfono reintroduciría el error MC-3.
+
+### 5.3.2 Reglas del sistema responsivo
+
+- Los objetivos táctiles miden al menos 48 × 48 px en todos los anchos; WCAG 2.5.8 exige 24 px como mínimo.
+- Ninguna acción requiere arrastrar (WCAG 2.5.7). Las listas se desplazan, y el orden se cambia con botones.
+- El texto base es de 16 px y se puede ampliar al 200 % sin perder contenido (WCAG 1.4.4). Las tablas pasan a tarjetas antes de necesitar desplazamiento horizontal.
+- Contraste mínimo de 4.5:1 (WCAG 1.4.3). La paleta de alta fidelidad (E3) se probará también a plena luz del día.
+
+## 5.4 Estrategia ante pérdida de conexión
+
+### 5.4.1 Qué funciona sin señal
+
+| Operación | Sin señal | Cómo |
+|---|---|---|
+| Ver la ruta y el detalle de los créditos de la ruta | Sí, con la fecha de los datos visible | Copia descargada al iniciar la jornada |
+| Ver el detalle de la mora | Sí, rotulado "calculado con datos del 22/09" | Última respuesta de `consultarMora` en caché. **No se recalcula en el teléfono** |
+| Capturar alta de cliente y solicitud | Sí | Borrador en IndexedDB, guardado campo por campo |
+| Registrar un pago | Sí, **queda pendiente** | Cola de comandos (§5.4.2) |
+| Desembolsar | **No** | Mueve dinero de la institución; requiere confirmación en línea |
+| Tablero y cierres | No (gerencia trabaja en línea) | — |
+
+### 5.4.2 Registrar un pago sin señal: la clave de idempotencia
+
+Cuando Mariela toca "Confirmar" en W09 sin señal, ocurre lo siguiente, en este orden:
+
+1. **Se crea el comando** `RegistrarPago` con `creditoId`, `importe` como cadena (`"1047.76"`), `moneda`, `fechaPago` y `usuarioProceso`.
+2. **Se genera la `Idempotency-Key` una sola vez** (un UUID) y se guarda junto al comando en IndexedDB **antes** de mostrar "Pendiente". Sin ese registro, un cierre de la app podría perder el pago.
+3. La pantalla muestra **Pendiente de enviar** (W10). Nunca muestra "Pagado" sin una respuesta del sistema.
+4. Al volver la señal, la cola envía `POST /creditos/{creditoId}/pagos` con **la misma clave y el mismo contenido**, en orden por crédito.
+5. El contrato OpenAPI del P1 responde:
+   - **201**: pago nuevo registrado → estado **Confirmado**.
+   - **200** con `Idempotency-Replayed: true`: el pago ya había llegado (por ejemplo, el primer envío sí llegó y se perdió la respuesta) → **Confirmado**, sin un segundo efecto.
+   - **409**: la clave ya existe con un contenido distinto → estado **Conflicto**, visible para la asesora y para su supervisor. **Nunca se genera una clave nueva automáticamente**, porque eso sí podría duplicar el pago.
+6. Un timeout **no borra el comando**: se reintenta con la misma clave.
+
+```mermaid
+sequenceDiagram
+  participant A as Asesora (PWA)
+  participant Q as Cola local (IndexedDB)
+  participant API as API · RegistrarPago
+  A->>Q: Confirmar pago (fechaPago fijada, clave K1)
+  Q-->>A: Pendiente de enviar
+  Note over Q: sin señal
+  Q->>API: POST /pagos · Idempotency-Key: K1
+  API--xQ: (respuesta perdida)
+  Q->>API: reintento · misma K1, mismo contenido
+  API-->>Q: 200 Idempotency-Replayed: true
+  Q-->>A: Confirmado (un solo pago)
+```
+
+Así se previene MC-2 (doble cobro de Q1,047.76). El núcleo ya lo sostiene: `pago-idempotente.ts` y sus pruebas del P1 verifican que una repetición no cambia saldos ni movimientos.
+
+**Ajuste necesario al contrato del P1.** El OpenAPI sugiere un tiempo de vida (TTL) de **24 horas** para la clave. Una asesora que pasa más de un día sin señal enviaría su pago cuando la clave ya expiró, y el reintento se procesaría como un pago nuevo. **El TTL debe ser mayor que la ventana máxima de trabajo sin conexión** (se propone 30 días), o la clave debe conservarse junto con el pago de forma permanente. Este cambio se registra para el Proyecto Final; no cambia el núcleo.
+
+### 5.4.3 ¿Con qué fecha se calcula? El puerto Reloj
+
+Caso: la cuota 2 de Carlos tiene **30 días** de atraso. Mariela recibe el pago hoy sin señal y el teléfono lo sincroniza **mañana**, cuando la cuota ya tendría 31 días.
+
+| Si se calcula con… | Días | Mora | Gasto de cobro | Total de la cuota |
+|---|---|---|---|---|
+| **`fechaPago` = día en que Carlos pagó** (correcto) | 30 | Q10.89 | Q0.00 | **Q1,015.51** |
+| Fecha de sincronización (incorrecto) | 31 | Q11.37 | Q25.00 | Q1,040.99 |
+
+Si se usara la fecha de sincronización, Carlos pagaría **Q25.48 de más** por una demora que no es suya. La respuesta está en el P1: la fecha de corte es un parámetro y no "hoy".
+
+- En el teléfono, el **adaptador del puerto `Reloj`** fija la `fechaPago` **en el momento de confirmar** y la guarda en el comando. Los reintentos envían esa misma fecha.
+- En el núcleo, `RegistrarPago` recibe `fechaPago` y `consultarMora` recibe `fechaCorte` como parámetros. **El núcleo nunca lee la fecha del sistema**: la validación final lo comprobó con `rg 'new Date\(\)' src`, que no encuentra coincidencias ([e6-04](e6-04-validacion-final.md)).
+- La política aplicable (plana o escalonada) no depende de ninguna de esas fechas, sino de la **fecha de otorgamiento** (`resolverPolitica`).
+
+**Salvaguarda contra un reloj del teléfono mal configurado.** Al recibir el comando, el servidor compara `fechaPago` con la fecha de recepción y con la última sincronización del dispositivo. Una `fechaPago` futura o anterior a la última sincronización exitosa se acepta, pero queda **marcada para revisión** del supervisor en lugar de aplicarse en silencio. Esta regla corresponde a la capa de aplicación del Proyecto Final, no al núcleo.
+
+### 5.4.4 Lo que se ve en pantalla
+
+| Estado del comando | Texto en W09 / W10 | Barra de estado (W01) |
+|---|---|---|
+| Guardado sin señal | "Pendiente de enviar · se enviará solo al tener señal" | "Sin señal · 2 pendientes" |
+| Enviando | "Enviando…" | "Enviando…" |
+| Confirmado (201 o 200 replay) | "Confirmado · comprobante definitivo" y opción de enviar SMS al cliente | "En línea" |
+| Conflicto (409) | "Este pago no coincide con uno ya registrado. No se cobró de nuevo. Revíselo con su supervisor." | "1 pago requiere revisión" |
+
+## 5.5 Dos decisiones del Proyecto 1 que hacen viable el trabajo sin conexión
+
+| Decisión de experiencia | Decisión de arquitectura del P1 que la sostiene | Qué pasaría sin ella |
+|---|---|---|
+| Registrar pagos sin señal y reintentar al reconectar | **Clave de idempotencia** en `RegistrarPago` (`Idempotency-Key`, respuestas 201 / 200 replay / 409) | Cada reintento podría ser un pago duplicado |
+| Mostrar y cobrar la mora correcta aunque se sincronice otro día | **Puerto `Reloj`**: fecha de corte y `fechaPago` como parámetros, nunca "hoy" | El tramo y el gasto de Q25.00 dependerían del momento en que el teléfono recuperó la señal |
+
+## 5.6 Referencias
+
+- MDN Web Docs. *Offline and background operation* (PWA). https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Offline_and_background_operation
+- MDN Web Docs. *What is a progressive web app?* https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/What_is_a_progressive_web_app
+- MDN Web Docs. *StorageManager.persist()*. https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persist
+- Capacitor. *Documentación oficial*. https://capacitorjs.com/docs
+- W3C (2023). *Web Content Accessibility Guidelines (WCAG) 2.2*. https://www.w3.org/TR/WCAG22/
+- Repositorio: `docs/api/openapi.yaml` (operación `registrarPago`), `src/dominio/pago-idempotente.ts`, `src/aplicacion/consultar-mora.ts`.
 
 ---
 
-## 8. E5 · Evaluación heurística y de accesibilidad
+# 6. E5 · Evaluación heurística y de accesibilidad
 
-### 8.1 Cómo usar esta sección
+## 6.1 Método
 
-El enunciado pide que **los cuatro integrantes evalúen por separado** y luego consoliden, porque varios evaluadores independientes encuentran más problemas que uno solo. Lo que sigue es una **evaluación preliminar hecha por un evaluador** (el asistente de IA, declarado en §11) al recorrer el prototipo el 23 de septiembre de 2026. Sirve de punto de partida, pero **no sustituye** la evaluación del equipo: cada integrante debe hacer la suya, tomar capturas como evidencia y registrar quién encontró qué.
+El enunciado pide que **los cuatro integrantes evalúen por separado** y después consoliden, porque varios evaluadores independientes encuentran más problemas que uno solo. Esta sección presenta la **evaluación preliminar de un evaluador**, hecha al recorrer el prototipo el 23 de septiembre de 2026 con apoyo de una herramienta de IA (declarada en el capítulo 9). Es el punto de partida del consolidado. **No sustituye** la evaluación de cada integrante, que debe registrar quién encontró cada hallazgo y adjuntar la captura como evidencia.
 
-Escala de severidad (Anexo C): 0 no es problema · 1 cosmético · 2 menor · 3 mayor · 4 catastrófico.
+Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético · 2 menor · 3 mayor · 4 catastrófico.
 
-### 8.2 Hallazgos heurísticos preliminares (Nielsen)
+## 6.2 Hallazgos heurísticos (Nielsen)
 
 | # | Pantalla | Hallazgo | Heurística | Sev. | Corrección propuesta |
 |---|---|---|---|---|---|
-| H-01 | Detalle de mora | Usa tasas mensuales de 0.5 %–2 % sobre el saldo total; no son las de la política ni las del núcleo | 2 · Correspondencia con el mundo real | **4** | Mostrar el caso M-3 con las tasas anuales y el capital en mora (§6.4) |
-| H-02 | Detalle de mora | "Total a pagar hoy" suma el saldo completo más los recargos; el cliente creería que debe Q6,469.31 hoy | 5 · Prevención de errores | **4** | Mostrar lo exigible de la cuota vencida (M-5: Q1,047.76) |
-| H-03 | Detalle de mora | Un crédito incobrable (132 días) sigue mostrando recargos, y los datos corresponden a otro cliente | 4 · Consistencia | 3 | Congelar la mora en el día 120 y enlazar los datos correctos |
-| H-04 | Sin señal | El folio cambia al sincronizar; la asesora no puede saber si es el mismo pago | 1 · Visibilidad del estado | 3 | Mantener el mismo folio (clave de idempotencia) en todos los reintentos |
-| H-05 | Sin señal | "Si lo registra otra vez se duplicará" le deja al usuario la tarea de evitar el doble cobro | 5 · Prevención de errores | 3 | Que el sistema lo impida: "Este pago ya está guardado; si lo vuelve a intentar no se cobrará dos veces" |
-| H-06 | Registrar pago | Mientras se escribe, el monto aparece como "Q 10000", sin separador de miles | 5 · Prevención de errores | 3 | Formato en vivo "Q 10,000.00" desde la primera tecla |
+| H-01 | Detalle de mora | Usa tasas mensuales de 0.5 %–2 % sobre el saldo total; no son las de la política ni las del núcleo | 2 · Correspondencia con el mundo real | **4** | Mostrar el caso M-3 con tasas anuales sobre el capital en mora (§4.5) |
+| H-02 | Detalle de mora | "Total a pagar hoy" suma el saldo completo más los recargos; el cliente cree que debe Q6,469.31 hoy | 5 · Prevención de errores | **4** | Mostrar lo exigible de la cuota vencida (M-5: Q1,047.76) |
+| H-03 | Detalle de mora | Un crédito incobrable (132 días) sigue mostrando recargos, con datos de otro cliente | 4 · Consistencia y estándares | 3 | Congelar la mora al día 120 y enlazar los datos correctos |
+| H-04 | Sin señal | El folio cambia al sincronizar; la asesora no puede saber si es el mismo pago | 1 · Visibilidad del estado del sistema | 3 | Mantener el mismo folio (clave de idempotencia) en cada reintento |
+| H-05 | Sin señal | "Si lo registra otra vez se duplicará" deja en manos de la asesora evitar el doble cobro | 5 · Prevención de errores | 3 | Que el sistema lo impida y lo diga: "Este pago ya está guardado; aunque lo intente de nuevo no se cobrará dos veces" |
+| H-06 | Registrar pago | El monto aparece como "Q 10000" sin separador de miles mientras se escribe | 5 · Prevención de errores | 3 | Formato en vivo "Q 10,000.00" desde la primera tecla |
 | H-07 | Registrar pago | Gastos de gestión de Q150.00; la política es Q25.00 por cuota vencida | 2 · Correspondencia | 3 | Usar el oráculo M-5 |
-| H-08 | Solicitud enviada | El cliente cambia de Carlos Martínez a Juan Pablo Pérez | 4 · Consistencia | 3 | Mantener el cliente seleccionado en el paso 1 |
+| H-08 | Solicitud enviada | El cliente cambia de Carlos Martínez a Juan Pablo Pérez | 4 · Consistencia | 3 | Mantener el cliente seleccionado |
 | H-09 | Plan de amortización | La cuota 12 (Q1,004.63) está resaltada pero sin explicación | 10 · Ayuda y documentación | 2 | Nota: "1 centavo más para que el saldo cierre exacto en Q0.00" |
-| H-10 | Mis Clientes | Las etiquetas "Mora 1/2/3" no dicen nada al cliente | 2 · Correspondencia | 2 | Acompañarlas con "más de 30 días de atraso" |
-| H-11 | Todas | La ayuda solo aparece en el inicio de sesión ("Llama al soporte técnico") | 10 · Ayuda / WCAG 3.2.6 | 2 | Un ícono "?" en el mismo lugar de cada encabezado |
-| H-12 | Registrar pago | Los atajos "1 cuota / 2 cuotas / 3 cuotas" no llenan el monto | 7 · Flexibilidad y eficiencia | 2 | Conectar cada atajo con el monto correspondiente |
-| H-13 | Pago aplicado | El comprobante no muestra el saldo que queda después del pago | 1 · Visibilidad del estado | 2 | Agregar "Saldo de capital restante" |
-| H-14 | Detalle de mora y pago | Textos secundarios muy pequeños y en gris claro ("Adeudado: Q150.00", notas de tramo), difíciles de leer bajo el sol | 8 · Diseño estético / WCAG 1.4.3 | 2 | Subir a 14 px y oscurecer hasta un contraste ≥ 4.5:1 |
+| H-10 | Mis Clientes | "Mora 1/2/3" no significa nada para el cliente | 2 · Correspondencia | 2 | Acompañarlo con "más de 30 días de atraso" |
+| H-11 | Todas | La ayuda solo aparece en el inicio de sesión ("Llama al soporte técnico") | 10 · Ayuda / WCAG 3.2.6 | 2 | Ícono "?" en el mismo lugar de cada encabezado |
+| H-12 | Registrar pago | Los atajos "1 cuota / 2 cuotas / 3 cuotas" no llenan el monto | 7 · Flexibilidad y eficiencia | 2 | Conectar cada atajo con su monto |
+| H-13 | Pago aplicado | El comprobante no muestra el saldo restante | 1 · Visibilidad del estado | 2 | Agregar "Saldo de capital restante" |
+| H-14 | Detalle de mora y pago | Textos secundarios muy pequeños y en gris claro, difíciles de leer bajo el sol | 8 · Diseño estético y minimalista / WCAG 1.4.3 | 2 | Tamaño mínimo de 14 px y contraste ≥ 4.5:1 |
 
-### 8.3 Auditoría preliminar WCAG 2.2 (criterios A/AA nuevos + 3.3.4)
+## 6.3 Auditoría WCAG 2.2 (criterios A/AA nuevos + 3.3.4)
 
 | Criterio | Nivel | Resultado preliminar | Observación |
 |---|---|---|---|
-| 2.4.11 Foco no oculto (mínimo) | AA | No verificable en Figma | Revisarlo en la implementación React: el encabezado fijo no debe tapar el foco |
-| 2.5.7 Movimientos de arrastre | AA | ✅ Cumple | Ninguna acción requiere arrastrar; todo se resuelve con toques |
-| 2.5.8 Tamaño del objetivo (mínimo) | AA | ✅ Cumple | Botones y tarjetas muy por encima de 24 × 24 px |
-| 3.2.6 Ayuda consistente | A | ❌ No cumple | Ver H-11 |
-| 3.3.7 Entrada redundante | A | ⚠️ Revisar | En la solicitud se elige el cliente de la lista (bien). Falta la pantalla de alta de cliente para comprobar que no se pide dos veces el DPI |
-| 3.3.8 Autenticación accesible (mínimo) | AA | ✅ Probable | Usuario y contraseña con opción de mostrarla; confirmar que se permita pegar la contraseña |
-| 3.3.4 Prevención de errores (financieras) | AA | ⚠️ Parcial | Pago y solicitud tienen revisión y salida. **Falta la confirmación de desembolso** |
-| 1.4.3 Contraste mínimo (heredado) | AA | ⚠️ Revisar | Ver H-14 |
+| 2.4.11 Focus Not Obscured (Minimum) | AA | No verificable en Figma | Revisarlo en la implementación React: el encabezado fijo no debe tapar el foco |
+| 2.5.7 Dragging Movements | AA | ✅ Cumple | Ninguna acción requiere arrastrar |
+| 2.5.8 Target Size (Minimum) | AA | ✅ Cumple | Botones y tarjetas muy por encima de 24 × 24 px |
+| 3.2.6 Consistent Help | A | ❌ No cumple | Ver H-11 |
+| 3.3.7 Redundant Entry | A | ⚠️ Revisar | El cliente se elige de una lista (bien); falta la pantalla de alta de cliente para comprobar que no se pide dos veces el DPI |
+| 3.3.8 Accessible Authentication (Minimum) | AA | ✅ Probable | Contraseña con opción de mostrarla; confirmar que se permita pegarla |
+| 3.3.4 Error Prevention (Legal, Financial) | AA | ⚠️ Parcial | El pago y la solicitud tienen revisión y salida; falta la confirmación de desembolso |
+| 1.4.3 Contrast (Minimum), heredado | AA | ⚠️ Revisar | Ver H-14 |
 
-### 8.4 Correcciones con antes/después y design review
+## 6.4 Correcciones y design review (pendiente del equipo)
 
-Todavía **falta**:
+Para cerrar el E5 falta:
 
-- Elegir al menos cinco hallazgos, corregirlos en Figma y guardar la captura de antes y de después. Recomendamos H-01, H-02, H-04, H-06 y H-09, porque son los que más afectan al dinero y a la nota.
-- Documentar qué se aceptó y qué se rechazó del design review de la sesión 9, con su argumento.
-
----
-
-## 9. E6 · Evolución del núcleo e informe de impacto SOLID
-
-### 9.1 Qué construimos
-
-Implementamos los cuatro cambios de la sección 7 del enunciado:
-
-- **CP-01 · Política escalonada.** Cada día de atraso paga la tasa del tramo en que estaba: 18 %, 24 %, 30 % o 36 % anual sobre el capital en mora, con base Actual/360 y **un solo redondeo al final**. Así evitamos el error de un centavo que aparece si se redondea por tramo (Q18.15 en lugar de Q18.14 a 45 días).
-- **CP-02 · Gasto de gestión de cobro.** Q25.00 por cuota vencida al día 31, una sola vez, aunque el cierre se ejecute dos veces.
-- **CP-03 · Coexistencia de políticas.** Los créditos otorgados antes del 1 de octubre conservan la política plana del 24 %. A 45 días, el crédito CV-2026-0100 paga Q21.77 y el CV-2026-0410 paga Q18.14, en el mismo sistema y en el mismo cierre.
-- **CP-04 · Correcciones del P1.** La transición `en_mora → cancelado`, la suspensión del devengo después del día 90 y el desglose de la cartera en riesgo por tramo.
-
-### 9.2 Lo que midió el informe de impacto
-
-| Métrica | Resultado | Qué significa |
-|---|---|---|
-| Archivos del núcleo creados | **10** | La funcionalidad nueva vive en archivos nuevos |
-| Archivos del núcleo modificados | **2 de 7** (`calculadora-mora.ts` y `credito-estado.ts`) | Dentro del objetivo de ≤ 2 |
-| ¿Se modificó el motor de cálculo? | **Sí**, +32/−19 líneas | Lo reconocemos: en el P1 no cumplíamos el principio abierto/cerrado para la mora |
-| Pruebas del P1 que dejaron de pasar | **0** | Sin regresiones |
-| Pruebas del P1 reescritas | **0** | El diff de los 10 archivos de prueba del P1 está vacío |
-| Líneas netas en `src/dominio` | **+360** | De ellas, la política de mora ocupa 109; el resto corresponde a CP-02 y CP-04 |
-
-**¿Por qué tuvimos que abrir el motor?** En el P1, la mora se calculaba con un método estático que recibía una *tasa*, no una *política*. No había un punto de extensión. Tuvimos que agregar un constructor que recibe la política inyectada. La fachada del P1 se conservó intacta para que sus 206 pruebas siguieran pasando. Desde ahora, **agregar una política nueva no requiere tocar el motor**, y lo demostramos agregando la política retroactiva sin cambiarlo. Lo que haríamos distinto: declarar el puerto `PoliticaMora` desde el P1, aunque solo existiera la política plana.
-
-**Los cinco principios en una línea cada uno:**
-
-- **S (responsabilidad única):** quién decide el tramo (`clasificacion-tramo.ts`) y quién decide cuánto cuesta (cada política) son piezas separadas y se prueban por separado.
-- **O (abierto/cerrado):** se cumple **a partir del P2**, no antes.
-- **L (sustitución de Liskov):** la misma batería de pruebas corre contra las tres políticas: 288 combinaciones de política, moneda, capital y días de atraso.
-- **I (segregación de interfaces):** el puerto tiene solo dos miembros, `id` y `calcular`.
-- **D (inversión de dependencias):** el motor importa la política solo como tipo y nunca nombra una implementación concreta.
-
-### 9.3 Las pruebas
-
-La última ejecución registrada da **263 pruebas aprobadas en 18 archivos**, sin errores de tipos. Pasan los casos M-1 a M-5 (Q5.44, Q18.14, Q50.80, Q65.32 y Q1,047.76), la coexistencia de políticas (Q21.77 frente a Q18.14), la prueba original de Q7.26 del P1, el contrato de las tres políticas, los ocho invariantes de la sección 7.9, CP-04.1, CP-04.2 (entre el día 90 y el 100 el ingreso no sube y el interés en suspenso sí) y CP-04.3 (3.00 + 2.25 + 1.00 + 0.75 = 7.00 %). El núcleo no importa `express` ni `pg`, no usa `any`, mantiene `"strict": true` y nunca lee la fecha del sistema.
-
-Documentos completos: `docs/informe-impacto-solid.md`, `docs/adr/ADR-004-politica-mora-escalonada.md` y `docs/proyecto2/e6-0*.md`.
+- Corregir en Figma **al menos cinco hallazgos** y adjuntar la captura del antes y del después. Recomendamos empezar por H-01, H-02, H-04, H-06 y H-09, porque son los que más afectan al dinero y a la calificación.
+- Documentar la retroalimentación del design review de la Sesión 9: qué se aceptó, qué se rechazó y con qué argumento.
 
 ---
 
-## 10. Reparto del trabajo
+# 7. E6 · Evolución del núcleo e informe de impacto SOLID
 
-La tabla se armó a partir del historial de Git y de los roles declarados en el P1. **Cada integrante debe confirmar o corregir su fila**, especialmente las contribuciones que no dejan rastro en Git (Figma, investigación, design review).
+## 7.1 Qué se implementó
 
-| Integrante | Responsabilidad principal | Evidencia verificable | Entregables |
+Implementamos en el mismo repositorio del Proyecto 1 los cuatro cambios de la sección 7 del enunciado:
+
+| Cambio | Qué pide el enunciado | Qué hicimos | Dónde está |
 |---|---|---|---|
-| Christopher David Herrera Pérez | Ingeniería de dominio: políticas de mora, gasto de cobro, CP-04 y comandos de prueba | Commits `71a5179`, `ec2a436`, `d3b30f5`, `5752b55`, `5e73d12` | E6 |
-| Erwin Alberto Ramírez Racancoj | Pruebas de contrato, documentación técnica, validación y README (commits como *ERAMR18* y *Erwin*; confirmar que ERAMR18 es la misma persona) | Commits `0d6c1a9`, `958e70f`, `8112e57`, `13aa167` | E6, E7 |
-| Gabriela Elízabeth Noemí Aguilar Vásquez | Documentación de pruebas e informe de verificación SOLID; *(agregar: Figma / investigación)* | Commits `9e06c37`, `8e421a6` | E6, *(E1–E3)* |
-| Oliver Fernando Romero Esquite | Coordinación e integración (PR #1), documentación de E1, E2 y E4, consolidación del informe SOLID; *(agregar: Figma)* | Commits `183dc71`, `16f983f` y siguientes | E1, E2, E4, E7 |
+| **CP-01** · Política escalonada | Cada día de atraso se cobra a la tasa del tramo al que pertenece (18/24/30/36 %), base Actual/360, **un solo redondeo al final** y tope en el capital en mora | Puerto `PoliticaMora` con implementación escalonada; tasas en configuración versionada, fuera del motor | `src/dominio/politica-mora/` |
+| **CP-02** · Gasto de gestión de cobro | Q25.00 por cuota vencida al llegar al día 31, una sola vez, aunque el cierre se repita | `generarGastoGestion`, idempotente por crédito, cuota y concepto | `gasto-gestion-cobro.ts` |
+| **CP-03** · Coexistencia de políticas (sección 7.6 del enunciado) | Los créditos otorgados antes del 1/10/2026 conservan la política plana del 24 % | `resolverPolitica` elige según la fecha de otorgamiento: CV-2026-0100 paga Q21.77 y CV-2026-0410 paga Q18.14 a 45 días | `catalogo-politicas.ts` |
+| **CP-04.1** · `en_mora → cancelado` | Un pago que deja el saldo exacto en cero cancela el crédito en mora | Transición nueva en el State `EstadoEnMora` | `credito-estado.ts` |
+| **CP-04.2** · Suspensión del devengo | Después del día 90 el interés corriente va a "interés en suspenso" y no al ingreso | `DevengoInteres`: entre el día 90 y el 100 el ingreso no sube y el suspenso sí | `devengo-interes.ts` |
+| **CP-04.3** · Cartera en riesgo por tramo | El núcleo expone el desglose para que el tablero no recalcule | `calcularCarteraPorTramo`: 3.00 + 2.25 + 1.00 + 0.75 = 7.00 % | `cartera-por-tramo.ts` |
+
+Los casos de referencia del enunciado salen exactos de las pruebas: M-1 Q5.44, M-2 Q18.14, M-3 Q50.80, M-4 Q65.32, M-5 Q1,047.76, coexistencia Q21.77 frente a Q18.14, y la prueba original del P1 de Q7.26 sigue pasando. El detalle de fórmulas y la selección de políticas están en `docs/proyecto2/e6-02-evolucion-nucleo.md`; las entradas, salidas y criterios de cada prueba, en `e6-03-pruebas-mora-escalonada.md`.
+
+## 7.2 Informe de impacto SOLID (Anexo D)
+
+Este es el informe que exige la sección 8. También está en el repositorio como `docs/informe-impacto-solid.md`, tal como pide el E7.
+
+Este informe sigue la plantilla del **Anexo D** del enunciado. Mide cuánto hubo que modificar el núcleo del Proyecto 1 para absorber los cambios CP-01 a CP-04 de la sección 7 y responde, con evidencia del repositorio, a las preguntas de la sección 8.2. Todas las cifras de esta sección se pueden reproducir con los comandos incluidos.
+
+
+### 7.2.1 Punto de partida
+
+| Hito | Referencia | Cómo reproducirlo |
+|---|---|---|
+| Entrega del Proyecto 1 | Etiqueta **`entrega-p1`** → commit `8737d9b782772a5cff9acb07de8d719f4f4e3a16` (26/08/2026) | `git show --stat entrega-p1` |
+| Núcleo evolucionado (fases 1–4) | Commit `0d6c1a9` | Los commits posteriores solo agregan contratos, documentación y scripts; no cambian `src/dominio` |
+| Entrega del Proyecto 2 | Etiqueta **`entrega-p2`**, que se crea sobre el commit final de la entrega | `git tag entrega-p2 && git push origin entrega-p1 entrega-p2` |
+
+La historia no se reescribió: los cambios del P2 están en commits separados por fase (ver la sección 8.2) y se integraron a `main` con el PR #1.
+
+**Unidad de medida.** Líneas físicas que Git suma o elimina, incluidos comentarios y líneas vacías. No mide esfuerzo, complejidad ni cobertura.
+
+### 7.2.2 Métricas del cambio (sección 8.1)
+
+```text
+$ git diff --stat entrega-p1 0d6c1a9 -- src/dominio
+ src/dominio/calculadora-mora.ts                    | 51 ++++++-----
+ src/dominio/cartera-por-tramo.ts                   | 99 ++++++++++++++++++++++
+ src/dominio/clasificacion-tramo.ts                 | 13 +++
+ src/dominio/credito-estado.ts                      | 14 ++-
+ src/dominio/devengo-interes.ts                     | 57 +++++++++++++
+ src/dominio/gasto-gestion-cobro.ts                 | 45 ++++++++++
+ src/dominio/politica-mora/catalogo-politicas.ts    | 10 +++
+ .../politica-mora/configuracion-politica.ts        | 22 +++++
+ src/dominio/politica-mora/politica-escalonada.ts   | 17 ++++
+ src/dominio/politica-mora/politica-mora.ts         | 38 +++++++++
+ src/dominio/politica-mora/politica-plana.ts        | 18 ++++
+ src/dominio/politica-mora/politica-retroactiva.ts  | 18 ++++
+ 12 files changed, 381 insertions(+), 21 deletions(-)
+```
+
+| Métrica (8.1) | Resultado | Lectura |
+|---|---|---|
+| Archivos del núcleo **creados** | **10** | Neutro o bueno: la funcionalidad nueva vive en archivos nuevos |
+| Archivos del núcleo **modificados** (de los 7 que existían en el P1) | **2**: `calculadora-mora.ts` (+32/−19) y `credito-estado.ts` (+12/−2) | Dentro del objetivo razonable (≤ 2). Los otros 5 (`dinero`, `plan-amortizacion`, `cartera`, `pago-idempotente`, `prelacion-pago`) no se tocaron |
+| **¿Se modificó el motor de cálculo de mora?** | **Sí.** `calculadora-mora.ts` cambió en +32/−19 (13 líneas netas) | El P1 **no** cumplía abierto/cerrado para la mora; ver §7.2.4.1 |
+| Pruebas del P1 que dejaron de pasar | **0** | Los 10 archivos de prueba del P1 (206 pruebas) pasan sobre el núcleo evolucionado |
+| Pruebas del P1 que hubo que reescribir | **0** | `git diff entrega-p1 -- tests` solo muestra archivos **añadidos** (A); ningún archivo del P1 aparece como modificado (M) |
+| Líneas netas añadidas a `src/dominio` | **+360** (381 añadidas, 21 eliminadas) | Por encima del rango orientativo de 60–120 líneas; el desglose explica por qué |
+
+**Desglose de las 360 líneas netas.** El rango de 60–120 líneas del enunciado se refiere al cambio de política. Nuestro diff incluye además CP-02 y CP-04:
+
+| Cambio | Archivos | Líneas netas |
+|---|---|---:|
+| CP-01 / CP-03 · Política escalonada y coexistencia | `politica-mora/*` (5 archivos), `clasificacion-tramo.ts`, adaptación de `calculadora-mora.ts` | 123 + 13 + 13 = **149** |
+| … de las cuales solo son doble de prueba o configuración | `politica-retroactiva.ts` (18), `configuracion-politica.ts` (22) | (40) |
+| CP-02 · Gasto de gestión de cobro | `gasto-gestion-cobro.ts` | **45** |
+| CP-04.1 · `en_mora → cancelado` | `credito-estado.ts` | **10** |
+| CP-04.2 · Suspensión del devengo | `devengo-interes.ts` | **57** |
+| CP-04.3 · Cartera en riesgo por tramo | `cartera-por-tramo.ts` | **99** |
+| **Total** | 12 archivos | **360** |
+
+Sin contar la configuración ni el doble de prueba, la política escalonada ocupó **109 líneas netas**, dentro del rango orientativo. El resto corresponde a correcciones que el enunciado exige y que no son parte de la política de mora.
+
+Fuera de `src/dominio` se añadieron `aplicacion/consultar-mora.ts` (+27) y `contratos/presentadores-p2.ts` (+32), y se modificó `contratos/esquemas.ts` (+33/−0). Con esos archivos, todo `src/` suma 473 líneas añadidas y 21 eliminadas.
+
+### 7.2.3 Los cinco principios (sección 8.2)
+
+| Principio | Pregunta del enunciado | Respuesta con evidencia | Veredicto |
+|---|---|---|---|
+| **S** · Responsabilidad única | ¿Quién decide el tramo y quién decide cuánto cuesta? ¿Es la misma clase? | **Son piezas distintas.** El tramo lo decide `clasificarTramoMora` en `clasificacion-tramo.ts` (Specification: días → tramo). El costo lo decide cada `PoliticaMora` (`politica-escalonada.ts`, `politica-plana.ts`). Se prueban por separado: `INV-10` en `invariantes.test.ts` y los casos M-1 a M-4 en `politica-mora.test.ts`. En el P1, `clasificarTramoMora` y el enum `TramoMora` vivían **dentro** de `calculadora-mora.ts`; el diff los retira del motor y los reexporta | Se cumple **después** del cambio; en el P1 estaban juntos |
+| **O** · Abierto/cerrado | ¿Se pudo agregar la política escalonada sin abrir el motor? | **No en el primer cambio.** `calculadora-mora.ts` cambió en +32/−19: el P1 recibía la **tasa** como parámetro de un método estático (`calcularInteresMoratorio(capital, tasa, dias)`), no una política. Hubo que abrir un punto de extensión (`constructor(private readonly politica: PoliticaMora)`). **A partir de ahora sí se cumple**: `contrato-politica.test.ts` inyecta una tercera política (`PoliticaRetroactiva`) sin tocar el motor | **Parcial**: el P1 no lo cumplía; el P2 lo establece |
+| **L** · Sustitución de Liskov | ¿Se pueden intercambiar plana, escalonada y retroactiva sin romper los invariantes del motor? | **Sí.** `contrato-politica.test.ts` ejecuta la misma batería (`describe.each`) contra las tres: mismas entradas, resultado determinista e inmutable, no negativo, misma moneda y tope ≤ capital. Se prueban 3 políticas × 2 monedas × 4 capitales × 12 atrasos (0, 1, 30, 31, 60, 61, 90, 91, 120, 121, 150, 100000) = **288 combinaciones**. El motor además rechaza una estrategia que viole el contrato ("el motor rechaza una estrategia que incumple moneda, finitud, signo o tope") | **Se cumple** |
+| **I** · Segregación de interfaces | ¿El puerto de política expone solo lo que el motor necesita? | **Sí.** `PoliticaMora` tiene 2 miembros: `readonly id` y `calcular(capital, dias): CalculoPolitica` (`politica-mora.ts`, 4 líneas de interfaz). Ninguna implementación lanza "no soportado"; ninguna persiste, lee el reloj ni cambia el estado del crédito | **Se cumple** |
+| **D** · Inversión de dependencias | ¿El motor depende de la abstracción o de una implementación concreta? | **De la abstracción.** `calculadora-mora.ts` importa `PoliticaMora` **solo como tipo** (`import type`) y no nombra `PoliticaPlana` ni `PoliticaEscalonada`. Quien construye la política es `resolverPolitica` (`catalogo-politicas.ts`), y la composición ocurre en la capa de aplicación (`consultar-mora.ts`) | **Se cumple**, con una dependencia residual (ver §7.2.4.3) |
+
+#### GRASP
+
+| Principio | Pregunta del enunciado | Evidencia |
+|---|---|---|
+| Experto en información | ¿Quién conoce los días de atraso? Esa pieza debe calcular el tramo | `DiasAtraso` (núcleo) alimenta a `clasificarTramoMora`; `CalculadoraMora.calcularPorCuota` devuelve `tramo` junto al importe. **Ni el tablero ni el caso de uso calculan el tramo**: la interfaz lo recibe (ver §3.3.2) |
+| Polimorfismo | ¿La política se elige por despacho polimórfico o con un `switch`? | El motor usa despacho polimórfico (`this.politica.calcular(...)`). La **selección** de la política sí es un condicional por fecha en un único punto (`resolverPolitica`: `fechaOtorgamiento < vigencia ? plana : escalonada`). Crecerá con cada versión nueva (§7.2.4.4) |
+| Bajo acoplamiento / alta cohesión | Medido con `git diff --stat` | 10 archivos nuevos frente a 2 modificados; cada archivo nuevo tiene una sola responsabilidad y su propio archivo de pruebas |
+
+### 7.2.4 Puntos de fricción: qué se abrió que no debía abrirse
+
+#### 7.2.4.1 `calculadora-mora.ts` (el motor): +32 / −19
+
+**Causa.** En el P1 la mora era `CalculadoraMora.calcularInteresMoratorio(capitalVencido, tasa, dias)`: un método estático que recibía una **tasa**, no una **política**. La tasa plana era, en la práctica, un parámetro primitivo. El tramo y su clasificación también vivían en el mismo archivo.
+
+**Rediseño aplicado** (commit `ec2a436`):
+
+```diff
++import type { PoliticaMora, CalculoPolitica } from "./politica-mora/politica-mora.js";
++export { TramoMora, clasificarTramoMora } from "./clasificacion-tramo.js";
+ export class CalculadoraMora {
++  public constructor(private readonly politica: PoliticaMora) { Object.freeze(this); }
++  public calcular(capital: Dinero, dias: DiasAtraso) { … this.politica.calcular(capital, dias) … }
+```
+
+- Se extrajo `TramoMora` / `clasificarTramoMora` a `clasificacion-tramo.ts` y se reexporta, para que el código del P1 que los importaba siga compilando.
+- Se agregó la instancia con la política inyectada. La **fachada estática del P1 se conservó intacta** para no romper las 206 pruebas.
+- `debeDevengarInteresCorriente` pasó de `dias.valor <= 90` a leer `REGLAS_COBRO.diasHastaReconocimientoCorriente`.
+
+**Qué se haría distinto en el P1:** inyectar desde el principio una `PoliticaMora`, aunque solo existiera la plana. Así, este cambio habría sido de 0 líneas en el motor.
+
+#### 7.2.4.2 `credito-estado.ts`: +12 / −2
+
+**Causa.** CP-04.1 es un defecto del enunciado del P1: la tabla de transiciones no incluía `EN_MORA → CANCELADO`. Con el patrón State, una transición nueva **obliga** a modificar la clase del estado de origen (`EstadoEnMora` añade `cancelar`). Esto es propio del patrón, no un problema de acoplamiento.
+
+**Rediseño:** override de `cancelar` en `EstadoEnMora` con la guarda "saldo = 0.00 exacto y sin cuotas vencidas pendientes", y el método `Credito.liquidarConPago(e, saldoTotal: Dinero, cuotasVencidasPendientes)`. Además, la suspensión del devengo usa la misma regla de `debeDevengarInteresCorriente` en lugar de repetir el número 90.
+
+#### 7.2.4.3 Dependencias residuales (no requirieron abrir archivos, pero existen)
+
+- `PoliticaEscalonada` lee sus tasas de `configuracion-politica.ts` con un `import`, no por constructor. **Para cambiar el 30 % de Mora 3 se edita `configuracion-politica.ts`, no `calculadora-mora.ts`**: se cumple la regla de la sección 7.2 ("sin tocar el motor"). Sin embargo, sigue siendo un cambio de código que requiere volver a compilar. En el Proyecto Final, la configuración debería llegar desde el repositorio de políticas versionadas (puerto `AdministrarPolitica`).
+- Las políticas importan el tipo `DiasAtraso` de `calculadora-mora.ts`, y la plana reutiliza el validador de tasa de ese archivo. Es un acoplamiento de tipos heredado del P1 que podría extraerse a `dias-atraso.ts`.
+
+#### 7.2.4.4 Deuda aceptada
+
+1. **Fachada estática P1**: conserva la fórmula plana sin tope ni congelación a 120 días. Las entradas del P2 usan `consultarMora` o el motor inyectado.
+2. **Catálogo con un condicional**: dos versiones cerradas en código. Una tercera política exigirá tocar `resolverPolitica` (aunque no el motor).
+3. **Clasificación ≠ baja contable**: pasados los 120 días la mora se congela automáticamente, pero la baja (`INCOBRABLE`) requiere autorización y evidencia, como en el P1.
+4. **Gasto y devengo son funciones puras**: el llamador conserva el resultado. La persistencia atómica y la concurrencia corresponden al Proyecto Final.
+5. **Porcentajes conciliados por restos mayores**: una fila puede diferir una centésima de su redondeo aislado para que la suma sea exactamente 7.00 % (invariante 7).
+6. **Duplicación menor** del conjunto de estados activos entre `cartera.ts` (P1) y `cartera-por-tramo.ts`, retenida para no modificar un sexto archivo del P1.
+
+### 7.2.5 Resultado de las pruebas
+
+Última ejecución registrada: `npm run verify` (`tsc --noEmit` + `vitest run`) con **263 pruebas aprobadas en 18 archivos** y código de salida 0. La validación desde instalación limpia (`npm ci`) está en [e6-04-validacion-final.md](e6-04-validacion-final.md).
+
+| Prueba obligatoria de E6 | Archivo y caso | Resultado |
+|---|---|---|
+| M-1 Q5.44 · M-2 Q18.14 · M-3 Q50.80 · M-4 Q65.32 | `politica-mora.test.ts` · "M-1 a M-4 y congelación: día %s = %s" (incluye 121 y 150 días = Q65.32) | Pasa |
+| M-5 Q1,047.76 (y Q1,010.06 a 15 días) | `gasto-gestion-cobro.test.ts` · "M-5 y pago sin gasto al corte" | Pasa |
+| Coexistencia: Q21.77 plana y Q18.14 escalonada a 45 días | `politica-mora.test.ts` · "conserva la plana de 45 días"; `regresion-p1.test.ts` | Pasa |
+| Suite del P1 intacta (Q7.26, tabla de 12 filas) | 10 archivos del P1 sin modificar; `regresion-p1.test.ts` · "invariante 5 … mantienen 7.26" | 206 de 206 pasan |
+| Contrato contra las tres políticas (Liskov) | `contrato-politica.test.ts` · "Contrato LSP: $id" | Pasa para plana, escalonada y retroactiva |
+| Los ocho invariantes de la sección 7.9 | 1, 2 y 4: `politica-mora.test.ts`; 3: `contrato-politica.test.ts`; 5 y 8: `regresion-p1.test.ts`; 6: `gasto-gestion-cobro.test.ts`; 7: `cartera-por-tramo.test.ts` | Pasa |
+| CP-04.1 `en_mora → cancelado`; SOLICITADO no puede pagar | `credito-cancelacion-p2.test.ts` | Pasa |
+| CP-04.2 día 90 frente a 100: el ingreso no sube y el suspenso sí | `devengo-interes.test.ts` · "día 90 reconoce; días 91 y 100 acumulan suspenso sin aumentar ingreso" | Pasa |
+| CP-04.3 3.00 + 2.25 + 1.00 + 0.75 = 7.00 % | `cartera-por-tramo.test.ts` · "cumple oráculo: 7.00% en riesgo y 21.75% en mora" | Pasa |
+| Redondeo por tramo prohibido (Q50.80 y no Q50.81) | `politica-mora.test.ts` · "desglosa sin redondear cada tramo" | Pasa |
+
+Durante la evolución hubo **dos fallos de compilación** en pruebas **nuevas**: la inferencia literal del parámetro de `PoliticaPlana` quedó restringida a `"0.24"`, y un enum de estado se ensanchó en una entrada nueva. Se corrigieron con una anotación `string` y un discriminante literal, sin tocar las expectativas del P1. No se observaron fallos de pruebas del P1.
+
+Restricciones de E6 verificadas: `"strict": true` en `tsconfig.json`; `rg '\bany\b' src` sin coincidencias; `rg 'new Date\(\)' src` sin coincidencias (el núcleo no lee el reloj); dependencias de producción: `date-fns`, `decimal.js` y `zod`, sin `express` ni `pg`.
+
+**Comandos para reproducir**
+
+```bash
+npm install && npm test                                  # suite completa
+npm run test:mora            # también: test:coexistencia, test:cp04, test:invariantes
+git diff --stat entrega-p1 0d6c1a9 -- src/dominio        # métricas de §7.2.2
+git diff --name-status entrega-p1 -- tests               # solo "A": ninguna prueba P1 modificada
+git show ec2a436 -- src/dominio/calculadora-mora.ts      # apertura del motor (§7.2.4.1)
+git show 5752b55 -- src/dominio/credito-estado.ts        # transición nueva (§7.2.4.2)
+```
+
+### 7.2.6 Conclusión
+
+**Grado real de cumplimiento de SOLID en el diseño del P1:** parcial. El P1 aplicó bien **S** e **I** en los módulos de dinero, amortización, prelación e idempotencia: ninguno de esos cinco archivos cambió. También aplicó **State** en el ciclo de vida del crédito. Pero **no cumplía O ni D para la mora**: la tasa llegaba como parámetro primitivo a un método estático, y la clasificación del tramo compartía archivo con el cálculo. Por eso el motor tuvo que abrirse una vez (+32/−19).
+
+**Después del P2**, el motor depende de una abstracción inyectada, tres políticas cumplen el mismo contrato y una política nueva ya **no** requiere modificar `calculadora-mora.ts`. La prueba de ello es `PoliticaRetroactiva`, que se agregó sin tocarlo. La medición respalda que el cambio fue localizado: 2 de 7 archivos modificados, 0 pruebas del P1 reescritas y 0 regresiones.
+
+**Qué haríamos distinto hoy:**
+
+1. Declarar el puerto `PoliticaMora` desde el P1, aunque tuviera una sola implementación.
+2. Separar desde el inicio la Specification del tramo y el cálculo.
+3. Cargar la configuración de tasas desde un repositorio de políticas versionadas en lugar de un módulo TypeScript.
+4. Resolver la política con un registro de versiones por vigencia (una tabla ordenada por fecha) en lugar de un condicional, para que una tercera versión no toque `catalogo-politicas.ts`.
 
 ---
 
-## 11. Declaración de uso de herramientas de IA
+# 8. E7 · Repositorio e historial de cambios
 
-Usamos herramientas de IA como apoyo, tal como permite la sección 15 del enunciado:
+## 8.1 Cómo se organizó el repositorio
 
-| Herramienta | Para qué la usamos |
+La documentación del Proyecto 2 vive en `docs/proyecto2/`, con un prefijo por entregable para que su propósito sea evidente:
+
+| Prefijo | Entregable | Archivos |
+|---|---|---|
+| `e1-` | Investigación de usuario | `e1-investigacion-usuario.md`, `e1-instrumentos-investigacion.md` |
+| `e2-` | Arquitectura de información | `e2-arquitectura-informacion.md` y la carpeta `wireframes/` |
+| `e4-` | Decisión móvil/web | `e4-decision-movil-web.md` |
+| `e6-` | Evolución del núcleo | `e6-01-auditoria-inicial.md`, `e6-02-evolucion-nucleo.md`, `e6-03-pruebas-mora-escalonada.md`, `e6-04-validacion-final.md` |
+| — | Informe SOLID y ADR | `docs/informe-impacto-solid.md`, `docs/adr/ADR-004-politica-mora-escalonada.md` |
+| — | Índice e historial | `docs/proyecto2/README.md`, `historial-cambios.md` |
+
+El núcleo sigue en `src/dominio/` y las pruebas en `tests/`. Todo se verifica con `npm install && npm test`, sin base de datos, sin servidor y sin interfaz.
+
+## 8.2 Historial de commits
+
+El enunciado exige que el historial permita comparar la entrega del P1 con la del P2, y advierte que alterar ese historial es falta de integridad académica. No reescribimos nada. Esta tabla presenta **todos los commits** desde `entrega-p1`, en orden cronológico, con lo que aportó cada uno. Los datos salen de:
+
+```bash
+git log --reverse --format='%h %ad %an %s' --date=short entrega-p1..HEAD
+git show --stat <hash>
+```
+
+### 8.2.1 Tabla de commits
+
+| # | Fecha | Commit | Autor (Git) | Tipo | Entregable | Qué se hizo | Archivos principales | Cambio |
+|---|---|---|---|---|---|---|---|---|
+| — | 26/08 | `8737d9b` | — | Base | P1 | **Entrega del Proyecto 1** (etiqueta `entrega-p1`). Punto de comparación de todas las métricas | — | — |
+| 0 | 21/09 | `71a5179` | Christopher Herrera | Auditoría | E6 | Auditoría inicial y línea base: 7 archivos de dominio y 206 pruebas pasando; se crea la etiqueta `entrega-p1` | `e6-01-auditoria-inicial.md` | 1 archivo, +70 |
+| 1 | 21/09 | `ec2a436` | Christopher Herrera | Funcionalidad | E6 · CP-01 | Puerto `PoliticaMora`, políticas plana, escalonada y retroactiva, catálogo por fecha de otorgamiento, configuración versionada y Specification de tramo. Se abre el motor para inyectar la política | `politica-mora/*`, `clasificacion-tramo.ts`, `calculadora-mora.ts` | 10 archivos, +223 / −21 |
+| 2 | 21/09 | `d3b30f5` | Christopher Herrera | Funcionalidad | E6 · CP-02 | Gasto de gestión de cobro de Q25.00 al día 31, idempotente por cuota | `gasto-gestion-cobro.ts` y su prueba | 2 archivos, +105 |
+| 3 | 21/09 | `5752b55` | Christopher Herrera | Funcionalidad | E6 · CP-04 | Transición `en_mora → cancelado`, suspensión del devengo y cartera en riesgo por tramo; diagramas de estado actualizados | `credito-estado.ts`, `devengo-interes.ts`, `cartera-por-tramo.ts` | 10 archivos, +343 / −2 |
+| 4 | 21/09 | `0d6c1a9` | ERAMR18 | Pruebas | E6 · CP-03 | Contrato común contra las tres políticas (Liskov), regresión integrada y caso de uso `consultarMora`. **Corte del núcleo medido en el informe SOLID** | `contrato-politica.test.ts`, `regresion-p1.test.ts`, `consultar-mora.ts` | 3 archivos, +121 |
+| 5 | 21/09 | `958e70f` | ERAMR18 | Documentación | E6 | ADR-004, primer informe SOLID, UML (Strategy de mora, secuencias), contratos Zod/OpenAPI y documento móvil inicial | `ADR-004`, `informe-impacto-solid.md`, `*.puml`, `openapi.yaml` | 16 archivos, +753 / −97 |
+| 6 | 21/09 | `8112e57` | ERAMR18 | Validación | E6 | Validación desde instalación limpia: 263 pruebas en 18 archivos y revisión de tipos sin errores | `e6-04-validacion-final.md` | 2 archivos, +100 / −1 |
+| 7 | 22/09 | `5e73d12` | Christopher Herrera | Herramientas | E6 | Seis comandos de prueba por tema (`test:mora`, `test:cp04`, `test:invariantes`…) para verificar partes específicas en la defensa | `package.json` | 1 archivo, +6 |
+| 8 | 22/09 | `9e06c37` | Elízabeth | Documentación | E6 | Documento de pruebas de la mora escalonada (entradas, salidas y criterios) e informe de verificación SOLID | `e6-03-pruebas-mora-escalonada.md`, informe de verificación | 2 archivos, +1,043 |
+| 9 | 22/09 | `8e421a6` | Elízabeth | Integración | — | Sincronización de la rama local con la remota | `package.json` | 1 archivo, +6 |
+| 10 | 22/09 | `183dc71` | Oliver Romero | Integración | E6 · E7 | **Pull Request #1**: integra toda la evolución del núcleo en `main` | 42 archivos | +2,751 / −108 |
+| 11 | 22/09 | `13aa167` | Erwin | Documentación | E7 | README: tabla de comandos de prueba por tema | `README.md` | 1 archivo, +20 / −1 |
+| 12 | 23/09 | `16f983f` | Oliver Romero · IA declarada | Documentación | E1 · E2 · E4 · E6 | Investigación de usuario, arquitectura de información, 15 wireframes, decisión PWA; informe SOLID reorganizado según el Anexo D; documentos renombrados por entregable | `e1-*`, `e2-*`, `e4-*`, `wireframes/`, `informe-impacto-solid.md` | 32 archivos, +2,413 / −232 |
+| 13 | 23/09 | `4ba9e55` | Oliver Romero · IA declarada | Documentación | E7 | Historial de cambios y documento técnico consolidado | `historial-cambios.md`, `documentacion-completa.md` | 4 archivos, +2,658 |
+| 14 | 23/09 | `00709f9` | Oliver Romero · IA declarada | Documentación | E3 · E5 · E7 | Enlace de Figma en el README y el índice, revisión del prototipo y evaluación preliminar E5 | `P2-documento-entrega.md`, `README.md` | 6 archivos, +511 / −12 |
+| 15 | 23/09 | *(este documento)* | Oliver Romero · IA declarada | Documentación | E1–E7 | Documento de entrega unificado (este archivo), generado a partir de los documentos del repositorio | `P2-documento-entrega.md`, `fuente-documento-entrega.md` | — |
+
+**Totales desde `entrega-p1`:** el núcleo `src/dominio` suma 12 archivos (10 nuevos y 2 modificados), +381 / −21 líneas. Las pruebas pasan de 206 a 263 sin modificar ningún archivo de prueba del P1.
+
+> **Nota sobre los hashes.** Los commits 0 a 11 ya están en GitHub y sus hashes son definitivos. Los commits 12 a 15 se integran después de esta entrega; si se aplican desde un parche, Git les asigna un hash nuevo y se identifican por su mensaje.
+
+### 8.2.2 Las fases del trabajo
+
+| Fase | Fechas | Commits | Resultado |
+|---|---|---|---|
+| Auditoría | 21/09 | 0 | Línea base del P1 verificada y etiquetada |
+| Evolución del núcleo | 21/09 | 1 – 4 | CP-01 a CP-04 implementados, de 206 a 260 pruebas |
+| Contratos y documentación técnica | 21/09 | 5 – 6 | ADR, UML, OpenAPI, informe SOLID y validación limpia (263 pruebas) |
+| Herramientas e integración | 22/09 | 7 – 11 | Comandos de prueba, documento de pruebas, PR #1 y README |
+| Experiencia de usuario y entrega | 23/09 | 12 – 15 | E1, E2, E4, wireframes, revisión E3/E5, historial y documento de entrega |
+
+## 8.3 Qué faltaba documentar y cómo se resolvió
+
+| Problema encontrado en la revisión | Solución |
+|---|---|
+| Tres documentos afirmaban que "el enunciado no define CP-03". Sí lo define: es la sección 7.6, *Coexistencia de políticas* | Corregido en `e6-02`, `e6-04` y en la matriz de trazabilidad |
+| La validación decía "sin push, PR ni merge", pero después hubo un PR | Actualizada con el PR #1 (`183dc71`) |
+| El documento de pruebas no tenía extensión `.md` y GitHub lo mostraba como texto plano | Renombrado a `e6-03-pruebas-mora-escalonada.md` |
+| Había dos informes SOLID con datos distintos (13 frente a 12 atrasos probados) | Fusionados en uno, con la cifra correcta: 12 atrasos y 288 combinaciones |
+| Los comandos de prueba (commit 7) y los merges (9 y 10) no estaban en ningún documento | Registrados en la tabla de §8.2.1 y en `historial-cambios.md` |
+| E1, E2 y E4 casi no existían, y el documento móvil no tomaba una decisión | Escritos de nuevo (capítulos 2, 3 y 5) |
+
+---
+
+# 9. Reparto del trabajo y declaración de uso de IA
+
+## 9.1 Reparto del trabajo (sección 12.1)
+
+Esta tabla se armó a partir del historial de Git y de los roles declarados en el P1. **Cada integrante debe confirmar o corregir su fila**, en especial el trabajo que no deja rastro en Git (Figma, investigación, design review).
+
+| Integrante | Rol | Responsabilidad principal | Evidencia verificable | Entregables |
+|---|---|---|---|---|
+| Christopher David Herrera Pérez | Ingeniería de dominio | Políticas de mora, gasto de cobro, CP-04 y comandos de prueba | Commits 0, 1, 2, 3 y 7 | E6 |
+| Erwin Alberto Ramírez Racancoj | Pruebas y trazabilidad | Contratos de prueba, documentación técnica, validación y README (commits como *ERAMR18* y *Erwin*; confirmar que es la misma persona) | Commits 4, 5, 6 y 11 | E6, E7 |
+| Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño y documentación | Documento de pruebas e informe de verificación SOLID; *(agregar: Figma e investigación)* | Commits 8 y 9 | E6, *(E1–E3)* |
+| Oliver Fernando Romero Esquite | Coordinación e integración | PR #1, documentación de E1, E2 y E4, consolidación del informe SOLID y documento de entrega; *(agregar: Figma)* | Commits 10, 12, 13, 14 y 15 | E1, E2, E4, E7 |
+
+## 9.2 Declaración de uso de herramientas de IA (sección 15)
+
+| Herramienta | Uso |
 |---|---|
 | **OpenAI Codex** | Apoyo en la evolución del núcleo (CP-01 a CP-04), en las pruebas y en la documentación técnica de E6 |
-| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; en la generación de los wireframes de baja fidelidad mediante un script editable; en la reorganización del informe SOLID según el Anexo D; en el historial de cambios; en la revisión preliminar del prototipo de Figma (§6.4 y §8) y en la redacción de este documento |
+| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con un script editable (`wireframes/generar_wireframes.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión preliminar del prototipo de Figma (capítulos 4 y 6) y redacción de este documento |
 
-Las decisiones de diseño y su justificación son del equipo, y cualquiera de los cuatro debe poder explicarlas en la defensa. Las personas del E1 se apoyan en fuentes documentadas; los rasgos marcados como hipótesis **no** provienen de entrevistas. Los hallazgos del §8 son de un solo evaluador y deben complementarse con la evaluación independiente de cada integrante.
+Las decisiones de diseño y su justificación son del equipo, y cualquiera de los cuatro integrantes debe poder explicarlas en la defensa. Las personas del E1 se apoyan en fuentes documentadas: los rasgos marcados como hipótesis no provienen de entrevistas. Los hallazgos del capítulo 6 son de un solo evaluador y deben complementarse con la evaluación independiente de cada integrante.
 
 ---
 
-## 12. Dónde encontrar cada cosa en el repositorio
+# 10. Lista de verificación de entrega (sección 12.2)
 
-| Tema | Archivo |
-|---|---|
-| Índice por entregable | `docs/proyecto2/README.md` |
-| Este documento | `docs/proyecto2/P2-documento-entrega.md` |
-| Todos los documentos técnicos unidos | `docs/proyecto2/documentacion-completa.md` |
-| Historial de commits, archivo por archivo | `docs/proyecto2/historial-cambios.md` |
-| E1 · Personas y journey map | `docs/proyecto2/e1-investigacion-usuario.md` |
-| E1 · Instrumentos de entrevista y encuesta | `docs/proyecto2/e1-instrumentos-investigacion.md` |
-| E2 · Navegación, tabla 6.1 y tablero | `docs/proyecto2/e2-arquitectura-informacion.md` |
-| E2 · Wireframes | `docs/proyecto2/wireframes/` |
-| E4 · Decisión PWA y trabajo sin conexión | `docs/proyecto2/e4-decision-movil-web.md` |
-| E6 · Informe de impacto SOLID | `docs/informe-impacto-solid.md` |
-| E6 · Decisión de arquitectura | `docs/adr/ADR-004-politica-mora-escalonada.md` |
-| E6 · Auditoría, evolución, pruebas y validación | `docs/proyecto2/e6-01` a `e6-04` |
-| Código del núcleo | `src/dominio/` |
-| Pruebas | `tests/` · se ejecutan con `npm test` |
+Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe, pero requiere un ajuste · ❌ pendiente. **Actualizar esta tabla antes de exportar el PDF.**
+
+| # | Requisito | Estado | Evidencia / pendiente |
+|---|---|---|---|
+| 1 | Personas fundamentadas y journey map con puntos de dolor concretos, incluido el cambio de tramo | ⚠️ | Capítulo 2. Faltan las entrevistas u observación para validar los rasgos marcados como hipótesis |
+| 2 | Tabla pantalla ↔ caso de uso completa y coherente con los puertos del P1 | ✅ | §3.3 |
+| 3 | Siete pantallas obligatorias y tres flujos navegables | ⚠️ | §4.4: faltan el tablero, el cierre y el desembolso |
+| 4 | Plan de amortización con la cuota 12 de Q1,004.63 explicada | ⚠️ | Falta la nota explicativa en Figma |
+| 5 | Detalle de la mora con el caso M-3 | ❌ | Corregir las cifras (§4.5) |
+| 6 | Tablero que distingue mora (21.75 %) y riesgo (7.00 %) con desglose por tramo | ⚠️ | Justificado en el wireframe W11 (§3.5); falta en Figma |
+| 7 | Decisión móvil/web con pérdida de conexión, idempotencia y puerto Reloj | ✅ | Capítulo 5 |
+| 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 14 hallazgos preliminares (§6.2); faltan la evaluación de los cuatro y las correcciones |
+| 9 | Auditoría de los seis criterios nuevos de WCAG 2.2 y del 3.3.4 | ⚠️ | §6.3, preliminar |
+| 10 | Design review: qué se aceptó y qué se rechazó | ❌ | Notas de la Sesión 9 |
+| 11 | `npm install && npm test` en limpio, con M-1 a M-5, coexistencia y suite del P1 | ✅ | 263 pruebas en 18 archivos; repetir `npm run verify` sobre el commit final |
+| 12 | Informe SOLID con métricas respaldadas por el diff | ✅ | §7.2 |
+| 13 | Commit del P1 etiquetado o con su hash en el informe | ⚠️ | El hash está en el informe; falta `git push origin entrega-p1` |
+| 14 | Enlaces de Figma y del repositorio abren sin pedir permisos | ✅ / ⚠️ | Figma abre sin iniciar sesión; confirmar que el repositorio sea público |
+| 15 | Tabla de reparto del trabajo | ⚠️ | §9.1, a confirmar por el equipo |
+
+---
+
+# Anexo A · Wireframes de baja fidelidad
+
+Los 15 wireframes y el mapa de navegación están en `docs/proyecto2/wireframes/`. Cada uno tiene anotaciones numeradas que explican las decisiones de diseño.
+
+![Mapa de navegación](wireframes/mapa-navegacion.svg)
+
+![W01 · ruta del dia](wireframes/W01-ruta-del-dia.svg)
+
+![W02 · buscar cliente](wireframes/W02-buscar-cliente.svg)
+
+![W03 · alta cliente](wireframes/W03-alta-cliente.svg)
+
+![W04 · solicitud credito](wireframes/W04-solicitud-credito.svg)
+
+![W05 · plan amortizacion](wireframes/W05-plan-amortizacion.svg)
+
+![W06 · confirmacion desembolso](wireframes/W06-confirmacion-desembolso.svg)
+
+![W07 · detalle credito](wireframes/W07-detalle-credito.svg)
+
+![W08 · detalle mora](wireframes/W08-detalle-mora.svg)
+
+![W09 · registro pago](wireframes/W09-registro-pago.svg)
+
+![W10 · comprobante](wireframes/W10-comprobante.svg)
+
+![W11 · tablero gerencial](wireframes/W11-tablero-gerencial.svg)
+
+![W12 · detalle tramo](wireframes/W12-detalle-tramo.svg)
+
+![W13 · bandeja comite](wireframes/W13-bandeja-comite.svg)
+
+![W14 · cierre](wireframes/W14-cierre.svg)
+
+![W15 · tablero movil](wireframes/W15-tablero-movil.svg)
+

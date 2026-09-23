@@ -61,7 +61,7 @@ Los tres flujos navegables que exige E3 recorren este mapa así:
 
 ### 3.1 Tabla obligatoria de la sección 6.1
 
-| Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, §8) | Caso de uso P1 | Pantalla P2 | Wireframe |
+| Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, sección 8) | Caso de uso P1 | Pantalla P2 | Wireframe |
 |---|---|---|---|---|
 | RegistrarCliente | `RegistrarCliente` | CU-01 Registrar cliente | Alta de cliente | W03 |
 | SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Solicitud de crédito (+ simulación del plan) | W04, W05 |

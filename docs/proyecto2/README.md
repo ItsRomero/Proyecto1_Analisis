@@ -4,7 +4,7 @@
 
 | Entregable | Documento | Contenido |
 |---|---|---|
-| **Entrega** | [P2-documento-entrega.md](P2-documento-entrega.md) | Documento de entrega: lista de verificación contra el enunciado, historia del repositorio y los entregables E1 a E6 explicados, con la revisión del prototipo |
+| **Entrega** | [P2-documento-entrega.md](P2-documento-entrega.md) | Documento completo para el catedrático: E1 a E7 con todo el detalle técnico, revisión del prototipo de Figma, evaluación E5, informe SOLID, tabla de commits y lista de verificación. Se genera con `python3 docs/proyecto2/generar_documento_entrega.py` a partir de `fuente-documento-entrega.md` y los documentos de cada entregable |
 | **Todo** | [documentacion-completa.md](documentacion-completa.md) | Todos los documentos de esta tabla unidos en un solo archivo. Se regenera con `python3 docs/proyecto2/generar_documentacion_completa.py` |
 | **Historial** | [historial-cambios.md](historial-cambios.md) | Cada commit desde `entrega-p1`: qué agregó y si ya estaba documentado |
 | **E1** · Investigación de usuario | [e1-investigacion-usuario.md](e1-investigacion-usuario.md) | Personas (asesora, cliente y gerencia), journey map de la solicitud a la primera cuota y los cuatro momentos críticos, incluido el cambio de tramo |

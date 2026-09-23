@@ -10,13 +10,13 @@ Este documento responde al entregable E4: elección entre app nativa, híbrida o
 
 | Restricción | Perfil | Fuente | Qué exige |
 |---|---|---|---|
-| Señal intermitente o nula durante parte de la ruta | Asesora | Enunciado §3; IICA/BID (conectividad rural) | Trabajar sin conexión: consultar la cartera de la ruta, capturar solicitudes y registrar pagos |
-| Teléfono Android de gama media, poca memoria | Asesora | Enunciado §3 | App ligera, sin descargas grandes para actualizar |
-| Uso con una mano, de pie y bajo el sol | Asesora | Enunciado §3 | Objetivos táctiles grandes, alto contraste, poco tecleo (depende del diseño, no de la tecnología) |
-| Escritorio con pantalla grande y conexión estable | Gerencia | Enunciado §3 | Alta densidad de información; acceso por navegador sin instalar nada |
+| Señal intermitente o nula durante parte de la ruta | Asesora | Enunciado, sección 3; IICA/BID (conectividad rural) | Trabajar sin conexión: consultar la cartera de la ruta, capturar solicitudes y registrar pagos |
+| Teléfono Android de gama media, poca memoria | Asesora | Enunciado, sección 3 | App ligera, sin descargas grandes para actualizar |
+| Uso con una mano, de pie y bajo el sol | Asesora | Enunciado, sección 3 | Objetivos táctiles grandes, alto contraste, poco tecleo (depende del diseño, no de la tecnología) |
+| Escritorio con pantalla grande y conexión estable | Gerencia | Enunciado, sección 3 | Alta densidad de información; acceso por navegador sin instalar nada |
 | Consulta ocasional desde el teléfono | Gerencia | E1 (hipótesis) | El mismo tablero, adaptado |
 | El cliente puede no tener datos móviles | Cliente | DataReportal 2024 (60.3 % usa internet) | Los avisos al cliente van por SMS, no por la app (MC-4) |
-| El Proyecto Final debe implementarse en 4 semanas con React y Tailwind | Equipo | Enunciado §2.1 y §14 | Un solo código web |
+| El Proyecto Final debe implementarse en 4 semanas con React y Tailwind | Equipo | Enunciado, secciones 2.1 y 14 | Un solo código web |
 
 ## 2. Decisión: una PWA única, mobile-first
 
