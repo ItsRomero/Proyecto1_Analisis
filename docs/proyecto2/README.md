@@ -4,6 +4,8 @@
 
 | Entregable | Documento | Contenido |
 |---|---|---|
+| **Todo** | [documentacion-completa.md](documentacion-completa.md) | Todos los documentos de esta tabla unidos en un solo archivo. Se regenera con `python3 docs/proyecto2/generar_documentacion_completa.py` |
+| **Historial** | [historial-cambios.md](historial-cambios.md) | Cada commit desde `entrega-p1`: qué agregó y si ya estaba documentado |
 | **E1** · Investigación de usuario | [e1-investigacion-usuario.md](e1-investigacion-usuario.md) | Personas (asesora, cliente y gerencia), journey map de la solicitud a la primera cuota y los cuatro momentos críticos, incluido el cambio de tramo |
 | | [e1-instrumentos-investigacion.md](e1-instrumentos-investigacion.md) | Guías de entrevista, encuesta y observación para validar las personas |
 | **E2** · Arquitectura de información y wireframes | [e2-arquitectura-informacion.md](e2-arquitectura-informacion.md) | Mapa de navegación, tabla pantalla ↔ caso de uso (6.1) y jerarquía del tablero (7.8) |
