@@ -54,7 +54,7 @@ Este capítulo responde al entregable E1: personas fundamentadas, journey map de
 
 # 3. E2 · Arquitectura de información y wireframes
 
-Con las personas definidas, organizamos la aplicación. Este capítulo presenta el mapa de navegación, la tabla de correspondencia pantalla ↔ caso de uso que exige la sección 6.1 y los wireframes de baja fidelidad. Los wireframes se produjeron **antes** del prototipo de alta fidelidad y están completos en el Anexo A. Al final se justifica la jerarquía del tablero gerencial y cómo se distinguen la cartera en mora y la cartera en riesgo.
+Con las personas definidas, organizamos la aplicación. Este capítulo presenta el mapa de navegación, la tabla de correspondencia pantalla ↔ caso de uso que exige la sección 6.1 y los wireframes de baja fidelidad (skeleton y anotado). Todas las pantallas usan los **mismos nombres y códigos que el prototipo de Figma** (P01–P14), y las que faltan construir tienen su guía (G01–G07); los wireframes anotados completos están en el Anexo A. Al final se justifica la jerarquía del tablero gerencial y cómo se distinguen la cartera en mora y la cartera en riesgo.
 
 {{INCLUDE:docs/proyecto2/e2-arquitectura-informacion.md|3|2}}
 
@@ -72,15 +72,15 @@ El enlace abre sin iniciar sesión en Figma, como pide la sección 13. El archiv
 
 | Paso | Qué hacer | Qué se ve |
 |---|---|---|
-| 1 | *Ingresar* en la pantalla de inicio de sesión | **Mis Clientes**: cartera de la asesora ordenada por prioridad, con la etiqueta de tramo (Incobrable, Mora 3, Mora 2, Mora 1, Al día) y los días de atraso |
-| 2 | **Flujo de cobro:** tocar la tarjeta de *Pedro Xol Cux* | **Detalle del crédito**: estado, saldo, próxima cuota, monto original, plazo y tasa |
-| 3 | Botón *Plan de pago* | **Plan de amortización** del caso de referencia: Q10,000, 12 meses, 3 % mensual, con la cuota 12 de Q1,004.63 resaltada |
-| 4 | Botón *Detalle mora* | **Detalle de mora** por tramo recorrido |
-| 5 | *Registrar pago* → tocar el monto → *Revisar y confirmar* | **Registrar pago** con la prelación visible antes de aplicar (gastos → mora → interés → capital) |
-| 6 | *Aplicar pago* | **Pago aplicado**: comprobante con número y distribución del pago, más opciones para enviarlo por WhatsApp o imprimirlo |
-| 7 | **Variante sin señal:** en *Confirmar pago*, tocar *Simular pago sin señal (demo)* y luego *Aplicar pago* | **Sin señal**: pago en cola, estado "Pendiente", folio y botón *Sincronizar ahora* |
-| 8 | **Flujo de originación:** en *Mis Clientes*, botón **+** | **Nueva solicitud** (cliente, monto con límites y plazo) → **Simulación de pago** → **Confirmar solicitud** → **Solicitud enviada** |
-| 9 | Tocar las iniciales *MA* | **Mi perfil** de la asesora: zona, ruta, cartera asignada y estado de sincronización |
+| 1 | *Ingresar* en **P01 Iniciar sesión** | **P02 Mis Clientes**: cartera de la asesora ordenada por prioridad, con la etiqueta de tramo (Incobrable, Mora 3, Mora 2, Mora 1, Al día) y los días de atraso |
+| 2 | **Flujo de cobro:** tocar la tarjeta de *Pedro Xol Cux* | **P08 Detalle del crédito**: estado, saldo, próxima cuota, monto original, plazo y tasa |
+| 3 | Botón *Plan de pago* | **P09 Plan de amortización** del caso de referencia: Q10,000, 12 meses, 3 % mensual, con la cuota 12 de Q1,004.63 resaltada |
+| 4 | Botón *Detalle mora* | **P10 Detalle de mora** por tramo recorrido |
+| 5 | *Registrar pago* → tocar el monto → *Revisar y confirmar* | **P11 Registrar pago** → **P12 Confirmar pago**, con la prelación visible antes de aplicar (gastos → mora → interés → capital) |
+| 6 | *Aplicar pago* | **P13 Pago aplicado**: comprobante con número y distribución del pago, más opciones para enviarlo por WhatsApp o imprimirlo |
+| 7 | **Variante sin señal:** en *Confirmar pago*, tocar *Simular pago sin señal (demo)* y luego *Aplicar pago* | **P14 Sin señal**: pago en cola, estado "Pendiente", folio y botón *Sincronizar ahora* |
+| 8 | **Flujo de originación:** en *Mis Clientes*, botón **+** | **P04 Nueva solicitud** (cliente, monto con límites y plazo) → **P05 Simulación de pago** → **P06 Confirmar solicitud** → **P07 Solicitud enviada** |
+| 9 | Tocar las iniciales *MA* | **P03 Mi perfil** de la asesora: zona, ruta, cartera asignada y estado de sincronización |
 
 ## 4.3 Lo que el prototipo resuelve bien
 
@@ -99,19 +99,19 @@ Recorrimos el prototipo completo el 23 de septiembre de 2026. Estas decisiones c
 
 | Requisito del E3 | Perfil / formato | Estado en el prototipo | Acción pendiente |
 |---|---|---|---|
-| Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ Nueva solicitud + Simulación de pago | — |
-| Detalle del crédito | Cliente/Asesor · móvil | ✅ | Agregar el tramo en lenguaje llano ("lleva 45 días de atraso") |
-| Registro de pago con desglose de la prelación | Asesor · móvil | ✅ | Corregir las cifras (§4.5) |
-| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ La cuota 12 está resaltada, pero sin explicación | Agregar la nota "1 centavo más para cerrar el saldo exacto en Q0.00" |
-| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ Muestra tasas y montos que no son los del núcleo | Rehacer con el caso M-3 (§4.5) |
-| Tablero gerencial | Gerencia · escritorio | ❌ No existe todavía | Construir a partir del wireframe W11 |
-| Cierre diario / mensual | Gerencia · escritorio | ❌ No existe todavía | Construir a partir del wireframe W14 |
-| Confirmación de desembolso (tabla 6.1) | Encargado · móvil | ❌ | Agregar después de "Solicitud enviada", a partir de W06 |
-| Bandeja del comité y Alta de cliente (tabla 6.1) | Comité / Asesor | ❌ | Recomendable, a partir de W13 y W03 |
+| Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ P04 → P05 → P06 → P07 | — |
+| Detalle del crédito | Cliente/Asesor · móvil | ✅ P08 | Agregar el tramo en lenguaje llano ("lleva 45 días de atraso") |
+| Registro de pago con desglose de la prelación | Asesor · móvil | ✅ P11 → P12 → P13 / P14 | Corregir las cifras (§4.5) |
+| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ P09: la cuota 12 está resaltada, pero sin explicación | Agregar la nota "1 centavo más para cerrar el saldo exacto en Q0.00" |
+| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ P10: muestra tasas y montos que no son los del núcleo | Rehacer con el caso M-3 (§4.5) |
+| Tablero gerencial | Gerencia · escritorio | ❌ No existe todavía | Construir a partir de la guía G04 (y G07 para teléfono) |
+| Cierre diario / mensual | Gerencia · escritorio | ❌ No existe todavía | Construir a partir de la guía G06 |
+| Confirmación de desembolso (tabla 6.1) | Encargado · móvil | ❌ | Agregar después de "Solicitud enviada", a partir de la guía G02 |
+| Bandeja del comité y Alta de cliente (tabla 6.1) | Comité / Asesor | ❌ | Recomendable, a partir de las guías G03 y G01 |
 | Flujo 1: solicitud → simulación → confirmación → desembolso | — | ⚠️ Termina en "Solicitud enviada" | Agregar el desembolso |
 | Flujo 2: buscar → saldo y tramo → mora → pago → comprobante | — | ✅ | — |
 | Flujo 3: tablero → riesgo por tramo → créditos del tramo | — | ❌ | Depende del tablero |
-| *Mi perfil* | — | Existe, pero no corresponde a ningún caso de uso | Justificarla como soporte de sesión o retirarla (la sección 10 resta 0.5 puntos por pantalla sin caso de uso) |
+| *P03 Mi perfil* | — | Existe, pero no corresponde a ningún caso de uso | Justificarla como soporte de sesión o retirarla (la sección 10 resta 0.5 puntos por pantalla sin caso de uso) |
 
 ## 4.5 Cifras que deben coincidir con el núcleo (sección 6.2)
 
@@ -265,11 +265,14 @@ git show --stat <hash>
 | 12 | 23/09 | `16f983f` | Oliver Romero · IA declarada | Documentación | E1 · E2 · E4 · E6 | Investigación de usuario, arquitectura de información, 15 wireframes, decisión PWA; informe SOLID reorganizado según el Anexo D; documentos renombrados por entregable | `e1-*`, `e2-*`, `e4-*`, `wireframes/`, `informe-impacto-solid.md` | 32 archivos, +2,413 / −232 |
 | 13 | 23/09 | `4ba9e55` | Oliver Romero · IA declarada | Documentación | E7 | Historial de cambios y documento técnico consolidado | `historial-cambios.md`, `documentacion-completa.md` | 4 archivos, +2,658 |
 | 14 | 23/09 | `00709f9` | Oliver Romero · IA declarada | Documentación | E3 · E5 · E7 | Enlace de Figma en el README y el índice, revisión del prototipo y evaluación preliminar E5 | `P2-documento-entrega.md`, `README.md` | 6 archivos, +511 / −12 |
-| 15 | 23/09 | *(este documento)* | Oliver Romero · IA declarada | Documentación | E1–E7 | Documento de entrega unificado (este archivo), generado a partir de los documentos del repositorio | `P2-documento-entrega.md`, `fuente-documento-entrega.md` | — |
+| 15 | 23/09 | `8486b6e` | Oliver Romero · IA declarada | Documentación | E1–E7 | Documento de entrega unificado (este archivo), generado a partir de los documentos del repositorio | `P2-documento-entrega.md`, `fuente-documento-entrega.md` | — |
+| 16 | 23/09 | `53689ef` | Oliver Romero · IA declarada | Documentación | E2 · E6 | Primeros skeletons, diagrama de casos de uso y ADR-005 (PWA) | `wireframes/skeleton/`, `casos-de-uso-p2.svg`, `ADR-005` | 22 archivos |
+| 17 | 23/09 | `cdc92c4` | Oliver Romero · IA declarada | Documentación | E2 · E6 · E7 | Documento de complementos con enlaces a GitHub | `P2-complementos.md` | 2 archivos |
+| 18 | 23/09 | *(este documento)* | Oliver Romero · IA declarada | Documentación | E2 · E3 | **Alineación con Figma:** wireframes P01–P14 con la misma disposición que el prototipo y guías G01–G07 para las pantallas que faltan; mapa, casos de uso y documentos con los mismos códigos | `wireframes/anotado/`, `wireframes/skeleton/`, `e2-arquitectura-informacion.md` | — |
 
 **Totales desde `entrega-p1`:** el núcleo `src/dominio` suma 12 archivos (10 nuevos y 2 modificados), +381 / −21 líneas. Las pruebas pasan de 206 a 263 sin modificar ningún archivo de prueba del P1.
 
-> **Nota sobre los hashes.** Los commits 0 a 11 ya están en GitHub y sus hashes son definitivos. Los commits 12 a 15 se integran después de esta entrega; si se aplican desde un parche, Git les asigna un hash nuevo y se identifican por su mensaje.
+> **Nota sobre los hashes.** Los commits 0 a 11 ya están en GitHub y sus hashes son definitivos. Los commits 12 a 18 se integran después de esta entrega; si se aplican desde un parche, Git les asigna un hash nuevo y se identifican por su mensaje.
 
 ### 8.2.2 Las fases del trabajo
 
@@ -279,7 +282,7 @@ git show --stat <hash>
 | Evolución del núcleo | 21/09 | 1 – 4 | CP-01 a CP-04 implementados, de 206 a 260 pruebas |
 | Contratos y documentación técnica | 21/09 | 5 – 6 | ADR, UML, OpenAPI, informe SOLID y validación limpia (263 pruebas) |
 | Herramientas e integración | 22/09 | 7 – 11 | Comandos de prueba, documento de pruebas, PR #1 y README |
-| Experiencia de usuario y entrega | 23/09 | 12 – 15 | E1, E2, E4, wireframes, revisión E3/E5, historial y documento de entrega |
+| Experiencia de usuario y entrega | 23/09 | 12 – 18 | E1, E2, E4, wireframes, revisión E3/E5, historial y documento de entrega |
 
 ## 8.3 Qué faltaba documentar y cómo se resolvió
 
@@ -329,7 +332,7 @@ Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe, pero requiere
 | 3 | Siete pantallas obligatorias y tres flujos navegables | ⚠️ | §4.4: faltan el tablero, el cierre y el desembolso |
 | 4 | Plan de amortización con la cuota 12 de Q1,004.63 explicada | ⚠️ | Falta la nota explicativa en Figma |
 | 5 | Detalle de la mora con el caso M-3 | ❌ | Corregir las cifras (§4.5) |
-| 6 | Tablero que distingue mora (21.75 %) y riesgo (7.00 %) con desglose por tramo | ⚠️ | Justificado en el wireframe W11 (§3.5); falta en Figma |
+| 6 | Tablero que distingue mora (21.75 %) y riesgo (7.00 %) con desglose por tramo | ⚠️ | Justificado en la guía G04 (§3.5); falta en Figma |
 | 7 | Decisión móvil/web con pérdida de conexión, idempotencia y puerto Reloj | ✅ | Capítulo 5 |
 | 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 14 hallazgos preliminares (§6.2); faltan la evaluación de los cuatro y las correcciones |
 | 9 | Auditoría de los seis criterios nuevos de WCAG 2.2 y del 3.3.4 | ⚠️ | §6.3, preliminar |
@@ -344,6 +347,6 @@ Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe, pero requiere
 
 # Anexo A · Wireframes de baja fidelidad
 
-Los 15 wireframes y el mapa de navegación están en `docs/proyecto2/wireframes/`. Cada uno tiene anotaciones numeradas que explican las decisiones de diseño.
+Wireframes anotados de las 14 pantallas del prototipo de Figma (P01–P14) y de las 7 guías (G01–G07). Los skeletons correspondientes están en `docs/proyecto2/wireframes/skeleton/` y en el documento de complementos.
 
 {{WIREFRAMES}}

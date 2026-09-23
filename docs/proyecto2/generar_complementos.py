@@ -21,7 +21,9 @@ info={
  '4ba9e55':('Documentación','E7','Historial de cambios y documento técnico consolidado'),
  '00709f9':('Documentación','E3 · E5 · E7','Enlace de Figma, revisión del prototipo y evaluación E5 preliminar'),
  '8486b6e':('Documentación','E1–E7','Documento de entrega unificado, generado desde los documentos del repositorio'),
- '53689ef':('Documentación','E2 · E6','Wireframes skeleton, diagrama de casos de uso y ADR-005 (PWA)'),
+ '53689ef':('Documentación','E2 · E6','Primeros skeletons, diagrama de casos de uso y ADR-005 (PWA)'),
+ 'cdc92c4':('Documentación','E2 · E6 · E7','Documento de complementos con enlaces a GitHub'),
+ 'c95bb70':('Documentación','E2 · E3','Alineación con Figma: wireframes P01–P14 y guías G01–G07; mapa, casos de uso y documentos con los mismos códigos'),
 }
 def principales(h):
     fs=g('show','--name-status','--format=','-m','--first-parent',h).split('\n')
@@ -65,45 +67,51 @@ adr5=open(f'{R}/docs/adr/ADR-005-pwa-trabajo-sin-conexion.md',encoding='utf-8').
 def demote(t,n=2):
     t=re.sub(r'^(#+) ',lambda m:'#'*(len(m.group(1))+n)+' ',t,flags=re.M)
     return t
-sk=[('S01','Ruta del día','Aviso de conexión arriba; tarjetas de cliente (avatar, nombre, estado, etiqueta de tramo); barra de pestañas','W01','CU-15'),
-('S02','Buscar cliente o crédito','Campo de búsqueda; lista de resultados; enlace para registrar cliente nuevo','W02','CU-15'),
-('S03','Alta de cliente','Foto del DPI; campos DPI, nombre y teléfono; aviso "guardado en el teléfono"; botón continuar','W03','CU-01'),
-('S04','Solicitud de crédito','Monto grande con límites; plazo en botones; destino; tarjeta de cuota estimada y total','W04','CU-02'),
-('S05','Plan de amortización','Tabla de 12 cuotas con la última resaltada; explicación del ajuste; confirmar o cambiar','W05','CU-02'),
-('S06','Confirmación de desembolso','Resumen de condiciones; casilla de aceptación; desembolsar o volver','W06','CU-06'),
-('S07','Detalle del crédito','Lo que debe hoy y días de atraso; próxima cuota, saldo y estado; aviso del siguiente tramo','W07','CU-15 · CU-08'),
-('S08','Detalle de la mora','Una tarjeta por tramo (rango, tasa anual, días e importe) con barra proporcional; total redondeado una vez','W08','CU-08'),
-('S09','Registro de pago','Monto recibido; atajos; prelación antes de confirmar; aviso sin señal','W09','CU-07'),
-('S10','Comprobante','Estado del envío; datos del pago; aplicación por concepto y saldo; clave de operación','W10','CU-07'),
-('S11','Tablero gerencial','Contexto (fecha de corte); 1 riesgo · 2 incobrables · 3 mora; 4 riesgo por tramo; actividad del período; panel del asistente','W11','CU-14'),
-('S12','Créditos de un tramo','Ruta de navegación; resumen del tramo; tabla de créditos','W12','CU-14'),
-('S13','Bandeja del comité','Lista de solicitudes; datos, evaluación y plan simulado; motivo; aprobar o rechazar','W13','CU-03/04/05'),
-('S14','Cierre diario / mensual','Estado congelado e identificador; cifras del cierre; ejecutar con confirmación','W14','CU-12/13'),
-('S15','Tablero en teléfono','Mismas tres tarjetas apiladas; riesgo por tramo en lista; asistente flotante','W15','CU-14')]
+sk=[('P01','Iniciar sesión','Encabezado con marca; tarjeta con usuario y contraseña; botón Ingresar; enlace de soporte','—'),
+('P02','Mis Clientes','Encabezado con búsqueda y avatar; selector Prioridad / Nombre A–Z; tarjetas de cliente (iniciales, nombre, municipio, saldo, etiqueta de tramo, días); botón +','CU-15'),
+('P03','Mi perfil','Tarjeta de la asesora; estado operativo y de sincronización; resumen de cartera; cuenta y sesión','— (soporte)'),
+('P04','Nueva solicitud · paso 1','Lista de clientes; monto con − / + y montos rápidos; plazo en botones; cuota mensual estimada; botón Ver plan','CU-02'),
+('P05','Simulación de pago · paso 2','Resumen (capital, cuota, interés total); tabla de 12 cuotas con la última resaltada; Modificar / Confirmar','CU-02'),
+('P06','Confirmar solicitud · paso 3','Aviso "Revise antes de enviar"; datos de la solicitud en cuadrícula; Enviar solicitud; Cancelar','CU-02'),
+('P07','Solicitud enviada','Encabezado de éxito; número de referencia; ¿Qué sigue?; Volver al inicio','CU-02'),
+('P08','Detalle del crédito','Encabezado con nombre; ubicación y teléfono; estado y tramo; resumen del crédito; Registrar pago; Plan de pago / Detalle mora','CU-15 · CU-08'),
+('P09','Plan de amortización','Resumen (capital, interés, total); tabla de 12 cuotas con la 12 resaltada; explicación del ajuste','CU-15'),
+('P10','Detalle de mora','Resumen (días, capital en mora, mora total); una tarjeta por tramo recorrido; cálculo con nota de redondeo; Registrar pago ahora','CU-08'),
+('P11','Registrar pago','Monto recibido con atajos; prelación de aplicación con barras; Revisar y confirmar','CU-07'),
+('P12','Confirmar pago','Aviso "Confirme antes de aplicar"; monto y fecha; distribución; demo sin señal; Aplicar pago; Modificar monto','CU-07'),
+('P13','Pago aplicado','Encabezado de éxito con monto; número de comprobante; cliente; distribución y saldo; WhatsApp / Imprimir','CU-07'),
+('P14','Sin señal','Encabezado sin señal; aviso; pago en cola con folio fijo; estado de sincronización; Sincronizar ahora','CU-07'),
+('G01','Alta de cliente (guía)','Foto del DPI; datos del cliente; estado del borrador; continuar a la solicitud','CU-01'),
+('G02','Confirmación de desembolso (guía)','Aviso; condiciones con política de mora; aceptación; Desembolsar; Volver y corregir','CU-06'),
+('G03','Bandeja del comité (guía)','Lista de solicitudes; datos, evaluación y plan; motivo; Aprobar / Rechazar','CU-03/04/05'),
+('G04','Tablero gerencial (guía)','Contexto; 1 riesgo · 2 incobrables · 3 mora; 4 riesgo por tramo; actividad del período; panel del asistente','CU-14'),
+('G05','Créditos de un tramo (guía)','Ruta de navegación; resumen del tramo; tabla de créditos','CU-14'),
+('G06','Cierre diario / mensual (guía)','Estado congelado e identificador; cifras del cierre; ejecutar con confirmación','CU-12/13'),
+('G07','Tablero en teléfono (guía)','Mismas tarjetas apiladas; riesgo por tramo en lista','CU-14')]
+sk_rows='\n'.join(f"| {c} | {n} | {d} | {cu} |" for c,n,d,cu in sk)
 skfiles=sorted(os.listdir(f'{R}/docs/proyecto2/wireframes/skeleton'))
-sk_rows='\n'.join(f"| {c} | {n} | {d} | {w} | {cu} |" for c,n,d,w,cu in sk)
-sk_imgs='\n\n'.join(f"![{f[:3]} · {f[4:-4].replace('-',' ')}](wireframes/skeleton/{f})" for f in skfiles)
-cus=[('CU-01','Registrar cliente','Asesora','RegistrarCliente','W03 · S03 Alta de cliente'),
-('CU-02','Solicitar crédito','Asesora / cliente','SolicitarCredito','W04–W05 · S04–S05'),
-('CU-03','Evaluar crédito','Analista / comité','EvaluarCredito','W13 · S13 Bandeja del comité'),
-('CU-04','Aprobar solicitud','Comité','DecidirSolicitud','W13 · S13'),
-('CU-05','Rechazar solicitud','Comité','DecidirSolicitud','W13 · S13'),
-('CU-06','Desembolsar crédito','Encargado de desembolsos','DesembolsarCredito','W06 · S06'),
-('CU-07','Registrar pago','Asesora / cajero','RegistrarPago','W09–W10 · S09–S10'),
-('CU-08','Calcular mora','Gestor de cartera / proceso','CalcularMora','W08 · S08 (y W07)'),
+sk_imgs='\n\n'.join(f"![{f[:3]} · {f[4:-4].replace('-',' ')} · skeleton](wireframes/skeleton/{f}) ![{f[:3]} · anotado](wireframes/anotado/{f})" for f in skfiles)
+cus=[('CU-01','Registrar cliente','Asesora','RegistrarCliente','G01 Alta de cliente (guía)'),
+('CU-02','Solicitar crédito','Asesora / cliente','SolicitarCredito','P04 → P05 → P06 → P07'),
+('CU-03','Evaluar crédito','Analista / comité','EvaluarCredito','G03 Bandeja del comité (guía)'),
+('CU-04','Aprobar solicitud','Comité','DecidirSolicitud','G03 (guía)'),
+('CU-05','Rechazar solicitud','Comité','DecidirSolicitud','G03 (guía)'),
+('CU-06','Desembolsar crédito','Encargado de desembolsos','DesembolsarCredito','G02 Confirmación de desembolso (guía)'),
+('CU-07','Registrar pago','Asesora / cajero','RegistrarPago','P11 → P12 → P13 / P14'),
+('CU-08','Calcular mora','Gestor de cartera / proceso','CalcularMora','P10 Detalle de mora (y P08)'),
 ('CU-09','Regularizar crédito','Gestor de cobros','RegistrarPago (extend)','Resultado del pago; sin pantalla propia'),
 ('CU-10','Reestructurar crédito','Aprobador autorizado','ReestructurarCredito','Fuera del alcance de E3 (Proyecto Final)'),
-('CU-11','Declarar incobrable','Encargado autorizado','DeclararIncobrable','Fuera del alcance de E3; su efecto se ve en W11'),
-('CU-12','Generar cierre diario','Financiero / proceso','GenerarCierre','W14 · S14'),
-('CU-13','Generar cierre mensual','Financiero / proceso','GenerarCierre','W14 · S14'),
-('CU-14','Consultar cartera en riesgo','Gerencia / riesgo','ConsultarCarteraEnRiesgo','W11, W12, W15 · S11, S12, S15'),
-('CU-15','Consultar crédito e historial','Asesora / auditor / gestor','ConsultarCredito','W01, W02, W07 · S01, S02, S07'),
+('CU-11','Declarar incobrable','Encargado autorizado','DeclararIncobrable','Fuera del alcance de E3; su efecto se ve en G04'),
+('CU-12','Generar cierre diario','Financiero / proceso','GenerarCierre','G06 Cierre (guía)'),
+('CU-13','Generar cierre mensual','Financiero / proceso','GenerarCierre','G06 Cierre (guía)'),
+('CU-14','Consultar cartera en riesgo','Gerencia / riesgo','ConsultarCarteraEnRiesgo','G04, G05, G07 (guías)'),
+('CU-15','Consultar crédito e historial','Asesora / auditor / gestor','ConsultarCredito','P02 Mis Clientes, P08, P09'),
 ('CU-16','Administrar política','Administrador de políticas','AdministrarPolitica','Fuera del alcance de E3'),
 ('CU-17','Anular crédito aprobado','Aprobador / proceso','DecidirSolicitud','Fuera del alcance de E3'),
 ('CU-18','Cancelar crédito','Sistema (resultado del pago)','RegistrarPago (extend)','Sin pantalla: ocurre al dejar el saldo en Q0.00')]
 cu_rows='\n'.join(f"| {a} | {b} | {c} | `{d.split(' ')[0]}`{d[len(d.split(' ')[0]):]} | {e} |" for a,b,c,d,e in cus)
 repo_rows=f"""| `e1-` | Investigación de usuario | {L('docs/proyecto2/e1-investigacion-usuario.md')}, {L('docs/proyecto2/e1-instrumentos-investigacion.md')} |
-| `e2-` | Arquitectura de información | {L('docs/proyecto2/e2-arquitectura-informacion.md')}, carpeta {L('docs/proyecto2/wireframes/','wireframes/')} (anotados W01–W15, {L('docs/proyecto2/wireframes/skeleton/','skeleton/')} S01–S15 y {L('docs/proyecto2/wireframes/casos-de-uso-p2.svg')}) |
+| `e2-` | Arquitectura de información | {L('docs/proyecto2/e2-arquitectura-informacion.md')}, carpeta {L('docs/proyecto2/wireframes/','wireframes/')} ({L('docs/proyecto2/wireframes/anotado/','anotado/')} y {L('docs/proyecto2/wireframes/skeleton/','skeleton/')} P01–P14 y G01–G07, {L('docs/proyecto2/wireframes/mapa-navegacion.svg')} y {L('docs/proyecto2/wireframes/casos-de-uso-p2.svg')}) |
 | `e4-` | Decisión móvil/web | {L('docs/proyecto2/e4-decision-movil-web.md')} |
 | `e6-` | Evolución del núcleo | {L('docs/proyecto2/e6-01-auditoria-inicial.md')}, {L('docs/proyecto2/e6-02-evolucion-nucleo.md')}, {L('docs/proyecto2/e6-03-pruebas-mora-escalonada.md')}, {L('docs/proyecto2/e6-04-validacion-final.md')} |
 | — | Informe SOLID y ADR | {L('docs/informe-impacto-solid.md')}, {L('docs/adr/ADR-004-politica-mora-escalonada.md')}, {L('docs/adr/ADR-005-pwa-trabajo-sin-conexion.md')} |
@@ -122,7 +130,7 @@ Este documento reúne cuatro agregados solicitados después de revisar el docume
 
 | # | Agregado | Dónde va en el documento de entrega |
 |---|---|---|
-| 1 | Wireframes tipo *skeleton* (E2) | Capítulo 3, después de §3.4 «Wireframes de baja fidelidad» |
+| 1 | Wireframes (skeleton y anotados) alineados con Figma (E2) | Capítulo 3, reemplaza §3.4 «Wireframes de baja fidelidad» y el Anexo A |
 | 2 | Diagrama y tabla de casos de uso | Capítulo 3, junto a §3.3 «Tabla de correspondencia pantalla ↔ caso de uso» |
 | 3 | Registros de decisiones de arquitectura (ADR) | Capítulo 7 (ADR-004, E6) y capítulo 5 (ADR-005, E4) |
 | 4 | Repositorio e historial de commits con hipervínculos a GitHub | Capítulo 8, reemplaza las tablas de §8.1 y §8.2.1 |
@@ -131,29 +139,36 @@ Este documento reúne cuatro agregados solicitados después de revisar el docume
 
 ---
 
-## 1. E2 · Wireframes tipo *skeleton*
+## 1. E2 · Wireframes alineados con el prototipo de Figma
 
-### 1.1 ¿Ya estaba el skeleton?
+### 1.1 Una sola fuente de diseño
 
-**No del todo.** Los wireframes W01–W15 del capítulo 3 son de baja fidelidad (escala de grises, sin color ni tipografía final), pero son **wireframes anotados**: tienen textos reales, cifras del núcleo y notas numeradas que justifican cada decisión. Un **skeleton** es un paso anterior y más abstracto: solo bloques grises que indican **dónde va cada elemento**, sin contenido. Así se discute la estructura de la pantalla sin distraerse con textos o números.
-
-Con este agregado, el diseño queda en tres niveles, en el orden en que se produce:
+Los wireframes del E2 se rehicieron **tomando como referencia el [prototipo de Figma](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1)**, para que la documentación y el prototipo no se desfasen. Cada pantalla se describe una sola vez y se dibuja en dos niveles a partir de esa misma descripción (script {L('docs/proyecto2/wireframes/generar_wireframes_figma.py')}):
 
 | Nivel | Qué muestra | Para qué sirve | Archivos |
 |---|---|---|---|
-| 1 · Skeleton (S01–S15) | Solo la ubicación y el tamaño relativo de cada bloque | Acordar la estructura y la jerarquía de cada pantalla | {L('docs/proyecto2/wireframes/skeleton/','wireframes/skeleton/')} |
-| 2 · Wireframe anotado (W01–W15) | Textos, cifras del núcleo y notas de diseño | Justificar decisiones (prevención de errores, WCAG, jerarquía) | {L('docs/proyecto2/wireframes/','wireframes/')} |
-| 3 · Prototipo de alta fidelidad | Color, tipografía, componentes y navegación | Evaluación con usuarios (E3 y E5) | [Figma](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) |
+| 1 · Skeleton | Solo bloques grises que indican dónde va cada elemento | Acordar la estructura y la jerarquía de cada pantalla | {L('docs/proyecto2/wireframes/skeleton/','wireframes/skeleton/')} |
+| 2 · Wireframe anotado | Los mismos bloques con textos, cifras del núcleo y notas numeradas | Justificar decisiones (prevención de errores, WCAG, jerarquía) | {L('docs/proyecto2/wireframes/anotado/','wireframes/anotado/')} |
+| 3 · Alta fidelidad | Color, tipografía, componentes y navegación | Evaluación con usuarios (E3 y E5) | [Prototipo de Figma](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) |
+
+Los códigos son los mismos en todos los documentos:
+
+- **P01–P14:** pantallas que **ya existen en Figma**; el skeleton y el wireframe reproducen su disposición, sus componentes y el orden de sus bloques.
+- **G01–G07:** pantallas que el enunciado exige y que **faltan en Figma**; son la **guía para construirlas** con el mismo lenguaje visual (encabezado oscuro, tarjetas blancas, botón principal abajo).
+
+Donde una cifra del prototipo no coincide con el núcleo, el wireframe anotado muestra la cifra correcta con la marca **"CORREGIR EN FIGMA"**, para que el ajuste en Figma se haga sobre la misma pantalla.
 
 ### 1.2 Qué va en cada bloque
 
-| Skeleton | Pantalla | Qué indica cada bloque | Wireframe anotado | Caso de uso |
-|---|---|---|---|---|
+| Código | Pantalla | Qué indica cada bloque | Caso de uso |
+|---|---|---|---|
 {sk_rows}
 
-Convenciones: las barras grises son textos, los círculos son avatares o íconos, los rectángulos grandes son imágenes o gráficos, los bloques más oscuros son los elementos principales (la cifra principal, la opción elegida o el botón primario) y las etiquetas pequeñas nombran la región. El círculo de la esquina superior derecha es siempre la ayuda (WCAG 3.2.6).
+Convenciones del skeleton: las barras grises son textos, los círculos son avatares o íconos, los bloques más oscuros son los elementos principales (la cifra principal, la opción elegida o el botón primario) y las etiquetas pequeñas nombran la región.
 
-### 1.3 Skeletons
+### 1.3 Skeleton y wireframe anotado de cada pantalla
+
+A la izquierda, el skeleton; a la derecha, el wireframe anotado de la misma pantalla.
 
 {sk_imgs}
 

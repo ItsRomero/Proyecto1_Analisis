@@ -10,7 +10,7 @@
 | **E1** · Investigación de usuario | [e1-investigacion-usuario.md](e1-investigacion-usuario.md) | Personas (asesora, cliente y gerencia), journey map de la solicitud a la primera cuota y los cuatro momentos críticos, incluido el cambio de tramo |
 | | [e1-instrumentos-investigacion.md](e1-instrumentos-investigacion.md) | Guías de entrevista, encuesta y observación para validar las personas |
 | **E2** · Arquitectura de información y wireframes | [e2-arquitectura-informacion.md](e2-arquitectura-informacion.md) | Mapa de navegación, tabla pantalla ↔ caso de uso (6.1) y jerarquía del tablero (7.8) |
-| | [wireframes/](wireframes/) | 15 wireframes de baja fidelidad (SVG), el mapa de navegación y el script que genera los wireframes |
+| | [wireframes/](wireframes/) | Wireframes alineados con el prototipo de Figma: [skeleton/](wireframes/skeleton/) y [anotado/](wireframes/anotado/) de P01–P14 (pantallas de Figma) y G01–G07 (guías por construir), mapa de navegación y diagrama de casos de uso, con sus scripts |
 | **E3** · Prototipo en Figma | [Abrir el prototipo](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) | Flujo del asesor en móvil (originación, cobro y pago sin señal). La revisión y lo que falta están en `P2-documento-entrega.md` §6 |
 | **E4** · Decisión móvil/web y diseño responsivo | [e4-decision-movil-web.md](e4-decision-movil-web.md) | PWA, estrategia mobile-first, trabajo sin conexión con idempotencia y puerto Reloj |
 | **E5** · Evaluación heurística y WCAG | [P2-documento-entrega.md §8](P2-documento-entrega.md#8-e5--evaluación-heurística-y-de-accesibilidad) | 14 hallazgos preliminares y auditoría WCAG 2.2; falta la evaluación independiente de los cuatro integrantes |

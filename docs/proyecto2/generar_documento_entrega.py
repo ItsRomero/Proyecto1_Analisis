@@ -94,12 +94,12 @@ def incluir(ruta, capitulo, nivel):
 
 
 def galeria():
-    carpeta = os.path.join(RAIZ, "docs/proyecto2/wireframes")
-    items = [f"![Mapa de navegación](wireframes/mapa-navegacion.svg)\n"]
+    carpeta = os.path.join(RAIZ, "docs/proyecto2/wireframes/anotado")
+    items = ["![Mapa de navegación](wireframes/mapa-navegacion.svg)\n"]
     for nombre in sorted(os.listdir(carpeta)):
-        if re.match(r"W\d\d-.*\.svg$", nombre):
+        if re.match(r"[PG]\d\d-.*\.svg$", nombre):
             titulo = nombre[4:-4].replace("-", " ")
-            items.append(f"![{nombre[:3]} · {titulo}](wireframes/{nombre})\n")
+            items.append(f"![{nombre[:3]} · {titulo}](wireframes/anotado/{nombre})\n")
     return "\n".join(items)
 
 

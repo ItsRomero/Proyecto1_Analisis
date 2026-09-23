@@ -1,0 +1,109 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='1352' viewBox='0 0 420 1352'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>P10 · Detalle de mora (caso M-3)</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#777'>Móvil 360×1080 · wireframe anotado · pantalla del prototipo de Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='360' height='1080' rx='18' fill='#fbfbfb' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='360' height='1080' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='360.0' height='28.0' rx='10' fill='#3a3a3a'/>
+<text x='16.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='start'>9:41</text>
+<text x='344.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#ffffff' text-anchor='end'>▮▮ ◠ ▭</text>
+<rect x='0.0' y='28.0' width='360.0' height='56.0' rx='10' fill='#4a4a4a'/>
+<text x='20.0' y='62.0' font-family='Helvetica, Arial, sans-serif' font-size='22' font-weight='bold' fill='#ffffff' text-anchor='start'>‹</text>
+<text x='48.0' y='62.0' font-family='Helvetica, Arial, sans-serif' font-size='19' font-weight='bold' fill='#ffffff' text-anchor='start'>Detalle de mora</text>
+<rect x='0.0' y='84.0' width='360.0' height='86.0' rx='0' fill='#4a4a4a'/>
+<rect x='12.0' y='90.0' width='336.0' height='70.0' rx='10' fill='#5f5f5f'/>
+<text x='68.0' y='114.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#dddddd' text-anchor='middle'>Días de atraso</text>
+<text x='68.0' y='140.0' font-family='Courier New, monospace' font-size='22' font-weight='bold' fill='#ffffff' text-anchor='middle'>100</text>
+<text x='180.0' y='114.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#dddddd' text-anchor='middle'>Capital en mora</text>
+<text x='180.0' y='140.0' font-family='Courier New, monospace' font-size='15' font-weight='bold' fill='#ffffff' text-anchor='middle'>Q 725.76</text>
+<text x='292.0' y='114.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#dddddd' text-anchor='middle'>Mora total</text>
+<text x='292.0' y='140.0' font-family='Courier New, monospace' font-size='15' font-weight='bold' fill='#ffffff' text-anchor='middle'>Q 50.80</text>
+<text x='16.0' y='192.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Esta cuota lleva 100 días de atraso y recorrió 4 tramos. Cada día</text>
+<text x='16.0' y='208.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='start'>se cobra a la tasa del tramo en que estaba.</text>
+<rect x='12.0' y='220.0' width='336.0' height='110.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<rect x='12.0' y='220.0' width='336.0' height='44.0' rx='12' fill='#8a8a8a'/>
+<text x='26.0' y='240.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='start'>Mora 1</text>
+<text x='26.0' y='256.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#eeeeee' text-anchor='start'>Días 1–30 · 30 días en este tramo</text>
+<text x='334.0' y='250.0' font-family='Courier New, monospace' font-size='16' font-weight='bold' fill='#ffffff' text-anchor='end'>Q 10.89*</text>
+<text x='26.0' y='283.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Tasa del tramo</text>
+<text x='334.0' y='283.0' font-family='Courier New, monospace' font-size='11.5' font-weight='bold' fill='#1f1f1f' text-anchor='end'>18 % al año</text>
+<text x='26.0' y='305.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Mora por día</text>
+<text x='334.0' y='305.0' font-family='Courier New, monospace' font-size='11.5' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 0.36</text>
+<text x='26.0' y='326.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Recordatorio. Sin gestión de campo.</text>
+<rect x='12.0' y='338.0' width='336.0' height='110.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<rect x='12.0' y='338.0' width='336.0' height='44.0' rx='12' fill='#707070'/>
+<text x='26.0' y='358.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='start'>Mora 2</text>
+<text x='26.0' y='374.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#eeeeee' text-anchor='start'>Días 31–60 · 30 días en este tramo</text>
+<text x='334.0' y='368.0' font-family='Courier New, monospace' font-size='16' font-weight='bold' fill='#ffffff' text-anchor='end'>Q 14.52*</text>
+<text x='26.0' y='401.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Tasa del tramo</text>
+<text x='334.0' y='401.0' font-family='Courier New, monospace' font-size='11.5' font-weight='bold' fill='#1f1f1f' text-anchor='end'>24 % al año</text>
+<text x='26.0' y='423.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Mora por día</text>
+<text x='334.0' y='423.0' font-family='Courier New, monospace' font-size='11.5' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 0.48</text>
+<text x='26.0' y='444.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Visita de cobro: gasto único de Q25.00 al día 31.</text>
+<rect x='12.0' y='456.0' width='336.0' height='110.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<rect x='12.0' y='456.0' width='336.0' height='44.0' rx='12' fill='#585858'/>
+<text x='26.0' y='476.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='start'>Mora 3</text>
+<text x='26.0' y='492.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#eeeeee' text-anchor='start'>Días 61–90 · 30 días en este tramo</text>
+<text x='334.0' y='486.0' font-family='Courier New, monospace' font-size='16' font-weight='bold' fill='#ffffff' text-anchor='end'>Q 18.14*</text>
+<text x='26.0' y='519.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Tasa del tramo</text>
+<text x='334.0' y='519.0' font-family='Courier New, monospace' font-size='11.5' font-weight='bold' fill='#1f1f1f' text-anchor='end'>30 % al año</text>
+<text x='26.0' y='541.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Mora por día</text>
+<text x='334.0' y='541.0' font-family='Courier New, monospace' font-size='11.5' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 0.60</text>
+<text x='26.0' y='562.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Cobro intensivo.</text>
+<rect x='12.0' y='574.0' width='336.0' height='110.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<rect x='12.0' y='574.0' width='336.0' height='44.0' rx='12' fill='#3f3f3f'/>
+<text x='26.0' y='594.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='start'>Vencido</text>
+<text x='26.0' y='610.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#eeeeee' text-anchor='start'>Días 91–100 · 10 días en este tramo</text>
+<text x='334.0' y='604.0' font-family='Courier New, monospace' font-size='16' font-weight='bold' fill='#ffffff' text-anchor='end'>Q 7.26*</text>
+<text x='26.0' y='637.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Tasa del tramo</text>
+<text x='334.0' y='637.0' font-family='Courier New, monospace' font-size='11.5' font-weight='bold' fill='#1f1f1f' text-anchor='end'>36 % al año</text>
+<text x='26.0' y='659.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Mora por día</text>
+<text x='334.0' y='659.0' font-family='Courier New, monospace' font-size='11.5' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 0.73</text>
+<text x='26.0' y='680.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Se suspende el devengo del interés corriente.</text>
+<rect x='12.0' y='692.0' width='336.0' height='226.0' rx='12' fill='#f6f6f6' stroke='#1f1f1f' stroke-width='1.4'/>
+<text x='26.0' y='717.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#6b6b6b' text-anchor='start'>CÓMO SE CALCULÓ</text>
+<text x='26.0' y='748.0' font-family='Helvetica, Arial, sans-serif' font-size='12.5' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Mora 1 · 30 días</text>
+<text x='334.0' y='748.0' font-family='Courier New, monospace' font-size='12.5' font-weight='normal' fill='#1f1f1f' text-anchor='end'>Q 10.8864</text>
+<rect x='26.0' y='756.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<text x='26.0' y='774.0' font-family='Helvetica, Arial, sans-serif' font-size='12.5' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Mora 2 · 30 días</text>
+<text x='334.0' y='774.0' font-family='Courier New, monospace' font-size='12.5' font-weight='normal' fill='#1f1f1f' text-anchor='end'>Q 14.5152</text>
+<rect x='26.0' y='782.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<text x='26.0' y='800.0' font-family='Helvetica, Arial, sans-serif' font-size='12.5' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Mora 3 · 30 días</text>
+<text x='334.0' y='800.0' font-family='Courier New, monospace' font-size='12.5' font-weight='normal' fill='#1f1f1f' text-anchor='end'>Q 18.1440</text>
+<rect x='26.0' y='808.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<text x='26.0' y='826.0' font-family='Helvetica, Arial, sans-serif' font-size='12.5' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Vencido · 10 días</text>
+<text x='334.0' y='826.0' font-family='Courier New, monospace' font-size='12.5' font-weight='normal' fill='#1f1f1f' text-anchor='end'>Q 7.2576</text>
+<rect x='26.0' y='834.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<text x='26.0' y='857.0' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Mora total (1 redondeo)</text>
+<text x='334.0' y='857.0' font-family='Courier New, monospace' font-size='17' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 50.80</text>
+<text x='26.0' y='881.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='start'>* Montos por tramo mostrados a 2 decimales; sumarlos da Q50.81.</text>
+<text x='26.0' y='899.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='start'>  La mora se redondea una sola vez al final: Q50.80.</text>
+<rect x='16.0' y='928.0' width='328.0' height='50.0' rx='12' fill='#5a5a5a'/>
+<text x='180.0' y='959.0' font-family='Helvetica, Arial, sans-serif' font-size='14.5' font-weight='bold' fill='#ffffff' text-anchor='middle'>Registrar pago ahora</text>
+</g>
+<line x1='356' y1='124.0' x2='366' y2='124.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='124.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='128.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<line x1='356' y1='280.0' x2='366' y2='280.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='280.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='284.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+<line x1='356' y1='802.0' x2='366' y2='802.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='802.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='806.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>3</text>
+<line x1='356' y1='958.0' x2='366' y2='958.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='958.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='962.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>4</text>
+</g>
+<text x='20' y='1164' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>1.</tspan> CORREGIR EN FIGMA: mora sobre el capital en mora de la</text>
+<text x='34' y='1180' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>cuota (Q725.76), no sobre el saldo total (Q6,240.50).</text>
+<text x='34' y='1196' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>Caso M-3 = Q50.80.</text>
+<text x='20' y='1212' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>2.</tspan> CORREGIR EN FIGMA: tasas ANUALES 18/24/30/36 % (no 0.5–2</text>
+<text x='34' y='1228' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>% mensual). Una tarjeta por tramo recorrido.</text>
+<text x='20' y='1244' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>3.</tspan> Nota de redondeo obligatoria (sección 7.3): redondear</text>
+<text x='34' y='1260' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>por tramo daría Q50.81; lo correcto es Q50.80.</text>
+<text x='20' y='1276' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>4.</tspan> El enunciado pide el caso M-3 (cuota con 100 días):</text>
+<text x='34' y='1292' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>abrir esta pantalla desde un crédito con 100 días de</text>
+<text x='34' y='1308' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>atraso (p. ej. pasar a Rosa López Ajú a &#x27;Vencido · 100</text>
+<text x='34' y='1324' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>d&#x27; en Mis Clientes).</text>
+</svg>

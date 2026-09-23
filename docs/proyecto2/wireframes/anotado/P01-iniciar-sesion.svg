@@ -1,0 +1,41 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='936' viewBox='0 0 420 936'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>P01 · Iniciar sesión</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#777'>Móvil 360×760 · wireframe anotado · pantalla del prototipo de Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='360' height='760' rx='18' fill='#fbfbfb' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='360' height='760' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='360.0' height='28.0' rx='10' fill='#3a3a3a'/>
+<text x='16.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='start'>9:41</text>
+<text x='344.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#ffffff' text-anchor='end'>▮▮ ◠ ▭</text>
+<rect x='0.0' y='28.0' width='360.0' height='190.0' rx='0' fill='#3a3a3a'/>
+<rect x='152.0' y='60.0' width='56.0' height='56.0' rx='12' fill='#9a9a9a'/>
+<text x='180.0' y='150.0' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='bold' fill='#ffffff' text-anchor='middle'>Crédito Vecino</text>
+<text x='180.0' y='172.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#d0d0d0' text-anchor='middle'>Sistema para asesores de campo</text>
+<rect x='12.0' y='232.0' width='336.0' height='182.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<text x='26.0' y='262.0' font-family='Helvetica, Arial, sans-serif' font-size='12.5' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Iniciar sesión</text>
+<rect x='26.0' y='270.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<text x='26.0' y='284.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Usuario</text>
+<rect x='26.0' y='292.0' width='308.0' height='38.0' rx='8' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<text x='38.0' y='316.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#6b6b6b' text-anchor='start'>ej. maju.toc</text>
+<text x='26.0' y='348.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Contraseña</text>
+<rect x='26.0' y='356.0' width='308.0' height='38.0' rx='8' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<text x='38.0' y='380.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#6b6b6b' text-anchor='start'>••••••••   (mostrar)</text>
+<rect x='16.0' y='414.0' width='328.0' height='50.0' rx='12' fill='#3a3a3a'/>
+<text x='180.0' y='445.0' font-family='Helvetica, Arial, sans-serif' font-size='14.5' font-weight='bold' fill='#ffffff' text-anchor='middle'>Ingresar</text>
+<text x='180.0' y='488.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#6b6b6b' text-anchor='middle'>¿Olvidaste tu contraseña? Llama al soporte técnico</text>
+<text x='180.0' y='736.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#6b6b6b' text-anchor='middle'>Crédito Vecino, S. A. · v2.4.1</text>
+</g>
+<line x1='356' y1='342.0' x2='366' y2='342.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='342.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='346.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<line x1='356' y1='488.0' x2='366' y2='488.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='488.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='492.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+</g>
+<text x='20' y='844' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>1.</tspan> Contraseña con opción de mostrarla y que permita pegar</text>
+<text x='34' y='860' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>(WCAG 3.3.8, autenticación accesible).</text>
+<text x='20' y='876' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>2.</tspan> Ayuda visible desde el inicio; debe repetirse en el</text>
+<text x='34' y='892' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>mismo lugar en todas las pantallas (WCAG 3.2.6, hallazgo</text>
+<text x='34' y='908' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>H-11).</text>
+</svg>

@@ -47,20 +47,20 @@ def relacion(a, b, etiqueta):
 
 
 e.append(f"<rect x='230' y='60' width='720' height='660' rx='14' fill='#fff' stroke='#1f3a5f' stroke-width='2'/>")
-t(590, 88, "Sistema de Gestión de Microcrédito — pantallas del Proyecto 2", 15, "bold")
+t(590, 88, "Sistema de Gestión de Microcrédito — pantallas del prototipo (P) y guías (G)", 15, "bold")
 
 # columna izquierda: originación y cobro (móvil); derecha: comité y gerencia
-cu01 = caso(430, 140, "CU-01", "Registrar cliente", "W03 Alta de cliente")
-cu02 = caso(430, 220, "CU-02", "Solicitar crédito", "W04 Solicitud · W05 Plan")
-cu15 = caso(430, 330, "CU-15", "Consultar crédito", "W01 Ruta · W02 Buscar · W07")
-cu08 = caso(430, 420, "CU-08", "Calcular mora", "W08 Detalle de la mora")
-cu07 = caso(430, 530, "CU-07", "Registrar pago", "W09 Registro · W10 Comprobante")
+cu01 = caso(430, 140, "CU-01", "Registrar cliente", "G01 Alta de cliente (guía)")
+cu02 = caso(430, 220, "CU-02", "Solicitar crédito", "P04 · P05 · P06 · P07")
+cu15 = caso(430, 330, "CU-15", "Consultar crédito", "P02 Mis Clientes · P08 · P09")
+cu08 = caso(430, 420, "CU-08", "Calcular mora", "P10 Detalle de mora")
+cu07 = caso(430, 530, "CU-07", "Registrar pago", "P11 · P12 · P13 · P14")
 cu18 = caso(430, 650, "CU-18", "Cancelar crédito", "resultado del pago (sin pantalla)")
 
-cu03 = caso(760, 170, "CU-03/04/05", "Evaluar y decidir", "W13 Bandeja del comité")
-cu06 = caso(760, 290, "CU-06", "Desembolsar crédito", "W06 Confirmación")
-cu14 = caso(760, 440, "CU-14", "Cartera en riesgo", "W11 Tablero · W12 · W15")
-cu12 = caso(760, 580, "CU-12/13", "Generar cierre", "W14 Cierre diario/mensual")
+cu03 = caso(760, 170, "CU-03/04/05", "Evaluar y decidir", "G03 Bandeja (guía)")
+cu06 = caso(760, 290, "CU-06", "Desembolsar crédito", "G02 Confirmación (guía)")
+cu14 = caso(760, 440, "CU-14", "Cartera en riesgo", "G04 · G05 · G07 (guías)")
+cu12 = caso(760, 580, "CU-12/13", "Generar cierre", "G06 Cierre (guía)")
 
 e.append(f"<line x1='430' y1='620' x2='430' y2='562' stroke='#555' stroke-width='1.2' stroke-dasharray='5 4' marker-end='url(#f)'/>")
 t(438, 595, "«extend» [saldo = Q0.00]", 10, anchor="start", color="#555")

@@ -1,0 +1,61 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='936' viewBox='0 0 420 936'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>P11 · Registrar pago</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#777'>Móvil 360×760 · wireframe anotado · pantalla del prototipo de Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='360' height='760' rx='18' fill='#fbfbfb' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='360' height='760' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='360.0' height='28.0' rx='10' fill='#3a3a3a'/>
+<text x='16.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='start'>9:41</text>
+<text x='344.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#ffffff' text-anchor='end'>▮▮ ◠ ▭</text>
+<rect x='0.0' y='28.0' width='360.0' height='64.0' rx='10' fill='#3a3a3a'/>
+<text x='20.0' y='66.0' font-family='Helvetica, Arial, sans-serif' font-size='22' font-weight='bold' fill='#ffffff' text-anchor='start'>‹</text>
+<text x='48.0' y='52.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#d0d0d0' text-anchor='start'>REGISTRAR PAGO</text>
+<text x='48.0' y='72.0' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold' fill='#ffffff' text-anchor='start'>Ana Sánchez Chumil</text>
+<rect x='12.0' y='104.0' width='336.0' height='142.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<text x='26.0' y='129.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#6b6b6b' text-anchor='start'>MONTO RECIBIDO</text>
+<text x='26.0' y='178.0' font-family='Courier New, monospace' font-size='28' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Q 1,047.76</text>
+<rect x='26.0' y='188.0' width='97.3' height='36.0' rx='8' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<text x='74.7' y='211.0' font-family='Courier New, monospace' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>1 cuota</text>
+<rect x='131.3' y='188.0' width='97.3' height='36.0' rx='8' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<text x='180.0' y='211.0' font-family='Courier New, monospace' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>2 cuotas</text>
+<rect x='236.7' y='188.0' width='97.3' height='36.0' rx='8' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<text x='285.3' y='211.0' font-family='Courier New, monospace' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>3 cuotas</text>
+<rect x='12.0' y='256.0' width='336.0' height='238.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<text x='26.0' y='281.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#6b6b6b' text-anchor='start'>PRELACIÓN DE APLICACIÓN</text>
+<text x='26.0' y='309.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='start'>1. Gastos de gestión</text>
+<text x='334.0' y='309.0' font-family='Courier New, monospace' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 25.00</text>
+<rect x='26.0' y='316.0' width='308.0' height='6.0' rx='3' fill='#ececec'/>
+<rect x='26.0' y='316.0' width='308.0' height='6.0' rx='3' fill='#3a3a3a'/>
+<text x='26.0' y='335.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Adeudado: Q 25.00 · generado al día 31</text>
+<text x='26.0' y='355.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='start'>2. Interés moratorio</text>
+<text x='334.0' y='355.0' font-family='Courier New, monospace' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 18.14</text>
+<rect x='26.0' y='362.0' width='308.0' height='6.0' rx='3' fill='#ececec'/>
+<rect x='26.0' y='362.0' width='308.0' height='6.0' rx='3' fill='#6e6e6e'/>
+<text x='26.0' y='381.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Adeudado: Q 18.14 · caso M-2</text>
+<text x='26.0' y='401.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='start'>3. Interés corriente</text>
+<text x='334.0' y='401.0' font-family='Courier New, monospace' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 278.86</text>
+<rect x='26.0' y='408.0' width='308.0' height='6.0' rx='3' fill='#ececec'/>
+<rect x='26.0' y='408.0' width='308.0' height='6.0' rx='3' fill='#9a9a9a'/>
+<text x='26.0' y='427.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Adeudado: Q 278.86</text>
+<text x='26.0' y='447.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='start'>4. Abono a capital</text>
+<text x='334.0' y='447.0' font-family='Courier New, monospace' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Q 725.76</text>
+<rect x='26.0' y='454.0' width='308.0' height='6.0' rx='3' fill='#ececec'/>
+<rect x='26.0' y='454.0' width='308.0' height='6.0' rx='3' fill='#4b4b4b'/>
+<text x='26.0' y='473.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Adeudado: Q 725.76</text>
+<rect x='16.0' y='504.0' width='328.0' height='50.0' rx='12' fill='#3a3a3a'/>
+<text x='180.0' y='535.0' font-family='Helvetica, Arial, sans-serif' font-size='14.5' font-weight='bold' fill='#ffffff' text-anchor='middle'>Revisar y confirmar →</text>
+</g>
+<line x1='356' y1='154.0' x2='366' y2='154.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='154.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='158.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<line x1='356' y1='316.0' x2='366' y2='316.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='316.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='320.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+</g>
+<text x='20' y='844' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>1.</tspan> Formato &#x27;Q 1,047.76&#x27; con separador de miles desde la</text>
+<text x='34' y='860' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>primera tecla (en Figma aparece &#x27;Q 10000&#x27;: H-06). Atajos</text>
+<text x='34' y='876' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>que sí llenan el monto (H-12).</text>
+<text x='20' y='892' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>2.</tspan> CORREGIR EN FIGMA: gastos Q25.00 por cuota vencida (no</text>
+<text x='34' y='908' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>Q150.00). Cifras del caso M-5 = Q1,047.76.</text>
+</svg>

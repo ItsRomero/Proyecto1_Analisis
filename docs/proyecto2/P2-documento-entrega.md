@@ -137,18 +137,18 @@ journey
 
 | # | Etapa | Actor | Acción | Emoción | Punto de dolor concreto | Oportunidad de diseño | Pantalla | Fuente |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Solicitud | Carlos, Mariela | Carlos dice cuánto necesita y en cuánto tiempo | 0: expectativa y duda | Mariela escribe "10000" en un campo sin formato; un cero de más (Q100,000) o de menos (Q1,000) no se detecta porque el campo no muestra separador de miles ni los límites Q1,000–Q25,000. | Campo con prefijo Q, formato en vivo "Q10,000.00", rango visible y validación inmediata; plazo con botones de 3 a 24 meses, no teclado. | Solicitud de crédito | ENU · HIP |
-| 2 | Captura | Mariela | Registra DPI, datos del negocio y foto | −1: prisa | La señal se cae a mitad del formulario; al reintentar, la sesión expiró y Mariela debe **recapturar el DPI y los datos del negocio** frente al cliente. | Borrador guardado en el teléfono campo por campo; la sesión no expira mientras hay un borrador; aviso "Guardado en el teléfono". Cumple WCAG 3.3.7 (no pedir de nuevo un dato ya capturado). | Alta de cliente | ENU · HIP |
-| 3 | Evaluación | Comité, Carlos | El comité revisa la solicitud | −1: incertidumbre | Carlos no sabe si su solicitud "está en algún lado". Mariela no puede decirle en qué estado está porque la hoja no guarda el historial. | Estado visible (Solicitado → En evaluación → Aprobado) consultable por la asesora; la bandeja del comité muestra el motivo si se rechaza. | Bandeja del comité | ENU · NÚC (estados) |
-| 4 | Aprobación | Carlos | Recibe la noticia | +1: alivio | Le comunican "aprobado" sin la cuota ni el costo total; Carlos acepta sin saber que pagará **Q2,055.45 de interés**. | Resumen con monto, plazo, tasa en lenguaje llano ("3 % al mes"), cuota y total a pagar antes de confirmar. | Solicitud → simulación | NÚC |
-| 5 | Simulación del plan | Carlos, Mariela | Revisan las 12 cuotas | +1: control | La cuota 12 dice **Q1,004.63** y Carlos cree que hay un error de un centavo. Si la pantalla la oculta o la iguala a Q1,004.62, el plan mostrado no coincide con el cobrado. | Plan con las 12 filas del núcleo y una nota junto a la cuota 12: "1 centavo más para cerrar el saldo exacto". | Plan de amortización | NÚC |
-| 6 | Desembolso | Encargado, Carlos | Se confirma y se entrega el dinero | +2: alegría | Un doble toque en "Desembolsar" con la señal lenta puede generar **dos desembolsos** si la operación no es idempotente. | Pantalla de revisión y confirmación explícita (WCAG 3.3.4), botón deshabilitado tras el primer toque y clave de operación única. | Confirmación de desembolso | ENU · NÚC |
-| 7 | Seguimiento | Carlos | Pregunta cuánto debe | 0 | La cifra que ve Mariela sin señal es de ayer y no dice de qué fecha es; Carlos recibe un saldo desactualizado. | Todo saldo muestra su fecha de corte: "Saldo al 23/09/2026". Sin conexión se rotula como "calculado con datos del 22/09". | Detalle del crédito | ENU · HIP |
+| 1 | Solicitud | Carlos, Mariela | Carlos dice cuánto necesita y en cuánto tiempo | 0: expectativa y duda | Mariela escribe "10000" en un campo sin formato; un cero de más (Q100,000) o de menos (Q1,000) no se detecta porque el campo no muestra separador de miles ni los límites Q1,000–Q25,000. | Campo con prefijo Q, formato en vivo "Q10,000.00", rango visible y validación inmediata; plazo con botones de 3 a 24 meses, no teclado. | P04 Nueva solicitud | ENU · HIP |
+| 2 | Captura | Mariela | Registra DPI, datos del negocio y foto | −1: prisa | La señal se cae a mitad del formulario; al reintentar, la sesión expiró y Mariela debe **recapturar el DPI y los datos del negocio** frente al cliente. | Borrador guardado en el teléfono campo por campo; la sesión no expira mientras hay un borrador; aviso "Guardado en el teléfono". Cumple WCAG 3.3.7 (no pedir de nuevo un dato ya capturado). | G01 Alta de cliente (guía) | ENU · HIP |
+| 3 | Evaluación | Comité, Carlos | El comité revisa la solicitud | −1: incertidumbre | Carlos no sabe si su solicitud "está en algún lado". Mariela no puede decirle en qué estado está porque la hoja no guarda el historial. | Estado visible (Solicitado → En evaluación → Aprobado) consultable por la asesora; la bandeja del comité muestra el motivo si se rechaza. | G03 Bandeja del comité (guía) | ENU · NÚC (estados) |
+| 4 | Aprobación | Carlos | Recibe la noticia | +1: alivio | Le comunican "aprobado" sin la cuota ni el costo total; Carlos acepta sin saber que pagará **Q2,055.45 de interés**. | Resumen con monto, plazo, tasa en lenguaje llano ("3 % al mes"), cuota y total a pagar antes de confirmar. | P05 Simulación → P06 Confirmar solicitud | NÚC |
+| 5 | Simulación del plan | Carlos, Mariela | Revisan las 12 cuotas | +1: control | La cuota 12 dice **Q1,004.63** y Carlos cree que hay un error de un centavo. Si la pantalla la oculta o la iguala a Q1,004.62, el plan mostrado no coincide con el cobrado. | Plan con las 12 filas del núcleo y una nota junto a la cuota 12: "1 centavo más para cerrar el saldo exacto". | P09 Plan de amortización | NÚC |
+| 6 | Desembolso | Encargado, Carlos | Se confirma y se entrega el dinero | +2: alegría | Un doble toque en "Desembolsar" con la señal lenta puede generar **dos desembolsos** si la operación no es idempotente. | Pantalla de revisión y confirmación explícita (WCAG 3.3.4), botón deshabilitado tras el primer toque y clave de operación única. | G02 Confirmación de desembolso (guía) | ENU · NÚC |
+| 7 | Seguimiento | Carlos | Pregunta cuánto debe | 0 | La cifra que ve Mariela sin señal es de ayer y no dice de qué fecha es; Carlos recibe un saldo desactualizado. | Todo saldo muestra su fecha de corte: "Saldo al 23/09/2026". Sin conexión se rotula como "calculado con datos del 22/09". | P08 Detalle del crédito | ENU · HIP |
 | 8 | Recordatorio | Carlos | Recibe aviso de su primera cuota | 0 | El aviso llega por una app que Carlos no abre sin datos, o llega **el mismo día** del vencimiento. | SMS 3 días antes y el día del vencimiento con monto y fecha; canal a validar con la encuesta (pregunta 12). | (Notificación) | DOC · HIP |
-| 9 | Pago | Mariela, Carlos | Mariela recibe Q1,004.62 y lo registra | −1: tensión | Mariela registra el pago sin señal. La app no dice si se envió; Mariela lo vuelve a intentar y teme **cobrarlo dos veces**. | Estado "Pendiente de enviar · se enviará solo al tener señal", misma clave de idempotencia en cada reintento y comprobante provisional. | Registro de pago en campo | ENU · NÚC |
-| 9b | (Variante) Pago con atraso de 45 días | Mariela, Carlos | La cuota vencida suma Q1,047.76 | −2: sorpresa | Carlos esperaba pagar Q1,004.62 y le piden **Q1,047.76** sin explicación: Q25.00 de gasto + Q18.14 de mora + Q278.86 de interés + Q725.76 de capital. | Desglose en el orden de la prelación, con "¿por qué?" en cada concepto. | Detalle de la mora | NÚC (M-5) |
-| 9c | (Variante) Cambio de tramo | Carlos | Pasa del día 30 al 31 | −2: enojo | En un día, el total de la cuota pasa de **Q1,015.51 a Q1,040.99** (+Q25.48) y Carlos se entera en la visita de cobro, cuando ya ocurrió. | Momento crítico MC-4 (§2.4.1). | Detalle de la mora + aviso | NÚC · HIP |
-| 10 | Comprobante | Carlos | Recibe comprobante | +1: confianza | Un comprobante que solo dice "Pagado Q1,004.62" no permite comprobar cuánto fue a interés (Q300.00) y cuánto a capital (Q704.62). | Comprobante con la prelación aplicada y el saldo resultante (Q9,295.38), enviado por SMS o impreso. | Registro de pago → comprobante | NÚC |
+| 9 | Pago | Mariela, Carlos | Mariela recibe Q1,004.62 y lo registra | −1: tensión | Mariela registra el pago sin señal. La app no dice si se envió; Mariela lo vuelve a intentar y teme **cobrarlo dos veces**. | Estado "Pendiente de enviar · se enviará solo al tener señal", misma clave de idempotencia en cada reintento y comprobante provisional. | P11 Registrar pago · P14 Sin señal | ENU · NÚC |
+| 9b | (Variante) Pago con atraso de 45 días | Mariela, Carlos | La cuota vencida suma Q1,047.76 | −2: sorpresa | Carlos esperaba pagar Q1,004.62 y le piden **Q1,047.76** sin explicación: Q25.00 de gasto + Q18.14 de mora + Q278.86 de interés + Q725.76 de capital. | Desglose en el orden de la prelación, con "¿por qué?" en cada concepto. | P10 Detalle de mora | NÚC (M-5) |
+| 9c | (Variante) Cambio de tramo | Carlos | Pasa del día 30 al 31 | −2: enojo | En un día, el total de la cuota pasa de **Q1,015.51 a Q1,040.99** (+Q25.48) y Carlos se entera en la visita de cobro, cuando ya ocurrió. | Momento crítico MC-4 (§2.4.1). | P10 Detalle de mora + aviso SMS | NÚC · HIP |
+| 10 | Comprobante | Carlos | Recibe comprobante | +1: confianza | Un comprobante que solo dice "Pagado Q1,004.62" no permite comprobar cuánto fue a interés (Q300.00) y cuánto a capital (Q704.62). | Comprobante con la prelación aplicada y el saldo resultante (Q9,295.38), enviado por SMS o impreso. | P13 Pago aplicado | NÚC |
 
 Cifras de la primera cuota según el núcleo: interés Q300.00 + capital Q704.62 = Q1,004.62; el saldo pasa de Q10,000.00 a Q9,295.38.
 
@@ -196,12 +196,12 @@ El sistema calcula el plazo con la fecha de vencimiento real de la cuota más 30
 
 | ID | Oportunidad | Perfil | Prioridad | Dónde se resuelve |
 |---|---|---|---|---|
-| OP-1 | Borrador local y cola de pagos idempotente | Asesora | Alta | §5.4 · pantallas Alta de cliente y Registro de pago |
-| OP-2 | Revisión de monto, plazo y cuota antes de confirmar | Asesora, cliente | Alta | E2 · Solicitud, Simulación y Confirmación de desembolso |
-| OP-3 | Mora explicada por tramos y avisada antes | Cliente | Alta | E2 · Detalle de la mora; aviso por SMS (MC-4) |
-| OP-4 | Indicadores de mora y de riesgo claramente diferenciados | Gerencia | Alta | §3.5 · Tablero gerencial |
+| OP-1 | Borrador local y cola de pagos idempotente | Asesora | Alta | §5.4 · G01 Alta de cliente, P11 Registrar pago y P14 Sin señal |
+| OP-2 | Revisión de monto, plazo y cuota antes de confirmar | Asesora, cliente | Alta | E2 · P04 Nueva solicitud, P05 Simulación, P06 Confirmar y G02 Desembolso |
+| OP-3 | Mora explicada por tramos y avisada antes | Cliente | Alta | E2 · P10 Detalle de mora; aviso por SMS (MC-4) |
+| OP-4 | Indicadores de mora y de riesgo claramente diferenciados | Gerencia | Alta | §3.5 · G04 Tablero gerencial |
 | OP-5 | Objetivos táctiles grandes y alto contraste | Asesora | Media-alta | §5.3 · sistema responsivo |
-| OP-6 | Comprobante con la prelación aplicada | Cliente | Media-alta | E2 · Comprobante |
+| OP-6 | Comprobante con la prelación aplicada | Cliente | Media-alta | E2 · P13 Pago aplicado |
 
 ## 2.6 Plan de validación pendiente
 
@@ -223,74 +223,86 @@ El sistema calcula el plazo con la fecha de vencimiento real de la cuota más 30
 
 # 3. E2 · Arquitectura de información y wireframes
 
-Con las personas definidas, organizamos la aplicación. Este capítulo presenta el mapa de navegación, la tabla de correspondencia pantalla ↔ caso de uso que exige la sección 6.1 y los wireframes de baja fidelidad. Los wireframes se produjeron **antes** del prototipo de alta fidelidad y están completos en el Anexo A. Al final se justifica la jerarquía del tablero gerencial y cómo se distinguen la cartera en mora y la cartera en riesgo.
+Con las personas definidas, organizamos la aplicación. Este capítulo presenta el mapa de navegación, la tabla de correspondencia pantalla ↔ caso de uso que exige la sección 6.1 y los wireframes de baja fidelidad (skeleton y anotado). Todas las pantallas usan los **mismos nombres y códigos que el prototipo de Figma** (P01–P14), y las que faltan construir tienen su guía (G01–G07); los wireframes anotados completos están en el Anexo A. Al final se justifica la jerarquía del tablero gerencial y cómo se distinguen la cartera en mora y la cartera en riesgo.
 
 ## 3.1 Principios que ordenan la información
 
 Cada principio sale de un hallazgo de [E1](e1-investigacion-usuario.md):
 
-1. **Una aplicación, tres puertas de entrada.** Al iniciar sesión, cada rol ve su propio inicio: la asesora ve su **Ruta del día**, la gerencia el **Tablero** y el comité su **Bandeja**. No hay una "pantalla para todos" (enunciado, sección 3).
+1. **Una aplicación, tres puertas de entrada.** Después de *Iniciar sesión* (P01), cada rol ve su propio inicio: la asesora ve **Mis Clientes** (P02), el comité su **Bandeja** (G03) y la gerencia el **Tablero** (G04). No hay una "pantalla para todos" (enunciado, sección 3).
 2. **Cada pantalla invoca un puerto primario del P1.** La interfaz no calcula cifras: presenta lo que devuelve el núcleo (sección 6.2). Por eso cada wireframe indica de qué función sale cada número.
-3. **El estado de envío siempre está a la vista** en el móvil: En línea, Sin señal · N pendientes o Enviando (heurística 1 de Nielsen, OP-1).
+3. **El estado de envío siempre está a la vista** en el móvil: la pantalla *Sin señal* (P14) muestra el pago en cola y *Mi perfil* (P03) el estado de sincronización (heurística 1 de Nielsen, OP-1).
 4. **Toda cifra muestra su fecha de corte.** El tramo depende de la fecha, y la fecha de corte es un parámetro (puerto `Reloj`), no "hoy".
-5. **La ayuda (?) está en el mismo lugar en todas las pantallas** (WCAG 3.2.6).
+5. **La ayuda está en el mismo lugar en todas las pantallas** (WCAG 3.2.6). En el prototipo solo aparece en el inicio de sesión; es un hallazgo del E5 (H-11).
+
+### 3.1.1 Una sola fuente para el diseño: el prototipo de Figma
+
+Para que la documentación y el prototipo **no se desfasen**, todas las pantallas se nombran igual que en el [prototipo de Figma](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) y se identifican con un código:
+
+- **P01–P14:** pantallas que **ya existen en Figma**. Sus wireframes reproducen la misma disposición, los mismos componentes y el mismo orden de los bloques.
+- **G01–G07:** pantallas que el enunciado exige y que **todavía no existen en Figma**. Sus wireframes son la **guía para construirlas** con el mismo lenguaje visual (encabezado oscuro, tarjetas blancas, botón principal abajo).
+
+Cuando una cifra del prototipo no coincide con el núcleo, el wireframe muestra la cifra correcta y lo marca con **"CORREGIR EN FIGMA"**. La lista completa de correcciones está en el E3 y el E5.
 
 ## 3.2 Mapa de navegación
 
 ```mermaid
 flowchart TB
-  L[Inicio de sesión] --> R{Rol}
+  P01[P01 Iniciar sesión] --> R{Rol}
 
-  R -->|Asesora| W01[W01 Ruta del día]
-  W01 --> W02[W02 Buscar cliente o crédito]
-  W01 --> PEND[Pendientes de envío]
-  W02 --> W07[W07 Detalle del crédito]
-  W02 -->|no existe| W03[W03 Alta de cliente]
-  W03 --> W04[W04 Solicitud de crédito]
-  W04 --> W05[W05 Simulación / plan de pagos]
-  W05 -->|cambiar monto o plazo| W04
-  W05 -->|confirmar| COLA[(Solicitud enviada al comité)]
-  W07 --> W08[W08 Detalle de la mora]
-  W07 --> W05b[W05 Plan de pagos]
-  W07 --> W09[W09 Registro de pago]
-  W09 --> REV[Revisión y confirmación]
-  REV --> W10[W10 Comprobante]
-  W10 --> W01
+  R -->|Asesora| P02[P02 Mis Clientes]
+  P02 --> P03[P03 Mi perfil]
+  P02 -->|tarjeta de cliente| P08[P08 Detalle del crédito]
+  P02 -->|botón +| P04[P04 Nueva solicitud · paso 1]
+  P04 --> P05[P05 Simulación de pago · paso 2]
+  P05 -->|← Modificar| P04
+  P05 --> P06[P06 Confirmar solicitud · paso 3]
+  P06 --> P07[P07 Solicitud enviada]
+  P07 -.guía.-> G02[G02 Confirmación de desembolso]
+  P04 -.cliente nuevo · guía.-> G01[G01 Alta de cliente]
+  P08 --> P09[P09 Plan de amortización]
+  P08 --> P10[P10 Detalle de mora]
+  P08 --> P11[P11 Registrar pago]
+  P10 --> P11
+  P11 --> P12[P12 Confirmar pago]
+  P12 -->|con señal| P13[P13 Pago aplicado]
+  P12 -->|sin señal| P14[P14 Sin señal · pago en cola]
+  P14 -->|sincronizar| P13
+  P13 --> P02
 
-  R -->|Comité| W13[W13 Bandeja del comité]
-  W13 -->|aprobar| W06[W06 Confirmación de desembolso]
-  W13 -->|rechazar con motivo| W13
+  R -.->|Comité · guía| G03[G03 Bandeja del comité]
+  G03 -.aprobar.-> G02
 
-  R -->|Gerencia| W11[W11 Tablero gerencial]
-  W11 --> W12[W12 Detalle de un tramo]
-  W12 --> W07g[W07 Detalle del crédito · solo lectura]
-  W11 --> W14[W14 Cierre diario / mensual]
-  W11 -.-> CHAT[[Asistente · Proyecto Final]]
+  R -.->|Gerencia · guía| G04[G04 Tablero gerencial]
+  G04 -.-> G05[G05 Créditos de un tramo]
+  G05 -.-> P08
+  G04 -.-> G06[G06 Cierre diario / mensual]
+  G04 -.teléfono.-> G07[G07 Tablero en teléfono]
 ```
 
-Versión en imagen, con carriles por perfil: [wireframes/mapa-navegacion.svg](wireframes/mapa-navegacion.svg).
+Las flechas continuas existen en el prototipo; las punteadas son las que faltan construir. Versión en imagen, con carriles por perfil: [wireframes/mapa-navegacion.svg](wireframes/mapa-navegacion.svg).
 
-Los tres flujos navegables que exige E3 recorren este mapa así:
+Los tres flujos navegables que exige el E3 recorren este mapa así:
 
-| Flujo E3 | Recorrido en el mapa |
-|---|---|
-| 1. Originación | W04 Solicitud → W05 Simulación → W13 Decisión del comité → W06 Confirmación de desembolso |
-| 2. Cobro en campo | W02 Buscar → W07 Saldo y tramo → W08 Desglose de la mora → W09 Registrar pago → W10 Comprobante |
-| 3. Consulta gerencial | W11 Tablero → tramo de la cartera en riesgo → W12 Créditos de ese tramo |
+| Flujo E3 | Recorrido | Estado en Figma |
+|---|---|---|
+| 1. Originación | P02 (+) → P04 Nueva solicitud → P05 Simulación → P06 Confirmar → P07 Enviada → **G02 Desembolso** | Existe hasta P07; falta G02 |
+| 2. Cobro en campo | P02 buscar → P08 saldo y tramo → P10 desglose de la mora → P11 registrar pago → P12 confirmar → P13 comprobante (o P14 sin señal) | Completo |
+| 3. Consulta gerencial | **G04 Tablero** → tramo de la cartera en riesgo → **G05 créditos de ese tramo** → P08 | Falta construir G04 y G05 |
 
 ## 3.3 Tabla de correspondencia pantalla ↔ caso de uso
 
 ### 3.3.1 Tabla obligatoria de la sección 6.1
 
-| Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, sección 8) | Caso de uso P1 | Pantalla P2 | Wireframe |
+| Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, sección 8) | Caso de uso P1 | Pantalla P2 | Código |
 |---|---|---|---|---|
-| RegistrarCliente | `RegistrarCliente` | CU-01 Registrar cliente | Alta de cliente | W03 |
-| SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Solicitud de crédito (+ simulación del plan) | W04, W05 |
-| EvaluarSolicitud | `EvaluarCredito` + `DecidirSolicitud` | CU-03 Evaluar, CU-04 Aprobar, CU-05 Rechazar | Bandeja del comité | W13 |
-| DesembolsarCredito | `DesembolsarCredito` | CU-06 Desembolsar crédito | Confirmación de desembolso | W06 |
-| RegistrarPago | `RegistrarPago` | CU-07 Registrar pago | Registro de pago en campo (+ comprobante) | W09, W10 |
-| ConsultarCarteraEnRiesgo | `ConsultarCarteraEnRiesgo` | CU-14 Consultar cartera en riesgo | Tablero gerencial (+ detalle de tramo) | W11, W12, W15 |
-| GenerarCierre | `GenerarCierre` | CU-12 Cierre diario, CU-13 Cierre mensual | Cierre diario / mensual | W14 |
+| RegistrarCliente | `RegistrarCliente` | CU-01 Registrar cliente | Alta de cliente | G01 (guía) |
+| SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Nueva solicitud → Simulación de pago → Confirmar solicitud → Solicitud enviada | P04, P05, P06, P07 |
+| EvaluarSolicitud | `EvaluarCredito` + `DecidirSolicitud` | CU-03 Evaluar, CU-04 Aprobar, CU-05 Rechazar | Bandeja del comité | G03 (guía) |
+| DesembolsarCredito | `DesembolsarCredito` | CU-06 Desembolsar crédito | Confirmación de desembolso | G02 (guía) |
+| RegistrarPago | `RegistrarPago` | CU-07 Registrar pago | Registrar pago → Confirmar pago → Pago aplicado / Sin señal | P11, P12, P13, P14 |
+| ConsultarCarteraEnRiesgo | `ConsultarCarteraEnRiesgo` | CU-14 Consultar cartera en riesgo | Tablero gerencial, créditos de un tramo y tablero en teléfono | G04, G05, G07 (guías) |
+| GenerarCierre | `GenerarCierre` | CU-12 Cierre diario, CU-13 Cierre mensual | Cierre diario / mensual | G06 (guía) |
 
 > **Nota de coherencia.** En el P1 el puerto que el enunciado llama `EvaluarSolicitud` quedó dividido en dos puertos: `EvaluarCredito` (el analista registra la evaluación) y `DecidirSolicitud` (el comité aprueba o rechaza). La Bandeja del comité usa ambos. No se cambia el nombre de los puertos del P1, para respetar la regla de incrementalidad.
 
@@ -298,63 +310,75 @@ Los tres flujos navegables que exige E3 recorren este mapa así:
 
 La penalización de la sección 10 aplica a pantallas **sin** caso de uso. Por eso se trazan también las pantallas que no aparecen en la tabla 6.1:
 
-| Pantalla | Puerto P1 | Caso de uso | Wireframe | Función del núcleo que provee las cifras |
+| Pantalla (Figma) | Código | Puerto P1 | Caso de uso | Función del núcleo que provee las cifras |
 |---|---|---|---|---|
-| Ruta del día | `ConsultarCredito` (lista filtrada por asesora) | CU-15 | W01 | `consultarMora` (días y tramo por cuota) |
-| Buscar cliente o crédito | `ConsultarCredito` | CU-15 | W02 | — |
-| Detalle del crédito | `ConsultarCredito` + `CalcularMora` | CU-15, CU-08 | W07 | `consultarMora`, `clasificarTramoMora` |
-| Plan de amortización | `SolicitarCredito` (simulación) / `ConsultarCredito` | CU-02, CU-15 | W05 | `plan-amortizacion.ts` |
-| Detalle de la mora | `CalcularMora` | CU-08 | W08 | `CalculadoraMora.calcular` → `detalle.tramos` |
-| Comprobante | `RegistrarPago` (resultado) | CU-07 | W10 | `prelacion-pago.ts`, `gasto-gestion-cobro.ts` |
-| Tablero en teléfono | `ConsultarCarteraEnRiesgo` | CU-14 | W15 | `calcularCarteraPorTramo` |
+| Mis Clientes (con búsqueda) | P02 | `ConsultarCredito` (cartera de la asesora) | CU-15 | `consultarMora` (días y tramo por cuota) |
+| Detalle del crédito | P08 | `ConsultarCredito` + `CalcularMora` | CU-15, CU-08 | `consultarMora`, `clasificarTramoMora` |
+| Plan de amortización | P09 | `ConsultarCredito` | CU-15 | `plan-amortizacion.ts` |
+| Detalle de mora | P10 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos` |
+| Iniciar sesión | P01 | — (autenticación, fuera de alcance del P2) | — | — |
+| Mi perfil | P03 | — | — | — |
 
-Ningún caso de uso principal queda sin pantalla. `ReestructurarCredito` (CU-10), `DeclararIncobrable` (CU-11), `AnularCredito` (CU-17) y `AdministrarPolitica` (CU-16) son operaciones administrativas que el enunciado no exige prototipar. Se accederán desde el detalle del crédito en la vista de gerencia (W12 → W07) en el Proyecto Final. CU-18 Cancelar crédito no tiene pantalla propia porque ocurre como resultado de un pago que deja el saldo en Q0.00 (CP-04.1).
+**Iniciar sesión (P01) y Mi perfil (P03)** no corresponden a un caso de uso del P1: son pantallas de soporte de sesión. P01 es necesaria para entrar a la aplicación; P03 muestra el estado de sincronización que exige la estrategia sin conexión del E4. El equipo debe decidir si se justifican así ante el catedrático o si P03 se retira del prototipo (la sección 10 resta 0.5 puntos por pantalla sin caso de uso).
+
+Ningún caso de uso principal queda sin pantalla. `ReestructurarCredito` (CU-10), `DeclararIncobrable` (CU-11), `AnularCredito` (CU-17) y `AdministrarPolitica` (CU-16) son operaciones administrativas que el enunciado no exige prototipar. En el Proyecto Final se accederán desde el detalle del crédito en la vista de gerencia (G05 → P08). CU-18 Cancelar crédito no tiene pantalla propia porque ocurre como resultado de un pago que deja el saldo en Q0.00 (CP-04.1).
 
 ## 3.4 Wireframes de baja fidelidad
 
-Los wireframes están en [`wireframes/`](wireframes) en formato SVG, en escala de grises, y cada uno lleva anotaciones numeradas que explican las decisiones. Son evidencia del proceso: preceden al prototipo de alta fidelidad en Figma (E3), donde se aplicarán color, tipografía y componentes. Todas las cifras son las del caso de referencia y las de los oráculos del núcleo.
+Cada pantalla se dibuja en **dos niveles** a partir de **una sola descripción** (script `wireframes/generar_wireframes_figma.py`), así ambos niveles y el prototipo no pueden quedar distintos:
 
-### 3.4.1 Asesora y cliente (móvil, 360 × 720)
-
-| # | Pantalla | Decisión principal | Archivo |
-|---|---|---|---|
-| W01 | Ruta del día | Aviso de conexión fijo arriba; cada tarjeta de cliente completa es el objetivo táctil | ![W01](wireframes/W01-ruta-del-dia.svg) |
-| W02 | Buscar | Búsqueda por nombre parcial, DPI o número de crédito; funciona sin señal sobre la cartera de la ruta | ![W02](wireframes/W02-buscar-cliente.svg) |
-| W03 | Alta de cliente | Foto del DPI para autocompletar; borrador guardado en el teléfono por campo | ![W03](wireframes/W03-alta-cliente.svg) |
-| W04 | Solicitud | Monto con prefijo Q, formato en vivo, rango y monto en letras; plazo con botones | ![W04](wireframes/W04-solicitud-credito.svg) |
-| W05 | Plan de pagos | Las 12 cuotas del núcleo; la cuota 12 de Q1,004.63 resaltada y explicada | ![W05](wireframes/W05-plan-amortizacion.svg) |
-| W06 | Confirmación de desembolso | Resumen completo + casilla "el cliente revisó" + salida "Volver y corregir" | ![W06](wireframes/W06-confirmacion-desembolso.svg) |
-| W07 | Detalle del crédito | Lo que debe hoy va primero; tramo en lenguaje llano; aviso del siguiente tramo | ![W07](wireframes/W07-detalle-credito.svg) |
-| W08 | Detalle de la mora | Caso M-3: una fila por tramo recorrido y un total redondeado una sola vez | ![W08](wireframes/W08-detalle-mora.svg) |
-| W09 | Registro de pago | Prelación visible **antes** de confirmar; aviso sin conexión | ![W09](wireframes/W09-registro-pago.svg) |
-| W10 | Comprobante | Estados Pendiente / Enviado / Confirmado; clave de operación visible | ![W10](wireframes/W10-comprobante.svg) |
-
-### 3.4.2 Gerencia y comité (escritorio, 1280 × 760)
-
-| # | Pantalla | Archivo |
+| Nivel | Qué muestra | Carpeta |
 |---|---|---|
-| W11 | Tablero gerencial | ![W11](wireframes/W11-tablero-gerencial.svg) |
-| W12 | Detalle de un tramo | ![W12](wireframes/W12-detalle-tramo.svg) |
-| W13 | Bandeja del comité | ![W13](wireframes/W13-bandeja-comite.svg) |
-| W14 | Cierre diario / mensual | ![W14](wireframes/W14-cierre.svg) |
-| W15 | Tablero en teléfono (ver E4) | ![W15](wireframes/W15-tablero-movil.svg) |
+| **Skeleton** | Solo bloques grises que indican dónde va cada elemento, sin textos ni cifras | [`wireframes/skeleton/`](wireframes/skeleton) |
+| **Wireframe anotado** | Los mismos bloques con textos, cifras del núcleo y notas numeradas que justifican cada decisión | [`wireframes/anotado/`](wireframes/anotado) |
+| **Alta fidelidad** | Color, tipografía, componentes y navegación | [Prototipo de Figma](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) |
 
-### 3.4.3 La pantalla difícil: Detalle de la mora (W08)
+### 3.4.1 Pantallas del prototipo (P01–P14, móvil)
 
-El enunciado advierte que mostrar solo "Mora: Q50.80" no permite verificar nada, y que mostrar la fórmula completa no se entiende. El punto intermedio elegido:
+| Código | Pantalla en Figma | Decisión principal | Skeleton | Anotado |
+|---|---|---|---|---|
+| P01 | Iniciar sesión | Contraseña con opción de mostrarla; ayuda visible ("Llama al soporte técnico") | ![P01](wireframes/skeleton/P01-iniciar-sesion.svg) | ![P01](wireframes/anotado/P01-iniciar-sesion.svg) |
+| P02 | Mis Clientes | Búsqueda por nombre o municipio; orden por prioridad; etiqueta de tramo y días; botón + | ![P02](wireframes/skeleton/P02-mis-clientes.svg) | ![P02](wireframes/anotado/P02-mis-clientes.svg) |
+| P03 | Mi perfil | Estado operativo y de sincronización de la asesora | ![P03](wireframes/skeleton/P03-mi-perfil.svg) | ![P03](wireframes/anotado/P03-mi-perfil.svg) |
+| P04 | Nueva solicitud (paso 1) | Cliente de una lista; monto con − / + y montos rápidos; plazo con botones; cuota estimada | ![P04](wireframes/skeleton/P04-nueva-solicitud.svg) | ![P04](wireframes/anotado/P04-nueva-solicitud.svg) |
+| P05 | Simulación de pago (paso 2) | Las 12 cuotas del núcleo para Q5,000 a 12 meses | ![P05](wireframes/skeleton/P05-simulacion-pago.svg) | ![P05](wireframes/anotado/P05-simulacion-pago.svg) |
+| P06 | Confirmar solicitud (paso 3) | Aviso "Revise antes de enviar" y resumen completo (WCAG 3.3.4) | ![P06](wireframes/skeleton/P06-confirmar-solicitud.svg) | ![P06](wireframes/anotado/P06-confirmar-solicitud.svg) |
+| P07 | Solicitud enviada | Número de referencia y próximos pasos | ![P07](wireframes/skeleton/P07-solicitud-enviada.svg) | ![P07](wireframes/anotado/P07-solicitud-enviada.svg) |
+| P08 | Detalle del crédito | Estado y tramo en lenguaje llano; lo exigible hoy; accesos a plan y mora | ![P08](wireframes/skeleton/P08-detalle-credito.svg) | ![P08](wireframes/anotado/P08-detalle-credito.svg) |
+| P09 | Plan de amortización | Caso de referencia Q10,000; cuota 12 de Q1,004.63 resaltada **y explicada** | ![P09](wireframes/skeleton/P09-plan-amortizacion.svg) | ![P09](wireframes/anotado/P09-plan-amortizacion.svg) |
+| P10 | Detalle de mora | Caso M-3: una tarjeta por tramo recorrido, tasas anuales y nota de redondeo (Q50.80) | ![P10](wireframes/skeleton/P10-detalle-mora.svg) | ![P10](wireframes/anotado/P10-detalle-mora.svg) |
+| P11 | Registrar pago | Monto con separador de miles; prelación visible antes de confirmar | ![P11](wireframes/skeleton/P11-registrar-pago.svg) | ![P11](wireframes/anotado/P11-registrar-pago.svg) |
+| P12 | Confirmar pago | "Confirme antes de aplicar"; fecha fijada al confirmar; salida "Modificar monto" | ![P12](wireframes/skeleton/P12-confirmar-pago.svg) | ![P12](wireframes/anotado/P12-confirmar-pago.svg) |
+| P13 | Pago aplicado | Comprobante con la distribución y el saldo restante | ![P13](wireframes/skeleton/P13-pago-aplicado.svg) | ![P13](wireframes/anotado/P13-pago-aplicado.svg) |
+| P14 | Sin señal | Pago en cola con folio fijo (clave de idempotencia) y sincronización | ![P14](wireframes/skeleton/P14-sin-senal.svg) | ![P14](wireframes/anotado/P14-sin-senal.svg) |
 
-| Qué muestra | Qué oculta | Por qué |
+### 3.4.2 Guías para las pantallas que faltan en Figma (G01–G07)
+
+| Código | Pantalla | Formato | Caso de uso | Skeleton | Anotado |
+|---|---|---|---|---|---|
+| G01 | Alta de cliente | Móvil | CU-01 | ![G01](wireframes/skeleton/G01-alta-cliente.svg) | ![G01](wireframes/anotado/G01-alta-cliente.svg) |
+| G02 | Confirmación de desembolso | Móvil | CU-06 | ![G02](wireframes/skeleton/G02-confirmacion-desembolso.svg) | ![G02](wireframes/anotado/G02-confirmacion-desembolso.svg) |
+| G03 | Bandeja del comité | Escritorio | CU-03/04/05 | ![G03](wireframes/skeleton/G03-bandeja-comite.svg) | ![G03](wireframes/anotado/G03-bandeja-comite.svg) |
+| G04 | Tablero gerencial | Escritorio | CU-14 | ![G04](wireframes/skeleton/G04-tablero-gerencial.svg) | ![G04](wireframes/anotado/G04-tablero-gerencial.svg) |
+| G05 | Créditos de un tramo | Escritorio | CU-14 | ![G05](wireframes/skeleton/G05-creditos-tramo.svg) | ![G05](wireframes/anotado/G05-creditos-tramo.svg) |
+| G06 | Cierre diario / mensual | Escritorio | CU-12/13 | ![G06](wireframes/skeleton/G06-cierre.svg) | ![G06](wireframes/anotado/G06-cierre.svg) |
+| G07 | Tablero en teléfono | Móvil | CU-14 | ![G07](wireframes/skeleton/G07-tablero-movil.svg) | ![G07](wireframes/anotado/G07-tablero-movil.svg) |
+
+### 3.4.3 La pantalla difícil: Detalle de mora (P10)
+
+El enunciado advierte que mostrar solo "Mora: Q50.80" no permite verificar nada, y que mostrar la fórmula completa no se entiende. El prototipo ya resuelve bien la **forma**: una tarjeta por tramo recorrido, con el rango de días y los días en ese tramo. Lo que falta es que las **cifras** sean las del núcleo:
+
+| Qué muestra el wireframe | Qué oculta | Por qué |
 |---|---|---|
-| Rango de días de cada tramo ("Días 31–60") | La palabra "Mora 2" | El cliente entiende días, no nombres de tramo (heurística 2 de Nielsen) |
-| Tasa **anual** ("24 % al año") | La tasa diaria 0.000666667 | Una tasa diaria no significa nada para Carlos |
-| Días recorridos en cada tramo y una barra proporcional | La fórmula Σ capital × tasa × días / 360 | La barra muestra que el último tramo tiene solo 10 días |
-| Importe por tramo a 2 decimales con asterisco | Los importes con 4 decimales (Q10.8864…) | Legibilidad |
-| **Nota de redondeo**: "Suma exacta Q50.8032, redondeada una sola vez al final" | — | Si se redondea cada fila por separado, la suma da **Q50.81**, no Q50.80. Sin la nota, el cliente que suma las filas ve un error de un centavo. La nota hace visible la regla 7.3 en lugar de esconderla |
-| Contraste con la política retroactiva (Q72.58), "no se cobra así" | — | Da confianza: muestra que la regla favorece al cliente |
+| Resumen arriba: 100 días · capital en mora Q725.76 · mora total Q50.80 | El saldo total del crédito | La mora se calcula sobre el capital de la cuota vencida, no sobre el saldo total |
+| Una tarjeta por tramo con el rango de días ("Días 31–60 · 30 días en este tramo") | Solo el nombre "Mora 2" | El cliente entiende días, no nombres de tramo (heurística 2 de Nielsen) |
+| Tasa **anual** del tramo ("24 % al año") y mora por día (Q0.48) | La tasa diaria 0.000666667 | Una tasa diaria no significa nada para el cliente |
+| Importe por tramo a 2 decimales con asterisco | Los importes con 4 decimales | Legibilidad |
+| Tarjeta "Cómo se calculó" con los 4 decimales y la **nota de redondeo** | — | Sumar las filas redondeadas da **Q50.81**; el total oficial es **Q50.80** porque se redondea una sola vez (sección 7.3) |
 
 Los importes por tramo salen de `detalle.tramos[].importeSinRedondear` y el total de `interesMoratorio`. La interfaz solo formatea: nunca suma ni redondea por su cuenta.
 
-## 3.5 Jerarquía del tablero gerencial (W11)
+## 3.5 Jerarquía del tablero gerencial (G04)
 
 ### 3.5.1 Qué se ve primero y por qué
 
@@ -385,13 +409,13 @@ Confundir estos dos indicadores es un hallazgo de severidad 4 y una penalizació
 
 Además, el bloque de tramos explica expresamente por qué Mora 1 no forma parte del riesgo ("Q124,000 con atraso ≤ 30 días se ven en *Cartera en mora*"). Así, un lector que sume los tramos no busca el 21.75 % en ese bloque.
 
-Origen de las cifras: `calcularCarteraPorTramo` devuelve `carteraActiva`, `tramosEnRiesgo[]`, `totalEnRiesgo`, `carteraEnMora` e `incobrablesDelPeriodo`. Los porcentajes llegan ya conciliados para que sumen exactamente el total (invariante 7 de la sección 7.9). El tablero no recalcula nada (CP-04.3). El enunciado no da el saldo de C-007; el tablero lo toma de `incobrablesDelPeriodo` del cierre, por eso el wireframe no muestra un monto inventado.
+Origen de las cifras: `calcularCarteraPorTramo` devuelve `carteraActiva`, `tramosEnRiesgo[]`, `totalEnRiesgo`, `carteraEnMora` e `incobrablesDelPeriodo`. Los porcentajes llegan ya conciliados para que sumen exactamente el total (invariante 7 de la sección 7.9). El tablero no recalcula nada (CP-04.3). El enunciado no da el saldo de C-007; el tablero lo toma de `incobrablesDelPeriodo` del cierre, por eso la guía G04 no muestra un monto inventado.
 
 > **Observación para el equipo.** En `tests/cartera-por-tramo.test.ts` los créditos se llaman C-001, C-002… con las cifras de la sección 7.8, pero los identificadores no coinciden con los del enunciado (C-003 con 45 días, C-004 con 75 días, etc.). Los montos y porcentajes sí coinciden. El prototipo usa los identificadores del enunciado; conviene alinear el fixture para que la defensa no se preste a confusión.
 
 ### 3.5.3 El lugar del asistente (sección 6.3)
 
-El chat del Proyecto Final ocupa una **columna derecha plegable** (W11) y, en el teléfono, un botón flotante que abre el chat a pantalla completa (W15). Justificación:
+El chat del Proyecto Final ocupa una **columna derecha plegable** (G04) y, en el teléfono, un acceso desde el tablero móvil (G07). Justificación:
 
 - **No tapa las cifras**: las tarjetas y el desglose quedan a la izquierda, en el recorrido natural de lectura.
 - **Convive con el tablero**: la gerencia puede preguntar "¿por qué C-004 está en Mora 3?" mientras ve el tramo. El asistente responde con la misma fuente que el tablero (el núcleo) y cita de dónde sale cada cifra.
@@ -400,10 +424,10 @@ El chat del Proyecto Final ocupa una **columna derecha plegable** (W11) y, en el
 ## 3.6 Qué se validará en E3 y E5
 
 - Prueba de lectura del tablero (cinco segundos): ¿qué porcentaje reporta el participante como "riesgo"?
-- Prueba de comprensión de W08 con tres personas sin formación financiera: ¿pueden explicar por qué la mora de los días 91–100 es de Q7.26 si son solo 10 días?
-- Tiempo para registrar un pago con una mano, de pie (W09): objetivo de menos de 30 segundos y 4 toques desde W07.
+- Prueba de comprensión de P10 con tres personas sin formación financiera: ¿pueden explicar por qué la mora de los días 91–100 es de Q7.26 si son solo 10 días?
+- Tiempo para registrar un pago con una mano, de pie (P11 → P12): objetivo de menos de 30 segundos y 4 toques desde P08.
 
-*Uso de IA declarado (sección 15):* los SVG de baja fidelidad se generaron con apoyo de un asistente de IA a partir de las decisiones del equipo, mediante el script `wireframes/generar_wireframes.py`, que es editable. Las decisiones de jerarquía y su justificación son del equipo y deben revisarse antes de la entrega.
+*Uso de IA declarado (sección 15):* los SVG de baja fidelidad se generaron con apoyo de un asistente de IA a partir de las decisiones del equipo, mediante el script editable `wireframes/generar_wireframes_figma.py`, tomando como referencia las pantallas del prototipo de Figma. Las decisiones de jerarquía y su justificación son del equipo y deben revisarse antes de la entrega.
 
 ---
 
@@ -419,15 +443,15 @@ El enlace abre sin iniciar sesión en Figma, como pide la sección 13. El archiv
 
 | Paso | Qué hacer | Qué se ve |
 |---|---|---|
-| 1 | *Ingresar* en la pantalla de inicio de sesión | **Mis Clientes**: cartera de la asesora ordenada por prioridad, con la etiqueta de tramo (Incobrable, Mora 3, Mora 2, Mora 1, Al día) y los días de atraso |
-| 2 | **Flujo de cobro:** tocar la tarjeta de *Pedro Xol Cux* | **Detalle del crédito**: estado, saldo, próxima cuota, monto original, plazo y tasa |
-| 3 | Botón *Plan de pago* | **Plan de amortización** del caso de referencia: Q10,000, 12 meses, 3 % mensual, con la cuota 12 de Q1,004.63 resaltada |
-| 4 | Botón *Detalle mora* | **Detalle de mora** por tramo recorrido |
-| 5 | *Registrar pago* → tocar el monto → *Revisar y confirmar* | **Registrar pago** con la prelación visible antes de aplicar (gastos → mora → interés → capital) |
-| 6 | *Aplicar pago* | **Pago aplicado**: comprobante con número y distribución del pago, más opciones para enviarlo por WhatsApp o imprimirlo |
-| 7 | **Variante sin señal:** en *Confirmar pago*, tocar *Simular pago sin señal (demo)* y luego *Aplicar pago* | **Sin señal**: pago en cola, estado "Pendiente", folio y botón *Sincronizar ahora* |
-| 8 | **Flujo de originación:** en *Mis Clientes*, botón **+** | **Nueva solicitud** (cliente, monto con límites y plazo) → **Simulación de pago** → **Confirmar solicitud** → **Solicitud enviada** |
-| 9 | Tocar las iniciales *MA* | **Mi perfil** de la asesora: zona, ruta, cartera asignada y estado de sincronización |
+| 1 | *Ingresar* en **P01 Iniciar sesión** | **P02 Mis Clientes**: cartera de la asesora ordenada por prioridad, con la etiqueta de tramo (Incobrable, Mora 3, Mora 2, Mora 1, Al día) y los días de atraso |
+| 2 | **Flujo de cobro:** tocar la tarjeta de *Pedro Xol Cux* | **P08 Detalle del crédito**: estado, saldo, próxima cuota, monto original, plazo y tasa |
+| 3 | Botón *Plan de pago* | **P09 Plan de amortización** del caso de referencia: Q10,000, 12 meses, 3 % mensual, con la cuota 12 de Q1,004.63 resaltada |
+| 4 | Botón *Detalle mora* | **P10 Detalle de mora** por tramo recorrido |
+| 5 | *Registrar pago* → tocar el monto → *Revisar y confirmar* | **P11 Registrar pago** → **P12 Confirmar pago**, con la prelación visible antes de aplicar (gastos → mora → interés → capital) |
+| 6 | *Aplicar pago* | **P13 Pago aplicado**: comprobante con número y distribución del pago, más opciones para enviarlo por WhatsApp o imprimirlo |
+| 7 | **Variante sin señal:** en *Confirmar pago*, tocar *Simular pago sin señal (demo)* y luego *Aplicar pago* | **P14 Sin señal**: pago en cola, estado "Pendiente", folio y botón *Sincronizar ahora* |
+| 8 | **Flujo de originación:** en *Mis Clientes*, botón **+** | **P04 Nueva solicitud** (cliente, monto con límites y plazo) → **P05 Simulación de pago** → **P06 Confirmar solicitud** → **P07 Solicitud enviada** |
+| 9 | Tocar las iniciales *MA* | **P03 Mi perfil** de la asesora: zona, ruta, cartera asignada y estado de sincronización |
 
 ## 4.3 Lo que el prototipo resuelve bien
 
@@ -446,19 +470,19 @@ Recorrimos el prototipo completo el 23 de septiembre de 2026. Estas decisiones c
 
 | Requisito del E3 | Perfil / formato | Estado en el prototipo | Acción pendiente |
 |---|---|---|---|
-| Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ Nueva solicitud + Simulación de pago | — |
-| Detalle del crédito | Cliente/Asesor · móvil | ✅ | Agregar el tramo en lenguaje llano ("lleva 45 días de atraso") |
-| Registro de pago con desglose de la prelación | Asesor · móvil | ✅ | Corregir las cifras (§4.5) |
-| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ La cuota 12 está resaltada, pero sin explicación | Agregar la nota "1 centavo más para cerrar el saldo exacto en Q0.00" |
-| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ Muestra tasas y montos que no son los del núcleo | Rehacer con el caso M-3 (§4.5) |
-| Tablero gerencial | Gerencia · escritorio | ❌ No existe todavía | Construir a partir del wireframe W11 |
-| Cierre diario / mensual | Gerencia · escritorio | ❌ No existe todavía | Construir a partir del wireframe W14 |
-| Confirmación de desembolso (tabla 6.1) | Encargado · móvil | ❌ | Agregar después de "Solicitud enviada", a partir de W06 |
-| Bandeja del comité y Alta de cliente (tabla 6.1) | Comité / Asesor | ❌ | Recomendable, a partir de W13 y W03 |
+| Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ P04 → P05 → P06 → P07 | — |
+| Detalle del crédito | Cliente/Asesor · móvil | ✅ P08 | Agregar el tramo en lenguaje llano ("lleva 45 días de atraso") |
+| Registro de pago con desglose de la prelación | Asesor · móvil | ✅ P11 → P12 → P13 / P14 | Corregir las cifras (§4.5) |
+| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ P09: la cuota 12 está resaltada, pero sin explicación | Agregar la nota "1 centavo más para cerrar el saldo exacto en Q0.00" |
+| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ P10: muestra tasas y montos que no son los del núcleo | Rehacer con el caso M-3 (§4.5) |
+| Tablero gerencial | Gerencia · escritorio | ❌ No existe todavía | Construir a partir de la guía G04 (y G07 para teléfono) |
+| Cierre diario / mensual | Gerencia · escritorio | ❌ No existe todavía | Construir a partir de la guía G06 |
+| Confirmación de desembolso (tabla 6.1) | Encargado · móvil | ❌ | Agregar después de "Solicitud enviada", a partir de la guía G02 |
+| Bandeja del comité y Alta de cliente (tabla 6.1) | Comité / Asesor | ❌ | Recomendable, a partir de las guías G03 y G01 |
 | Flujo 1: solicitud → simulación → confirmación → desembolso | — | ⚠️ Termina en "Solicitud enviada" | Agregar el desembolso |
 | Flujo 2: buscar → saldo y tramo → mora → pago → comprobante | — | ✅ | — |
 | Flujo 3: tablero → riesgo por tramo → créditos del tramo | — | ❌ | Depende del tablero |
-| *Mi perfil* | — | Existe, pero no corresponde a ningún caso de uso | Justificarla como soporte de sesión o retirarla (la sección 10 resta 0.5 puntos por pantalla sin caso de uso) |
+| *P03 Mi perfil* | — | Existe, pero no corresponde a ningún caso de uso | Justificarla como soporte de sesión o retirarla (la sección 10 resta 0.5 puntos por pantalla sin caso de uso) |
 
 ## 4.5 Cifras que deben coincidir con el núcleo (sección 6.2)
 
@@ -513,7 +537,7 @@ Este capítulo decide cómo se construye la aplicación: nativa, híbrida o PWA.
 | Teléfono de gama media | Mejor rendimiento, pero instalador pesado | Contenedor nativo + web | Se instala desde el navegador, ocupa poco, sin tienda de aplicaciones |
 | Escritorio para gerencia | No aplica: exige otro producto | Requiere además la versión web | **El mismo código** en el navegador de escritorio |
 | Actualizaciones (por ejemplo, un cambio de política) | Publicar en la tienda y esperar a que los asesores actualicen | Publicar en la tienda para cambios nativos | Inmediatas al volver a cargar la app |
-| Cámara para la foto del DPI (W03) | Sí | Sí | Sí: `<input type="file" accept="image/*" capture>` o `getUserMedia` |
+| Cámara para la foto del DPI (G01) | Sí | Sí | Sí: `<input type="file" accept="image/*" capture>` o `getUserMedia` |
 | Coherencia con el Proyecto Final (React + Vite + Tailwind en 4 semanas) | Rompe el stack: dos lenguajes más | Compatible, pero agrega compilación, firma y pruebas por plataforma | **Idéntico stack** |
 | Costo de mantenimiento | 2 o 3 bases de código | 1 base de código + contenedores | **1 base de código** |
 
@@ -529,7 +553,7 @@ Este capítulo decide cómo se construye la aplicación: nativa, híbrida o PWA.
 
 | Riesgo de la PWA | Mitigación |
 |---|---|
-| El navegador puede borrar el almacenamiento de un sitio | Solicitar `navigator.storage.persist()` al instalar. La cola se vacía en cuanto hay señal. Aviso visible si quedan pendientes al final del día (W01). Nunca se borra un comando sin confirmación del servidor |
+| El navegador puede borrar el almacenamiento de un sitio | Solicitar `navigator.storage.persist()` al instalar. La cola se vacía en cuanto hay señal. Aviso visible si quedan pendientes al final del día (P03 Mi perfil y P14). Nunca se borra un comando sin confirmación del servidor |
 | Background Sync no existe en todos los navegadores | No se promete sincronización automática universal. Reenvío al recibir el evento `online`, al abrir la app y con el botón "Enviar ahora" en Pendientes. La flota de asesoras usa Android con Chrome (supuesto a confirmar con TI) |
 | iOS limita las PWA | La gerencia en iPhone solo consulta: no necesita cola ni sincronización |
 
@@ -548,15 +572,15 @@ Se diseña primero para 360 px (el teléfono de la asesora) y se **agrega** info
 
 ### 5.3.1 Cómo se transforma el tablero gerencial
 
-| Elemento | Teléfono (W15) | Escritorio (W11) |
+| Elemento | Teléfono (G07) | Escritorio (G04) |
 |---|---|---|
 | Línea de contexto (fecha de corte, cierre congelado) | En el encabezado: "Tablero · corte 30/09" | Línea completa con estado del cierre y política |
 | Riesgo → incobrables → mora | Tres tarjetas **apiladas en ese mismo orden**, con los mismos rótulos, símbolos (▲ ✕ ●) y bordes | Tres tarjetas en fila |
 | Desglose por tramo | Lista de 4 filas con porcentaje; al tocar una fila se abre el detalle | Tabla con créditos, saldo en Q, barra proporcional y % |
-| Detalle de un tramo (W12) | Tarjetas por crédito | Tabla de 8 columnas |
+| Detalle de un tramo (G05) | Tarjetas por crédito | Tabla de 8 columnas |
 | Desembolsos y recuperaciones | Dos cifras del período, sin gráfico | Series mensuales |
 | Asistente (Proyecto Final) | Botón flotante que abre el chat a pantalla completa | Columna derecha plegable |
-| Cierre (W14) | Solo consulta | Consulta y ejecución, con confirmación |
+| Cierre (G06) | Solo consulta | Consulta y ejecución, con confirmación |
 
 **Qué se sacrifica en la pantalla pequeña, y por qué es aceptable:**
 
@@ -589,11 +613,11 @@ Se diseña primero para 360 px (el teléfono de la asesora) y se **agrega** info
 
 ### 5.4.2 Registrar un pago sin señal: la clave de idempotencia
 
-Cuando Mariela toca "Confirmar" en W09 sin señal, ocurre lo siguiente, en este orden:
+Cuando Mariela toca "Aplicar pago" en P12 (Confirmar pago) sin señal, ocurre lo siguiente, en este orden:
 
 1. **Se crea el comando** `RegistrarPago` con `creditoId`, `importe` como cadena (`"1047.76"`), `moneda`, `fechaPago` y `usuarioProceso`.
 2. **Se genera la `Idempotency-Key` una sola vez** (un UUID) y se guarda junto al comando en IndexedDB **antes** de mostrar "Pendiente". Sin ese registro, un cierre de la app podría perder el pago.
-3. La pantalla muestra **Pendiente de enviar** (W10). Nunca muestra "Pagado" sin una respuesta del sistema.
+3. La pantalla muestra **Pendiente** en la pantalla Sin señal (P14). Nunca muestra "Pagado" sin una respuesta del sistema.
 4. Al volver la señal, la cola envía `POST /creditos/{creditoId}/pagos` con **la misma clave y el mismo contenido**, en orden por crédito.
 5. El contrato OpenAPI del P1 responde:
    - **201**: pago nuevo registrado → estado **Confirmado**.
@@ -639,7 +663,7 @@ Si se usara la fecha de sincronización, Carlos pagaría **Q25.48 de más** por 
 
 ### 5.4.4 Lo que se ve en pantalla
 
-| Estado del comando | Texto en W09 / W10 | Barra de estado (W01) |
+| Estado del comando | Texto en P12 / P14 | Estado en Mi perfil (P03) |
 |---|---|---|
 | Guardado sin señal | "Pendiente de enviar · se enviará solo al tener señal" | "Sin señal · 2 pendientes" |
 | Enviando | "Enviando…" | "Enviando…" |
@@ -946,11 +970,14 @@ git show --stat <hash>
 | 12 | 23/09 | `16f983f` | Oliver Romero · IA declarada | Documentación | E1 · E2 · E4 · E6 | Investigación de usuario, arquitectura de información, 15 wireframes, decisión PWA; informe SOLID reorganizado según el Anexo D; documentos renombrados por entregable | `e1-*`, `e2-*`, `e4-*`, `wireframes/`, `informe-impacto-solid.md` | 32 archivos, +2,413 / −232 |
 | 13 | 23/09 | `4ba9e55` | Oliver Romero · IA declarada | Documentación | E7 | Historial de cambios y documento técnico consolidado | `historial-cambios.md`, `documentacion-completa.md` | 4 archivos, +2,658 |
 | 14 | 23/09 | `00709f9` | Oliver Romero · IA declarada | Documentación | E3 · E5 · E7 | Enlace de Figma en el README y el índice, revisión del prototipo y evaluación preliminar E5 | `P2-documento-entrega.md`, `README.md` | 6 archivos, +511 / −12 |
-| 15 | 23/09 | *(este documento)* | Oliver Romero · IA declarada | Documentación | E1–E7 | Documento de entrega unificado (este archivo), generado a partir de los documentos del repositorio | `P2-documento-entrega.md`, `fuente-documento-entrega.md` | — |
+| 15 | 23/09 | `8486b6e` | Oliver Romero · IA declarada | Documentación | E1–E7 | Documento de entrega unificado (este archivo), generado a partir de los documentos del repositorio | `P2-documento-entrega.md`, `fuente-documento-entrega.md` | — |
+| 16 | 23/09 | `53689ef` | Oliver Romero · IA declarada | Documentación | E2 · E6 | Primeros skeletons, diagrama de casos de uso y ADR-005 (PWA) | `wireframes/skeleton/`, `casos-de-uso-p2.svg`, `ADR-005` | 22 archivos |
+| 17 | 23/09 | `cdc92c4` | Oliver Romero · IA declarada | Documentación | E2 · E6 · E7 | Documento de complementos con enlaces a GitHub | `P2-complementos.md` | 2 archivos |
+| 18 | 23/09 | *(este documento)* | Oliver Romero · IA declarada | Documentación | E2 · E3 | **Alineación con Figma:** wireframes P01–P14 con la misma disposición que el prototipo y guías G01–G07 para las pantallas que faltan; mapa, casos de uso y documentos con los mismos códigos | `wireframes/anotado/`, `wireframes/skeleton/`, `e2-arquitectura-informacion.md` | — |
 
 **Totales desde `entrega-p1`:** el núcleo `src/dominio` suma 12 archivos (10 nuevos y 2 modificados), +381 / −21 líneas. Las pruebas pasan de 206 a 263 sin modificar ningún archivo de prueba del P1.
 
-> **Nota sobre los hashes.** Los commits 0 a 11 ya están en GitHub y sus hashes son definitivos. Los commits 12 a 15 se integran después de esta entrega; si se aplican desde un parche, Git les asigna un hash nuevo y se identifican por su mensaje.
+> **Nota sobre los hashes.** Los commits 0 a 11 ya están en GitHub y sus hashes son definitivos. Los commits 12 a 18 se integran después de esta entrega; si se aplican desde un parche, Git les asigna un hash nuevo y se identifican por su mensaje.
 
 ### 8.2.2 Las fases del trabajo
 
@@ -960,7 +987,7 @@ git show --stat <hash>
 | Evolución del núcleo | 21/09 | 1 – 4 | CP-01 a CP-04 implementados, de 206 a 260 pruebas |
 | Contratos y documentación técnica | 21/09 | 5 – 6 | ADR, UML, OpenAPI, informe SOLID y validación limpia (263 pruebas) |
 | Herramientas e integración | 22/09 | 7 – 11 | Comandos de prueba, documento de pruebas, PR #1 y README |
-| Experiencia de usuario y entrega | 23/09 | 12 – 15 | E1, E2, E4, wireframes, revisión E3/E5, historial y documento de entrega |
+| Experiencia de usuario y entrega | 23/09 | 12 – 18 | E1, E2, E4, wireframes, revisión E3/E5, historial y documento de entrega |
 
 ## 8.3 Qué faltaba documentar y cómo se resolvió
 
@@ -1010,7 +1037,7 @@ Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe, pero requiere
 | 3 | Siete pantallas obligatorias y tres flujos navegables | ⚠️ | §4.4: faltan el tablero, el cierre y el desembolso |
 | 4 | Plan de amortización con la cuota 12 de Q1,004.63 explicada | ⚠️ | Falta la nota explicativa en Figma |
 | 5 | Detalle de la mora con el caso M-3 | ❌ | Corregir las cifras (§4.5) |
-| 6 | Tablero que distingue mora (21.75 %) y riesgo (7.00 %) con desglose por tramo | ⚠️ | Justificado en el wireframe W11 (§3.5); falta en Figma |
+| 6 | Tablero que distingue mora (21.75 %) y riesgo (7.00 %) con desglose por tramo | ⚠️ | Justificado en la guía G04 (§3.5); falta en Figma |
 | 7 | Decisión móvil/web con pérdida de conexión, idempotencia y puerto Reloj | ✅ | Capítulo 5 |
 | 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 14 hallazgos preliminares (§6.2); faltan la evaluación de los cuatro y las correcciones |
 | 9 | Auditoría de los seis criterios nuevos de WCAG 2.2 y del 3.3.4 | ⚠️ | §6.3, preliminar |
@@ -1025,37 +1052,49 @@ Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe, pero requiere
 
 # Anexo A · Wireframes de baja fidelidad
 
-Los 15 wireframes y el mapa de navegación están en `docs/proyecto2/wireframes/`. Cada uno tiene anotaciones numeradas que explican las decisiones de diseño.
+Wireframes anotados de las 14 pantallas del prototipo de Figma (P01–P14) y de las 7 guías (G01–G07). Los skeletons correspondientes están en `docs/proyecto2/wireframes/skeleton/` y en el documento de complementos.
 
 ![Mapa de navegación](wireframes/mapa-navegacion.svg)
 
-![W01 · ruta del dia](wireframes/W01-ruta-del-dia.svg)
+![G01 · alta cliente](wireframes/anotado/G01-alta-cliente.svg)
 
-![W02 · buscar cliente](wireframes/W02-buscar-cliente.svg)
+![G02 · confirmacion desembolso](wireframes/anotado/G02-confirmacion-desembolso.svg)
 
-![W03 · alta cliente](wireframes/W03-alta-cliente.svg)
+![G03 · bandeja comite](wireframes/anotado/G03-bandeja-comite.svg)
 
-![W04 · solicitud credito](wireframes/W04-solicitud-credito.svg)
+![G04 · tablero gerencial](wireframes/anotado/G04-tablero-gerencial.svg)
 
-![W05 · plan amortizacion](wireframes/W05-plan-amortizacion.svg)
+![G05 · creditos tramo](wireframes/anotado/G05-creditos-tramo.svg)
 
-![W06 · confirmacion desembolso](wireframes/W06-confirmacion-desembolso.svg)
+![G06 · cierre](wireframes/anotado/G06-cierre.svg)
 
-![W07 · detalle credito](wireframes/W07-detalle-credito.svg)
+![G07 · tablero movil](wireframes/anotado/G07-tablero-movil.svg)
 
-![W08 · detalle mora](wireframes/W08-detalle-mora.svg)
+![P01 · iniciar sesion](wireframes/anotado/P01-iniciar-sesion.svg)
 
-![W09 · registro pago](wireframes/W09-registro-pago.svg)
+![P02 · mis clientes](wireframes/anotado/P02-mis-clientes.svg)
 
-![W10 · comprobante](wireframes/W10-comprobante.svg)
+![P03 · mi perfil](wireframes/anotado/P03-mi-perfil.svg)
 
-![W11 · tablero gerencial](wireframes/W11-tablero-gerencial.svg)
+![P04 · nueva solicitud](wireframes/anotado/P04-nueva-solicitud.svg)
 
-![W12 · detalle tramo](wireframes/W12-detalle-tramo.svg)
+![P05 · simulacion pago](wireframes/anotado/P05-simulacion-pago.svg)
 
-![W13 · bandeja comite](wireframes/W13-bandeja-comite.svg)
+![P06 · confirmar solicitud](wireframes/anotado/P06-confirmar-solicitud.svg)
 
-![W14 · cierre](wireframes/W14-cierre.svg)
+![P07 · solicitud enviada](wireframes/anotado/P07-solicitud-enviada.svg)
 
-![W15 · tablero movil](wireframes/W15-tablero-movil.svg)
+![P08 · detalle credito](wireframes/anotado/P08-detalle-credito.svg)
+
+![P09 · plan amortizacion](wireframes/anotado/P09-plan-amortizacion.svg)
+
+![P10 · detalle mora](wireframes/anotado/P10-detalle-mora.svg)
+
+![P11 · registrar pago](wireframes/anotado/P11-registrar-pago.svg)
+
+![P12 · confirmar pago](wireframes/anotado/P12-confirmar-pago.svg)
+
+![P13 · pago aplicado](wireframes/anotado/P13-pago-aplicado.svg)
+
+![P14 · sin senal](wireframes/anotado/P14-sin-senal.svg)
 

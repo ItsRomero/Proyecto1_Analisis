@@ -1,0 +1,45 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='920' viewBox='0 0 420 920'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>P07 · Solicitud enviada</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#777'>Móvil 360×760 · wireframe anotado · pantalla del prototipo de Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='360' height='760' rx='18' fill='#fbfbfb' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='360' height='760' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='360.0' height='28.0' rx='10' fill='#ececec'/>
+<text x='16.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#1f1f1f' text-anchor='start'>9:41</text>
+<text x='344.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#1f1f1f' text-anchor='end'>▮▮ ◠ ▭</text>
+<rect x='0.0' y='28.0' width='360.0' height='170.0' rx='10' fill='#555555'/>
+<circle cx='180.0' cy='74.0' r='26' fill='#ffffff'/>
+<text x='180.0' y='82.0' font-family='Helvetica, Arial, sans-serif' font-size='22' font-weight='bold' fill='#555555' text-anchor='middle'>✓</text>
+<text x='180.0' y='128.0' font-family='Helvetica, Arial, sans-serif' font-size='19' font-weight='bold' fill='#ffffff' text-anchor='middle'>Solicitud enviada</text>
+<text x='180.0' y='148.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#e0e0e0' text-anchor='middle'>Pendiente de aprobación del comité</text>
+<rect x='12.0' y='210.0' width='336.0' height='116.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<text x='26.0' y='235.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#6b6b6b' text-anchor='start'>NO. DE REFERENCIA</text>
+<text x='26.0' y='284.0' font-family='Courier New, monospace' font-size='28' font-weight='bold' fill='#1f1f1f' text-anchor='start'>SOL-835678</text>
+<text x='26.0' y='307.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Carlos Martínez Ixcot · Q 5,000.00 · 12 meses</text>
+<rect x='12.0' y='336.0' width='336.0' height='132.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<text x='26.0' y='361.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#6b6b6b' text-anchor='start'>¿QUÉ SIGUE?</text>
+<circle cx='34.0' cy='385.0' r='8' fill='#ececec'/>
+<text x='34.0' y='389.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>1</text>
+<text x='50.0' y='389.0' font-family='Helvetica, Arial, sans-serif' font-size='11.5' font-weight='normal' fill='#1f1f1f' text-anchor='start'>El comité revisará la solicitud en 24–48 h.</text>
+<circle cx='34.0' cy='411.0' r='8' fill='#ececec'/>
+<text x='34.0' y='415.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>2</text>
+<text x='50.0' y='415.0' font-family='Helvetica, Arial, sans-serif' font-size='11.5' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Recibirás notificación en esta app.</text>
+<circle cx='34.0' cy='437.0' r='8' fill='#ececec'/>
+<text x='34.0' y='441.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>3</text>
+<text x='50.0' y='441.0' font-family='Helvetica, Arial, sans-serif' font-size='11.5' font-weight='normal' fill='#1f1f1f' text-anchor='start'>El desembolso se confirma en G02 (por construir).</text>
+<rect x='16.0' y='478.0' width='328.0' height='50.0' rx='12' fill='#3a3a3a'/>
+<text x='180.0' y='509.0' font-family='Helvetica, Arial, sans-serif' font-size='14.5' font-weight='bold' fill='#ffffff' text-anchor='middle'>Volver al inicio</text>
+</g>
+<line x1='356' y1='270.0' x2='366' y2='270.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='270.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='274.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<line x1='356' y1='438.0' x2='366' y2='438.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='438.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='442.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+</g>
+<text x='20' y='844' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>1.</tspan> Debe mostrar el MISMO cliente elegido en el paso 1 (en</text>
+<text x='34' y='860' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>Figma aparece otro nombre: hallazgo H-08).</text>
+<text x='20' y='876' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>2.</tspan> El flujo 1 del E3 debe continuar hasta la confirmación</text>
+<text x='34' y='892' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>de desembolso (guía G02).</text>
+</svg>

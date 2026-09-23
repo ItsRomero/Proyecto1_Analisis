@@ -29,7 +29,7 @@ Este documento responde al entregable E4: elección entre app nativa, híbrida o
 | Teléfono de gama media | Mejor rendimiento, pero instalador pesado | Contenedor nativo + web | Se instala desde el navegador, ocupa poco, sin tienda de aplicaciones |
 | Escritorio para gerencia | No aplica: exige otro producto | Requiere además la versión web | **El mismo código** en el navegador de escritorio |
 | Actualizaciones (por ejemplo, un cambio de política) | Publicar en la tienda y esperar a que los asesores actualicen | Publicar en la tienda para cambios nativos | Inmediatas al volver a cargar la app |
-| Cámara para la foto del DPI (W03) | Sí | Sí | Sí: `<input type="file" accept="image/*" capture>` o `getUserMedia` |
+| Cámara para la foto del DPI (G01) | Sí | Sí | Sí: `<input type="file" accept="image/*" capture>` o `getUserMedia` |
 | Coherencia con el Proyecto Final (React + Vite + Tailwind en 4 semanas) | Rompe el stack: dos lenguajes más | Compatible, pero agrega compilación, firma y pruebas por plataforma | **Idéntico stack** |
 | Costo de mantenimiento | 2 o 3 bases de código | 1 base de código + contenedores | **1 base de código** |
 
@@ -45,7 +45,7 @@ Este documento responde al entregable E4: elección entre app nativa, híbrida o
 
 | Riesgo de la PWA | Mitigación |
 |---|---|
-| El navegador puede borrar el almacenamiento de un sitio | Solicitar `navigator.storage.persist()` al instalar. La cola se vacía en cuanto hay señal. Aviso visible si quedan pendientes al final del día (W01). Nunca se borra un comando sin confirmación del servidor |
+| El navegador puede borrar el almacenamiento de un sitio | Solicitar `navigator.storage.persist()` al instalar. La cola se vacía en cuanto hay señal. Aviso visible si quedan pendientes al final del día (P03 Mi perfil y P14). Nunca se borra un comando sin confirmación del servidor |
 | Background Sync no existe en todos los navegadores | No se promete sincronización automática universal. Reenvío al recibir el evento `online`, al abrir la app y con el botón "Enviar ahora" en Pendientes. La flota de asesoras usa Android con Chrome (supuesto a confirmar con TI) |
 | iOS limita las PWA | La gerencia en iPhone solo consulta: no necesita cola ni sincronización |
 
@@ -64,15 +64,15 @@ Se diseña primero para 360 px (el teléfono de la asesora) y se **agrega** info
 
 ### 3.1 Cómo se transforma el tablero gerencial
 
-| Elemento | Teléfono (W15) | Escritorio (W11) |
+| Elemento | Teléfono (G07) | Escritorio (G04) |
 |---|---|---|
 | Línea de contexto (fecha de corte, cierre congelado) | En el encabezado: "Tablero · corte 30/09" | Línea completa con estado del cierre y política |
 | Riesgo → incobrables → mora | Tres tarjetas **apiladas en ese mismo orden**, con los mismos rótulos, símbolos (▲ ✕ ●) y bordes | Tres tarjetas en fila |
 | Desglose por tramo | Lista de 4 filas con porcentaje; al tocar una fila se abre el detalle | Tabla con créditos, saldo en Q, barra proporcional y % |
-| Detalle de un tramo (W12) | Tarjetas por crédito | Tabla de 8 columnas |
+| Detalle de un tramo (G05) | Tarjetas por crédito | Tabla de 8 columnas |
 | Desembolsos y recuperaciones | Dos cifras del período, sin gráfico | Series mensuales |
 | Asistente (Proyecto Final) | Botón flotante que abre el chat a pantalla completa | Columna derecha plegable |
-| Cierre (W14) | Solo consulta | Consulta y ejecución, con confirmación |
+| Cierre (G06) | Solo consulta | Consulta y ejecución, con confirmación |
 
 **Qué se sacrifica en la pantalla pequeña, y por qué es aceptable:**
 
@@ -105,11 +105,11 @@ Se diseña primero para 360 px (el teléfono de la asesora) y se **agrega** info
 
 ### 4.2 Registrar un pago sin señal: la clave de idempotencia
 
-Cuando Mariela toca "Confirmar" en W09 sin señal, ocurre lo siguiente, en este orden:
+Cuando Mariela toca "Aplicar pago" en P12 (Confirmar pago) sin señal, ocurre lo siguiente, en este orden:
 
 1. **Se crea el comando** `RegistrarPago` con `creditoId`, `importe` como cadena (`"1047.76"`), `moneda`, `fechaPago` y `usuarioProceso`.
 2. **Se genera la `Idempotency-Key` una sola vez** (un UUID) y se guarda junto al comando en IndexedDB **antes** de mostrar "Pendiente". Sin ese registro, un cierre de la app podría perder el pago.
-3. La pantalla muestra **Pendiente de enviar** (W10). Nunca muestra "Pagado" sin una respuesta del sistema.
+3. La pantalla muestra **Pendiente** en la pantalla Sin señal (P14). Nunca muestra "Pagado" sin una respuesta del sistema.
 4. Al volver la señal, la cola envía `POST /creditos/{creditoId}/pagos` con **la misma clave y el mismo contenido**, en orden por crédito.
 5. El contrato OpenAPI del P1 responde:
    - **201**: pago nuevo registrado → estado **Confirmado**.
@@ -155,7 +155,7 @@ Si se usara la fecha de sincronización, Carlos pagaría **Q25.48 de más** por 
 
 ### 4.4 Lo que se ve en pantalla
 
-| Estado del comando | Texto en W09 / W10 | Barra de estado (W01) |
+| Estado del comando | Texto en P12 / P14 | Estado en Mi perfil (P03) |
 |---|---|---|
 | Guardado sin señal | "Pendiente de enviar · se enviará solo al tener señal" | "Sin señal · 2 pendientes" |
 | Enviando | "Enviando…" | "Enviando…" |
