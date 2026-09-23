@@ -1,4 +1,5 @@
-import { FechaCivil } from "./calculadora-mora.js";
+import { FechaCivil, debeDevengarInteresCorriente, DiasAtraso } from "./calculadora-mora.js";
+import { Dinero } from "./dinero.js";
 
 export enum EstadoCredito {
   SOLICITADO = "SOLICITADO",
@@ -154,6 +155,10 @@ class EstadoVigente extends ComportamientoEstadoCredito {
 
 class EstadoEnMora extends ComportamientoEstadoCredito {
   public constructor() { super(EstadoCredito.EN_MORA); }
+  public override cancelar(credito: Credito, e: EvidenciaTransicion, saldoCero: boolean, obligacionesCero: boolean): void {
+    validarCancelacion(saldoCero, obligacionesCero);
+    credito.transicionarA(ESTADO_CANCELADO, e, TOKEN_TRANSICION);
+  }
   public override pagarParcial(credito: Credito, e: EvidenciaTransicion, quedaVencido: boolean): void {
     exigir(quedaVencido, "debe permanecer una obligación vencida pendiente");
     credito.transicionarA(ESTADO_EN_MORA, e, TOKEN_TRANSICION);
@@ -241,7 +246,7 @@ export class Credito {
   public anular(e: EvidenciaTransicion, sinDesembolso: boolean): void { this.#comportamiento.anular(this, e, sinDesembolso); }
   public detectarMora(e: EvidenciaTransicion, diasAtraso: number, obligacionVencida: boolean): void {
     this.#comportamiento.detectarMora(this, e, diasAtraso, obligacionVencida);
-    this.#devengoSuspendido = diasAtraso > 90;
+    this.#devengoSuspendido = !debeDevengarInteresCorriente(DiasAtraso.desdeNumero(diasAtraso));
   }
   public registrarPagoParcial(e: EvidenciaTransicion, quedaVencido: boolean): void { this.#comportamiento.pagarParcial(this, e, quedaVencido); }
   public regularizar(e: EvidenciaTransicion, atrasoCero: boolean, vencidoCubierto: boolean): void {
@@ -250,6 +255,11 @@ export class Credito {
   }
   public reestructurar(e: EvidenciaTransicion, autorizado: boolean, condicionesNuevas: boolean): void { this.#comportamiento.reestructurar(this, e, autorizado, condicionesNuevas); }
   public cancelar(e: EvidenciaTransicion, saldoCero: boolean, obligacionesCero: boolean): void { this.#comportamiento.cancelar(this, e, saldoCero, obligacionesCero); }
+  /** Entrada P2: saldo total después del pago, incluyendo todos los conceptos. */
+  public liquidarConPago(e: EvidenciaTransicion, saldoTotal: Dinero, cuotasVencidasPendientes: number): void {
+    exigir(Number.isSafeInteger(cuotasVencidasPendientes) && cuotasVencidasPendientes >= 0, "cantidad de cuotas inválida");
+    this.#comportamiento.cancelar(this, e, saldoTotal.esCero(), cuotasVencidasPendientes === 0);
+  }
   public declararIncobrable(e: EvidenciaTransicion, diasAtraso: number, autorizado: boolean): void { this.#comportamiento.declararIncobrable(this, e, diasAtraso, autorizado); }
   public registrarRecuperacion(): void { this.#comportamiento.registrarRecuperacion(); }
 

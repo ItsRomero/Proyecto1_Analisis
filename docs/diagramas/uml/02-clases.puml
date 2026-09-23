@@ -1,5 +1,5 @@
 @startuml 02-clases
-title Sistema de Gestión de Microcrédito — Diagrama de clases del dominio
+title Sistema de Gestión de Microcrédito — Diseño P1 y extensiones implementadas P2
 skinparam classAttributeIconSize 0
 skinparam shadowing false
 skinparam packageStyle rectangle
@@ -103,9 +103,10 @@ package "Cálculo financiero" {
   }
 
   class CalculadoraMora <<domain service>> {
-    +diasAtraso(vencimiento, corte): DiasAtraso
-    +clasificar(dias): TramoMora
-    +calcularPorCuota(cuota, politica, corte): Dinero
+    +CalculadoraMora(politica: PoliticaMora)
+    +calcular(capital, dias): Resultado
+    +calcularPorCuota(cuota, corte): Resultado
+    {static} +calcularInteresMoratorio(capital, tasa, dias): Dinero
   }
 
   class DiasAtraso <<value object>> {
@@ -439,5 +440,50 @@ end note
 note bottom of Credito
   State evita operaciones y transiciones inválidas.
   TramoMora no sustituye EstadoCredito.
+end note
+package "Extensiones implementadas P2" {
+  interface PoliticaMora {
+    +id: string
+    +calcular(capital: Dinero, dias: DiasAtraso): CalculoPolitica
+  }
+  class PoliticaPlana
+  class PoliticaEscalonada
+  class PoliticaRetroactiva <<solo prueba>>
+  class CalculoPolitica {
+    +totalSinRedondear: string
+    +moneda: Moneda
+    +tramos: DetalleTramo[]
+  }
+  class DevengoInteres {
+    +ingresoReconocido: Dinero
+    +interesEnSuspenso: Dinero
+    +aplicarCorte(fecha, movimientos, regularizado): DevengoInteres
+  }
+  class EventoGastoGestion {
+    +id: string
+    +creditoId: string
+    +cuotaId: string
+    +importe: Dinero
+  }
+  class ResumenTramoCartera {
+    +tramo: string
+    +cantidadCreditos: integer
+    +saldoCapital: Dinero
+    +porcentaje: string
+  }
+}
+PoliticaMora <|.. PoliticaPlana
+PoliticaMora <|.. PoliticaEscalonada
+PoliticaMora <|.. PoliticaRetroactiva
+PoliticaMora ..> CalculoPolitica
+CalculadoraMora --> PoliticaMora : inyección
+DevengoInteres --> Dinero
+EventoGastoGestion --> Dinero
+ResumenTramoCartera --> Dinero
+note bottom of PoliticaMora
+  Los elementos P1 incluyen diseño conceptual futuro.
+  Las clases del paquete P2 corresponden al código.
+  Las funciones de catálogo, gasto y cartera se
+  describen en los diagramas de secuencia P2.
 end note
 @enduml

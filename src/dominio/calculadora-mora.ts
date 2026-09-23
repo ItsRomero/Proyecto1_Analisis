@@ -1,6 +1,10 @@
 import { Decimal } from "decimal.js";
 
 import { Dinero } from "./dinero.js";
+import { TramoMora, clasificarTramoMora } from "./clasificacion-tramo.js";
+import { REGLAS_COBRO } from "./politica-mora/configuracion-politica.js";
+import type { PoliticaMora, CalculoPolitica } from "./politica-mora/politica-mora.js";
+export { TramoMora, clasificarTramoMora } from "./clasificacion-tramo.js";
 
 const FORMATO_FECHA_CIVIL = /^(\d{4})-(\d{2})-(\d{2})$/;
 const FORMATO_TASA = /^(?:0|[1-9]\d*)(?:\.\d+)?$/;
@@ -107,26 +111,8 @@ export class DiasAtraso {
   }
 }
 
-export enum TramoMora {
-  SIN_MORA = "SIN_MORA",
-  MORA_1 = "MORA_1",
-  MORA_2 = "MORA_2",
-  MORA_3 = "MORA_3",
-  VENCIDO = "VENCIDO",
-  INCOBRABLE = "INCOBRABLE",
-}
-
-export function clasificarTramoMora(dias: DiasAtraso): TramoMora {
-  if (dias.valor === 0) return TramoMora.SIN_MORA;
-  if (dias.valor <= 30) return TramoMora.MORA_1;
-  if (dias.valor <= 60) return TramoMora.MORA_2;
-  if (dias.valor <= 90) return TramoMora.MORA_3;
-  if (dias.valor <= 120) return TramoMora.VENCIDO;
-  return TramoMora.INCOBRABLE;
-}
-
 export function debeDevengarInteresCorriente(dias: DiasAtraso): boolean {
-  return dias.valor <= 90;
+  return dias.valor <= REGLAS_COBRO.diasHastaReconocimientoCorriente;
 }
 
 export class TasaNominalAnualMoratoria {
@@ -189,6 +175,33 @@ export class ResultadoMoraCuota {
 }
 
 export class CalculadoraMora {
+  public constructor(private readonly politica: PoliticaMora) { Object.freeze(this); }
+
+  public calcular(capital: Dinero, dias: DiasAtraso): Readonly<{
+    politicaId: string; interesMoratorio: Dinero; detalle: CalculoPolitica;
+  }> {
+    if (capital.esNegativo()) throw new CapitalVencidoInvalido();
+    const detalle = this.politica.calcular(capital, dias);
+    const total = new DecimalMora(detalle.totalSinRedondear);
+    if (!total.isFinite() || total.isNegative() || total.greaterThan(capital.aCadena()) ||
+        !detalle.moneda.esIgualA(capital.moneda)) throw new Error("Política incompatible con el contrato.");
+    return Object.freeze({ politicaId: this.politica.id, detalle,
+      interesMoratorio: Dinero.desdeCadena(total.toFixed(), capital.moneda) });
+  }
+
+  public calcularPorCuota(obligacion: ObligacionVencida, fechaCorte: FechaCivil) {
+    const diasAtraso = DiasAtraso.entre(obligacion.fechaVencimiento, fechaCorte);
+    const calculo = this.calcular(obligacion.capitalVencido, diasAtraso);
+    return Object.freeze({ ...calculo, referencia: obligacion.referencia,
+      fechaVencimiento: obligacion.fechaVencimiento, diasAtraso,
+      tramo: clasificarTramoMora(diasAtraso), capitalVencido: obligacion.capitalVencido });
+  }
+
+  public calcularVariasCuotas(obligaciones: readonly ObligacionVencida[], fechaCorte: FechaCivil) {
+    return Object.freeze(obligaciones.map((cuota) => this.calcularPorCuota(cuota, fechaCorte)));
+  }
+
+  // Fachada P1: conserva la fórmula y la API estática de tasa directa.
   public static calcularInteresMoratorio(
     capitalVencido: Dinero,
     tasa: TasaNominalAnualMoratoria,

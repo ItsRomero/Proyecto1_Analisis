@@ -1,0 +1,35 @@
+@startuml 04-strategy-mora
+title Strategy de mora — código P2
+skinparam classAttributeIconSize 0
+class CalculadoraMora {
+  +CalculadoraMora(politica: PoliticaMora)
+  +calcular(capital, dias): Resultado
+}
+interface PoliticaMora {
+  +id: string
+  +calcular(capital, dias): CalculoPolitica
+}
+class PoliticaPlana
+class PoliticaEscalonada
+class PoliticaRetroactiva <<solo prueba>>
+class "resolverPolitica(fechaOtorgamiento)" as Catalogo <<función>>
+class "configuracion-politica.ts" as Configuracion <<inmutable>>
+CalculadoraMora --> PoliticaMora : recibe
+PoliticaMora <|.. PoliticaPlana
+PoliticaMora <|.. PoliticaEscalonada
+PoliticaMora <|.. PoliticaRetroactiva
+Catalogo ..> PoliticaPlana : antes de 2026-10-01
+Catalogo ..> PoliticaEscalonada : desde 2026-10-01
+PoliticaPlana --> Configuracion
+PoliticaEscalonada --> Configuracion
+PoliticaRetroactiva --> Configuracion
+note right of CalculadoraMora
+  Valida contrato y crea Dinero una vez.
+  No construye estrategias.
+  Conserva fachada estática P1.
+end note
+note bottom of PoliticaRetroactiva
+  Nunca seleccionada por el catálogo.
+  Comparación matemática solo días 1–120.
+end note
+@enduml

@@ -16,6 +16,7 @@ VIGENTE --> EN_MORA : detectar cuota impagada\n[díasAtraso > 0]
 VIGENTE --> CANCELADO : registrar pago\n[saldo total = 0]
 
 EN_MORA --> EN_MORA : registrar pago parcial\n[queda vencido pendiente]
+EN_MORA --> CANCELADO : liquidarConPago\n[saldoTotal = Q0.00 y cuotasVencidasPendientes = 0]
 EN_MORA --> VIGENTE : regularizar\n[todo vencido pagado y díasAtraso = 0]\n/reactivar devengo si política lo permite
 EN_MORA --> REESTRUCTURADO : reestructurar\n[autorización válida / conservar historia]
 EN_MORA --> INCOBRABLE : declarar incobrable\n[díasAtraso > 120 y actor autorizado]\n/salida de cartera activa
@@ -39,6 +40,8 @@ note right of EN_MORA
   Estos tramos NO son estados principales.
   A partir de 91 días se suspende
   el interés corriente.
+  DevengoInteres cuantifica interesEnSuspenso
+  y lo reconoce una vez al regularizar.
 end note
 
 note right of INCOBRABLE

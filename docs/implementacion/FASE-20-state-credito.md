@@ -96,3 +96,11 @@ La transición reflexiva `EN_MORA → EN_MORA` por pago parcial se registra porq
 ## 11. Resultado
 
 RF-14 a RF-17, RN-21 a RN-25 e INV-04, INV-05, INV-09, INV-15 e INV-16 quedan implementados y verificados. RF-19 queda cubierto respecto de la no reactivación; su exclusión de cartera se completa en la fase 21.
+
+## 12. Evolución P2 de State (CP-04.1 y CP-04.2)
+
+`EstadoEnMora.cancelar` admite ahora `EN_MORA -> CANCELADO` con las dos guardas históricas. La entrada monetaria P2 es `Credito.liquidarConPago(evidencia, saldoTotal, cuotasVencidasPendientes)`: exige saldo total exactamente cero y ninguna cuota vencida pendiente. Conserva la fachada booleana P1, las restricciones de SOLICITADO y el historial. Evidencia: `tests/credito-cancelacion-p2.test.ts`.
+
+El importe no reconocido pertenece a `DevengoInteres`, separado del State: recibe movimientos incrementales con fecha y atraso explícitos, reconoce hasta día 90, acumula suspenso desde 91 y lo libera al regularizar. Repetir el último corte idéntico devuelve el mismo estado; cambiarlo provoca conflicto y retroceder de corte se rechaza. El llamador debe conservar el estado resultante y coordinar la regularización con `Credito.regularizar`. Evidencia: `tests/devengo-interes.test.ts`. El booleano histórico se conserva por compatibilidad y no sustituye este registro contable.
+
+Las secciones anteriores describen la implementación original P1.

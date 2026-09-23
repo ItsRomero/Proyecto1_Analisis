@@ -374,3 +374,29 @@ La matriz solo se considera íntegra cuando:
 ## 14. Resultado esperado
 
 Toda regla conocida puede recorrerse desde su origen hasta un caso de uso, una responsabilidad de dominio, un artefacto UML, una ubicación futura de código y una validación prevista. La matriz queda preparada para actualizarse incrementalmente durante arquitectura, diseño modular, implementación, pruebas, contratos y documentación final.
+## 15. Evolución P2 — requisitos implementados
+
+| Requisito | Regla/diseño | Código | Prueba | Documento/diagrama |
+|---|---|---|---|---|
+| CP-01 | Strategy y tramos, tope, redondeo único | `src/dominio/politica-mora/`; `calculadora-mora.ts`; `src/aplicacion/consultar-mora.ts` | `tests/politica-mora.test.ts` | `docs/proyecto2/01-evolucion-nucleo.md`; ADR-004; `08-secuencia-politica-mora.puml`; `04-strategy-mora.puml` |
+| CP-02 | Q25 una vez por crédito/cuota/concepto | `src/dominio/gasto-gestion-cobro.ts` | `tests/gasto-gestion-cobro.test.ts` | Evolución P2; `09-secuencia-gasto-idempotente.puml` |
+| CP-03 | Coexistencia y sustitución (agrupación de trazabilidad; el encargo no define una sección CP-03 independiente) | Catálogo, políticas y `consultarMora` | `tests/contrato-politica.test.ts`; `tests/regresion-p1.test.ts` | ADR-004; `docs/informe-impacto-solid.md` |
+| CP-04.1 | Liquidación desde EN_MORA con dos guardas | `src/dominio/credito-estado.ts`: `liquidarConPago`, `EstadoEnMora.cancelar` | `tests/credito-cancelacion-p2.test.ts` | `docs/implementacion/FASE-20-state-credito.md`; `docs/diagramas/uml/05-estados-credito.puml`; `docs/diagramas/patrones/02-state-credito.puml` |
+| CP-04.2 | Suspenso monetario y cortes idempotentes | `src/dominio/devengo-interes.ts`: `DevengoInteres` | `tests/devengo-interes.test.ts` | `docs/implementacion/FASE-20-state-credito.md`; State P2 |
+| CP-04.3 | Contribuciones al riesgo, mora total y bajas del período | `src/dominio/cartera-por-tramo.ts`: `calcularCarteraPorTramo` | `tests/cartera-por-tramo.test.ts` | `docs/proyecto2/01-evolucion-nucleo.md`, oráculos 7.00%, 21.75% y 6.06% |
+
+### Invariantes P2 y contrato
+
+| Invariante | Evidencia ejecutable |
+|---|---|
+| 1. Monotonía 0–120 y congelación posterior | `politica-mora.test.ts`: recorrido 1–120 y días 121, 150, 365, 10000 |
+| 2. Escalonada ≤ retroactiva solo 1–120 | `politica-mora.test.ts`: comparación limitada explícitamente |
+| 3. Moratorio ≤ capital | `contrato-politica.test.ts`: tres estrategias, cuatro capitales, dos monedas, trece atrasos |
+| 4. Escalonada = plana 18% entre 1–30 | `politica-mora.test.ts`: bucle de fronteras |
+| 5. Otorgamiento previo conserva Q7.26 | `regresion-p1.test.ts`: corte posterior a nueva vigencia |
+| 6. Gasto como máximo una vez | `gasto-gestion-cobro.test.ts`: reejecución y cambios de tramo |
+| 7. Sumas monetarias y porcentuales | `cartera-por-tramo.test.ts`: oráculo y tercios con centésima residual |
+| 8. Incobrable congela y sale de activa | `regresion-p1.test.ts`: plana y escalonada integradas con cartera |
+| Contratos externos aditivos | `contratos-p2.test.ts`: presentadores reales y equivalencia estructural Zod/OpenAPI; `openapi.test.ts` conserva 14 operaciones y referencias |
+
+La [validación P2](../proyecto2/03-validacion-final.md) actualiza el estado de implementación. Las secciones anteriores conservan la trazabilidad histórica P1; no deben leerse como si los pendientes de aquella fecha fueran el estado actual de P2.

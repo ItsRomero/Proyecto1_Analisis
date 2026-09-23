@@ -10,7 +10,13 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "vitest run --passWithNoTests",
+    "test:mora": "vitest run tests/politica-mora.test.ts tests/contrato-politica.test.ts tests/calculadora-mora.test.ts tests/regresion-p1.test.ts tests/contratos-p2.test.ts",
     "test:watch": "vitest",
+    "test:idempotencia": "vitest run tests/gasto-gestion-cobro.test.ts tests/pago-idempotencia.test.ts",
+    "test:coexistencia": "vitest run tests/politica-mora.test.ts tests/regresion-p1.test.ts",
+    "test:cp04": "vitest run tests/credito-cancelacion-p2.test.ts tests/devengo-interes.test.ts tests/cartera-por-tramo.test.ts",
+    "test:cartera": "vitest run tests/cartera.test.ts tests/cartera-por-tramo.test.ts",
+    "test:invariantes": "vitest run tests/invariantes.test.ts tests/cartera.test.ts tests/politica-mora.test.ts tests/contrato-politica.test.ts tests/regresion-p1.test.ts tests/gasto-gestion-cobro.test.ts tests/cartera-por-tramo.test.ts tests/pago-idempotencia.test.ts",
     "verify": "npm run typecheck && npm test"
   },
   "dependencies": {
