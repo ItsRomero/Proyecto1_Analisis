@@ -90,7 +90,7 @@ Los únicos fallos de compilación intermedios afectaron inferencias de tipos en
 Estado actualizado el 2026-09-23. Ya están documentados en el repositorio, con validación de campo pendiente: personas y journey map fundamentados en fuentes documentadas ([E1](e1-investigacion-usuario.md)), mapa de navegación, tabla pantalla ↔ caso de uso y wireframes de baja fidelidad ([E2](e2-arquitectura-informacion.md)) y la decisión móvil/web ([E4](e4-decision-movil-web.md)). Siguen pendientes y requieren trabajo del equipo:
 
 - Aplicar los instrumentos de entrevista y observación y actualizar el estado de validación de cada rasgo de las personas.
-- Prototipo navegable de alta fidelidad en Figma (E3), su enlace público y capturas de antes/después.
+- Completar el prototipo de Figma (E3, [enlace](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1)): tablero gerencial, cierre, confirmación de desembolso y corrección de las cifras del detalle de la mora (ver `P2-documento-entrega.md` §6). Capturas de antes y después.
 - Implementación de pantallas React/Tailwind, excluida de este encargo del núcleo.
 - Evaluación independiente de los cuatro integrantes, ocho hallazgos Nielsen sobre un prototipo real y auditoría visual WCAG de Figma.
 - Design review de la Sesión 9, decisiones de pares, nombres/reparto de trabajo y atribuciones verificadas del equipo.

@@ -33,6 +33,8 @@ Las selecciones se superponen y ejecutan archivos completos: sus cantidades no d
 
 Ejemplo en PowerShell: `npm.cmd run test:cartera`. Los inputs, outputs, criterios de aprobación y límites de cada selección están en la [documentación de pruebas](docs/proyecto2/e6-03-pruebas-mora-escalonada.md).
 
+- **[Documento de entrega del Proyecto 2](docs/proyecto2/P2-documento-entrega.md)**
+- **[Prototipo navegable en Figma](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1)**
 - **[Índice de la documentación del Proyecto 2 por entregable (E1–E6)](docs/proyecto2/README.md)**
 - [E1 · Personas, journey map y momentos críticos](docs/proyecto2/e1-investigacion-usuario.md)
 - [E2 · Arquitectura de información y wireframes](docs/proyecto2/e2-arquitectura-informacion.md)

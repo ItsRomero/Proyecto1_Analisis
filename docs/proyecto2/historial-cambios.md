@@ -3,10 +3,10 @@
 Este documento recorre **todos los commits** hechos después de la entrega del Proyecto 1 y, para cada uno, indica **qué agregó** y **si ya estaba documentado en algún `.md`**. Al final resume qué documentación faltaba y cómo se completó.
 
 - **Base P1:** `8737d9b` (etiqueta `entrega-p1`, 26/08/2026).
-- **Estado actual:** rama `docs/proyecto2-ux`, dos commits por encima de `main` (`13aa167`).
+- **Estado actual:** rama `docs/proyecto2-ux`, tres commits por encima de `main` (`13aa167`).
 - **Total desde el P1:** 62 archivos, +4,951 / −108 líneas. De ellas, el último commit de documentación aporta 32 archivos, +2,413 / −232.
 
-> **Sobre los hashes.** Los hashes de los commits 0 a 11 ya están en GitHub y son definitivos. Los commits 12 y 13 existen solo en la rama `docs/proyecto2-ux`; si se aplican con `git am`, Git les asigna un hash nuevo. En ese caso, búsquelos por su mensaje (`git log --oneline -3`).
+> **Sobre los hashes.** Los hashes de los commits 0 a 11 ya están en GitHub y son definitivos. Los commits 12 a 14 existen solo en la rama `docs/proyecto2-ux`; si se aplican con `git am`, Git les asigna un hash nuevo. En ese caso, búsquelos por su mensaje (`git log --oneline -3`).
 
 Comandos para reproducir cualquier fila:
 
@@ -38,9 +38,10 @@ La columna **"¿Documentado antes en .md?"** indica si el trabajo del commit apa
 | 10 | `183dc71` | 2026-09-22 | Oliver Romero | Merge pull request #1 … | Integra toda la rama P2 en `main`: 42 archivos, +2,751 / −108 | **No**: `03-validacion-final.md` seguía diciendo "sin PR ni merge" |
 | 11 | `13aa167` | 2026-09-22 | Erwin | Actualizacion del README | **modifica** `README.md`: sección "Comandos de pruebas por tema" (tabla de los 6 scripts con pruebas/archivos) y enlace a la documentación de pruebas | **Sí**: documenta el commit 7 |
 | 12 | `16f983f` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): documentar E1, E2 y E4 y consolidar el informe SOLID | Ver la sección 2 | Es el commit que completa la documentación |
-| 13 | *(este commit)* | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): agregar historial de cambios y documento consolidado | **+** `historial-cambios.md` (este archivo), **+** `documentacion-completa.md` | — |
+| 13 | `4ba9e55` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): agregar historial de cambios y documento consolidado | **+** `historial-cambios.md` (este archivo), **+** `documentacion-completa.md` | — |
+| 14 | *(este commit)* | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): documento de entrega con enlace de Figma y revisión del prototipo | **+** `P2-documento-entrega.md`: lista de verificación contra el enunciado, historia del repositorio narrada, revisión del prototipo de Figma y evaluación E5 preliminar; enlace de Figma en el README y en el índice | — |
 
-**Registro por fases.** `e6-04-validacion-final.md` registra las fases 0 a 6 (commits 0 a 6). Los commits 7 a 13 solo quedan registrados en esta tabla.
+**Registro por fases.** `e6-04-validacion-final.md` registra las fases 0 a 6 (commits 0 a 6). Los commits 7 a 14 solo quedan registrados en esta tabla.
 
 ## 2. Qué agregó el commit de documentación `16f983f`
 

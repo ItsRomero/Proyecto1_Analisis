@@ -4,15 +4,16 @@
 
 | Entregable | Documento | Contenido |
 |---|---|---|
+| **Entrega** | [P2-documento-entrega.md](P2-documento-entrega.md) | Documento de entrega: lista de verificación contra el enunciado, historia del repositorio y los entregables E1 a E6 explicados, con la revisión del prototipo |
 | **Todo** | [documentacion-completa.md](documentacion-completa.md) | Todos los documentos de esta tabla unidos en un solo archivo. Se regenera con `python3 docs/proyecto2/generar_documentacion_completa.py` |
 | **Historial** | [historial-cambios.md](historial-cambios.md) | Cada commit desde `entrega-p1`: qué agregó y si ya estaba documentado |
 | **E1** · Investigación de usuario | [e1-investigacion-usuario.md](e1-investigacion-usuario.md) | Personas (asesora, cliente y gerencia), journey map de la solicitud a la primera cuota y los cuatro momentos críticos, incluido el cambio de tramo |
 | | [e1-instrumentos-investigacion.md](e1-instrumentos-investigacion.md) | Guías de entrevista, encuesta y observación para validar las personas |
 | **E2** · Arquitectura de información y wireframes | [e2-arquitectura-informacion.md](e2-arquitectura-informacion.md) | Mapa de navegación, tabla pantalla ↔ caso de uso (6.1) y jerarquía del tablero (7.8) |
 | | [wireframes/](wireframes/) | 15 wireframes de baja fidelidad (SVG), el mapa de navegación y el script que genera los wireframes |
-| **E3** · Prototipo en Figma | *(enlace pendiente)* | Se construye a partir de los wireframes de E2 |
+| **E3** · Prototipo en Figma | [Abrir el prototipo](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) | Flujo del asesor en móvil (originación, cobro y pago sin señal). La revisión y lo que falta están en `P2-documento-entrega.md` §6 |
 | **E4** · Decisión móvil/web y diseño responsivo | [e4-decision-movil-web.md](e4-decision-movil-web.md) | PWA, estrategia mobile-first, trabajo sin conexión con idempotencia y puerto Reloj |
-| **E5** · Evaluación heurística y WCAG | *(pendiente)* | Se realiza sobre el prototipo de E3 |
+| **E5** · Evaluación heurística y WCAG | [P2-documento-entrega.md §8](P2-documento-entrega.md#8-e5--evaluación-heurística-y-de-accesibilidad) | 14 hallazgos preliminares y auditoría WCAG 2.2; falta la evaluación independiente de los cuatro integrantes |
 | **E6** · Evolución del núcleo e informe SOLID | [../informe-impacto-solid.md](../informe-impacto-solid.md) | Informe de impacto (Anexo D) con métricas del diff |
 | | [e6-01-auditoria-inicial.md](e6-01-auditoria-inicial.md) | Línea base del P1 y creación de la etiqueta `entrega-p1` |
 | | [e6-02-evolucion-nucleo.md](e6-02-evolucion-nucleo.md) | CP-01 a CP-04: fórmulas, selección de política y redondeo |
