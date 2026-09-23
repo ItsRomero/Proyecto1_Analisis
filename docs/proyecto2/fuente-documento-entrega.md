@@ -315,7 +315,7 @@ Esta tabla se armó a partir del historial de Git y de los roles declarados en e
 | Herramienta | Uso |
 |---|---|
 | **OpenAI Codex** | Apoyo en la evolución del núcleo (CP-01 a CP-04), en las pruebas y en la documentación técnica de E6 |
-| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con un script editable (`wireframes/generar_wireframes.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión preliminar del prototipo de Figma (capítulos 4 y 6) y redacción de este documento |
+| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con un script editable (`wireframes/generar_wireframes_figma.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión preliminar del prototipo de Figma (capítulos 4 y 6) y redacción de este documento |
 
 Las decisiones de diseño y su justificación son del equipo, y cualquiera de los cuatro integrantes debe poder explicarlas en la defensa. Las personas del E1 se apoyan en fuentes documentadas: los rasgos marcados como hipótesis no provienen de entrevistas. Los hallazgos del capítulo 6 son de un solo evaluador y deben complementarse con la evaluación independiente de cada integrante.
 

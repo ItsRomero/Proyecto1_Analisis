@@ -89,8 +89,10 @@ sk=[('P01','Iniciar sesión','Encabezado con marca; tarjeta con usuario y contra
 ('G06','Cierre diario / mensual (guía)','Estado congelado e identificador; cifras del cierre; ejecutar con confirmación','CU-12/13'),
 ('G07','Tablero en teléfono (guía)','Mismas tarjetas apiladas; riesgo por tramo en lista','CU-14')]
 sk_rows='\n'.join(f"| {c} | {n} | {d} | {cu} |" for c,n,d,cu in sk)
-skfiles=sorted(os.listdir(f'{R}/docs/proyecto2/wireframes/skeleton'))
-sk_imgs='\n\n'.join(f"![{f[:3]} · {f[4:-4].replace('-',' ')} · skeleton](wireframes/skeleton/{f}) ![{f[:3]} · anotado](wireframes/anotado/{f})" for f in skfiles)
+from generar_documento_entrega import TITULOS
+# Primero las pantallas de Figma (P01-P14), luego las guías (G01-G07).
+skfiles=sorted((f for f in os.listdir(f'{R}/docs/proyecto2/wireframes/skeleton') if f.endswith('.svg')),key=lambda f:(f[0]!='P',f))
+sk_imgs='\n\n'.join(f"![{f[:3]} · {TITULOS.get(f[:3],f[4:-4])} · skeleton](wireframes/skeleton/{f}) ![{f[:3]} · anotado](wireframes/anotado/{f})" for f in skfiles)
 cus=[('CU-01','Registrar cliente','Asesora','RegistrarCliente','G01 Alta de cliente (guía)'),
 ('CU-02','Solicitar crédito','Asesora / cliente','SolicitarCredito','P04 → P05 → P06 → P07'),
 ('CU-03','Evaluar crédito','Analista / comité','EvaluarCredito','G03 Bandeja del comité (guía)'),

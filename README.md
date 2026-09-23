@@ -344,6 +344,6 @@ La inteligencia artificial se utilizó únicamente como herramienta de apoyo. To
 | Herramienta | Uso | Artefactos |
 |---|---|---|
 | OpenAI Codex | Apoyo en la evolución del núcleo (CP-01 a CP-04), pruebas y documentación técnica de E6 | `src/dominio/`, `tests/`, `docs/proyecto2/e6-*` |
-| Claude (Anthropic) | Apoyo en la redacción de E1, E2 y E4, en la generación de los wireframes de baja fidelidad (script `docs/proyecto2/wireframes/generar_wireframes.py`), en la consolidación del informe de impacto SOLID según el Anexo D y en la revisión de la coherencia entre documentos | `docs/proyecto2/e1-*`, `e2-*`, `e4-*`, `wireframes/`, `docs/informe-impacto-solid.md` |
+| Claude (Anthropic) | Apoyo en la redacción de E1, E2 y E4, en la generación de los wireframes de baja fidelidad (script `docs/proyecto2/wireframes/generar_wireframes_figma.py`), en la consolidación del informe de impacto SOLID según el Anexo D y en la revisión de la coherencia entre documentos | `docs/proyecto2/e1-*`, `e2-*`, `e4-*`, `wireframes/`, `docs/informe-impacto-solid.md` |
 
 Las decisiones de diseño y su justificación corresponden al equipo, que debe revisarlas y poder explicarlas en la defensa. Los rasgos de las personas marcados como hipótesis (HIP) no provienen de entrevistas y deben validarse con los instrumentos de E1.

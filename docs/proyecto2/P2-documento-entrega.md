@@ -1020,7 +1020,7 @@ Esta tabla se armó a partir del historial de Git y de los roles declarados en e
 | Herramienta | Uso |
 |---|---|
 | **OpenAI Codex** | Apoyo en la evolución del núcleo (CP-01 a CP-04), en las pruebas y en la documentación técnica de E6 |
-| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con un script editable (`wireframes/generar_wireframes.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión preliminar del prototipo de Figma (capítulos 4 y 6) y redacción de este documento |
+| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con un script editable (`wireframes/generar_wireframes_figma.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión preliminar del prototipo de Figma (capítulos 4 y 6) y redacción de este documento |
 
 Las decisiones de diseño y su justificación son del equipo, y cualquiera de los cuatro integrantes debe poder explicarlas en la defensa. Las personas del E1 se apoyan en fuentes documentadas: los rasgos marcados como hipótesis no provienen de entrevistas. Los hallazgos del capítulo 6 son de un solo evaluador y deben complementarse con la evaluación independiente de cada integrante.
 
@@ -1056,45 +1056,45 @@ Wireframes anotados de las 14 pantallas del prototipo de Figma (P01–P14) y de 
 
 ![Mapa de navegación](wireframes/mapa-navegacion.svg)
 
-![G01 · alta cliente](wireframes/anotado/G01-alta-cliente.svg)
+![P01 · Iniciar sesión](wireframes/anotado/P01-iniciar-sesion.svg)
 
-![G02 · confirmacion desembolso](wireframes/anotado/G02-confirmacion-desembolso.svg)
+![P02 · Mis Clientes](wireframes/anotado/P02-mis-clientes.svg)
 
-![G03 · bandeja comite](wireframes/anotado/G03-bandeja-comite.svg)
+![P03 · Mi perfil](wireframes/anotado/P03-mi-perfil.svg)
 
-![G04 · tablero gerencial](wireframes/anotado/G04-tablero-gerencial.svg)
+![P04 · Nueva solicitud (paso 1)](wireframes/anotado/P04-nueva-solicitud.svg)
 
-![G05 · creditos tramo](wireframes/anotado/G05-creditos-tramo.svg)
+![P05 · Simulación de pago (paso 2)](wireframes/anotado/P05-simulacion-pago.svg)
 
-![G06 · cierre](wireframes/anotado/G06-cierre.svg)
+![P06 · Confirmar solicitud (paso 3)](wireframes/anotado/P06-confirmar-solicitud.svg)
 
-![G07 · tablero movil](wireframes/anotado/G07-tablero-movil.svg)
+![P07 · Solicitud enviada](wireframes/anotado/P07-solicitud-enviada.svg)
 
-![P01 · iniciar sesion](wireframes/anotado/P01-iniciar-sesion.svg)
+![P08 · Detalle del crédito](wireframes/anotado/P08-detalle-credito.svg)
 
-![P02 · mis clientes](wireframes/anotado/P02-mis-clientes.svg)
+![P09 · Plan de amortización](wireframes/anotado/P09-plan-amortizacion.svg)
 
-![P03 · mi perfil](wireframes/anotado/P03-mi-perfil.svg)
+![P10 · Detalle de mora](wireframes/anotado/P10-detalle-mora.svg)
 
-![P04 · nueva solicitud](wireframes/anotado/P04-nueva-solicitud.svg)
+![P11 · Registrar pago](wireframes/anotado/P11-registrar-pago.svg)
 
-![P05 · simulacion pago](wireframes/anotado/P05-simulacion-pago.svg)
+![P12 · Confirmar pago](wireframes/anotado/P12-confirmar-pago.svg)
 
-![P06 · confirmar solicitud](wireframes/anotado/P06-confirmar-solicitud.svg)
+![P13 · Pago aplicado](wireframes/anotado/P13-pago-aplicado.svg)
 
-![P07 · solicitud enviada](wireframes/anotado/P07-solicitud-enviada.svg)
+![P14 · Sin señal](wireframes/anotado/P14-sin-senal.svg)
 
-![P08 · detalle credito](wireframes/anotado/P08-detalle-credito.svg)
+![G01 · Alta de cliente (guía)](wireframes/anotado/G01-alta-cliente.svg)
 
-![P09 · plan amortizacion](wireframes/anotado/P09-plan-amortizacion.svg)
+![G02 · Confirmación de desembolso (guía)](wireframes/anotado/G02-confirmacion-desembolso.svg)
 
-![P10 · detalle mora](wireframes/anotado/P10-detalle-mora.svg)
+![G03 · Bandeja del comité (guía)](wireframes/anotado/G03-bandeja-comite.svg)
 
-![P11 · registrar pago](wireframes/anotado/P11-registrar-pago.svg)
+![G04 · Tablero gerencial (guía)](wireframes/anotado/G04-tablero-gerencial.svg)
 
-![P12 · confirmar pago](wireframes/anotado/P12-confirmar-pago.svg)
+![G05 · Créditos de un tramo (guía)](wireframes/anotado/G05-creditos-tramo.svg)
 
-![P13 · pago aplicado](wireframes/anotado/P13-pago-aplicado.svg)
+![G06 · Cierre diario / mensual (guía)](wireframes/anotado/G06-cierre.svg)
 
-![P14 · sin senal](wireframes/anotado/P14-sin-senal.svg)
+![G07 · Tablero en teléfono (guía)](wireframes/anotado/G07-tablero-movil.svg)
 

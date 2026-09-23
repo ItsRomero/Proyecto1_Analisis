@@ -93,13 +93,28 @@ def incluir(ruta, capitulo, nivel):
     return rebasar_enlaces("\n".join(lineas).strip(), ruta)
 
 
+TITULOS = {
+    "P01": "Iniciar sesión", "P02": "Mis Clientes", "P03": "Mi perfil",
+    "P04": "Nueva solicitud (paso 1)", "P05": "Simulación de pago (paso 2)",
+    "P06": "Confirmar solicitud (paso 3)", "P07": "Solicitud enviada",
+    "P08": "Detalle del crédito", "P09": "Plan de amortización",
+    "P10": "Detalle de mora", "P11": "Registrar pago", "P12": "Confirmar pago",
+    "P13": "Pago aplicado", "P14": "Sin señal",
+    "G01": "Alta de cliente (guía)", "G02": "Confirmación de desembolso (guía)",
+    "G03": "Bandeja del comité (guía)", "G04": "Tablero gerencial (guía)",
+    "G05": "Créditos de un tramo (guía)", "G06": "Cierre diario / mensual (guía)",
+    "G07": "Tablero en teléfono (guía)",
+}
+
+
 def galeria():
     carpeta = os.path.join(RAIZ, "docs/proyecto2/wireframes/anotado")
     items = ["![Mapa de navegación](wireframes/mapa-navegacion.svg)\n"]
-    for nombre in sorted(os.listdir(carpeta)):
-        if re.match(r"[PG]\d\d-.*\.svg$", nombre):
-            titulo = nombre[4:-4].replace("-", " ")
-            items.append(f"![{nombre[:3]} · {titulo}](wireframes/anotado/{nombre})\n")
+    nombres = [n for n in os.listdir(carpeta) if re.match(r"[PG]\d\d-.*\.svg$", n)]
+    # Primero las pantallas de Figma (P), luego las guías (G).
+    for nombre in sorted(nombres, key=lambda n: (n[0] != "P", n)):
+        titulo = TITULOS.get(nombre[:3], nombre[4:-4].replace("-", " "))
+        items.append(f"![{nombre[:3]} · {titulo}](wireframes/anotado/{nombre})\n")
     return "\n".join(items)
 
 

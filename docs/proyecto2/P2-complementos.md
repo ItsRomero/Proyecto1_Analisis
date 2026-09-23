@@ -66,47 +66,47 @@ Convenciones del skeleton: las barras grises son textos, los círculos son avata
 
 A la izquierda, el skeleton; a la derecha, el wireframe anotado de la misma pantalla.
 
-![G01 · alta cliente · skeleton](wireframes/skeleton/G01-alta-cliente.svg) ![G01 · anotado](wireframes/anotado/G01-alta-cliente.svg)
+![P01 · Iniciar sesión · skeleton](wireframes/skeleton/P01-iniciar-sesion.svg) ![P01 · anotado](wireframes/anotado/P01-iniciar-sesion.svg)
 
-![G02 · confirmacion desembolso · skeleton](wireframes/skeleton/G02-confirmacion-desembolso.svg) ![G02 · anotado](wireframes/anotado/G02-confirmacion-desembolso.svg)
+![P02 · Mis Clientes · skeleton](wireframes/skeleton/P02-mis-clientes.svg) ![P02 · anotado](wireframes/anotado/P02-mis-clientes.svg)
 
-![G03 · bandeja comite · skeleton](wireframes/skeleton/G03-bandeja-comite.svg) ![G03 · anotado](wireframes/anotado/G03-bandeja-comite.svg)
+![P03 · Mi perfil · skeleton](wireframes/skeleton/P03-mi-perfil.svg) ![P03 · anotado](wireframes/anotado/P03-mi-perfil.svg)
 
-![G04 · tablero gerencial · skeleton](wireframes/skeleton/G04-tablero-gerencial.svg) ![G04 · anotado](wireframes/anotado/G04-tablero-gerencial.svg)
+![P04 · Nueva solicitud (paso 1) · skeleton](wireframes/skeleton/P04-nueva-solicitud.svg) ![P04 · anotado](wireframes/anotado/P04-nueva-solicitud.svg)
 
-![G05 · creditos tramo · skeleton](wireframes/skeleton/G05-creditos-tramo.svg) ![G05 · anotado](wireframes/anotado/G05-creditos-tramo.svg)
+![P05 · Simulación de pago (paso 2) · skeleton](wireframes/skeleton/P05-simulacion-pago.svg) ![P05 · anotado](wireframes/anotado/P05-simulacion-pago.svg)
 
-![G06 · cierre · skeleton](wireframes/skeleton/G06-cierre.svg) ![G06 · anotado](wireframes/anotado/G06-cierre.svg)
+![P06 · Confirmar solicitud (paso 3) · skeleton](wireframes/skeleton/P06-confirmar-solicitud.svg) ![P06 · anotado](wireframes/anotado/P06-confirmar-solicitud.svg)
 
-![G07 · tablero movil · skeleton](wireframes/skeleton/G07-tablero-movil.svg) ![G07 · anotado](wireframes/anotado/G07-tablero-movil.svg)
+![P07 · Solicitud enviada · skeleton](wireframes/skeleton/P07-solicitud-enviada.svg) ![P07 · anotado](wireframes/anotado/P07-solicitud-enviada.svg)
 
-![P01 · iniciar sesion · skeleton](wireframes/skeleton/P01-iniciar-sesion.svg) ![P01 · anotado](wireframes/anotado/P01-iniciar-sesion.svg)
+![P08 · Detalle del crédito · skeleton](wireframes/skeleton/P08-detalle-credito.svg) ![P08 · anotado](wireframes/anotado/P08-detalle-credito.svg)
 
-![P02 · mis clientes · skeleton](wireframes/skeleton/P02-mis-clientes.svg) ![P02 · anotado](wireframes/anotado/P02-mis-clientes.svg)
+![P09 · Plan de amortización · skeleton](wireframes/skeleton/P09-plan-amortizacion.svg) ![P09 · anotado](wireframes/anotado/P09-plan-amortizacion.svg)
 
-![P03 · mi perfil · skeleton](wireframes/skeleton/P03-mi-perfil.svg) ![P03 · anotado](wireframes/anotado/P03-mi-perfil.svg)
+![P10 · Detalle de mora · skeleton](wireframes/skeleton/P10-detalle-mora.svg) ![P10 · anotado](wireframes/anotado/P10-detalle-mora.svg)
 
-![P04 · nueva solicitud · skeleton](wireframes/skeleton/P04-nueva-solicitud.svg) ![P04 · anotado](wireframes/anotado/P04-nueva-solicitud.svg)
+![P11 · Registrar pago · skeleton](wireframes/skeleton/P11-registrar-pago.svg) ![P11 · anotado](wireframes/anotado/P11-registrar-pago.svg)
 
-![P05 · simulacion pago · skeleton](wireframes/skeleton/P05-simulacion-pago.svg) ![P05 · anotado](wireframes/anotado/P05-simulacion-pago.svg)
+![P12 · Confirmar pago · skeleton](wireframes/skeleton/P12-confirmar-pago.svg) ![P12 · anotado](wireframes/anotado/P12-confirmar-pago.svg)
 
-![P06 · confirmar solicitud · skeleton](wireframes/skeleton/P06-confirmar-solicitud.svg) ![P06 · anotado](wireframes/anotado/P06-confirmar-solicitud.svg)
+![P13 · Pago aplicado · skeleton](wireframes/skeleton/P13-pago-aplicado.svg) ![P13 · anotado](wireframes/anotado/P13-pago-aplicado.svg)
 
-![P07 · solicitud enviada · skeleton](wireframes/skeleton/P07-solicitud-enviada.svg) ![P07 · anotado](wireframes/anotado/P07-solicitud-enviada.svg)
+![P14 · Sin señal · skeleton](wireframes/skeleton/P14-sin-senal.svg) ![P14 · anotado](wireframes/anotado/P14-sin-senal.svg)
 
-![P08 · detalle credito · skeleton](wireframes/skeleton/P08-detalle-credito.svg) ![P08 · anotado](wireframes/anotado/P08-detalle-credito.svg)
+![G01 · Alta de cliente (guía) · skeleton](wireframes/skeleton/G01-alta-cliente.svg) ![G01 · anotado](wireframes/anotado/G01-alta-cliente.svg)
 
-![P09 · plan amortizacion · skeleton](wireframes/skeleton/P09-plan-amortizacion.svg) ![P09 · anotado](wireframes/anotado/P09-plan-amortizacion.svg)
+![G02 · Confirmación de desembolso (guía) · skeleton](wireframes/skeleton/G02-confirmacion-desembolso.svg) ![G02 · anotado](wireframes/anotado/G02-confirmacion-desembolso.svg)
 
-![P10 · detalle mora · skeleton](wireframes/skeleton/P10-detalle-mora.svg) ![P10 · anotado](wireframes/anotado/P10-detalle-mora.svg)
+![G03 · Bandeja del comité (guía) · skeleton](wireframes/skeleton/G03-bandeja-comite.svg) ![G03 · anotado](wireframes/anotado/G03-bandeja-comite.svg)
 
-![P11 · registrar pago · skeleton](wireframes/skeleton/P11-registrar-pago.svg) ![P11 · anotado](wireframes/anotado/P11-registrar-pago.svg)
+![G04 · Tablero gerencial (guía) · skeleton](wireframes/skeleton/G04-tablero-gerencial.svg) ![G04 · anotado](wireframes/anotado/G04-tablero-gerencial.svg)
 
-![P12 · confirmar pago · skeleton](wireframes/skeleton/P12-confirmar-pago.svg) ![P12 · anotado](wireframes/anotado/P12-confirmar-pago.svg)
+![G05 · Créditos de un tramo (guía) · skeleton](wireframes/skeleton/G05-creditos-tramo.svg) ![G05 · anotado](wireframes/anotado/G05-creditos-tramo.svg)
 
-![P13 · pago aplicado · skeleton](wireframes/skeleton/P13-pago-aplicado.svg) ![P13 · anotado](wireframes/anotado/P13-pago-aplicado.svg)
+![G06 · Cierre diario / mensual (guía) · skeleton](wireframes/skeleton/G06-cierre.svg) ![G06 · anotado](wireframes/anotado/G06-cierre.svg)
 
-![P14 · sin senal · skeleton](wireframes/skeleton/P14-sin-senal.svg) ![P14 · anotado](wireframes/anotado/P14-sin-senal.svg)
+![G07 · Tablero en teléfono (guía) · skeleton](wireframes/skeleton/G07-tablero-movil.svg) ![G07 · anotado](wireframes/anotado/G07-tablero-movil.svg)
 
 ---
 
@@ -289,6 +289,7 @@ Cada hash abre el commit en GitHub con su diff completo, y cada archivo abre la 
 | 16 | 23/09 | `53689ef` ¹ | Oliver Romero | Documentación | E2 · E6 | Primeros skeletons, diagrama de casos de uso y ADR-005 (PWA) | [`ADR-005-pwa-trabajo-sin-conexion.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/adr/ADR-005-pwa-trabajo-sin-conexion.md) · [`generar_casos_uso.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/wireframes/generar_casos_uso.py) · [`generar_skeletons.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/wireframes/generar_skeletons.py) | 19 arch. · +1252 |
 | 17 | 23/09 | `cdc92c4` ¹ | Oliver Romero | Documentación | E2 · E6 · E7 | Documento de complementos con enlaces a GitHub | [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`generar_complementos.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/generar_complementos.py) | 2 arch. · +492 |
 | 18 | 23/09 | `2e6e9c6` ¹ | Oliver Romero | Documentación | E2 · E3 | Alineación con Figma: wireframes P01–P14 y guías G01–G07; mapa, casos de uso y documentos con los mismos códigos | [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`P2-documento-entrega.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-entrega.md) · [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/README.md) · [`documentacion-completa.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/documentacion-completa.md) · [`e1-investigacion-usuario.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/e1-investigacion-usuario.md) · y 9 más | 90 arch. · +4386 / −2960 |
+| 19 | 23/09 | `d1b2166` ¹ | Oliver Romero |  |  | docs(p2): regenerar complementos con el historial actualizado | [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`generar_complementos.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/generar_complementos.py) | 2 arch. · +2 / −2 |
 
 > ¹ Commit todavía no publicado en GitHub; sus archivos se enlazan en `main` y quedarán disponibles al integrar la rama. Al aplicar el parche, Git asigna un hash nuevo a estos commits.
 
