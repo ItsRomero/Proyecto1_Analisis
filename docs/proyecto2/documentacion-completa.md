@@ -77,7 +77,12 @@ La columna **"¿Documentado antes en .md?"** indica si el trabajo del commit apa
 | 15 | `8486b6e` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): unificar el documento de entrega | `P2-documento-entrega.md` pasa a generarse desde `fuente-documento-entrega.md` e incluye completos E1, E2, E4 y el informe SOLID, más E3, E5, la tabla de commits, el reparto y la lista de verificación | — |
 | 16 | `53689ef` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): skeletons de baja fidelidad, diagrama de casos de uso y ADR-005 | Primeros skeletons S01–S15, diagrama de casos de uso y ADR-005 (PWA) | — |
 | 17 | `cdc92c4` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): complementos con skeletons, casos de uso, ADR e historial enlazado a GitHub | `P2-complementos.md` | — |
-| 18 | *(este commit)* | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): alinear wireframes y documentos con el prototipo de Figma | Los wireframes W01–W15 y S01–S15 se **reemplazan** por P01–P14 (las 14 pantallas del prototipo de Figma, con su misma disposición) y G01–G07 (guías de las pantallas que faltan en Figma), en dos niveles (skeleton y anotado) generados desde una sola descripción; mapa de navegación, casos de uso, E1, E2, E4 y documento de entrega actualizados con los mismos códigos | — |
+| 18 | `2e6e9c6` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): alinear wireframes y documentos con el prototipo de Figma | Los wireframes W01–W15 y S01–S15 se **reemplazan** por P01–P14 (las 14 pantallas del prototipo de Figma, con su misma disposición) y G01–G07 (guías de las pantallas que faltan en Figma), en dos niveles (skeleton y anotado) generados desde una sola descripción; mapa de navegación, casos de uso, E1, E2, E4 y documento de entrega actualizados con los mismos códigos | — |
+| 19 | `d1b2166` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): regenerar complementos con el historial actualizado | `P2-complementos.md` | — |
+| 20 | `321eb61` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): galería en orden P01–P14 → G01–G07 | Galería y complementos con los títulos de Figma | — |
+| 21 | `7be9254` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): documento final | `P2-documento-final.md`: entrega y complementos unidos en el orden de los entregables | — |
+| 22 | `e788d59` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): panel gerencial web | Skeletons y wireframes W01 Dashboard, W02 Cartera y W03 Clientes, medidos del prototipo web; `P2-panel-gerencial-web.md` | — |
+| 23 | *(este commit)* | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): correcciones de la revisión | E3 y E5 reescritos con los dos prototipos (`e3-prototipo-figma.md`, `e5-evaluacion-heuristica.md`), mediciones WCAG, Anexo B (correcciones para Figma) y Anexo C (formularios E5); portada del equipo, índice real, hipervínculos, reparto y lista de verificación actualizados | — |
 
 **Registro por fases.** `e6-04-validacion-final.md` registra las fases 0 a 6 (commits 0 a 6). Los commits 7 a 18 solo quedan registrados en esta tabla.
 
@@ -398,12 +403,12 @@ Los tres flujos navegables que exige el E3 recorren este mapa así:
 | Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, sección 8) | Caso de uso P1 | Pantalla P2 | Código |
 |---|---|---|---|---|
 | RegistrarCliente | `RegistrarCliente` | CU-01 Registrar cliente | Alta de cliente | G01 (guía) |
-| SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Nueva solicitud → Simulación de pago → Confirmar solicitud → Solicitud enviada | P04, P05, P06, P07 |
+| SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Nueva solicitud → Simulación de pago → Confirmar solicitud → Solicitud enviada | P04, P05, P06, P07 · web: pasos 1 a 3 |
 | EvaluarSolicitud | `EvaluarCredito` + `DecidirSolicitud` | CU-03 Evaluar, CU-04 Aprobar, CU-05 Rechazar | Bandeja del comité | G03 (guía) |
 | DesembolsarCredito | `DesembolsarCredito` | CU-06 Desembolsar crédito | Confirmación de desembolso | G02 (guía) |
-| RegistrarPago | `RegistrarPago` | CU-07 Registrar pago | Registrar pago → Confirmar pago → Pago aplicado / Sin señal | P11, P12, P13, P14 |
-| ConsultarCarteraEnRiesgo | `ConsultarCarteraEnRiesgo` | CU-14 Consultar cartera en riesgo | Tablero gerencial, créditos de un tramo y tablero en teléfono | G04, G05, G07 (guías) |
-| GenerarCierre | `GenerarCierre` | CU-12 Cierre diario, CU-13 Cierre mensual | Cierre diario / mensual | G06 (guía) |
+| RegistrarPago | `RegistrarPago` | CU-07 Registrar pago | Registrar pago → Confirmar pago → Pago aplicado / Sin señal | P11, P12, P13, P14 · web: Registrar pago → Confirmar pago → Comprobante |
+| ConsultarCarteraEnRiesgo | `ConsultarCarteraEnRiesgo` | CU-14 Consultar cartera en riesgo | Dashboard, créditos de un tramo y Cartera (web); tablero en teléfono | W01, W02 (web) · G04, G05, G07 (guías) |
+| GenerarCierre | `GenerarCierre` | CU-12 Cierre diario, CU-13 Cierre mensual | Cierre diario (web); cierre mensual | Cierre diario (web) · G06 (guía) |
 
 > **Nota de coherencia.** En el P1 el puerto que el enunciado llama `EvaluarSolicitud` quedó dividido en dos puertos: `EvaluarCredito` (el analista registra la evaluación) y `DecidirSolicitud` (el comité aprueba o rechaza). La Bandeja del comité usa ambos. No se cambia el nombre de los puertos del P1, para respetar la regla de incrementalidad.
 
@@ -417,6 +422,7 @@ La penalización de la sección 10 aplica a pantallas **sin** caso de uso. Por e
 | Detalle del crédito | P08 | `ConsultarCredito` + `CalcularMora` | CU-15, CU-08 | `consultarMora`, `clasificarTramoMora` |
 | Plan de amortización | P09 | `ConsultarCredito` | CU-15 | `plan-amortizacion.ts` |
 | Detalle de mora | P10 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos` |
+| Clientes: lista y ficha (web) | W03 | `ConsultarCredito` | CU-15 | `consultarMora`, `plan-amortizacion.ts` |
 | Iniciar sesión | P01 | — (autenticación, fuera de alcance del P2) | — | — |
 | Mi perfil | P03 | — | — | — |
 

@@ -104,6 +104,7 @@ TITULOS = {
     "G03": "Bandeja del comité (guía)", "G04": "Tablero gerencial (guía)",
     "G05": "Créditos de un tramo (guía)", "G06": "Cierre diario / mensual (guía)",
     "G07": "Tablero en teléfono (guía)",
+    "W01": "Dashboard (web)", "W02": "Cartera (web)", "W03": "Clientes (web)",
 }
 
 

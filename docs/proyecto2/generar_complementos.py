@@ -25,6 +25,8 @@ info={
  'cdc92c4':('Documentación','E2 · E6 · E7','Documento de complementos con enlaces a GitHub'),
  'd1b2166':('Documentación','E7','Regeneración de los complementos con el historial actualizado'),
  '321eb61':('Documentación','E2','Galería de wireframes en orden P01–P14 → G01–G07 con los títulos de Figma'),
+ '7be9254':('Documentación','E1–E7','Documento final: entrega y complementos unidos en el orden de los entregables'),
+ 'e788d59':('Documentación','E2','Skeletons y wireframes del panel gerencial web: W01 Dashboard, W02 Cartera y W03 Clientes'),
  '2e6e9c6':('Documentación','E2 · E3','Alineación con Figma: wireframes P01–P14 y guías G01–G07; mapa, casos de uso y documentos con los mismos códigos'),
 }
 def principales(h):
@@ -52,7 +54,7 @@ for i,h in enumerate(commits):
     extra=len(arch)-5
     links=' · '.join(f"[`{os.path.basename(p)}`]({GH}/blob/{ref}/{p})" for p in arch[:5])
     if extra>0: links+=f" · y {extra} más"
-    clink=f"[`{short}`]({GH}/commit/{full})" if pub else f"`{short}` ¹"
+    clink=f"[`{short}`]({GH}/commit/{full})" + ("" if pub else " ¹")
     filas.append(f"| {i} | {fecha} | {clink} | {autor} | {tipo} | {ent} | {que} | {links or '—'} | {cambio} |")
 tabla='\n'.join(filas)
 
@@ -139,7 +141,7 @@ Este documento reúne cuatro agregados solicitados después de revisar el docume
 | 3 | Registros de decisiones de arquitectura (ADR) | Capítulo 7 (ADR-004, E6) y capítulo 5 (ADR-005, E4) |
 | 4 | Repositorio e historial de commits con hipervínculos a GitHub | Capítulo 8, reemplaza las tablas de §8.1 y §8.2.1 |
 
-> ¹ Los enlaces marcados con **¹** apuntan a archivos que se agregaron en la rama `docs/proyecto2-ux`. Funcionarán en GitHub en cuanto esa rama se integre a `main` (`git am docs-proyecto2-ux.patch` y `git push`). Los demás enlaces ya funcionan.
+> ¹ Los enlaces marcados con **¹** apuntan a archivos que se agregaron en la rama `docs/proyecto2-ux`. Esa rama se publica e integra a `main` con los mismos hashes, así que los enlaces apuntan a `main`.
 
 ---
 
@@ -235,7 +237,7 @@ Cada hash abre el commit en GitHub con su diff completo, y cada archivo abre la 
 | — | 26/08 | [`8737d9b`]({GH}/commit/8737d9b782772a5cff9acb07de8d719f4f4e3a16) | — | Base | P1 | **Entrega del Proyecto 1** (etiqueta `entrega-p1`), punto de comparación | [`src/dominio/`]({GH}/tree/8737d9b782772a5cff9acb07de8d719f4f4e3a16/src/dominio) | — |
 {tabla}
 
-> ¹ Commit todavía no publicado en GitHub; sus archivos se enlazan en `main` y quedarán disponibles al integrar la rama. Al aplicar el parche, Git asigna un hash nuevo a estos commits.
+> ¹ Commit de la rama `docs/proyecto2-ux`, publicado con el mismo hash e integrado a `main`; sus archivos se enlazan en `main`.
 
 **Comparación completa entre entregas:** [{GH}/compare/8737d9b...main]({GH}/compare/8737d9b...main) muestra en GitHub todos los cambios desde el Proyecto 1.
 """

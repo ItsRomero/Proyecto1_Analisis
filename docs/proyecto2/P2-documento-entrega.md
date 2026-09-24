@@ -1,18 +1,27 @@
 <!-- Archivo generado por generar_documento_entrega.py a partir de fuente-documento-entrega.md. No editar a mano. -->
 # Proyecto 2 · UX/UI, movilidad y evolución del núcleo
 
+**Universidad Mariano Gálvez de Guatemala** · Facultad de Ingeniería en Sistemas de Información · Análisis de Sistemas II (037)
+
 **Sistema de Gestión de Microcrédito — Crédito Vecino, S. A.**
-Análisis de Sistemas II (037) · Universidad Mariano Gálvez de Guatemala · Segundo semestre 2026 · Modalidad sabatina
 
 | Dato | Valor |
 |---|---|
-| **Integrantes** | Christopher David Herrera Pérez · Erwin Alberto Ramírez Racancoj · Gabriela Elízabeth Noemí Aguilar Vásquez · Oliver Fernando Romero Esquite |
-| **Grupo · carnés · sección** | *(completar antes de exportar el PDF)* |
-| **Docente** | *(completar)* |
-| **Prototipo navegable (Figma)** | https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1 |
-| **Repositorio** | https://github.com/ItsRomero/Proyecto1_Analisis |
+| **Grupo** | 2 |
+| **Sección** | A |
+| **Docente** | Ing. Ezequiel Urizar |
+| **Prototipo móvil (Figma)** | [Microcréditos App](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) |
+| **Prototipo web (Figma Make)** | [Prototipo Microcréditos Web](https://www.figma.com/make/WHj2TK5IRg55X8JiaKXyvy/Prototipo-Microcr%25C3%25A9ditos-Web?code-node-id=0-6&p=f&fullscreen=1) |
+| **Repositorio** | [github.com/ItsRomero/Proyecto1_Analisis](https://github.com/ItsRomero/Proyecto1_Analisis) |
 | **Commit de entrega del Proyecto 1** | `8737d9b` (etiqueta `entrega-p1`) |
-| **Fecha de entrega** | Viernes 25 de septiembre de 2026 |
+| **Fecha de entrega** | Guatemala, 25 de septiembre de 2026 |
+
+| Integrante | Carné | Rol |
+|---|---|---|
+| Christopher David Herrera Pérez | 7690-20-20773 | Implementación / Pruebas |
+| Erwin Alberto Ramírez Racancoj | 7690-23-2387 | Pruebas / Trazabilidad |
+| Gabriela Elízabeth Noemí Aguilar Vásquez | 7690-23-13249 | Diseño / Documentación |
+| Oliver Fernando Romero Esquite | 7690-23-7366 | Coordinación / Integración |
 
 ---
 
@@ -297,12 +306,12 @@ Los tres flujos navegables que exige el E3 recorren este mapa así:
 | Puerto primario del enunciado (6.1) | Puerto definido en el P1 (`FASE-06`, sección 8) | Caso de uso P1 | Pantalla P2 | Código |
 |---|---|---|---|---|
 | RegistrarCliente | `RegistrarCliente` | CU-01 Registrar cliente | Alta de cliente | G01 (guía) |
-| SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Nueva solicitud → Simulación de pago → Confirmar solicitud → Solicitud enviada | P04, P05, P06, P07 |
+| SolicitarCredito | `SolicitarCredito` | CU-02 Solicitar crédito | Nueva solicitud → Simulación de pago → Confirmar solicitud → Solicitud enviada | P04, P05, P06, P07 · web: pasos 1 a 3 |
 | EvaluarSolicitud | `EvaluarCredito` + `DecidirSolicitud` | CU-03 Evaluar, CU-04 Aprobar, CU-05 Rechazar | Bandeja del comité | G03 (guía) |
 | DesembolsarCredito | `DesembolsarCredito` | CU-06 Desembolsar crédito | Confirmación de desembolso | G02 (guía) |
-| RegistrarPago | `RegistrarPago` | CU-07 Registrar pago | Registrar pago → Confirmar pago → Pago aplicado / Sin señal | P11, P12, P13, P14 |
-| ConsultarCarteraEnRiesgo | `ConsultarCarteraEnRiesgo` | CU-14 Consultar cartera en riesgo | Tablero gerencial, créditos de un tramo y tablero en teléfono | G04, G05, G07 (guías) |
-| GenerarCierre | `GenerarCierre` | CU-12 Cierre diario, CU-13 Cierre mensual | Cierre diario / mensual | G06 (guía) |
+| RegistrarPago | `RegistrarPago` | CU-07 Registrar pago | Registrar pago → Confirmar pago → Pago aplicado / Sin señal | P11, P12, P13, P14 · web: Registrar pago → Confirmar pago → Comprobante |
+| ConsultarCarteraEnRiesgo | `ConsultarCarteraEnRiesgo` | CU-14 Consultar cartera en riesgo | Dashboard, créditos de un tramo y Cartera (web); tablero en teléfono | W01, W02 (web) · G04, G05, G07 (guías) |
+| GenerarCierre | `GenerarCierre` | CU-12 Cierre diario, CU-13 Cierre mensual | Cierre diario (web); cierre mensual | Cierre diario (web) · G06 (guía) |
 
 > **Nota de coherencia.** En el P1 el puerto que el enunciado llama `EvaluarSolicitud` quedó dividido en dos puertos: `EvaluarCredito` (el analista registra la evaluación) y `DecidirSolicitud` (el comité aprueba o rechaza). La Bandeja del comité usa ambos. No se cambia el nombre de los puertos del P1, para respetar la regla de incrementalidad.
 
@@ -316,6 +325,7 @@ La penalización de la sección 10 aplica a pantallas **sin** caso de uso. Por e
 | Detalle del crédito | P08 | `ConsultarCredito` + `CalcularMora` | CU-15, CU-08 | `consultarMora`, `clasificarTramoMora` |
 | Plan de amortización | P09 | `ConsultarCredito` | CU-15 | `plan-amortizacion.ts` |
 | Detalle de mora | P10 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos` |
+| Clientes: lista y ficha (web) | W03 | `ConsultarCredito` | CU-15 | `consultarMora`, `plan-amortizacion.ts` |
 | Iniciar sesión | P01 | — (autenticación, fuera de alcance del P2) | — | — |
 | Mi perfil | P03 | — | — | — |
 
@@ -433,78 +443,111 @@ El chat del Proyecto Final ocupa una **columna derecha plegable** (G04) y, en el
 
 # 4. E3 · Prototipo navegable en Figma
 
-## 4.1 Enlace y acceso
+Este capítulo presenta los dos prototipos navegables, cómo recorrer los tres flujos obligatorios, qué resuelven bien y qué cifras todavía no coinciden con el núcleo.
 
-**Prototipo:** https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1
+## 4.1 Enlaces y acceso
 
-El enlace abre sin iniciar sesión en Figma, como pide la sección 13. El archivo se llama *Microcréditos App* y la pantalla inicial es *Asesor de Crédito – Móvil*. Es un prototipo navegable, no una serie de imágenes: cada flujo se recorre haciendo clic.
+El equipo construyó dos prototipos en Figma. Los dos abren sin iniciar sesión (sección 13 del enunciado) y se recorren haciendo clic; no son imágenes sueltas.
 
-## 4.2 Cómo recorrerlo
+| Prototipo | Enlace | Qué contiene |
+|---|---|---|
+| **Móvil · asesora de crédito** (*Microcréditos App*) | [Abrir el prototipo móvil](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) | Pantallas P01–P14: cartera de la asesora, detalle del crédito, plan, mora, registro de pago, pago sin señal y solicitud de crédito |
+| **Web · flujos y panel gerencial** (*Prototipo Microcréditos Web*, Figma Make) | [Abrir el prototipo web](https://www.figma.com/make/WHj2TK5IRg55X8JiaKXyvy/Prototipo-Microcr%25C3%25A9ditos-Web?code-node-id=0-6&p=f&fullscreen=1) | Inicio con tres flujos: *Solicitar crédito* y *Registrar pago* en vista móvil de 375 px, y el *Panel gerencial* de escritorio (Dashboard, Cartera, Clientes y Cierre diario) |
+
+## 4.2 Cómo recorrerlos
+
+**Prototipo móvil**
 
 | Paso | Qué hacer | Qué se ve |
 |---|---|---|
-| 1 | *Ingresar* en **P01 Iniciar sesión** | **P02 Mis Clientes**: cartera de la asesora ordenada por prioridad, con la etiqueta de tramo (Incobrable, Mora 3, Mora 2, Mora 1, Al día) y los días de atraso |
-| 2 | **Flujo de cobro:** tocar la tarjeta de *Pedro Xol Cux* | **P08 Detalle del crédito**: estado, saldo, próxima cuota, monto original, plazo y tasa |
-| 3 | Botón *Plan de pago* | **P09 Plan de amortización** del caso de referencia: Q10,000, 12 meses, 3 % mensual, con la cuota 12 de Q1,004.63 resaltada |
-| 4 | Botón *Detalle mora* | **P10 Detalle de mora** por tramo recorrido |
-| 5 | *Registrar pago* → tocar el monto → *Revisar y confirmar* | **P11 Registrar pago** → **P12 Confirmar pago**, con la prelación visible antes de aplicar (gastos → mora → interés → capital) |
-| 6 | *Aplicar pago* | **P13 Pago aplicado**: comprobante con número y distribución del pago, más opciones para enviarlo por WhatsApp o imprimirlo |
-| 7 | **Variante sin señal:** en *Confirmar pago*, tocar *Simular pago sin señal (demo)* y luego *Aplicar pago* | **P14 Sin señal**: pago en cola, estado "Pendiente", folio y botón *Sincronizar ahora* |
-| 8 | **Flujo de originación:** en *Mis Clientes*, botón **+** | **P04 Nueva solicitud** (cliente, monto con límites y plazo) → **P05 Simulación de pago** → **P06 Confirmar solicitud** → **P07 Solicitud enviada** |
-| 9 | Tocar las iniciales *MA* | **P03 Mi perfil** de la asesora: zona, ruta, cartera asignada y estado de sincronización |
+| 1 | *Ingresar* en **P01 Iniciar sesión** | **P02 Mis Clientes**: cartera ordenada por prioridad, con la etiqueta de tramo y los días de atraso |
+| 2 | Tocar la tarjeta de *Pedro Xol Cux* | **P08 Detalle del crédito** → *Plan de pago* (**P09**) → *Detalle mora* (**P10**) |
+| 3 | *Registrar pago* → monto → *Revisar y confirmar* → *Aplicar pago* | **P11** → **P12 Confirmar pago** con la prelación → **P13 Pago aplicado** |
+| 4 | Variante: en *Confirmar pago*, *Simular pago sin señal (demo)* | **P14 Sin señal**: pago en cola, estado y *Sincronizar ahora* |
+| 5 | En *Mis Clientes*, botón **+** | **P04 Nueva solicitud** → **P05 Simulación** → **P06 Confirmar** → **P07 Solicitud enviada** |
 
-## 4.3 Lo que el prototipo resuelve bien
+**Prototipo web**
 
-Recorrimos el prototipo completo el 23 de septiembre de 2026. Estas decisiones cumplen lo que pide el enunciado y lo que encontramos en la investigación (E1):
+| Flujo | Recorrido | Pantallas |
+|---|---|---|
+| Flujo 1 · Solicitar crédito | *Solicitar crédito* → *Ver plan de amortización* → *Continuar con solicitud* → marcar la aceptación → *Confirmar y enviar solicitud* | Monto y plazo (paso 1 de 3) → Simulación (paso 2 de 3) → Confirmar solicitud (paso 3 de 3) → ¡Solicitud enviada! |
+| Flujo 2 · Registrar pago | *Registrar pago* → *María García López* → *Ver detalle de mora* / *Ver tabla* → *Registrar pago* → *Cuota regular* → *Ver desglose del pago* → *Aplicar pago ahora* | Buscar cliente → Crédito → Detalle de mora · Plan de amortización → Registrar pago → Confirmar pago (prelación) → Comprobante |
+| Flujo 3 · Panel gerencial | *Panel gerencial* → *Dashboard* → *Ver →* en un tramo → *Ver crédito*; pestañas *Cartera*, *Clientes* y *Cierre diario* | W01 Dashboard → créditos del tramo → crédito; W02 Cartera; W03 Clientes; Cierre diario |
 
-- **La captura del monto es difícil de equivocar:** botones − y +, montos rápidos (Q2k, Q5k, Q10k…) y el rango "Q1,000 – Q25,000 en pasos de Q500" siempre visible. Esto responde al momento crítico MC-1.
+## 4.3 Lo que los prototipos resuelven bien
+
+Recorrimos los dos prototipos completos el 23 de septiembre de 2026.
+
+- **Captura del monto difícil de equivocar:** botones − y +, montos rápidos y el rango permitido siempre visible (móvil); control deslizante con límites Q1,000–Q25,000 (web). Responde al momento crítico MC-1.
 - **El plazo se elige con botones** (3 a 24 meses), sin teclado.
-- **Siempre hay una revisión antes de confirmar.** La solicitud tiene tres pasos, y el pago pasa por "Confirme antes de aplicar", con la salida "← Modificar monto". Esto cumple WCAG 3.3.4 (prevención de errores en transacciones financieras).
-- **La prelación se ve antes de aplicar el pago**, con una barra por concepto.
-- **El plan de amortización usa el caso de referencia real:** Q10,000 al 3 % mensual, las 12 cuotas, interés total Q2,055.45, total Q12,055.45 y la cuota 12 de Q1,004.63 resaltada.
-- **La simulación de Q5,000 a 12 meses coincide con el núcleo:** cuota de Q502.31, exactamente la mitad del caso de referencia.
-- **Hay un flujo sin señal** con el pago en cola, su estado y un botón manual de sincronización. Esto responde a MC-2 y a la estrategia del E4.
-- Los objetivos táctiles son grandes y los botones principales tienen alto contraste, algo importante para trabajar bajo el sol.
+- **Revisión antes de confirmar (WCAG 3.3.4).** La solicitud web tiene tres pasos y exige marcar «He leído y acepto…» antes de enviar, con el aviso «Esta acción no se puede deshacer». El pago muestra el desglose y «Una vez aplicado, este pago no puede revertirse» antes de *Aplicar pago ahora*.
+- **La prelación se ve antes de aplicar el pago**, en el orden gastos → mora → interés corriente → capital.
+- **El plan de amortización usa el caso de referencia:** Q10,000 al 3 % mensual, cuota Q1,004.62, interés total Q2,055.45 y total Q12,055.45. El plan web ya incluye la nota «La última cuota es Q1,004.63, con ajuste de Q0.01».
+- **Existe el tablero gerencial (W01)** con cartera por tramo, cartera en riesgo 23.4 % y espacio para el asistente, y el **desglose por tramo** lleva a los créditos de ese tramo (flujo 3).
+- **Existe el cierre diario** con verificación previa, congelamiento de cifras y protección contra duplicados («ya cerrado»), coherente con la idempotencia del núcleo.
+- **Flujo sin señal** con el pago en cola y sincronización manual (móvil, P14).
 
 ## 4.4 Correspondencia con las pantallas y los flujos obligatorios
 
-| Requisito del E3 | Perfil / formato | Estado en el prototipo | Acción pendiente |
-|---|---|---|---|
-| Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ P04 → P05 → P06 → P07 | — |
-| Detalle del crédito | Cliente/Asesor · móvil | ✅ P08 | Agregar el tramo en lenguaje llano ("lleva 45 días de atraso") |
-| Registro de pago con desglose de la prelación | Asesor · móvil | ✅ P11 → P12 → P13 / P14 | Corregir las cifras (§4.5) |
-| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ P09: la cuota 12 está resaltada, pero sin explicación | Agregar la nota "1 centavo más para cerrar el saldo exacto en Q0.00" |
-| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ P10: muestra tasas y montos que no son los del núcleo | Rehacer con el caso M-3 (§4.5) |
-| Tablero gerencial | Gerencia · escritorio | ❌ No existe todavía | Construir a partir de la guía G04 (y G07 para teléfono) |
-| Cierre diario / mensual | Gerencia · escritorio | ❌ No existe todavía | Construir a partir de la guía G06 |
-| Confirmación de desembolso (tabla 6.1) | Encargado · móvil | ❌ | Agregar después de "Solicitud enviada", a partir de la guía G02 |
-| Bandeja del comité y Alta de cliente (tabla 6.1) | Comité / Asesor | ❌ | Recomendable, a partir de las guías G03 y G01 |
-| Flujo 1: solicitud → simulación → confirmación → desembolso | — | ⚠️ Termina en "Solicitud enviada" | Agregar el desembolso |
-| Flujo 2: buscar → saldo y tramo → mora → pago → comprobante | — | ✅ | — |
-| Flujo 3: tablero → riesgo por tramo → créditos del tramo | — | ❌ | Depende del tablero |
-| *P03 Mi perfil* | — | Existe, pero no corresponde a ningún caso de uso | Justificarla como soporte de sesión o retirarla (la sección 10 resta 0.5 puntos por pantalla sin caso de uso) |
+| Requisito del E3 | Perfil / formato | Estado | Dónde | Pendiente |
+|---|---|---|---|---|
+| Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ | P04 → P07 · web pasos 1 a 3 | — |
+| Detalle del crédito | Cliente/Asesor · móvil | ✅ | P08 · web *Crédito* | Mostrar lo exigible hoy cuando hay mora (tabla siguiente) |
+| Registro de pago con desglose de la prelación | Asesor · móvil | ⚠️ | P11 → P13 · web *Confirmar pago* | Corregir los montos del desglose |
+| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ | P09 · web *Plan de amortización* | La nota ya está en la web; falta corregir la fila 12 y el centavo desde la cuota 8 |
+| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ | P10 · web *Detalle de mora* | Ambos usan tasas y base equivocadas |
+| Tablero gerencial | Gerencia · escritorio | ✅ | W01 (web) | Ajustes de la sección 3.4.5 |
+| Cierre diario / mensual | Gerencia · escritorio | ⚠️ | Web *Cierre diario* | Falta el cierre mensual (CU-13) |
+| Confirmación de desembolso | Encargado · móvil | ❌ | — | Construir a partir de la guía G02 |
+| Flujo 1: solicitud → simulación → confirmación → desembolso | — | ⚠️ | Termina en «Solicitud enviada» | Agregar el desembolso después de la aprobación |
+| Flujo 2: buscar → saldo y tramo → mora → pago → comprobante | — | ✅ | P02 → P13 · web flujo 2 | Corregir cifras |
+| Flujo 3: tablero → riesgo por tramo → créditos del tramo | — | ✅ | Web flujo 3 | — |
+| *P03 Mi perfil* | Asesor | ✅ | P03 | Se justifica como pantalla de soporte de sesión y sincronización (sección 3.3.2), sin caso de uso de negocio propio |
 
 ## 4.5 Cifras que deben coincidir con el núcleo (sección 6.2)
 
-El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal la política de mora. Estas son las diferencias encontradas y cómo corregirlas.
+El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal la política de mora. Estas son las diferencias encontradas en los dos prototipos, con el valor correcto que debe mostrarse.
 
-**Pantalla "Detalle de mora"**
+**Detalle de la mora (P10 y web)**
 
-| Lo que muestra hoy | Lo que dice la política y calcula el núcleo | Corrección |
+| Elemento | Prototipo | Valor correcto |
 |---|---|---|
-| "Tasa adicional mensual" de 0.5 %, 1.0 %, 1.5 % y 2.0 % | Tasas **anuales** de 18 %, 24 %, 30 % y 36 % (1.5 %, 2 %, 2.5 % y 3 % mensual), base Actual/360 | Mostrar "18 % al año", "24 % al año", etc. |
-| Recargo calculado sobre el **saldo total** (Q6,240.50) | Se calcula sobre el **capital en mora de cada cuota vencida**, por separado | Usar el caso M-3: capital Q725.76 |
-| Total de recargos Q228.81 | M-3 = **Q50.80** (10.8864 + 14.5152 + 18.1440 + 7.2576 = 50.8032, redondeado una sola vez) | Mostrar Q10.89 · Q14.52 · Q18.14 · Q7.26 con la nota de redondeo: Q50.80, no Q50.81 |
-| "Total a pagar hoy Q6,469.31" (saldo + recargos) | Lo exigible de la cuota: gastos + mora + interés corriente + capital | A 45 días: Q25.00 + Q18.14 + Q278.86 + Q725.76 = **Q1,047.76** (caso M-5) |
-| Se abre desde un crédito incobrable (132 días), pero muestra 100 días y el saldo de otro cliente | Después de 120 días el crédito es incobrable y deja de generar mora (invariante 8) | Abrirla desde un crédito con 100 días de atraso, o mostrar la mora congelada en Q65.32 |
+| Tasas | Móvil: 0.5 %, 1 %, 1.5 % y 2 % mensual · Web: 2 %, 3 %, 4 % y 5 % mensual | **18 %, 24 %, 30 % y 36 % anual**, base Actual/360 |
+| Base del cálculo | Saldo total: Q6,240.50 (móvil) · Q6,259.07 (web) | **Capital en mora** de la cuota vencida: Q725.76 en el caso M-3 |
+| Caso M-3 (100 días) | Q228.81 (móvil) · Q667.65 (web) | **Q50.80** = 10.8864 + 14.5152 + 18.1440 + 7.2576 = 50.8032, redondeado una sola vez (no Q50.81) |
+| Tramo de 91 a 100 días | Web: «Vencido · 5 % mensual» | **Mora 4 · 36 % anual** (el crédito es incobrable después de 120 días) |
+| Total exigible (M-5, 45 días) | «Total a pagar hoy Q6,469.31» (móvil) | **Q1,047.76** = Q25.00 + Q18.14 + Q278.86 + Q725.76 |
+| Días de atraso | Web: el crédito dice 45 días y su detalle de mora, 100 | Abrir el detalle desde un crédito con 100 días, o mostrar los 45 días del mismo crédito |
 
-**Otras pantallas**
+**Registro de pago y crédito (web)** · María García, cuota 6 vencida hace 45 días (capital Q816.85, interés Q187.77)
+
+| Elemento | Prototipo | Valor correcto (misma fórmula que M-2 y M-5) |
+|---|---|---|
+| Gastos de cobro | Q125.00 (web) · Q150.00 (móvil) | **Q25.00** por cuota vencida, generado una sola vez al día 31 |
+| Interés moratorio | Q219.07 | **Q20.42** = Q816.85 × (18 % × 30 + 24 % × 15) / 360 |
+| Monto rápido «Cuota + mora» | Q1,500.00 | **Q1,050.04** = Q25.00 + Q20.42 + Q187.77 + Q816.85 |
+| «Mora acum.» en los créditos del tramo | Q281.66 | **Q20.42** |
+| «Próxima cuota» en el crédito en mora | Q1,004.62 | Mostrar lo **exigible hoy: Q1,050.04** |
+
+**Plan de amortización (web)**
+
+| Elemento | Prototipo | Valor correcto |
+|---|---|---|
+| Saldo después de la cuota 8 | Q3,734.27 | **Q3,734.28** (el centavo se arrastra a las cuotas 9, 10 y 11) |
+| Saldos después de las cuotas 9, 10 y 11 | Q2,841.68 · Q1,922.31 · Q975.36 | **Q2,841.69 · Q1,922.32 · Q975.37** |
+| Fila de la cuota 12 (plan y simulación) | Q1,004.62, capital Q975.36 | **Q1,004.63**, capital **Q975.37**, como dice la nota |
+
+**Coherencia entre pantallas**
 
 | Pantalla | Diferencia | Corrección |
 |---|---|---|
-| Registrar pago | "Gastos de gestión Q150.00" | La política es **Q25.00 por cuota vencida**, generado una sola vez al día 31 (CP-02) |
-| Solicitud enviada | El cliente cambia de *Carlos Martínez Ixcot* (el seleccionado) a *Juan Pablo Pérez Xol* | Mantener el cliente elegido en el paso 1 |
-| Sin señal | El folio cambia de *PAG-251250* a *PAG-309097* al tocar "Sincronizar ahora" | El folio representa la **clave de idempotencia** y debe ser el mismo en todos los reintentos (E4, §5.4.2) |
+| Solicitud enviada (móvil) | El cliente cambia de *Carlos Martínez Ixcot* a *Juan Pablo Pérez Xol* | Mantener el cliente elegido en el paso 1 |
+| Sin señal (móvil) | El folio cambia de *PAG-251250* a *PAG-309097* al sincronizar | El folio es la **clave de idempotencia**: debe ser el mismo en todos los reintentos |
+| Registrar pago y Cartera (web) | Ana Lucía Morales figura «Al día» en un lugar y «31–60 d» en otro; Pedro Alvarado tiene códigos distintos (CRD-2024-0388 y 0488); José Domingo tiene 22 días en Cartera y 38 en el tramo | Usar un solo conjunto de datos de ejemplo |
+| Cartera (web) | Pedro Alvarado (Q12,000 a 12 meses) con cuota Q1,004.62; Andrés Lima (Q5,000 a 12 meses) con Q485.50 | Q1,205.55 y Q502.31 al 3 % mensual |
+| Todas (web) | Fechas de 2024 | Septiembre de 2026 |
+
+Las instrucciones para aplicar estas correcciones en Figma Make, listas para copiar, están en el Anexo B.
 
 ---
 
@@ -690,50 +733,76 @@ Si se usara la fecha de sincronización, Carlos pagaría **Q25.48 de más** por 
 
 # 6. E5 · Evaluación heurística y de accesibilidad
 
-## 6.1 Método
+## 6.1 Método y estado
 
-El enunciado pide que **los cuatro integrantes evalúen por separado** y después consoliden, porque varios evaluadores independientes encuentran más problemas que uno solo. Esta sección presenta la **evaluación preliminar de un evaluador**, hecha al recorrer el prototipo el 23 de septiembre de 2026 con apoyo de una herramienta de IA (declarada en el capítulo 9). Es el punto de partida del consolidado. **No sustituye** la evaluación de cada integrante, que debe registrar quién encontró cada hallazgo y adjuntar la captura como evidencia.
+El enunciado pide que **los cuatro integrantes evalúen por separado** y después consoliden, porque varios evaluadores independientes encuentran más problemas que uno solo. Este capítulo reúne dos insumos y deja preparado el tercero:
+
+| Insumo | Estado | Contenido |
+|---|---|---|
+| Evaluación preliminar del prototipo móvil | Hecha (23/09) | 14 hallazgos de un evaluador, con apoyo de IA declarado en el capítulo 9 (H-01 a H-14) |
+| Revisión del prototipo web con medición | Hecha (23/09) | 8 hallazgos nuevos (H-15 a H-22). El contraste de cada texto se calculó con la fórmula de WCAG sobre sus colores reales y se midió el tamaño de cada control interactivo en 13 pantallas |
+| Evaluación independiente de los cuatro integrantes, cinco correcciones con antes/después y design review | **Pendiente del equipo** | Formularios en el Anexo C. Los resultados no se inventan: se registran cuando cada integrante haga su evaluación |
 
 Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético · 2 menor · 3 mayor · 4 catastrófico.
 
 ## 6.2 Hallazgos heurísticos (Nielsen)
 
-| # | Pantalla | Hallazgo | Heurística | Sev. | Corrección propuesta |
+| # | Prototipo · pantalla | Hallazgo y evidencia | Heurística | Sev. | Corrección propuesta |
 |---|---|---|---|---|---|
-| H-01 | Detalle de mora | Usa tasas mensuales de 0.5 %–2 % sobre el saldo total; no son las de la política ni las del núcleo | 2 · Correspondencia con el mundo real | **4** | Mostrar el caso M-3 con tasas anuales sobre el capital en mora (§4.5) |
-| H-02 | Detalle de mora | "Total a pagar hoy" suma el saldo completo más los recargos; el cliente cree que debe Q6,469.31 hoy | 5 · Prevención de errores | **4** | Mostrar lo exigible de la cuota vencida (M-5: Q1,047.76) |
-| H-03 | Detalle de mora | Un crédito incobrable (132 días) sigue mostrando recargos, con datos de otro cliente | 4 · Consistencia y estándares | 3 | Congelar la mora al día 120 y enlazar los datos correctos |
-| H-04 | Sin señal | El folio cambia al sincronizar; la asesora no puede saber si es el mismo pago | 1 · Visibilidad del estado del sistema | 3 | Mantener el mismo folio (clave de idempotencia) en cada reintento |
-| H-05 | Sin señal | "Si lo registra otra vez se duplicará" deja en manos de la asesora evitar el doble cobro | 5 · Prevención de errores | 3 | Que el sistema lo impida y lo diga: "Este pago ya está guardado; aunque lo intente de nuevo no se cobrará dos veces" |
-| H-06 | Registrar pago | El monto aparece como "Q 10000" sin separador de miles mientras se escribe | 5 · Prevención de errores | 3 | Formato en vivo "Q 10,000.00" desde la primera tecla |
-| H-07 | Registrar pago | Gastos de gestión de Q150.00; la política es Q25.00 por cuota vencida | 2 · Correspondencia | 3 | Usar el oráculo M-5 |
-| H-08 | Solicitud enviada | El cliente cambia de Carlos Martínez a Juan Pablo Pérez | 4 · Consistencia | 3 | Mantener el cliente seleccionado |
-| H-09 | Plan de amortización | La cuota 12 (Q1,004.63) está resaltada pero sin explicación | 10 · Ayuda y documentación | 2 | Nota: "1 centavo más para que el saldo cierre exacto en Q0.00" |
-| H-10 | Mis Clientes | "Mora 1/2/3" no significa nada para el cliente | 2 · Correspondencia | 2 | Acompañarlo con "más de 30 días de atraso" |
-| H-11 | Todas | La ayuda solo aparece en el inicio de sesión ("Llama al soporte técnico") | 10 · Ayuda / WCAG 3.2.6 | 2 | Ícono "?" en el mismo lugar de cada encabezado |
-| H-12 | Registrar pago | Los atajos "1 cuota / 2 cuotas / 3 cuotas" no llenan el monto | 7 · Flexibilidad y eficiencia | 2 | Conectar cada atajo con su monto |
-| H-13 | Pago aplicado | El comprobante no muestra el saldo restante | 1 · Visibilidad del estado | 2 | Agregar "Saldo de capital restante" |
-| H-14 | Detalle de mora y pago | Textos secundarios muy pequeños y en gris claro, difíciles de leer bajo el sol | 8 · Diseño estético y minimalista / WCAG 1.4.3 | 2 | Tamaño mínimo de 14 px y contraste ≥ 4.5:1 |
+| H-01 | Móvil · Detalle de mora | Tasas mensuales de 0.5 %–2 % sobre el saldo total | 2 · Correspondencia con el mundo real | **4** | Caso M-3 con tasas anuales sobre el capital en mora (sección 4.5) |
+| H-02 | Móvil · Detalle de mora | «Total a pagar hoy Q6,469.31» suma el saldo completo; el cliente cree que debe eso hoy | 5 · Prevención de errores | **4** | Mostrar lo exigible de la cuota vencida (M-5: Q1,047.76) |
+| H-03 | Móvil · Detalle de mora | Un crédito incobrable (132 días) sigue mostrando recargos, con datos de otro cliente | 4 · Consistencia y estándares | 3 | Congelar la mora al día 120 |
+| H-04 | Móvil · Sin señal | El folio cambia de PAG-251250 a PAG-309097 al sincronizar | 1 · Visibilidad del estado | 3 | Mismo folio (clave de idempotencia) en cada reintento |
+| H-05 | Móvil · Sin señal | «Si lo registra otra vez se duplicará» deja a la asesora evitar el doble cobro | 5 · Prevención de errores | 3 | Que el sistema lo impida y lo diga |
+| H-06 | Móvil · Registrar pago | El monto se ve como «Q 10000», sin separador de miles | 5 · Prevención de errores | 3 | Formato en vivo «Q 10,000.00» |
+| H-07 | Móvil · Registrar pago | Gastos de gestión de Q150.00 | 2 · Correspondencia | 3 | Q25.00 por cuota vencida |
+| H-08 | Móvil · Solicitud enviada | El cliente cambia de Carlos Martínez a Juan Pablo Pérez | 4 · Consistencia | 3 | Mantener el cliente seleccionado |
+| H-09 | Móvil · Plan de amortización | La cuota 12 está resaltada pero sin explicación | 10 · Ayuda y documentación | 2 | Nota del centavo de ajuste (ya resuelto en el prototipo web) |
+| H-10 | Móvil · Mis Clientes | «Mora 1/2/3» no significa nada para el cliente | 2 · Correspondencia | 2 | «Más de 30 días de atraso» |
+| H-11 | Ambos · todas | La ayuda solo aparece en el inicio de sesión del móvil; el prototipo web no tiene ayuda | 10 · Ayuda / WCAG 3.2.6 | 2 | Ícono «?» en el mismo lugar de cada encabezado |
+| H-12 | Móvil · Registrar pago | Los atajos «1 / 2 / 3 cuotas» no llenan el monto | 7 · Flexibilidad y eficiencia | 2 | Conectar cada atajo con su monto |
+| H-13 | Móvil · Pago aplicado | El comprobante no muestra el saldo restante (el web sí: «Nuevo saldo») | 1 · Visibilidad del estado | 2 | Agregar el saldo restante |
+| H-14 | Móvil · Detalle de mora y pago | Textos secundarios pequeños y en gris claro | 8 · Diseño estético / WCAG 1.4.3 | 2 | 14 px y contraste ≥ 4.5:1 |
+| H-15 | Web · Detalle de mora | Tasas de 2 %, 3 %, 4 % y 5 % mensual sobre el saldo de Q6,259.07; total Q667.65 para 100 días | 2 · Correspondencia | **4** | M-3: 18/24/30/36 % anual sobre Q725.76 = Q50.80 |
+| H-16 | Web · Confirmar pago | Gastos Q125.00 y mora Q219.07 en la prelación; el monto rápido «Cuota + mora» es Q1,500.00 | 5 · Prevención de errores | **4** | Q25.00 y Q20.42; «Cuota + mora» = Q1,050.04 (sección 4.5) |
+| H-17 | Web · Crédito → Detalle de mora | El crédito dice 45 días de atraso y su detalle de mora, 100 días | 4 · Consistencia | 3 | Los mismos días en ambas pantallas |
+| H-18 | Web · Plan y simulación | La fila 12 dice Q1,004.62 mientras la nota dice Q1,004.63; el saldo pierde un centavo desde la cuota 8 | 4 · Consistencia | 2 | Q3,734.28 … Q975.37 y cuota 12 de Q1,004.63 |
+| H-19 | Web · todas | El texto secundario #90A1B9 sobre blanco tiene contraste 2.63:1 (29 textos en el Dashboard, 47 en Clientes) | 8 · Diseño estético / WCAG 1.4.3 | 3 | Usar #475569 o más oscuro (≥ 4.5:1) |
+| H-20 | Web · Confirmar solicitud | El texto dice «autoriza el desembolso», pero el flujo termina en «Solicitud enviada · En revisión» | 2 · Correspondencia | 3 | Separar la solicitud (va al comité) del desembolso (después de aprobar) |
+| H-21 | Web · Pago y Cartera | Ana Lucía Morales aparece «Al día» y «31–60 d»; Pedro Alvarado tiene dos códigos de crédito | 4 · Consistencia | 3 | Un solo conjunto de datos de ejemplo |
+| H-22 | Web · Dashboard | «Ver →» en #CAD5E2 sobre blanco (1.49:1): la entrada al flujo 3 casi no se ve | 6 · Reconocer antes que recordar | 2 | Enlace visible («Ver créditos →») con contraste ≥ 4.5:1 |
 
 ## 6.3 Auditoría WCAG 2.2 (criterios A/AA nuevos + 3.3.4)
 
-| Criterio | Nivel | Resultado preliminar | Observación |
+Resultados sobre el **prototipo web**, medidos el 23/09 en 13 pantallas: Inicio, solicitud (3 pasos), buscar cliente, crédito, detalle de mora, registrar pago, confirmar pago, Dashboard, Cartera y Clientes.
+
+| Criterio | Nivel | Resultado | Evidencia |
 |---|---|---|---|
-| 2.4.11 Focus Not Obscured (Minimum) | AA | No verificable en Figma | Revisarlo en la implementación React: el encabezado fijo no debe tapar el foco |
-| 2.5.7 Dragging Movements | AA | ✅ Cumple | Ninguna acción requiere arrastrar |
-| 2.5.8 Target Size (Minimum) | AA | ✅ Cumple | Botones y tarjetas muy por encima de 24 × 24 px |
-| 3.2.6 Consistent Help | A | ❌ No cumple | Ver H-11 |
-| 3.3.7 Redundant Entry | A | ⚠️ Revisar | El cliente se elige de una lista (bien); falta la pantalla de alta de cliente para comprobar que no se pide dos veces el DPI |
-| 3.3.8 Accessible Authentication (Minimum) | AA | ✅ Probable | Contraseña con opción de mostrarla; confirmar que se permita pegarla |
-| 3.3.4 Error Prevention (Legal, Financial) | AA | ⚠️ Parcial | El pago y la solicitud tienen revisión y salida; falta la confirmación de desembolso |
-| 1.4.3 Contrast (Minimum), heredado | AA | ⚠️ Revisar | Ver H-14 |
+| 2.4.11 Focus Not Obscured (Minimum) | AA | ✅ Cumple | Ninguna pantalla tiene elementos fijos o pegajosos (`position: fixed/sticky`) que puedan tapar el foco |
+| 2.5.7 Dragging Movements | AA | ✅ Cumple | El único control que admite arrastre es el deslizador del monto, y también responde a un clic en la barra; el plazo usa botones |
+| 2.5.8 Target Size (Minimum) | AA | ✅ Cumple | El control más pequeño mide 28 px (chips de Clientes); en móvil, 44 px. Recomendación: llevar a 48 × 48 px lo que se usa en campo (E4) |
+| 3.2.6 Consistent Help | A | ❌ No cumple | No hay ayuda en ninguna pantalla web (H-11) |
+| 3.3.7 Redundant Entry | A | ✅ Cumple | El cliente se elige de una lista en el pago; la solicitud no vuelve a pedir datos ya capturados |
+| 3.3.8 Accessible Authentication (Minimum) | AA | ✅ Cumple en el móvil | P01 usa usuario y contraseña con opción de mostrarla y sin pruebas cognitivas; el prototipo web no tiene inicio de sesión |
+| 3.3.4 Error Prevention (Legal, Financial) | AA | ⚠️ Parcial | ✅ Solicitud: revisión en el paso 3 y casilla de aceptación. ✅ Pago: desglose y aviso antes de aplicar. ❌ Desembolso: la pantalla no existe todavía |
+| 1.4.3 Contrast (Minimum), heredado | AA | ❌ No cumple | Tabla siguiente |
 
-## 6.4 Correcciones y design review (pendiente del equipo)
+**Detalle del contraste (1.4.3).** Mínimo 4.5:1 para texto normal y 3:1 para texto grande (≥ 24 px, o ≥ 18.66 px en negrita).
 
-Para cerrar el E5 falta:
+| Color de texto sobre fondo | Contraste | Dónde aparece | Corrección |
+|---|---|---|---|
+| #90A1B9 sobre #FFFFFF | 2.63:1 | Etiquetas de indicadores, códigos de crédito, subtítulos (todas las pantallas) | #475569 (7.6:1) |
+| #90A1B9 sobre #F8FAFC / #F1F5F9 | 2.51:1 · 2.40:1 | «Paso 1 de 3», «Período: septiembre 2024», encabezados de tabla | #475569 |
+| #CAD5E2 sobre #FFFFFF | 1.49:1 | «Ver →» del Dashboard | #334155 |
+| #F97316 sobre #FFFFFF | 2.80:1 (texto grande) | «23.4%» de cartera en riesgo | #C2410C (5.2:1) |
+| #16A34A sobre #FFFFFF | 3.30:1 | «65.6%» y montos en verde | #15803D (5.0:1) |
+| Blanco sobre #EAB308 / #F97316 | 1.92:1 · 2.80:1 | Etiquetas «30d» del recorrido de la mora | Texto #1E293B sobre esos colores |
 
-- Corregir en Figma **al menos cinco hallazgos** y adjuntar la captura del antes y del después. Recomendamos empezar por H-01, H-02, H-04, H-06 y H-09, porque son los que más afectan al dinero y a la calificación.
-- Documentar la retroalimentación del design review de la Sesión 9: qué se aceptó, qué se rechazó y con qué argumento.
+El botón «Confirmar y enviar solicitud» deshabilitado (2.08:1) queda exento: WCAG no exige contraste en controles inactivos.
+
+## 6.4 Correcciones y design review
+
+Las cinco correcciones recomendadas, por su impacto en el dinero y en la calificación, son **H-01/H-15, H-02/H-16, H-04, H-18 y H-19**. El Anexo C trae la tabla antes/después para registrarlas con sus capturas, el formulario de evaluación individual y el acta del design review de la Sesión 9 (qué se aceptó, qué se rechazó y por qué).
 
 ---
 
@@ -977,7 +1046,7 @@ git show --stat <hash>
 
 **Totales desde `entrega-p1`:** el núcleo `src/dominio` suma 12 archivos (10 nuevos y 2 modificados), +381 / −21 líneas. Las pruebas pasan de 206 a 263 sin modificar ningún archivo de prueba del P1.
 
-> **Nota sobre los hashes.** Los commits 0 a 11 ya están en GitHub y sus hashes son definitivos. Los commits 12 a 18 se integran después de esta entrega; si se aplican desde un parche, Git les asigna un hash nuevo y se identifican por su mensaje.
+> **Nota sobre los hashes.** Los commits 0 a 11 están en `main` desde el Pull Request #1. Los commits de documentación (12 en adelante) están en la rama `docs/proyecto2-ux` y se publican con el mismo hash.
 
 ### 8.2.2 Las fases del trabajo
 
@@ -1006,47 +1075,47 @@ git show --stat <hash>
 
 ## 9.1 Reparto del trabajo (sección 12.1)
 
-Esta tabla se armó a partir del historial de Git y de los roles declarados en el P1. **Cada integrante debe confirmar o corregir su fila**, en especial el trabajo que no deja rastro en Git (Figma, investigación, design review).
+La tabla combina los roles del equipo con la evidencia del historial de Git. Los commits firmados como *ERAMR18* y *Erwin* son de Erwin Ramírez, y los firmados como *Elízabeth*, de Gabriela Aguilar.
 
 | Integrante | Rol | Responsabilidad principal | Evidencia verificable | Entregables |
 |---|---|---|---|---|
-| Christopher David Herrera Pérez | Ingeniería de dominio | Políticas de mora, gasto de cobro, CP-04 y comandos de prueba | Commits 0, 1, 2, 3 y 7 | E6 |
-| Erwin Alberto Ramírez Racancoj | Pruebas y trazabilidad | Contratos de prueba, documentación técnica, validación y README (commits como *ERAMR18* y *Erwin*; confirmar que es la misma persona) | Commits 4, 5, 6 y 11 | E6, E7 |
-| Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño y documentación | Documento de pruebas e informe de verificación SOLID; *(agregar: Figma e investigación)* | Commits 8 y 9 | E6, *(E1–E3)* |
-| Oliver Fernando Romero Esquite | Coordinación e integración | PR #1, documentación de E1, E2 y E4, consolidación del informe SOLID y documento de entrega; *(agregar: Figma)* | Commits 10, 12, 13, 14 y 15 | E1, E2, E4, E7 |
+| Christopher David Herrera Pérez | Implementación / Pruebas | Auditoría inicial, políticas de mora (CP-01), gasto de cobro (CP-02), CP-04 y comandos de prueba por tema | Commits 0, 1, 2, 3 y 7 | E6 |
+| Erwin Alberto Ramírez Racancoj | Pruebas / Trazabilidad | Contrato común de las políticas (LSP), regresión del P1, ADR-004, UML, contratos Zod/OpenAPI, validación limpia y README | Commits 4, 5, 6 y 11 | E6, E7 |
+| Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño / Documentación | Prototipos de Figma (móvil y web), documento de pruebas de la mora escalonada e informe de verificación SOLID | Prototipos enlazados en el capítulo 4; commits 8 y 9 | E3, E5, E6 |
+| Oliver Fernando Romero Esquite | Coordinación / Integración | Pull Request #1, investigación de usuario, arquitectura de información y wireframes, decisión móvil/web, informe SOLID según el Anexo D y documento de entrega | Commits 10 y 12 en adelante | E1, E2, E4, E7 |
 
 ## 9.2 Declaración de uso de herramientas de IA (sección 15)
 
 | Herramienta | Uso |
 |---|---|
 | **OpenAI Codex** | Apoyo en la evolución del núcleo (CP-01 a CP-04), en las pruebas y en la documentación técnica de E6 |
-| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con un script editable (`wireframes/generar_wireframes_figma.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión preliminar del prototipo de Figma (capítulos 4 y 6) y redacción de este documento |
+| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con scripts editables (`wireframes/generar_wireframes_figma.py` y `generar_wireframes_web.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión de los prototipos, medición de contraste y tamaño de controles (capítulos 4 y 6) y redacción de este documento |
 
-Las decisiones de diseño y su justificación son del equipo, y cualquiera de los cuatro integrantes debe poder explicarlas en la defensa. Las personas del E1 se apoyan en fuentes documentadas: los rasgos marcados como hipótesis no provienen de entrevistas. Los hallazgos del capítulo 6 son de un solo evaluador y deben complementarse con la evaluación independiente de cada integrante.
+Las decisiones de diseño y su justificación son del equipo, y cualquiera de los cuatro integrantes debe poder explicarlas en la defensa. Las personas del E1 se apoyan en fuentes documentadas: los rasgos marcados como hipótesis no provienen de entrevistas. Los hallazgos del capítulo 6 son preliminares; la evaluación independiente de cada integrante se registra con los formularios del Anexo C.
 
 ---
 
 # 10. Lista de verificación de entrega (sección 12.2)
 
-Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe, pero requiere un ajuste · ❌ pendiente. **Actualizar esta tabla antes de exportar el PDF.**
+Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe con un ajuste pendiente · ❌ pendiente.
 
-| # | Requisito | Estado | Evidencia / pendiente |
+| # | Requisito | Estado | Evidencia o pendiente |
 |---|---|---|---|
-| 1 | Personas fundamentadas y journey map con puntos de dolor concretos, incluido el cambio de tramo | ⚠️ | Capítulo 2. Faltan las entrevistas u observación para validar los rasgos marcados como hipótesis |
-| 2 | Tabla pantalla ↔ caso de uso completa y coherente con los puertos del P1 | ✅ | §3.3 |
-| 3 | Siete pantallas obligatorias y tres flujos navegables | ⚠️ | §4.4: faltan el tablero, el cierre y el desembolso |
-| 4 | Plan de amortización con la cuota 12 de Q1,004.63 explicada | ⚠️ | Falta la nota explicativa en Figma |
-| 5 | Detalle de la mora con el caso M-3 | ❌ | Corregir las cifras (§4.5) |
-| 6 | Tablero que distingue mora (21.75 %) y riesgo (7.00 %) con desglose por tramo | ⚠️ | Justificado en la guía G04 (§3.5); falta en Figma |
-| 7 | Decisión móvil/web con pérdida de conexión, idempotencia y puerto Reloj | ✅ | Capítulo 5 |
-| 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 14 hallazgos preliminares (§6.2); faltan la evaluación de los cuatro y las correcciones |
-| 9 | Auditoría de los seis criterios nuevos de WCAG 2.2 y del 3.3.4 | ⚠️ | §6.3, preliminar |
-| 10 | Design review: qué se aceptó y qué se rechazó | ❌ | Notas de la Sesión 9 |
-| 11 | `npm install && npm test` en limpio, con M-1 a M-5, coexistencia y suite del P1 | ✅ | 263 pruebas en 18 archivos; repetir `npm run verify` sobre el commit final |
-| 12 | Informe SOLID con métricas respaldadas por el diff | ✅ | §7.2 |
-| 13 | Commit del P1 etiquetado o con su hash en el informe | ⚠️ | El hash está en el informe; falta `git push origin entrega-p1` |
-| 14 | Enlaces de Figma y del repositorio abren sin pedir permisos | ✅ / ⚠️ | Figma abre sin iniciar sesión; confirmar que el repositorio sea público |
-| 15 | Tabla de reparto del trabajo | ⚠️ | §9.1, a confirmar por el equipo |
+| 1 | Personas fundamentadas y journey map con puntos de dolor concretos, incluido el cambio de tramo | ✅ | Capítulo 2; los rasgos no validados están marcados como hipótesis |
+| 2 | Tabla pantalla ↔ caso de uso completa y coherente con los puertos del P1 | ✅ | Sección 3.3, con las pantallas del prototipo web |
+| 3 | Siete pantallas obligatorias y tres flujos navegables | ⚠️ | Sección 4.4: existen el tablero, el cierre diario y los tres flujos; falta la confirmación de desembolso |
+| 4 | Plan de amortización con la cuota 12 de Q1,004.63 explicada | ⚠️ | La nota está en el prototipo web; falta corregir la fila 12 (Anexo B) |
+| 5 | Detalle de la mora con el caso M-3 | ❌ | Ambos prototipos usan tasas y base equivocadas; corrección exacta en el Anexo B |
+| 6 | Tablero que distingue mora y riesgo con desglose por tramo | ✅ | W01 en el prototipo web; jerarquía en las secciones 3.4.5 y 3.5 |
+| 7 | Decisión móvil/web con pérdida de conexión, idempotencia y puerto Reloj | ✅ | Capítulo 5 y ADR-005 |
+| 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 22 hallazgos con evidencia (sección 6.2); faltan las cuatro evaluaciones individuales y las correcciones (Anexo C) |
+| 9 | Auditoría de los seis criterios nuevos de WCAG 2.2 y del 3.3.4 | ✅ | Sección 6.3, con mediciones en el prototipo web |
+| 10 | Design review: qué se aceptó y qué se rechazó | ❌ | Acta en el Anexo C, a llenar en la Sesión 9 |
+| 11 | `npm install && npm test` en limpio, con M-1 a M-5, coexistencia y suite del P1 | ✅ | 263 pruebas en 18 archivos |
+| 12 | Informe SOLID con métricas respaldadas por el diff | ✅ | Sección 7.2 |
+| 13 | Commit del P1 etiquetado o con su hash en el informe | ✅ | `8737d9b`, etiqueta `entrega-p1` |
+| 14 | Enlaces de Figma y del repositorio abren sin pedir permisos | ✅ | Portada y capítulo 4 |
+| 15 | Tabla de reparto del trabajo | ✅ | Sección 9.1 |
 
 ---
 
@@ -1098,3 +1167,120 @@ Wireframes anotados de las 14 pantallas del prototipo de Figma (P01–P14) y de 
 
 ![G07 · Tablero en teléfono (guía)](wireframes/anotado/G07-tablero-movil.svg)
 
+
+---
+
+# Anexo B · Instrucciones de corrección para los prototipos de Figma
+
+## B.1 Cómo usar este anexo
+
+El prototipo web se hizo con Figma Make, que acepta instrucciones escritas. El texto de la sección siguiente se puede pegar tal cual en el chat de Figma Make. Las correcciones del prototipo móvil se hacen a mano en Figma, con la tabla de la última sección. Todas las cifras salen del núcleo (sección 4.5).
+
+## B.2 Instrucción para Figma Make (prototipo web)
+
+```text
+Corrige el prototipo con estas reglas y cifras exactas. No cambies el diseño visual salvo donde se indica.
+
+1. Detalle de mora (caso M-3, 100 días de atraso):
+   - La mora se calcula sobre el CAPITAL EN MORA de la cuota vencida (Q725.76), no sobre el saldo.
+   - Tasas ANUALES por tramo, base Actual/360: Mora 1 (1–30 días) 18 %, Mora 2 (31–60) 24 %,
+     Mora 3 (61–90) 30 %, Mora 4 (91–120) 36 %. Elimina el tramo "Vencido 5 % mensual".
+   - Montos por tramo: Q10.89, Q14.52, Q18.14 y Q7.26 (10 días). Total: Q50.80.
+   - Agrega la nota: "Cada tramo se muestra redondeado; el total se redondea una sola vez: Q50.80, no Q50.81."
+   - Abre esta pantalla desde un crédito con 100 días de atraso (no desde el de 45 días).
+
+2. Crédito de María García López (CRD-2024-0892), cuota 6 vencida hace 45 días:
+   - "Exigible hoy" = Q1,050.04 (gasto Q25.00 + mora Q20.42 + interés Q187.77 + capital Q816.85).
+   - En Registrar pago, el monto rápido "Cuota + mora" = Q1,050.04.
+   - En Confirmar pago, la prelación es: Gastos de cobro Q25.00 · Interés moratorio Q20.42 ·
+     Interés corriente Q187.77 · Abono a capital Q816.85. Total Q1,050.04.
+   - En los créditos del tramo 31–60, "Mora acum." de María = Q20.42.
+   - El gasto de cobro es siempre Q25.00 por cuota vencida y se genera una sola vez al llegar al día 31.
+
+3. Plan de amortización y simulación (Q10,000, 3 % mensual, 12 meses):
+   - Saldos después de las cuotas 8 a 11: Q3,734.28, Q2,841.69, Q1,922.32 y Q975.37.
+   - Fila 12: cuota Q1,004.63, interés Q29.26, capital Q975.37, saldo Q0.00. Resalta la fila y conserva la nota del ajuste.
+
+4. Solicitud de crédito:
+   - En Confirmar solicitud cambia "autoriza el desembolso" por "envía la solicitud al comité".
+   - Agrega después de la aprobación una pantalla "Confirmar desembolso" con: monto, plazo, cuota, tasa,
+     total a pagar y la política de mora vigente (18/24/30/36 % anual); casilla de aceptación;
+     botones "Desembolsar" y "Volver y corregir"; aviso de que la acción no se puede deshacer.
+
+5. Datos de ejemplo coherentes en todas las pantallas:
+   - Ana Lucía Morales: 31–60 días en todas las pantallas.
+   - Pedro Alvarado Castro: un solo código, CRD-2024-0488; su cuota (Q12,000, 12 meses, 3 %) es Q1,205.55.
+   - Andrés Lima Castillo (Q5,000, 12 meses, 3 %): cuota Q502.31.
+   - José Domingo Pérez: los mismos días de atraso en Cartera y en los créditos del tramo.
+   - Todas las fechas en septiembre de 2026.
+
+6. Accesibilidad (WCAG 1.4.3 y 3.2.6):
+   - Texto secundario #475569 en lugar de #90A1B9; "Ver →" en #334155; "23.4%" en #C2410C; verdes en #15803D.
+   - Texto de las etiquetas "30d" del recorrido de la mora en #1E293B.
+   - Un botón "?" de ayuda en el mismo lugar del encabezado de todas las pantallas.
+
+7. Panel gerencial: agrega "Cierre mensual" junto a "Cierre diario", con el mismo flujo de verificación y congelamiento.
+```
+
+## B.3 Correcciones del prototipo móvil (a mano en Figma)
+
+| Pantalla | Corrección |
+|---|---|
+| P10 Detalle de mora | Igual que el punto 1 de la instrucción: tasas anuales, base Q725.76, total Q50.80 con la nota de redondeo |
+| P10 · «Total a pagar hoy» | Cambiar Q6,469.31 por lo exigible de la cuota: Q1,047.76 (M-5) |
+| P11 Registrar pago | Gastos de gestión Q25.00 (no Q150.00); formato «Q 10,000.00» mientras se escribe; atajos 1/2/3 cuotas conectados a su monto |
+| P07 Solicitud enviada | Mantener el cliente elegido en el paso 1 (Carlos Martínez Ixcot) |
+| P14 Sin señal | El folio PAG-251250 no cambia al sincronizar |
+| P13 Pago aplicado | Agregar el saldo de capital restante |
+| P09 Plan de amortización | Nota: «1 centavo más para que el saldo cierre exacto en Q0.00» |
+
+---
+
+# Anexo C · Formularios de la evaluación E5
+
+## C.1 Protocolo de la evaluación individual
+
+1. Cada integrante recorre **solo** los dos prototipos (sección 4.2), sin ver los hallazgos de los demás ni los del capítulo 6.
+2. Registra cada problema en su formulario con la pantalla, la heurística, la severidad (0–4) y una **captura** como evidencia.
+3. El equipo consolida: los hallazgos repetidos se unen y se anota quién los encontró; la severidad final es el promedio redondeado.
+4. Se eligen al menos cinco hallazgos, se corrigen en Figma y se documenta el antes y el después.
+5. Los resultados se llevan al design review de la Sesión 9 y se registra la decisión sobre cada comentario.
+
+## C.2 Formulario de evaluación individual
+
+Uno por integrante: Christopher Herrera · Erwin Ramírez · Gabriela Aguilar · Oliver Romero.
+
+| Evaluador | Fecha | Prototipo y pantalla | Hallazgo | Heurística (1–10) | Severidad (0–4) | Captura (archivo) |
+|---|---|---|---|---|---|---|
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+
+## C.3 Consolidado del equipo
+
+| # | Hallazgo consolidado | Encontrado por | Severidad (promedio) | ¿Se corrige? |
+|---|---|---|---|---|
+| | | | | |
+| | | | | |
+
+## C.4 Correcciones con antes y después
+
+| # | Hallazgo | Antes (captura) | Después (captura) | Qué se cambió | Responsable |
+|---|---|---|---|---|---|
+| 1 | H-01 / H-15 · Mora con tasas y base equivocadas | | | | |
+| 2 | H-02 / H-16 · Total exigible y prelación | | | | |
+| 3 | H-04 · Folio que cambia sin señal | | | | |
+| 4 | H-18 · Cuota 12 y centavo del plan | | | | |
+| 5 | H-19 · Contraste del texto secundario | | | | |
+
+## C.5 Acta del design review (Sesión 9)
+
+| Fecha | Participantes | Revisores |
+|---|---|---|
+| | | |
+
+| # | Comentario recibido | Decisión (aceptado / rechazado) | Argumento | Cambio aplicado |
+|---|---|---|---|---|
+| | | | | |
+| | | | | |

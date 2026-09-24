@@ -97,11 +97,11 @@ for f in filas(t_comp):
     nuevas.append("| " + " | ".join(c) + " |")
 ultimo = len(nuevas) - 1  # la fila base no lleva número
 nuevas.append(f"| {ultimo} | 23/09 | *(este documento)* | Oliver Romero · IA declarada | Documentación | E1–E7 | "
-              "**Documento final:** une el documento de entrega y los complementos en el orden de los entregables | "
+              "**Documento final:** une la entrega, los complementos y el panel gerencial web; E3 y E5 actualizados con los dos prototipos, portada e índice | "
               "`P2-documento-final.md`, `generar_documento_final.py` | — |")
 cab = "| # | Fecha | Commit | Autor (Git) | Tipo | Entregable | Qué se hizo | Archivos principales (GitHub) | Cambio |\n|---|---|---|---|---|---|---|---|---|\n"
 tabla_commits = cab + "\n".join(nuevas) + "\n"
-nota_hash = re.search(r"^> ¹ Commit todavía no publicado.*$", c_hist, flags=re.M).group(0)
+nota_hash = re.search(r"^> ¹ Commit de la rama.*$", c_hist, flags=re.M).group(0)
 comparacion = re.search(r"^\*\*Comparación completa.*$", c_hist, flags=re.M).group(0)
 
 # ---------------- fusión ----------------
@@ -127,6 +127,30 @@ doc = re.sub(r"\| !\[([PG]\d\d)\]\(wireframes/skeleton/[^)]+\) \| !\[[PG]\d\d\]\
 i = doc.index("\n### 3.4.3 ")
 doc = doc[:i] + "\n### 3.4.3 Qué va en cada bloque\n\n" + c_bloques + doc[i:]
 doc = re.sub(r"\n### 3\.4\.3 (La pantalla difícil)", r"\n### 3.4.4 \1", doc)
+
+# Cap. 3: panel gerencial web (W01–W03) como §3.4.5
+web = open(os.path.join(AQUI, "P2-panel-gerencial-web.md"), encoding="utf-8").read()
+def bloque(t, ini, fin):
+    i = t.index(ini); j = t.index(fin, i)
+    return t[i:j].split("\n", 1)[1].strip()
+w_tabla = bloque(web, "## 1. Qué agrega", "**Dónde va en el documento final:**")
+w_tabla = w_tabla[w_tabla.index("| Código |"):].strip()
+w_rel = re.search(r"^\*\*Relación con las guías del E2\.\*\*.*$", web, flags=re.M).group(0)
+w_rel = w_rel.replace("las diferencias están en la sección 5", "las diferencias están en la sección 3.4.5.5")
+secciones = [
+    ("3.4.5.1", "W01 · Dashboard (tablero gerencial)", bloque(web, "### 2.3 Qué va en cada bloque", "\n---")),
+    ("3.4.5.2", "W02 · Cartera de créditos", bloque(web, "### 3.3 Qué va en cada bloque", "\n---")),
+    ("3.4.5.3", "W03 · Clientes (lista y ficha)", bloque(web, "### 4.3 Qué va en cada bloque", "\n---")),
+    ("3.4.5.4", "Cifras verificadas", bloque(web, "### 5.1 Cifras verificadas", "### 5.2")),
+    ("3.4.5.5", "Ajustes pendientes", bloque(web, "### 5.2 Ajustes pendientes", "\n---")),
+]
+panel_md = ("### 3.4.5 Panel gerencial web (W01–W03)\n\n"
+            "El prototipo web de Figma Make agrega las pantallas de escritorio del panel gerencial. Sus skeletons y wireframes "
+            "anotados se midieron del prototipo a 1440 px (script `wireframes/generar_wireframes_web.py`) y están en el Anexo A.\n\n"
+            + w_tabla + "\n\n" + w_rel + "\n\n"
+            + "\n\n".join(f"#### {n} {t}\n\n{c}" for n, t, c in secciones) + "\n\n")
+i = doc.index("\n## 3.5 ")
+doc = doc[:i] + "\n" + panel_md + doc[i + 1:]
 
 # Cap. 5: ADR-005 antes de las referencias
 doc = doc.replace("\n## 5.6 Referencias", "\n" + adr_numerado(c_adr5, "5.6", 2) + "## 5.7 Referencias", 1)
@@ -156,15 +180,18 @@ doc = (doc[:j] + "\n\n## 8.4 Registros de decisiones de arquitectura (ADR)\n\n"
        "El proyecto tiene cinco; los dos del Proyecto 2 están completos en las secciones 5.6 (ADR-005) y 7.3 (ADR-004).\n\n"
        + c_adr_tabla + doc[j:])
 
-# Anexo A: skeleton y anotado lado a lado
+# Anexo A: skeleton y anotado lado a lado (hasta el Anexo B, que se conserva)
 a = doc.index("# Anexo A")
+b = doc.index("# Anexo B")
 doc = (doc[:a] + "# Anexo A · Wireframes de baja fidelidad\n\n"
        "Cada pantalla aparece dos veces, a partir de la misma descripción: a la izquierda el **skeleton** (solo bloques) y a la "
        "derecha el **wireframe anotado** (textos, cifras del núcleo y notas numeradas). Primero van las 14 pantallas del "
-       "prototipo de Figma (P01–P14) y después las 7 guías para las pantallas que faltan (G01–G07). Las convenciones y el "
-       "contenido de cada bloque están en la sección 3.4.3.\n\n"
+       "prototipo móvil de Figma (P01–P14), después las 7 guías (G01–G07) y al final las tres pantallas de escritorio del "
+       "panel gerencial web (W01–W03); en las pantallas de escritorio el skeleton va arriba y el anotado abajo. Las convenciones y el "
+       "contenido de cada bloque están en las secciones 3.4.3 y 3.4.5.\n\n"
        "![Mapa de navegación](wireframes/mapa-navegacion.svg)\n\n"
-       + c_galeria.replace("A la izquierda, el skeleton; a la derecha, el wireframe anotado de la misma pantalla.\n\n", ""))
+       + c_galeria.replace("A la izquierda, el skeleton; a la derecha, el wireframe anotado de la misma pantalla.\n\n", "").rstrip()
+       + "\n\n---\n\n" + doc[b:])
 
 doc = re.sub(r"\n{3,}", "\n\n", doc)
 aviso = "<!-- Archivo generado por generar_documento_final.py a partir de P2-documento-entrega.md y P2-complementos.md. No editar a mano. -->\n"

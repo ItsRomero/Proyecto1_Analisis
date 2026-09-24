@@ -7,18 +7,27 @@ renumerando sus secciones dentro del capítulo indicado.
 -->
 # Proyecto 2 · UX/UI, movilidad y evolución del núcleo
 
+**Universidad Mariano Gálvez de Guatemala** · Facultad de Ingeniería en Sistemas de Información · Análisis de Sistemas II (037)
+
 **Sistema de Gestión de Microcrédito — Crédito Vecino, S. A.**
-Análisis de Sistemas II (037) · Universidad Mariano Gálvez de Guatemala · Segundo semestre 2026 · Modalidad sabatina
 
 | Dato | Valor |
 |---|---|
-| **Integrantes** | Christopher David Herrera Pérez · Erwin Alberto Ramírez Racancoj · Gabriela Elízabeth Noemí Aguilar Vásquez · Oliver Fernando Romero Esquite |
-| **Grupo · carnés · sección** | *(completar antes de exportar el PDF)* |
-| **Docente** | *(completar)* |
-| **Prototipo navegable (Figma)** | https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1 |
-| **Repositorio** | https://github.com/ItsRomero/Proyecto1_Analisis |
+| **Grupo** | 2 |
+| **Sección** | A |
+| **Docente** | Ing. Ezequiel Urizar |
+| **Prototipo móvil (Figma)** | [Microcréditos App](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) |
+| **Prototipo web (Figma Make)** | [Prototipo Microcréditos Web](https://www.figma.com/make/WHj2TK5IRg55X8JiaKXyvy/Prototipo-Microcr%25C3%25A9ditos-Web?code-node-id=0-6&p=f&fullscreen=1) |
+| **Repositorio** | [github.com/ItsRomero/Proyecto1_Analisis](https://github.com/ItsRomero/Proyecto1_Analisis) |
 | **Commit de entrega del Proyecto 1** | `8737d9b` (etiqueta `entrega-p1`) |
-| **Fecha de entrega** | Viernes 25 de septiembre de 2026 |
+| **Fecha de entrega** | Guatemala, 25 de septiembre de 2026 |
+
+| Integrante | Carné | Rol |
+|---|---|---|
+| Christopher David Herrera Pérez | 7690-20-20773 | Implementación / Pruebas |
+| Erwin Alberto Ramírez Racancoj | 7690-23-2387 | Pruebas / Trazabilidad |
+| Gabriela Elízabeth Noemí Aguilar Vásquez | 7690-23-13249 | Diseño / Documentación |
+| Oliver Fernando Romero Esquite | 7690-23-7366 | Coordinación / Integración |
 
 ---
 
@@ -62,78 +71,9 @@ Con las personas definidas, organizamos la aplicación. Este capítulo presenta 
 
 # 4. E3 · Prototipo navegable en Figma
 
-## 4.1 Enlace y acceso
+Este capítulo presenta los dos prototipos navegables, cómo recorrer los tres flujos obligatorios, qué resuelven bien y qué cifras todavía no coinciden con el núcleo.
 
-**Prototipo:** https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1
-
-El enlace abre sin iniciar sesión en Figma, como pide la sección 13. El archivo se llama *Microcréditos App* y la pantalla inicial es *Asesor de Crédito – Móvil*. Es un prototipo navegable, no una serie de imágenes: cada flujo se recorre haciendo clic.
-
-## 4.2 Cómo recorrerlo
-
-| Paso | Qué hacer | Qué se ve |
-|---|---|---|
-| 1 | *Ingresar* en **P01 Iniciar sesión** | **P02 Mis Clientes**: cartera de la asesora ordenada por prioridad, con la etiqueta de tramo (Incobrable, Mora 3, Mora 2, Mora 1, Al día) y los días de atraso |
-| 2 | **Flujo de cobro:** tocar la tarjeta de *Pedro Xol Cux* | **P08 Detalle del crédito**: estado, saldo, próxima cuota, monto original, plazo y tasa |
-| 3 | Botón *Plan de pago* | **P09 Plan de amortización** del caso de referencia: Q10,000, 12 meses, 3 % mensual, con la cuota 12 de Q1,004.63 resaltada |
-| 4 | Botón *Detalle mora* | **P10 Detalle de mora** por tramo recorrido |
-| 5 | *Registrar pago* → tocar el monto → *Revisar y confirmar* | **P11 Registrar pago** → **P12 Confirmar pago**, con la prelación visible antes de aplicar (gastos → mora → interés → capital) |
-| 6 | *Aplicar pago* | **P13 Pago aplicado**: comprobante con número y distribución del pago, más opciones para enviarlo por WhatsApp o imprimirlo |
-| 7 | **Variante sin señal:** en *Confirmar pago*, tocar *Simular pago sin señal (demo)* y luego *Aplicar pago* | **P14 Sin señal**: pago en cola, estado "Pendiente", folio y botón *Sincronizar ahora* |
-| 8 | **Flujo de originación:** en *Mis Clientes*, botón **+** | **P04 Nueva solicitud** (cliente, monto con límites y plazo) → **P05 Simulación de pago** → **P06 Confirmar solicitud** → **P07 Solicitud enviada** |
-| 9 | Tocar las iniciales *MA* | **P03 Mi perfil** de la asesora: zona, ruta, cartera asignada y estado de sincronización |
-
-## 4.3 Lo que el prototipo resuelve bien
-
-Recorrimos el prototipo completo el 23 de septiembre de 2026. Estas decisiones cumplen lo que pide el enunciado y lo que encontramos en la investigación (E1):
-
-- **La captura del monto es difícil de equivocar:** botones − y +, montos rápidos (Q2k, Q5k, Q10k…) y el rango "Q1,000 – Q25,000 en pasos de Q500" siempre visible. Esto responde al momento crítico MC-1.
-- **El plazo se elige con botones** (3 a 24 meses), sin teclado.
-- **Siempre hay una revisión antes de confirmar.** La solicitud tiene tres pasos, y el pago pasa por "Confirme antes de aplicar", con la salida "← Modificar monto". Esto cumple WCAG 3.3.4 (prevención de errores en transacciones financieras).
-- **La prelación se ve antes de aplicar el pago**, con una barra por concepto.
-- **El plan de amortización usa el caso de referencia real:** Q10,000 al 3 % mensual, las 12 cuotas, interés total Q2,055.45, total Q12,055.45 y la cuota 12 de Q1,004.63 resaltada.
-- **La simulación de Q5,000 a 12 meses coincide con el núcleo:** cuota de Q502.31, exactamente la mitad del caso de referencia.
-- **Hay un flujo sin señal** con el pago en cola, su estado y un botón manual de sincronización. Esto responde a MC-2 y a la estrategia del E4.
-- Los objetivos táctiles son grandes y los botones principales tienen alto contraste, algo importante para trabajar bajo el sol.
-
-## 4.4 Correspondencia con las pantallas y los flujos obligatorios
-
-| Requisito del E3 | Perfil / formato | Estado en el prototipo | Acción pendiente |
-|---|---|---|---|
-| Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ P04 → P05 → P06 → P07 | — |
-| Detalle del crédito | Cliente/Asesor · móvil | ✅ P08 | Agregar el tramo en lenguaje llano ("lleva 45 días de atraso") |
-| Registro de pago con desglose de la prelación | Asesor · móvil | ✅ P11 → P12 → P13 / P14 | Corregir las cifras (§4.5) |
-| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ P09: la cuota 12 está resaltada, pero sin explicación | Agregar la nota "1 centavo más para cerrar el saldo exacto en Q0.00" |
-| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ P10: muestra tasas y montos que no son los del núcleo | Rehacer con el caso M-3 (§4.5) |
-| Tablero gerencial | Gerencia · escritorio | ❌ No existe todavía | Construir a partir de la guía G04 (y G07 para teléfono) |
-| Cierre diario / mensual | Gerencia · escritorio | ❌ No existe todavía | Construir a partir de la guía G06 |
-| Confirmación de desembolso (tabla 6.1) | Encargado · móvil | ❌ | Agregar después de "Solicitud enviada", a partir de la guía G02 |
-| Bandeja del comité y Alta de cliente (tabla 6.1) | Comité / Asesor | ❌ | Recomendable, a partir de las guías G03 y G01 |
-| Flujo 1: solicitud → simulación → confirmación → desembolso | — | ⚠️ Termina en "Solicitud enviada" | Agregar el desembolso |
-| Flujo 2: buscar → saldo y tramo → mora → pago → comprobante | — | ✅ | — |
-| Flujo 3: tablero → riesgo por tramo → créditos del tramo | — | ❌ | Depende del tablero |
-| *P03 Mi perfil* | — | Existe, pero no corresponde a ningún caso de uso | Justificarla como soporte de sesión o retirarla (la sección 10 resta 0.5 puntos por pantalla sin caso de uso) |
-
-## 4.5 Cifras que deben coincidir con el núcleo (sección 6.2)
-
-El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal la política de mora. Estas son las diferencias encontradas y cómo corregirlas.
-
-**Pantalla "Detalle de mora"**
-
-| Lo que muestra hoy | Lo que dice la política y calcula el núcleo | Corrección |
-|---|---|---|
-| "Tasa adicional mensual" de 0.5 %, 1.0 %, 1.5 % y 2.0 % | Tasas **anuales** de 18 %, 24 %, 30 % y 36 % (1.5 %, 2 %, 2.5 % y 3 % mensual), base Actual/360 | Mostrar "18 % al año", "24 % al año", etc. |
-| Recargo calculado sobre el **saldo total** (Q6,240.50) | Se calcula sobre el **capital en mora de cada cuota vencida**, por separado | Usar el caso M-3: capital Q725.76 |
-| Total de recargos Q228.81 | M-3 = **Q50.80** (10.8864 + 14.5152 + 18.1440 + 7.2576 = 50.8032, redondeado una sola vez) | Mostrar Q10.89 · Q14.52 · Q18.14 · Q7.26 con la nota de redondeo: Q50.80, no Q50.81 |
-| "Total a pagar hoy Q6,469.31" (saldo + recargos) | Lo exigible de la cuota: gastos + mora + interés corriente + capital | A 45 días: Q25.00 + Q18.14 + Q278.86 + Q725.76 = **Q1,047.76** (caso M-5) |
-| Se abre desde un crédito incobrable (132 días), pero muestra 100 días y el saldo de otro cliente | Después de 120 días el crédito es incobrable y deja de generar mora (invariante 8) | Abrirla desde un crédito con 100 días de atraso, o mostrar la mora congelada en Q65.32 |
-
-**Otras pantallas**
-
-| Pantalla | Diferencia | Corrección |
-|---|---|---|
-| Registrar pago | "Gastos de gestión Q150.00" | La política es **Q25.00 por cuota vencida**, generado una sola vez al día 31 (CP-02) |
-| Solicitud enviada | El cliente cambia de *Carlos Martínez Ixcot* (el seleccionado) a *Juan Pablo Pérez Xol* | Mantener el cliente elegido en el paso 1 |
-| Sin señal | El folio cambia de *PAG-251250* a *PAG-309097* al tocar "Sincronizar ahora" | El folio representa la **clave de idempotencia** y debe ser el mismo en todos los reintentos (E4, §5.4.2) |
+{{INCLUDE:docs/proyecto2/e3-prototipo-figma.md|4|2}}
 
 ---
 
@@ -147,50 +87,7 @@ Este capítulo decide cómo se construye la aplicación: nativa, híbrida o PWA.
 
 # 6. E5 · Evaluación heurística y de accesibilidad
 
-## 6.1 Método
-
-El enunciado pide que **los cuatro integrantes evalúen por separado** y después consoliden, porque varios evaluadores independientes encuentran más problemas que uno solo. Esta sección presenta la **evaluación preliminar de un evaluador**, hecha al recorrer el prototipo el 23 de septiembre de 2026 con apoyo de una herramienta de IA (declarada en el capítulo 9). Es el punto de partida del consolidado. **No sustituye** la evaluación de cada integrante, que debe registrar quién encontró cada hallazgo y adjuntar la captura como evidencia.
-
-Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético · 2 menor · 3 mayor · 4 catastrófico.
-
-## 6.2 Hallazgos heurísticos (Nielsen)
-
-| # | Pantalla | Hallazgo | Heurística | Sev. | Corrección propuesta |
-|---|---|---|---|---|---|
-| H-01 | Detalle de mora | Usa tasas mensuales de 0.5 %–2 % sobre el saldo total; no son las de la política ni las del núcleo | 2 · Correspondencia con el mundo real | **4** | Mostrar el caso M-3 con tasas anuales sobre el capital en mora (§4.5) |
-| H-02 | Detalle de mora | "Total a pagar hoy" suma el saldo completo más los recargos; el cliente cree que debe Q6,469.31 hoy | 5 · Prevención de errores | **4** | Mostrar lo exigible de la cuota vencida (M-5: Q1,047.76) |
-| H-03 | Detalle de mora | Un crédito incobrable (132 días) sigue mostrando recargos, con datos de otro cliente | 4 · Consistencia y estándares | 3 | Congelar la mora al día 120 y enlazar los datos correctos |
-| H-04 | Sin señal | El folio cambia al sincronizar; la asesora no puede saber si es el mismo pago | 1 · Visibilidad del estado del sistema | 3 | Mantener el mismo folio (clave de idempotencia) en cada reintento |
-| H-05 | Sin señal | "Si lo registra otra vez se duplicará" deja en manos de la asesora evitar el doble cobro | 5 · Prevención de errores | 3 | Que el sistema lo impida y lo diga: "Este pago ya está guardado; aunque lo intente de nuevo no se cobrará dos veces" |
-| H-06 | Registrar pago | El monto aparece como "Q 10000" sin separador de miles mientras se escribe | 5 · Prevención de errores | 3 | Formato en vivo "Q 10,000.00" desde la primera tecla |
-| H-07 | Registrar pago | Gastos de gestión de Q150.00; la política es Q25.00 por cuota vencida | 2 · Correspondencia | 3 | Usar el oráculo M-5 |
-| H-08 | Solicitud enviada | El cliente cambia de Carlos Martínez a Juan Pablo Pérez | 4 · Consistencia | 3 | Mantener el cliente seleccionado |
-| H-09 | Plan de amortización | La cuota 12 (Q1,004.63) está resaltada pero sin explicación | 10 · Ayuda y documentación | 2 | Nota: "1 centavo más para que el saldo cierre exacto en Q0.00" |
-| H-10 | Mis Clientes | "Mora 1/2/3" no significa nada para el cliente | 2 · Correspondencia | 2 | Acompañarlo con "más de 30 días de atraso" |
-| H-11 | Todas | La ayuda solo aparece en el inicio de sesión ("Llama al soporte técnico") | 10 · Ayuda / WCAG 3.2.6 | 2 | Ícono "?" en el mismo lugar de cada encabezado |
-| H-12 | Registrar pago | Los atajos "1 cuota / 2 cuotas / 3 cuotas" no llenan el monto | 7 · Flexibilidad y eficiencia | 2 | Conectar cada atajo con su monto |
-| H-13 | Pago aplicado | El comprobante no muestra el saldo restante | 1 · Visibilidad del estado | 2 | Agregar "Saldo de capital restante" |
-| H-14 | Detalle de mora y pago | Textos secundarios muy pequeños y en gris claro, difíciles de leer bajo el sol | 8 · Diseño estético y minimalista / WCAG 1.4.3 | 2 | Tamaño mínimo de 14 px y contraste ≥ 4.5:1 |
-
-## 6.3 Auditoría WCAG 2.2 (criterios A/AA nuevos + 3.3.4)
-
-| Criterio | Nivel | Resultado preliminar | Observación |
-|---|---|---|---|
-| 2.4.11 Focus Not Obscured (Minimum) | AA | No verificable en Figma | Revisarlo en la implementación React: el encabezado fijo no debe tapar el foco |
-| 2.5.7 Dragging Movements | AA | ✅ Cumple | Ninguna acción requiere arrastrar |
-| 2.5.8 Target Size (Minimum) | AA | ✅ Cumple | Botones y tarjetas muy por encima de 24 × 24 px |
-| 3.2.6 Consistent Help | A | ❌ No cumple | Ver H-11 |
-| 3.3.7 Redundant Entry | A | ⚠️ Revisar | El cliente se elige de una lista (bien); falta la pantalla de alta de cliente para comprobar que no se pide dos veces el DPI |
-| 3.3.8 Accessible Authentication (Minimum) | AA | ✅ Probable | Contraseña con opción de mostrarla; confirmar que se permita pegarla |
-| 3.3.4 Error Prevention (Legal, Financial) | AA | ⚠️ Parcial | El pago y la solicitud tienen revisión y salida; falta la confirmación de desembolso |
-| 1.4.3 Contrast (Minimum), heredado | AA | ⚠️ Revisar | Ver H-14 |
-
-## 6.4 Correcciones y design review (pendiente del equipo)
-
-Para cerrar el E5 falta:
-
-- Corregir en Figma **al menos cinco hallazgos** y adjuntar la captura del antes y del después. Recomendamos empezar por H-01, H-02, H-04, H-06 y H-09, porque son los que más afectan al dinero y a la calificación.
-- Documentar la retroalimentación del design review de la Sesión 9: qué se aceptó, qué se rechazó y con qué argumento.
+{{INCLUDE:docs/proyecto2/e5-evaluacion-heuristica.md|6|2}}
 
 ---
 
@@ -272,7 +169,7 @@ git show --stat <hash>
 
 **Totales desde `entrega-p1`:** el núcleo `src/dominio` suma 12 archivos (10 nuevos y 2 modificados), +381 / −21 líneas. Las pruebas pasan de 206 a 263 sin modificar ningún archivo de prueba del P1.
 
-> **Nota sobre los hashes.** Los commits 0 a 11 ya están en GitHub y sus hashes son definitivos. Los commits 12 a 18 se integran después de esta entrega; si se aplican desde un parche, Git les asigna un hash nuevo y se identifican por su mensaje.
+> **Nota sobre los hashes.** Los commits 0 a 11 están en `main` desde el Pull Request #1. Los commits de documentación (12 en adelante) están en la rama `docs/proyecto2-ux` y se publican con el mismo hash.
 
 ### 8.2.2 Las fases del trabajo
 
@@ -301,47 +198,47 @@ git show --stat <hash>
 
 ## 9.1 Reparto del trabajo (sección 12.1)
 
-Esta tabla se armó a partir del historial de Git y de los roles declarados en el P1. **Cada integrante debe confirmar o corregir su fila**, en especial el trabajo que no deja rastro en Git (Figma, investigación, design review).
+La tabla combina los roles del equipo con la evidencia del historial de Git. Los commits firmados como *ERAMR18* y *Erwin* son de Erwin Ramírez, y los firmados como *Elízabeth*, de Gabriela Aguilar.
 
 | Integrante | Rol | Responsabilidad principal | Evidencia verificable | Entregables |
 |---|---|---|---|---|
-| Christopher David Herrera Pérez | Ingeniería de dominio | Políticas de mora, gasto de cobro, CP-04 y comandos de prueba | Commits 0, 1, 2, 3 y 7 | E6 |
-| Erwin Alberto Ramírez Racancoj | Pruebas y trazabilidad | Contratos de prueba, documentación técnica, validación y README (commits como *ERAMR18* y *Erwin*; confirmar que es la misma persona) | Commits 4, 5, 6 y 11 | E6, E7 |
-| Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño y documentación | Documento de pruebas e informe de verificación SOLID; *(agregar: Figma e investigación)* | Commits 8 y 9 | E6, *(E1–E3)* |
-| Oliver Fernando Romero Esquite | Coordinación e integración | PR #1, documentación de E1, E2 y E4, consolidación del informe SOLID y documento de entrega; *(agregar: Figma)* | Commits 10, 12, 13, 14 y 15 | E1, E2, E4, E7 |
+| Christopher David Herrera Pérez | Implementación / Pruebas | Auditoría inicial, políticas de mora (CP-01), gasto de cobro (CP-02), CP-04 y comandos de prueba por tema | Commits 0, 1, 2, 3 y 7 | E6 |
+| Erwin Alberto Ramírez Racancoj | Pruebas / Trazabilidad | Contrato común de las políticas (LSP), regresión del P1, ADR-004, UML, contratos Zod/OpenAPI, validación limpia y README | Commits 4, 5, 6 y 11 | E6, E7 |
+| Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño / Documentación | Prototipos de Figma (móvil y web), documento de pruebas de la mora escalonada e informe de verificación SOLID | Prototipos enlazados en el capítulo 4; commits 8 y 9 | E3, E5, E6 |
+| Oliver Fernando Romero Esquite | Coordinación / Integración | Pull Request #1, investigación de usuario, arquitectura de información y wireframes, decisión móvil/web, informe SOLID según el Anexo D y documento de entrega | Commits 10 y 12 en adelante | E1, E2, E4, E7 |
 
 ## 9.2 Declaración de uso de herramientas de IA (sección 15)
 
 | Herramienta | Uso |
 |---|---|
 | **OpenAI Codex** | Apoyo en la evolución del núcleo (CP-01 a CP-04), en las pruebas y en la documentación técnica de E6 |
-| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con un script editable (`wireframes/generar_wireframes_figma.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión preliminar del prototipo de Figma (capítulos 4 y 6) y redacción de este documento |
+| **Claude (Anthropic)** | Apoyo en la redacción de E1, E2 y E4; generación de los wireframes de baja fidelidad con scripts editables (`wireframes/generar_wireframes_figma.py` y `generar_wireframes_web.py`); reorganización del informe SOLID según el Anexo D; historial de cambios; revisión de los prototipos, medición de contraste y tamaño de controles (capítulos 4 y 6) y redacción de este documento |
 
-Las decisiones de diseño y su justificación son del equipo, y cualquiera de los cuatro integrantes debe poder explicarlas en la defensa. Las personas del E1 se apoyan en fuentes documentadas: los rasgos marcados como hipótesis no provienen de entrevistas. Los hallazgos del capítulo 6 son de un solo evaluador y deben complementarse con la evaluación independiente de cada integrante.
+Las decisiones de diseño y su justificación son del equipo, y cualquiera de los cuatro integrantes debe poder explicarlas en la defensa. Las personas del E1 se apoyan en fuentes documentadas: los rasgos marcados como hipótesis no provienen de entrevistas. Los hallazgos del capítulo 6 son preliminares; la evaluación independiente de cada integrante se registra con los formularios del Anexo C.
 
 ---
 
 # 10. Lista de verificación de entrega (sección 12.2)
 
-Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe, pero requiere un ajuste · ❌ pendiente. **Actualizar esta tabla antes de exportar el PDF.**
+Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe con un ajuste pendiente · ❌ pendiente.
 
-| # | Requisito | Estado | Evidencia / pendiente |
+| # | Requisito | Estado | Evidencia o pendiente |
 |---|---|---|---|
-| 1 | Personas fundamentadas y journey map con puntos de dolor concretos, incluido el cambio de tramo | ⚠️ | Capítulo 2. Faltan las entrevistas u observación para validar los rasgos marcados como hipótesis |
-| 2 | Tabla pantalla ↔ caso de uso completa y coherente con los puertos del P1 | ✅ | §3.3 |
-| 3 | Siete pantallas obligatorias y tres flujos navegables | ⚠️ | §4.4: faltan el tablero, el cierre y el desembolso |
-| 4 | Plan de amortización con la cuota 12 de Q1,004.63 explicada | ⚠️ | Falta la nota explicativa en Figma |
-| 5 | Detalle de la mora con el caso M-3 | ❌ | Corregir las cifras (§4.5) |
-| 6 | Tablero que distingue mora (21.75 %) y riesgo (7.00 %) con desglose por tramo | ⚠️ | Justificado en la guía G04 (§3.5); falta en Figma |
-| 7 | Decisión móvil/web con pérdida de conexión, idempotencia y puerto Reloj | ✅ | Capítulo 5 |
-| 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 14 hallazgos preliminares (§6.2); faltan la evaluación de los cuatro y las correcciones |
-| 9 | Auditoría de los seis criterios nuevos de WCAG 2.2 y del 3.3.4 | ⚠️ | §6.3, preliminar |
-| 10 | Design review: qué se aceptó y qué se rechazó | ❌ | Notas de la Sesión 9 |
-| 11 | `npm install && npm test` en limpio, con M-1 a M-5, coexistencia y suite del P1 | ✅ | 263 pruebas en 18 archivos; repetir `npm run verify` sobre el commit final |
-| 12 | Informe SOLID con métricas respaldadas por el diff | ✅ | §7.2 |
-| 13 | Commit del P1 etiquetado o con su hash en el informe | ⚠️ | El hash está en el informe; falta `git push origin entrega-p1` |
-| 14 | Enlaces de Figma y del repositorio abren sin pedir permisos | ✅ / ⚠️ | Figma abre sin iniciar sesión; confirmar que el repositorio sea público |
-| 15 | Tabla de reparto del trabajo | ⚠️ | §9.1, a confirmar por el equipo |
+| 1 | Personas fundamentadas y journey map con puntos de dolor concretos, incluido el cambio de tramo | ✅ | Capítulo 2; los rasgos no validados están marcados como hipótesis |
+| 2 | Tabla pantalla ↔ caso de uso completa y coherente con los puertos del P1 | ✅ | Sección 3.3, con las pantallas del prototipo web |
+| 3 | Siete pantallas obligatorias y tres flujos navegables | ⚠️ | Sección 4.4: existen el tablero, el cierre diario y los tres flujos; falta la confirmación de desembolso |
+| 4 | Plan de amortización con la cuota 12 de Q1,004.63 explicada | ⚠️ | La nota está en el prototipo web; falta corregir la fila 12 (Anexo B) |
+| 5 | Detalle de la mora con el caso M-3 | ❌ | Ambos prototipos usan tasas y base equivocadas; corrección exacta en el Anexo B |
+| 6 | Tablero que distingue mora y riesgo con desglose por tramo | ✅ | W01 en el prototipo web; jerarquía en las secciones 3.4.5 y 3.5 |
+| 7 | Decisión móvil/web con pérdida de conexión, idempotencia y puerto Reloj | ✅ | Capítulo 5 y ADR-005 |
+| 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 22 hallazgos con evidencia (sección 6.2); faltan las cuatro evaluaciones individuales y las correcciones (Anexo C) |
+| 9 | Auditoría de los seis criterios nuevos de WCAG 2.2 y del 3.3.4 | ✅ | Sección 6.3, con mediciones en el prototipo web |
+| 10 | Design review: qué se aceptó y qué se rechazó | ❌ | Acta en el Anexo C, a llenar en la Sesión 9 |
+| 11 | `npm install && npm test` en limpio, con M-1 a M-5, coexistencia y suite del P1 | ✅ | 263 pruebas en 18 archivos |
+| 12 | Informe SOLID con métricas respaldadas por el diff | ✅ | Sección 7.2 |
+| 13 | Commit del P1 etiquetado o con su hash en el informe | ✅ | `8737d9b`, etiqueta `entrega-p1` |
+| 14 | Enlaces de Figma y del repositorio abren sin pedir permisos | ✅ | Portada y capítulo 4 |
+| 15 | Tabla de reparto del trabajo | ✅ | Sección 9.1 |
 
 ---
 
@@ -350,3 +247,15 @@ Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe, pero requiere
 Wireframes anotados de las 14 pantallas del prototipo de Figma (P01–P14) y de las 7 guías (G01–G07). Los skeletons correspondientes están en `docs/proyecto2/wireframes/skeleton/` y en el documento de complementos.
 
 {{WIREFRAMES}}
+
+---
+
+# Anexo B · Instrucciones de corrección para los prototipos de Figma
+
+{{INCLUDE:docs/proyecto2/anexo-b-correcciones-figma.md|B|2}}
+
+---
+
+# Anexo C · Formularios de la evaluación E5
+
+{{INCLUDE:docs/proyecto2/anexo-c-formularios-e5.md|C|2}}
