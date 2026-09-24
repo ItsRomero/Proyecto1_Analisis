@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="1226" viewBox="0 0 1480 1226" font-family="Inter, Arial, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="20" y="24" font-size="16" font-weight="700" fill="#1F2937">W03 · Clientes · Lista y ficha del cliente</text>
+<text x="20" y="40" font-size="11" fill="#6B7280">Escritorio 1440 px · wireframe anotado · panel gerencial del prototipo web de Figma</text>
+<g transform="translate(20,44)">
+<rect x="0" y="0" width="1440" height="900" fill="#F1F3F5" stroke="#D5D9DE"/>
+<svg x="0" y="0" width="1440" height="900" viewBox="0 0 1440 900">
+<rect x="0" y="0" width="1440" height="64" rx="0" fill="#2B2F36"/>
+<rect x="32" y="16" width="32" height="32" rx="8" fill="#6B7280"/>
+<text x="39" y="36" font-size="12" font-weight="900" fill="#FFFFFF" text-anchor="start">CV</text>
+<text x="74" y="37" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">Crédito Vecino</text>
+<text x="237" y="37" font-size="14" font-weight="500" fill="#AEB4BC" text-anchor="start">Dashboard</text>
+<text x="344" y="37" font-size="14" font-weight="500" fill="#AEB4BC" text-anchor="start">Cartera</text>
+<rect x="412" y="14" width="86" height="36" rx="8" fill="#4B5059"/>
+<text x="428" y="37" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="start">Clientes</text>
+<text x="517" y="37" font-size="14" font-weight="500" fill="#AEB4BC" text-anchor="start">Cobros</text>
+<text x="599" y="37" font-size="14" font-weight="500" fill="#AEB4BC" text-anchor="start">Reportes</text>
+<rect x="1162" y="14" width="116" height="36" rx="8" fill="#FFFFFF"/>
+<text x="1178" y="37" font-size="14" font-weight="700" fill="#2B2F36" text-anchor="start">Cierre diario</text>
+<rect x="1290" y="17" width="70" height="30" rx="8" fill="none" stroke="#6B7280" stroke-width="1"/>
+<text x="1303" y="36" font-size="12" font-weight="500" fill="#AEB4BC" text-anchor="start">← Inicio</text>
+<circle cx="1390" cy="32" r="18" fill="#4B5059"/>
+<text x="1382" y="36" font-size="12" font-weight="600" fill="#AEB4BC" text-anchor="start">AR</text>
+<rect x="0" y="64" width="360" height="836" rx="0" fill="#FFFFFF" stroke="#E4E7EB" stroke-width="1"/>
+<text x="16" y="97" font-size="16" font-weight="700" fill="#2B2F36" text-anchor="start">Clientes</text>
+<text x="298" y="96" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">15 de 15</text>
+<rect x="16" y="116" width="327" height="38" rx="12" fill="#F7F8F9" stroke="#D5D9DE" stroke-width="1"/>
+<rect x="29" y="128" width="14" height="14" rx="7" fill="none" stroke="#6B7280" stroke-width="1"/>
+<text x="52" y="140" font-size="14" font-weight="400" fill="#AEB4BC" text-anchor="start">Nombre, DPI o código</text>
+<rect x="16" y="166" width="55" height="28" rx="8" fill="#4B5059"/>
+<text x="26" y="184" font-size="12" font-weight="500" fill="#FFFFFF" text-anchor="start">Todos</text>
+<rect x="77" y="166" width="52" height="28" rx="8" fill="#EEF0F2"/>
+<text x="87" y="184" font-size="12" font-weight="500" fill="#6B7280" text-anchor="start">Al día</text>
+<rect x="135" y="166" width="73" height="28" rx="8" fill="#EEF0F2"/>
+<text x="145" y="184" font-size="12" font-weight="500" fill="#6B7280" text-anchor="start">1–30 días</text>
+<rect x="214" y="166" width="81" height="28" rx="8" fill="#EEF0F2"/>
+<text x="224" y="184" font-size="12" font-weight="500" fill="#6B7280" text-anchor="start">31–60 días</text>
+<rect x="16" y="200" width="81" height="28" rx="8" fill="#EEF0F2"/>
+<text x="26" y="218" font-size="12" font-weight="500" fill="#6B7280" text-anchor="start">61–90 días</text>
+<rect x="103" y="200" width="67" height="28" rx="8" fill="#EEF0F2"/>
+<text x="113" y="218" font-size="12" font-weight="500" fill="#6B7280" text-anchor="start">Vencido</text>
+<rect x="176" y="200" width="81" height="28" rx="8" fill="#EEF0F2"/>
+<text x="186" y="218" font-size="12" font-weight="500" fill="#6B7280" text-anchor="start">Incobrable</text>
+<rect x="0" y="244" width="360" height="1" rx="0" fill="#E4E7EB"/>
+<rect x="0" y="245" width="359" height="73" rx="0" fill="#EEF0F2"/>
+<rect x="0" y="317" width="359" height="1" rx="0" fill="#E4E7EB"/>
+<circle cx="38" cy="281" r="20" fill="#4B5059"/>
+<text x="27" y="285" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="start">MG</text>
+<text x="70" y="276" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">María García López</text>
+<text x="70" y="296" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">CLI-001 · Zona 1</text>
+<rect x="278" y="262" width="65" height="19" rx="10" fill="#E5E7EB"/>
+<text x="286" y="276" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">31–60 d</text>
+<text x="280" y="299" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Q6,259.07</text>
+<rect x="0" y="318" width="359" height="73" rx="0" fill="#FFFFFF"/>
+<rect x="0" y="390" width="359" height="1" rx="0" fill="#E4E7EB"/>
+<circle cx="38" cy="354" r="20" fill="#E5E7EB"/>
+<text x="27" y="358" font-size="14" font-weight="700" fill="#6B7280" text-anchor="start">JD</text>
+<text x="70" y="349" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">José Domingo Pérez</text>
+<text x="70" y="369" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">CLI-002 · Zona 3</text>
+<rect x="285" y="335" width="58" height="19" rx="10" fill="#E5E7EB"/>
+<text x="293" y="349" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">1–30 d</text>
+<text x="280" y="372" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Q3,840.22</text>
+<rect x="0" y="391" width="359" height="73" rx="0" fill="#FFFFFF"/>
+<rect x="0" y="463" width="359" height="1" rx="0" fill="#E4E7EB"/>
+<circle cx="38" cy="427" r="20" fill="#E5E7EB"/>
+<text x="27" y="431" font-size="14" font-weight="700" fill="#6B7280" text-anchor="start">AL</text>
+<text x="70" y="422" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Ana Lucía Morales</text>
+<text x="70" y="442" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">CLI-003 · Zona 6</text>
+<rect x="278" y="408" width="65" height="19" rx="10" fill="#E5E7EB"/>
+<text x="286" y="422" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">31–60 d</text>
+<text x="280" y="445" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Q9,120.50</text>
+<rect x="0" y="464" width="359" height="73" rx="0" fill="#FFFFFF"/>
+<rect x="0" y="536" width="359" height="1" rx="0" fill="#E4E7EB"/>
+<circle cx="38" cy="500" r="20" fill="#E5E7EB"/>
+<text x="27" y="504" font-size="14" font-weight="700" fill="#6B7280" text-anchor="start">CF</text>
+<text x="70" y="495" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Carlos Fuentes García</text>
+<text x="70" y="515" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">CLI-004 · Zona 2</text>
+<rect x="278" y="481" width="65" height="19" rx="10" fill="#E5E7EB"/>
+<text x="286" y="495" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">31–60 d</text>
+<text x="280" y="518" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Q4,500.00</text>
+<rect x="0" y="537" width="359" height="73" rx="0" fill="#FFFFFF"/>
+<rect x="0" y="609" width="359" height="1" rx="0" fill="#E4E7EB"/>
+<circle cx="38" cy="573" r="20" fill="#E5E7EB"/>
+<text x="27" y="577" font-size="14" font-weight="700" fill="#6B7280" text-anchor="start">RE</text>
+<text x="70" y="568" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Rosa Elena Hernández</text>
+<text x="70" y="588" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">CLI-005 · Zona 5</text>
+<rect x="278" y="554" width="65" height="19" rx="10" fill="#E5E7EB"/>
+<text x="286" y="568" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">61–90 d</text>
+<text x="280" y="591" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Q2,100.75</text>
+<rect x="0" y="610" width="359" height="73" rx="0" fill="#FFFFFF"/>
+<rect x="0" y="682" width="359" height="1" rx="0" fill="#E4E7EB"/>
+<circle cx="38" cy="646" r="20" fill="#E5E7EB"/>
+<text x="27" y="650" font-size="14" font-weight="700" fill="#6B7280" text-anchor="start">PA</text>
+<text x="70" y="641" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Pedro Alvarado Castro</text>
+<text x="70" y="661" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">CLI-006 · Zona 7</text>
+<rect x="285" y="627" width="58" height="19" rx="10" fill="#E5E7EB"/>
+<text x="293" y="641" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">Al día</text>
+<text x="280" y="664" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Q8,450.00</text>
+<rect x="0" y="683" width="359" height="73" rx="0" fill="#FFFFFF"/>
+<rect x="0" y="755" width="359" height="1" rx="0" fill="#E4E7EB"/>
+<circle cx="38" cy="719" r="20" fill="#E5E7EB"/>
+<text x="27" y="723" font-size="14" font-weight="700" fill="#6B7280" text-anchor="start">LR</text>
+<text x="70" y="714" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Luisa Ramírez Vidal</text>
+<text x="70" y="734" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">CLI-007 · Zona 1</text>
+<rect x="285" y="700" width="58" height="19" rx="10" fill="#E5E7EB"/>
+<text x="293" y="714" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">Al día</text>
+<text x="280" y="737" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Q3,200.00</text>
+<rect x="0" y="756" width="359" height="73" rx="0" fill="#FFFFFF"/>
+<rect x="0" y="828" width="359" height="1" rx="0" fill="#E4E7EB"/>
+<circle cx="38" cy="792" r="20" fill="#E5E7EB"/>
+<text x="27" y="796" font-size="14" font-weight="700" fill="#6B7280" text-anchor="start">MÁ</text>
+<text x="70" y="787" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Miguel Ángel Torres</text>
+<text x="70" y="807" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">CLI-008 · Zona 12</text>
+<rect x="285" y="773" width="58" height="19" rx="10" fill="#E5E7EB"/>
+<text x="293" y="787" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">Al día</text>
+<text x="273" y="810" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Q14,800.00</text>
+<rect x="392" y="96" width="64" height="64" rx="16" fill="#4B5059"/>
+<text x="407" y="135" font-size="20" font-weight="900" fill="#FFFFFF" text-anchor="start">MG</text>
+<text x="472" y="125" font-size="24" font-weight="900" fill="#2B2F36" text-anchor="start">María García López</text>
+<text x="472" y="150" font-size="14" font-weight="400" fill="#6B7280" text-anchor="start">CLI-001 · Zona 1</text>
+<rect x="1201" y="96" width="207" height="32" rx="16" fill="#E5E7EB"/>
+<circle cx="1217" cy="112" r="4" fill="#6B7280"/>
+<text x="1227" y="117" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Más de un mes de atraso</text>
+<rect x="392.0" y="184" width="331" height="74" rx="12" fill="#FFFFFF" stroke="#E4E7EB" stroke-width="1"/>
+<text x="409.0" y="213" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">DPI</text>
+<text x="409.0" y="235" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">2456 78901 0101</text>
+<rect x="734.5" y="184" width="331" height="74" rx="12" fill="#FFFFFF" stroke="#E4E7EB" stroke-width="1"/>
+<text x="751.5" y="213" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Teléfono</text>
+<text x="751.5" y="235" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">+502 5512-3456</text>
+<rect x="1077.0" y="184" width="331" height="74" rx="12" fill="#FFFFFF" stroke="#E4E7EB" stroke-width="1"/>
+<text x="1094.0" y="213" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Zona</text>
+<text x="1094.0" y="235" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Zona 1</text>
+<rect x="392.0" y="282" width="331" height="82" rx="12" fill="#FFFFFF" stroke="#E4E7EB" stroke-width="1"/>
+<text x="409.0" y="310" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Deuda total</text>
+<text x="409.0" y="339" font-size="18" font-weight="900" fill="#2B2F36" text-anchor="start">Q6,259.07</text>
+<rect x="734.5" y="282" width="331" height="82" rx="12" fill="#FFFFFF" stroke="#E4E7EB" stroke-width="1"/>
+<text x="751.5" y="310" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Créditos activos</text>
+<text x="751.5" y="339" font-size="18" font-weight="900" fill="#2B2F36" text-anchor="start">1 crédito</text>
+<rect x="1077.0" y="282" width="331" height="82" rx="12" fill="#FFFFFF" stroke="#E4E7EB" stroke-width="1"/>
+<text x="1094.0" y="310" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">Estado general</text>
+<text x="1094.0" y="339" font-size="18" font-weight="900" fill="#2B2F36" text-anchor="start">Más de un mes de atraso</text>
+<rect x="392" y="387" width="1016" height="163" rx="16" fill="#FFFFFF" stroke="#E4E7EB" stroke-width="1"/>
+<rect x="393" y="388" width="1014" height="55" rx="0" fill="#F7F8F9"/>
+<text x="413" y="419" font-size="12" font-weight="600" fill="#6B7280" text-anchor="start">Créditos del cliente</text>
+<rect x="1271" y="400" width="116" height="30" rx="8" fill="#4B5059"/>
+<text x="1283" y="419" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="start">+ Nuevo crédito</text>
+<text x="413" y="465" font-size="12" font-weight="600" fill="#6B7280" text-anchor="start">Código</text>
+<text x="573" y="465" font-size="12" font-weight="600" fill="#6B7280" text-anchor="start">Capital</text>
+<text x="663" y="465" font-size="12" font-weight="600" fill="#6B7280" text-anchor="start">Saldo</text>
+<text x="773" y="465" font-size="12" font-weight="600" fill="#6B7280" text-anchor="start">Cuota</text>
+<text x="863" y="465" font-size="12" font-weight="600" fill="#6B7280" text-anchor="start">Plazo</text>
+<text x="943" y="465" font-size="12" font-weight="600" fill="#6B7280" text-anchor="start">Estado</text>
+<text x="1043" y="465" font-size="12" font-weight="600" fill="#6B7280" text-anchor="start">Acción</text>
+<rect x="393" y="480" width="1014" height="1" rx="0" fill="#E4E7EB"/>
+<text x="413" y="510" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">CRD-2024-0892</text>
+<text x="413" y="530" font-size="12" font-weight="400" fill="#6B7280" text-anchor="start">5/12 cuotas</text>
+<text x="573" y="519" font-size="14" font-weight="400" fill="#2B2F36" text-anchor="start">Q10,000.00</text>
+<text x="663" y="519" font-size="14" font-weight="700" fill="#2B2F36" text-anchor="start">Q6,259.07</text>
+<text x="773" y="519" font-size="14" font-weight="400" fill="#2B2F36" text-anchor="start">Q1,004.62</text>
+<text x="863" y="519" font-size="14" font-weight="400" fill="#2B2F36" text-anchor="start">12 m</text>
+<rect x="943" y="503" width="77" height="24" rx="12" fill="#E5E7EB"/>
+<circle cx="956" cy="515" r="3" fill="#6B7280"/>
+<text x="965" y="519" font-size="12" font-weight="600" fill="#2B2F36" text-anchor="start">31–60 d</text>
+<rect x="1043" y="500" width="44" height="30" rx="8" fill="#4B5059"/>
+<text x="1055" y="519" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="start">Ver</text>
+<rect x="392" y="574" width="148" height="44" rx="12" fill="#4B5059"/>
+<text x="416" y="601" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="start">Registrar pago</text>
+<rect x="552" y="574" width="138" height="44" rx="12" fill="#FFFFFF" stroke="#D5D9DE" stroke-width="1"/>
+<text x="577" y="601" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Editar cliente</text>
+<rect x="702" y="574" width="172" height="44" rx="12" fill="#FFFFFF" stroke="#D5D9DE" stroke-width="1"/>
+<text x="727" y="601" font-size="14" font-weight="600" fill="#2B2F36" text-anchor="start">Historial de pagos</text>
+</svg>
+<circle cx="110" cy="92" r="13" fill="#1F2937"/><text x="110" y="97" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<circle cx="346" cy="280" r="13" fill="#1F2937"/><text x="346" y="285" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<circle cx="1180" cy="112" r="13" fill="#1F2937"/><text x="1180" y="117" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<circle cx="392" cy="180" r="13" fill="#1F2937"/><text x="392" y="185" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<circle cx="392" cy="290" r="13" fill="#1F2937"/><text x="392" y="295" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<circle cx="1395" cy="470" r="13" fill="#1F2937"/><text x="1395" y="475" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+<circle cx="392" cy="570" r="13" fill="#1F2937"/><text x="392" y="575" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+<circle cx="346" cy="214" r="13" fill="#1F2937"/><text x="346" y="219" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text>
+</g>
+<text x="20" y="974" font-size="14" font-weight="700" fill="#1F2937">Notas de diseño</text>
+<circle cx="31" cy="995" r="10" fill="#1F2937"/><text x="31" y="999" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text><text x="50" y="1000" font-size="13" fill="#1F2937">Lista de clientes (15 de 15) con búsqueda por nombre, DPI o código y filtros por tramo.</text>
+<circle cx="31" cy="1021" r="10" fill="#1F2937"/><text x="31" y="1025" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text><text x="50" y="1026" font-size="13" fill="#1F2937">Cada fila: iniciales, nombre, código · zona, tramo en texto y saldo; la fila elegida queda resaltada.</text>
+<circle cx="31" cy="1047" r="10" fill="#1F2937"/><text x="31" y="1051" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text><text x="50" y="1052" font-size="13" fill="#1F2937">Encabezado de la ficha: estado en lenguaje llano («Más de un mes de atraso»), como se decidió en E1/E2.</text>
+<circle cx="31" cy="1073" r="10" fill="#1F2937"/><text x="31" y="1077" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text><text x="50" y="1078" font-size="13" fill="#1F2937">Datos de contacto: DPI, teléfono y zona. Sugerencia: enmascarar el DPI (2456 ••••• 0101) y mostrarlo al pedirlo.</text>
+<circle cx="31" cy="1099" r="10" fill="#1F2937"/><text x="31" y="1103" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text><text x="50" y="1104" font-size="13" fill="#1F2937">Resumen: deuda total, créditos activos y estado general.</text>
+<circle cx="31" cy="1125" r="10" fill="#1F2937"/><text x="31" y="1129" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text><text x="50" y="1130" font-size="13" fill="#1F2937">Créditos del cliente: saldo Q6,259.07 tras 5 de 12 cuotas de Q1,004.62, igual que el núcleo; «Ver» abre el detalle (CU-15).</text>
+<circle cx="31" cy="1151" r="10" fill="#1F2937"/><text x="31" y="1155" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text><text x="50" y="1156" font-size="13" fill="#1F2937">Acciones: «Registrar pago» es la principal (CU-07); «Editar cliente» e «Historial de pagos» son secundarias.</text>
+<circle cx="31" cy="1177" r="10" fill="#1F2937"/><text x="31" y="1181" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text><text x="50" y="1182" font-size="13" fill="#B42318">DECIDIR: los chips de tramo de esta pantalla deben usar los mismos nombres que el filtro de Cartera (W02).</text>
+</svg>
