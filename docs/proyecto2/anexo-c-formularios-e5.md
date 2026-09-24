@@ -2,7 +2,7 @@
 
 ## Protocolo de la evaluación individual
 
-1. Cada integrante recorre **solo** los dos prototipos (sección 4.2), sin ver los hallazgos de los demás ni los del capítulo 6.
+1. Cada integrante recorre **solo** los tres prototipos (sección 4.2), sin ver los hallazgos de los demás ni los del capítulo 6.
 2. Registra cada problema en su formulario con la pantalla, la heurística, la severidad (0–4) y una **captura** como evidencia.
 3. El equipo consolida: los hallazgos repetidos se unen y se anota quién los encontró; la severidad final es el promedio redondeado.
 4. Se eligen al menos cinco hallazgos, se corrigen en Figma y se documenta el antes y el después.

@@ -94,6 +94,18 @@ A la izquierda, el skeleton; a la derecha, el wireframe anotado de la misma pant
 
 ![P14 · Sin señal · skeleton](wireframes/skeleton/P14-sin-senal.svg) ![P14 · anotado](wireframes/anotado/P14-sin-senal.svg)
 
+![C01 · inicio · skeleton](wireframes/skeleton/C01-inicio.svg) ![C01 · anotado](wireframes/anotado/C01-inicio.svg)
+
+![C02 · detalle-credito · skeleton](wireframes/skeleton/C02-detalle-credito.svg) ![C02 · anotado](wireframes/anotado/C02-detalle-credito.svg)
+
+![C03 · plan-cuotas · skeleton](wireframes/skeleton/C03-plan-cuotas.svg) ![C03 · anotado](wireframes/anotado/C03-plan-cuotas.svg)
+
+![C04 · entender-atraso · skeleton](wireframes/skeleton/C04-entender-atraso.svg) ![C04 · anotado](wireframes/anotado/C04-entender-atraso.svg)
+
+![C05 · aviso · skeleton](wireframes/skeleton/C05-aviso.svg) ![C05 · anotado](wireframes/anotado/C05-aviso.svg)
+
+![C06 · ayuda · skeleton](wireframes/skeleton/C06-ayuda.svg) ![C06 · anotado](wireframes/anotado/C06-ayuda.svg)
+
 ![G01 · Alta de cliente (guía) · skeleton](wireframes/skeleton/G01-alta-cliente.svg) ![G01 · anotado](wireframes/anotado/G01-alta-cliente.svg)
 
 ![G02 · Confirmación de desembolso (guía) · skeleton](wireframes/skeleton/G02-confirmacion-desembolso.svg) ![G02 · anotado](wireframes/anotado/G02-confirmacion-desembolso.svg)
@@ -299,6 +311,7 @@ Cada hash abre el commit en GitHub con su diff completo, y cada archivo abre la 
 | 20 | 23/09 | [`321eb61`](https://github.com/ItsRomero/Proyecto1_Analisis/commit/321eb610f9b4d11cd7bfe8fdad335b94d2beff0b) ¹ | Oliver Romero | Documentación | E2 | Galería de wireframes en orden P01–P14 → G01–G07 con los títulos de Figma | [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/README.md) · [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`P2-documento-entrega.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-entrega.md) · [`generar_documento_entrega.cpython-311.pyc`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/__pycache__/generar_documento_entrega.cpython-311.pyc) · [`fuente-documento-entrega.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/fuente-documento-entrega.md) · y 2 más | 7 arch. · +69 / −51 |
 | 21 | 23/09 | [`7be9254`](https://github.com/ItsRomero/Proyecto1_Analisis/commit/7be92541147c597dd0ecfa5129143948e8275dee) ¹ | Oliver Romero | Documentación | E1–E7 | Documento final: entrega y complementos unidos en el orden de los entregables | [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`P2-documento-final.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-final.md) · [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/README.md) · [`generar_complementos.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/generar_complementos.py) · [`generar_documento_final.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/generar_documento_final.py) | 5 arch. · +1440 / −1 |
 | 22 | 23/09 | [`e788d59`](https://github.com/ItsRomero/Proyecto1_Analisis/commit/e788d59afdafb754b13545fcbb71f0d4570cb48f) ¹ | Oliver Romero | Documentación | E2 | Skeletons y wireframes del panel gerencial web: W01 Dashboard, W02 Cartera y W03 Clientes | [`P2-panel-gerencial-web.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-panel-gerencial-web.md) · [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/README.md) · [`generar_wireframes_web.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/wireframes/generar_wireframes_web.py) | 9 arch. · +1559 |
+| 23 | 23/09 | [`bfdb3bc`](https://github.com/ItsRomero/Proyecto1_Analisis/commit/bfdb3bcb771300084c3df2ff96d0027226cf58a5) ¹ | Oliver Romero |  |  | docs(p2): correcciones de la revisión: E3 y E5 con los dos prototipos, portada, índice y reparto | [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`P2-documento-entrega.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-entrega.md) · [`P2-documento-final.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-final.md) · [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/README.md) · [`generar_documento_entrega.cpython-311.pyc`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/__pycache__/generar_documento_entrega.cpython-311.pyc) · y 11 más | 16 arch. · +1120 / −424 |
 
 > ¹ Commit de la rama `docs/proyecto2-ux`, publicado con el mismo hash e integrado a `main`; sus archivos se enlazan en `main`.
 

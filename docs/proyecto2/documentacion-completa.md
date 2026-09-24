@@ -82,7 +82,8 @@ La columna **"¿Documentado antes en .md?"** indica si el trabajo del commit apa
 | 20 | `321eb61` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): galería en orden P01–P14 → G01–G07 | Galería y complementos con los títulos de Figma | — |
 | 21 | `7be9254` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): documento final | `P2-documento-final.md`: entrega y complementos unidos en el orden de los entregables | — |
 | 22 | `e788d59` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): panel gerencial web | Skeletons y wireframes W01 Dashboard, W02 Cartera y W03 Clientes, medidos del prototipo web; `P2-panel-gerencial-web.md` | — |
-| 23 | *(este commit)* | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): correcciones de la revisión | E3 y E5 reescritos con los dos prototipos (`e3-prototipo-figma.md`, `e5-evaluacion-heuristica.md`), mediciones WCAG, Anexo B (correcciones para Figma) y Anexo C (formularios E5); portada del equipo, índice real, hipervínculos, reparto y lista de verificación actualizados | — |
+| 23 | `bfdb3bc` | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): correcciones de la revisión | E3 y E5 reescritos con los dos prototipos (`e3-prototipo-figma.md`, `e5-evaluacion-heuristica.md`), mediciones WCAG, Anexo B (correcciones para Figma) y Anexo C (formularios E5); portada del equipo, índice real, hipervínculos, reparto y lista de verificación actualizados | — |
+| 24 | *(este commit)* | 2026-09-23 | Oliver Romero (con apoyo de IA, declarado) | docs(p2): vista del cliente y Anexo A solo con skeletons | Skeletons C01–C06 medidos del prototipo de cliente (`generar_skeletons_cliente.py`, `datos/prototipo-cliente.txt`), sección 3.4.6 con sus cifras a corregir, hallazgos H-23 a H-25 y Anexo A solo con skeletons | — |
 
 **Registro por fases.** `e6-04-validacion-final.md` registra las fases 0 a 6 (commits 0 a 6). Los commits 7 a 18 solo quedan registrados en esta tabla.
 
@@ -422,6 +423,9 @@ La penalización de la sección 10 aplica a pantallas **sin** caso de uso. Por e
 | Detalle del crédito | P08 | `ConsultarCredito` + `CalcularMora` | CU-15, CU-08 | `consultarMora`, `clasificarTramoMora` |
 | Plan de amortización | P09 | `ConsultarCredito` | CU-15 | `plan-amortizacion.ts` |
 | Detalle de mora | P10 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos` |
+| Vista del cliente: inicio, detalle y plan | C01, C02, C03 | `ConsultarCredito` | CU-15 | `consultarMora`, `plan-amortizacion.ts` |
+| Vista del cliente: atraso y aviso | C04, C05 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos`, `generarGastoGestion` |
+| Ayuda del cliente | C06 | — | — (soporte, WCAG 3.2.6) | — |
 | Clientes: lista y ficha (web) | W03 | `ConsultarCredito` | CU-15 | `consultarMora`, `plan-amortizacion.ts` |
 | Iniciar sesión | P01 | — (autenticación, fuera de alcance del P2) | — | — |
 | Mi perfil | P03 | — | — | — |

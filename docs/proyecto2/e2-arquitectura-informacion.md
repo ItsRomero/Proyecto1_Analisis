@@ -95,6 +95,9 @@ La penalización de la sección 10 aplica a pantallas **sin** caso de uso. Por e
 | Detalle del crédito | P08 | `ConsultarCredito` + `CalcularMora` | CU-15, CU-08 | `consultarMora`, `clasificarTramoMora` |
 | Plan de amortización | P09 | `ConsultarCredito` | CU-15 | `plan-amortizacion.ts` |
 | Detalle de mora | P10 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos` |
+| Vista del cliente: inicio, detalle y plan | C01, C02, C03 | `ConsultarCredito` | CU-15 | `consultarMora`, `plan-amortizacion.ts` |
+| Vista del cliente: atraso y aviso | C04, C05 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos`, `generarGastoGestion` |
+| Ayuda del cliente | C06 | — | — (soporte, WCAG 3.2.6) | — |
 | Clientes: lista y ficha (web) | W03 | `ConsultarCredito` | CU-15 | `consultarMora`, `plan-amortizacion.ts` |
 | Iniciar sesión | P01 | — (autenticación, fuera de alcance del P2) | — | — |
 | Mi perfil | P03 | — | — | — |

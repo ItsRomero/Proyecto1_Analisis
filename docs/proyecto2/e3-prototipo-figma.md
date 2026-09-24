@@ -2,12 +2,13 @@
 
 ## Enlaces y acceso
 
-El equipo construyó dos prototipos en Figma. Los dos abren sin iniciar sesión (sección 13 del enunciado) y se recorren haciendo clic; no son imágenes sueltas.
+El equipo construyó tres prototipos en Figma. Los tres abren sin iniciar sesión (sección 13 del enunciado) y se recorren haciendo clic; no son imágenes sueltas.
 
 | Prototipo | Enlace | Qué contiene |
 |---|---|---|
 | **Móvil · asesora de crédito** (*Microcréditos App*) | [Abrir el prototipo móvil](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) | Pantallas P01–P14: cartera de la asesora, detalle del crédito, plan, mora, registro de pago, pago sin señal y solicitud de crédito |
 | **Web · flujos y panel gerencial** (*Prototipo Microcréditos Web*, Figma Make) | [Abrir el prototipo web](https://www.figma.com/make/WHj2TK5IRg55X8JiaKXyvy/Prototipo-Microcr%25C3%25A9ditos-Web?code-node-id=0-6&p=f&fullscreen=1) | Inicio con tres flujos: *Solicitar crédito* y *Registrar pago* en vista móvil de 375 px, y el *Panel gerencial* de escritorio (Dashboard, Cartera, Clientes y Cierre diario) |
+| **Cliente · vista del usuario** (*Prototipo Cliente*, Figma Make) | [Abrir el prototipo de cliente](https://www.figma.com/make/3P7qsVBkFW6B9SShgQEBoz/Prototipo-Cliente?fullscreen=1&t=sokzjUmb0IMEfUqX-1&code-node-id=0-6) | Pantallas C01–C06 que ve el usuario del crédito: inicio, detalle, plan de cuotas, explicación del atraso, aviso de cambio de etapa y ayuda. No muestra el nombre del cliente, se dirige al usuario |
 
 ## Cómo recorrerlos
 
@@ -29,9 +30,16 @@ El equipo construyó dos prototipos en Figma. Los dos abren sin iniciar sesión 
 | Flujo 2 · Registrar pago | *Registrar pago* → *María García López* → *Ver detalle de mora* / *Ver tabla* → *Registrar pago* → *Cuota regular* → *Ver desglose del pago* → *Aplicar pago ahora* | Buscar cliente → Crédito → Detalle de mora · Plan de amortización → Registrar pago → Confirmar pago (prelación) → Comprobante |
 | Flujo 3 · Panel gerencial | *Panel gerencial* → *Dashboard* → *Ver →* en un tramo → *Ver crédito*; pestañas *Cartera*, *Clientes* y *Cierre diario* | W01 Dashboard → créditos del tramo → crédito; W02 Cartera; W03 Clientes; Cierre diario |
 
+**Prototipo de cliente**
+
+| Recorrido | Pantallas |
+|---|---|
+| Inicio → *Ver detalle de mi crédito* → *Ver plan completo de cuotas* | C01 → C02 → C03 |
+| Inicio → *Entender mi atraso* → *Ver el aviso que recibiste* → *Tengo dudas — ir a Ayuda* | C01 → C04 → C05 → C06 |
+
 ## Lo que los prototipos resuelven bien
 
-Recorrimos los dos prototipos completos el 23 de septiembre de 2026.
+Recorrimos los tres prototipos completos el 23 de septiembre de 2026.
 
 - **Captura del monto difícil de equivocar:** botones − y +, montos rápidos y el rango permitido siempre visible (móvil); control deslizante con límites Q1,000–Q25,000 (web). Responde al momento crítico MC-1.
 - **El plazo se elige con botones** (3 a 24 meses), sin teclado.
@@ -41,16 +49,17 @@ Recorrimos los dos prototipos completos el 23 de septiembre de 2026.
 - **Existe el tablero gerencial (W01)** con cartera por tramo, cartera en riesgo 23.4 % y espacio para el asistente, y el **desglose por tramo** lleva a los créditos de ese tramo (flujo 3).
 - **Existe el cierre diario** con verificación previa, congelamiento de cifras y protección contra duplicados («ya cerrado»), coherente con la idempotencia del núcleo.
 - **Flujo sin señal** con el pago en cola y sincronización manual (móvil, P14).
+- **La vista del cliente explica la mora sin tecnicismos** y avisa antes del cambio de etapa (C04 y C05), lo que responde al momento crítico MC-4 del E1. Su plan de cuotas (C03) coincide con el núcleo, incluida la cuota 12 de Q1,004.63, y la ayuda «?» está en el mismo lugar de todas sus pantallas.
 
 ## Correspondencia con las pantallas y los flujos obligatorios
 
 | Requisito del E3 | Perfil / formato | Estado | Dónde | Pendiente |
 |---|---|---|---|---|
 | Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ | P04 → P07 · web pasos 1 a 3 | — |
-| Detalle del crédito | Cliente/Asesor · móvil | ✅ | P08 · web *Crédito* | Mostrar lo exigible hoy cuando hay mora (tabla siguiente) |
+| Detalle del crédito | Cliente/Asesor · móvil | ✅ | P08 · web *Crédito* · cliente C01–C02 | Mostrar lo exigible hoy cuando hay mora (tabla siguiente) |
 | Registro de pago con desglose de la prelación | Asesor · móvil | ⚠️ | P11 → P13 · web *Confirmar pago* | Corregir los montos del desglose |
-| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ | P09 · web *Plan de amortización* | La nota ya está en la web; falta corregir la fila 12 y el centavo desde la cuota 8 |
-| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ | P10 · web *Detalle de mora* | Ambos usan tasas y base equivocadas |
+| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ | P09 · web *Plan de amortización* · cliente C03 (correcto) | La nota ya está en la web; falta corregir la fila 12 y el centavo desde la cuota 8 |
+| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ | P10 · web *Detalle de mora* · cliente C04 | Los tres calculan sobre el saldo o con tasas equivocadas |
 | Tablero gerencial | Gerencia · escritorio | ✅ | W01 (web) | Ajustes de la sección 3.4.5 |
 | Cierre diario / mensual | Gerencia · escritorio | ⚠️ | Web *Cierre diario* | Falta el cierre mensual (CU-13) |
 | Confirmación de desembolso | Encargado · móvil | ❌ | — | Construir a partir de la guía G02 |
@@ -61,7 +70,7 @@ Recorrimos los dos prototipos completos el 23 de septiembre de 2026.
 
 ## Cifras que deben coincidir con el núcleo (sección 6.2)
 
-El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal la política de mora. Estas son las diferencias encontradas en los dos prototipos, con el valor correcto que debe mostrarse.
+El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal la política de mora. Estas son las diferencias encontradas en los prototipos del asesor y del panel, con el valor correcto que debe mostrarse.
 
 **Detalle de la mora (P10 y web)**
 
@@ -102,4 +111,4 @@ El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal 
 | Cartera (web) | Pedro Alvarado (Q12,000 a 12 meses) con cuota Q1,004.62; Andrés Lima (Q5,000 a 12 meses) con Q485.50 | Q1,205.55 y Q502.31 al 3 % mensual |
 | Todas (web) | Fechas de 2024 | Septiembre de 2026 |
 
-Las instrucciones para aplicar estas correcciones en Figma Make, listas para copiar, están en el Anexo B.
+Las cifras a corregir del prototipo de cliente están en la sección 3.4.6. Las instrucciones para aplicar todas las correcciones en Figma Make, listas para copiar, están en el Anexo B.

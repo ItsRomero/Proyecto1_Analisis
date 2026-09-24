@@ -12,6 +12,7 @@
 | **Docente** | Ing. Ezequiel Urizar |
 | **Prototipo móvil (Figma)** | [Microcréditos App](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) |
 | **Prototipo web (Figma Make)** | [Prototipo Microcréditos Web](https://www.figma.com/make/WHj2TK5IRg55X8JiaKXyvy/Prototipo-Microcr%25C3%25A9ditos-Web?code-node-id=0-6&p=f&fullscreen=1) |
+| **Prototipo de cliente (Figma Make)** | [Prototipo Cliente](https://www.figma.com/make/3P7qsVBkFW6B9SShgQEBoz/Prototipo-Cliente?fullscreen=1&t=sokzjUmb0IMEfUqX-1&code-node-id=0-6) |
 | **Repositorio** | [github.com/ItsRomero/Proyecto1_Analisis](https://github.com/ItsRomero/Proyecto1_Analisis) |
 | **Commit de entrega del Proyecto 1** | `8737d9b` (etiqueta `entrega-p1`) |
 | **Fecha de entrega** | Guatemala, 25 de septiembre de 2026 |
@@ -232,7 +233,7 @@ El sistema calcula el plazo con la fecha de vencimiento real de la cuota más 30
 
 # 3. E2 · Arquitectura de información y wireframes
 
-Con las personas definidas, organizamos la aplicación. Este capítulo presenta el mapa de navegación, la tabla de correspondencia pantalla ↔ caso de uso que exige la sección 6.1 y los wireframes de baja fidelidad (skeleton y anotado). Todas las pantallas usan los **mismos nombres y códigos que el prototipo de Figma** (P01–P14), y las que faltan construir tienen su guía (G01–G07); los wireframes anotados completos están en el Anexo A. Al final se justifica la jerarquía del tablero gerencial y cómo se distinguen la cartera en mora y la cartera en riesgo.
+Con las personas definidas, organizamos la aplicación. Este capítulo presenta el mapa de navegación, la tabla de correspondencia pantalla ↔ caso de uso que exige la sección 6.1 y los wireframes de baja fidelidad (skeleton y anotado). Todas las pantallas usan los **mismos nombres y códigos que el prototipo de Figma** (P01–P14), y las que faltan construir tienen su guía (G01–G07); los skeletons de todas las pantallas están en el Anexo A y los wireframes anotados, en `docs/proyecto2/wireframes/anotado/`. Al final se justifica la jerarquía del tablero gerencial y cómo se distinguen la cartera en mora y la cartera en riesgo.
 
 ## 3.1 Principios que ordenan la información
 
@@ -325,6 +326,9 @@ La penalización de la sección 10 aplica a pantallas **sin** caso de uso. Por e
 | Detalle del crédito | P08 | `ConsultarCredito` + `CalcularMora` | CU-15, CU-08 | `consultarMora`, `clasificarTramoMora` |
 | Plan de amortización | P09 | `ConsultarCredito` | CU-15 | `plan-amortizacion.ts` |
 | Detalle de mora | P10 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos` |
+| Vista del cliente: inicio, detalle y plan | C01, C02, C03 | `ConsultarCredito` | CU-15 | `consultarMora`, `plan-amortizacion.ts` |
+| Vista del cliente: atraso y aviso | C04, C05 | `CalcularMora` | CU-08 | `CalculadoraMora.calcular` → `detalle.tramos`, `generarGastoGestion` |
+| Ayuda del cliente | C06 | — | — (soporte, WCAG 3.2.6) | — |
 | Clientes: lista y ficha (web) | W03 | `ConsultarCredito` | CU-15 | `consultarMora`, `plan-amortizacion.ts` |
 | Iniciar sesión | P01 | — (autenticación, fuera de alcance del P2) | — | — |
 | Mi perfil | P03 | — | — | — |
@@ -449,7 +453,7 @@ Los importes por tramo salen de `detalle.tramos[].importeSinRedondear` y el tota
 
 ### 3.4.5 Panel gerencial web (W01–W03)
 
-El prototipo web de Figma Make agrega las pantallas de escritorio del panel gerencial. Sus skeletons y wireframes anotados se midieron del prototipo a 1440 px (script `wireframes/generar_wireframes_web.py`) y están en el Anexo A.
+El prototipo web de Figma Make agrega las pantallas de escritorio del panel gerencial. Sus skeletons y wireframes anotados se midieron del prototipo a 1440 px (script `wireframes/generar_wireframes_web.py`); los skeletons están en el Anexo A.
 
 | Código | Pestaña del panel | Pantalla | Casos de uso |
 |---|---|---|---|
@@ -516,6 +520,37 @@ El prototipo web de Figma Make agrega las pantallas de escritorio del panel gere
 | 7 | Sugerencia | W03 | Enmascarar el DPI (2456 ••••• 0101) y mostrarlo completo solo al pedirlo |
 | 8 | Aclarar | W01 · W02 | El Dashboard muestra 847 créditos (Q2,450,000) y la Cartera 15 (Q105,420.54). Si la Cartera es una muestra, indicarlo; si no, deben coincidir |
 
+### 3.4.6 Vista del cliente (C01–C06)
+
+El prototipo de cliente de Figma Make ([Prototipo Cliente](https://www.figma.com/make/3P7qsVBkFW6B9SShgQEBoz/Prototipo-Cliente?fullscreen=1&t=sokzjUmb0IMEfUqX-1&code-node-id=0-6)) muestra lo que ve la persona que tiene el crédito. No muestra el nombre del cliente: la aplicación se dirige al **usuario** de la sesión («Mi crédito», «Tu avance», «Tu situación hoy»). Sus skeletons se midieron del prototipo a 390 px (script `wireframes/generar_skeletons_cliente.py`) y están en el Anexo A.
+
+| Código | Pantalla | Qué va en cada bloque | Caso de uso |
+|---|---|---|---|
+| **C01** | Inicio · Mi crédito | Encabezado con ayuda «?»; aviso de atraso; deuda actual con barra de avance; próxima cuota con etiqueta de estado; 12 casillas de cuotas; botones «Ver detalle de mi crédito» y «Entender mi atraso»; barra inferior Inicio · Mi crédito · Ayuda | CU-15 · CU-08 |
+| **C02** | Mi crédito en detalle | Cuatro datos del crédito (capital original, capital pendiente, cuotas pagadas, tasa); tarjeta del atraso actual; historial de pagos con una fila por cuota; «Ver plan completo de cuotas» | CU-15 |
+| **C03** | Plan de cuotas | Resumen (capital, cuotas, tasa); tabla de 12 filas con fecha, cuota y saldo; las cuotas pagadas, vencidas y futuras se distinguen por el ícono | CU-15 |
+| **C04** | Entendiendo tu atraso | Situación de hoy en lenguaje llano; línea de tiempo por etapa (al día, 1–30, 31–60 días, siguiente etapa); resumen de lo que se debe; «Ver el aviso que recibiste» | CU-08 |
+| **C05** | Aviso de cambio de etapa | Fecha del aviso; qué cambió (antes / ahora); cuánto cambió el cargo por día; próxima advertencia; «Entendido» y «Tengo dudas — ir a Ayuda» | CU-08 (momento crítico MC-4) |
+| **C06** | Ayuda | Preguntas frecuentes desplegables y teléfono de atención | Soporte (WCAG 3.2.6) |
+
+#### 3.4.6.1 Qué resuelve
+
+ Explica la mora al cliente sin tecnicismos, cumple el aviso preventivo que propuso el E1 para el momento crítico MC-4 (el cliente se entera antes del cambio de tramo, no después) y pone la ayuda en el mismo lugar de todas las pantallas. El plan de cuotas (C03) coincide con el núcleo, incluida la cuota 12 de Q1,004.63.
+
+#### 3.4.6.2 Cifras a corregir
+
+ (al 12 de septiembre de 2026: 42 días de atraso de la cuota 5 y 11 de la cuota 6)
+
+| Pantalla | Prototipo | Valor correcto |
+|---|---|---|
+| C01 · C02 · Deuda y capital pendiente | Q6,259.07 con 4 de 12 cuotas pagadas | Con 4 cuotas pagadas el capital pendiente es **Q7,052.13** (pagado Q2,947.87); Q6,259.07 corresponde a 5 cuotas pagadas |
+| C04 · Cargos por atraso | ~Q188 en la etapa 1, ~Q125 en la etapa 2, total Q313.00 | Mora de la cuota 5 (capital Q793.06): **Q18.24**; de la cuota 6 (capital Q816.85): **Q4.49**; gasto de cobro de la cuota 5: **Q25.00**. Cargos: **Q47.73** |
+| C04 · Total a pagar hoy | Q2,322.24 | **Q2,056.97** = Q2,009.24 de cuotas vencidas + Q47.73 |
+| C04 · Etapas | «61–120 días» como una sola etapa | Dos etapas: 61–90 días (30 % anual) y 91–120 días (36 % anual) |
+| C05 · Cargo por día | ~Q6.27 → ~Q10.44 (+Q4.17 al día) | Cuota 5: **Q0.40 → Q0.53 al día (+Q0.13)**; además, al pasar el día 30 se cobra **una sola vez Q25.00** de gasto de gestión |
+| C06 · «¿Cómo se calcula…?» | «Se multiplica el saldo pendiente por una tasa diaria» | «Se multiplica el **capital de cada cuota vencida** por la tasa anual de su etapa ÷ 360, por cada día; al pasar el día 30 se suma un gasto de Q25.00 por cuota» |
+| C02 · C03 · Fechas | «01/Apr/2026» | «01/abr/2026» (meses en español) |
+
 ## 3.5 Jerarquía del tablero gerencial (G04)
 
 ### 3.5.1 Qué se ve primero y por qué
@@ -571,16 +606,17 @@ El chat del Proyecto Final ocupa una **columna derecha plegable** (G04) y, en el
 
 # 4. E3 · Prototipo navegable en Figma
 
-Este capítulo presenta los dos prototipos navegables, cómo recorrer los tres flujos obligatorios, qué resuelven bien y qué cifras todavía no coinciden con el núcleo.
+Este capítulo presenta los tres prototipos navegables (asesor, panel gerencial y cliente), cómo recorrer los tres flujos obligatorios, qué resuelven bien y qué cifras todavía no coinciden con el núcleo.
 
 ## 4.1 Enlaces y acceso
 
-El equipo construyó dos prototipos en Figma. Los dos abren sin iniciar sesión (sección 13 del enunciado) y se recorren haciendo clic; no son imágenes sueltas.
+El equipo construyó tres prototipos en Figma. Los tres abren sin iniciar sesión (sección 13 del enunciado) y se recorren haciendo clic; no son imágenes sueltas.
 
 | Prototipo | Enlace | Qué contiene |
 |---|---|---|
 | **Móvil · asesora de crédito** (*Microcréditos App*) | [Abrir el prototipo móvil](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1) | Pantallas P01–P14: cartera de la asesora, detalle del crédito, plan, mora, registro de pago, pago sin señal y solicitud de crédito |
 | **Web · flujos y panel gerencial** (*Prototipo Microcréditos Web*, Figma Make) | [Abrir el prototipo web](https://www.figma.com/make/WHj2TK5IRg55X8JiaKXyvy/Prototipo-Microcr%25C3%25A9ditos-Web?code-node-id=0-6&p=f&fullscreen=1) | Inicio con tres flujos: *Solicitar crédito* y *Registrar pago* en vista móvil de 375 px, y el *Panel gerencial* de escritorio (Dashboard, Cartera, Clientes y Cierre diario) |
+| **Cliente · vista del usuario** (*Prototipo Cliente*, Figma Make) | [Abrir el prototipo de cliente](https://www.figma.com/make/3P7qsVBkFW6B9SShgQEBoz/Prototipo-Cliente?fullscreen=1&t=sokzjUmb0IMEfUqX-1&code-node-id=0-6) | Pantallas C01–C06 que ve el usuario del crédito: inicio, detalle, plan de cuotas, explicación del atraso, aviso de cambio de etapa y ayuda. No muestra el nombre del cliente, se dirige al usuario |
 
 ## 4.2 Cómo recorrerlos
 
@@ -602,9 +638,16 @@ El equipo construyó dos prototipos en Figma. Los dos abren sin iniciar sesión 
 | Flujo 2 · Registrar pago | *Registrar pago* → *María García López* → *Ver detalle de mora* / *Ver tabla* → *Registrar pago* → *Cuota regular* → *Ver desglose del pago* → *Aplicar pago ahora* | Buscar cliente → Crédito → Detalle de mora · Plan de amortización → Registrar pago → Confirmar pago (prelación) → Comprobante |
 | Flujo 3 · Panel gerencial | *Panel gerencial* → *Dashboard* → *Ver →* en un tramo → *Ver crédito*; pestañas *Cartera*, *Clientes* y *Cierre diario* | W01 Dashboard → créditos del tramo → crédito; W02 Cartera; W03 Clientes; Cierre diario |
 
+**Prototipo de cliente**
+
+| Recorrido | Pantallas |
+|---|---|
+| Inicio → *Ver detalle de mi crédito* → *Ver plan completo de cuotas* | C01 → C02 → C03 |
+| Inicio → *Entender mi atraso* → *Ver el aviso que recibiste* → *Tengo dudas — ir a Ayuda* | C01 → C04 → C05 → C06 |
+
 ## 4.3 Lo que los prototipos resuelven bien
 
-Recorrimos los dos prototipos completos el 23 de septiembre de 2026.
+Recorrimos los tres prototipos completos el 23 de septiembre de 2026.
 
 - **Captura del monto difícil de equivocar:** botones − y +, montos rápidos y el rango permitido siempre visible (móvil); control deslizante con límites Q1,000–Q25,000 (web). Responde al momento crítico MC-1.
 - **El plazo se elige con botones** (3 a 24 meses), sin teclado.
@@ -614,16 +657,17 @@ Recorrimos los dos prototipos completos el 23 de septiembre de 2026.
 - **Existe el tablero gerencial (W01)** con cartera por tramo, cartera en riesgo 23.4 % y espacio para el asistente, y el **desglose por tramo** lleva a los créditos de ese tramo (flujo 3).
 - **Existe el cierre diario** con verificación previa, congelamiento de cifras y protección contra duplicados («ya cerrado»), coherente con la idempotencia del núcleo.
 - **Flujo sin señal** con el pago en cola y sincronización manual (móvil, P14).
+- **La vista del cliente explica la mora sin tecnicismos** y avisa antes del cambio de etapa (C04 y C05), lo que responde al momento crítico MC-4 del E1. Su plan de cuotas (C03) coincide con el núcleo, incluida la cuota 12 de Q1,004.63, y la ayuda «?» está en el mismo lugar de todas sus pantallas.
 
 ## 4.4 Correspondencia con las pantallas y los flujos obligatorios
 
 | Requisito del E3 | Perfil / formato | Estado | Dónde | Pendiente |
 |---|---|---|---|---|
 | Solicitud de crédito con simulación del plan | Asesor · móvil | ✅ | P04 → P07 · web pasos 1 a 3 | — |
-| Detalle del crédito | Cliente/Asesor · móvil | ✅ | P08 · web *Crédito* | Mostrar lo exigible hoy cuando hay mora (tabla siguiente) |
+| Detalle del crédito | Cliente/Asesor · móvil | ✅ | P08 · web *Crédito* · cliente C01–C02 | Mostrar lo exigible hoy cuando hay mora (tabla siguiente) |
 | Registro de pago con desglose de la prelación | Asesor · móvil | ⚠️ | P11 → P13 · web *Confirmar pago* | Corregir los montos del desglose |
-| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ | P09 · web *Plan de amortización* | La nota ya está en la web; falta corregir la fila 12 y el centavo desde la cuota 8 |
-| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ | P10 · web *Detalle de mora* | Ambos usan tasas y base equivocadas |
+| Plan de amortización con la cuota 12 explicada | Cliente/Asesor · móvil | ⚠️ | P09 · web *Plan de amortización* · cliente C03 (correcto) | La nota ya está en la web; falta corregir la fila 12 y el centavo desde la cuota 8 |
+| Detalle de la mora con el caso M-3 | Cliente/Asesor · móvil | ❌ | P10 · web *Detalle de mora* · cliente C04 | Los tres calculan sobre el saldo o con tasas equivocadas |
 | Tablero gerencial | Gerencia · escritorio | ✅ | W01 (web) | Ajustes de la sección 3.4.5 |
 | Cierre diario / mensual | Gerencia · escritorio | ⚠️ | Web *Cierre diario* | Falta el cierre mensual (CU-13) |
 | Confirmación de desembolso | Encargado · móvil | ❌ | — | Construir a partir de la guía G02 |
@@ -634,7 +678,7 @@ Recorrimos los dos prototipos completos el 23 de septiembre de 2026.
 
 ## 4.5 Cifras que deben coincidir con el núcleo (sección 6.2)
 
-El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal la política de mora. Estas son las diferencias encontradas en los dos prototipos, con el valor correcto que debe mostrarse.
+El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal la política de mora. Estas son las diferencias encontradas en los prototipos del asesor y del panel, con el valor correcto que debe mostrarse.
 
 **Detalle de la mora (P10 y web)**
 
@@ -675,7 +719,7 @@ El enunciado resta 0.5 puntos por cifras inventadas y otros 0.5 por aplicar mal 
 | Cartera (web) | Pedro Alvarado (Q12,000 a 12 meses) con cuota Q1,004.62; Andrés Lima (Q5,000 a 12 meses) con Q485.50 | Q1,205.55 y Q502.31 al 3 % mensual |
 | Todas (web) | Fechas de 2024 | Septiembre de 2026 |
 
-Las instrucciones para aplicar estas correcciones en Figma Make, listas para copiar, están en el Anexo B.
+Las cifras a corregir del prototipo de cliente están en la sección 3.4.6. Las instrucciones para aplicar todas las correcciones en Figma Make, listas para copiar, están en el Anexo B.
 
 ---
 
@@ -914,7 +958,7 @@ El enunciado pide que **los cuatro integrantes evalúen por separado** y despué
 | Insumo | Estado | Contenido |
 |---|---|---|
 | Evaluación preliminar del prototipo móvil | Hecha (23/09) | 14 hallazgos de un evaluador, con apoyo de IA declarado en el capítulo 9 (H-01 a H-14) |
-| Revisión del prototipo web con medición | Hecha (23/09) | 8 hallazgos nuevos (H-15 a H-22). El contraste de cada texto se calculó con la fórmula de WCAG sobre sus colores reales y se midió el tamaño de cada control interactivo en 13 pantallas |
+| Revisión de los prototipos web y de cliente con medición | Hecha (23/09) | 11 hallazgos nuevos (H-15 a H-25). El contraste de cada texto se calculó con la fórmula de WCAG sobre sus colores reales y se midió el tamaño de cada control interactivo en 13 pantallas |
 | Evaluación independiente de los cuatro integrantes, cinco correcciones con antes/después y design review | **Pendiente del equipo** | Formularios en el Anexo C. Los resultados no se inventan: se registran cuando cada integrante haga su evaluación |
 
 Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético · 2 menor · 3 mayor · 4 catastrófico.
@@ -933,7 +977,7 @@ Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético ·
 | H-08 | Móvil · Solicitud enviada | El cliente cambia de Carlos Martínez a Juan Pablo Pérez | 4 · Consistencia | 3 | Mantener el cliente seleccionado |
 | H-09 | Móvil · Plan de amortización | La cuota 12 está resaltada pero sin explicación | 10 · Ayuda y documentación | 2 | Nota del centavo de ajuste (ya resuelto en el prototipo web) |
 | H-10 | Móvil · Mis Clientes | «Mora 1/2/3» no significa nada para el cliente | 2 · Correspondencia | 2 | «Más de 30 días de atraso» |
-| H-11 | Ambos · todas | La ayuda solo aparece en el inicio de sesión del móvil; el prototipo web no tiene ayuda | 10 · Ayuda / WCAG 3.2.6 | 2 | Ícono «?» en el mismo lugar de cada encabezado |
+| H-11 | Asesor y panel · todas | La ayuda solo aparece en el inicio de sesión del móvil y el prototipo web no tiene ayuda (el de cliente sí la tiene, ver C06) | 10 · Ayuda / WCAG 3.2.6 | 2 | Ícono «?» en el mismo lugar de cada encabezado |
 | H-12 | Móvil · Registrar pago | Los atajos «1 / 2 / 3 cuotas» no llenan el monto | 7 · Flexibilidad y eficiencia | 2 | Conectar cada atajo con su monto |
 | H-13 | Móvil · Pago aplicado | El comprobante no muestra el saldo restante (el web sí: «Nuevo saldo») | 1 · Visibilidad del estado | 2 | Agregar el saldo restante |
 | H-14 | Móvil · Detalle de mora y pago | Textos secundarios pequeños y en gris claro | 8 · Diseño estético / WCAG 1.4.3 | 2 | 14 px y contraste ≥ 4.5:1 |
@@ -945,6 +989,9 @@ Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético ·
 | H-20 | Web · Confirmar solicitud | El texto dice «autoriza el desembolso», pero el flujo termina en «Solicitud enviada · En revisión» | 2 · Correspondencia | 3 | Separar la solicitud (va al comité) del desembolso (después de aprobar) |
 | H-21 | Web · Pago y Cartera | Ana Lucía Morales aparece «Al día» y «31–60 d»; Pedro Alvarado tiene dos códigos de crédito | 4 · Consistencia | 3 | Un solo conjunto de datos de ejemplo |
 | H-22 | Web · Dashboard | «Ver →» en #CAD5E2 sobre blanco (1.49:1): la entrada al flujo 3 casi no se ve | 6 · Reconocer antes que recordar | 2 | Enlace visible («Ver créditos →») con contraste ≥ 4.5:1 |
+| H-23 | Cliente · Inicio y detalle | «4 de 12 cuotas pagadas» con una deuda de Q6,259.07, que es el saldo después de 5 cuotas | 4 · Consistencia | 3 | Q7,052.13 con 4 cuotas pagadas (sección 3.4.6) |
+| H-24 | Cliente · Entender mi atraso y Ayuda | Los cargos se calculan sobre el saldo pendiente (~Q313 y total Q2,322.24) y la ayuda lo explica así | 2 · Correspondencia | **4** | Capital de cada cuota vencida y tasa anual de su etapa: cargos Q47.73 y total Q2,056.97 |
+| H-25 | Cliente · Aviso | El cargo por día pasa de ~Q6.27 a ~Q10.44; no menciona el gasto de Q25.00 del día 31 | 5 · Prevención de errores | 3 | Q0.40 → Q0.53 al día y el gasto único de Q25.00 |
 
 ## 6.3 Auditoría WCAG 2.2 (criterios A/AA nuevos + 3.3.4)
 
@@ -955,7 +1002,7 @@ Resultados sobre el **prototipo web**, medidos el 23/09 en 13 pantallas: Inicio,
 | 2.4.11 Focus Not Obscured (Minimum) | AA | ✅ Cumple | Ninguna pantalla tiene elementos fijos o pegajosos (`position: fixed/sticky`) que puedan tapar el foco |
 | 2.5.7 Dragging Movements | AA | ✅ Cumple | El único control que admite arrastre es el deslizador del monto, y también responde a un clic en la barra; el plazo usa botones |
 | 2.5.8 Target Size (Minimum) | AA | ✅ Cumple | El control más pequeño mide 28 px (chips de Clientes); en móvil, 44 px. Recomendación: llevar a 48 × 48 px lo que se usa en campo (E4) |
-| 3.2.6 Consistent Help | A | ❌ No cumple | No hay ayuda en ninguna pantalla web (H-11) |
+| 3.2.6 Consistent Help | A | ⚠️ Parcial | ✅ Cliente: el botón «?» está en el mismo lugar del encabezado de todas las pantallas y lleva a Ayuda (C06). ❌ Panel y flujos web del asesor: no hay ayuda (H-11) |
 | 3.3.7 Redundant Entry | A | ✅ Cumple | El cliente se elige de una lista en el pago; la solicitud no vuelve a pedir datos ya capturados |
 | 3.3.8 Accessible Authentication (Minimum) | AA | ✅ Cumple en el móvil | P01 usa usuario y contraseña con opción de mostrarla y sin pruebas cognitivas; el prototipo web no tiene inicio de sesión |
 | 3.3.4 Error Prevention (Legal, Financial) | AA | ⚠️ Parcial | ✅ Solicitud: revisión en el paso 3 y casilla de aceptación. ✅ Pago: desglose y aviso antes de aplicar. ❌ Desembolso: la pantalla no existe todavía |
@@ -1263,7 +1310,8 @@ git show --stat <hash>
 | 20 | 23/09 | [`321eb61`](https://github.com/ItsRomero/Proyecto1_Analisis/commit/321eb610f9b4d11cd7bfe8fdad335b94d2beff0b) ¹ | Oliver Romero · IA declarada | Documentación | E2 | Galería de wireframes en orden P01–P14 → G01–G07 con los títulos de Figma | [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/README.md) · [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`P2-documento-entrega.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-entrega.md) · [`generar_documento_entrega.cpython-311.pyc`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/__pycache__/generar_documento_entrega.cpython-311.pyc) · [`fuente-documento-entrega.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/fuente-documento-entrega.md) · y 2 más | 7 arch. · +69 / −51 |
 | 21 | 23/09 | [`7be9254`](https://github.com/ItsRomero/Proyecto1_Analisis/commit/7be92541147c597dd0ecfa5129143948e8275dee) ¹ | Oliver Romero · IA declarada | Documentación | E1–E7 | Documento final: entrega y complementos unidos en el orden de los entregables | [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`P2-documento-final.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-final.md) · [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/README.md) · [`generar_complementos.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/generar_complementos.py) · [`generar_documento_final.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/generar_documento_final.py) | 5 arch. · +1440 / −1 |
 | 22 | 23/09 | [`e788d59`](https://github.com/ItsRomero/Proyecto1_Analisis/commit/e788d59afdafb754b13545fcbb71f0d4570cb48f) ¹ | Oliver Romero · IA declarada | Documentación | E2 | Skeletons y wireframes del panel gerencial web: W01 Dashboard, W02 Cartera y W03 Clientes | [`P2-panel-gerencial-web.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-panel-gerencial-web.md) · [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/README.md) · [`generar_wireframes_web.py`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/wireframes/generar_wireframes_web.py) | 9 arch. · +1559 |
-| 23 | 23/09 | *(este documento)* | Oliver Romero · IA declarada | Documentación | E1–E7 | **Documento final:** une la entrega, los complementos y el panel gerencial web; E3 y E5 actualizados con los dos prototipos, portada e índice | `P2-documento-final.md`, `generar_documento_final.py` | — |
+| 23 | 23/09 | [`bfdb3bc`](https://github.com/ItsRomero/Proyecto1_Analisis/commit/bfdb3bcb771300084c3df2ff96d0027226cf58a5) ¹ | Oliver Romero · IA declarada |  |  | docs(p2): correcciones de la revisión: E3 y E5 con los dos prototipos, portada, índice y reparto | [`P2-complementos.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-complementos.md) · [`P2-documento-entrega.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-entrega.md) · [`P2-documento-final.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/P2-documento-final.md) · [`README.md`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/README.md) · [`generar_documento_entrega.cpython-311.pyc`](https://github.com/ItsRomero/Proyecto1_Analisis/blob/main/docs/proyecto2/__pycache__/generar_documento_entrega.cpython-311.pyc) · y 11 más | 16 arch. · +1120 / −424 |
+| 24 | 23/09 | *(este documento)* | Oliver Romero · IA declarada | Documentación | E1–E7 | **Documento final:** une la entrega, los complementos y el panel gerencial web; E3 y E5 actualizados con los dos prototipos, portada e índice | `P2-documento-final.md`, `generar_documento_final.py` | — |
 
 > ¹ Commit de la rama `docs/proyecto2-ux`, publicado con el mismo hash e integrado a `main`; sus archivos se enlazan en `main`.
 
@@ -1279,7 +1327,7 @@ git show --stat <hash>
 | Evolución del núcleo | 21/09 | 1 – 4 | CP-01 a CP-04 implementados, de 206 a 260 pruebas |
 | Contratos y documentación técnica | 21/09 | 5 – 6 | ADR, UML, OpenAPI, informe SOLID y validación limpia (263 pruebas) |
 | Herramientas e integración | 22/09 | 7 – 11 | Comandos de prueba, documento de pruebas, PR #1 y README |
-| Experiencia de usuario y entrega | 23/09 | 12 – 23 | E1, E2, E4, wireframes, revisión E3/E5, historial y documento de entrega |
+| Experiencia de usuario y entrega | 23/09 | 12 – 24 | E1, E2, E4, wireframes, revisión E3/E5, historial y documento de entrega |
 
 ## 8.3 Qué faltaba documentar y cómo se resolvió
 
@@ -1316,7 +1364,7 @@ La tabla combina los roles del equipo con la evidencia del historial de Git. Los
 |---|---|---|---|---|
 | Christopher David Herrera Pérez | Implementación / Pruebas | Auditoría inicial, políticas de mora (CP-01), gasto de cobro (CP-02), CP-04 y comandos de prueba por tema | Commits 0, 1, 2, 3 y 7 | E6 |
 | Erwin Alberto Ramírez Racancoj | Pruebas / Trazabilidad | Contrato común de las políticas (LSP), regresión del P1, ADR-004, UML, contratos Zod/OpenAPI, validación limpia y README | Commits 4, 5, 6 y 11 | E6, E7 |
-| Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño / Documentación | Prototipos de Figma (móvil y web), documento de pruebas de la mora escalonada e informe de verificación SOLID | Prototipos enlazados en el capítulo 4; commits 8 y 9 | E3, E5, E6 |
+| Gabriela Elízabeth Noemí Aguilar Vásquez | Diseño / Documentación | Prototipos de Figma (asesor, panel web y cliente), documento de pruebas de la mora escalonada e informe de verificación SOLID | Prototipos enlazados en el capítulo 4; commits 8 y 9 | E3, E5, E6 |
 | Oliver Fernando Romero Esquite | Coordinación / Integración | Pull Request #1, investigación de usuario, arquitectura de información y wireframes, decisión móvil/web, informe SOLID según el Anexo D y documento de entrega | Commits 10 y 12 en adelante | E1, E2, E4, E7 |
 
 ## 9.2 Declaración de uso de herramientas de IA (sección 15)
@@ -1340,10 +1388,10 @@ Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe con un ajuste 
 | 2 | Tabla pantalla ↔ caso de uso completa y coherente con los puertos del P1 | ✅ | Sección 3.3, con las pantallas del prototipo web |
 | 3 | Siete pantallas obligatorias y tres flujos navegables | ⚠️ | Sección 4.4: existen el tablero, el cierre diario y los tres flujos; falta la confirmación de desembolso |
 | 4 | Plan de amortización con la cuota 12 de Q1,004.63 explicada | ⚠️ | La nota está en el prototipo web; falta corregir la fila 12 (Anexo B) |
-| 5 | Detalle de la mora con el caso M-3 | ❌ | Ambos prototipos usan tasas y base equivocadas; corrección exacta en el Anexo B |
+| 5 | Detalle de la mora con el caso M-3 | ❌ | Los prototipos calculan la mora sobre el saldo o con tasas equivocadas; corrección exacta en el Anexo B |
 | 6 | Tablero que distingue mora y riesgo con desglose por tramo | ✅ | W01 en el prototipo web; jerarquía en las secciones 3.4.5 y 3.5 |
 | 7 | Decisión móvil/web con pérdida de conexión, idempotencia y puerto Reloj | ✅ | Capítulo 5 y ADR-005 |
-| 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 22 hallazgos con evidencia (sección 6.2); faltan las cuatro evaluaciones individuales y las correcciones (Anexo C) |
+| 8 | ≥ 8 hallazgos con severidad y ≥ 5 correcciones con antes/después | ⚠️ | 25 hallazgos con evidencia (sección 6.2); faltan las cuatro evaluaciones individuales y las correcciones (Anexo C) |
 | 9 | Auditoría de los seis criterios nuevos de WCAG 2.2 y del 3.3.4 | ✅ | Sección 6.3, con mediciones en el prototipo web |
 | 10 | Design review: qué se aceptó y qué se rechazó | ❌ | Acta en el Anexo C, a llenar en la Sesión 9 |
 | 11 | `npm install && npm test` en limpio, con M-1 a M-5, coexistencia y suite del P1 | ✅ | 263 pruebas en 18 archivos |
@@ -1354,59 +1402,49 @@ Estado al 23 de septiembre de 2026. ✅ completo · ⚠️ existe con un ajuste 
 
 ---
 
-# Anexo A · Wireframes de baja fidelidad
+# Anexo A · Skeletons de baja fidelidad
 
-Cada pantalla aparece dos veces, a partir de la misma descripción: a la izquierda el **skeleton** (solo bloques) y a la derecha el **wireframe anotado** (textos, cifras del núcleo y notas numeradas). Primero van las 14 pantallas del prototipo móvil de Figma (P01–P14), después las 7 guías (G01–G07) y al final las tres pantallas de escritorio del panel gerencial web (W01–W03); en las pantallas de escritorio el skeleton va arriba y el anotado abajo. Las convenciones y el contenido de cada bloque están en las secciones 3.4.3 y 3.4.5.
+Skeleton de cada pantalla: solo bloques que indican dónde va cada elemento, sin textos ni cifras. Primero van las 14 pantallas del prototipo del asesor (P01–P14), después las 7 guías (G01–G07), las tres pantallas de escritorio del panel gerencial web (W01–W03) y las seis pantallas de la vista del cliente (C01–C06). El contenido de cada bloque está en las secciones 3.4.3, 3.4.5 y 3.4.6; los wireframes anotados están en el repositorio (`docs/proyecto2/wireframes/anotado/`).
 
 ![Mapa de navegación](wireframes/mapa-navegacion.svg)
 
-![P01 · Iniciar sesión · skeleton](wireframes/skeleton/P01-iniciar-sesion.svg) ![P01 · anotado](wireframes/anotado/P01-iniciar-sesion.svg)
+![P01 · Iniciar sesión](wireframes/skeleton/P01-iniciar-sesion.svg) ![P02 · Mis Clientes](wireframes/skeleton/P02-mis-clientes.svg)
 
-![P02 · Mis Clientes · skeleton](wireframes/skeleton/P02-mis-clientes.svg) ![P02 · anotado](wireframes/anotado/P02-mis-clientes.svg)
+![P03 · Mi perfil](wireframes/skeleton/P03-mi-perfil.svg) ![P04 · Nueva solicitud (paso 1)](wireframes/skeleton/P04-nueva-solicitud.svg)
 
-![P03 · Mi perfil · skeleton](wireframes/skeleton/P03-mi-perfil.svg) ![P03 · anotado](wireframes/anotado/P03-mi-perfil.svg)
+![P05 · Simulación de pago (paso 2)](wireframes/skeleton/P05-simulacion-pago.svg) ![P06 · Confirmar solicitud (paso 3)](wireframes/skeleton/P06-confirmar-solicitud.svg)
 
-![P04 · Nueva solicitud (paso 1) · skeleton](wireframes/skeleton/P04-nueva-solicitud.svg) ![P04 · anotado](wireframes/anotado/P04-nueva-solicitud.svg)
+![P07 · Solicitud enviada](wireframes/skeleton/P07-solicitud-enviada.svg) ![P08 · Detalle del crédito](wireframes/skeleton/P08-detalle-credito.svg)
 
-![P05 · Simulación de pago (paso 2) · skeleton](wireframes/skeleton/P05-simulacion-pago.svg) ![P05 · anotado](wireframes/anotado/P05-simulacion-pago.svg)
+![P09 · Plan de amortización](wireframes/skeleton/P09-plan-amortizacion.svg) ![P10 · Detalle de mora](wireframes/skeleton/P10-detalle-mora.svg)
 
-![P06 · Confirmar solicitud (paso 3) · skeleton](wireframes/skeleton/P06-confirmar-solicitud.svg) ![P06 · anotado](wireframes/anotado/P06-confirmar-solicitud.svg)
+![P11 · Registrar pago](wireframes/skeleton/P11-registrar-pago.svg) ![P12 · Confirmar pago](wireframes/skeleton/P12-confirmar-pago.svg)
 
-![P07 · Solicitud enviada · skeleton](wireframes/skeleton/P07-solicitud-enviada.svg) ![P07 · anotado](wireframes/anotado/P07-solicitud-enviada.svg)
+![P13 · Pago aplicado](wireframes/skeleton/P13-pago-aplicado.svg) ![P14 · Sin señal](wireframes/skeleton/P14-sin-senal.svg)
 
-![P08 · Detalle del crédito · skeleton](wireframes/skeleton/P08-detalle-credito.svg) ![P08 · anotado](wireframes/anotado/P08-detalle-credito.svg)
+![G01 · Alta de cliente (guía)](wireframes/skeleton/G01-alta-cliente.svg) ![G02 · Confirmación de desembolso (guía)](wireframes/skeleton/G02-confirmacion-desembolso.svg)
 
-![P09 · Plan de amortización · skeleton](wireframes/skeleton/P09-plan-amortizacion.svg) ![P09 · anotado](wireframes/anotado/P09-plan-amortizacion.svg)
+![G03 · Bandeja del comité (guía)](wireframes/skeleton/G03-bandeja-comite.svg)
 
-![P10 · Detalle de mora · skeleton](wireframes/skeleton/P10-detalle-mora.svg) ![P10 · anotado](wireframes/anotado/P10-detalle-mora.svg)
+![G04 · Tablero gerencial (guía)](wireframes/skeleton/G04-tablero-gerencial.svg)
 
-![P11 · Registrar pago · skeleton](wireframes/skeleton/P11-registrar-pago.svg) ![P11 · anotado](wireframes/anotado/P11-registrar-pago.svg)
+![G05 · Créditos de un tramo (guía)](wireframes/skeleton/G05-creditos-tramo.svg)
 
-![P12 · Confirmar pago · skeleton](wireframes/skeleton/P12-confirmar-pago.svg) ![P12 · anotado](wireframes/anotado/P12-confirmar-pago.svg)
+![G06 · Cierre diario / mensual (guía)](wireframes/skeleton/G06-cierre.svg)
 
-![P13 · Pago aplicado · skeleton](wireframes/skeleton/P13-pago-aplicado.svg) ![P13 · anotado](wireframes/anotado/P13-pago-aplicado.svg)
+![G07 · Tablero en teléfono (guía)](wireframes/skeleton/G07-tablero-movil.svg)
 
-![P14 · Sin señal · skeleton](wireframes/skeleton/P14-sin-senal.svg) ![P14 · anotado](wireframes/anotado/P14-sin-senal.svg)
+![W01 · Dashboard (web)](wireframes/skeleton/W01-dashboard.svg)
 
-![G01 · Alta de cliente (guía) · skeleton](wireframes/skeleton/G01-alta-cliente.svg) ![G01 · anotado](wireframes/anotado/G01-alta-cliente.svg)
+![W02 · Cartera (web)](wireframes/skeleton/W02-cartera.svg)
 
-![G02 · Confirmación de desembolso (guía) · skeleton](wireframes/skeleton/G02-confirmacion-desembolso.svg) ![G02 · anotado](wireframes/anotado/G02-confirmacion-desembolso.svg)
+![W03 · Clientes (web)](wireframes/skeleton/W03-clientes.svg)
 
-![G03 · Bandeja del comité (guía) · skeleton](wireframes/skeleton/G03-bandeja-comite.svg) ![G03 · anotado](wireframes/anotado/G03-bandeja-comite.svg)
+![C01 · Inicio · Mi crédito](wireframes/skeleton/C01-inicio.svg) ![C02 · Mi crédito en detalle](wireframes/skeleton/C02-detalle-credito.svg)
 
-![G04 · Tablero gerencial (guía) · skeleton](wireframes/skeleton/G04-tablero-gerencial.svg) ![G04 · anotado](wireframes/anotado/G04-tablero-gerencial.svg)
+![C03 · Plan de cuotas](wireframes/skeleton/C03-plan-cuotas.svg) ![C04 · Entendiendo tu atraso](wireframes/skeleton/C04-entender-atraso.svg)
 
-![G05 · Créditos de un tramo (guía) · skeleton](wireframes/skeleton/G05-creditos-tramo.svg) ![G05 · anotado](wireframes/anotado/G05-creditos-tramo.svg)
-
-![G06 · Cierre diario / mensual (guía) · skeleton](wireframes/skeleton/G06-cierre.svg) ![G06 · anotado](wireframes/anotado/G06-cierre.svg)
-
-![G07 · Tablero en teléfono (guía) · skeleton](wireframes/skeleton/G07-tablero-movil.svg) ![G07 · anotado](wireframes/anotado/G07-tablero-movil.svg)
-
-![W01 · Dashboard (web) · skeleton](wireframes/skeleton/W01-dashboard.svg) ![W01 · anotado](wireframes/anotado/W01-dashboard.svg)
-
-![W02 · Cartera (web) · skeleton](wireframes/skeleton/W02-cartera.svg) ![W02 · anotado](wireframes/anotado/W02-cartera.svg)
-
-![W03 · Clientes (web) · skeleton](wireframes/skeleton/W03-clientes.svg) ![W03 · anotado](wireframes/anotado/W03-clientes.svg)
+![C05 · Aviso de cambio de etapa](wireframes/skeleton/C05-aviso.svg) ![C06 · Ayuda](wireframes/skeleton/C06-ayuda.svg)
 
 ---
 
@@ -1414,7 +1452,7 @@ Cada pantalla aparece dos veces, a partir de la misma descripción: a la izquier
 
 ## B.1 Cómo usar este anexo
 
-El prototipo web se hizo con Figma Make, que acepta instrucciones escritas. El texto de la sección siguiente se puede pegar tal cual en el chat de Figma Make. Las correcciones del prototipo móvil se hacen a mano en Figma, con la tabla de la última sección. Todas las cifras salen del núcleo (sección 4.5).
+Los prototipos web y de cliente se hicieron con Figma Make, que acepta instrucciones escritas. Los textos de las dos secciones siguientes se pueden pegar tal cual en el chat de Figma Make de cada prototipo. Las correcciones del prototipo móvil se hacen a mano en Figma, con la tabla de la última sección. Todas las cifras salen del núcleo (sección 4.5).
 
 ## B.2 Instrucción para Figma Make (prototipo web)
 
@@ -1462,7 +1500,27 @@ Corrige el prototipo con estas reglas y cifras exactas. No cambies el diseño vi
 7. Panel gerencial: agrega "Cierre mensual" junto a "Cierre diario", con el mismo flujo de verificación y congelamiento.
 ```
 
-## B.3 Correcciones del prototipo móvil (a mano en Figma)
+## B.3 Instrucción para Figma Make (prototipo de cliente)
+
+```text
+Corrige estas cifras sin cambiar el diseño. Fecha de referencia: 12 de septiembre de 2026 (42 días de atraso de la cuota 5
+y 11 días de la cuota 6). El usuario tiene 4 de 12 cuotas pagadas.
+
+1. Inicio y "Mi crédito en detalle": deuda y capital pendiente Q7,052.13; pagado Q2,947.87 de Q10,000.00.
+2. "Entendiendo tu atraso":
+   - Etapas: 1–30 días (18 % anual), 31–60 días (24 %), 61–90 días (30 %), 91–120 días (36 %).
+   - Cargo de la cuota 5 (capital Q793.06): Q18.24. Cargo de la cuota 6 (capital Q816.85): Q4.49.
+   - Gasto de gestión de cobro de la cuota 5 (pasó el día 30): Q25.00, una sola vez.
+   - Cuotas atrasadas Q2,009.24 · Cargos por atraso Q47.73 · Total a pagar hoy Q2,056.97.
+3. "Aviso importante": el cargo por día de la cuota 5 pasa de Q0.40 a Q0.53 (+Q0.13 al día) y al pasar
+   el día 30 se cobró una sola vez un gasto de Q25.00.
+4. Ayuda, "¿Cómo se calcula lo que debo de más por atraso?": "Se multiplica el capital de cada cuota
+   vencida por la tasa anual de su etapa dividida entre 360, por cada día de atraso. Al pasar el día 30
+   se suma un gasto de Q25.00 por cuota."
+5. Fechas con meses en español: 01/abr/2026, 01/may/2026, etc.
+```
+
+## B.4 Correcciones del prototipo móvil (a mano en Figma)
 
 | Pantalla | Corrección |
 |---|---|
@@ -1480,7 +1538,7 @@ Corrige el prototipo con estas reglas y cifras exactas. No cambies el diseño vi
 
 ## C.1 Protocolo de la evaluación individual
 
-1. Cada integrante recorre **solo** los dos prototipos (sección 4.2), sin ver los hallazgos de los demás ni los del capítulo 6.
+1. Cada integrante recorre **solo** los tres prototipos (sección 4.2), sin ver los hallazgos de los demás ni los del capítulo 6.
 2. Registra cada problema en su formulario con la pantalla, la heurística, la severidad (0–4) y una **captura** como evidencia.
 3. El equipo consolida: los hallazgos repetidos se unen y se anota quién los encontró; la severidad final es el promedio redondeado.
 4. Se eligen al menos cinco hallazgos, se corrigen en Figma y se documenta el antes y el después.

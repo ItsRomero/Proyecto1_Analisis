@@ -146,11 +146,17 @@ secciones = [
 ]
 panel_md = ("### 3.4.5 Panel gerencial web (W01–W03)\n\n"
             "El prototipo web de Figma Make agrega las pantallas de escritorio del panel gerencial. Sus skeletons y wireframes "
-            "anotados se midieron del prototipo a 1440 px (script `wireframes/generar_wireframes_web.py`) y están en el Anexo A.\n\n"
+            "anotados se midieron del prototipo a 1440 px (script `wireframes/generar_wireframes_web.py`); los skeletons están en el Anexo A.\n\n"
             + w_tabla + "\n\n" + w_rel + "\n\n"
             + "\n\n".join(f"#### {n} {t}\n\n{c}" for n, t, c in secciones) + "\n\n")
 i = doc.index("\n## 3.5 ")
 doc = doc[:i] + "\n" + panel_md + doc[i + 1:]
+
+# Cap. 3: vista del cliente (C01–C06) como §3.4.6
+cli = open(os.path.join(AQUI, "e2-vista-cliente.md"), encoding="utf-8").read().split("\n", 1)[1].strip()
+cli = cli.replace("**Qué resuelve.**", "#### 3.4.6.1 Qué resuelve\n\n").replace("**Cifras a corregir**", "#### 3.4.6.2 Cifras a corregir\n\n")
+i = doc.index("\n## 3.5 ")
+doc = doc[:i] + "\n### 3.4.6 Vista del cliente (C01–C06)\n\n" + cli + "\n\n" + doc[i + 1:]
 
 # Cap. 5: ADR-005 antes de las referencias
 doc = doc.replace("\n## 5.6 Referencias", "\n" + adr_numerado(c_adr5, "5.6", 2) + "## 5.7 Referencias", 1)
@@ -180,18 +186,34 @@ doc = (doc[:j] + "\n\n## 8.4 Registros de decisiones de arquitectura (ADR)\n\n"
        "El proyecto tiene cinco; los dos del Proyecto 2 están completos en las secciones 5.6 (ADR-005) y 7.3 (ADR-004).\n\n"
        + c_adr_tabla + doc[j:])
 
-# Anexo A: skeleton y anotado lado a lado (hasta el Anexo B, que se conserva)
+# Anexo A: solo skeletons (hasta el Anexo B, que se conserva)
+from generar_documento_entrega import TITULOS
+TITULOS.update({"C01": "Inicio · Mi crédito", "C02": "Mi crédito en detalle", "C03": "Plan de cuotas",
+                "C04": "Entendiendo tu atraso", "C05": "Aviso de cambio de etapa", "C06": "Ayuda"})
+carpeta = os.path.join(AQUI, "wireframes", "skeleton")
+orden = {"P": 0, "G": 1, "W": 2, "C": 3}
+skel = sorted((f for f in os.listdir(carpeta) if f.endswith(".svg") and f[0] in orden and f[1:3].isdigit()),
+              key=lambda f: (orden[f[0]], f))
+escritorio = lambda f: f[0] == "W" or f[:3] in ("G03", "G04", "G05", "G06")
+lineas, par = [], []
+for f in skel:
+    img = f"![{f[:3]} · {TITULOS.get(f[:3], f[4:-4])}](wireframes/skeleton/{f})"
+    if escritorio(f):
+        if par: lineas.append(" ".join(par)); par = []
+        lineas.append(img)
+    else:
+        par.append(img)
+        if len(par) == 2: lineas.append(" ".join(par)); par = []
+if par: lineas.append(" ".join(par))
 a = doc.index("# Anexo A")
 b = doc.index("# Anexo B")
-doc = (doc[:a] + "# Anexo A · Wireframes de baja fidelidad\n\n"
-       "Cada pantalla aparece dos veces, a partir de la misma descripción: a la izquierda el **skeleton** (solo bloques) y a la "
-       "derecha el **wireframe anotado** (textos, cifras del núcleo y notas numeradas). Primero van las 14 pantallas del "
-       "prototipo móvil de Figma (P01–P14), después las 7 guías (G01–G07) y al final las tres pantallas de escritorio del "
-       "panel gerencial web (W01–W03); en las pantallas de escritorio el skeleton va arriba y el anotado abajo. Las convenciones y el "
-       "contenido de cada bloque están en las secciones 3.4.3 y 3.4.5.\n\n"
+doc = (doc[:a] + "# Anexo A · Skeletons de baja fidelidad\n\n"
+       "Skeleton de cada pantalla: solo bloques que indican dónde va cada elemento, sin textos ni cifras. Primero van las 14 "
+       "pantallas del prototipo del asesor (P01–P14), después las 7 guías (G01–G07), las tres pantallas de escritorio del panel "
+       "gerencial web (W01–W03) y las seis pantallas de la vista del cliente (C01–C06). El contenido de cada bloque está en las "
+       "secciones 3.4.3, 3.4.5 y 3.4.6; los wireframes anotados están en el repositorio (`docs/proyecto2/wireframes/anotado/`).\n\n"
        "![Mapa de navegación](wireframes/mapa-navegacion.svg)\n\n"
-       + c_galeria.replace("A la izquierda, el skeleton; a la derecha, el wireframe anotado de la misma pantalla.\n\n", "").rstrip()
-       + "\n\n---\n\n" + doc[b:])
+       + "\n\n".join(lineas) + "\n\n---\n\n" + doc[b:])
 
 doc = re.sub(r"\n{3,}", "\n\n", doc)
 aviso = "<!-- Archivo generado por generar_documento_final.py a partir de P2-documento-entrega.md y P2-complementos.md. No editar a mano. -->\n"

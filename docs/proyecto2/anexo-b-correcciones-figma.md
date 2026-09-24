@@ -2,7 +2,7 @@
 
 ## Cómo usar este anexo
 
-El prototipo web se hizo con Figma Make, que acepta instrucciones escritas. El texto de la sección siguiente se puede pegar tal cual en el chat de Figma Make. Las correcciones del prototipo móvil se hacen a mano en Figma, con la tabla de la última sección. Todas las cifras salen del núcleo (sección 4.5).
+Los prototipos web y de cliente se hicieron con Figma Make, que acepta instrucciones escritas. Los textos de las dos secciones siguientes se pueden pegar tal cual en el chat de Figma Make de cada prototipo. Las correcciones del prototipo móvil se hacen a mano en Figma, con la tabla de la última sección. Todas las cifras salen del núcleo (sección 4.5).
 
 ## Instrucción para Figma Make (prototipo web)
 
@@ -48,6 +48,26 @@ Corrige el prototipo con estas reglas y cifras exactas. No cambies el diseño vi
    - Un botón "?" de ayuda en el mismo lugar del encabezado de todas las pantallas.
 
 7. Panel gerencial: agrega "Cierre mensual" junto a "Cierre diario", con el mismo flujo de verificación y congelamiento.
+```
+
+## Instrucción para Figma Make (prototipo de cliente)
+
+```text
+Corrige estas cifras sin cambiar el diseño. Fecha de referencia: 12 de septiembre de 2026 (42 días de atraso de la cuota 5
+y 11 días de la cuota 6). El usuario tiene 4 de 12 cuotas pagadas.
+
+1. Inicio y "Mi crédito en detalle": deuda y capital pendiente Q7,052.13; pagado Q2,947.87 de Q10,000.00.
+2. "Entendiendo tu atraso":
+   - Etapas: 1–30 días (18 % anual), 31–60 días (24 %), 61–90 días (30 %), 91–120 días (36 %).
+   - Cargo de la cuota 5 (capital Q793.06): Q18.24. Cargo de la cuota 6 (capital Q816.85): Q4.49.
+   - Gasto de gestión de cobro de la cuota 5 (pasó el día 30): Q25.00, una sola vez.
+   - Cuotas atrasadas Q2,009.24 · Cargos por atraso Q47.73 · Total a pagar hoy Q2,056.97.
+3. "Aviso importante": el cargo por día de la cuota 5 pasa de Q0.40 a Q0.53 (+Q0.13 al día) y al pasar
+   el día 30 se cobró una sola vez un gasto de Q25.00.
+4. Ayuda, "¿Cómo se calcula lo que debo de más por atraso?": "Se multiplica el capital de cada cuota
+   vencida por la tasa anual de su etapa dividida entre 360, por cada día de atraso. Al pasar el día 30
+   se suma un gasto de Q25.00 por cuota."
+5. Fechas con meses en español: 01/abr/2026, 01/may/2026, etc.
 ```
 
 ## Correcciones del prototipo móvil (a mano en Figma)

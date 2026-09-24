@@ -7,7 +7,7 @@ El enunciado pide que **los cuatro integrantes evalúen por separado** y despué
 | Insumo | Estado | Contenido |
 |---|---|---|
 | Evaluación preliminar del prototipo móvil | Hecha (23/09) | 14 hallazgos de un evaluador, con apoyo de IA declarado en el capítulo 9 (H-01 a H-14) |
-| Revisión del prototipo web con medición | Hecha (23/09) | 8 hallazgos nuevos (H-15 a H-22). El contraste de cada texto se calculó con la fórmula de WCAG sobre sus colores reales y se midió el tamaño de cada control interactivo en 13 pantallas |
+| Revisión de los prototipos web y de cliente con medición | Hecha (23/09) | 11 hallazgos nuevos (H-15 a H-25). El contraste de cada texto se calculó con la fórmula de WCAG sobre sus colores reales y se midió el tamaño de cada control interactivo en 13 pantallas |
 | Evaluación independiente de los cuatro integrantes, cinco correcciones con antes/después y design review | **Pendiente del equipo** | Formularios en el Anexo C. Los resultados no se inventan: se registran cuando cada integrante haga su evaluación |
 
 Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético · 2 menor · 3 mayor · 4 catastrófico.
@@ -26,7 +26,7 @@ Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético ·
 | H-08 | Móvil · Solicitud enviada | El cliente cambia de Carlos Martínez a Juan Pablo Pérez | 4 · Consistencia | 3 | Mantener el cliente seleccionado |
 | H-09 | Móvil · Plan de amortización | La cuota 12 está resaltada pero sin explicación | 10 · Ayuda y documentación | 2 | Nota del centavo de ajuste (ya resuelto en el prototipo web) |
 | H-10 | Móvil · Mis Clientes | «Mora 1/2/3» no significa nada para el cliente | 2 · Correspondencia | 2 | «Más de 30 días de atraso» |
-| H-11 | Ambos · todas | La ayuda solo aparece en el inicio de sesión del móvil; el prototipo web no tiene ayuda | 10 · Ayuda / WCAG 3.2.6 | 2 | Ícono «?» en el mismo lugar de cada encabezado |
+| H-11 | Asesor y panel · todas | La ayuda solo aparece en el inicio de sesión del móvil y el prototipo web no tiene ayuda (el de cliente sí la tiene, ver C06) | 10 · Ayuda / WCAG 3.2.6 | 2 | Ícono «?» en el mismo lugar de cada encabezado |
 | H-12 | Móvil · Registrar pago | Los atajos «1 / 2 / 3 cuotas» no llenan el monto | 7 · Flexibilidad y eficiencia | 2 | Conectar cada atajo con su monto |
 | H-13 | Móvil · Pago aplicado | El comprobante no muestra el saldo restante (el web sí: «Nuevo saldo») | 1 · Visibilidad del estado | 2 | Agregar el saldo restante |
 | H-14 | Móvil · Detalle de mora y pago | Textos secundarios pequeños y en gris claro | 8 · Diseño estético / WCAG 1.4.3 | 2 | 14 px y contraste ≥ 4.5:1 |
@@ -38,6 +38,9 @@ Escala de severidad (Anexo C del enunciado): 0 no es problema · 1 cosmético ·
 | H-20 | Web · Confirmar solicitud | El texto dice «autoriza el desembolso», pero el flujo termina en «Solicitud enviada · En revisión» | 2 · Correspondencia | 3 | Separar la solicitud (va al comité) del desembolso (después de aprobar) |
 | H-21 | Web · Pago y Cartera | Ana Lucía Morales aparece «Al día» y «31–60 d»; Pedro Alvarado tiene dos códigos de crédito | 4 · Consistencia | 3 | Un solo conjunto de datos de ejemplo |
 | H-22 | Web · Dashboard | «Ver →» en #CAD5E2 sobre blanco (1.49:1): la entrada al flujo 3 casi no se ve | 6 · Reconocer antes que recordar | 2 | Enlace visible («Ver créditos →») con contraste ≥ 4.5:1 |
+| H-23 | Cliente · Inicio y detalle | «4 de 12 cuotas pagadas» con una deuda de Q6,259.07, que es el saldo después de 5 cuotas | 4 · Consistencia | 3 | Q7,052.13 con 4 cuotas pagadas (sección 3.4.6) |
+| H-24 | Cliente · Entender mi atraso y Ayuda | Los cargos se calculan sobre el saldo pendiente (~Q313 y total Q2,322.24) y la ayuda lo explica así | 2 · Correspondencia | **4** | Capital de cada cuota vencida y tasa anual de su etapa: cargos Q47.73 y total Q2,056.97 |
+| H-25 | Cliente · Aviso | El cargo por día pasa de ~Q6.27 a ~Q10.44; no menciona el gasto de Q25.00 del día 31 | 5 · Prevención de errores | 3 | Q0.40 → Q0.53 al día y el gasto único de Q25.00 |
 
 ## Auditoría WCAG 2.2 (criterios A/AA nuevos + 3.3.4)
 
@@ -48,7 +51,7 @@ Resultados sobre el **prototipo web**, medidos el 23/09 en 13 pantallas: Inicio,
 | 2.4.11 Focus Not Obscured (Minimum) | AA | ✅ Cumple | Ninguna pantalla tiene elementos fijos o pegajosos (`position: fixed/sticky`) que puedan tapar el foco |
 | 2.5.7 Dragging Movements | AA | ✅ Cumple | El único control que admite arrastre es el deslizador del monto, y también responde a un clic en la barra; el plazo usa botones |
 | 2.5.8 Target Size (Minimum) | AA | ✅ Cumple | El control más pequeño mide 28 px (chips de Clientes); en móvil, 44 px. Recomendación: llevar a 48 × 48 px lo que se usa en campo (E4) |
-| 3.2.6 Consistent Help | A | ❌ No cumple | No hay ayuda en ninguna pantalla web (H-11) |
+| 3.2.6 Consistent Help | A | ⚠️ Parcial | ✅ Cliente: el botón «?» está en el mismo lugar del encabezado de todas las pantallas y lleva a Ayuda (C06). ❌ Panel y flujos web del asesor: no hay ayuda (H-11) |
 | 3.3.7 Redundant Entry | A | ✅ Cumple | El cliente se elige de una lista en el pago; la solicitud no vuelve a pedir datos ya capturados |
 | 3.3.8 Accessible Authentication (Minimum) | AA | ✅ Cumple en el móvil | P01 usa usuario y contraseña con opción de mostrarla y sin pruebas cognitivas; el prototipo web no tiene inicio de sesión |
 | 3.3.4 Error Prevention (Legal, Financial) | AA | ⚠️ Parcial | ✅ Solicitud: revisión en el paso 3 y casilla de aceptación. ✅ Pago: desglose y aviso antes de aplicar. ❌ Desembolso: la pantalla no existe todavía |
