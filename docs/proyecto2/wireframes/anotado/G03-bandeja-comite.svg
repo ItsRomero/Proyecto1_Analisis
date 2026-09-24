@@ -1,0 +1,51 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1340' height='888' viewBox='0 0 1340 888'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>G03 · Bandeja del comité</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#a33'>Escritorio 1280×760 · wireframe anotado · GUÍA: pantalla por construir en Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='1280' height='760' rx='18' fill='#fbfbfb' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='1280' height='760' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='1280.0' height='56.0' rx='0' fill='#3a3a3a'/>
+<text x='20.0' y='35.0' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold' fill='#ffffff' text-anchor='start'>Crédito Vecino</text>
+<text x='210.0' y='35.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#ffffff' text-anchor='start'>Tablero</text>
+<text x='380.0' y='35.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='start'>Bandeja del comité</text>
+<rect x='380.0' y='48.0' width='110.0' height='3.0' rx='1' fill='#ffffff'/>
+<text x='550.0' y='35.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#ffffff' text-anchor='start'>Cierres</text>
+<text x='720.0' y='35.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='normal' fill='#ffffff' text-anchor='start'>Créditos</text>
+<circle cx='1246.0' cy='28.0' r='16' fill='#9a9a9a'/>
+<text x='1246.0' y='33.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>AM</text>
+<text x='20.0' y='92.0' font-family='Helvetica, Arial, sans-serif' font-size='18' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Solicitudes por decidir (3)</text>
+<rect x='20.0' y='110.0' width='420.0' height='60.0' rx='12' fill='#ffffff' stroke='#1f1f1f' stroke-width='2'/>
+<text x='36.0' y='136.0' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Carlos Martínez Ixcot</text>
+<text x='36.0' y='156.0' font-family='Helvetica, Arial, sans-serif' font-size='11.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Q5,000.00 · 12 meses · En evaluación</text>
+<rect x='20.0' y='182.0' width='420.0' height='60.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1'/>
+<text x='36.0' y='208.0' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Juan Pablo Pérez Xol</text>
+<text x='36.0' y='228.0' font-family='Helvetica, Arial, sans-serif' font-size='11.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Q10,000.00 · 12 meses · Solicitado</text>
+<rect x='20.0' y='254.0' width='420.0' height='60.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1'/>
+<text x='36.0' y='280.0' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#1f1f1f' text-anchor='start'>María García Oxlaj</text>
+<text x='36.0' y='300.0' font-family='Helvetica, Arial, sans-serif' font-size='11.5' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Q3,000.00 · 6 meses · Solicitado</text>
+<rect x='460.0' y='110.0' width='800.0' height='620.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<text x='480.0' y='142.0' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Carlos Martínez Ixcot · Q5,000.00 · 12 meses · cuota Q502.31</text>
+<rect x='480.0' y='160.0' width='370.0' height='220.0' rx='10' fill='#f4f4f4' stroke='#bdbdbd' stroke-width='1.2'/>
+<text x='665.0' y='274.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='middle'>Datos del cliente y del negocio</text>
+<rect x='870.0' y='160.0' width='370.0' height='220.0' rx='10' fill='#f4f4f4' stroke='#bdbdbd' stroke-width='1.2'/>
+<text x='1055.0' y='274.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='middle'>Evaluación: criterios y autor</text>
+<rect x='480.0' y='396.0' width='760.0' height='170.0' rx='10' fill='#f4f4f4' stroke='#bdbdbd' stroke-width='1.2'/>
+<text x='860.0' y='485.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='middle'>Plan simulado (P05, cifras del núcleo)</text>
+<rect x='480.0' y='586.0' width='760.0' height='50.0' rx='10' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<text x='496.0' y='616.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Motivo de la decisión (obligatorio si se rechaza)</text>
+<rect x='480.0' y='656.0' width='240.0' height='52.0' rx='12' fill='#3a3a3a'/>
+<text x='600.0' y='688.0' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#ffffff' text-anchor='middle'>Aprobar</text>
+<rect x='740.0' y='656.0' width='240.0' height='52.0' rx='12' fill='#ffffff' stroke='#bdbdbd' stroke-width='1.2'/>
+<text x='860.0' y='688.0' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>Rechazar</text>
+</g>
+<line x1='1276' y1='140.0' x2='1286' y2='140.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='140.0' r='10' fill='#1f1f1f'/>
+<text x='1296' y='144.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<line x1='1276' y1='610.0' x2='1286' y2='610.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='1296' cy='610.0' r='10' fill='#1f1f1f'/>
+<text x='1296' y='614.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+</g>
+<text x='20' y='844' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>1.</tspan> Lista a la izquierda y detalle a la derecha: se decide sin perder la cola. Usa EvaluarCredito + DecidirSolicitud (CU-03/04/05).</text>
+<text x='20' y='860' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>2.</tspan> Motivo obligatorio al rechazar; queda en el historial del crédito (INV-15).</text>
+</svg>

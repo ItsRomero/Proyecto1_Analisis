@@ -8,7 +8,7 @@ Se documenta cada caso de [politica-mora.test.ts](../../tests/politica-mora.test
 
 **Cómo interpretar los resultados:** «salida esperada» es el valor que debe producir el sistema; «criterio de aprobación» indica qué comparar. Los valores calculados como referencia no implican que exista una aserción automatizada para cada campo. La sección 10 registra la ejecución realizada y sus límites.
 
-Fuentes de las reglas: [configuración de políticas](../../src/dominio/politica-mora/configuracion-politica.ts), [política escalonada](../../src/dominio/politica-mora/politica-escalonada.ts), [calculadora](../../src/dominio/calculadora-mora.ts) y [evolución del núcleo](01-evolucion-nucleo.md).
+Fuentes de las reglas: [configuración de políticas](../../src/dominio/politica-mora/configuracion-politica.ts), [política escalonada](../../src/dominio/politica-mora/politica-escalonada.ts), [calculadora](../../src/dominio/calculadora-mora.ts) y [evolución del núcleo](e6-02-evolucion-nucleo.md).
 
 ## 2. Datos y reglas comunes
 

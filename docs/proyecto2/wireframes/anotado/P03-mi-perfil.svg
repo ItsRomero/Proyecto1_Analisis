@@ -1,0 +1,71 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='936' viewBox='0 0 420 936'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>P03 · Mi perfil</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#777'>Móvil 360×760 · wireframe anotado · pantalla del prototipo de Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='360' height='760' rx='18' fill='#fbfbfb' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='360' height='760' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='360.0' height='28.0' rx='10' fill='#3a3a3a'/>
+<text x='16.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='start'>9:41</text>
+<text x='344.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#ffffff' text-anchor='end'>▮▮ ◠ ▭</text>
+<rect x='0.0' y='28.0' width='360.0' height='56.0' rx='10' fill='#3a3a3a'/>
+<text x='20.0' y='62.0' font-family='Helvetica, Arial, sans-serif' font-size='22' font-weight='bold' fill='#ffffff' text-anchor='start'>‹</text>
+<text x='48.0' y='62.0' font-family='Helvetica, Arial, sans-serif' font-size='19' font-weight='bold' fill='#ffffff' text-anchor='start'>Mi perfil</text>
+<rect x='12.0' y='96.0' width='336.0' height='120.0' rx='12' fill='#3a3a3a'/>
+<rect x='26.0' y='110.0' width='80.0' height='92.0' rx='8' fill='#9a9a9a'/>
+<text x='120.0' y='136.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#d0d0d0' text-anchor='start'>ASESOR DE CRÉDITO</text>
+<text x='120.0' y='156.0' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#ffffff' text-anchor='start'>Miguel Ángel Ajú Toc</text>
+<text x='120.0' y='188.0' font-family='Courier New, monospace' font-size='18' font-weight='bold' fill='#ffffff' text-anchor='start'>ASR-0247</text>
+<rect x='12.0' y='228.0' width='336.0' height='230.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<text x='26.0' y='253.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#6b6b6b' text-anchor='start'>ESTADO OPERATIVO</text>
+<circle cx='38.0' cy='286.0' r='11' fill='#ececec'/>
+<text x='38.0' y='290.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='middle'>◎</text>
+<text x='58.0' y='290.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Zona Chimaltenango Sur</text>
+<text x='334.0' y='290.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='end'>Chimaltenango</text>
+<rect x='26.0' y='306.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<circle cx='38.0' cy='330.0' r='11' fill='#ececec'/>
+<text x='38.0' y='334.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='middle'>◷</text>
+<text x='58.0' y='334.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Ruta 3 · Patzicía / Zaragoza</text>
+<rect x='26.0' y='350.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<circle cx='38.0' cy='374.0' r='11' fill='#ececec'/>
+<text x='38.0' y='378.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='middle'>♙</text>
+<text x='58.0' y='378.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Cartera asignada</text>
+<text x='334.0' y='378.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='end'>6 clientes</text>
+<rect x='26.0' y='394.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<circle cx='38.0' cy='418.0' r='11' fill='#ececec'/>
+<text x='38.0' y='422.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='middle'>↻</text>
+<text x='58.0' y='422.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Señal débil · 1 registro pendiente</text>
+<rect x='12.0' y='468.0' width='336.0' height='92.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<rect x='26.0' y='482.0' width='97.3' height='56.0' rx='8' fill='#f4f4f4'/>
+<text x='74.7' y='502.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#6b6b6b' text-anchor='middle'>Total</text>
+<text x='74.7' y='524.0' font-family='Courier New, monospace' font-size='12.5' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>6</text>
+<rect x='131.3' y='482.0' width='97.3' height='56.0' rx='8' fill='#f4f4f4'/>
+<text x='180.0' y='502.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#6b6b6b' text-anchor='middle'>Al día</text>
+<text x='180.0' y='524.0' font-family='Courier New, monospace' font-size='12.5' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>2</text>
+<rect x='236.7' y='482.0' width='97.3' height='56.0' rx='8' fill='#3a3a3a'/>
+<text x='285.3' y='502.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#dddddd' text-anchor='middle'>En mora</text>
+<text x='285.3' y='524.0' font-family='Courier New, monospace' font-size='12.5' font-weight='bold' fill='#ffffff' text-anchor='middle'>4</text>
+<rect x='12.0' y='570.0' width='336.0' height='142.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<text x='26.0' y='595.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#6b6b6b' text-anchor='start'>CUENTA Y SESIÓN</text>
+<circle cx='38.0' cy='628.0' r='11' fill='#ececec'/>
+<text x='38.0' y='632.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='middle'>🔒</text>
+<text x='58.0' y='632.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Cambiar contraseña</text>
+<text x='334.0' y='632.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='bold' fill='#1f1f1f' text-anchor='end'>›</text>
+<rect x='26.0' y='648.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<circle cx='38.0' cy='672.0' r='11' fill='#ececec'/>
+<text x='38.0' y='676.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#1f1f1f' text-anchor='middle'>⇥</text>
+<text x='58.0' y='676.0' font-family='Helvetica, Arial, sans-serif' font-size='12' font-weight='normal' fill='#1f1f1f' text-anchor='start'>Cerrar sesión</text>
+</g>
+<line x1='356' y1='428.0' x2='366' y2='428.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='428.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='432.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<line x1='356' y1='156.0' x2='366' y2='156.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='156.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='160.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+</g>
+<text x='20' y='844' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>1.</tspan> Estado de sincronización visible: &#x27;última sincronización</text>
+<text x='34' y='860' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>hace 18 min · 1 registro pendiente&#x27; (Nielsen 1).</text>
+<text x='20' y='876' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>2.</tspan> Pantalla de soporte de sesión: no corresponde a un caso</text>
+<text x='34' y='892' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>de uso del P1. Se justifica como soporte (estado de</text>
+<text x='34' y='908' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>sincronización) o se retira del prototipo.</text>
+</svg>

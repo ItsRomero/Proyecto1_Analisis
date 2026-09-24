@@ -2,7 +2,7 @@
 
 ## Alcance y correspondencia
 
-Se conserva el núcleo TypeScript estricto del monolito modular hexagonal, `Dinero`, la prelación y las 206 pruebas P1. No se implementan servidor, persistencia ni UI. La base está en [auditoría](00-auditoria-inicial.md) y los resultados en [validación](03-validacion-final.md).
+Se conserva el núcleo TypeScript estricto del monolito modular hexagonal, `Dinero`, la prelación y las 206 pruebas P1. No se implementan servidor, persistencia ni UI. La base está en [auditoría](e6-01-auditoria-inicial.md) y los resultados en [validación](e6-04-validacion-final.md).
 
 | Requisito | Implementación y evidencia |
 |---|---|
@@ -13,7 +13,7 @@ Se conserva el núcleo TypeScript estricto del monolito modular hexagonal, `Dine
 | CP-04.2 | `DevengoInteres`; `devengo-interes.test.ts` |
 | CP-04.3 | `calcularCarteraPorTramo`; `cartera-por-tramo.test.ts` |
 
-El documento del encargo enumera CP-03 pero no contiene una sección normativa separada para él. Aquí se usa ese identificador para trazar coexistencia y sustituibilidad ya exigidas, sin inventar otra funcionalidad.
+CP-03 corresponde a la sección 7.6 del enunciado, «Coexistencia de políticas»: los créditos otorgados antes del 1 de octubre de 2026 conservan la política plana del 24 % (CV-2026-0100 → Q21.77 a 45 días) y los otorgados desde esa fecha usan la escalonada (CV-2026-0410 → Q18.14), en el mismo cierre y sin cambiar el motor.
 
 ## Selección, fórmula y redondeo
 

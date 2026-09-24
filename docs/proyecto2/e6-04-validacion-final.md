@@ -35,7 +35,7 @@ El archivo PEM temporal contiene certificados públicos del almacén de confianz
 | OpenAPI | YAML parseable, referencias locales resueltas, 14 operaciones conservadas y nuevos objetos comparados estructuralmente con Zod |
 | RFC 9457 / ErrorApi | Contrato P1 y pruebas originales conservados |
 | Diff de dominio | 10 archivos nuevos, 2 modificados, 381 líneas añadidas, 21 eliminadas, **360 netas** |
-| Git | `main` y `entrega-p1` siguen en la base; commits locales por fase, sin push, PR ni merge |
+| Git | La rama `feat/proyecto-2-evolucion-nucleo` se integró a `main` con el PR #1 (merge `183dc71`). La etiqueta `entrega-p1` debe publicarse en GitHub con `git push origin entrega-p1` para que la comparación sea reproducible desde el remoto |
 
 La equivalencia Zod/OpenAPI comprueba estructura, obligatoriedad, patrones y restricciones relevantes de los objetos nuevos. No equivale a ejecutar un validador externo exhaustivo de toda la especificación OpenAPI ni a probar un servidor inexistente.
 
@@ -59,7 +59,7 @@ La equivalencia Zod/OpenAPI comprueba estructura, obligatoriedad, patrones y res
 | CP-04.3 | `cartera-por-tramo.test.ts`: 7.00%, 21.75%, 6.06% y bajas visibles |
 | Contratos P2 | `contratos-p2.test.ts`: serialización real y campos opcionales compatibles |
 
-CP-03 no tiene una sección normativa independiente en el documento recibido; la matriz lo vincula explícitamente a coexistencia y sustituibilidad ya exigidas, sin atribuir una funcionalidad adicional inventada.
+CP-03 es la coexistencia de políticas de la sección 7.6 del enunciado (Q21.77 plana frente a Q18.14 escalonada para la misma cuota a 45 días); se verifica en `politica-mora.test.ts` y `regresion-p1.test.ts`.
 
 ## Registro por fases
 
@@ -87,10 +87,10 @@ Los únicos fallos de compilación intermedios afectaron inferencias de tipos en
 
 ## Pendiente fuera del repositorio
 
-Requieren trabajo humano, Figma o datos reales del equipo; no están completados:
+Estado actualizado el 2026-09-23. Ya están documentados en el repositorio, con validación de campo pendiente: personas y journey map fundamentados en fuentes documentadas ([E1](e1-investigacion-usuario.md)), mapa de navegación, tabla pantalla ↔ caso de uso y wireframes de baja fidelidad ([E2](e2-arquitectura-informacion.md)) y la decisión móvil/web ([E4](e4-decision-movil-web.md)). Siguen pendientes y requieren trabajo del equipo:
 
-- Entrevistas, observación y fuentes de investigación de usuarios; personas y journey map basados en investigación real.
-- Wireframes, mockups, prototipo navegable, enlaces Figma y capturas de antes/después.
+- Aplicar los instrumentos de entrevista y observación y actualizar el estado de validación de cada rasgo de las personas.
+- Completar el prototipo de Figma (E3, [enlace](https://www.figma.com/proto/jozM3QI8ZJ6pywdCoO5OVo/Microcr%C3%A9ditos-App?node-id=0-1&t=PJlTVLC3ASu31ttw-1)): tablero gerencial, cierre, confirmación de desembolso y corrección de las cifras del detalle de la mora (ver `P2-documento-entrega.md` §6). Capturas de antes y después.
 - Implementación de pantallas React/Tailwind, excluida de este encargo del núcleo.
 - Evaluación independiente de los cuatro integrantes, ocho hallazgos Nielsen sobre un prototipo real y auditoría visual WCAG de Figma.
 - Design review de la Sesión 9, decisiones de pares, nombres/reparto de trabajo y atribuciones verificadas del equipo.
