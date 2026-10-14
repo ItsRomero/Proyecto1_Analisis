@@ -1,0 +1,5 @@
+/* Soporte de ingreso: centrado y salto de línea según el ancho disponible. */
+.usuario .usuario-login-support{width:100%;max-width:100%;min-width:0;text-align:center;white-space:normal;color:var(--label);font-family:Inter,Arial,sans-serif;font-size:12px;line-height:19.5px}
+.usuario .usuario-login-support p{width:100%;max-width:100%;margin:0;white-space:normal;overflow-wrap:break-word}
+.usuario .usuario-login-support strong{display:inline-block;white-space:nowrap;color:var(--ink);font-weight:600}
+.usuario .usuario-login-support .usuario-login-support__version{margin-top:19.5px}

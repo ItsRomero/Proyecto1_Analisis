@@ -1,0 +1,2091 @@
+[
+  {
+    "id": "11:196",
+    "name": "Prioridad",
+    "width": 403,
+    "height": 874,
+    "links": [
+      {
+        "id": "11:229",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "17:3391",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "11:238",
+        "name": "Container:margin",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "17:4042",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "11:244",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:393",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "11:251",
+        "name": "ClientCard",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:591",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:208",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:873",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "11:390",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:376",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-prioridad-11-196.html"
+  },
+  {
+    "id": "11:393",
+    "name": "Nombre A-Z",
+    "width": 403,
+    "height": 875,
+    "links": [
+      {
+        "id": "11:426",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "17:3391",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "11:438",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:232",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:873",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:240",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:376",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-nombre-a-z-11-393.html"
+  },
+  {
+    "id": "11:591",
+    "name": "Detalle del crédito",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "11:617",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "11:716",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1309",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "11:723",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:741",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "11:732",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1040",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-detalle-del-credito-11-591.html"
+  },
+  {
+    "id": "12:741",
+    "name": "Plan de amortización",
+    "width": 403,
+    "height": 872,
+    "links": [
+      {
+        "id": "12:767",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:591",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-plan-de-amortizacion-12-741.html"
+  },
+  {
+    "id": "12:1040",
+    "name": "Detalle de mora",
+    "width": 403,
+    "height": 1296,
+    "links": [
+      {
+        "id": "12:1066",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:591",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1304",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1309",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-detalle-de-mora-12-1040.html"
+  },
+  {
+    "id": "12:1309",
+    "name": "Registrar pago",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "12:1335",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:591",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1357",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1397",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1364",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1539",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1371",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1681",
+            "navigation": "NAVIGATE"
+          },
+          {
+            "type": "NODE",
+            "destinationId": "85:1681",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:2545",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1388",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-12-1309.html"
+  },
+  {
+    "id": "12:1388",
+    "name": "Registrar pago",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "12:1414",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:591",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1436",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1397",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1443",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1539",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1450",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1681",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1527",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1534",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-12-1388.html"
+  },
+  {
+    "id": "12:1534",
+    "name": "Confirmación",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "12:1560",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1309",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1628",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1646",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1636",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:2083",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1641",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1388",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-confirmacion-12-1534.html"
+  },
+  {
+    "id": "12:1646",
+    "name": "Sin señal",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "12:1740",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1534",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1749",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:1760",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "12:1754",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "12:1388",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-sin-senal-12-1646.html"
+  },
+  {
+    "id": "15:1760",
+    "name": "Sin señal guardado 1",
+    "width": 403,
+    "height": 932,
+    "links": [
+      {
+        "id": "15:1867",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:1877",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-sin-senal-guardado-1-15-1760.html"
+  },
+  {
+    "id": "15:1877",
+    "name": "Sin señal guardado 2",
+    "width": 403,
+    "height": 932,
+    "links": [
+      {
+        "id": "15:1985",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:1996",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-sin-senal-guardado-2-15-1877.html"
+  },
+  {
+    "id": "15:1996",
+    "name": "Sin señal guardado 3",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "15:2075",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:2083",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "15:2078",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-sin-senal-guardado-3-15-1996.html"
+  },
+  {
+    "id": "15:2083",
+    "name": "Pago aplicado",
+    "width": 403,
+    "height": 958,
+    "links": [
+      {
+        "id": "15:2209",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-pago-aplicado-15-2083.html"
+  },
+  {
+    "id": "15:2405",
+    "name": "Solicitar crédito 2",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "15:2431",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "15:2694",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:725",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "15:2697",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:2899",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-solicitar-credito-2-15-2405.html"
+  },
+  {
+    "id": "15:2899",
+    "name": "Solicitar crédito 3",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "15:2925",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:2405",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "15:3010",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:3021",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "15:3015",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-solicitar-credito-3-15-2899.html"
+  },
+  {
+    "id": "15:3021",
+    "name": "Solicitar crédito 4",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "15:3101",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-solicitar-credito-4-15-3021.html"
+  },
+  {
+    "id": "17:3107",
+    "name": "Inicio",
+    "width": 403,
+    "height": 918,
+    "links": [
+      {
+        "id": "17:3168",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-inicio-17-3107.html"
+  },
+  {
+    "id": "17:3391",
+    "name": "User",
+    "width": 403,
+    "height": 953,
+    "links": [
+      {
+        "id": "17:3417",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "17:3578",
+        "name": "Row",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "17:3107",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-user-17-3391.html"
+  },
+  {
+    "id": "17:4042",
+    "name": "Búsqueda",
+    "width": 403,
+    "height": 873,
+    "links": [
+      {
+        "id": "17:4075",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "17:3391",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "17:4084",
+        "name": "Container:margin",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-busqueda-17-4042.html"
+  },
+  {
+    "id": "85:376",
+    "name": "Solicitar crédito 0",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:402",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:427",
+        "name": "Button:margin",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:507",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-solicitar-credito-0-85-376.html"
+  },
+  {
+    "id": "85:507",
+    "name": "Solicitar crédito 0.1",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:508",
+        "name": "Body",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:376",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:659",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:725",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-solicitar-credito-0-1-85-507.html"
+  },
+  {
+    "id": "85:725",
+    "name": "Solicitar crédito 1",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:751",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:857",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "15:2405",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-solicitar-credito-1-85-725.html"
+  },
+  {
+    "id": "85:873",
+    "name": "Nuevo Cliente 1",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:899",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:930",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:935",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-nuevo-cliente-1-85-873.html"
+  },
+  {
+    "id": "85:935",
+    "name": "Nuevo Cliente 2",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:961",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:993",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:996",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-nuevo-cliente-2-85-935.html"
+  },
+  {
+    "id": "85:996",
+    "name": "Nuevo Cliente 3",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:1022",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1041",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1092",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-nuevo-cliente-3-85-996.html"
+  },
+  {
+    "id": "85:1092",
+    "name": "Nuevo Cliente 4",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:1118",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1185",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1188",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-nuevo-cliente-4-85-1092.html"
+  },
+  {
+    "id": "85:1188",
+    "name": "Nuevo Cliente 5",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:1214",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1286",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1294",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1291",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1092",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-nuevo-cliente-5-85-1188.html"
+  },
+  {
+    "id": "85:1294",
+    "name": "Nuevo Cliente 6",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:1374",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:376",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1377",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-nuevo-cliente-6-85-1294.html"
+  },
+  {
+    "id": "85:1397",
+    "name": "Registrar Pago V1",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:1423",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1446",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1539",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1453",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1681",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-v1-85-1397.html"
+  },
+  {
+    "id": "85:1539",
+    "name": "Registrar Pago V2",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:1565",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1581",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1397",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1595",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1681",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-v2-85-1539.html"
+  },
+  {
+    "id": "85:1681",
+    "name": "Registrar Pago V3",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:1707",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1723",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1397",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1730",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1539",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1820",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1823",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-v3-85-1681.html"
+  },
+  {
+    "id": "85:1823",
+    "name": "Registrar Pago V3.1",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:1849",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          },
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1917",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:2075",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1925",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1933",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:1930",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1681",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-v3-1-85-1823.html"
+  },
+  {
+    "id": "85:1933",
+    "name": "Prototipo Asesor de Crédito",
+    "width": 401,
+    "height": 959,
+    "links": [
+      {
+        "id": "85:2059",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-prototipo-asesor-de-credito-85-1933.html"
+  },
+  {
+    "id": "85:2075",
+    "name": "Registrar Pago V3.2",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:2101",
+        "name": "BackArrow",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:2169",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1823",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:2178",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:2187",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:2183",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:1681",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-v3-2-85-2075.html"
+  },
+  {
+    "id": "85:2187",
+    "name": "Registrar Pago V3.3",
+    "width": 401,
+    "height": 932,
+    "links": [
+      {
+        "id": "85:2294",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:2305",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:2300",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-v3-3-85-2187.html"
+  },
+  {
+    "id": "85:2305",
+    "name": "Registrar Pago V3.4",
+    "width": 401,
+    "height": 932,
+    "links": [
+      {
+        "id": "85:2413",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "85:2424",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "85:2420",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-v3-4-85-2305.html"
+  },
+  {
+    "id": "85:2424",
+    "name": "Registrar Pago V3.5",
+    "width": 401,
+    "height": 874,
+    "links": [
+      {
+        "id": "85:2506",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "11:196",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "asesor",
+    "file": "asesor-registrar-pago-v3-5-85-2424.html"
+  },
+  {
+    "id": "92:2940",
+    "name": "Ingreso 1",
+    "width": 393,
+    "height": 851,
+    "links": [
+      {
+        "id": "92:2982",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3250",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "usuario",
+    "file": "usuario-ingreso-1-92-2940.html"
+  },
+  {
+    "id": "92:3250",
+    "name": "Ingreso 2",
+    "width": 393,
+    "height": 851,
+    "links": [
+      {
+        "id": "92:3303",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3081",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "usuario",
+    "file": "usuario-ingreso-2-92-3250.html"
+  },
+  {
+    "id": "92:3081",
+    "name": "Inicio",
+    "width": 390,
+    "height": 852,
+    "links": [
+      {
+        "id": "92:3233",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3310",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "92:3241",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3822",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "usuario",
+    "file": "usuario-inicio-92-3081.html"
+  },
+  {
+    "id": "92:3310",
+    "name": "Detalle del crédito",
+    "width": 393,
+    "height": 1039,
+    "links": [
+      {
+        "id": "92:3334",
+        "name": "Button - Ayuda",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3822",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "92:3497",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3528",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "92:3500",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3081",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "92:3517",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3822",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "usuario",
+    "file": "usuario-detalle-del-credito-92-3310.html"
+  },
+  {
+    "id": "92:3528",
+    "name": "Plan de Cuotas",
+    "width": 393,
+    "height": 969,
+    "links": [
+      {
+        "id": "92:3546",
+        "name": "Button - Regresar",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3081",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "92:3552",
+        "name": "Button - Ayuda",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3822",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "usuario",
+    "file": "usuario-plan-de-cuotas-92-3528.html"
+  },
+  {
+    "id": "92:3822",
+    "name": "Ayuda 1",
+    "width": 390,
+    "height": 851,
+    "links": [
+      {
+        "id": "92:3857",
+        "name": "Card",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3942",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "92:3916",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3081",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "92:3924",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3310",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "usuario",
+    "file": "usuario-ayuda-1-92-3822.html"
+  },
+  {
+    "id": "92:3942",
+    "name": "Ayuda 2",
+    "width": 390,
+    "height": 871,
+    "links": [
+      {
+        "id": "92:4041",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3081",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "92:4049",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "92:3310",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "usuario",
+    "file": "usuario-ayuda-2-92-3942.html"
+  },
+  {
+    "id": "101:4501",
+    "name": "Ingreso 1",
+    "width": 1166,
+    "height": 688,
+    "links": [
+      {
+        "id": "101:4563",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "107:10599",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-ingreso-1-101-4501.html"
+  },
+  {
+    "id": "107:10599",
+    "name": "Ingreso 2",
+    "width": 1166,
+    "height": 688,
+    "links": [
+      {
+        "id": "107:10657",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7192",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-ingreso-2-107-10599.html"
+  },
+  {
+    "id": "103:7192",
+    "name": "Prototipo Microcréditos Web",
+    "width": 1166,
+    "height": 825,
+    "links": [
+      {
+        "id": "103:7209",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7580",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:7212",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:8224",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:7215",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:8780",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:7219",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:9199",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:7222",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "101:4501",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-prototipo-microcreditos-web-103-7192.html"
+  },
+  {
+    "id": "103:7580",
+    "name": "Cartera",
+    "width": 1166,
+    "height": 742,
+    "links": [
+      {
+        "id": "103:7594",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7192",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:7600",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:8224",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:7603",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:8780",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:7607",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:9199",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:7610",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "101:4501",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-cartera-103-7580.html"
+  },
+  {
+    "id": "103:8224",
+    "name": "Clientes",
+    "width": 1166,
+    "height": 688,
+    "links": [
+      {
+        "id": "103:8238",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7192",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8241",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7580",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8247",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:8780",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8251",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:9199",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8254",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "101:4501",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-clientes-103-8224.html"
+  },
+  {
+    "id": "103:8780",
+    "name": "Solicitudes",
+    "width": 1166,
+    "height": 1091,
+    "links": [
+      {
+        "id": "103:8794",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7192",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8797",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7580",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8800",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:8224",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8807",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:9199",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8810",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "101:4501",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8963",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:10164",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:8965",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:9670",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-solicitudes-103-8780.html"
+  },
+  {
+    "id": "103:9199",
+    "name": "Cierre 1",
+    "width": 1166,
+    "height": 894,
+    "links": [
+      {
+        "id": "103:9360",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7192",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      },
+      {
+        "id": "103:9363",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:9370",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-cierre-1-103-9199.html"
+  },
+  {
+    "id": "103:9370",
+    "name": "Cierre 2",
+    "width": 1166,
+    "height": 753,
+    "links": [
+      {
+        "id": "103:9409",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:9511",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-cierre-2-103-9370.html"
+  },
+  {
+    "id": "103:9511",
+    "name": "Cierre 3",
+    "width": 1166,
+    "height": 914,
+    "links": [
+      {
+        "id": "103:9662",
+        "name": "Button",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:7192",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-cierre-3-103-9511.html"
+  },
+  {
+    "id": "103:9670",
+    "name": "Confirmar aprobación",
+    "width": 1166,
+    "height": 688,
+    "links": [
+      {
+        "id": "103:10157",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:8780",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-confirmar-aprobacion-103-9670.html"
+  },
+  {
+    "id": "103:10164",
+    "name": "Confirmar rechazo",
+    "width": 1166,
+    "height": 688,
+    "links": [
+      {
+        "id": "103:10592",
+        "name": "Container",
+        "destinations": [
+          {
+            "type": "NODE",
+            "destinationId": "103:8780",
+            "navigation": "NAVIGATE"
+          }
+        ]
+      }
+    ],
+    "area": "gerencia",
+    "file": "gerencia-confirmar-rechazo-103-10164.html"
+  }
+]

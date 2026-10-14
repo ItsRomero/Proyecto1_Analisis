@@ -16,6 +16,23 @@ npm run test:watch
 
 En PowerShell con ejecución de scripts restringida, usar `npm.cmd` en lugar de `npm`. La suite P2 verifica **263 pruebas en 18 archivos**, incluidas las 206 originales. No existe comando de cobertura instrumentada ni proveedor de cobertura instalado; no se publica un porcentaje de cobertura. Los resultados y las particularidades del entorno están en la validación final.
 
+### Comandos de pruebas por tema
+
+Ejecutar desde la raíz del repositorio, después de instalar las dependencias. Cada comando ejecuta una vez los archivos seleccionados:
+
+| Comando | Qué verifica | Pruebas / archivos verificados |
+|---|---|---|
+| `npm run test:mora` | Mora escalonada, contrato de políticas, fechas, clasificación, regresión y contratos de salida. | 65 / 5 |
+| `npm run test:idempotencia` | Gasto único de GTQ25 por cuota, repetición de cierres y registro de pagos sin duplicados. | 19 / 2 |
+| `npm run test:coexistencia` | CP-03: política plana del 24% para otorgamientos anteriores al 01/10/2026 y escalonada desde esa fecha, además de regresiones relacionadas. | 19 / 2 |
+| `npm run test:cp04` | CP-04.1: liquidación; CP-04.2: interés corriente en suspenso; CP-04.3: cartera por tramo. | 18 / 3 |
+| `npm run test:cartera` | Cartera en mora y en riesgo, exclusiones, bajas, porcentajes y entradas inválidas. | 27 / 2 |
+| `npm run test:invariantes` | Invariantes transversales y comprobaciones relacionadas de cartera, políticas, gastos y pagos. | 85 / 8 |
+
+Las selecciones se superponen y ejecutan archivos completos: sus cantidades no deben sumarse como pruebas distintas. `npm test` ejecuta la suite completa; `npm run verify` agrega la revisión de tipos. Para ejecutar únicamente las 13 pruebas transversales: `npm test -- tests/invariantes.test.ts`.
+
+Ejemplo en PowerShell: `npm.cmd run test:cartera`. Los inputs, outputs, criterios de aprobación y límites de cada selección están en la [documentación de pruebas](docs/proyecto2/04-pruebas-unitarias-mora-escalonada.md).
+
 - [Auditoría y línea base P1](docs/proyecto2/00-auditoria-inicial.md)
 - [Evolución del núcleo: fórmulas, ejemplos, compatibilidad y límites](docs/proyecto2/01-evolucion-nucleo.md)
 - [Arquitectura móvil/offline conceptual](docs/proyecto2/02-arquitectura-movil-offline.md)
@@ -203,6 +220,8 @@ Este comando ejecuta, en secuencia, la comprobación de tipos y toda la suite de
 | `npm run verify` | Ejecuta tipos y pruebas en secuencia; es el comando recomendado antes de un commit. |
 
 ## 9. Pruebas
+
+Los comandos actuales de P2 están en [Comandos de pruebas por tema](#comandos-de-pruebas-por-tema). La descripción siguiente conserva el alcance histórico de P1.
 
 La suite de pruebas cubre, con distintos niveles de granularidad, todas las reglas críticas del sistema:
 

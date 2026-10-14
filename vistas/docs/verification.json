@@ -1,0 +1,454 @@
+{
+  "screens": 55,
+  "htmlFiles": 56,
+  "figmaRouteChecks": 139,
+  "localLinks": 359,
+  "imageCallsites": 216,
+  "editableInputs": 33,
+  "cssFiles": 3,
+  "jsSyntax": "node --check passed",
+  "errors": [],
+  "browserVisualQA": "Not verified: in-app browser and local HTTP connection timed out.",
+  "screensDetail": [
+    {
+      "screen": "Prioridad",
+      "id": "11:196",
+      "file": "asesor-prioridad-11-196.html",
+      "images": 9,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Nombre A-Z",
+      "id": "11:393",
+      "file": "asesor-nombre-a-z-11-393.html",
+      "images": 9,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Detalle del crédito",
+      "id": "11:591",
+      "file": "asesor-detalle-del-credito-11-591.html",
+      "images": 6,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Plan de amortización",
+      "id": "12:741",
+      "file": "asesor-plan-de-amortizacion-12-741.html",
+      "images": 3,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Detalle de mora",
+      "id": "12:1040",
+      "file": "asesor-detalle-de-mora-12-1040.html",
+      "images": 2,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar pago",
+      "id": "12:1309",
+      "file": "asesor-registrar-pago-12-1309.html",
+      "images": 2,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar pago",
+      "id": "12:1388",
+      "file": "asesor-registrar-pago-12-1388.html",
+      "images": 2,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Confirmación",
+      "id": "12:1534",
+      "file": "asesor-confirmacion-12-1534.html",
+      "images": 4,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Sin señal",
+      "id": "12:1646",
+      "file": "asesor-sin-senal-12-1646.html",
+      "images": 4,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Sin señal guardado 1",
+      "id": "15:1760",
+      "file": "asesor-sin-senal-guardado-1-15-1760.html",
+      "images": 5,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Sin señal guardado 2",
+      "id": "15:1877",
+      "file": "asesor-sin-senal-guardado-2-15-1877.html",
+      "images": 5,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Sin señal guardado 3",
+      "id": "15:1996",
+      "file": "asesor-sin-senal-guardado-3-15-1996.html",
+      "images": 3,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Pago aplicado",
+      "id": "15:2083",
+      "file": "asesor-pago-aplicado-15-2083.html",
+      "images": 5,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Solicitar crédito 2",
+      "id": "15:2405",
+      "file": "asesor-solicitar-credito-2-15-2405.html",
+      "images": 2,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Solicitar crédito 3",
+      "id": "15:2899",
+      "file": "asesor-solicitar-credito-3-15-2899.html",
+      "images": 3,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Solicitar crédito 4",
+      "id": "15:3021",
+      "file": "asesor-solicitar-credito-4-15-3021.html",
+      "images": 2,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Inicio",
+      "id": "17:3107",
+      "file": "asesor-inicio-17-3107.html",
+      "images": 3,
+      "inputs": 2,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "User",
+      "id": "17:3391",
+      "file": "asesor-user-17-3391.html",
+      "images": 10,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Búsqueda",
+      "id": "17:4042",
+      "file": "asesor-busqueda-17-4042.html",
+      "images": 6,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Solicitar crédito 0",
+      "id": "85:376",
+      "file": "asesor-solicitar-credito-0-85-376.html",
+      "images": 4,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Solicitar crédito 0.1",
+      "id": "85:507",
+      "file": "asesor-solicitar-credito-0-1-85-507.html",
+      "images": 6,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Solicitar crédito 1",
+      "id": "85:725",
+      "file": "asesor-solicitar-credito-1-85-725.html",
+      "images": 3,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Nuevo Cliente 1",
+      "id": "85:873",
+      "file": "asesor-nuevo-cliente-1-85-873.html",
+      "images": 3,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Nuevo Cliente 2",
+      "id": "85:935",
+      "file": "asesor-nuevo-cliente-2-85-935.html",
+      "images": 3,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Nuevo Cliente 3",
+      "id": "85:996",
+      "file": "asesor-nuevo-cliente-3-85-996.html",
+      "images": 3,
+      "inputs": 5,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Nuevo Cliente 4",
+      "id": "85:1092",
+      "file": "asesor-nuevo-cliente-4-85-1092.html",
+      "images": 3,
+      "inputs": 5,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Nuevo Cliente 5",
+      "id": "85:1188",
+      "file": "asesor-nuevo-cliente-5-85-1188.html",
+      "images": 3,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Nuevo Cliente 6",
+      "id": "85:1294",
+      "file": "asesor-nuevo-cliente-6-85-1294.html",
+      "images": 2,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar Pago V1",
+      "id": "85:1397",
+      "file": "asesor-registrar-pago-v1-85-1397.html",
+      "images": 2,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar Pago V2",
+      "id": "85:1539",
+      "file": "asesor-registrar-pago-v2-85-1539.html",
+      "images": 2,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar Pago V3",
+      "id": "85:1681",
+      "file": "asesor-registrar-pago-v3-85-1681.html",
+      "images": 2,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar Pago V3.1",
+      "id": "85:1823",
+      "file": "asesor-registrar-pago-v3-1-85-1823.html",
+      "images": 4,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Prototipo Asesor de Crédito",
+      "id": "85:1933",
+      "file": "asesor-prototipo-asesor-de-credito-85-1933.html",
+      "images": 5,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar Pago V3.2",
+      "id": "85:2075",
+      "file": "asesor-registrar-pago-v3-2-85-2075.html",
+      "images": 4,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar Pago V3.3",
+      "id": "85:2187",
+      "file": "asesor-registrar-pago-v3-3-85-2187.html",
+      "images": 5,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar Pago V3.4",
+      "id": "85:2305",
+      "file": "asesor-registrar-pago-v3-4-85-2305.html",
+      "images": 5,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Registrar Pago V3.5",
+      "id": "85:2424",
+      "file": "asesor-registrar-pago-v3-5-85-2424.html",
+      "images": 3,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Ingreso 1",
+      "id": "92:2940",
+      "file": "usuario-ingreso-1-92-2940.html",
+      "images": 4,
+      "inputs": 2,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Ingreso 2",
+      "id": "92:3250",
+      "file": "usuario-ingreso-2-92-3250.html",
+      "images": 4,
+      "inputs": 2,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Inicio",
+      "id": "92:3081",
+      "file": "usuario-inicio-92-3081.html",
+      "images": 4,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Detalle del crédito",
+      "id": "92:3310",
+      "file": "usuario-detalle-del-credito-92-3310.html",
+      "images": 10,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Plan de Cuotas",
+      "id": "92:3528",
+      "file": "usuario-plan-de-cuotas-92-3528.html",
+      "images": 6,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Ayuda 1",
+      "id": "92:3822",
+      "file": "usuario-ayuda-1-92-3822.html",
+      "images": 9,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Ayuda 2",
+      "id": "92:3942",
+      "file": "usuario-ayuda-2-92-3942.html",
+      "images": 9,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Ingreso 1",
+      "id": "101:4501",
+      "file": "gerencia-ingreso-1-101-4501.html",
+      "images": 1,
+      "inputs": 2,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Ingreso 2",
+      "id": "107:10599",
+      "file": "gerencia-ingreso-2-107-10599.html",
+      "images": 1,
+      "inputs": 2,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Prototipo Microcréditos Web",
+      "id": "103:7192",
+      "file": "gerencia-prototipo-microcreditos-web-103-7192.html",
+      "images": 0,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Cartera",
+      "id": "103:7580",
+      "file": "gerencia-cartera-103-7580.html",
+      "images": 1,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Clientes",
+      "id": "103:8224",
+      "file": "gerencia-clientes-103-8224.html",
+      "images": 1,
+      "inputs": 1,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Solicitudes",
+      "id": "103:8780",
+      "file": "gerencia-solicitudes-103-8780.html",
+      "images": 0,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Cierre 1",
+      "id": "103:9199",
+      "file": "gerencia-cierre-1-103-9199.html",
+      "images": 5,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Cierre 2",
+      "id": "103:9370",
+      "file": "gerencia-cierre-2-103-9370.html",
+      "images": 3,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Cierre 3",
+      "id": "103:9511",
+      "file": "gerencia-cierre-3-103-9511.html",
+      "images": 8,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Confirmar aprobación",
+      "id": "103:9670",
+      "file": "gerencia-confirmar-aprobacion-103-9670.html",
+      "images": 2,
+      "inputs": 0,
+      "runtimeErrors": []
+    },
+    {
+      "screen": "Confirmar rechazo",
+      "id": "103:10164",
+      "file": "gerencia-confirmar-rechazo-103-10164.html",
+      "images": 1,
+      "inputs": 0,
+      "runtimeErrors": []
+    }
+  ]
+}

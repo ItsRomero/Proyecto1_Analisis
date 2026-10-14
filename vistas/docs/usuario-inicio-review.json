@@ -1,0 +1,50 @@
+{
+  "screen": "Usuario / Inicio",
+  "figmaNode": "92:3081",
+  "checks": "Passed",
+  "cards": 3,
+  "installments": 12,
+  "paidInstallments": 4,
+  "figmaDestinations": {
+    "92:3233": "usuario-detalle-del-credito-92-3310.html",
+    "92:3241": "usuario-ayuda-1-92-3822.html"
+  },
+  "assets": [
+    {
+      "source": "assets/asset-145.svg",
+      "node": "92:3121",
+      "bytes": 1348,
+      "svgWidth": "19.9965",
+      "svgHeight": "19.9965"
+    },
+    {
+      "source": "assets/asset-146.svg",
+      "node": "92:3226",
+      "bytes": 870,
+      "svgWidth": "21.991",
+      "svgHeight": "21.991"
+    },
+    {
+      "source": "assets/asset-147.svg",
+      "node": "92:3235",
+      "bytes": 830,
+      "svgWidth": "21.991",
+      "svgHeight": "21.991"
+    },
+    {
+      "source": "assets/asset-148.svg",
+      "node": "92:3243",
+      "bytes": 1161,
+      "svgWidth": "21.991",
+      "svgHeight": "21.991"
+    }
+  ],
+  "changes": [
+    "Eliminar clases de pantalla de contenedores internos",
+    "Distribuir tarjetas con flex y cuotas con grid de ocho columnas",
+    "Restaurar alturas y espaciados de la referencia",
+    "Conservar barra del diseño (62.6%) y datos originales",
+    "Mantener navegación y marcar Inicio como página activa"
+  ],
+  "visualVerification": "Pending: browser tool rejects file:// access; no browser workaround attempted."
+}

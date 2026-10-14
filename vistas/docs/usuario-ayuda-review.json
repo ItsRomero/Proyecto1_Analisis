@@ -1,0 +1,148 @@
+{
+  "screens": [
+    {
+      "file": "usuario-ayuda-1-92-3822.html",
+      "checks": "passed",
+      "questions": 6,
+      "answerVisible": false,
+      "assets": [
+        {
+          "ref": "assets/asset-158.svg",
+          "node": "92:3862",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-158.svg",
+          "node": "92:3869",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-158.svg",
+          "node": "92:3876",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-158.svg",
+          "node": "92:3883",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-158.svg",
+          "node": "92:3890",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-158.svg",
+          "node": "92:3897",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-159.svg",
+          "node": "92:3918",
+          "bytes": 870,
+          "width": "21.991",
+          "height": "21.991"
+        },
+        {
+          "ref": "assets/asset-160.svg",
+          "node": "92:3926",
+          "bytes": 830,
+          "width": "21.991",
+          "height": "21.991"
+        },
+        {
+          "ref": "assets/asset-161.svg",
+          "node": "92:3934",
+          "bytes": 1161,
+          "width": "21.991",
+          "height": "21.991"
+        }
+      ]
+    },
+    {
+      "file": "usuario-ayuda-2-92-3942.html",
+      "checks": "passed",
+      "questions": 6,
+      "answerVisible": true,
+      "assets": [
+        {
+          "ref": "assets/asset-165.svg",
+          "node": "92:3984",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-166.svg",
+          "node": "92:3994",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-166.svg",
+          "node": "92:4001",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-166.svg",
+          "node": "92:4008",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-166.svg",
+          "node": "92:4015",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-166.svg",
+          "node": "92:4022",
+          "bytes": 368,
+          "width": "17.9848",
+          "height": "17.9848"
+        },
+        {
+          "ref": "assets/asset-162.svg",
+          "node": "92:4043",
+          "bytes": 870,
+          "width": "21.991",
+          "height": "21.991"
+        },
+        {
+          "ref": "assets/asset-163.svg",
+          "node": "92:4051",
+          "bytes": 832,
+          "width": "21.991",
+          "height": "21.991"
+        },
+        {
+          "ref": "assets/asset-164.svg",
+          "node": "92:4059",
+          "bytes": 1161,
+          "width": "21.991",
+          "height": "21.991"
+        }
+      ]
+    }
+  ],
+  "layout": "Ancho 100% hasta 390px, tarjetas y respuesta con altura automática, texto con salto de línea, navegación inferior en flujo normal; sin recorte de contenedores.",
+  "visualBrowserCheck": "Pending: file:// browser inspection blocked by URL policy. DOM and CSS tests are not browser rendering tests."
+}
