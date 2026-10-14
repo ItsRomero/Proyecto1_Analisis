@@ -5,7 +5,7 @@
   "description": "Núcleo de dominio del Sistema de Gestión de Microcrédito de Crédito Vecino, S. A.",
   "type": "module",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
