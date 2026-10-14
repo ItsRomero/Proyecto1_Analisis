@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: API del Sistema de Gestion de Microcredito
   version: 1.0.0
-  description: Contrato E5. No implica la existencia de un servidor.
+  description: Contrato heredado E5, conservado para P1/P2. La extensión final generada desde Zod está en openapi-proyecto-final.json. No implica la existencia de un servidor.
 servers:
   - url: "https://api.example.invalid/v1"
     description: "URL ilustrativa, no desplegada"
@@ -430,7 +430,7 @@ components:
       required: true
       description: >
         Identidad del intento de pago; ASCII visible, 1 a 255 caracteres, con alcance dentro del crédito indicado en la ruta.
-        TTL/expiracion de la clave: la implementacion debe documentar el periodo; sugerido 24 horas.
+        Retencion minima de 30 dias conforme a ADR-017; el vinculo permanente del pago conserva su unicidad. Un reintento nunca se procesa como pago nuevo por expirar una cache.
       schema:
         type: string
         pattern: '^[\x21-\x7E]{1,255}$'

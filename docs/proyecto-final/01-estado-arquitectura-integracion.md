@@ -6,6 +6,8 @@ ESTADO HISTÓRICO: BLOQUEADA por prerrequisito de entrada en la primera revisió
 
 Actualización tras repetir fase 0: el informe vigente `00-auditoria-linea-base.md` sustituye las condiciones descritas aquí. Este archivo conserva el diagnóstico anterior; no declara ejecutada la fase 1 ni mantiene por sí mismo un bloqueo vigente.
 
+Actualización posterior: la fase 1 se ejecutó tras validar fase 0. Su cierre vigente es `01-arquitectura-contratos-integracion.md`, con 275 pruebas aprobadas. El resto de este documento se conserva únicamente como historial del bloqueo inicial.
+
 ## Motivo
 
 `Prompt_Fase_1_Arquitectura_Contratos_Integracion.md` exige: «Revisa el informe y las evidencias de la fase 0 y verifica que se cumplió su criterio de salida antes de comenzar».
