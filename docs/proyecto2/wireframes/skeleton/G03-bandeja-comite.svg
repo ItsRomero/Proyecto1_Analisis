@@ -1,0 +1,45 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1340' height='840' viewBox='0 0 1340 840'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>G03 · Bandeja del comité</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#a33'>Escritorio 1280×760 · skeleton · GUÍA: pantalla por construir en Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='1280' height='760' rx='18' fill='#ffffff' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='1280' height='760' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='1280.0' height='56.0' rx='0' fill='#f0f0f0'/>
+<rect x='20.0' y='25.1' width='116.5' height='9.9' rx='10' fill='#c9c9c9' stroke='4.96' stroke-width='1.2'/>
+<rect x='210.0' y='26.9' width='47.3' height='8.1' rx='10' fill='#d6d6d6' stroke='4.03' stroke-width='1.2'/>
+<rect x='380.0' y='26.9' width='121.7' height='8.1' rx='10' fill='#d6d6d6' stroke='4.03' stroke-width='1.2'/>
+<rect x='550.0' y='26.9' width='47.3' height='8.1' rx='10' fill='#d6d6d6' stroke='4.03' stroke-width='1.2'/>
+<rect x='720.0' y='26.9' width='54.1' height='8.1' rx='10' fill='#d6d6d6' stroke='4.03' stroke-width='1.2'/>
+<circle cx='1246.0' cy='28.0' r='16' fill='#c9c9c9'/>
+<rect x='1240.3' y='26.2' width='11.4' height='6.8' rx='10' fill='#d6d6d6' stroke='3.41' stroke-width='1.2'/>
+<rect x='20.0' y='80.8' width='252.7' height='11.2' rx='10' fill='#c9c9c9' stroke='5.58' stroke-width='1.2'/>
+<rect x='20.0' y='110.0' width='420.0' height='60.0' rx='12' fill='#ffffff' stroke='#1f1f1f' stroke-width='2'/>
+<rect x='36.0' y='127.3' width='152.9' height='8.7' rx='10' fill='#d6d6d6' stroke='4.34' stroke-width='1.2'/>
+<rect x='36.0' y='148.9' width='215.3' height='7.1' rx='10' fill='#d6d6d6' stroke='3.565' stroke-width='1.2'/>
+<rect x='20.0' y='182.0' width='420.0' height='60.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1'/>
+<rect x='36.0' y='199.3' width='145.6' height='8.7' rx='10' fill='#d6d6d6' stroke='4.34' stroke-width='1.2'/>
+<rect x='36.0' y='220.9' width='203.3' height='7.1' rx='10' fill='#d6d6d6' stroke='3.565' stroke-width='1.2'/>
+<rect x='20.0' y='254.0' width='420.0' height='60.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1'/>
+<rect x='36.0' y='271.3' width='131.0' height='8.7' rx='10' fill='#d6d6d6' stroke='4.34' stroke-width='1.2'/>
+<rect x='36.0' y='292.9' width='191.4' height='7.1' rx='10' fill='#d6d6d6' stroke='3.565' stroke-width='1.2'/>
+<rect x='460.0' y='110.0' width='800.0' height='620.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<rect x='480.0' y='132.1' width='499.2' height='9.9' rx='10' fill='#c9c9c9' stroke='4.96' stroke-width='1.2'/>
+<rect x='480.0' y='160.0' width='370.0' height='220.0' rx='10' fill='#e4e4e4' stroke='#bdbdbd' stroke-width='1.2'/>
+<rect x='576.3' y='267.2' width='177.3' height='6.8' rx='10' fill='#d6d6d6' stroke='3.41' stroke-width='1.2'/>
+<text x='665.0' y='274.0' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='middle'>Datos del cliente y del negocio</text>
+<rect x='870.0' y='160.0' width='370.0' height='220.0' rx='10' fill='#e4e4e4' stroke='#bdbdbd' stroke-width='1.2'/>
+<rect x='972.1' y='267.2' width='165.9' height='6.8' rx='10' fill='#d6d6d6' stroke='3.41' stroke-width='1.2'/>
+<text x='1055.0' y='274.0' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='middle'>Evaluación: criterios y autor</text>
+<rect x='480.0' y='396.0' width='760.0' height='170.0' rx='10' fill='#e4e4e4' stroke='#bdbdbd' stroke-width='1.2'/>
+<rect x='751.3' y='478.2' width='217.4' height='6.8' rx='10' fill='#d6d6d6' stroke='3.41' stroke-width='1.2'/>
+<text x='860.0' y='485.0' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#8a8a8a' text-anchor='middle'>Plan simulado (P05, cifras del núcleo)</text>
+<rect x='480.0' y='586.0' width='760.0' height='50.0' rx='10' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.2'/>
+<rect x='496.0' y='608.6' width='305.8' height='7.4' rx='10' fill='#d6d6d6' stroke='3.7199999999999998' stroke-width='1.2'/>
+<rect x='480.0' y='656.0' width='240.0' height='52.0' rx='12' fill='#c9c9c9'/>
+<rect x='572.7' y='678.7' width='54.6' height='9.3' rx='10' fill='#d6d6d6' stroke='4.65' stroke-width='1.2'/>
+<rect x='740.0' y='656.0' width='240.0' height='52.0' rx='12' fill='#ffffff' stroke='#bdbdbd' stroke-width='1.2'/>
+<rect x='828.8' y='678.7' width='62.4' height='9.3' rx='10' fill='#d6d6d6' stroke='4.65' stroke-width='1.2'/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='840' viewBox='0 0 420 840'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>P13 · Pago aplicado (comprobante)</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#777'>Móvil 360×760 · skeleton · pantalla del prototipo de Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='360' height='760' rx='18' fill='#ffffff' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='360' height='760' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='360.0' height='28.0' rx='10' fill='#f0f0f0'/>
+<rect x='16.0' y='12.2' width='22.9' height='6.8' rx='10' fill='#d6d6d6' stroke='3.41' stroke-width='1.2'/>
+<rect x='312.8' y='12.8' width='31.2' height='6.2' rx='10' fill='#d6d6d6' stroke='3.1' stroke-width='1.2'/>
+<rect x='0.0' y='28.0' width='360.0' height='190.0' rx='10' fill='#f0f0f0'/>
+<circle cx='180.0' cy='74.0' r='26' fill='#c9c9c9'/>
+<rect x='174.3' y='68.4' width='11.4' height='13.6' rx='10' fill='#c9c9c9' stroke='6.82' stroke-width='1.2'/>
+<rect x='115.8' y='116.2' width='128.4' height='11.8' rx='10' fill='#c9c9c9' stroke='5.89' stroke-width='1.2'/>
+<rect x='145.7' y='141.2' width='68.6' height='6.8' rx='10' fill='#d6d6d6' stroke='3.41' stroke-width='1.2'/>
+<rect x='117.6' y='171.1' width='124.8' height='14.9' rx='10' fill='#c9c9c9' stroke='7.4399999999999995' stroke-width='1.2'/>
+<text x='348.0' y='210.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' fill='#8a8a8a' text-anchor='end'>resultado</text>
+<rect x='12.0' y='230.0' width='336.0' height='98.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<rect x='26.0' y='248.8' width='93.6' height='6.2' rx='10' fill='#d6d6d6' stroke='3.1' stroke-width='1.2'/>
+<rect x='26.0' y='286.6' width='145.6' height='17.4' rx='10' fill='#c9c9c9' stroke='8.68' stroke-width='1.2'/>
+<text x='340.0' y='322.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' fill='#8a8a8a' text-anchor='end'>comprobante</text>
+<rect x='12.0' y='338.0' width='336.0' height='98.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<rect x='26.0' y='356.8' width='36.4' height='6.2' rx='10' fill='#d6d6d6' stroke='3.1' stroke-width='1.2'/>
+<rect x='26.0' y='386.2' width='117.0' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='26.0' y='402.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<rect x='26.0' y='410.2' width='171.6' height='6.8' rx='10' fill='#d6d6d6' stroke='3.41' stroke-width='1.2'/>
+<text x='340.0' y='430.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' fill='#8a8a8a' text-anchor='end'>cliente</text>
+<rect x='12.0' y='446.0' width='336.0' height='184.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<rect x='26.0' y='464.8' width='109.2' height='6.2' rx='10' fill='#d6d6d6' stroke='3.1' stroke-width='1.2'/>
+<rect x='26.0' y='494.2' width='110.5' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='288.5' y='494.2' width='45.5' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='26.0' y='510.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<rect x='26.0' y='520.2' width='110.5' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='288.5' y='520.2' width='45.5' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='26.0' y='536.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<rect x='26.0' y='546.2' width='110.5' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='282.0' y='546.2' width='52.0' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='26.0' y='562.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<rect x='26.0' y='572.2' width='97.5' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='282.0' y='572.2' width='52.0' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='26.0' y='588.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<rect x='26.0' y='598.2' width='162.5' height='7.8' rx='10' fill='#d6d6d6' stroke='3.875' stroke-width='1.2'/>
+<rect x='269.0' y='598.2' width='65.0' height='7.8' rx='10' fill='#c9c9c9' stroke='3.875' stroke-width='1.2'/>
+<rect x='26.0' y='614.0' width='308.0' height='0.8' rx='0' fill='#e6e6e6'/>
+<text x='340.0' y='624.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' fill='#8a8a8a' text-anchor='end'>distribución y saldo</text>
+<rect x='16.0' y='640.0' width='160.0' height='46.0' rx='12' fill='#e4e4e4'/>
+<rect x='69.0' y='660.9' width='54.1' height='8.1' rx='10' fill='#d6d6d6' stroke='4.03' stroke-width='1.2'/>
+<rect x='184.0' y='640.0' width='160.0' height='46.0' rx='12' fill='#c9c9c9'/>
+<rect x='237.0' y='660.9' width='54.1' height='8.1' rx='10' fill='#d6d6d6' stroke='4.03' stroke-width='1.2'/>
+<text x='336.0' y='700.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' fill='#8a8a8a' text-anchor='end'></text>
+<rect x='16.0' y='696.0' width='328.0' height='50.0' rx='12' fill='#c9c9c9'/>
+<rect x='119.7' y='718.0' width='120.6' height='9.0' rx='10' fill='#d6d6d6' stroke='4.495' stroke-width='1.2'/>
+<text x='336.0' y='760.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' fill='#8a8a8a' text-anchor='end'></text>
+</g>
+</g>
+</svg>

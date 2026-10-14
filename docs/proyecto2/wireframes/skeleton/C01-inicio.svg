@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="969" viewBox="0 0 430 969" font-family="Inter, Arial, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="20" y="24" font-size="15" font-weight="700" fill="#1F2937">C01 · Inicio · Mi crédito</text>
+<text x="20" y="40" font-size="11" fill="#6B7280">Móvil 390 px · skeleton · vista del cliente (usuario) del prototipo de Figma</text>
+<g transform="translate(20,50)"><rect width="390" height="899" rx="18" fill="#EEF0F2" stroke="#D5D9DE"/>
+<clipPath id="cC01"><rect width="390" height="899" rx="18"/></clipPath><g clip-path="url(#cC01)">
+<rect x="0" y="0" width="390" height="101" rx="0" fill="#FFFFFF"/>
+<rect x="16" y="16.0" width="23" height="7" rx="3.5" fill="#D0D4D9"/>
+<rect x="139" y="16.0" width="113" height="7" rx="3.5" fill="#D0D4D9"/>
+<rect x="352" y="16.0" width="22" height="7" rx="3.5" fill="#D0D4D9"/>
+<rect x="0" y="32" width="390" height="69" rx="0" fill="#FFFFFF"/>
+<rect x="30" y="62.5" width="16" height="6" rx="3.0" fill="#9AA1AA"/>
+<rect x="156" y="61.0" width="77" height="9" rx="4.5" fill="#9AA1AA"/>
+<rect x="341" y="55" width="22" height="22" rx="11.0" fill="#B5BBC2"/>
+<rect x="16" y="121" width="358" height="44" rx="16" fill="#8C939C"/>
+<rect x="32" y="133" width="20" height="20" rx="10.0" fill="#B5BBC2"/>
+<rect x="64" y="138.5" width="215" height="8" rx="4.0" fill="#F3F4F6"/>
+<rect x="16" y="181" width="358" height="152" rx="18" fill="#FFFFFF"/>
+<rect x="36" y="208.0" width="100" height="9" rx="4.5" fill="#D0D4D9"/>
+<rect x="36" y="238.0" width="201" height="22" rx="11.0" fill="#9AA1AA"/>
+<rect x="36" y="285" width="318" height="8" rx="4.0" fill="#E5E7EB"/>
+<rect x="36" y="285" width="199" height="8" rx="4.0" fill="#8C939C"/>
+<rect x="36" y="301.0" width="105" height="7" rx="3.5" fill="#D0D4D9"/>
+<rect x="271" y="301.0" width="83" height="7" rx="3.5" fill="#D0D4D9"/>
+<rect x="16" y="349" width="358" height="120" rx="18" fill="#FFFFFF"/>
+<rect x="36" y="376.0" width="109" height="9" rx="4.5" fill="#D0D4D9"/>
+<rect x="36" y="404.0" width="122" height="13" rx="6.5" fill="#9AA1AA"/>
+<rect x="36" y="434.5" width="179" height="8" rx="4.0" fill="#D0D4D9"/>
+<rect x="272" y="395" width="82" height="28" rx="14.0" fill="#8C939C"/>
+<rect x="284" y="404.5" width="58" height="8" rx="4.0" fill="#F3F4F6"/>
+<rect x="16" y="485" width="358" height="176" rx="18" fill="#FFFFFF"/>
+<rect x="36" y="512.0" width="78" height="9" rx="4.5" fill="#D0D4D9"/>
+<rect x="36" y="541" width="32" height="32" rx="8" fill="#8C939C"/>
+<rect x="76" y="541" width="32" height="32" rx="8" fill="#8C939C"/>
+<rect x="116" y="541" width="32" height="32" rx="8" fill="#8C939C"/>
+<rect x="156" y="541" width="32" height="32" rx="8" fill="#8C939C"/>
+<rect x="196" y="541" width="32" height="32" rx="8" fill="#E5E7EB" stroke="#C5CAD0" stroke-width="1.2"/>
+<rect x="236" y="541" width="32" height="32" rx="8" fill="#E5E7EB"/>
+<rect x="276" y="541" width="32" height="32" rx="8" fill="#E5E7EB"/>
+<rect x="316" y="541" width="32" height="32" rx="8" fill="#E5E7EB"/>
+<rect x="36" y="581" width="32" height="32" rx="8" fill="#E5E7EB"/>
+<rect x="76" y="581" width="32" height="32" rx="8" fill="#E5E7EB"/>
+<rect x="116" y="581" width="32" height="32" rx="8" fill="#E5E7EB"/>
+<rect x="156" y="581" width="32" height="32" rx="8" fill="#E5E7EB"/>
+<rect x="36" y="629.0" width="247" height="7" rx="3.5" fill="#D0D4D9"/>
+<rect x="16" y="677" width="358" height="56" rx="16" fill="#8C939C"/>
+<rect x="101" y="700.0" width="187" height="9" rx="4.5" fill="#F3F4F6"/>
+<rect x="16" y="749" width="358" height="59" rx="16" fill="#FFFFFF" stroke="#C5CAD0" stroke-width="1.2"/>
+<rect x="122" y="774.0" width="145" height="9" rx="4.5" fill="#9AA1AA"/>
+<rect x="0" y="828" width="390" height="71" rx="0" fill="#FFFFFF" stroke="#C5CAD0" stroke-width="1.2"/>
+<rect x="54" y="841" width="22" height="22" rx="11.0" fill="#B5BBC2"/>
+<rect x="51" y="871.5" width="29" height="6" rx="3.0" fill="#9AA1AA"/>
+<rect x="49" y="885" width="32" height="2" rx="1.0" fill="#8C939C"/>
+<rect x="184" y="843" width="22" height="22" rx="11.0" fill="#B5BBC2"/>
+<rect x="168" y="873.5" width="53" height="6" rx="3.0" fill="#9AA1AA"/>
+<rect x="314" y="843" width="22" height="22" rx="11.0" fill="#B5BBC2"/>
+<rect x="308" y="873.5" width="34" height="6" rx="3.0" fill="#9AA1AA"/>
+</g></g></svg>

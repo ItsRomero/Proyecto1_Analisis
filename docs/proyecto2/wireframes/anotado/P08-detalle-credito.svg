@@ -1,0 +1,64 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='420' height='1000' viewBox='0 0 420 1000'>
+<rect width='100%' height='100%' fill='#f7f7f7'/>
+<text x='20' y='26' font-family='Helvetica, Arial, sans-serif' font-size='14' font-weight='bold' fill='#222'>P08 · Detalle del crédito</text>
+<text x='20' y='44' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#777'>Móvil 360×760 · wireframe anotado · pantalla del prototipo de Figma</text>
+<g transform='translate(20,58)'>
+<rect x='0' y='0' width='360' height='760' rx='18' fill='#fbfbfb' stroke='#8a8a8a' stroke-width='2'/>
+<clipPath id='c'><rect x='0' y='0' width='360' height='760' rx='18'/></clipPath><g clip-path='url(#c)'>
+<rect x='0.0' y='0.0' width='360.0' height='28.0' rx='10' fill='#3a3a3a'/>
+<text x='16.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='start'>9:41</text>
+<text x='344.0' y='19.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#ffffff' text-anchor='end'>▮▮ ◠ ▭</text>
+<rect x='0.0' y='28.0' width='360.0' height='64.0' rx='10' fill='#3a3a3a'/>
+<text x='20.0' y='66.0' font-family='Helvetica, Arial, sans-serif' font-size='22' font-weight='bold' fill='#ffffff' text-anchor='start'>‹</text>
+<text x='48.0' y='52.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#d0d0d0' text-anchor='start'>DETALLE DEL CRÉDITO</text>
+<text x='48.0' y='72.0' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold' fill='#ffffff' text-anchor='start'>Ana Sánchez Chumil</text>
+<rect x='12.0' y='100.0' width='336.0' height='44.0' rx='10' fill='#5a5a5a'/>
+<text x='26.0' y='120.0' font-family='Helvetica, Arial, sans-serif' font-size='11.5' font-weight='bold' fill='#ffffff' text-anchor='start'>◎ Aldea Lo de Ramírez</text>
+<text x='26.0' y='136.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#d0d0d0' text-anchor='start'>Zaragoza</text>
+<text x='334.0' y='128.0' font-family='Courier New, monospace' font-size='11' font-weight='normal' fill='#ffffff' text-anchor='end'>+502 5123-4567</text>
+<rect x='12.0' y='156.0' width='336.0' height='82.0' rx='12' fill='#707070'/>
+<text x='26.0' y='182.0' font-family='Helvetica, Arial, sans-serif' font-size='15' font-weight='bold' fill='#ffffff' text-anchor='start'>Mora 2</text>
+<text x='26.0' y='200.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#ffffff' text-anchor='start'>Lleva 45 días de atraso</text>
+<text x='26.0' y='222.0' font-family='Helvetica, Arial, sans-serif' font-size='9.5' font-weight='normal' fill='#ffffff' text-anchor='start'>En 15 días pasa a más de 60 días: la mora diaria sube de Q0.48 a Q0.60.</text>
+<rect x='284.0' y='168.0' width='50.0' height='44.0' rx='8' fill='#8a8a8a'/>
+<text x='309.0' y='194.0' font-family='Helvetica, Arial, sans-serif' font-size='17' font-weight='bold' fill='#ffffff' text-anchor='middle'>45</text>
+<rect x='12.0' y='250.0' width='336.0' height='218.0' rx='12' fill='#ffffff' stroke='#cfcfcf' stroke-width='1.1'/>
+<text x='26.0' y='275.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='bold' fill='#6b6b6b' text-anchor='start'>RESUMEN DEL CRÉDITO</text>
+<text x='26.0' y='303.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Debe hoy (cuota 2 atrasada)</text>
+<text x='26.0' y='342.0' font-family='Courier New, monospace' font-size='28' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Q 1,047.76</text>
+<rect x='26.0' y='356.0' width='308.0' height='0.8' rx='0' fill='#e0e0e0'/>
+<text x='26.0' y='374.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Próxima cuota</text>
+<text x='26.0' y='396.0' font-family='Courier New, monospace' font-size='15' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Q 1,004.62</text>
+<text x='180.0' y='374.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Fecha de pago</text>
+<text x='180.0' y='396.0' font-family='Courier New, monospace' font-size='15' font-weight='bold' fill='#1f1f1f' text-anchor='start'>10/12/2026</text>
+<text x='26.0' y='420.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Monto original</text>
+<text x='26.0' y='442.0' font-family='Courier New, monospace' font-size='15' font-weight='bold' fill='#1f1f1f' text-anchor='start'>Q 10,000.00</text>
+<text x='180.0' y='420.0' font-family='Helvetica, Arial, sans-serif' font-size='10' font-weight='normal' fill='#6b6b6b' text-anchor='start'>Plazo / tasa</text>
+<text x='180.0' y='442.0' font-family='Courier New, monospace' font-size='15' font-weight='bold' fill='#1f1f1f' text-anchor='start'>12 m · 3 %</text>
+<rect x='16.0' y='478.0' width='328.0' height='50.0' rx='12' fill='#3a3a3a'/>
+<text x='180.0' y='509.0' font-family='Helvetica, Arial, sans-serif' font-size='14.5' font-weight='bold' fill='#ffffff' text-anchor='middle'>◷ Registrar pago</text>
+<rect x='16.0' y='538.0' width='160.0' height='46.0' rx='12' fill='#ffffff' stroke='#bdbdbd' stroke-width='1.2'/>
+<text x='96.0' y='567.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#1f1f1f' text-anchor='middle'>Plan de pago</text>
+<rect x='184.0' y='538.0' width='160.0' height='46.0' rx='12' fill='#3a3a3a'/>
+<text x='264.0' y='567.0' font-family='Helvetica, Arial, sans-serif' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='middle'>Detalle mora</text>
+</g>
+<line x1='356' y1='196.0' x2='366' y2='196.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='196.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='200.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>1</text>
+<line x1='356' y1='320.0' x2='366' y2='320.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='320.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='324.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>2</text>
+<line x1='356' y1='564.0' x2='366' y2='564.0' stroke='#1f1f1f' stroke-width='1' stroke-dasharray='2 2'/>
+<circle cx='376' cy='564.0' r='10' fill='#1f1f1f'/>
+<text x='376' y='568.0' font-family='Helvetica, Arial, sans-serif' font-size='11' font-weight='bold' fill='#fff' text-anchor='middle'>3</text>
+</g>
+<text x='20' y='844' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>1.</tspan> Tramo en lenguaje llano (&#x27;lleva 45 días de atraso&#x27;) y</text>
+<text x='34' y='860' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>aviso del siguiente tramo antes de que ocurra (MC-4).</text>
+<text x='20' y='876' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>2.</tspan> Cifra principal = lo exigible hoy según el núcleo (M-5:</text>
+<text x='34' y='892' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>Q25.00 + Q18.14 + Q278.86 + Q725.76). Caso de referencia</text>
+<text x='34' y='908' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>Q10,000 a 12 meses.</text>
+<text x='20' y='924' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'><tspan font-weight='bold'>3.</tspan> Misma disposición que Figma. Datos de ejemplo: Figma usa</text>
+<text x='34' y='940' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>a Pedro Xol Cux (incobrable, 132 días); se recomienda un</text>
+<text x='34' y='956' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>crédito en Mora 2 para que las cifras coincidan con</text>
+<text x='34' y='972' font-family='Helvetica, Arial, sans-serif' font-size='11.5' fill='#222'>M-2/M-5.</text>
+</svg>

@@ -378,12 +378,12 @@ Toda regla conocida puede recorrerse desde su origen hasta un caso de uso, una r
 
 | Requisito | Regla/diseño | Código | Prueba | Documento/diagrama |
 |---|---|---|---|---|
-| CP-01 | Strategy y tramos, tope, redondeo único | `src/dominio/politica-mora/`; `calculadora-mora.ts`; `src/aplicacion/consultar-mora.ts` | `tests/politica-mora.test.ts` | `docs/proyecto2/01-evolucion-nucleo.md`; ADR-004; `08-secuencia-politica-mora.puml`; `04-strategy-mora.puml` |
+| CP-01 | Strategy y tramos, tope, redondeo único | `src/dominio/politica-mora/`; `calculadora-mora.ts`; `src/aplicacion/consultar-mora.ts` | `tests/politica-mora.test.ts` | `docs/proyecto2/e6-02-evolucion-nucleo.md`; ADR-004; `08-secuencia-politica-mora.puml`; `04-strategy-mora.puml` |
 | CP-02 | Q25 una vez por crédito/cuota/concepto | `src/dominio/gasto-gestion-cobro.ts` | `tests/gasto-gestion-cobro.test.ts` | Evolución P2; `09-secuencia-gasto-idempotente.puml` |
-| CP-03 | Coexistencia y sustitución (agrupación de trazabilidad; el encargo no define una sección CP-03 independiente) | Catálogo, políticas y `consultarMora` | `tests/contrato-politica.test.ts`; `tests/regresion-p1.test.ts` | ADR-004; `docs/informe-impacto-solid.md` |
+| CP-03 | Coexistencia de políticas (enunciado P2 §7.6): plana 24 % antes del 01/10/2026 y escalonada desde esa fecha | Catálogo, políticas y `consultarMora` | `tests/contrato-politica.test.ts`; `tests/regresion-p1.test.ts` | ADR-004; `docs/informe-impacto-solid.md` |
 | CP-04.1 | Liquidación desde EN_MORA con dos guardas | `src/dominio/credito-estado.ts`: `liquidarConPago`, `EstadoEnMora.cancelar` | `tests/credito-cancelacion-p2.test.ts` | `docs/implementacion/FASE-20-state-credito.md`; `docs/diagramas/uml/05-estados-credito.puml`; `docs/diagramas/patrones/02-state-credito.puml` |
 | CP-04.2 | Suspenso monetario y cortes idempotentes | `src/dominio/devengo-interes.ts`: `DevengoInteres` | `tests/devengo-interes.test.ts` | `docs/implementacion/FASE-20-state-credito.md`; State P2 |
-| CP-04.3 | Contribuciones al riesgo, mora total y bajas del período | `src/dominio/cartera-por-tramo.ts`: `calcularCarteraPorTramo` | `tests/cartera-por-tramo.test.ts` | `docs/proyecto2/01-evolucion-nucleo.md`, oráculos 7.00%, 21.75% y 6.06% |
+| CP-04.3 | Contribuciones al riesgo, mora total y bajas del período | `src/dominio/cartera-por-tramo.ts`: `calcularCarteraPorTramo` | `tests/cartera-por-tramo.test.ts` | `docs/proyecto2/e6-02-evolucion-nucleo.md`, oráculos 7.00%, 21.75% y 6.06% |
 
 ### Invariantes P2 y contrato
 
@@ -399,4 +399,4 @@ Toda regla conocida puede recorrerse desde su origen hasta un caso de uso, una r
 | 8. Incobrable congela y sale de activa | `regresion-p1.test.ts`: plana y escalonada integradas con cartera |
 | Contratos externos aditivos | `contratos-p2.test.ts`: presentadores reales y equivalencia estructural Zod/OpenAPI; `openapi.test.ts` conserva 14 operaciones y referencias |
 
-La [validación P2](../proyecto2/03-validacion-final.md) actualiza el estado de implementación. Las secciones anteriores conservan la trazabilidad histórica P1; no deben leerse como si los pendientes de aquella fecha fueran el estado actual de P2.
+La [validación P2](../proyecto2/e6-04-validacion-final.md) actualiza el estado de implementación. Las secciones anteriores conservan la trazabilidad histórica P1; no deben leerse como si los pendientes de aquella fecha fueran el estado actual de P2.
