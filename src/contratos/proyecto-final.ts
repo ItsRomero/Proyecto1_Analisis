@@ -4,6 +4,7 @@ import {
   aplicacionPagoSchema, carteraRiesgoSchema, consultaMoraSchema, crearClienteSchema,
   cuotaApiSchema, dineroSchema, errorApiSchema, estadoCreditoSchema, fechaCivilSchema,
   idempotencyKeySchema, idSchema, montoSolicitudSchema, pagoSchema, tasaSchema, tramoMoraSchema,
+  transicionEstadoSchema,
 } from "./esquemas.js";
 
 // Extensiones finales: las definiciones heredadas permanecen compatibles.
@@ -106,12 +107,40 @@ export const politicasPaqueteSchema = z.strictObject({
   regla_incobrable_dias: z.number().int().positive(), regla_riesgo_dias: z.number().int().nonnegative(),
 });
 
+// Fase 3: lecturas de interfaz y rechazo del comité. No son herramientas MCP; sin DPI ni teléfono en listados.
+export const listarClientesSchema = corteSchema.extend({ busqueda: z.string().trim().max(100).optional() });
+export const listaClientesSchema = corteSchema.extend({
+  clientes: z.array(z.strictObject({ clienteId: idSchema, nombreCompleto: z.string().min(1), municipio: z.string().min(1),
+    creditos: z.array(resumenCreditoFinalSchema).readonly() })).readonly(),
+});
+export const fichaCreditoSchema = z.strictObject({
+  resumen: resumenCreditoFinalSchema, clienteId: idSchema, nombreCliente: z.string().min(1), municipio: z.string().min(1),
+  asesorId: idSchema, capitalOriginal: montoGtqSchema, tasaNominalAnual: tasaSchema, plazoMeses: z.number().int().min(3).max(24),
+  fechaSolicitud: fechaOperacionSchema, fechaDesembolso: fechaOperacionSchema.nullable(), politicaId: idSchema.nullable(),
+  reestructurado: z.boolean(), historial: z.array(transicionEstadoSchema).readonly(),
+});
+export const listaPagosSchema = creditoCorteSchema.extend({
+  pagos: z.array(z.strictObject({ pagoId: idSchema, numeroCuota: numeroCuotaSchema, fechaPago: fechaOperacionSchema,
+    importe: montoGtqSchema, claveIdempotencia: idempotencyKeySchema, canal: z.string().min(1), usuarioProceso: z.string().min(1),
+    propuestaId: idSchema.nullable(), aplicacion: aplicacionPagoSchema })).readonly(),
+});
+export const listaSolicitudesSchema = corteSchema.extend({
+  solicitudes: z.array(z.strictObject({ creditoId: idSchema, clienteId: idSchema, nombreCliente: z.string().min(1),
+    asesorId: idSchema, monto: montoGtqSchema, plazoMeses: z.number().int().min(3).max(24), tasaNominalAnual: tasaSchema,
+    fechaSolicitud: fechaOperacionSchema, estado: estadoCreditoSchema, versionCredito: z.number().int().nonnegative() })).readonly(),
+});
+export const listarAsesoresSchema = z.strictObject({});
+export const listaAsesoresSchema = z.strictObject({
+  asesores: z.array(z.strictObject({ asesorId: idSchema, nombre: z.string().min(1) })).readonly(),
+});
+
 // Registro único que consumen casos de uso, API, MCP y generación OpenAPI.
 export const operacionesFinales = {
   altaCliente: { entrada: altaClienteFinalSchema, salida: clienteFinalSchema },
   solicitarCredito: { entrada: originarCreditoSchema, salida: resumenCreditoFinalSchema },
   simularPlan: { entrada: simularPlanSchema, salida: planConFechasSchema },
   aprobarCredito: { entrada: decidirCreditoFinalSchema, salida: resumenCreditoFinalSchema },
+  rechazarCredito: { entrada: decidirCreditoFinalSchema, salida: resumenCreditoFinalSchema },
   desembolsarCredito: { entrada: desembolsarFinalSchema, salida: resumenCreditoFinalSchema },
   consultarCredito: { entrada: creditoCorteSchema, salida: resumenCreditoFinalSchema },
   consultarPlan: { entrada: creditoCorteSchema, salida: planConFechasSchema },
@@ -125,6 +154,11 @@ export const operacionesFinales = {
   proponerPago: { entrada: proponerPagoSchema, salida: propuestaPagoSchema },
   confirmarPago: { entrada: confirmarPagoSchema, salida: resultadoConfirmacionSchema },
   cancelarPropuesta: { entrada: cancelarPropuestaSchema, salida: propuestaPagoSchema },
+  listarClientes: { entrada: listarClientesSchema, salida: listaClientesSchema },
+  consultarFichaCredito: { entrada: creditoCorteSchema, salida: fichaCreditoSchema },
+  listarPagos: { entrada: creditoCorteSchema, salida: listaPagosSchema },
+  listarSolicitudes: { entrada: corteSchema, salida: listaSolicitudesSchema },
+  listarAsesores: { entrada: listarAsesoresSchema, salida: listaAsesoresSchema },
 } as const;
 export type NombreOperacionFinal = keyof typeof operacionesFinales;
 export type EntradaFinal<N extends NombreOperacionFinal> = z.infer<(typeof operacionesFinales)[N]["entrada"]>;
@@ -135,4 +169,7 @@ export const codigosProblemaFinal = {
   MONTO_NO_EXACTO: 422, FECHA_INVALIDA: 422, CONFLICTO_IDEMPOTENCIA: 409,
   APROBACION_REQUERIDA: 403, PROPUESTA_OBSOLETA: 409, PROPUESTA_NO_EXISTE: 404,
   SESION_NO_AUTORIZADA: 403, PERIODO_INVALIDO: 422,
+  // Fase 3: validación de borde, unicidad y orden R-1; sin mensajes internos.
+  ENTRADA_INVALIDA: 400, CLIENTE_YA_EXISTE: 409, CREDITO_YA_EXISTE: 409, TRANSICION_INVALIDA: 409,
+  CUOTA_FUERA_DE_ORDEN: 409, REFERENCIA_INEXISTENTE: 422,
 } as const;

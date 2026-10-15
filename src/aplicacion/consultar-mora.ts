@@ -1,6 +1,7 @@
 import { CalculadoraMora, type FechaCivil, type ObligacionVencida } from "../dominio/calculadora-mora.js";
 import { EstadoCredito } from "../dominio/credito-estado.js";
 import { resolverPolitica } from "../dominio/politica-mora/catalogo-politicas.js";
+import type { PoliticaMora } from "../dominio/politica-mora/politica-mora.js";
 
 type SituacionCredito = { readonly estado: Exclude<EstadoCredito, EstadoCredito.INCOBRABLE> }
   | { readonly estado: EstadoCredito.INCOBRABLE; readonly fechaDeclaracionIncobrable: FechaCivil };
@@ -11,6 +12,8 @@ export function consultarMora(datos: SituacionCredito & {
   readonly fechaOtorgamiento: FechaCivil;
   readonly fechaCorte: FechaCivil;
   readonly cuotas: readonly ObligacionVencida[];
+  /** D-4: política ya resuelta por el catálogo inyectado; sin ella se conserva la resolución P2. */
+  readonly politica?: PoliticaMora;
 }) {
   if (!datos.creditoId.trim()) throw new Error("Crédito obligatorio.");
   if (datos.fechaCorte.diasDesde(datos.fechaOtorgamiento) < 0) throw new Error("Corte anterior al otorgamiento.");
@@ -20,7 +23,7 @@ export function consultarMora(datos: SituacionCredito & {
         datos.fechaDeclaracionIncobrable.diasDesde(datos.fechaCorte) > 0) throw new Error("Declaración incobrable fuera del período.");
     corteDevengo = datos.fechaDeclaracionIncobrable;
   }
-  const politica = resolverPolitica(datos.fechaOtorgamiento);
+  const politica = datos.politica ?? resolverPolitica(datos.fechaOtorgamiento);
   const motor = new CalculadoraMora(politica);
   return Object.freeze({ creditoId: datos.creditoId, fechaCorte: datos.fechaCorte, corteDevengo,
     politicaId: politica.id, cuotas: motor.calcularVariasCuotas(datos.cuotas, corteDevengo) });

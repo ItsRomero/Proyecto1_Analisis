@@ -37,6 +37,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -154,6 +164,104 @@
             }
           }
         }
+      },
+      "get": {
+        "operationId": "listarClientes",
+        "summary": "Listar clientes y créditos al corte, sin DPI ni teléfono",
+        "parameters": [
+          {
+            "name": "fechaCorte",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          {
+            "name": "busqueda",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultado o repetición sin efectos adicionales",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/listarClientesSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          }
+        },
+        "x-confirmacion-humana": false,
+        "x-perfil-gerencia": false
       }
     },
     "/creditos": {
@@ -178,6 +286,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/solicitarCreditoSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
                 }
               }
             }
@@ -319,6 +437,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -451,6 +579,134 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          }
+        },
+        "x-confirmacion-humana": true,
+        "x-perfil-gerencia": true,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "fechaOperacion": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "motivo": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "fechaOperacion",
+                  "motivo"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/creditos/{creditoId}/rechazo": {
+      "post": {
+        "operationId": "rechazarCredito",
+        "summary": "Rechazar con evidencia del comité",
+        "parameters": [
+          {
+            "name": "creditoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultado o repetición sin efectos adicionales",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rechazarCreditoSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -555,6 +811,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/desembolsarCreditoSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
                 }
               }
             }
@@ -676,6 +942,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -762,6 +1038,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/consultarPlanSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
                 }
               }
             }
@@ -866,6 +1152,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -966,6 +1262,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -1059,6 +1365,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/listarCreditosMoraSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
                 }
               }
             }
@@ -1161,6 +1477,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -1247,6 +1573,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/consultarCarteraSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
                 }
               }
             }
@@ -1344,6 +1680,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -1419,6 +1765,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/generarCierreSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
                 }
               }
             }
@@ -1539,6 +1895,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/proponerPagoSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
                 }
               }
             }
@@ -1714,6 +2080,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -1823,6 +2199,16 @@
               }
             }
           },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
           "403": {
             "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
             "content": {
@@ -1897,6 +2283,378 @@
             }
           }
         }
+      }
+    },
+    "/creditos/{creditoId}/ficha": {
+      "get": {
+        "operationId": "consultarFichaCredito",
+        "summary": "Consultar condiciones e historial del crédito",
+        "parameters": [
+          {
+            "name": "creditoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+            }
+          },
+          {
+            "name": "fechaCorte",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultado o repetición sin efectos adicionales",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/consultarFichaCreditoSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          }
+        },
+        "x-confirmacion-humana": false,
+        "x-perfil-gerencia": false
+      }
+    },
+    "/creditos/{creditoId}/pagos": {
+      "get": {
+        "operationId": "listarPagos",
+        "summary": "Listar pagos aplicados y su prelación",
+        "parameters": [
+          {
+            "name": "creditoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+            }
+          },
+          {
+            "name": "fechaCorte",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultado o repetición sin efectos adicionales",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/listarPagosSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          }
+        },
+        "x-confirmacion-humana": false,
+        "x-perfil-gerencia": false
+      }
+    },
+    "/solicitudes": {
+      "get": {
+        "operationId": "listarSolicitudes",
+        "summary": "Listar solicitudes pendientes de comité o desembolso",
+        "parameters": [
+          {
+            "name": "fechaCorte",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resultado o repetición sin efectos adicionales",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/listarSolicitudesSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          }
+        },
+        "x-confirmacion-humana": false,
+        "x-perfil-gerencia": false
+      }
+    },
+    "/asesores": {
+      "get": {
+        "operationId": "listarAsesores",
+        "summary": "Listar asesores cargados",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Resultado o repetición sin efectos adicionales",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/listarAsesoresSalida"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error RFC 9457; MONTO_NO_EXACTO incluye montoCorrecto",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemaFinal"
+                }
+              }
+            }
+          }
+        },
+        "x-confirmacion-humana": false,
+        "x-perfil-gerencia": false
       }
     }
   },
@@ -2743,6 +3501,167 @@
         "additionalProperties": false
       },
       "aprobarCreditoSalida": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "creditoId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+          },
+          "fechaCorte": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "estado": {
+            "type": "string",
+            "enum": [
+              "SOLICITADO",
+              "APROBADO",
+              "RECHAZADO",
+              "DESEMBOLSADO",
+              "VIGENTE",
+              "EN_MORA",
+              "REESTRUCTURADO",
+              "ANULADO",
+              "CANCELADO",
+              "INCOBRABLE"
+            ]
+          },
+          "saldoCapital": {
+            "type": "object",
+            "properties": {
+              "importe": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+              },
+              "moneda": {
+                "type": "string",
+                "const": "GTQ"
+              }
+            },
+            "required": [
+              "importe",
+              "moneda"
+            ],
+            "additionalProperties": false
+          },
+          "diasAtraso": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "tramo": {
+            "type": "string",
+            "enum": [
+              "SIN_MORA",
+              "MORA_1",
+              "MORA_2",
+              "MORA_3",
+              "VENCIDO",
+              "INCOBRABLE"
+            ]
+          },
+          "cuotasPagadas": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "cuotasVencidas": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "proximaCuota": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "numeroCuota": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 24
+                  },
+                  "fechaVencimiento": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "importe": {
+                    "type": "object",
+                    "properties": {
+                      "importe": {
+                        "type": "string",
+                        "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                      },
+                      "moneda": {
+                        "type": "string",
+                        "const": "GTQ"
+                      }
+                    },
+                    "required": [
+                      "importe",
+                      "moneda"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "numeroCuota",
+                  "fechaVencimiento",
+                  "importe"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "versionCredito": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "creditoId",
+          "fechaCorte",
+          "estado",
+          "saldoCapital",
+          "diasAtraso",
+          "tramo",
+          "cuotasPagadas",
+          "cuotasVencidas",
+          "proximaCuota",
+          "versionCredito"
+        ],
+        "additionalProperties": false
+      },
+      "rechazarCreditoEntrada": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "creditoId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+          },
+          "fechaOperacion": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "motivo": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "creditoId",
+          "fechaOperacion",
+          "motivo"
+        ],
+        "additionalProperties": false
+      },
+      "rechazarCreditoSalida": {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
@@ -7201,6 +8120,886 @@
           "estadoPrevisto"
         ],
         "additionalProperties": false
+      },
+      "listarClientesEntrada": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "fechaCorte": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "busqueda": {
+            "type": "string",
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "fechaCorte"
+        ],
+        "additionalProperties": false
+      },
+      "listarClientesSalida": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "fechaCorte": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "clientes": {
+            "readOnly": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "clienteId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+                },
+                "nombreCompleto": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "municipio": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "creditos": {
+                  "readOnly": true,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "creditoId": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+                      },
+                      "fechaCorte": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                      },
+                      "estado": {
+                        "type": "string",
+                        "enum": [
+                          "SOLICITADO",
+                          "APROBADO",
+                          "RECHAZADO",
+                          "DESEMBOLSADO",
+                          "VIGENTE",
+                          "EN_MORA",
+                          "REESTRUCTURADO",
+                          "ANULADO",
+                          "CANCELADO",
+                          "INCOBRABLE"
+                        ]
+                      },
+                      "saldoCapital": {
+                        "type": "object",
+                        "properties": {
+                          "importe": {
+                            "type": "string",
+                            "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                          },
+                          "moneda": {
+                            "type": "string",
+                            "const": "GTQ"
+                          }
+                        },
+                        "required": [
+                          "importe",
+                          "moneda"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "diasAtraso": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "tramo": {
+                        "type": "string",
+                        "enum": [
+                          "SIN_MORA",
+                          "MORA_1",
+                          "MORA_2",
+                          "MORA_3",
+                          "VENCIDO",
+                          "INCOBRABLE"
+                        ]
+                      },
+                      "cuotasPagadas": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "cuotasVencidas": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "proximaCuota": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "numeroCuota": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 24
+                              },
+                              "fechaVencimiento": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                              },
+                              "importe": {
+                                "type": "object",
+                                "properties": {
+                                  "importe": {
+                                    "type": "string",
+                                    "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                                  },
+                                  "moneda": {
+                                    "type": "string",
+                                    "const": "GTQ"
+                                  }
+                                },
+                                "required": [
+                                  "importe",
+                                  "moneda"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "required": [
+                              "numeroCuota",
+                              "fechaVencimiento",
+                              "importe"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "versionCredito": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      }
+                    },
+                    "required": [
+                      "creditoId",
+                      "fechaCorte",
+                      "estado",
+                      "saldoCapital",
+                      "diasAtraso",
+                      "tramo",
+                      "cuotasPagadas",
+                      "cuotasVencidas",
+                      "proximaCuota",
+                      "versionCredito"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "clienteId",
+                "nombreCompleto",
+                "municipio",
+                "creditos"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "fechaCorte",
+          "clientes"
+        ],
+        "additionalProperties": false
+      },
+      "consultarFichaCreditoEntrada": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "fechaCorte": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "creditoId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+          }
+        },
+        "required": [
+          "fechaCorte",
+          "creditoId"
+        ],
+        "additionalProperties": false
+      },
+      "consultarFichaCreditoSalida": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "resumen": {
+            "type": "object",
+            "properties": {
+              "creditoId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+              },
+              "fechaCorte": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "estado": {
+                "type": "string",
+                "enum": [
+                  "SOLICITADO",
+                  "APROBADO",
+                  "RECHAZADO",
+                  "DESEMBOLSADO",
+                  "VIGENTE",
+                  "EN_MORA",
+                  "REESTRUCTURADO",
+                  "ANULADO",
+                  "CANCELADO",
+                  "INCOBRABLE"
+                ]
+              },
+              "saldoCapital": {
+                "type": "object",
+                "properties": {
+                  "importe": {
+                    "type": "string",
+                    "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                  },
+                  "moneda": {
+                    "type": "string",
+                    "const": "GTQ"
+                  }
+                },
+                "required": [
+                  "importe",
+                  "moneda"
+                ],
+                "additionalProperties": false
+              },
+              "diasAtraso": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "tramo": {
+                "type": "string",
+                "enum": [
+                  "SIN_MORA",
+                  "MORA_1",
+                  "MORA_2",
+                  "MORA_3",
+                  "VENCIDO",
+                  "INCOBRABLE"
+                ]
+              },
+              "cuotasPagadas": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "cuotasVencidas": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "proximaCuota": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "numeroCuota": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 24
+                      },
+                      "fechaVencimiento": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                      },
+                      "importe": {
+                        "type": "object",
+                        "properties": {
+                          "importe": {
+                            "type": "string",
+                            "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                          },
+                          "moneda": {
+                            "type": "string",
+                            "const": "GTQ"
+                          }
+                        },
+                        "required": [
+                          "importe",
+                          "moneda"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "numeroCuota",
+                      "fechaVencimiento",
+                      "importe"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "versionCredito": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "creditoId",
+              "fechaCorte",
+              "estado",
+              "saldoCapital",
+              "diasAtraso",
+              "tramo",
+              "cuotasPagadas",
+              "cuotasVencidas",
+              "proximaCuota",
+              "versionCredito"
+            ],
+            "additionalProperties": false
+          },
+          "clienteId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+          },
+          "nombreCliente": {
+            "type": "string",
+            "minLength": 1
+          },
+          "municipio": {
+            "type": "string",
+            "minLength": 1
+          },
+          "asesorId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+          },
+          "capitalOriginal": {
+            "type": "object",
+            "properties": {
+              "importe": {
+                "type": "string",
+                "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+              },
+              "moneda": {
+                "type": "string",
+                "const": "GTQ"
+              }
+            },
+            "required": [
+              "importe",
+              "moneda"
+            ],
+            "additionalProperties": false
+          },
+          "tasaNominalAnual": {
+            "type": "string",
+            "pattern": "^(?:0|[1-9]\\d*)(?:\\.\\d+)?$"
+          },
+          "plazoMeses": {
+            "type": "integer",
+            "minimum": 3,
+            "maximum": 24
+          },
+          "fechaSolicitud": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "fechaDesembolso": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "politicaId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reestructurado": {
+            "type": "boolean"
+          },
+          "historial": {
+            "readOnly": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "estadoAnterior": {
+                  "type": "string",
+                  "enum": [
+                    "SOLICITADO",
+                    "APROBADO",
+                    "RECHAZADO",
+                    "DESEMBOLSADO",
+                    "VIGENTE",
+                    "EN_MORA",
+                    "REESTRUCTURADO",
+                    "ANULADO",
+                    "CANCELADO",
+                    "INCOBRABLE"
+                  ]
+                },
+                "estadoNuevo": {
+                  "type": "string",
+                  "enum": [
+                    "SOLICITADO",
+                    "APROBADO",
+                    "RECHAZADO",
+                    "DESEMBOLSADO",
+                    "VIGENTE",
+                    "EN_MORA",
+                    "REESTRUCTURADO",
+                    "ANULADO",
+                    "CANCELADO",
+                    "INCOBRABLE"
+                  ]
+                },
+                "fecha": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "usuarioProceso": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "motivo": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "estadoAnterior",
+                "estadoNuevo",
+                "fecha",
+                "usuarioProceso",
+                "motivo"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "resumen",
+          "clienteId",
+          "nombreCliente",
+          "municipio",
+          "asesorId",
+          "capitalOriginal",
+          "tasaNominalAnual",
+          "plazoMeses",
+          "fechaSolicitud",
+          "fechaDesembolso",
+          "politicaId",
+          "reestructurado",
+          "historial"
+        ],
+        "additionalProperties": false
+      },
+      "listarPagosEntrada": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "fechaCorte": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "creditoId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+          }
+        },
+        "required": [
+          "fechaCorte",
+          "creditoId"
+        ],
+        "additionalProperties": false
+      },
+      "listarPagosSalida": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "fechaCorte": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "creditoId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+          },
+          "pagos": {
+            "readOnly": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pagoId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+                },
+                "numeroCuota": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 24
+                },
+                "fechaPago": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "importe": {
+                  "type": "object",
+                  "properties": {
+                    "importe": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                    },
+                    "moneda": {
+                      "type": "string",
+                      "const": "GTQ"
+                    }
+                  },
+                  "required": [
+                    "importe",
+                    "moneda"
+                  ],
+                  "additionalProperties": false
+                },
+                "claveIdempotencia": {
+                  "type": "string",
+                  "pattern": "^[\\x21-\\x7E]{1,255}$"
+                },
+                "canal": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "usuarioProceso": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "propuestaId": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "aplicacion": {
+                  "type": "object",
+                  "properties": {
+                    "gastosComisiones": {
+                      "type": "object",
+                      "properties": {
+                        "importe": {
+                          "type": "string",
+                          "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                        },
+                        "moneda": {
+                          "type": "string",
+                          "pattern": "^[A-Z]{3}$"
+                        }
+                      },
+                      "required": [
+                        "importe",
+                        "moneda"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "interesMoratorio": {
+                      "type": "object",
+                      "properties": {
+                        "importe": {
+                          "type": "string",
+                          "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                        },
+                        "moneda": {
+                          "type": "string",
+                          "pattern": "^[A-Z]{3}$"
+                        }
+                      },
+                      "required": [
+                        "importe",
+                        "moneda"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "interesCorriente": {
+                      "type": "object",
+                      "properties": {
+                        "importe": {
+                          "type": "string",
+                          "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                        },
+                        "moneda": {
+                          "type": "string",
+                          "pattern": "^[A-Z]{3}$"
+                        }
+                      },
+                      "required": [
+                        "importe",
+                        "moneda"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "capital": {
+                      "type": "object",
+                      "properties": {
+                        "importe": {
+                          "type": "string",
+                          "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                        },
+                        "moneda": {
+                          "type": "string",
+                          "pattern": "^[A-Z]{3}$"
+                        }
+                      },
+                      "required": [
+                        "importe",
+                        "moneda"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "excedente": {
+                      "type": "object",
+                      "properties": {
+                        "importe": {
+                          "type": "string",
+                          "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                        },
+                        "moneda": {
+                          "type": "string",
+                          "pattern": "^[A-Z]{3}$"
+                        }
+                      },
+                      "required": [
+                        "importe",
+                        "moneda"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "gastosComisiones",
+                    "interesMoratorio",
+                    "interesCorriente",
+                    "capital",
+                    "excedente"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "pagoId",
+                "numeroCuota",
+                "fechaPago",
+                "importe",
+                "claveIdempotencia",
+                "canal",
+                "usuarioProceso",
+                "propuestaId",
+                "aplicacion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "fechaCorte",
+          "creditoId",
+          "pagos"
+        ],
+        "additionalProperties": false
+      },
+      "listarSolicitudesEntrada": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "fechaCorte": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          }
+        },
+        "required": [
+          "fechaCorte"
+        ],
+        "additionalProperties": false
+      },
+      "listarSolicitudesSalida": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "fechaCorte": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "solicitudes": {
+            "readOnly": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "creditoId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+                },
+                "clienteId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+                },
+                "nombreCliente": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "asesorId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+                },
+                "monto": {
+                  "type": "object",
+                  "properties": {
+                    "importe": {
+                      "type": "string",
+                      "pattern": "^(?:0|[1-9]\\d*)\\.\\d{2}$"
+                    },
+                    "moneda": {
+                      "type": "string",
+                      "const": "GTQ"
+                    }
+                  },
+                  "required": [
+                    "importe",
+                    "moneda"
+                  ],
+                  "additionalProperties": false
+                },
+                "plazoMeses": {
+                  "type": "integer",
+                  "minimum": 3,
+                  "maximum": 24
+                },
+                "tasaNominalAnual": {
+                  "type": "string",
+                  "pattern": "^(?:0|[1-9]\\d*)(?:\\.\\d+)?$"
+                },
+                "fechaSolicitud": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "estado": {
+                  "type": "string",
+                  "enum": [
+                    "SOLICITADO",
+                    "APROBADO",
+                    "RECHAZADO",
+                    "DESEMBOLSADO",
+                    "VIGENTE",
+                    "EN_MORA",
+                    "REESTRUCTURADO",
+                    "ANULADO",
+                    "CANCELADO",
+                    "INCOBRABLE"
+                  ]
+                },
+                "versionCredito": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "creditoId",
+                "clienteId",
+                "nombreCliente",
+                "asesorId",
+                "monto",
+                "plazoMeses",
+                "tasaNominalAnual",
+                "fechaSolicitud",
+                "estado",
+                "versionCredito"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "fechaCorte",
+          "solicitudes"
+        ],
+        "additionalProperties": false
+      },
+      "listarAsesoresEntrada": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "listarAsesoresSalida": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "asesores": {
+            "readOnly": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "asesorId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,99}$"
+                },
+                "nombre": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "asesorId",
+                "nombre"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "asesores"
+        ],
+        "additionalProperties": false
       }
     },
     "securitySchemes": {
@@ -7233,6 +9032,12 @@
     "PROPUESTA_OBSOLETA": 409,
     "PROPUESTA_NO_EXISTE": 404,
     "SESION_NO_AUTORIZADA": 403,
-    "PERIODO_INVALIDO": 422
+    "PERIODO_INVALIDO": 422,
+    "ENTRADA_INVALIDA": 400,
+    "CLIENTE_YA_EXISTE": 409,
+    "CREDITO_YA_EXISTE": 409,
+    "TRANSICION_INVALIDA": 409,
+    "CUOTA_FUERA_DE_ORDEN": 409,
+    "REFERENCIA_INEXISTENTE": 422
   }
 }

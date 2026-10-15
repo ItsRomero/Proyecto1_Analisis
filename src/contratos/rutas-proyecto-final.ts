@@ -8,6 +8,7 @@ export const rutasFinales: Readonly<Record<NombreOperacionFinal, {
   solicitarCredito: { metodo: "post", ruta: "/creditos", resumen: "Registrar solicitud de crédito", humana: true },
   simularPlan: { metodo: "post", ruta: "/planes/simulacion", resumen: "Simular plan con vencimientos", humana: false },
   aprobarCredito: { metodo: "post", ruta: "/creditos/{creditoId}/aprobacion", resumen: "Aprobar con evidencia del comité", humana: true, gerencia: true },
+  rechazarCredito: { metodo: "post", ruta: "/creditos/{creditoId}/rechazo", resumen: "Rechazar con evidencia del comité", humana: true, gerencia: true },
   desembolsarCredito: { metodo: "post", ruta: "/creditos/{creditoId}/desembolso", resumen: "Desembolsar crédito aprobado", humana: true },
   consultarCredito: { metodo: "get", ruta: "/creditos/{creditoId}", resumen: "Consultar crédito al corte", humana: false },
   consultarPlan: { metodo: "get", ruta: "/creditos/{creditoId}/plan", resumen: "Consultar plan contractual", humana: false },
@@ -21,6 +22,11 @@ export const rutasFinales: Readonly<Record<NombreOperacionFinal, {
   proponerPago: { metodo: "post", ruta: "/creditos/{creditoId}/propuestas-pago", resumen: "Proponer pago sin efecto financiero", humana: false },
   confirmarPago: { metodo: "post", ruta: "/propuestas-pago/{propuestaId}/confirmacion", resumen: "Confirmar pago con aprobación humana", humana: true },
   cancelarPropuesta: { metodo: "post", ruta: "/propuestas-pago/{propuestaId}/cancelacion", resumen: "Cancelar propuesta sin efecto financiero", humana: true },
+  listarClientes: { metodo: "get", ruta: "/clientes", resumen: "Listar clientes y créditos al corte, sin DPI ni teléfono", humana: false },
+  consultarFichaCredito: { metodo: "get", ruta: "/creditos/{creditoId}/ficha", resumen: "Consultar condiciones e historial del crédito", humana: false },
+  listarPagos: { metodo: "get", ruta: "/creditos/{creditoId}/pagos", resumen: "Listar pagos aplicados y su prelación", humana: false },
+  listarSolicitudes: { metodo: "get", ruta: "/solicitudes", resumen: "Listar solicitudes pendientes de comité o desembolso", humana: false },
+  listarAsesores: { metodo: "get", ruta: "/asesores", resumen: "Listar asesores cargados", humana: false },
 };
 
 /** Ocho capacidades MCP. Confirmar no se publica como herramienta del LLM. */
@@ -30,3 +36,18 @@ export const herramientasFinales = {
   proximos_vencimientos: "proximosVencimientos", consultar_cartera: "consultarCartera",
   consultar_cierre: "consultarCierre", proponer_pago: "proponerPago",
 } as const satisfies Record<string, NombreOperacionFinal>;
+
+/**
+ * Fase 3: recurso al que queda ligado el evento humano de un solo uso que emite la sesión.
+ * La interfaz lo solicita al pulsar el botón explícito; el servidor lo consume al ejecutar.
+ */
+export const objetivoEventoHumano = {
+  altaCliente: (e: { readonly clienteId: string }) => e.clienteId,
+  solicitarCredito: (e: { readonly creditoId: string }) => e.creditoId,
+  aprobarCredito: (e: { readonly creditoId: string }) => e.creditoId,
+  rechazarCredito: (e: { readonly creditoId: string }) => e.creditoId,
+  desembolsarCredito: (e: { readonly creditoId: string }) => e.creditoId,
+  generarCierre: (e: { readonly tipo: string; readonly fechaCorte: string }) => `${e.tipo}:${e.fechaCorte}`,
+  confirmarPago: (e: { readonly propuestaId: string }) => e.propuestaId,
+  cancelarPropuesta: (e: { readonly propuestaId: string }) => e.propuestaId,
+} as const satisfies { readonly [N in NombreOperacionFinal as (typeof rutasFinales)[N]["humana"] extends true ? N : never]?: unknown };

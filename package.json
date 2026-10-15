@@ -8,7 +8,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p web",
     "test": "vitest run --passWithNoTests",
     "test:mora": "vitest run tests/politica-mora.test.ts tests/contrato-politica.test.ts tests/calculadora-mora.test.ts tests/regresion-p1.test.ts tests/contratos-p2.test.ts",
     "test:watch": "vitest",
@@ -25,18 +25,44 @@
     "test:carga": "vitest run tests/carga.test.ts",
     "test:carga:postgres": "node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts",
     "fase2:verificar": "npm run verify && npm run test:carga:postgres && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar",
-    "fase3:preflight": "npm run fase2:verificar"
+    "fase3:preflight": "npm run fase2:verificar",
+    "openapi": "tsc --noEmit false --outDir dist/auditoria && node scripts/contratos/generar-openapi.mjs",
+    "api": "npm run build:backend && node --env-file-if-exists=.env dist/src/api/principal.js",
+    "web:dev": "vite --config web/vite.config.ts",
+    "web:build": "vite build --config web/vite.config.ts",
+    "app": "npm run web:build && npm run api",
+    "test:integracion": "npm run test:carga:postgres",
+    "test:e2e": "npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts",
+    "fase3:verificar": "npm run verify && npm run test:carga:postgres && npm run test:e2e && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar",
+    "fase4:preflight": "npm run fase3:verificar"
   },
   "dependencies": {
     "date-fns": "^4.0.0",
     "decimal.js": "^10.0.0",
+    "express": "^5.3.0",
     "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^7.18.4",
     "zod": "^4.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/express": "^5.0.6",
     "@types/node": "^22.0.0",
     "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "jsdom": "^30.1.2",
+    "playwright-core": "^1.64.1",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.0.0",
+    "vite": "^7.3.7",
     "vitest": "^4.0.0",
     "yaml": "^2.9.0"
   }

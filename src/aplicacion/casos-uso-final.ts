@@ -13,14 +13,20 @@ export interface ContextoConfirmacionHumana extends ContextoOperacion {
   /** Evidencia verificable del evento de interfaz en la misma sesión, no texto del chat. */
   readonly eventoAprobacionId: string;
 }
-type OperacionesHumanas = "altaCliente" | "solicitarCredito" | "aprobarCredito" | "desembolsarCredito" | "generarCierre" | "confirmarPago" | "cancelarPropuesta";
+/** La cabecera Idempotency-Key llega por transporte y debe coincidir con la propuesta. */
+export interface ContextoConfirmacionPago extends ContextoConfirmacionHumana {
+  readonly claveIdempotencia: string;
+}
+export type OperacionesHumanas = "altaCliente" | "solicitarCredito" | "aprobarCredito" | "rechazarCredito" | "desembolsarCredito" | "generarCierre" | "confirmarPago" | "cancelarPropuesta";
+export type ContextoDe<N extends NombreOperacionFinal> = N extends "confirmarPago" ? ContextoConfirmacionPago
+  : N extends OperacionesHumanas ? ContextoConfirmacionHumana : ContextoOperacion;
 export type CasosUsoFinal = {
   readonly [N in NombreOperacionFinal]: {
-    ejecutar(entrada: EntradaFinal<N>, contexto: N extends OperacionesHumanas ? ContextoConfirmacionHumana : ContextoOperacion): Promise<SalidaFinal<N>>;
+    ejecutar(entrada: EntradaFinal<N>, contexto: ContextoDe<N>): Promise<SalidaFinal<N>>;
   };
 };
 
-/** Contratos de entrada, todavía sin adaptadores. Evita implementaciones vacías o mocks en producción. */
+/** Lecturas sin efecto financiero; la fase 4 publica solo las ocho capacidades de herramientasFinales. */
 export type ConsultasFinales = Pick<CasosUsoFinal,
   "consultarCredito" | "consultarPlan" | "calcularDeudaCuota" | "explicarMora" |
   "listarCreditosMora" | "proximosVencimientos" | "consultarCartera" | "consultarCierre">;

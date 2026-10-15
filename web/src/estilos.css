@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Fuentes del prototipo P2 (copiadas con sus licencias en assets/design/fuentes). */
+@font-face { font-family: Outfit; src: url("./assets/design/fuentes/outfit.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: Inter; src: url("./assets/design/fuentes/inter.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("./assets/design/fuentes/dm-mono.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+
+/*
+ * Tokens de vistas/css/shared.css y design.css traducidos al tema.
+ * ink, surface, line, accent, muted, success, danger, overdue, subtle, surface-soft, secondary,
+ * nav-active, nav-border, label + colores de tramo de los frames de mora y cartera.
+ */
+@theme {
+  --color-tinta: #0f172a;
+  --color-superficie: #f1f5f9;
+  --color-superficie-suave: #f8fafc;
+  --color-linea: #e2e8f0;
+  --color-acento: #f59e0b;
+  --color-acento-oscuro: #b45309;
+  --color-tenue: #64748b;
+  --color-sutil: #94a3b8;
+  --color-secundario: #475569;
+  --color-etiqueta: #90a1b9;
+  --color-nav-activo: #1e293b;
+  --color-nav-borde: #334155;
+  --color-exito: #16a34a;
+  --color-exito-oscuro: #166534;
+  --color-peligro: #dc2626;
+  --color-atraso: #ea580c;
+  --color-tramo-al-dia: #16a34a;
+  --color-tramo-mora-1: #a16207;
+  --color-tramo-mora-2: #c2410c;
+  --color-tramo-mora-3: #dc2626;
+  --color-tramo-vencido: #7f1d1d;
+  --color-tramo-incobrable: #475569;
+  --color-aviso-fondo: #fef9c3;
+  --color-aviso-borde: #fde047;
+  --color-aviso-texto: #713f12;
+  --font-asesor: Outfit, Arial, sans-serif;
+  --font-gerencia: Inter, Arial, sans-serif;
+  --font-cifra: "DM Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html { background: var(--color-superficie); color: var(--color-tinta); font-family: var(--font-gerencia); }
+  body { margin: 0; }
+  /* Foco visible del prototipo: contorno de acento con separación. */
+  :focus-visible { outline: 3px solid var(--color-acento); outline-offset: 3px; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+}
+
+@layer components {
+  .cifra { font-family: var(--font-cifra); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .tarjeta { background: white; border: 1px solid var(--color-linea); border-radius: 1rem; }
+  .etiqueta-seccion { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-tenue); }
+  .solo-lectores { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}

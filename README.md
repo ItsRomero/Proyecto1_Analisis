@@ -1,5 +1,46 @@
 # Sistema de Gestión de Microcrédito — Proyectos 1 y 2
 
+## Proyecto Final — fase 3: API e interfaz React (E1)
+
+Requisitos: los de la fase 2 (Node.js 22 LTS, PostgreSQL + pgvector, `.env` completo y la carga canónica aplicada con `npm run carga`) y, para los recorridos automatizados, Google Chrome instalado. La fecha de corte por defecto de la sesión sale de `DEFAULT_SESSION_CUTOFF` (`2026-10-31` para la defensa); nunca del reloj.
+
+```powershell
+npm.cmd ci
+npm.cmd run carga          # una sola vez sobre base vacía (o db:reset + carga antes de un ensayo)
+npm.cmd run app            # compila web/ y levanta API + interfaz en http://127.0.0.1:3000
+```
+
+Para desarrollar con recarga en caliente se usan dos terminales: `npm.cmd run api` (API en `API_PORT`) y `npm.cmd run web:dev` (Vite en `http://localhost:5173`, redirige `/v1` a la API). `WEB_ORIGIN` debe coincidir con la origen de Vite.
+
+| Comando | Propósito |
+| --- | --- |
+| `npm run app` | Build de `web/` y API Express sirviendo la interfaz en la misma origen |
+| `npm run api` / `npm run web:dev` / `npm run web:build` | API sola, Vite en desarrollo, build de producción |
+| `npm run openapi` | Regenera `docs/api/openapi-proyecto-final.json` desde los esquemas Zod |
+| `npm run verify` | Typecheck de núcleo y web + `npm test` (núcleo, servicios e interfaz; sin red ni base) |
+| `npm run test:integracion` | API HTTP y carga contra PostgreSQL real (`TEST_DATABASE_URL`) |
+| `npm run test:e2e` | Build + recorridos en Chrome contra API y PostgreSQL reales; guarda capturas en `docs/proyecto-final/evidencia/capturas/` |
+| `npm run fase3:verificar` / `npm run fase4:preflight` | Control de salida: verify + integración + e2e + comprobación de la carga de demo |
+
+**Perfiles.** La barra superior de ambas vistas tiene el selector **Asesor / Gerencia**, la fecha de corte de la sesión y "Reiniciar sesión". El perfil vive en una sesión de servidor (cookie `HttpOnly`); aprobar o rechazar en comité y generar cierres exige Gerencia en el servidor. Toda escritura de interfaz pide antes un evento humano de un solo uso (ADR-019), y un pago solo se registra tras "Aprobar pago" → "Confirmar pago". No es autenticación empresarial.
+
+### Pantalla ↔ caso de uso
+
+| Pantalla P2 | Ruta | Casos de uso (API `/v1`) |
+| --- | --- | --- |
+| Cartera del asesor (entrada) | `/asesor/clientes` | `listarClientes` |
+| 1. Solicitud de crédito con alta de cliente | `/asesor/creditos/nuevo` | `altaCliente` → `solicitarCredito` (con `simularPlan` antes de confirmar) → `aprobarCredito` / `rechazarCredito` → `desembolsarCredito` |
+| 2. Detalle del crédito | `/asesor/creditos/:creditoId` | `consultarFichaCredito`, `listarPagos` |
+| 3. Registro de pago | `/asesor/creditos/:creditoId/pagos/nuevo` y `/pagos/:pagoId` | `calcularDeudaCuota`, `proponerPago`, `confirmarPago` (`Idempotency-Key`), `cancelarPropuesta` |
+| 4. Plan de amortización | `/asesor/creditos/:creditoId/plan` | `consultarPlan`, `consultarCredito` |
+| 5. Detalle de la mora | `/asesor/creditos/:creditoId/mora` | `consultarCredito`, `explicarMora`, `calcularDeudaCuota` |
+| 6. Tablero gerencial | `/gerencia`, `/gerencia/cartera`, `/gerencia/cartera/tramos/:tramo` | `consultarCartera`, `consultarCierre`, `listarCreditosMora` |
+| 7. Cierre diario/mensual | `/gerencia/cierres/diario`, `/gerencia/cierres/mensual` | `consultarCierre`, `generarCierre` |
+| Complementos de gerencia | `/gerencia/clientes`, `/gerencia/creditos/:creditoId`, `/gerencia/solicitudes[/:id/decision]` | `listarClientes`, `consultarFichaCredito`, `explicarMora`, `listarSolicitudes`, `aprobarCredito`, `rechazarCredito` |
+| Asistente (espacio reservado) | `/gerencia/asistente` | — (fase 6) |
+
+Las cifras de todas las pantallas vienen de la API, que despacha a los mismos casos de uso de `src/aplicacion/servicios-final.ts` que usará MCP; la interfaz solo formatea cadenas (no convierte importes a `number`, no suma ni redondea). Cada bloque de cifras muestra la operación de origen y el corte. Inventario de los 56 HTML de `vistas/` y diferencias justificadas: [migración de vistas](docs/proyecto-final/migracion-vistas-react.md). Informe y evidencia: [informe de fase 3](docs/proyecto-final/03-api-interfaz-react.md) y [ADR-019](docs/adr/ADR-019-api-sesion-evento-humano.md).
+
 ## Proyecto Final — fase 2: persistencia y carga canónica
 
 Node.js 22 LTS, PostgreSQL con pgvector, `pg` y el paquete auténtico en `datos/`. Instalar dependencias con `npm ci`. Copiar `.env.example` a `.env` y completar `DATABASE_URL`, `TEST_DATABASE_URL` y `CV_DATA_DIR`. Los comandos leen `.env` automáticamente; no subirlo a Git. Los valores del entorno tienen precedencia. `CV_DATA_DIR` acepta una ruta relativa o absoluta; el ejemplo usa `./datos/datos-proyecto-final`.
@@ -35,7 +76,7 @@ Desde base vacía basta `npm run carga`: verifica preflight, huella, contrato y 
 | `npm run fase2:verificar` | Suite general + integración + comprobación de carga en DATABASE_URL |
 | `npm run fase3:preflight` | Mismo control de salida; un fallo impide aprobar el avance |
 
-La integración no omite pruebas si falta PostgreSQL: falla y devuelve código distinto de cero. El control se detiene al primer fallo. No inicia ni implementa fase 3. Ver el [informe de fase 2](docs/proyecto-final/02-persistencia-carga-canonica.md) y [ADR-018](docs/adr/ADR-018-carga-transaccional-canonica.md).
+La integración no omite pruebas si falta PostgreSQL: falla y devuelve código distinto de cero. El control se detiene al primer fallo. Ver el [informe de fase 2](docs/proyecto-final/02-persistencia-carga-canonica.md) y [ADR-018](docs/adr/ADR-018-carga-transaccional-canonica.md).
 
 Reglas R-1 a R-7: se exige la cuota más antigua completa; calendario desde el desembolso original con ajuste de fin de mes; mora sobre capital de cuota mediante política seleccionada por otorgamiento; gasto solo en políticas habilitadas por JSON; bajas derivadas con State/autorización de sistema; reestructurados al día incluidos en riesgo P2; duplicados conservados en log sin doble pago. Los umbrales que el núcleo no permite configurar se rechazan explícitamente. El JSON prevalece sobre los defaults en tasas/tramos/gasto y se informan divergencias.
 
