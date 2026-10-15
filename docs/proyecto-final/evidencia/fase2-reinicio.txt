@@ -1,0 +1,9 @@
+
+> sistema-gestion-microcredito-p1@0.1.0 db:reset
+> npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs reset
+
+
+> sistema-gestion-microcredito-p1@0.1.0 build:backend
+> tsc --noEmit false --outDir dist
+
+Base de demostración vacía: esquema cv reiniciado y migración 001 aplicada.

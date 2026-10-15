@@ -17,15 +17,25 @@
     "test:cp04": "vitest run tests/credito-cancelacion-p2.test.ts tests/devengo-interes.test.ts tests/cartera-por-tramo.test.ts",
     "test:cartera": "vitest run tests/cartera.test.ts tests/cartera-por-tramo.test.ts",
     "test:invariantes": "vitest run tests/invariantes.test.ts tests/cartera.test.ts tests/politica-mora.test.ts tests/contrato-politica.test.ts tests/regresion-p1.test.ts tests/gasto-gestion-cobro.test.ts tests/cartera-por-tramo.test.ts tests/pago-idempotencia.test.ts",
-    "verify": "npm run typecheck && npm test"
+    "verify": "npm run typecheck && npm test",
+    "build:backend": "tsc --noEmit false --outDir dist",
+    "db:migrate": "npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs migrar",
+    "db:reset": "npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs reset",
+    "carga": "npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs carga",
+    "test:carga": "vitest run tests/carga.test.ts",
+    "test:carga:postgres": "node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts",
+    "fase2:verificar": "npm run verify && npm run test:carga:postgres && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar",
+    "fase3:preflight": "npm run fase2:verificar"
   },
   "dependencies": {
     "date-fns": "^4.0.0",
     "decimal.js": "^10.0.0",
+    "pg": "^8.23.1",
     "zod": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "@types/pg": "^8.23.1",
     "typescript": "^5.0.0",
     "vitest": "^4.0.0",
     "yaml": "^2.9.0"

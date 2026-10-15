@@ -1,0 +1,8 @@
+node : FASE 2 NO APROBADA. Fase 3 bloqueada. BASE_NO_DISPONIBLE (ECONNREFUSED)
+En línea: 5 Carácter: 3
++   node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs co ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (FASE 2 NO APROB... (ECONNREFUSED):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Código de salida observado: 1 (fallo esperado, avance detenido).

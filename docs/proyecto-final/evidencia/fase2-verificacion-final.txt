@@ -1,0 +1,43 @@
+
+> sistema-gestion-microcredito-p1@0.1.0 fase2:verificar
+> npm run verify && npm run test:carga:postgres && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis
+
+
+ Test Files  21 passed (21)
+      Tests  292 passed (292)
+   Start at  21:50:28
+   Duration  6.13s (transform 8.87s, setup 0ms, import 20.16s, tests 1.03s, environment 2ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:carga:postgres
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts
+
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  21:50:36
+   Duration  12.10s (transform 163ms, setup 0ms, import 560ms, tests 11.14s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 build:backend
+> tsc --noEmit false --outDir dist
+
+Carga persistente verificada. Para aprobar fase 2 también deben pasar verify y las pruebas PostgreSQL.

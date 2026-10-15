@@ -1,22 +1,11 @@
-# Adaptador de persistencia planificado
+﻿# Persistencia de fase 2
 
-Fase 1 define PostgreSQL + pgvector con `pg`; el DDL de diseño está en
-`docs/proyecto-final/01-modelo-persistente.sql`. No se aplicó a ninguna base.
-Las migraciones y el cargador corresponden a fase 2.
+PostgreSQL + pgvector y `pg`, conforme ADR-006/018. `migraciones/001-inicial.sql` materializa el diseño de fase 1 en el esquema dedicado `cv`. La migración se registra con su hash y no puede editarse después de aplicada.
 
-Implementar los puertos de `src/aplicacion/puertos-final.ts`. SQL recupera y
-persiste hechos o resultados del núcleo; no calcula cuotas, mora o cartera.
-La unidad de trabajo abre transacción, bloquea el crédito (`FOR UPDATE`),
-precarga clave/huella, instancia el repositorio síncrono que necesita
-`RegistrarPago`, invoca el núcleo y guarda pago, aplicaciones, versión,
-aprobación y respuesta antes del commit. Rollback completo ante cualquier fallo.
+`paquete-canonico.ts` verifica bytes SHA-256 antes de analizar JSON, valida eventos Zod, secuencia y catálogo de asesores. `reproducir-canonico.ts` compone calendario, mora inyectada, `RegistrarPago`, prelación y State reales. `postgres.ts` persiste la reproducción completa en una sola transacción, serializada por advisory lock; no implementa fórmulas SQL. `clientes-pg.ts` implementa el puerto de clientes.
 
-Un replay con igual clave/huella se resuelve primero y devuelve el pago original,
-incluso si la cuota ya fue pagada. El conflicto se resuelve antes de autorizar un
-nuevo efecto. Una propuesta nueva sí debe revalidar cuota, monto y versión.
-Restricciones únicas arbitran carreras; un adaptador de memoria no es persistencia.
+La carga completada tiene huellas de eventos/políticas/asesores y corte. Repetirla retorna sin escribir, conservando operaciones posteriores. La bitácora guarda los 363 eventos, incluidos dos duplicados, separados de los 226 pagos y sus aplicaciones por concepto. Los registros originales contienen PII ficticia: no exponerlos a chat/RAG.
 
-La bitácora guarda 363 eventos, incluidos los dos pagos duplicados; solo 226
-efectos. Las bajas derivadas tienen evidencia separada, sin editar el paquete.
-Idempotencia conserva el vínculo al pago permanentemente y snapshot al menos
-30 días. No usar TTL para borrar la protección contra duplicados.
+Usar los comandos de instalación, carga, integración y control de salida del README raíz. `db:reset` elimina solo el esquema `cv` de DATABASE_URL y reaplica migraciones; es exclusivamente preparación de ensayos.
+
+Pendiente de fases posteriores: unidad de trabajo del pago interactivo con bloqueo FOR UPDATE, propuesta/confirmación humana, aprobación y persistencia de pagos nuevos; API y MCP consumirán los mismos puertos. El cargador no autoriza una ruta de escritura para el modelo.

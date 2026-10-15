@@ -1,5 +1,46 @@
 # Sistema de Gestión de Microcrédito — Proyectos 1 y 2
 
+## Proyecto Final — fase 2: persistencia y carga canónica
+
+Node.js 22 LTS, PostgreSQL con pgvector, `pg` y el paquete auténtico en `datos/`. Instalar dependencias con `npm ci`. Copiar `.env.example` a `.env` y completar `DATABASE_URL`, `TEST_DATABASE_URL` y `CV_DATA_DIR`. Los comandos leen `.env` automáticamente; no subirlo a Git. Los valores del entorno tienen precedencia. `CV_DATA_DIR` acepta una ruta relativa o absoluta; el ejemplo usa `./datos/datos-proyecto-final`.
+
+Para una base local aislada con Docker Desktop iniciado, estos fueron los comandos de preparación usados (contraseña solo de demostración local; configurar las URL de `.env` con estos mismos valores):
+
+```powershell
+docker run --name cv-proyecto-final-db -e POSTGRES_DB=credito_vecino -e POSTGRES_USER=cv -e POSTGRES_PASSWORD=cv_demo_local -p 127.0.0.1:55432:5432 -d pgvector/pgvector:pg17
+docker exec cv-proyecto-final-db pg_isready -U cv
+docker exec cv-proyecto-final-db createdb -U cv credito_vecino_fase2_test
+```
+
+Si el contenedor ya existe, usar `docker start cv-proyecto-final-db` y no repetir su creación. La base de prueba se crea una sola vez. Imagen validada: digest `sha256:ac08538c6f8b9904c33c8224c5e5706dbe760aca29db1d096972b4052c22a75d`; puede fijarse con `pgvector/pgvector@sha256:ac08538c6f8b9904c33c8224c5e5706dbe760aca29db1d096972b4052c22a75d`.
+
+`DATABASE_URL` apunta a `credito_vecino` en el puerto 55432 y `TEST_DATABASE_URL` a `credito_vecino_fase2_test` en ese puerto. El usuario debe poder crear el esquema `cv` y la extensión vector. Para una instalación PostgreSQL existente, instalar pgvector y configurar las conexiones equivalentes. El control falla si la extensión o la base no están disponibles; no se sustituye por memoria.
+
+```powershell
+npm.cmd run db:migrate
+npm.cmd run carga
+npm.cmd run carga
+npm.cmd run fase2:verificar
+```
+
+Desde base vacía basta `npm run carga`: verifica preflight, huella, contrato y reproducción; aplica migraciones y persiste la carga. La huella aparece en verde y la salida muestra 60 clientes, 75 créditos, seis asesores, 228 eventos de pago importados y 226 pagos únicos aplicados. La segunda carga informa `repetida: true`, sin alterar operaciones posteriores. Las 363 entradas originales quedan separadas de las proyecciones financieras y de las aplicaciones por concepto. Cada pago pasa por `RegistrarPago` y la prelación P1.
+
+`npm run db:reset` elimina **todos los datos del esquema cv** de DATABASE_URL y lo deja vacío con migraciones aplicadas. Se usa solamente antes de ensayos/Bloque 1; nunca para operar cartera ni como parte de la recarga. Después de la carga, las operaciones del usuario deberán entrar por aplicación/API de las fases posteriores.
+
+| Comando | Propósito |
+| --- | --- |
+| `npm run verify` | Typecheck y suite general, sin servidor ni LLM |
+| `npm run test:carga` | Validación de insumos y reproducción con núcleo |
+| `npm run test:carga:postgres` | Integración real; reinicia exclusivamente la base TEST_DATABASE_URL terminada en `_test` |
+| `npm run fase2:verificar` | Suite general + integración + comprobación de carga en DATABASE_URL |
+| `npm run fase3:preflight` | Mismo control de salida; un fallo impide aprobar el avance |
+
+La integración no omite pruebas si falta PostgreSQL: falla y devuelve código distinto de cero. El control se detiene al primer fallo. No inicia ni implementa fase 3. Ver el [informe de fase 2](docs/proyecto-final/02-persistencia-carga-canonica.md) y [ADR-018](docs/adr/ADR-018-carga-transaccional-canonica.md).
+
+Reglas R-1 a R-7: se exige la cuota más antigua completa; calendario desde el desembolso original con ajuste de fin de mes; mora sobre capital de cuota mediante política seleccionada por otorgamiento; gasto solo en políticas habilitadas por JSON; bajas derivadas con State/autorización de sistema; reestructurados al día incluidos en riesgo P2; duplicados conservados en log sin doble pago. Los umbrales que el núcleo no permite configurar se rechazan explícitamente. El JSON prevalece sobre los defaults en tasas/tramos/gasto y se informan divergencias.
+
+Discrepancias del paquete: `IDEM-000068` e `IDEM-000127` son duplicados idénticos. LEEME declara 14/01–31/10, pero las fechas efectivas son 07/01–30/10; se preservan los hechos y el corte 31/10/2026. No se modifica el ZIP ni su extracción.
+
 ## Evolución del Proyecto 2
 
 P2 amplía el núcleo existente con mora escalonada versionada, gasto de gestión idempotente, liquidación desde EN_MORA, interés corriente en suspenso y cartera desglosada. Los otorgamientos anteriores a **2026-10-01** conservan `POL-2024-01` (24% plana); desde esa fecha se selecciona `POL-2026-10` (18/24/30/36% por tramos hasta 120 días). El cálculo recibe las fechas explícitamente y conserva el moratorio acumulado después del día 120.
