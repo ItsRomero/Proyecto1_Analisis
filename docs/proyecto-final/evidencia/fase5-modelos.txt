@@ -1,0 +1,6 @@
+Fase 5 · modelos en Ollama (2026-10-15T17:08:46Z)
+Contenedor: ollama/ollama (cv-ollama), ollama version is 0.40.4
+Imagen: ollama/ollama@sha256:926d40fd6eeeebd346b5c358a63de2a10ec995371cd93dd22f1843200694b1a6
+
+qwen3:8b digest 500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41 tamaño 5225388164 familia qwen3 parámetros 8.2B cuantización Q4_K_M
+bge-m3:latest digest 7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab tamaño 1157672605 familia bert parámetros 566.70M cuantización F16

@@ -23,7 +23,8 @@ export async function transaccion<T>(pool: Pool, accion: (cliente: PoolClient) =
 }
 
 /** Migraciones versionadas por SHA-256; una aplicada no puede cambiar (ADR-018). */
-const MIGRACIONES = [{ version: 1, archivo: "001-inicial.sql" }, { version: 2, archivo: "002-auditoria-propuestas.sql" }] as const;
+const MIGRACIONES = [{ version: 1, archivo: "001-inicial.sql" }, { version: 2, archivo: "002-auditoria-propuestas.sql" },
+  { version: 3, archivo: "003-rag-corpus.sql" }] as const;
 const leerMigracion = (archivo: string) =>
   readFile(new URL(`../../../src/persistencia/migraciones/${archivo}`, import.meta.url), "utf8").catch(async () =>
     readFile(new URL(`./migraciones/${archivo}`, import.meta.url), "utf8"));

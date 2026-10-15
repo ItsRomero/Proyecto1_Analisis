@@ -1,0 +1,5 @@
+Pregunta: ¿Qué política de mora aplica a un crédito otorgado en agosto de 2026? (base de demo, npm run rag:consulta)
+Respuesta: La política de mora que aplica a un crédito otorgado en agosto de 2026 es la política plana (POL-2024-01) [POL-2024-01 §Introducción].
+Citas: POL-2024-01 §Introducción
+Fuentes: POL-2024-01#1 0.6716; POL-2026-10#1 0.6652; POL-2026-10#5 0.6340; POL-2026-10#2 0.6100
+Modelo: qwen3:8b@500a1f067a9f · sin respaldo: false

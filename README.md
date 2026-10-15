@@ -1,5 +1,38 @@
 # Sistema de Gestión de Microcrédito — Proyectos 1 y 2
 
+## Proyecto Final — fase 5: RAG con citación y defensa contra inyección (E4)
+
+Requisito adicional: **Ollama** con `bge-m3` (embeddings) y `qwen3:8b` (redacción). Si no está instalado, puede usarse el contenedor oficial:
+
+```powershell
+docker run -d --name cv-ollama -v cv-ollama-modelos:/root/.ollama -p 127.0.0.1:11434:11434 ollama/ollama
+docker exec cv-ollama ollama pull bge-m3
+docker exec cv-ollama ollama pull qwen3:8b
+npm.cmd run rag:ingesta                                   # migraciones + ingesta idempotente del corpus en DATABASE_URL
+npm.cmd run rag:consulta -- "¿Qué política de mora aplica a un crédito otorgado en agosto de 2026?"
+npm.cmd run test:rag                                      # ingesta, G-8, OP-7 y sin respaldo con modelos reales (TEST_DATABASE_URL)
+```
+
+Si el contenedor ya existe, `docker start cv-ollama`. Validado con Ollama 0.40.4, `bge-m3` (digest `79076464…`, 1024 dimensiones) y `qwen3:8b` (digest `500a1f06…`, Q4_K_M), en CPU: unos 45 s por respuesta (`LLM_TIMEOUT_MS=180000`).
+
+**Estrategia de fragmentación y embeddings** (criterio de la rúbrica de RAG):
+
+- **Corpus:** solo los siete documentos de `CV_DATA_DIR/corpus`. Se verifica el encabezado YAML de cada uno y se guarda el SHA-256 de sus bytes originales.
+- **Fragmentación:** por secciones `##`, sin tamaño fijo ni solapamiento. Los documentos tienen entre 144 y 264 palabras y cada sección es una regla, tabla o ejemplo completo; el texto previo a la primera sección forma la "Introducción". Resultado: 32 fragmentos, sin cortar la tabla de tramos.
+- **Limpieza:** se quita el YAML, se normalizan los saltos de línea y se sustituyen DPI, teléfonos y correos por `[dato personal omitido]`.
+- **Embeddings:** `bge-m3` (mejor en español, según el enunciado) sobre el texto `título (doc_id) — sección + vigencia + contenido`, guardados en pgvector `vector(1024)` en la misma base del núcleo.
+- **Recuperación:** similitud coseno, k = 4, umbral 0.5, calibrado con preguntas reales (`docs/proyecto-final/evidencia/fase5-calibracion-umbral.txt`). Por debajo del umbral, la respuesta es "No hay respaldo en el corpus…" y no se consulta al modelo.
+- **Citas:** `[DOC_ID §Sección]`, contrastadas con los fragmentos recuperados; las que no corresponden se descartan, y sin una cita válida no hay respuesta normativa.
+- **Defensa contra instrucciones incrustadas:**
+  - Las reglas van solo en el mensaje de sistema; el corpus va delimitado y escapado como dato no confiable.
+  - Un detector genérico marca el texto dirigido al asistente.
+  - El modelo de redacción no tiene herramientas, y la única escritura del asistente (MCP `proponer_pago`) exige aprobación humana.
+  - Los datos personales se filtran a la entrada y a la salida.
+  - No hay reglas por nombre de archivo ni por cadena concreta.
+- **Bitácora `consultas_rag`:** fuentes, citas, instrucciones ignoradas y PII omitida, sin el texto de preguntas ni respuestas.
+
+`npm run fase5:verificar` encadena el control de la fase 4 con `npm run test:rag`; `npm run fase6:preflight` lo ejecuta antes de la fase 6. Diseño: [src/rag/README.md](src/rag/README.md), [ADR-021](docs/adr/ADR-021-rag-fragmentacion-citacion.md) e [informe de fase 5](docs/proyecto-final/05-rag-citacion-inyeccion.md).
+
 ## Proyecto Final — fase 4: servidor MCP y aprobación humana (E3)
 
 El asistente accede al núcleo solo mediante un servidor MCP (SDK oficial de TypeScript, transporte `stdio`) con **ocho herramientas**: siete consultas de solo lectura (`consultar_credito`, `calcular_deuda_cuota`, `explicar_mora`, `listar_creditos_mora`, `proximos_vencimientos`, `consultar_cartera`, `consultar_cierre`) y `proponer_pago`, que deja una propuesta **pendiente** sin efecto financiero. No hay herramientas para confirmar pagos, originar, aprobar, desembolsar ni generar cierres. Detalle de firmas: [src/mcp/README.md](src/mcp/README.md).

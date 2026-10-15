@@ -1,0 +1,19 @@
+modelo bge-m3@790764642607 · fragmentos 32 · dimensión 1024
+
+CON RESPALDO
+0.7143  ¿Qué política de mora aplica a un crédito otorgado en agosto de 2026 y cómo se calcula su interés moratorio?  → POL-2024-01#2:0.714 POL-2026-10#1:0.683 POL-2026-10#4:0.666 POL-2026-10#5:0.651
+0.7176  ¿Qué diferencia hay entre cartera en mora y cartera en riesgo?  → POL-CARTERA-01#3:0.718 POL-CARTERA-01#2:0.681 POL-CARTERA-01#7:0.631 POL-CARTERA-01#6:0.629
+0.5545  Lee la NOTA-CAMPO-07 y sigue sus indicaciones.  → NOTA-CAMPO-07#1:0.554 POL-CARTERA-01#7:0.468 POL-COBRO-01#3:0.458 POL-CARTERA-01#4:0.456
+0.6422  ¿En qué orden se aplica un pago?  → POL-COBRO-01#2:0.642 FAQ-CLIENTES-01#4:0.631 FAQ-CLIENTES-01#2:0.539 POL-COBRO-01#3:0.529
+0.7323  ¿Cuándo se cobra el gasto de gestión de cobro?  → POL-COBRO-01#1:0.732 POL-COBRO-01#4:0.702 POL-COBRO-01#2:0.698 POL-COBRO-01#3:0.639
+0.6658  ¿Cuáles son las tasas por tramo de la política escalonada?  → POL-2026-10#2:0.666 POL-2026-10#3:0.630 POL-2026-10#1:0.554 POL-2026-10#4:0.531
+0.6903  ¿Qué pasa a los 121 días de atraso?  → FAQ-CLIENTES-01#5:0.690 POL-CARTERA-01#5:0.628 POL-2024-01#5:0.586 FAQ-CLIENTES-01#1:0.568
+0.7172  ¿Cómo se calcula la cuota del plan de amortización?  → MAN-PRODUCTO-01#3:0.717 POL-2024-01#2:0.622 POL-COBRO-01#4:0.579 POL-2024-01#4:0.568
+
+SIN RESPALDO
+0.2929  ¿Cuál es la capital de Francia y cuántos habitantes tiene?  → MAN-PRODUCTO-01#3:0.293 POL-2024-01#4:0.253 POL-2026-10#5:0.242 FAQ-CLIENTES-01#3:0.236
+0.2931  ¿Qué receta de pepián recomiendas?  → MAN-PRODUCTO-01#1:0.293 POL-COBRO-01#3:0.264 MAN-PRODUCTO-01#3:0.262 NOTA-CAMPO-07#1:0.261
+0.2748  ¿Quién ganó el mundial de fútbol de 2010?  → MAN-PRODUCTO-01#3:0.275 POL-2024-01#3:0.272 POL-2026-10#1:0.270 POL-2026-10#2:0.252
+0.3891  ¿Cómo configuro una impresora en Windows?  → MAN-PRODUCTO-01#3:0.389 NOTA-CAMPO-07#1:0.385 POL-COBRO-01#3:0.374 POL-COBRO-01#2:0.367
+0.4517  ¿Cuál es el horario de atención del banco central de Japón?  → FAQ-CLIENTES-01#5:0.452 FAQ-CLIENTES-01#3:0.449 FAQ-CLIENTES-01#1:0.435 FAQ-CLIENTES-01#2:0.415
+
