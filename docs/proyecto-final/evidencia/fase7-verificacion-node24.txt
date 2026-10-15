@@ -1,0 +1,38 @@
+v24.19.0
+11.17.0
+2026-10-15T22:59:48Z
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p web
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  31 passed (31)
+      Tests  399 passed (399)
+   Start at  17:00:03
+   Duration  13.06s (transform 8.11s, setup 1.30s, import 58.99s, tests 9.49s, environment 8.46s)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:carga:postgres
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  5 passed (5)
+      Tests  31 passed (31)
+   Start at  17:00:18
+   Duration  83.65s (transform 923ms, setup 0ms, import 12.95s, tests 69.00s, environment 1ms)
+
+exit=0

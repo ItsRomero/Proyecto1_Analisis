@@ -1,5 +1,33 @@
 # Sistema de Gestión de Microcrédito — Proyectos 1 y 2
 
+## Proyecto Final — fase 7: pruebas, evals y seguridad (E6)
+
+Comandos de verificación, del más rápido al más lento. Tiempos medidos en este equipo (CPU, sin GPU) con Node 22.23.3 en `evidencia/fase7-verificacion-node22.txt`:
+
+| Comando | Requiere | Qué verifica | Tiempo medido |
+| --- | --- | --- | ---: |
+| `npm run verify` | Nada: sin red, sin Ollama, sin base | Typecheck de núcleo y web, y `npm test`: P1/P2, carga, API, MCP, RAG y chat con dobles, interfaz, evals deterministas, oráculo, seguridad e integridad | ~10 s de pruebas (+ typecheck) |
+| `npm run test:carga:postgres` | PostgreSQL de prueba (`TEST_DATABASE_URL`) | Carga, API HTTP OP-1 a OP-6, MCP/aprobación, MCP por stdio, oráculo congelado | ~79 s |
+| `npm run test:e2e` | PostgreSQL de prueba y Chrome | Siete pantallas y flujos 1 a 3 en navegador | ~45 s |
+| `npm run test:rag` | PostgreSQL de prueba y Ollama (`bge-m3`, `qwen3:8b`) | G-8 y OP-7 con el RAG real | ~5 min |
+| `npm run test:chat` | PostgreSQL de prueba, Ollama y Chrome | G-1 a G-8 y OP-7 en el chat real, pantalla = chat, aprobación por botón | ~26 min |
+| `npm run evals` | PostgreSQL de prueba y Ollama | Evals reales del catálogo contra el oráculo congelado; reporte versionado en `docs/proyecto-final/evals/` | ~20 min (1170 s) |
+| `npm run fase7:verificar` (= `npm run fase8:preflight`) | Todo lo anterior | Cadena completa, con parada al primer fallo | ~51 min |
+
+```powershell
+docker start cv-proyecto-final-db cv-ollama
+npm.cmd run verify          # en cámara: no depende de red ni del modelo
+npm.cmd run evals           # modelo real, temperatura 0; escribe el reporte versionado
+npm.cmd run evals:oraculo   # solo si cambia el núcleo o el paquete: vuelve a congelar el oráculo con su origen
+```
+
+- **Evals en dos niveles** sobre un catálogo único (`tests/evals/casos.ts`), que declara para cada caso su pregunta, su **estado de partida**, la ruta esperada, las herramientas con sus argumentos y la cita esperada. Las evals deterministas (`npm test`) parten de `POST_CARGA`; las reales (`npm run evals`), de `POST_OP1_OP3`.
+- **Oráculo congelado** (`tests/evals/oraculo-congelado.json`): lo producen los casos de uso del núcleo sobre la carga oficial. Registra comando, commit, fecha, versión de Node y huella del paquete, y se cruza con la reproducción independiente de la fase 0. No hay cifras escritas a mano.
+- **Verificador de cifras ampliado** (ADR-023): ahora también controla los porcentajes, enteros incluidos, y las cifras seguidas de un punto final. Los enteros sin `%` (días, conteos) no se verifican.
+- **Variabilidad del modelo:** aun con temperatura 0 y semilla, la redacción cambia entre corridas. Las evals exigen exactitud en las herramientas y las cifras; la redacción se mide como calidad.
+
+Matriz requisito → prueba → evidencia: [07-matriz-requisitos-pruebas.md](docs/proyecto-final/07-matriz-requisitos-pruebas.md). Informe: [07-pruebas-evals-seguridad.md](docs/proyecto-final/07-pruebas-evals-seguridad.md). Decisiones: [ADR-023](docs/adr/ADR-023-evals-oraculo-verificador.md).
+
 ## Proyecto Final — fase 6: chat gerencial integrado (E5)
 
 El chat vive en la aplicación: **Gerencia → Asistente** (`/gerencia/asistente`), con un botón **Asistente** fijo en todas las pantallas de gerencia. Requiere lo mismo que la fase 5 (PostgreSQL con la carga y el corpus ingerido, y Ollama con `qwen3:8b` y `bge-m3`):

@@ -1,0 +1,18 @@
+Integridad de insumos canónicos y secretos — fase 7 (2026-10-15T22:11:30Z, HEAD 70def7e)
+
+SHA-256 del ZIP (esperado 1d9cc4471f25f8bab795f45c1f3fae36a50b76116cb58062a5dc2b46a5c37b0b):
+1d9cc4471f25f8bab795f45c1f3fae36a50b76116cb58062a5dc2b46a5c37b0b *datos/datos-proyecto-final.zip
+
+SHA-256 de eventos.jsonl (esperado e2d46283de8578f19ea2eb14ace283573ebb729aaa0e9b0e65f80a348e4b9d50):
+e2d46283de8578f19ea2eb14ace283573ebb729aaa0e9b0e65f80a348e4b9d50 *datos/datos-proyecto-final/eventos.jsonl
+Contenido de eventos.sha256:
+e2d46283de8578f19ea2eb14ace283573ebb729aaa0e9b0e65f80a348e4b9d50  eventos.jsonl
+
+git status de datos/ y vistas/ (vacío = sin cambios):
+git diff a83b11a -- datos vistas (vacío = sin cambios desde el cierre de fase 6):
+
+Archivos .env versionados (solo debe aparecer .env.example):
+.env.example
+
+git check-ignore .env:
+.gitignore:6:.env	.env

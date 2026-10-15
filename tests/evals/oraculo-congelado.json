@@ -1,0 +1,2434 @@
+{
+  "origen": {
+    "comando": "npm run evals:oraculo",
+    "commit": "70def7ef9c94eb11add010545780facfe7a14ddd",
+    "fecha": "2026-10-15T22:03:11.225Z",
+    "node": "v24.19.0",
+    "huellaEventos": "e2d46283de8578f19ea2eb14ace283573ebb729aaa0e9b0e65f80a348e4b9d50",
+    "base": "TEST_DATABASE_URL reiniciada y cargada con el paquete oficial",
+    "productor": "Casos de uso del núcleo (crearCasosPg); OP-1 a OP-3 con tests/apoyo/guion-op.ts"
+  },
+  "estados": {
+    "POST_CARGA": {
+      "descripcion": "Inmediatamente después de la carga canónica",
+      "resultados": {
+        "G-1": {
+          "tipo": "CON_RAZON",
+          "fechaCorte": "2026-10-31",
+          "carteraActiva": {
+            "importe": "297606.34",
+            "moneda": "GTQ"
+          },
+          "capitalEnRiesgo": {
+            "importe": "35508.23",
+            "moneda": "GTQ"
+          },
+          "razon": "0.1193127471679534784104397775934477739957",
+          "porcentaje": "11.93",
+          "desglose": {
+            "inicioPeriodo": "2026-10-01",
+            "cantidadActiva": 64,
+            "tramosEnRiesgo": [
+              {
+                "cantidadCreditos": 0,
+                "saldoCapital": {
+                  "importe": "0.00",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "0.00",
+                "tramo": "MORA_1"
+              },
+              {
+                "cantidadCreditos": 3,
+                "saldoCapital": {
+                  "importe": "7000.00",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "2.35",
+                "tramo": "MORA_2"
+              },
+              {
+                "cantidadCreditos": 2,
+                "saldoCapital": {
+                  "importe": "1954.26",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "0.66",
+                "tramo": "MORA_3"
+              },
+              {
+                "cantidadCreditos": 2,
+                "saldoCapital": {
+                  "importe": "4304.82",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "1.45",
+                "tramo": "VENCIDO"
+              },
+              {
+                "cantidadCreditos": 3,
+                "saldoCapital": {
+                  "importe": "22249.15",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "7.47",
+                "tramo": "REESTRUCTURADO"
+              }
+            ],
+            "carteraEnMora": {
+              "cantidadCreditos": 14,
+              "saldoCapital": {
+                "importe": "46381.69",
+                "moneda": "GTQ"
+              },
+              "porcentaje": "15.58"
+            },
+            "totalEnRiesgo": {
+              "cantidadCreditos": 10,
+              "saldoCapital": {
+                "importe": "35508.23",
+                "moneda": "GTQ"
+              },
+              "porcentaje": "11.93"
+            },
+            "incobrablesDelPeriodo": {
+              "cantidadCreditos": 2,
+              "saldoCapital": {
+                "importe": "2333.48",
+                "moneda": "GTQ"
+              },
+              "creditos": [
+                {
+                  "creditoId": "CV-2026-0015",
+                  "fecha": "2026-10-22",
+                  "saldoCapital": {
+                    "importe": "1029.24",
+                    "moneda": "GTQ"
+                  }
+                },
+                {
+                  "creditoId": "CV-2026-0022",
+                  "fecha": "2026-10-27",
+                  "saldoCapital": {
+                    "importe": "1304.24",
+                    "moneda": "GTQ"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "G-2": {
+          "fechaCorte": "2026-10-31",
+          "tipo": "MENSUAL",
+          "inicioPeriodo": "2026-10-01",
+          "cierreId": null,
+          "estado": "PREVIO",
+          "desembolsos": {
+            "cantidad": 10,
+            "monto": {
+              "importe": "41000.00",
+              "moneda": "GTQ"
+            }
+          },
+          "recuperaciones": {
+            "cantidad": 42,
+            "total": {
+              "importe": "36554.50",
+              "moneda": "GTQ"
+            },
+            "gastosComisiones": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            },
+            "interesMoratorio": {
+              "importe": "16.93",
+              "moneda": "GTQ"
+            },
+            "interesCorriente": {
+              "importe": "7162.89",
+              "moneda": "GTQ"
+            },
+            "capital": {
+              "importe": "29374.68",
+              "moneda": "GTQ"
+            }
+          },
+          "cartera": {
+            "tipo": "CON_RAZON",
+            "fechaCorte": "2026-10-31",
+            "carteraActiva": {
+              "importe": "297606.34",
+              "moneda": "GTQ"
+            },
+            "capitalEnRiesgo": {
+              "importe": "35508.23",
+              "moneda": "GTQ"
+            },
+            "razon": "0.1193127471679534784104397775934477739957",
+            "porcentaje": "11.93",
+            "desglose": {
+              "inicioPeriodo": "2026-10-01",
+              "cantidadActiva": 64,
+              "tramosEnRiesgo": [
+                {
+                  "cantidadCreditos": 0,
+                  "saldoCapital": {
+                    "importe": "0.00",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "0.00",
+                  "tramo": "MORA_1"
+                },
+                {
+                  "cantidadCreditos": 3,
+                  "saldoCapital": {
+                    "importe": "7000.00",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "2.35",
+                  "tramo": "MORA_2"
+                },
+                {
+                  "cantidadCreditos": 2,
+                  "saldoCapital": {
+                    "importe": "1954.26",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "0.66",
+                  "tramo": "MORA_3"
+                },
+                {
+                  "cantidadCreditos": 2,
+                  "saldoCapital": {
+                    "importe": "4304.82",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "1.45",
+                  "tramo": "VENCIDO"
+                },
+                {
+                  "cantidadCreditos": 3,
+                  "saldoCapital": {
+                    "importe": "22249.15",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "7.47",
+                  "tramo": "REESTRUCTURADO"
+                }
+              ],
+              "carteraEnMora": {
+                "cantidadCreditos": 14,
+                "saldoCapital": {
+                  "importe": "46381.69",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "15.58"
+              },
+              "totalEnRiesgo": {
+                "cantidadCreditos": 10,
+                "saldoCapital": {
+                  "importe": "35508.23",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "11.93"
+              },
+              "incobrablesDelPeriodo": {
+                "cantidadCreditos": 2,
+                "saldoCapital": {
+                  "importe": "2333.48",
+                  "moneda": "GTQ"
+                },
+                "creditos": [
+                  {
+                    "creditoId": "CV-2026-0015",
+                    "fecha": "2026-10-22",
+                    "saldoCapital": {
+                      "importe": "1029.24",
+                      "moneda": "GTQ"
+                    }
+                  },
+                  {
+                    "creditoId": "CV-2026-0022",
+                    "fecha": "2026-10-27",
+                    "saldoCapital": {
+                      "importe": "1304.24",
+                      "moneda": "GTQ"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "G-3": {
+          "fechaCorte": "2026-10-31",
+          "tipo": "DIARIO",
+          "inicioPeriodo": "2026-10-31",
+          "cierreId": null,
+          "estado": "PREVIO",
+          "desembolsos": {
+            "cantidad": 0,
+            "monto": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            }
+          },
+          "recuperaciones": {
+            "cantidad": 0,
+            "total": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            },
+            "gastosComisiones": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            },
+            "interesMoratorio": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            },
+            "interesCorriente": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            },
+            "capital": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            }
+          },
+          "cartera": {
+            "tipo": "CON_RAZON",
+            "fechaCorte": "2026-10-31",
+            "carteraActiva": {
+              "importe": "297606.34",
+              "moneda": "GTQ"
+            },
+            "capitalEnRiesgo": {
+              "importe": "35508.23",
+              "moneda": "GTQ"
+            },
+            "razon": "0.1193127471679534784104397775934477739957",
+            "porcentaje": "11.93",
+            "desglose": {
+              "inicioPeriodo": "2026-10-31",
+              "cantidadActiva": 64,
+              "tramosEnRiesgo": [
+                {
+                  "cantidadCreditos": 0,
+                  "saldoCapital": {
+                    "importe": "0.00",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "0.00",
+                  "tramo": "MORA_1"
+                },
+                {
+                  "cantidadCreditos": 3,
+                  "saldoCapital": {
+                    "importe": "7000.00",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "2.35",
+                  "tramo": "MORA_2"
+                },
+                {
+                  "cantidadCreditos": 2,
+                  "saldoCapital": {
+                    "importe": "1954.26",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "0.66",
+                  "tramo": "MORA_3"
+                },
+                {
+                  "cantidadCreditos": 2,
+                  "saldoCapital": {
+                    "importe": "4304.82",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "1.45",
+                  "tramo": "VENCIDO"
+                },
+                {
+                  "cantidadCreditos": 3,
+                  "saldoCapital": {
+                    "importe": "22249.15",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "7.47",
+                  "tramo": "REESTRUCTURADO"
+                }
+              ],
+              "carteraEnMora": {
+                "cantidadCreditos": 14,
+                "saldoCapital": {
+                  "importe": "46381.69",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "15.58"
+              },
+              "totalEnRiesgo": {
+                "cantidadCreditos": 10,
+                "saldoCapital": {
+                  "importe": "35508.23",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "11.93"
+              },
+              "incobrablesDelPeriodo": {
+                "cantidadCreditos": 0,
+                "saldoCapital": {
+                  "importe": "0.00",
+                  "moneda": "GTQ"
+                },
+                "creditos": []
+              }
+            }
+          }
+        },
+        "G-4": {
+          "fechaCorte": "2026-10-31",
+          "creditos": [
+            {
+              "creditoId": "CV-2026-0035",
+              "fechaCorte": "2026-10-31",
+              "estado": "EN_MORA",
+              "saldoCapital": {
+                "importe": "1268.10",
+                "moneda": "GTQ"
+              },
+              "diasAtraso": 70,
+              "tramo": "MORA_3",
+              "cuotasPagadas": 1,
+              "cuotasVencidas": 3,
+              "proximaCuota": {
+                "numeroCuota": 2,
+                "fechaVencimiento": "2026-08-22",
+                "importe": {
+                  "importe": "276.90",
+                  "moneda": "GTQ"
+                }
+              },
+              "versionCredito": 0
+            },
+            {
+              "creditoId": "CV-2026-0030",
+              "fechaCorte": "2026-10-31",
+              "estado": "EN_MORA",
+              "saldoCapital": {
+                "importe": "686.16",
+                "moneda": "GTQ"
+              },
+              "diasAtraso": 65,
+              "tramo": "MORA_3",
+              "cuotasPagadas": 2,
+              "cuotasVencidas": 3,
+              "proximaCuota": {
+                "numeroCuota": 3,
+                "fechaVencimiento": "2026-08-27",
+                "importe": {
+                  "importe": "184.60",
+                  "moneda": "GTQ"
+                }
+              },
+              "versionCredito": 0
+            }
+          ]
+        },
+        "G-5.credito": {
+          "creditoId": "CV-2026-0030",
+          "fechaCorte": "2026-10-31",
+          "estado": "EN_MORA",
+          "saldoCapital": {
+            "importe": "686.16",
+            "moneda": "GTQ"
+          },
+          "diasAtraso": 65,
+          "tramo": "MORA_3",
+          "cuotasPagadas": 2,
+          "cuotasVencidas": 3,
+          "proximaCuota": {
+            "numeroCuota": 3,
+            "fechaVencimiento": "2026-08-27",
+            "importe": {
+              "importe": "184.60",
+              "moneda": "GTQ"
+            }
+          },
+          "versionCredito": 0
+        },
+        "G-5.mora": {
+          "creditoId": "CV-2026-0030",
+          "fechaCorte": "2026-10-31",
+          "cuotas": [
+            {
+              "referencia": "CV-2026-0030:C3",
+              "fechaVencimiento": "2026-08-27",
+              "diasAtraso": 65,
+              "tramo": "MORA_3",
+              "capitalVencido": {
+                "importe": "164.02",
+                "moneda": "GTQ"
+              },
+              "interesMoratorio": {
+                "importe": "7.11",
+                "moneda": "GTQ"
+              },
+              "politicaId": "POL-2024-01",
+              "detalle": {
+                "totalSinRedondear": "7.107533333333333333333333333333333333333",
+                "moneda": "GTQ",
+                "tramos": [
+                  {
+                    "nombre": "PLANA",
+                    "dias": 65,
+                    "tasa": "0.24",
+                    "importeSinRedondear": "7.107533333333333333333333333333333333333"
+                  }
+                ]
+              }
+            }
+          ],
+          "politicaId": "POL-2024-01",
+          "corteDevengo": "2026-10-31"
+        },
+        "G-6.7": {
+          "fechaCorte": "2026-10-31",
+          "dias": 7,
+          "hastaIncluido": "2026-11-07",
+          "cantidad": 10,
+          "montoTotal": {
+            "importe": "7001.31",
+            "moneda": "GTQ"
+          },
+          "cuotas": [
+            {
+              "creditoId": "CV-2026-0018",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "292.46",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0031",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "872.50",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0062",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "184.60",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0041",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-02",
+              "importe": {
+                "importe": "436.71",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0052",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-02",
+              "importe": {
+                "importe": "55.91",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0010",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "1180.95",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0019",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "1229.66",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0063",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "727.09",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0042",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-05",
+              "importe": {
+                "importe": "1476.78",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0043",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-06",
+              "importe": {
+                "importe": "544.65",
+                "moneda": "GTQ"
+              }
+            }
+          ]
+        },
+        "G-6.30": {
+          "fechaCorte": "2026-10-31",
+          "dias": 30,
+          "hastaIncluido": "2026-11-30",
+          "cantidad": 64,
+          "montoTotal": {
+            "importe": "45719.79",
+            "moneda": "GTQ"
+          },
+          "cuotas": [
+            {
+              "creditoId": "CV-2026-0018",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "292.46",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0031",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "872.50",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0062",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "184.60",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0041",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-02",
+              "importe": {
+                "importe": "436.71",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0052",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-02",
+              "importe": {
+                "importe": "55.91",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0010",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "1180.95",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0019",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "1229.66",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0063",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "727.09",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0042",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-05",
+              "importe": {
+                "importe": "1476.78",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0043",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-06",
+              "importe": {
+                "importe": "544.65",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0053",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-08",
+              "importe": {
+                "importe": "1476.19",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0006",
+              "numeroCuota": 9,
+              "fechaVencimiento": "2026-11-09",
+              "importe": {
+                "importe": "1926.48",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0023",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-09",
+              "importe": {
+                "importe": "61.19",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0011",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "150.69",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0020",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "436.25",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0037",
+              "numeroCuota": 4,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "1169.85",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0054",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "553.79",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0410",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "1004.62",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0024",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-11",
+              "importe": {
+                "importe": "2239.74",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0044",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-11",
+              "importe": {
+                "importe": "872.50",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0055",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-11",
+              "importe": {
+                "importe": "581.67",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0025",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-12",
+              "importe": {
+                "importe": "2009.24",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0064",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-12",
+              "importe": {
+                "importe": "512.36",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0032",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-13",
+              "importe": {
+                "importe": "181.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0201",
+              "numeroCuota": 4,
+              "fechaVencimiento": "2026-11-13",
+              "importe": {
+                "importe": "602.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0001",
+              "numeroCuota": 10,
+              "fechaVencimiento": "2026-11-14",
+              "importe": {
+                "importe": "2511.55",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0065",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-14",
+              "importe": {
+                "importe": "553.79",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0203",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-14",
+              "importe": {
+                "importe": "1205.55",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0038",
+              "numeroCuota": 4,
+              "fechaVencimiento": "2026-11-15",
+              "importe": {
+                "importe": "305.94",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0066",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-15",
+              "importe": {
+                "importe": "269.03",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0100",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-15",
+              "importe": {
+                "importe": "1004.62",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0056",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-16",
+              "importe": {
+                "importe": "512.36",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0067",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-16",
+              "importe": {
+                "importe": "614.83",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0003",
+              "numeroCuota": 10,
+              "fechaVencimiento": "2026-11-17",
+              "importe": {
+                "importe": "614.83",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0012",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-17",
+              "importe": {
+                "importe": "401.85",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0057",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-17",
+              "importe": {
+                "importe": "538.05",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0026",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-18",
+              "importe": {
+                "importe": "1118.26",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0039",
+              "numeroCuota": 4,
+              "fechaVencimiento": "2026-11-18",
+              "importe": {
+                "importe": "734.25",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0045",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-19",
+              "importe": {
+                "importe": "655.06",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0058",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-19",
+              "importe": {
+                "importe": "1476.78",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0059",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-19",
+              "importe": {
+                "importe": "481.52",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0033",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-20",
+              "importe": {
+                "importe": "922.99",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0046",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-20",
+              "importe": {
+                "importe": "118.09",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0068",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-20",
+              "importe": {
+                "importe": "83.87",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0047",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-21",
+              "importe": {
+                "importe": "922.99",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0048",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-21",
+              "importe": {
+                "importe": "269.03",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0013",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "284.93",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0034",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "2215.17",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0035",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "276.90",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0049",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "200.92",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0060",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "240.76",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0004",
+              "numeroCuota": 10,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "602.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0014",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "642.17",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0027",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "181.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0028",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "272.34",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0061",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "369.20",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0005",
+              "numeroCuota": 10,
+              "fechaVencimiento": "2026-11-24",
+              "importe": {
+                "importe": "819.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0050",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-24",
+              "importe": {
+                "importe": "363.54",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0202",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-24",
+              "importe": {
+                "importe": "1027.47",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0051",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-26",
+              "importe": {
+                "importe": "150.69",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0030",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-27",
+              "importe": {
+                "importe": "184.58",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0069",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-27",
+              "importe": {
+                "importe": "353.53",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0036",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-28",
+              "importe": {
+                "importe": "553.79",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0070",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-28",
+              "importe": {
+                "importe": "883.83",
+                "moneda": "GTQ"
+              }
+            }
+          ]
+        },
+        "G-7": {
+          "creditoId": "CV-2026-0410",
+          "fechaCorte": "2027-01-24",
+          "cuotas": [
+            {
+              "referencia": "CV-2026-0410:C2",
+              "fechaVencimiento": "2026-12-10",
+              "diasAtraso": 45,
+              "tramo": "MORA_2",
+              "capitalVencido": {
+                "importe": "725.76",
+                "moneda": "GTQ"
+              },
+              "interesMoratorio": {
+                "importe": "18.14",
+                "moneda": "GTQ"
+              },
+              "politicaId": "POL-2026-10",
+              "detalle": {
+                "totalSinRedondear": "18.144",
+                "moneda": "GTQ",
+                "tramos": [
+                  {
+                    "nombre": "MORA_1",
+                    "dias": 30,
+                    "tasa": "0.18",
+                    "importeSinRedondear": "10.8864"
+                  },
+                  {
+                    "nombre": "MORA_2",
+                    "dias": 15,
+                    "tasa": "0.24",
+                    "importeSinRedondear": "7.2576"
+                  }
+                ]
+              }
+            }
+          ],
+          "politicaId": "POL-2026-10",
+          "corteDevengo": "2027-01-24"
+        }
+      }
+    },
+    "POST_OP1_OP3": {
+      "descripcion": "Después de OP-1 (0043), OP-2 (0035) y OP-3 (CL-9001 / CV-2026-9001) al 2026-10-31",
+      "resultados": {
+        "G-1": {
+          "tipo": "CON_RAZON",
+          "fechaCorte": "2026-10-31",
+          "carteraActiva": {
+            "importe": "306897.83",
+            "moneda": "GTQ"
+          },
+          "capitalEnRiesgo": {
+            "importe": "32269.37",
+            "moneda": "GTQ"
+          },
+          "razon": "0.105146947438500949974133085268149338169",
+          "porcentaje": "10.51",
+          "desglose": {
+            "inicioPeriodo": "2026-10-01",
+            "cantidadActiva": 65,
+            "tramosEnRiesgo": [
+              {
+                "cantidadCreditos": 0,
+                "saldoCapital": {
+                  "importe": "0.00",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "0.00",
+                "tramo": "MORA_1"
+              },
+              {
+                "cantidadCreditos": 3,
+                "saldoCapital": {
+                  "importe": "5029.24",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "1.64",
+                "tramo": "MORA_2"
+              },
+              {
+                "cantidadCreditos": 1,
+                "saldoCapital": {
+                  "importe": "686.16",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "0.22",
+                "tramo": "MORA_3"
+              },
+              {
+                "cantidadCreditos": 2,
+                "saldoCapital": {
+                  "importe": "4304.82",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "1.40",
+                "tramo": "VENCIDO"
+              },
+              {
+                "cantidadCreditos": 3,
+                "saldoCapital": {
+                  "importe": "22249.15",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "7.25",
+                "tramo": "REESTRUCTURADO"
+              }
+            ],
+            "carteraEnMora": {
+              "cantidadCreditos": 14,
+              "saldoCapital": {
+                "importe": "45673.18",
+                "moneda": "GTQ"
+              },
+              "porcentaje": "14.88"
+            },
+            "totalEnRiesgo": {
+              "cantidadCreditos": 9,
+              "saldoCapital": {
+                "importe": "32269.37",
+                "moneda": "GTQ"
+              },
+              "porcentaje": "10.51"
+            },
+            "incobrablesDelPeriodo": {
+              "cantidadCreditos": 2,
+              "saldoCapital": {
+                "importe": "2333.48",
+                "moneda": "GTQ"
+              },
+              "creditos": [
+                {
+                  "creditoId": "CV-2026-0015",
+                  "fecha": "2026-10-22",
+                  "saldoCapital": {
+                    "importe": "1029.24",
+                    "moneda": "GTQ"
+                  }
+                },
+                {
+                  "creditoId": "CV-2026-0022",
+                  "fecha": "2026-10-27",
+                  "saldoCapital": {
+                    "importe": "1304.24",
+                    "moneda": "GTQ"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "G-2": {
+          "fechaCorte": "2026-10-31",
+          "tipo": "MENSUAL",
+          "inicioPeriodo": "2026-10-01",
+          "cierreId": null,
+          "estado": "PREVIO",
+          "desembolsos": {
+            "cantidad": 11,
+            "monto": {
+              "importe": "51000.00",
+              "moneda": "GTQ"
+            }
+          },
+          "recuperaciones": {
+            "cantidad": 44,
+            "total": {
+              "importe": "37404.42",
+              "moneda": "GTQ"
+            },
+            "gastosComisiones": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            },
+            "interesMoratorio": {
+              "importe": "45.30",
+              "moneda": "GTQ"
+            },
+            "interesCorriente": {
+              "importe": "7275.93",
+              "moneda": "GTQ"
+            },
+            "capital": {
+              "importe": "30083.19",
+              "moneda": "GTQ"
+            }
+          },
+          "cartera": {
+            "tipo": "CON_RAZON",
+            "fechaCorte": "2026-10-31",
+            "carteraActiva": {
+              "importe": "306897.83",
+              "moneda": "GTQ"
+            },
+            "capitalEnRiesgo": {
+              "importe": "32269.37",
+              "moneda": "GTQ"
+            },
+            "razon": "0.105146947438500949974133085268149338169",
+            "porcentaje": "10.51",
+            "desglose": {
+              "inicioPeriodo": "2026-10-01",
+              "cantidadActiva": 65,
+              "tramosEnRiesgo": [
+                {
+                  "cantidadCreditos": 0,
+                  "saldoCapital": {
+                    "importe": "0.00",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "0.00",
+                  "tramo": "MORA_1"
+                },
+                {
+                  "cantidadCreditos": 3,
+                  "saldoCapital": {
+                    "importe": "5029.24",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "1.64",
+                  "tramo": "MORA_2"
+                },
+                {
+                  "cantidadCreditos": 1,
+                  "saldoCapital": {
+                    "importe": "686.16",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "0.22",
+                  "tramo": "MORA_3"
+                },
+                {
+                  "cantidadCreditos": 2,
+                  "saldoCapital": {
+                    "importe": "4304.82",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "1.40",
+                  "tramo": "VENCIDO"
+                },
+                {
+                  "cantidadCreditos": 3,
+                  "saldoCapital": {
+                    "importe": "22249.15",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "7.25",
+                  "tramo": "REESTRUCTURADO"
+                }
+              ],
+              "carteraEnMora": {
+                "cantidadCreditos": 14,
+                "saldoCapital": {
+                  "importe": "45673.18",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "14.88"
+              },
+              "totalEnRiesgo": {
+                "cantidadCreditos": 9,
+                "saldoCapital": {
+                  "importe": "32269.37",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "10.51"
+              },
+              "incobrablesDelPeriodo": {
+                "cantidadCreditos": 2,
+                "saldoCapital": {
+                  "importe": "2333.48",
+                  "moneda": "GTQ"
+                },
+                "creditos": [
+                  {
+                    "creditoId": "CV-2026-0015",
+                    "fecha": "2026-10-22",
+                    "saldoCapital": {
+                      "importe": "1029.24",
+                      "moneda": "GTQ"
+                    }
+                  },
+                  {
+                    "creditoId": "CV-2026-0022",
+                    "fecha": "2026-10-27",
+                    "saldoCapital": {
+                      "importe": "1304.24",
+                      "moneda": "GTQ"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "G-3": {
+          "fechaCorte": "2026-10-31",
+          "tipo": "DIARIO",
+          "inicioPeriodo": "2026-10-31",
+          "cierreId": null,
+          "estado": "PREVIO",
+          "desembolsos": {
+            "cantidad": 1,
+            "monto": {
+              "importe": "10000.00",
+              "moneda": "GTQ"
+            }
+          },
+          "recuperaciones": {
+            "cantidad": 2,
+            "total": {
+              "importe": "849.92",
+              "moneda": "GTQ"
+            },
+            "gastosComisiones": {
+              "importe": "0.00",
+              "moneda": "GTQ"
+            },
+            "interesMoratorio": {
+              "importe": "28.37",
+              "moneda": "GTQ"
+            },
+            "interesCorriente": {
+              "importe": "113.04",
+              "moneda": "GTQ"
+            },
+            "capital": {
+              "importe": "708.51",
+              "moneda": "GTQ"
+            }
+          },
+          "cartera": {
+            "tipo": "CON_RAZON",
+            "fechaCorte": "2026-10-31",
+            "carteraActiva": {
+              "importe": "306897.83",
+              "moneda": "GTQ"
+            },
+            "capitalEnRiesgo": {
+              "importe": "32269.37",
+              "moneda": "GTQ"
+            },
+            "razon": "0.105146947438500949974133085268149338169",
+            "porcentaje": "10.51",
+            "desglose": {
+              "inicioPeriodo": "2026-10-31",
+              "cantidadActiva": 65,
+              "tramosEnRiesgo": [
+                {
+                  "cantidadCreditos": 0,
+                  "saldoCapital": {
+                    "importe": "0.00",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "0.00",
+                  "tramo": "MORA_1"
+                },
+                {
+                  "cantidadCreditos": 3,
+                  "saldoCapital": {
+                    "importe": "5029.24",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "1.64",
+                  "tramo": "MORA_2"
+                },
+                {
+                  "cantidadCreditos": 1,
+                  "saldoCapital": {
+                    "importe": "686.16",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "0.22",
+                  "tramo": "MORA_3"
+                },
+                {
+                  "cantidadCreditos": 2,
+                  "saldoCapital": {
+                    "importe": "4304.82",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "1.40",
+                  "tramo": "VENCIDO"
+                },
+                {
+                  "cantidadCreditos": 3,
+                  "saldoCapital": {
+                    "importe": "22249.15",
+                    "moneda": "GTQ"
+                  },
+                  "porcentaje": "7.25",
+                  "tramo": "REESTRUCTURADO"
+                }
+              ],
+              "carteraEnMora": {
+                "cantidadCreditos": 14,
+                "saldoCapital": {
+                  "importe": "45673.18",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "14.88"
+              },
+              "totalEnRiesgo": {
+                "cantidadCreditos": 9,
+                "saldoCapital": {
+                  "importe": "32269.37",
+                  "moneda": "GTQ"
+                },
+                "porcentaje": "10.51"
+              },
+              "incobrablesDelPeriodo": {
+                "cantidadCreditos": 0,
+                "saldoCapital": {
+                  "importe": "0.00",
+                  "moneda": "GTQ"
+                },
+                "creditos": []
+              }
+            }
+          }
+        },
+        "G-4": {
+          "fechaCorte": "2026-10-31",
+          "creditos": [
+            {
+              "creditoId": "CV-2026-0030",
+              "fechaCorte": "2026-10-31",
+              "estado": "EN_MORA",
+              "saldoCapital": {
+                "importe": "686.16",
+                "moneda": "GTQ"
+              },
+              "diasAtraso": 65,
+              "tramo": "MORA_3",
+              "cuotasPagadas": 2,
+              "cuotasVencidas": 3,
+              "proximaCuota": {
+                "numeroCuota": 3,
+                "fechaVencimiento": "2026-08-27",
+                "importe": {
+                  "importe": "184.60",
+                  "moneda": "GTQ"
+                }
+              },
+              "versionCredito": 0
+            }
+          ]
+        },
+        "G-5.credito": {
+          "creditoId": "CV-2026-0030",
+          "fechaCorte": "2026-10-31",
+          "estado": "EN_MORA",
+          "saldoCapital": {
+            "importe": "686.16",
+            "moneda": "GTQ"
+          },
+          "diasAtraso": 65,
+          "tramo": "MORA_3",
+          "cuotasPagadas": 2,
+          "cuotasVencidas": 3,
+          "proximaCuota": {
+            "numeroCuota": 3,
+            "fechaVencimiento": "2026-08-27",
+            "importe": {
+              "importe": "184.60",
+              "moneda": "GTQ"
+            }
+          },
+          "versionCredito": 0
+        },
+        "G-5.mora": {
+          "creditoId": "CV-2026-0030",
+          "fechaCorte": "2026-10-31",
+          "cuotas": [
+            {
+              "referencia": "CV-2026-0030:C3",
+              "fechaVencimiento": "2026-08-27",
+              "diasAtraso": 65,
+              "tramo": "MORA_3",
+              "capitalVencido": {
+                "importe": "164.02",
+                "moneda": "GTQ"
+              },
+              "interesMoratorio": {
+                "importe": "7.11",
+                "moneda": "GTQ"
+              },
+              "politicaId": "POL-2024-01",
+              "detalle": {
+                "totalSinRedondear": "7.107533333333333333333333333333333333333",
+                "moneda": "GTQ",
+                "tramos": [
+                  {
+                    "nombre": "PLANA",
+                    "dias": 65,
+                    "tasa": "0.24",
+                    "importeSinRedondear": "7.107533333333333333333333333333333333333"
+                  }
+                ]
+              }
+            }
+          ],
+          "politicaId": "POL-2024-01",
+          "corteDevengo": "2026-10-31"
+        },
+        "G-6.7": {
+          "fechaCorte": "2026-10-31",
+          "dias": 7,
+          "hastaIncluido": "2026-11-07",
+          "cantidad": 10,
+          "montoTotal": {
+            "importe": "7001.31",
+            "moneda": "GTQ"
+          },
+          "cuotas": [
+            {
+              "creditoId": "CV-2026-0018",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "292.46",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0031",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "872.50",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0062",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "184.60",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0041",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-02",
+              "importe": {
+                "importe": "436.71",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0052",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-02",
+              "importe": {
+                "importe": "55.91",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0010",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "1180.95",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0019",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "1229.66",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0063",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "727.09",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0042",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-05",
+              "importe": {
+                "importe": "1476.78",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0043",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-06",
+              "importe": {
+                "importe": "544.65",
+                "moneda": "GTQ"
+              }
+            }
+          ]
+        },
+        "G-6.30": {
+          "fechaCorte": "2026-10-31",
+          "dias": 30,
+          "hastaIncluido": "2026-11-30",
+          "cantidad": 65,
+          "montoTotal": {
+            "importe": "46724.41",
+            "moneda": "GTQ"
+          },
+          "cuotas": [
+            {
+              "creditoId": "CV-2026-0018",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "292.46",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0031",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "872.50",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0062",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-01",
+              "importe": {
+                "importe": "184.60",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0041",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-02",
+              "importe": {
+                "importe": "436.71",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0052",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-02",
+              "importe": {
+                "importe": "55.91",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0010",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "1180.95",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0019",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "1229.66",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0063",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-03",
+              "importe": {
+                "importe": "727.09",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0042",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-05",
+              "importe": {
+                "importe": "1476.78",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0043",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-06",
+              "importe": {
+                "importe": "544.65",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0053",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-08",
+              "importe": {
+                "importe": "1476.19",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0006",
+              "numeroCuota": 9,
+              "fechaVencimiento": "2026-11-09",
+              "importe": {
+                "importe": "1926.48",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0023",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-09",
+              "importe": {
+                "importe": "61.19",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0011",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "150.69",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0020",
+              "numeroCuota": 7,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "436.25",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0037",
+              "numeroCuota": 4,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "1169.85",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0054",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "553.79",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0410",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-10",
+              "importe": {
+                "importe": "1004.62",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0024",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-11",
+              "importe": {
+                "importe": "2239.74",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0044",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-11",
+              "importe": {
+                "importe": "872.50",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0055",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-11",
+              "importe": {
+                "importe": "581.67",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0025",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-12",
+              "importe": {
+                "importe": "2009.24",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0064",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-12",
+              "importe": {
+                "importe": "512.36",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0032",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-13",
+              "importe": {
+                "importe": "181.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0201",
+              "numeroCuota": 4,
+              "fechaVencimiento": "2026-11-13",
+              "importe": {
+                "importe": "602.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0001",
+              "numeroCuota": 10,
+              "fechaVencimiento": "2026-11-14",
+              "importe": {
+                "importe": "2511.55",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0065",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-14",
+              "importe": {
+                "importe": "553.79",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0203",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-14",
+              "importe": {
+                "importe": "1205.55",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0038",
+              "numeroCuota": 4,
+              "fechaVencimiento": "2026-11-15",
+              "importe": {
+                "importe": "305.94",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0066",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-15",
+              "importe": {
+                "importe": "269.03",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0100",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-15",
+              "importe": {
+                "importe": "1004.62",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0056",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-16",
+              "importe": {
+                "importe": "512.36",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0067",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-16",
+              "importe": {
+                "importe": "614.83",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0003",
+              "numeroCuota": 10,
+              "fechaVencimiento": "2026-11-17",
+              "importe": {
+                "importe": "614.83",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0012",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-17",
+              "importe": {
+                "importe": "401.85",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0057",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-17",
+              "importe": {
+                "importe": "538.05",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0026",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-18",
+              "importe": {
+                "importe": "1118.26",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0039",
+              "numeroCuota": 4,
+              "fechaVencimiento": "2026-11-18",
+              "importe": {
+                "importe": "734.25",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0045",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-19",
+              "importe": {
+                "importe": "655.06",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0058",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-19",
+              "importe": {
+                "importe": "1476.78",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0059",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-19",
+              "importe": {
+                "importe": "481.52",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0033",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-20",
+              "importe": {
+                "importe": "922.99",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0046",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-20",
+              "importe": {
+                "importe": "118.09",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0068",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-20",
+              "importe": {
+                "importe": "83.87",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0047",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-21",
+              "importe": {
+                "importe": "922.99",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0048",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-21",
+              "importe": {
+                "importe": "269.03",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0013",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "284.93",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0034",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "2215.17",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0035",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "276.90",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0049",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "200.92",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0060",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-22",
+              "importe": {
+                "importe": "240.76",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0004",
+              "numeroCuota": 10,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "602.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0014",
+              "numeroCuota": 8,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "642.17",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0027",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "181.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0028",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "272.34",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0061",
+              "numeroCuota": 2,
+              "fechaVencimiento": "2026-11-23",
+              "importe": {
+                "importe": "369.20",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0005",
+              "numeroCuota": 10,
+              "fechaVencimiento": "2026-11-24",
+              "importe": {
+                "importe": "819.77",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0050",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-24",
+              "importe": {
+                "importe": "363.54",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0202",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-24",
+              "importe": {
+                "importe": "1027.47",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0051",
+              "numeroCuota": 3,
+              "fechaVencimiento": "2026-11-26",
+              "importe": {
+                "importe": "150.69",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0030",
+              "numeroCuota": 6,
+              "fechaVencimiento": "2026-11-27",
+              "importe": {
+                "importe": "184.58",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0069",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-27",
+              "importe": {
+                "importe": "353.53",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0036",
+              "numeroCuota": 5,
+              "fechaVencimiento": "2026-11-28",
+              "importe": {
+                "importe": "553.79",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-0070",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-28",
+              "importe": {
+                "importe": "883.83",
+                "moneda": "GTQ"
+              }
+            },
+            {
+              "creditoId": "CV-2026-9001",
+              "numeroCuota": 1,
+              "fechaVencimiento": "2026-11-30",
+              "importe": {
+                "importe": "1004.62",
+                "moneda": "GTQ"
+              }
+            }
+          ]
+        },
+        "G-7": {
+          "creditoId": "CV-2026-0410",
+          "fechaCorte": "2027-01-24",
+          "cuotas": [
+            {
+              "referencia": "CV-2026-0410:C2",
+              "fechaVencimiento": "2026-12-10",
+              "diasAtraso": 45,
+              "tramo": "MORA_2",
+              "capitalVencido": {
+                "importe": "725.76",
+                "moneda": "GTQ"
+              },
+              "interesMoratorio": {
+                "importe": "18.14",
+                "moneda": "GTQ"
+              },
+              "politicaId": "POL-2026-10",
+              "detalle": {
+                "totalSinRedondear": "18.144",
+                "moneda": "GTQ",
+                "tramos": [
+                  {
+                    "nombre": "MORA_1",
+                    "dias": 30,
+                    "tasa": "0.18",
+                    "importeSinRedondear": "10.8864"
+                  },
+                  {
+                    "nombre": "MORA_2",
+                    "dias": 15,
+                    "tasa": "0.24",
+                    "importeSinRedondear": "7.2576"
+                  }
+                ]
+              }
+            }
+          ],
+          "politicaId": "POL-2026-10",
+          "corteDevengo": "2027-01-24"
+        }
+      }
+    }
+  }
+}
