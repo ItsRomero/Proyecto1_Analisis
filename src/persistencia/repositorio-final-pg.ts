@@ -140,17 +140,18 @@ class TransaccionFinalPg implements TransaccionFinal {
       q.capital.toString(), q.interes.toString(), q.importe.toString(), q.saldoPosterior.toString()]);
   }
   public async guardarPropuesta(p: PropuestaHecho) {
-    const { sujetoProponente, huella, ...publica } = p;
-    await this.c.query("INSERT INTO cv.propuestas_pago VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)", [p.propuestaId, p.creditoId,
+    const { sujetoProponente, huella, canalProponente, ...publica } = p;
+    await this.c.query("INSERT INTO cv.propuestas_pago VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)", [p.propuestaId, p.creditoId,
       p.numeroCuota, sujetoProponente, p.sesionId, p.fechaCorte, p.claveIdempotencia, huella, p.versionCredito,
-      BigInt(p.monto.importe.replace(".", "")).toString(), p.estado, JSON.stringify(publica), p.estadoPrevisto]);
+      BigInt(p.monto.importe.replace(".", "")).toString(), p.estado, JSON.stringify(publica), p.estadoPrevisto, canalProponente]);
   }
   public async obtenerPropuesta(propuestaId: string): Promise<PropuestaHecho | null> {
-    const r = await this.c.query<{ desglose_snapshot: Omit<PropuestaHecho, "sujetoProponente" | "huella">; estado: PropuestaHecho["estado"];
-      sujeto_proponente: string; huella: string }>(
-      "SELECT desglose_snapshot, estado, sujeto_proponente, huella FROM cv.propuestas_pago WHERE id=$1 FOR UPDATE", [propuestaId]);
+    const r = await this.c.query<{ desglose_snapshot: Omit<PropuestaHecho, "sujetoProponente" | "huella" | "canalProponente">;
+      estado: PropuestaHecho["estado"]; sujeto_proponente: string; huella: string; canal_proponente: PropuestaHecho["canalProponente"] }>(
+      "SELECT desglose_snapshot, estado, sujeto_proponente, huella, canal_proponente FROM cv.propuestas_pago WHERE id=$1 FOR UPDATE", [propuestaId]);
     const f = r.rows[0];
-    return f ? { ...f.desglose_snapshot, estado: f.estado, sujetoProponente: f.sujeto_proponente, huella: f.huella } : null;
+    return f ? { ...f.desglose_snapshot, estado: f.estado, sujetoProponente: f.sujeto_proponente, huella: f.huella,
+      canalProponente: f.canal_proponente } : null;
   }
   public async actualizarEstadoPropuesta(propuestaId: string, estado: PropuestaHecho["estado"]) {
     await this.c.query("UPDATE cv.propuestas_pago SET estado=$2 WHERE id=$1", [propuestaId, estado]);
@@ -169,8 +170,9 @@ class TransaccionFinalPg implements TransaccionFinal {
       [creditoId, numeroCuota, fecha, importe.toString()]);
   }
   public async registrarAuditoria(e: EventoAuditoria) {
-    await this.c.query("INSERT INTO cv.auditoria_aprobaciones VALUES ($1,$2,$3,$4,$5,$6,$7,now(),$8,$9,$10)", [e.id, e.propuestaId,
-      e.creditoId, e.sujetoId, e.sesionId, e.tipo, e.fechaOperacion, e.resultado, e.versionCredito, e.traceId]);
+    await this.c.query("INSERT INTO cv.auditoria_aprobaciones VALUES ($1,$2,$3,$4,$5,$6,$7,now(),$8,$9,$10,$11,$12,$13)", [e.id, e.propuestaId,
+      e.creditoId, e.sujetoId, e.sesionId, e.tipo, e.fechaOperacion, e.resultado, e.versionCredito, e.traceId,
+      e.proponente ?? null, e.canalProponente ?? null, e.claveIdempotencia ?? null]);
   }
   public obtenerCierre(tipo: "DIARIO" | "MENSUAL", inicio: string, corte: string) { return cierreGuardado(this.c, tipo, inicio, corte, true); }
   public async insertarCierre(cierre: CierreHecho, versionCartera: number, generadoPor: string) {

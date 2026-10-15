@@ -27,16 +27,21 @@
     "fase2:verificar": "npm run verify && npm run test:carga:postgres && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar",
     "fase3:preflight": "npm run fase2:verificar",
     "openapi": "tsc --noEmit false --outDir dist/auditoria && node scripts/contratos/generar-openapi.mjs",
-    "api": "npm run build:backend && node --env-file-if-exists=.env dist/src/api/principal.js",
+    "api": "npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs migrar && node --env-file-if-exists=.env dist/src/api/principal.js",
     "web:dev": "vite --config web/vite.config.ts",
     "web:build": "vite build --config web/vite.config.ts",
     "app": "npm run web:build && npm run api",
     "test:integracion": "npm run test:carga:postgres",
     "test:e2e": "npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts",
     "fase3:verificar": "npm run verify && npm run test:carga:postgres && npm run test:e2e && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar",
-    "fase4:preflight": "npm run fase3:verificar"
+    "fase4:preflight": "npm run fase3:verificar",
+    "mcp": "npm run build:backend && node --env-file-if-exists=.env dist/src/mcp/principal.js",
+    "test:mcp": "vitest run tests/mcp.test.ts",
+    "fase4:verificar": "npm run fase3:verificar",
+    "fase5:preflight": "npm run fase4:verificar"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
     "date-fns": "^4.0.0",
     "decimal.js": "^10.0.0",
     "express": "^5.3.0",

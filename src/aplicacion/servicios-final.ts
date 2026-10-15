@@ -102,6 +102,9 @@ function idempotenciaPrecargada(h: CreditoHecho): RepositorioPagosIdempotentes {
   };
 }
 
+/** Proponente, canal y clave de la propuesta, copiados en cada evento de auditoría que la resuelve. */
+const rastro = (p: PropuestaHecho) => ({ proponente: p.sujetoProponente, canalProponente: p.canalProponente, claveIdempotencia: p.claveIdempotencia });
+
 export function crearCasosUsoFinal(deps: DependenciasCasosUso): CasosUsoFinal {
   const catalogo = async () => new CatalogoPoliticasCanonicas(await deps.lecturas.configuracionPoliticas());
 
@@ -365,6 +368,9 @@ export function crearCasosUsoFinal(deps: DependenciasCasosUso): CasosUsoFinal {
 
     proponerPago: { async ejecutar(valor, ctx) {
       const e = entrada("proponerPago", valor);
+      // Proponer existe para la interfaz y para el asistente (MCP); nunca para la carga.
+      if (ctx.canal !== "INTERFAZ" && ctx.canal !== "MCP") throw error("SESION_NO_AUTORIZADA");
+      const canalProponente = ctx.canal;
       const cat = await catalogo();
       return deps.unidad.ejecutar(async (tx) => {
         const h = await tx.bloquearCredito(e.creditoId);
@@ -388,9 +394,13 @@ export function crearCasosUsoFinal(deps: DependenciasCasosUso): CasosUsoFinal {
         const propuesta = salida("proponerPago", { ...e, propuestaId: deps.ids.propuesta(), sesionId: ctx.sesionId, estado: "PENDIENTE",
           versionCredito: h.version, deuda: deudaJson(p, e.numeroCuota, deuda), aplicacionPrevista: aplicacionJson(conceptosDe(aplicacion)),
           estadoPrevisto: proyectarCredito({ ...h, pagos: [...h.pagos, previsto] }, corte).estado });
-        await tx.guardarPropuesta({ ...propuesta, sujetoProponente: ctx.sujetoId,
+        await tx.guardarPropuesta({ ...propuesta, sujetoProponente: ctx.sujetoId, canalProponente,
           huella: HuellaSolicitudPago.crear({ creditoId: h.creditoId, importe: monto.aCadena(), moneda: "GTQ",
             fechaPago: e.fechaCorte, usuarioProceso: ctx.sujetoId }).valor });
+        // Fase 4: rastro de quién o qué propuso; la propuesta no tiene efecto financiero.
+        await tx.registrarAuditoria({ id: deps.ids.aprobacion(), propuestaId: propuesta.propuestaId, creditoId: h.creditoId, sujetoId: ctx.sujetoId,
+          sesionId: ctx.sesionId, tipo: "PROPUESTA", fechaOperacion: e.fechaCorte, resultado: "PENDIENTE", versionCredito: h.version,
+          traceId: ctx.traceId, proponente: ctx.sujetoId, canalProponente, claveIdempotencia: e.claveIdempotencia });
         return propuesta;
       });
     } },
@@ -415,7 +425,8 @@ export function crearCasosUsoFinal(deps: DependenciasCasosUso): CasosUsoFinal {
           new RegistrarPago(repositorio, { siguiente: () => { throw new Error("Un replay no crea pagos."); } })
             .ejecutar({ ...comando, saldosExigibles: { gastosComisiones: CERO, interesMoratorio: CERO, interesCorriente: CERO, capital: CERO } });
           await tx.registrarAuditoria({ id: deps.ids.aprobacion(), propuestaId: prop.propuestaId, creditoId: h.creditoId, sujetoId: ctx.sujetoId,
-            sesionId: ctx.sesionId, tipo: "PAGO", fechaOperacion: prop.fechaCorte, resultado: "REINTENTO_SIN_EFECTO", versionCredito: h.version, traceId: ctx.traceId });
+            sesionId: ctx.sesionId, tipo: "PAGO", fechaOperacion: prop.fechaCorte, resultado: "REINTENTO_SIN_EFECTO", versionCredito: h.version, traceId: ctx.traceId,
+            ...rastro(prop) });
           return { tipo: "ok" as const, pago: pagoJson(h.creditoId, previo), repetido: true };
         }
         if (prop.sesionId !== ctx.sesionId) throw error("SESION_NO_AUTORIZADA");
@@ -431,7 +442,8 @@ export function crearCasosUsoFinal(deps: DependenciasCasosUso): CasosUsoFinal {
         if (!deuda.total.esIgualA(monto)) return obsoleta();
         const aprobacionId = deps.ids.aprobacion();
         await tx.registrarAuditoria({ id: aprobacionId, propuestaId: prop.propuestaId, creditoId: h.creditoId, sujetoId: ctx.sujetoId,
-          sesionId: ctx.sesionId, tipo: "PAGO", fechaOperacion: prop.fechaCorte, resultado: "CONFIRMADA", versionCredito: h.version, traceId: ctx.traceId });
+          sesionId: ctx.sesionId, tipo: "PAGO", fechaOperacion: prop.fechaCorte, resultado: "CONFIRMADA", versionCredito: h.version, traceId: ctx.traceId,
+          ...rastro(prop) });
         const registro = new RegistrarPago(repositorio, { siguiente: () => deps.ids.pago() }).ejecutar({ ...comando, saldosExigibles: deuda });
         if (registro.repetido || registro.pago.huella.valor !== prop.huella) throw new Error("Idempotencia inconsistente con la propuesta.");
         const pago: PagoHecho = { pagoId: registro.pago.pagoId, numeroCuota: prop.numeroCuota, fecha: prop.fechaCorte,
@@ -463,8 +475,8 @@ export function crearCasosUsoFinal(deps: DependenciasCasosUso): CasosUsoFinal {
         await tx.actualizarEstadoPropuesta(prop.propuestaId, "CANCELADA");
         await tx.registrarAuditoria({ id: deps.ids.aprobacion(), propuestaId: prop.propuestaId, creditoId: prop.creditoId, sujetoId: ctx.sujetoId,
           sesionId: ctx.sesionId, tipo: "CANCELACION", fechaOperacion: e.fechaOperacion, resultado: "CANCELADA",
-          versionCredito: prop.versionCredito, traceId: ctx.traceId });
-        const { sujetoProponente: _s, huella: _h, ...publica } = prop;
+          versionCredito: prop.versionCredito, traceId: ctx.traceId, ...rastro(prop) });
+        const { sujetoProponente: _s, huella: _h, canalProponente: _c, ...publica } = prop;
         return salida("cancelarPropuesta", { ...publica, estado: "CANCELADA" });
       });
     } },

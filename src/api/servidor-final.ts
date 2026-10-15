@@ -1,8 +1,6 @@
-import { randomUUID } from "node:crypto";
 import type { Pool } from "pg";
-import { crearCasosUsoFinal } from "../aplicacion/servicios-final.js";
 import { FechaCivil } from "../dominio/calculadora-mora.js";
-import { LecturasFinalPg, UnidadTrabajoFinalPg } from "../persistencia/repositorio-final-pg.js";
+import { crearCasosPg } from "../persistencia/casos-pg.js";
 import { crearAplicacionHttp } from "./aplicacion-http.js";
 import { AlmacenSesiones } from "./sesiones.js";
 
@@ -29,9 +27,7 @@ export function configuracionDesdeEntorno(env: NodeJS.ProcessEnv): Configuracion
 }
 
 export function crearServidorFinal(pool: Pool, config: ConfiguracionServidor) {
-  const casos = crearCasosUsoFinal({ lecturas: new LecturasFinalPg(pool), unidad: new UnidadTrabajoFinalPg(pool),
-    ids: { propuesta: () => `PROP-${randomUUID()}`, pago: () => `PAGO-${randomUUID()}`, aprobacion: () => `APR-${randomUUID()}` },
-    diasRetencionIdempotencia: config.diasRetencionIdempotencia });
+  const casos = crearCasosPg(pool, config.diasRetencionIdempotencia);
   const app = crearAplicacionHttp({ casos, sesiones: new AlmacenSesiones(), fechaCorteDefecto: config.fechaCorteDefecto,
     origenesPermitidos: config.origenWeb ? [config.origenWeb] : [],
     ...(config.directorioWeb !== undefined ? { directorioWeb: config.directorioWeb } : {}) });

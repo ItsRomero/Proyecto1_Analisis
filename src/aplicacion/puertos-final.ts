@@ -68,6 +68,8 @@ export interface ClienteHecho {
 }
 export type PropuestaHecho = SalidaFinal<"proponerPago"> & {
   readonly sujetoProponente: string;
+  /** Canal que creó la propuesta: la persona en la interfaz o el asistente vía MCP (fase 4). */
+  readonly canalProponente: "INTERFAZ" | "MCP";
   readonly huella: string;
 };
 export type CierreHecho = SalidaFinal<"generarCierre">;
@@ -77,11 +79,15 @@ export interface EventoAuditoria {
   readonly creditoId: string;
   readonly sujetoId: string;
   readonly sesionId: string;
-  readonly tipo: "PAGO" | "COMITE" | "DESEMBOLSO" | "CANCELACION";
+  readonly tipo: "PAGO" | "COMITE" | "DESEMBOLSO" | "CANCELACION" | "PROPUESTA";
   readonly fechaOperacion: string;
   readonly resultado: string;
   readonly versionCredito: number;
   readonly traceId: string;
+  /** Fase 4: quién propuso, por qué canal y con qué clave (null en eventos sin propuesta de pago). */
+  readonly proponente?: string | null;
+  readonly canalProponente?: "INTERFAZ" | "MCP" | null;
+  readonly claveIdempotencia?: string | null;
 }
 
 export interface LecturasFinal {

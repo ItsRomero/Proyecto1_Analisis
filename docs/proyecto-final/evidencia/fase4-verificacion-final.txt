@@ -1,0 +1,79 @@
+v24.19.0
+2026-10-15T16:05:34Z
+
+> sistema-gestion-microcredito-p1@0.1.0 fase4:verificar
+> npm run fase3:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase3:verificar
+> npm run verify && npm run test:carga:postgres && npm run test:e2e && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p web
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  24 passed (24)
+      Tests  335 passed (335)
+   Start at  10:05:45
+   Duration  6.52s (transform 4.01s, setup 307ms, import 19.45s, tests 3.43s, environment 1.75s)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:carga:postgres
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  4 passed (4)
+      Tests  30 passed (30)
+   Start at  10:05:53
+   Duration  65.45s (transform 621ms, setup 0ms, import 8.95s, tests 55.37s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:e2e
+> npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts
+
+
+> sistema-gestion-microcredito-p1@0.1.0 web:build
+> vite build --config web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 152 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.65 kB │ gzip:   0.38 kB
+dist/assets/dm-mono-DbtWzYYn.ttf   49.74 kB
+dist/assets/outfit-vXxiUg8D.ttf   110.88 kB
+dist/assets/inter-VF2RPR_K.ttf    876.58 kB
+dist/assets/index-BkaWvH1W.css     23.44 kB │ gzip:   5.71 kB
+dist/assets/index-DANrJD8P.js     211.38 kB │ gzip:  33.03 kB
+dist/assets/terceros-DCeBw2Nl.js  570.91 kB │ gzip: 174.72 kB
+✓ built in 3.05s
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  10:07:04
+   Duration  43.46s (transform 521ms, setup 0ms, import 3.31s, tests 39.89s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 build:backend
+> tsc --noEmit false --outDir dist
+
+Carga persistente verificada. Para aprobar fase 2 también deben pasar verify y las pruebas PostgreSQL.

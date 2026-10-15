@@ -1,5 +1,22 @@
 # Sistema de Gestión de Microcrédito — Proyectos 1 y 2
 
+## Proyecto Final — fase 4: servidor MCP y aprobación humana (E3)
+
+El asistente accede al núcleo solo mediante un servidor MCP (SDK oficial de TypeScript, transporte `stdio`) con **ocho herramientas**: siete consultas de solo lectura (`consultar_credito`, `calcular_deuda_cuota`, `explicar_mora`, `listar_creditos_mora`, `proximos_vencimientos`, `consultar_cartera`, `consultar_cierre`) y `proponer_pago`, que deja una propuesta **pendiente** sin efecto financiero. No hay herramientas para confirmar pagos, originar, aprobar, desembolsar ni generar cierres. Detalle de firmas: [src/mcp/README.md](src/mcp/README.md).
+
+- **Mismos casos de uso**: MCP y API se construyen con `crearCasosPg`; ninguna cifra se calcula en el adaptador.
+- **Contexto fijado por el backend**: el proceso MCP se lanza ligado a una sesión de interfaz (`CV_MCP_SESION_ID`, `CV_MCP_PERFIL`); sujeto `ASISTENTE-MCP`, canal `MCP`. Los argumentos con `sujetoId`, `sesionId`, `perfil` o `aprobado` se rechazan.
+- **Aprobación humana**: una propuesta del asistente solo se confirma en la interfaz, en la sesión vinculada, con evento humano e `Idempotency-Key` (ADR-019, ADR-020).
+- **Auditoría** (migración 002): proponente, canal, aprobador, fecha de corte, resultado y clave de idempotencia de cada propuesta y confirmación.
+
+```powershell
+npm.cmd run db:migrate      # bases existentes: aplica la migración 002 (npm run api también la aplica)
+npm.cmd run test:mcp        # herramientas MCP en memoria (también dentro de npm test)
+npm.cmd run fase4:verificar # verify + integración PostgreSQL (incluye MCP y stdio) + e2e + carga de demo
+```
+
+`npm run fase5:preflight` ejecuta el mismo control antes de la fase 5. Informe: [fase 4](docs/proyecto-final/04-mcp-aprobacion-humana.md) y [ADR-020](docs/adr/ADR-020-mcp-vinculo-sesion-auditoria.md).
+
 ## Proyecto Final — fase 3: API e interfaz React (E1)
 
 Requisitos: los de la fase 2 (Node.js 22 LTS, PostgreSQL + pgvector, `.env` completo y la carga canónica aplicada con `npm run carga`) y, para los recorridos automatizados, Google Chrome instalado. La fecha de corte por defecto de la sesión sale de `DEFAULT_SESSION_CUTOFF` (`2026-10-31` para la defensa); nunca del reloj.

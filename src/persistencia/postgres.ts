@@ -22,19 +22,27 @@ export async function transaccion<T>(pool: Pool, accion: (cliente: PoolClient) =
   finally { cliente.release(); }
 }
 
+/** Migraciones versionadas por SHA-256; una aplicada no puede cambiar (ADR-018). */
+const MIGRACIONES = [{ version: 1, archivo: "001-inicial.sql" }, { version: 2, archivo: "002-auditoria-propuestas.sql" }] as const;
+const leerMigracion = (archivo: string) =>
+  readFile(new URL(`../../../src/persistencia/migraciones/${archivo}`, import.meta.url), "utf8").catch(async () =>
+    readFile(new URL(`./migraciones/${archivo}`, import.meta.url), "utf8"));
+
 export async function migrar(pool: Pool): Promise<void> {
-  const ddl = await readFile(new URL("../../../src/persistencia/migraciones/001-inicial.sql", import.meta.url), "utf8").catch(async () =>
-    readFile(new URL("./migraciones/001-inicial.sql", import.meta.url), "utf8"));
+  const ddls = await Promise.all(MIGRACIONES.map(async (m) => ({ ...m, ddl: await leerMigracion(m.archivo) })));
   await transaccion(pool, async (c) => {
     await c.query("CREATE SCHEMA IF NOT EXISTS cv");
     await c.query("CREATE TABLE IF NOT EXISTS cv.migraciones (version integer PRIMARY KEY, sha256 text NOT NULL)");
-    const anterior = await c.query<{ sha256: string }>("SELECT sha256 FROM cv.migraciones WHERE version=1");
-    if (anterior.rows[0]) {
-      if (anterior.rows[0].sha256 !== sha256(ddl)) throw new ErrorCarga("MIGRACION_MODIFICADA", "La migración 001 cambió después de aplicarse.");
-      return;
+    for (const m of ddls) {
+      const anterior = await c.query<{ sha256: string }>("SELECT sha256 FROM cv.migraciones WHERE version=$1", [m.version]);
+      if (anterior.rows[0]) {
+        if (anterior.rows[0].sha256 !== sha256(m.ddl))
+          throw new ErrorCarga("MIGRACION_MODIFICADA", `La migración ${String(m.version).padStart(3, "0")} cambió después de aplicarse.`);
+        continue;
+      }
+      await c.query(m.ddl);
+      await c.query("INSERT INTO cv.migraciones VALUES ($1,$2)", [m.version, sha256(m.ddl)]);
     }
-    await c.query(ddl);
-    await c.query("INSERT INTO cv.migraciones VALUES (1,$1)", [sha256(ddl)]);
   });
 }
 
