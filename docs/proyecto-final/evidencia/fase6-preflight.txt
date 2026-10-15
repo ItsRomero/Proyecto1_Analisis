@@ -1,0 +1,98 @@
+
+> sistema-gestion-microcredito-p1@0.1.0 fase6:preflight
+> npm run fase5:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase5:verificar
+> npm run fase4:verificar && npm run test:rag
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase4:verificar
+> npm run fase3:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase3:verificar
+> npm run verify && npm run test:carga:postgres && npm run test:e2e && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p web
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  25 passed (25)
+      Tests  347 passed (347)
+   Start at  12:58:36
+   Duration  7.93s (transform 4.27s, setup 368ms, import 23.07s, tests 3.77s, environment 2.65s)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:carga:postgres
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  4 passed (4)
+      Tests  30 passed (30)
+   Start at  12:58:46
+   Duration  69.59s (transform 679ms, setup 0ms, import 9.33s, tests 59.10s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:e2e
+> npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts
+
+
+> sistema-gestion-microcredito-p1@0.1.0 web:build
+> vite build --config web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 152 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.65 kB │ gzip:   0.38 kB
+dist/assets/dm-mono-DbtWzYYn.ttf   49.74 kB
+dist/assets/outfit-vXxiUg8D.ttf   110.88 kB
+dist/assets/inter-VF2RPR_K.ttf    876.58 kB
+dist/assets/index-BkaWvH1W.css     23.44 kB │ gzip:   5.71 kB
+dist/assets/index-DANrJD8P.js     211.38 kB │ gzip:  33.03 kB
+dist/assets/terceros-DCeBw2Nl.js  570.91 kB │ gzip: 174.72 kB
+✓ built in 3.38s
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  13:00:02
+   Duration  43.70s (transform 531ms, setup 0ms, import 3.35s, tests 40.00s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 build:backend
+> tsc --noEmit false --outDir dist
+
+Carga persistente verificada. Para aprobar fase 2 también deben pasar verify y las pruebas PostgreSQL.
+
+> sistema-gestion-microcredito-p1@0.1.0 test:rag
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.rag.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  13:00:54
+   Duration  256.79s (transform 376ms, setup 0ms, import 2.97s, tests 253.53s, environment 0ms)
+
