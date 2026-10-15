@@ -109,8 +109,16 @@ export function LayoutGerencia() {
         </div>
       </header>
       <main className="mx-auto max-w-[1440px] px-4 py-6 sm:px-8"><EsperaSesion><RequiereGerencia><Outlet /></RequiereGerencia></EsperaSesion></main>
+      <AccesoAsistente />
     </div>
   );
+}
+
+/** Acceso persistente al chat desde cualquier pantalla de gerencia. */
+function AccesoAsistente() {
+  const ubicacion = useLocation();
+  if (ubicacion.pathname === "/gerencia/asistente") return null;
+  return <Link to="/gerencia/asistente" className="fixed right-5 bottom-5 rounded-full bg-acento px-5 py-3 text-sm font-bold text-tinta shadow-lg">Asistente</Link>;
 }
 
 function RequiereGerencia({ children }: { readonly children: ReactNode }) {

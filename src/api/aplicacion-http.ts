@@ -18,6 +18,10 @@ export interface OpcionesHttp {
   readonly origenesPermitidos: readonly string[];
   /** Build de web/ servido en la misma origen; opcional en desarrollo con Vite. */
   readonly directorioWeb?: string;
+  /** Fase 6: rutas adicionales (chat) con la misma sesión, origen y cabeceras. */
+  readonly extender?: (app: express.Express, utilidades: { readonly exigirSesion: (req: Request) => Sesion }) => void;
+  /** Fase 6: se invoca al reiniciar una sesión de interfaz (cierra su chat y su proceso MCP). */
+  readonly alReiniciarSesion?: (sesionIdAnterior: string) => void;
 }
 
 const COOKIE = "cv_session";
@@ -89,7 +93,9 @@ export function crearAplicacionHttp(opciones: OpcionesHttp): express.Express {
   app.post("/v1/sesion/reinicio", (req, res) => {
     const traceId = randomUUID();
     try {
-      const nueva = sesiones.reiniciar(exigirSesion(req));
+      const anterior = exigirSesion(req);
+      opciones.alReiniciarSesion?.(anterior.sesionId);
+      const nueva = sesiones.reiniciar(anterior);
       escribirCookie(res, nueva);
       res.json({ sesionId: nueva.sesionId, perfil: nueva.perfil, sujetoId: sesiones.sujeto(nueva), fechaCorteDefecto: opciones.fechaCorteDefecto });
     } catch (error) { problema(res, error, traceId, req.originalUrl); }
@@ -149,6 +155,8 @@ export function crearAplicacionHttp(opciones: OpcionesHttp): express.Express {
       } catch (error) { problema(res, error, traceId, req.originalUrl); }
     });
   }
+
+  opciones.extender?.(app, { exigirSesion });
 
   app.use("/v1", (req, res) => {
     res.status(404).type("application/problem+json").json({ type: "urn:credito-vecino:problema:ruta_no_existe", title: "RUTA_NO_EXISTE",

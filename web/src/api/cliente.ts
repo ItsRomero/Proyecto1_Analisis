@@ -20,7 +20,7 @@ export const sesionSchema = z.strictObject({ sesionId: z.string(), perfil: z.enu
   sujetoId: z.string(), fechaCorteDefecto: z.string() });
 export type SesionApi = z.infer<typeof sesionSchema>;
 
-async function http(metodo: "GET" | "POST", ruta: string, cuerpo?: unknown, cabeceras: Record<string, string> = {}) {
+export async function http(metodo: "GET" | "POST", ruta: string, cuerpo?: unknown, cabeceras: Record<string, string> = {}) {
   let respuesta: Response;
   try {
     respuesta = await fetch(`${BASE}${ruta}`, { method: metodo, credentials: "same-origin",

@@ -1,6 +1,11 @@
+import { randomUUID } from "node:crypto";
 import type { Pool } from "pg";
 import { FechaCivil } from "../dominio/calculadora-mora.js";
 import { crearCasosPg } from "../persistencia/casos-pg.js";
+import type { CasosUsoFinal } from "../aplicacion/casos-uso-final.js";
+import { AlmacenChats } from "../chat/orquestador.js";
+import type { DependenciasChat } from "../chat/puertos.js";
+import { registrarRutasChat } from "../chat/rutas-chat.js";
 import { crearAplicacionHttp } from "./aplicacion-http.js";
 import { AlmacenSesiones } from "./sesiones.js";
 
@@ -26,10 +31,26 @@ export function configuracionDesdeEntorno(env: NodeJS.ProcessEnv): Configuracion
     diasRetencionIdempotencia: retencion, directorioWeb: env["WEB_DIST_DIR"] ?? "web/dist" };
 }
 
-export function crearServidorFinal(pool: Pool, config: ConfiguracionServidor) {
+/** Fase 6: chat gerencial. La fábrica recibe la sesión de interfaz y la MISMA instancia de casos de uso. */
+export interface OpcionesChatServidor {
+  readonly fabrica: (sesion: { readonly sesionId: string; readonly perfil: "ASESOR" | "GERENCIA" }, casos: CasosUsoFinal) => Promise<DependenciasChat>;
+  readonly maxTurnos: number;
+  readonly ttlMinutos: number;
+  readonly maxPasos?: number;
+}
+
+export function crearServidorFinal(pool: Pool, config: ConfiguracionServidor, chat?: OpcionesChatServidor) {
   const casos = crearCasosPg(pool, config.diasRetencionIdempotencia);
+  const almacen = chat === undefined ? undefined : new AlmacenChats((sesion) => chat.fabrica(sesion, casos),
+    { maxTurnos: chat.maxTurnos, ttlMinutos: chat.ttlMinutos, maxPasos: chat.maxPasos ?? 4, ahora: () => Date.now(), nuevoId: () => randomUUID() });
   const app = crearAplicacionHttp({ casos, sesiones: new AlmacenSesiones(), fechaCorteDefecto: config.fechaCorteDefecto,
     origenesPermitidos: config.origenWeb ? [config.origenWeb] : [],
+    ...(almacen && chat ? {
+      extender: (app: Parameters<NonNullable<Parameters<typeof crearAplicacionHttp>[0]["extender"]>>[0],
+        u: { readonly exigirSesion: Parameters<typeof registrarRutasChat>[1]["exigirSesion"] }) =>
+        registrarRutasChat(app, { almacen, exigirSesion: u.exigirSesion, maxTurnos: chat.maxTurnos, ttlMinutos: chat.ttlMinutos }),
+      alReiniciarSesion: (sesionId: string) => { void almacen.cerrar(sesionId); },
+    } : {}),
     ...(config.directorioWeb !== undefined ? { directorioWeb: config.directorioWeb } : {}) });
-  return { app, casos };
+  return { app, casos, almacen };
 }

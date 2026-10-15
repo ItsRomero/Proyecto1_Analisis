@@ -8,7 +8,8 @@ import { Originacion } from "./paginas/asesor/Originacion";
 import { PlanPagos } from "./paginas/asesor/PlanPagos";
 import { ComprobanteRegistrado, RegistrarPago } from "./paginas/asesor/RegistrarPago";
 import { Cartera, CreditosTramo } from "./paginas/gerencia/Cartera";
-import { Asistente, Cierre, ClientesGerencia, CreditoGerencia, DecisionSolicitud, Solicitudes } from "./paginas/gerencia/Operaciones";
+import { Cierre, ClientesGerencia, CreditoGerencia, DecisionSolicitud, Solicitudes } from "./paginas/gerencia/Operaciones";
+import { Chat } from "./chat/Chat";
 import { Tablero } from "./paginas/gerencia/Tablero";
 import { useSesion } from "./sesion/SesionContexto";
 
@@ -44,7 +45,7 @@ export function App() {
         <Route path="solicitudes/:solicitudId/decision" element={<DecisionSolicitud />} />
         <Route path="cierres/diario" element={<Cierre key="diario" tipo="DIARIO" />} />
         <Route path="cierres/mensual" element={<Cierre key="mensual" tipo="MENSUAL" />} />
-        <Route path="asistente" element={<Asistente />} />
+        <Route path="asistente" element={<Chat />} />
       </Route>
       <Route path="*" element={<div className="p-6"><Vacio titulo="Página no encontrada" /></div>} />
     </Routes>

@@ -43,7 +43,10 @@
     "rag:consulta": "npm run build:backend && node --env-file-if-exists=.env scripts/rag/ejecutar.mjs consulta",
     "test:rag": "node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.rag.config.ts",
     "fase5:verificar": "npm run fase4:verificar && npm run test:rag",
-    "fase6:preflight": "npm run fase5:verificar"
+    "fase6:preflight": "npm run fase5:verificar",
+    "test:chat": "npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.chat.config.ts",
+    "fase6:verificar": "npm run fase5:verificar && npm run test:chat",
+    "fase7:preflight": "npm run fase6:verificar"
   },
   "dependencies": {
     "@langchain/core": "^1.2.17",

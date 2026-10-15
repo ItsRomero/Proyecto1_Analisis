@@ -1,5 +1,27 @@
 # Sistema de Gestión de Microcrédito — Proyectos 1 y 2
 
+## Proyecto Final — fase 6: chat gerencial integrado (E5)
+
+El chat vive en la aplicación: **Gerencia → Asistente** (`/gerencia/asistente`), con un botón **Asistente** fijo en todas las pantallas de gerencia. Requiere lo mismo que la fase 5 (PostgreSQL con la carga y el corpus ingerido, y Ollama con `qwen3:8b` y `bge-m3`):
+
+```powershell
+docker start cv-proyecto-final-db cv-ollama
+npm.cmd run app        # API + interfaz en http://127.0.0.1:3000; el chat se activa con el primer mensaje
+npm.cmd run test:chat  # G-1 a G-8 y OP-7 con modelos reales tras OP-1 a OP-3, más un recorrido en navegador (TEST_DATABASE_URL)
+```
+
+- **Arquitectura:** el orquestador (`src/chat/`) corre en el servidor, una conversación por sesión de interfaz. Usa `qwen3:8b` con *tool calling* sobre las ocho herramientas del MCP de esa sesión, más `consultar_politicas` (el RAG de la fase 5). El navegador solo habla con `/v1/chat`.
+- **Enrutamiento:**
+  - El modelo decide entre MCP, RAG o ambos; `clasificarPregunta` lo orienta y sirve de respaldo para enviar al RAG las preguntas normativas sin herramientas.
+  - Las cifras salen solo de las herramientas: cada resultado se muestra en una tarjeta con la herramienta, el origen y la fecha de corte.
+  - Si el texto del modelo trae un importe o porcentaje que no está en esos resultados, se oculta.
+- **Aprobación:** el asistente solo puede *proponer* un pago. La propuesta aparece con el desglose, la prelación y los botones **Aprobar** y **Cancelar**; Aprobar usa la misma confirmación con evento humano e `Idempotency-Key` de la pantalla de pagos. Escribir "sí, apruébalo" no aprueba nada.
+- **Memoria:** 12 turnos y 60 minutos por sesión (`CHAT_SESSION_MAX_TURNS`, `CHAT_SESSION_TTL_MINUTES`). "Reiniciar conversación" cancela antes las propuestas pendientes; reiniciar la sesión cierra el chat.
+- **Seguridad:** el modelo del chat recibe la respuesta citada del RAG, no el texto del corpus (OP-7). La pregunta y la respuesta se filtran de PII. Los errores y timeouts se muestran con su código, sin trazas, y conservan las propuestas pendientes.
+- **Latencia en CPU:** ver los tiempos medidos en el informe; la interfaz muestra un contador mientras el asistente trabaja.
+
+`npm run fase6:verificar` encadena el control de la fase 5 con `npm run test:chat`; `npm run fase7:preflight` lo ejecuta antes de la fase 7. Diseño: [web/src/chat/README.md](web/src/chat/README.md), [ADR-022](docs/adr/ADR-022-chat-orquestacion.md) e [informe de fase 6](docs/proyecto-final/06-chat-gerencial.md).
+
 ## Proyecto Final — fase 5: RAG con citación y defensa contra inyección (E4)
 
 Requisito adicional: **Ollama** con `bge-m3` (embeddings) y `qwen3:8b` (redacción). Si no está instalado, puede usarse el contenedor oficial:

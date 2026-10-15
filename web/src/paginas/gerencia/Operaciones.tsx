@@ -196,15 +196,3 @@ export function CreditoGerencia() {
     </div>
   );
 }
-
-/** Espacio del asistente en el layout gerencial; el chat se integra en la fase 6, sin respuestas simuladas. */
-export function Asistente() {
-  return (
-    <div className="mx-auto max-w-xl">
-      <Vacio titulo="Asistente gerencial">
-        El chat se integrará en esta ruta en una fase posterior, consumiendo las mismas operaciones que estas pantallas.
-        Mientras tanto no se muestran respuestas de ejemplo.
-      </Vacio>
-    </div>
-  );
-}

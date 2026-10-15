@@ -45,7 +45,8 @@ export async function embeddingsOllama(cfg: ConfiguracionRag): Promise<ModeloEmb
 /** Modelo de redacción sin herramientas enlazadas; temperatura 0 y sin modo de razonamiento visible. */
 export async function modeloOllama(cfg: ConfiguracionRag): Promise<ModeloLenguaje> {
   const digest = await digestModelo(cfg.OLLAMA_BASE_URL, cfg.LLM_MODEL);
-  const chat = new ChatOllama({ model: cfg.LLM_MODEL, baseUrl: cfg.OLLAMA_BASE_URL, temperature: cfg.LLM_TEMPERATURE, think: false, seed: 7 });
+  // Mismo contexto que el chat (fase 6): Ollama recarga el modelo si cambia num_ctx entre llamadas.
+  const chat = new ChatOllama({ model: cfg.LLM_MODEL, baseUrl: cfg.OLLAMA_BASE_URL, temperature: cfg.LLM_TEMPERATURE, think: false, seed: 7, numCtx: 8192 });
   return {
     nombre: `${cfg.LLM_MODEL}@${digest.slice(0, 12)}`,
     async generar(mensajes: readonly BaseMessage[]) {
