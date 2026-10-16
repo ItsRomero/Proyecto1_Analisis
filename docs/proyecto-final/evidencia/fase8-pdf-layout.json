@@ -1,0 +1,55 @@
+{
+  "fuente": "docs/proyecto-final/PF_AsistenteGerencial_2.html",
+  "salida": "PF_AsistenteGerencial_2.pdf",
+  "paginas": [
+    {
+      "pagina": 1,
+      "alto": 673.5,
+      "ancho": 665.1875,
+      "desbordeHorizontal": false,
+      "texto": 856
+    },
+    {
+      "pagina": 2,
+      "alto": 647.921875,
+      "ancho": 665.1875,
+      "desbordeHorizontal": false,
+      "texto": 1147
+    },
+    {
+      "pagina": 3,
+      "alto": 639.765625,
+      "ancho": 665.1875,
+      "desbordeHorizontal": false,
+      "texto": 1483
+    },
+    {
+      "pagina": 4,
+      "alto": 652.515625,
+      "ancho": 665.1875,
+      "desbordeHorizontal": false,
+      "texto": 1560
+    },
+    {
+      "pagina": 5,
+      "alto": 580.953125,
+      "ancho": 665.1875,
+      "desbordeHorizontal": false,
+      "texto": 1584
+    },
+    {
+      "pagina": 6,
+      "alto": 670.125,
+      "ancho": 665.1875,
+      "desbordeHorizontal": false,
+      "texto": 1526
+    },
+    {
+      "pagina": 7,
+      "alto": 715.734375,
+      "ancho": 665.1875,
+      "desbordeHorizontal": false,
+      "texto": 1680
+    }
+  ]
+}

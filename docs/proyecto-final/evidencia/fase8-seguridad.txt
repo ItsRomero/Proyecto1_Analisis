@@ -1,0 +1,16 @@
+FASE 8 - SEGURIDAD DE ARCHIVOS PREPARADOS
+Node: v22.23.3
+Commit de codigo: 3a4c97a11e8f117c4708cd997fa4da8fdad0b49b
+Comando: vitest run tests/evals/seguridad-integridad.test.ts
+
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  20:45:01
+   Duration  392ms (transform 25ms, setup 0ms, import 91ms, tests 128ms, environment 0ms)
+
+
+Codigo de salida: 0

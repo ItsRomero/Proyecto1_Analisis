@@ -1,0 +1,12 @@
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests tests/api-estaticos.test.ts
+
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  19:33:19
+   Duration  2.03s (transform 345ms, setup 0ms, import 1.70s, tests 160ms, environment 0ms)

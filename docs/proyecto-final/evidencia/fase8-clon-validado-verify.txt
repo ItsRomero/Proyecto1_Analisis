@@ -1,0 +1,32 @@
+FASE 8 — CONTROL
+Inicio UTC: 2026-10-16T01:34:33.353Z
+Node: v22.23.3
+Commit: 3a4c97a11e8f117c4708cd997fa4da8fdad0b49b
+SHA-256 diff de código/configuración: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+Comando: npm run verify
+
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p web
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-validado
+
+
+ Test Files  32 passed (32)
+      Tests  400 passed (400)
+   Start at  19:34:43
+   Duration  12.01s (transform 5.51s, setup 1.25s, import 42.50s, tests 9.71s, environment 7.85s)
+
+
+Código de salida: 0
+Señal: -
+Duración segundos: 22.17

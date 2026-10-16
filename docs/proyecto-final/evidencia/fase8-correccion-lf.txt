@@ -1,0 +1,12 @@
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests tests/evals/verificador.test.ts
+
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  19:15:36
+   Duration  487ms (transform 90ms, setup 0ms, import 128ms, tests 15ms, environment 0ms)

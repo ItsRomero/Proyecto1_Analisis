@@ -2,11 +2,11 @@
 
 Proyecto Final, Grupo 2, sección A, Análisis de Sistemas II (037). Continúa el núcleo P1/P2 en el mismo repositorio. Docente: Ing. Ezequiel Urizar. Entrega prevista en Canvas: 7 de noviembre de 2026, tarea «Proyecto Final — Asistente gerencial».
 
-**Estado de entrega: PARCIAL.** La implementación dispone de evidencia de fases 0–7. La auditoría de fase 8 está en [su informe de cierre](docs/proyecto-final/08-documentacion-defensa-cierre.md); video real, ensayo continuo, defensa oral y entrega requieren evidencia externa y no se dan por realizados. No se ha creado `entrega-pf`.
+**Estado de entrega: PARCIAL.** La auditoría de fase 8 está en [su informe de cierre](docs/proyecto-final/08-documentacion-defensa-cierre.md). Hay respuestas incompletas del chat y latencia superior al presupuesto del video; deben resolverse antes de certificar. Video real, ensayo continuo, defensa oral y entrega requieren evidencia externa y no se dan por realizados. No se ha creado `entrega-pf`.
 
 ## Instalación desde cero
 
-Requisitos: **Node.js 22.23.3 LTS**, npm, Git, PostgreSQL con pgvector, Ollama con `qwen3:8b` y `bge-m3`, y Chrome para PDF/recorridos automatizados. `.nvmrc` fija la revisión validada. El mínimo de dependencias es 22.22.2; Node 22.13.0 no es suficiente para el lockfile actual. Docker Desktop es opcional si PostgreSQL y Ollama ya existen de forma nativa.
+Requisitos: **[Node.js 22.23.3 LTS](https://nodejs.org/dist/v22.23.3/)**, npm, Git, PostgreSQL con pgvector, Ollama con `qwen3:8b` y `bge-m3`, y Chrome para PDF/recorridos automatizados. `.nvmrc` fija la revisión validada. El mínimo de dependencias es 22.22.2; Node 22.13.0 no es suficiente para el lockfile actual. Docker Desktop es opcional si PostgreSQL y Ollama ya existen de forma nativa. El directorio oficial incluye SHASUMS256.txt para comprobar la descarga.
 
 ```powershell
 git clone https://github.com/ItsRomero/Proyecto1_Analisis.git
@@ -23,6 +23,8 @@ Copy-Item .env.example .env
 ```
 
 No es necesario instalar nvm si ya se dispone del runtime correcto. En PowerShell con scripts restringidos usar `npm.cmd`; en otras terminales, `npm`. Si TLS corporativo requiere certificados, configurar una CA confiable (`NODE_EXTRA_CA_CERTS`); nunca desactivar la verificación. No subir `.env` ni imprimir sus valores en evidencia.
+
+La auditoría de fase 8 también documenta un clon **local independiente** del commit `3a4c97a`, sin hardlinks. Estos cambios aún no se han publicado: el clon desde GitHub solo contendrá fase 8 después de su push autorizado. Antes de ello se puede reproducir el snapshot desde una copia del repositorio local con `git clone --no-local --no-hardlinks <ruta-del-repositorio> <destino-nuevo>` y seleccionar ese commit en el clon. El procedimiento y sus resultados están en [instalación limpia](docs/proyecto-final/08-instalacion-limpia.md).
 
 Los insumos oficiales deben existir en `datos/datos-proyecto-final.zip` y en `datos/datos-proyecto-final/`, con eventos, huella, políticas, CSV, LEEME y corpus. `vistas/` conserva la exportación visual de referencia. Si el clon no incluye alguno de esos insumos, obtener el archivo auténtico del equipo/docente y provisionarlo por esas rutas; no crear un sustituto. Comprobar SHA-256 contra el maestro antes de continuar. Nunca copiar node_modules, dist, una base precargada o credenciales de otro checkout para aparentar instalación limpia.
 
@@ -41,6 +43,18 @@ docker exec cv-ollama ollama list
 ```
 
 La contraseña mostrada es solo de demostración local. Configurar `.env` de acuerdo con ella o elegir otra consistente en ambos extremos. TEST_DATABASE_URL debe ser una **base distinta**, con nombre terminado en `_test`; las pruebas la reinician. Para repetir la versión histórica, comprobar también digests de imágenes/modelos en `docs/proyecto-final/evidencia/fase5-modelos.txt` y en el reporte de evals. No asumir que una etiqueta mutable conserva el mismo modelo.
+
+Para ejecutar con un rol propio limitado, el administrador puede preparar bases nuevas así (la contraseña se introduce de forma interactiva y luego se configura localmente en `.env`):
+
+```powershell
+docker exec -it cv-proyecto-final-db createuser -U cv --pwprompt --no-superuser --no-createdb --no-createrole cv_app
+docker exec cv-proyecto-final-db createdb -U cv -O cv_app cv_demo_limitada
+docker exec cv-proyecto-final-db createdb -U cv -O cv_app cv_demo_limitada_test
+docker exec cv-proyecto-final-db psql -U cv -d cv_demo_limitada -c "CREATE EXTENSION IF NOT EXISTS vector;"
+docker exec cv-proyecto-final-db psql -U cv -d cv_demo_limitada_test -c "CREATE EXTENSION IF NOT EXISTS vector;"
+```
+
+En ese caso ambas URL usan `cv_app`, su contraseña elegida y los nombres nuevos; migraciones, carga y pruebas se ejecutan con ese rol, sin SUPERUSER. No ejecutar estos comandos sobre una base existente que se quiera conservar. La auditoría del clon usó esta separación entre administrador de infraestructura y rol de aplicación.
 
 | Variable | Configuración |
 | --- | --- |
@@ -121,19 +135,19 @@ npm.cmd run fase8:preflight
 npm.cmd run docs:pdf
 ```
 
-La verificación general actual tiene 399 pruebas en 31 archivos y no requiere red, Ollama ni DB. El cierre histórico de fase 7 reporta 467 aprobadas en total con Node 22.23.3; los resultados actuales y fallos de fase 8 se separan en su informe. No se publica un porcentaje de cobertura no medido.
+La verificación general actual tiene **400 pruebas en 32 archivos**, incluida la regresión de la SPA en carpetas ocultas, y no requiere servicios externos, Ollama ni DB. El control completo de fase 8 aprobó **468 pruebas**, cero fallidas y cero omitidas, con Node 22.23.3 sobre el código `3a4c97a`. Véanse [log](docs/proyecto-final/evidencia/fase8-preflight.txt) y [resumen](docs/proyecto-final/evidencia/fase8-resumen-verificacion.json). El total histórico de fase 7 fue 467. No se publica un porcentaje de cobertura no medido.
 
-| Comando | Dependencias / alcance | Tiempo histórico fase 7 |
+| Comando | Dependencias / alcance | Tiempo observado fase 8 |
 | --- | --- | ---: |
-| `verify` | Typecheck núcleo/web y suite general | pruebas ~10 s |
-| `test:carga:postgres` | Base `_test`; 31 pruebas, incluidos API/MCP/oráculo | ~79 s |
-| `test:e2e` | Base `_test`, Chrome, build; 10 recorridos | ~46 s |
-| `test:rag` | Base `_test`, Ollama y ambos modelos; seis pruebas | ~259 s |
-| `test:chat` | Base `_test`, Ollama y Chrome; 11 pruebas | ~1407 s |
-| `evals` | Base `_test`, Ollama; nueve casos y resumen | ~1170 s |
-| `fase8:preflight` | Todo lo anterior, carga de demo verificada; detención al primer fallo | ~51 min total |
+| `verify` | Typecheck núcleo/web y suite general | suite 9.20 s |
+| `test:carga:postgres` | Base `_test`; 31 pruebas, incluidos API/MCP/oráculo | suite 53.95 s |
+| `test:e2e` | Base `_test`, Chrome, build; 10 recorridos | suite 38.60 s |
+| `test:rag` | Base `_test`, Ollama y ambos modelos; seis pruebas | suite 285.94 s |
+| `test:chat` | Base `_test`, Ollama y Chrome; 11 pruebas | suite 2006.40 s |
+| `evals` | Base `_test`, Ollama; nueve casos y resumen | suite 1603.19 s |
+| `fase8:preflight` | Todo lo anterior, carga de demo verificada; detención al primer fallo | total 4031.01 s |
 
-Tiempos históricos de CPU, no una promesa de duración del equipo actual. Los comandos de servicios externos fallan si falta su dependencia; no hay skips para aprobar sin entorno. El reporte de evals guarda aprobado/fallido, herramientas, cifras, citas, calidad, commit y estado de partida. `evals:oraculo` reconstruye expectativas desde el núcleo: no usarlo para acomodar un fallo sin investigar.
+Los tiempos de suite excluyen los builds previos; el total incluye la cadena completa. Son mediciones del equipo actual en CPU, no una promesa para otro equipo ni un ensayo de video. Los comandos de servicios externos fallan si falta su dependencia; no hay skips para aprobar sin entorno. El reporte de evals guarda aprobado/fallido, herramientas, cifras, citas, calidad, commit y estado de partida. `evals:oraculo` reconstruye expectativas desde el núcleo: no usarlo para acomodar un fallo sin investigar.
 
 Los oráculos distinguen POST_CARGA y POST_OP1_OP3. Primero se ejecutan OP-1 a OP-6 y luego G-1 a G-8 sobre la misma base; OP-7 se demuestra en el bloque de seguridad. El guion no contiene cifras financieras escritas como respuestas.
 
@@ -145,11 +159,22 @@ R-1/R-3: cuota pendiente más antigua completa y deuda exacta. R-2: vencimiento 
 
 ## Limitaciones y entrega
 
-- Latencia histórica del chat en CPU: 58–205 s por turno; puede impedir el video de 15–20 min. Requiere ensayo cronometrado sin edición ni aceleración.
+- Latencia actual: los nueve turnos G/OP-7 sumaron unos 28.4 min en CPU, sin operaciones ni presentación. G-1/G-2/G-3 salieron truncadas y G-7 ocultó su redacción; ver [revisión de respuestas](docs/proyecto-final/08-revision-respuestas.md). Impide certificar el guion de 15–20 min hasta corregir y ensayar.
 - Redacción variable aun con temperatura cero. G-2 se ocultó por una cifra sin respaldo en la corrida de fase 7.
 - El verificador no contrasta todos los enteros ni la asociación semántica completa de las cifras. Las tarjetas respaldan la auditoría, pero no garantizan que toda frase sea correcta.
 - Sesiones y memoria en proceso; reiniciar el servidor pierde contexto. No se implementa IAM empresarial ni despliegue en nube.
 - Video real, participación oral, enlace compartible y entrega Canvas pendientes de evidencia. No hay enlace de video inventado.
+
+### Errores de entorno encontrados en la auditoría
+
+| Síntoma | Causa comprobada / solución |
+| --- | --- |
+| TS2307: faltan Express/MCP/LangChain | node_modules no correspondía al lockfile; seleccionar el Node compatible y ejecutar npm ci. |
+| EBADENGINE o errores con jsdom en Node 22 antiguo | Usar la revisión de `.nvmrc`; no basta cualquier versión 22. |
+| La medición histórica de G-2/G-3 lee respuestas vacías | Grabación convertida a CRLF; el checkout actual fija LF sin cambiar su contenido ni aserciones. |
+| Nueve recorridos esperan controles que no aparecen | `.env` antiguo con URL absoluta a otra API: actualizar solo VITE_API_BASE_URL a `/v1` y reconstruir web. |
+| SPA devuelve 404 dentro de una carpeta con punto | Corregido en 3a4c97a usando root explícito de sendFile; no habilitar globalmente archivos ocultos. |
+| Timeout de llamadas con configuración anterior | Contrastar LLM_TIMEOUT_MS con `.env.example` (180000 por llamada). Ese límite no garantiza la duración del video ni sustituye medir la latencia. |
 
 PDF: [PF_AsistenteGerencial_2.pdf](PF_AsistenteGerencial_2.pdf). Fuente editable: [HTML](docs/proyecto-final/PF_AsistenteGerencial_2.html). Generación gratuita con Playwright/Chrome ya declarados en el proyecto: `npm run docs:pdf`; revisión y páginas en evidencia de fase 8.
 

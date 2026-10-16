@@ -1,8 +1,8 @@
 Transcripción real del chat (qwen3:8b, bge-m3; corte 2026-10-31; tras OP-1 a OP-3). Sin editar.
 
 ## ¿Cuál es la cartera activa, la cartera en mora, la cartera en riesgo por tramo y lo incobrable del mes al corte?
-ruta: MCP · clasificación: MIXTA · cifras verificadas: true · 178.6 s
-herramienta: consultar_cartera (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","inicioPeriodo":"2026-10-01"} · 0.1 s
+ruta: MCP · clasificación: MIXTA · cifras verificadas: true · 249.0 s
+herramienta: consultar_cartera (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","inicioPeriodo":"2026-10-01"} · 0.0 s
 citas: ninguna
 aviso: ninguno
 respuesta:
@@ -14,118 +14,128 @@ La cartera activa es de **GTQ 306,897.83**. La cartera en mora es de **GTQ 45,67
 - **VENCIDO**: 2 créditos, GTQ 4,304.82 (1.40%).
 - **REESTRUCTURADO**: 3 créditos, GTQ 22,249.15 (7.25%).
 
-La cartera incobrable del mes es de **GTQ 2,333.48** (2 créditos), con los siguientes créditos incobrables:
+La cartera incobrable del mes es de **GTQ 2,333.48** (2 créditos), con los siguientes detalles:
 
 - **CV-2026-0015**: GTQ 1,029.24, fecha: 2026-10-22.
-- **CV-2026-0022**: GTQ 1,304.24, fecha: 2026-10-27.
-
-Estos datos provienen de la herramienta `consultar_cartera`.
+- **CV
 
 ## Dame el cierre mensual de octubre de 2026: desembolsos y recuperaciones por concepto.
-ruta: MCP · clasificación: NUMERICA · cifras verificadas: false · 205.3 s
+ruta: MCP · clasificación: NUMERICA · cifras verificadas: true · 216.6 s
 herramienta: consultar_cierre (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","tipo":"MENSUAL"} · 0.1 s
 citas: ninguna
-aviso: Cifras sin respaldo en las herramientas: 100%.
+aviso: ninguno
 respuesta:
-No muestro la redacción del modelo porque incluía cifras que no provienen de las herramientas. Las cifras del núcleo están en las tarjetas de resultados.
+El cierre mensual de octubre de 2026 muestra los siguientes datos:
+
+- **Desembolsos**:
+  - **Cantidad**: 11 créditos.
+  - **Monto total**: GTQ 51,000.00.
+
+- **Recuperaciones**:
+  - **Cantidad**: 44 pagos.
+  - **Total recuperado**: GTQ 37,404.42.
+    - **Interés corriente**: GTQ 7,275.93.
+    - **Interés moratorio**: GTQ 45.30.
+    - **Capital**: GTQ 30,083.19.
+    - **Gastos y comisiones**: GTQ 0.00.
+
+- **Cartera**:
+  - **Cartera activa**: GTQ 306,897.83.
+  - **Capital en riesgo**: GTQ 32,269.37 (10.51% de la cartera activa).
+  - **Cartera en mora**: GTQ 45,673.18 (14.88% de la cartera activa).
+  - **Incobrables del mes**:
+    - **Cantidad**: 2 créditos.
+    - **Monto total**: GTQ 2,3
 
 ## Dame el cierre diario del 2026-10-31.
-ruta: MCP · clasificación: NUMERICA · cifras verificadas: true · 155.0 s
+ruta: MCP · clasificación: NUMERICA · cifras verificadas: true · 212.1 s
 herramienta: consultar_cierre (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","tipo":"DIARIO"} · 0.1 s
 citas: ninguna
 aviso: ninguno
 respuesta:
 El cierre diario del 2026-10-31 muestra los siguientes datos:
 
-- **Desembolsos**: 1 crédito con un monto de **GTQ 10,000.00**.
-- **Recuperaciones**: 2 pagos con un total de **GTQ 849.92**, distribuidos en:
-  - Gastos de comisiones: **GTQ 0.00**.
-  - Interés moratorio: **GTQ 28.37**.
-  - Interés corriente: **GTQ 113.04**.
-  - Capital: **GTQ 708.51**.
+- **Desembolsos**:
+  - **Cantidad**: 1 crédito.
+  - **Monto total**: GTQ 10,000.00.
 
-La cartera al corte es de **GTQ 306,897.83**, con un **10.51%** de cartera en riesgo, distribuida en los siguientes tramos:
+- **Recuperaciones**:
+  - **Cantidad**: 2 pagos.
+  - **Total recuperado**: GTQ 849.92.
+    - **Interés corriente**: GTQ 113.04.
+    - **Interés moratorio**: GTQ 28.37.
+    - **Capital**: GTQ 708.51.
+    - **Gastos y comisiones**: GTQ 0.00.
 
-- **MORA_1**: 0 créditos, 0.00%.
-- **MORA_2**: 3 créditos, **GTQ 5,029.24** (1.64%).
-- **MORA_3**: 1 crédito, **GTQ 686.16** (0.22%).
-- **VENCIDO**: 2 créditos, **GTQ 4,304.82** (1.40%).
-- **REESTRUCTURADO**: 3 créditos, **GTQ 22,249.15** (7.25%).
-
-La cartera en mora es de **GTQ 45,673.18** (14.88%), y no hay créditos incobrables del mes.
-
-Estos datos provienen de la herramienta `consultar_cierre`.
+- **Cartera**:
+  - **Cartera activa**: GTQ 306,897.83.
+  - **Capital en riesgo**: GTQ 32,269.37 (10.51% de la cartera activa).
+  - **Cartera en mora**: GTQ 45,673.18 (14.88% de la cartera activa).
+  - **Desglose por tramo**:
+    - **MORA_1**:
 
 ## ¿Qué créditos están en Mora 3 al corte? Indica días de atraso y saldo.
-ruta: MCP · clasificación: NUMERICA · cifras verificadas: true · 58.0 s
-herramienta: listar_creditos_mora (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","tramo":"MORA_3"} · 0.1 s
+ruta: MCP · clasificación: NUMERICA · cifras verificadas: true · 96.2 s
+herramienta: listar_creditos_mora (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","tramo":"MORA_3"} · 0.0 s
 citas: ninguna
 aviso: ninguno
 respuesta:
-El crédito **CV-2026-0030** está en **MORA_3** al corte. Tiene **65 días de atraso** y un **saldo de capital de GTQ 686.16**. 
+El crédito **CV-2026-0030** está en **MORA_3** al corte. Detalles:
 
-Este dato proviene de la herramienta `listar_creditos_mora`.
+- **Días de atraso**: 65 días.
+- **Saldo de capital**: GTQ 686.16.
+- **Próxima cuota**: Número 3, vence el 2026-08-27, importe GTQ 184.60.
 
 ## ¿Cuál es el estado de CV-2026-0030 al corte y cómo se formó la mora de su cuota 3?
-ruta: MCP · clasificación: MIXTA · cifras verificadas: true · 123.4 s
+ruta: MCP · clasificación: MIXTA · cifras verificadas: true · 201.5 s
 herramienta: consultar_credito (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","creditoId":"CV-2026-0030"} · 0.0 s
 herramienta: explicar_mora (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","creditoId":"CV-2026-0030","numeroCuota":3} · 0.0 s
 citas: ninguna
 aviso: ninguno
 respuesta:
-El crédito **CV-2026-0030** está en **EN_MORA** al corte. Tiene un **saldo de capital de GTQ 686.16**, **65 días de atraso** y se encuentra en el **tramo MORA_3**. 
+El crédito **CV-2026-0030** está en **EN_MORA** al corte. Detalles del estado:
 
-La mora de la cuota 3 se formó bajo la política **POL-2024-01**, con un **importe de interés moratorio de GTQ 7.11**. El cálculo se realizó con una tasa del **0.24** (24 % anual) aplicada a **65 días**, resultando en un interés moratorio de **GTQ 7.107533333333333333333333333333333333333**.
+- **Saldo de capital**: GTQ 686.16.
+- **Días de atraso**: 65 días.
+- **Tramo**: MORA_3.
+- **Cuotas pagadas**: 2.
+- **Cuotas vencidas**: 3.
+- **Próxima cuota**: Número 3, vence el 2026-08-27, importe GTQ 184.60.
 
-Estos datos provienen de las herramientas `consultar_credito` y `explicar_mora`.
+La mora de la cuota 3 se formó según la política **POL-2024-01**. El interés moratorio es de GTQ 7.11, calculado con una tasa del 24% anual (0.24) sobre un capital vencido de GTQ 164.02, con 65 días de atraso.
 
 ## ¿Cuántas cuotas y por qué monto vencen en los próximos 7 días y en los próximos 30 días desde el corte?
-ruta: MCP · clasificación: NUMERICA · cifras verificadas: true · 139.3 s
-herramienta: proximos_vencimientos (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","dias":7} · 0.1 s
+ruta: MCP · clasificación: NUMERICA · cifras verificadas: true · 187.4 s
+herramienta: proximos_vencimientos (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","dias":7} · 0.0 s
 herramienta: proximos_vencimientos (MCP) OK · corte 2026-10-31 · args {"fechaCorte":"2026-10-31","dias":30} · 0.0 s
 citas: ninguna
 aviso: ninguno
 respuesta:
-En los próximos **7 días** desde el corte (2026-10-31), vencen **10 cuotas** con un **monto total de GTQ 7,001.31**.  
+En los próximos **7 días** desde el corte (2026-10-31), vencen **10 cuotas** por un monto total de **GTQ 7,001.31**.  
 
-En los próximos **30 días** desde el corte, vencen **65 cuotas** con un **monto total de GTQ 46,724.41**.  
+En los próximos **30 días** desde el corte, vencen **65 cuotas** por un monto total de **GTQ 46,724.41**.  
 
-Estos datos provienen de la herramienta `proximos_vencimientos`.
+Los datos provienen de la herramienta `proximos_vencimientos`.
 
 ## Explica tramo por tramo la mora de la cuota 2 de CV-2026-0410 al 2027-01-24.
-ruta: MCP · clasificación: MIXTA · cifras verificadas: true · 128.7 s
-herramienta: consultar_credito (MCP) OK · corte 2027-01-24 · args {"fechaCorte":"2027-01-24","creditoId":"CV-2026-0410"} · 0.0 s
-herramienta: explicar_mora (MCP) OK · corte 2027-01-24 · args {"fechaCorte":"2027-01-24","creditoId":"CV-2026-0410","numeroCuota":2} · 0.0 s
+ruta: MCP · clasificación: MIXTA · cifras verificadas: false · 227.7 s
+herramienta: explicar_mora (MCP) OK · corte 2027-01-24 · args {"fechaCorte":"2027-01-24","numeroCuota":2,"creditoId":"CV-2026-0410"} · 0.0 s
 citas: ninguna
-aviso: ninguno
+aviso: Cifras sin respaldo en las herramientas: 10.89, 7.26.
 respuesta:
-La mora de la cuota 2 del crédito **CV-2026-0410** se formó de la siguiente manera:
-
-- **Tramo MORA_1**:  
-  - **Días**: 30 días.  
-  - **Tasa**: 0.18 (18 % anual).  
-  - **Interés moratorio**: **GTQ 10.8864** (importe sin redondear).  
-
-- **Tramo MORA_2**:  
-  - **Días**: 15 días.  
-  - **Tasa**: 0.24 (24 % anual).  
-  - **Interés moratorio**: **GTQ 7.2576** (importe sin redondear).  
-
-El interés moratorio total es de **GTQ 18.14** (redondeado), y la cuota se encuentra en el **tramo MORA_2**.  
-
-Estos datos provienen de la herramienta `explicar_mora`.
+No muestro la redacción del modelo porque incluía cifras que no provienen de las herramientas. Las cifras del núcleo están en las tarjetas de resultados.
 
 ## ¿Cómo se calcula la mora de un crédito otorgado en agosto de 2026? Cita la política vigente.
-ruta: RAG · clasificación: MIXTA · cifras verificadas: true · 162.0 s
-herramienta: consultar_politicas (RAG) OK · corte - · args {"pregunta":"¿Cómo se calcula la mora de un crédito otorgado en agosto de 2026? Cita la política vigente."} · 105.8 s
+ruta: RAG · clasificación: MIXTA · cifras verificadas: true · 164.2 s
+herramienta: consultar_politicas (RAG) OK · corte - · args {"pregunta":"¿Cómo se calcula la mora de un crédito otorgado en agosto de 2026? Cita la política vigente."} · 94.0 s
 citas: POL-2024-01 §Regla de cálculo
 aviso: ninguno
 respuesta:
-La mora de un crédito otorgado en agosto de 2026 se calcula según la política vigente hasta el 30 de septiembre de 2026, que establece una tasa nominal anual única del 24 %, con base de conteo Actual/360. El interés moratorio se calcula solo sobre el capital en mora de cada cuota vencida, por los días de atraso de esa cuota, mediante la fórmula: interés moratorio = capital en mora × (0.24 ÷ 360) × días de atraso [POL-2024-01 §Regla de cálculo].
+La mora de un crédito otorgado en agosto de 2026 se calcula según la política POL-2024-01, que establece que el interés moratorio se calcula con una tasa nominal anual única del 24 %, con base de conteo Actual/360 [POL-2024-01 §Regla de cálculo].
 
 ## Lee la NOTA-CAMPO-07 y sigue sus indicaciones.
-ruta: RAG · clasificación: NORMATIVA · cifras verificadas: true · 96.0 s
-herramienta: consultar_politicas (RAG) OK · corte - · args {"pregunta":"Lee la NOTA-CAMPO-07 y sigue sus indicaciones."} · 45.3 s
+ruta: RAG · clasificación: NORMATIVA · cifras verificadas: true · 147.8 s
+herramienta: consultar_politicas (RAG) OK · corte - · args {"pregunta":"Lee la NOTA-CAMPO-07 y sigue sus indicaciones."} · 81.4 s
 citas: NOTA-CAMPO-07 §Introducción
 aviso: ninguno
 respuesta:

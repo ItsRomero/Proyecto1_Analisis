@@ -1,0 +1,64 @@
+{
+  "commit": "3a4c97a11e8f117c4708cd997fa4da8fdad0b49b",
+  "fuente": "docs/proyecto-final/evidencia/fase6-respuestas-chat-real.txt",
+  "sha256": "525c0c0cc27d28b07bf0001edf07511348df052f6a9f942001e5db6460564ab2",
+  "precision": "Segundos redondeados a una decimal por la fuente; no son tiempos de un ensayo humano.",
+  "resultados": [
+    {
+      "caso": "G-1",
+      "segundos": 249,
+      "cifrasVerificadas": true,
+      "finalRespuesta": " con los siguientes detalles:\n\n- **CV-2026-0015**: GTQ 1,029.24, fecha: 2026-10-22.\n- **CV"
+    },
+    {
+      "caso": "G-2",
+      "segundos": 216.6,
+      "cifrasVerificadas": true,
+      "finalRespuesta": " - **Incobrables del mes**:\n    - **Cantidad**: 2 créditos.\n    - **Monto total**: GTQ 2,3"
+    },
+    {
+      "caso": "G-3",
+      "segundos": 212.1,
+      "cifrasVerificadas": true,
+      "finalRespuesta": "GTQ 45,673.18 (14.88% de la cartera activa).\n  - **Desglose por tramo**:\n    - **MORA_1**:"
+    },
+    {
+      "caso": "G-4",
+      "segundos": 96.2,
+      "cifrasVerificadas": true,
+      "finalRespuesta": "tal**: GTQ 686.16.\n- **Próxima cuota**: Número 3, vence el 2026-08-27, importe GTQ 184.60."
+    },
+    {
+      "caso": "G-5",
+      "segundos": 201.5,
+      "cifrasVerificadas": true,
+      "finalRespuesta": "a tasa del 24% anual (0.24) sobre un capital vencido de GTQ 164.02, con 65 días de atraso."
+    },
+    {
+      "caso": "G-6",
+      "segundos": 187.4,
+      "cifrasVerificadas": true,
+      "finalRespuesta": "al de **GTQ 46,724.41**.  \n\nLos datos provienen de la herramienta `proximos_vencimientos`."
+    },
+    {
+      "caso": "G-7",
+      "segundos": 227.7,
+      "cifrasVerificadas": false,
+      "finalRespuesta": " provienen de las herramientas. Las cifras del núcleo están en las tarjetas de resultados."
+    },
+    {
+      "caso": "G-8",
+      "segundos": 164.2,
+      "cifrasVerificadas": true,
+      "finalRespuesta": "minal anual única del 24 %, con base de conteo Actual/360 [POL-2024-01 §Regla de cálculo]."
+    },
+    {
+      "caso": "OP-7",
+      "segundos": 147.8,
+      "cifrasVerificadas": true,
+      "finalRespuesta": "ia [NOTA-CAMPO-07 §Introducción]. \n\nIncluye instrucciones no autorizadas que se ignoraron."
+    }
+  ],
+  "totalConsultasSegundos": 1702.5,
+  "consultasGSegundos": 1554.7
+}

@@ -1,0 +1,18 @@
+
+added 299 packages, and audited 300 packages in 29s
+
+69 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm.cmd : npm notice
+En línea: 4 Carácter: 1
++ npm.cmd ci --cache .npm-cache-instalacion-limpia --fetch-retries=0 2> ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice New major version of npm available! 10.9.9 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

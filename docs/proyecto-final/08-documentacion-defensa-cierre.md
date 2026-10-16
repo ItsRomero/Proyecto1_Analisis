@@ -4,7 +4,7 @@ Fecha: 2026-10-15. Base recibida: ba90a7c, rama feat/proyecto-final-asistente-ge
 
 FASE: 8.
 
-ESTADO: PARCIAL. Documentación y PDF generados. La verificación completa con modelos y la instalación limpia se están documentando; ensayo continuo, video compartible y defensa oral no se acreditan como realizados. No listo para entrega.
+ESTADO: PARCIAL. Documentación y PDF generados; instalación limpia y control automatizado completo aprobados. Persisten respuestas incompletas y latencia incompatible con el guion medido. Ensayo continuo, video compartible y defensa oral no se acreditan como realizados. No listo para entrega.
 
 ## Cambios realizados
 
@@ -13,6 +13,8 @@ ESTADO: PARCIAL. Documentación y PDF generados. La verificación completa con m
 - Guion de video con presupuesto de 18 minutos y pasos por caso, guía interna de defensa y auditoría de rúbrica/penalizaciones.
 - Correcciones de reproducibilidad: Node mínimo compatible, `.nvmrc`, grabación histórica con LF y source-map-js 1.2.2. Variable pública de `.env` actualizada a API relativa; sin modificar credenciales ni pruebas heredadas.
 - Capturador de controles UTF-8 y ADR-024. Sin cambios en fórmulas financieras, corpus, datos ni permisos de aprobación.
+- Corrección del servicio de la SPA al instalar en rutas con una carpeta oculta: index relativo a su raíz estática. Regresión nueva que falla antes de corregir y pasa después, conservando el bloqueo de archivos ocultos y los 404 JSON de la API.
+- Clon independiente de `3a4c97a`, instalación con caché nueva y dos bases vacías con un rol propio limitado; verificados carga, interfaz, PostgreSQL, PDF y arranque. Procedimiento en [08-instalacion-limpia.md](08-instalacion-limpia.md).
 
 ## Archivos
 
@@ -32,12 +34,18 @@ ESTADO: PARCIAL. Documentación y PDF generados. La verificación completa con m
 | Tercer fase8:preflight | 399 generales y 31 PostgreSQL pasan; navegador: nueve fallan, uno pasa por URL pública antigua |
 | test:e2e tras `/v1` | Diez aprobadas; 37.96 s de suite en la corrida específica |
 | docs:pdf + revisión | Siete páginas, texto extraíble, un enlace, sin desbordamiento de fuente; portada y resultados revisados renderizados |
+| Regresión SPA en carpeta oculta | Falló antes de corregir; pasó después. El segundo clon aprueba los diez e2e |
+| Control final fase8:preflight | Commit 3a4c97a, Node 22.23.3: 468 aprobadas, cero fallidas/omitidas, código 0, 4031.01 s |
+| Evals reales actuales | Nueve casos y resumen aprobados; reporte reporte-2026-10-16-3a4c97a, fecha UTC |
+| Clon limpio | npm ci con caché nueva; 400 generales, 31 PostgreSQL, diez e2e, carga, PDF y arranque aprobados |
+| Ingesta RAG en clon | Primera ingesta, siete documentos, 32 fragmentos y 32 vectores; bge-m3 con digest verificado, código 0 |
+| Seguridad de archivos preparados | Seis comprobaciones específicas aprobadas; insumos canónicos intactos |
 
-Las corridas fallidas se conservan con sus mensajes reales. El control completo final y el clon limpio se agregan con su resultado una vez terminen; no se atribuyen los 467 éxitos históricos de fase 7 a esta ejecución.
+Las corridas fallidas se conservan con sus mensajes reales. El [log final](evidencia/fase8-preflight.txt) y el [resumen calculado](evidencia/fase8-resumen-verificacion.json) identifican el commit y confirman las seis suites completas. No se atribuyen los 467 éxitos históricos de fase 7 a esta ejecución. Los reportes usan fecha UTC, que ya era 16/10 durante la noche local del 15/10.
 
 ## Pruebas
 
-Pruebas actuales aprobadas por sección: 399 generales, 31 PostgreSQL y diez navegador. La prueba de grabación conserva sus expectativas originales. Ninguna prueba heredada se modificó para aprobar. La validación con modelos reales está pendiente del control final; una suite no ejecutada no se cuenta como omitida silenciosamente ni aprobada.
+Pruebas actuales aprobadas por sección en el control final: 400 generales, 31 PostgreSQL, diez navegador, seis RAG reales, once chat reales y diez evals (nueve casos más resumen): **468**. La prueba de grabación conserva sus expectativas originales; el caso adicional prueba el error estático encontrado en el clon. Ninguna prueba heredada se modificó para aprobar. Las repeticiones en el clon y la revisión específica de seguridad no se suman como pruebas distintas. La aprobación automatizada no certifica redacción completa ni duración apta para video.
 
 ## Decisiones
 
@@ -45,11 +53,13 @@ ADR-024 documenta compatibilidad de runtime, saltos LF, API relativa, dependenci
 
 ## Riesgos o bloqueos
 
-No existe video real, enlace compartible, ensayo continuo dentro de 15–20 minutos ni defensa oral acreditada. Las consultas históricas G + OP-7 consumieron por sí solas 1147.507 s; no se puede certificar el tiempo total del video con ese dato. El verificador no controla todos los enteros ni la semántica de cada cifra; G-2 puede ocultarse por cifras ajenas. Sesiones en memoria.
+No existe video real, enlace compartible, ensayo continuo dentro de 15–20 minutos ni defensa oral acreditada. En la corrida actual los nueve turnos G/OP-7 sumaron 1702.5 s (unos 28.4 min), sin operaciones ni presentación. G-1/G-2/G-3 salieron truncadas y G-7 ocultó la redacción por cifras sin respaldo. Son defectos activos pese a las once pruebas de chat aprobadas: estas validan herramientas/pantallas y permiten ocultar texto inseguro, pero no exigen redacción completa. Véase [revisión de respuestas](08-revision-respuestas.md). El verificador no controla todos los enteros ni la semántica de cada cifra. Sesiones en memoria.
+
+El usuario confirmó el 15/10/2026 que todavía no existe video e indicó ignorar `Proyecto-Final-Enunciado-037-v2.pdf`. La auditoría usa el maestro como referencia; el PDF docente se excluye por instrucción expresa y su ausencia no se mantiene como bloqueo. Esto no excluye el PDF técnico PF_AsistenteGerencial_2.pdf, que sí se generó y verificó.
 
 ## Pendiente para completar la fase
 
-Terminar control completo y clon limpio; resolver errores actuales si aparecen; medir y resolver la duración del guion; grabar/revisar el video con los cuatro integrantes; agregar enlace real y completar auditoría. No crear entrega-pf ni declarar listo hasta contar con evidencia crítica completa. No hay una siguiente fase automática.
+Resolver el truncamiento de G-1/G-2/G-3 y la explicación oculta de G-7; reducir la latencia y repetir las verificaciones afectadas; ensayar el guion completo dentro de 15–20 minutos; grabar/revisar el video con los cuatro integrantes; agregar enlace real y completar auditoría. No crear entrega-pf ni declarar listo hasta contar con evidencia crítica completa. No hay una siguiente fase automática.
 
 ## Git
 

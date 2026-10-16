@@ -1,0 +1,96 @@
+FASE 8 — CONTROL DE ENTRADA
+Inicio UTC: 2026-10-16T01:13:27.3785401+00:00
+Node: v22.23.3
+Commit: ba90a7ce99afa61278ef668a8fec94d8f2eb0169
+Comando: npm.cmd run fase8:preflight
+
+> sistema-gestion-microcredito-p1@0.1.0 fase8:preflight
+> npm run fase7:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase7:verificar
+> npm run fase6:verificar && npm run evals
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase6:verificar
+> npm run fase5:verificar && npm run test:chat
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase5:verificar
+> npm run fase4:verificar && npm run test:rag
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase4:verificar
+> npm run fase3:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase3:verificar
+> npm run verify && npm run test:carga:postgres && npm run test:e2e && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p web
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis
+
+ ❯ |nucleo| tests/evals/verificador.test.ts (2 tests | 1 failed) 27ms
+     × mide la transcripción real de fase 6: G-2 y G-3 traían «(100%)» sin respaldo; el resto, ninguna cifra ajena 17ms
+npm.cmd :
+En línea: 6 Carácter: 1
++ npm.cmd run fase8:preflight 2>&1 | Tee-Object -FilePath $rutaControl  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |nucleo| tests/evals/verificador.test.ts > fase 7: verificador de cifras ampliado (ADR-023) > mide la
+transcripción real de fase 6: G-2 y G-3 traían «(100%)» sin respaldo; el resto, ninguna cifra ajena
+AssertionError: expected { 'G-1': [], 'G-2': [], …(5) } to deeply equal { 'G-1': [], 'G-2': [ '100%' ], …(5) }
+
+- Expected
++ Received
+
+  {
+    "G-1": [],
+-   "G-2": [
+-     "100%",
+-   ],
+-   "G-3": [
+-     "100%",
+-   ],
++   "G-2": [],
++   "G-3": [],
+    "G-4": [],
+    "G-5": [],
+    "G-6": [],
+    "G-7": [],
+  }
+
+ ❯ tests/evals/verificador.test.ts:47:22
+     45|     }
+     46|     // Medición sobre la grabación: con el verificador de fase 6 estos…
+     47|     expect(medicion).toEqual({ "G-1": [], "G-2": ["100%"], "G-3": ["10…
+       |                      ^
+     48|   });
+     49| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 30 passed (31)
+      Tests  1 failed | 398 passed (399)
+   Start at  19:13:47
+   Duration  13.31s (transform 6.71s, setup 1.27s, import 47.13s, tests 8.70s, environment 8.69s)
+
+Código de salida: 1
+Duración segundos: 33.7

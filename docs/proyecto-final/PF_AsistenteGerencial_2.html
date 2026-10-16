@@ -64,15 +64,15 @@
 <p class="pie">Fuentes: ADR-008/021/022/023; src/rag/; src/chat/; reportes y transcripciones reales.</p>
 </article>
 <article><div class="marca">05 · Validación</div><h2>Evidencia y condiciones de cierre</h2>
-<table><thead><tr><th>Nivel</th><th>Evidencia recibida de fase 7</th></tr></thead><tbody>
-<tr><td>Suite general</td><td>399 pruebas sin servicios externos; núcleo, contratos, interfaz, seguridad y evals deterministas.</td></tr>
+<table><thead><tr><th>Nivel</th><th>Control actual de fase 8 · código 3a4c97a</th></tr></thead><tbody>
+<tr><td>Suite general</td><td>400 pruebas sin servicios externos; núcleo, contratos, interfaz, seguridad y evals deterministas.</td></tr>
 <tr><td>Integración / navegador</td><td>31 pruebas PostgreSQL y 10 recorridos e2e.</td></tr>
 <tr><td>Modelos reales</td><td>Seis RAG, 11 chat y 10 pruebas de evals: nueve casos y resumen.</td></tr>
-<tr><td>Total histórico</td><td>467 aprobadas con Node 22.23.3. Fuente: fase7-verificacion-node22.txt; no constituye una corrida nueva de fase 8.</td></tr>
+<tr><td>Total actual</td><td>468 aprobadas, cero fallidas y cero omitidas, Node 22.23.3; código de salida 0, duración 4031.01 s.</td></tr>
 </tbody></table>
-<p>El control de fase 8 vuelve a ejecutar la cadena completa. Sus resultados, fallos y tiempos se conservan en fase8-preflight.txt y en 08-documentacion-defensa-cierre.md. La auditoría distingue evidencia histórica, verificación actual y grabación final.</p>
+<p>Fuentes: fase8-preflight.txt, fase8-resumen-verificacion.json y reporte-2026-10-16-3a4c97a. Las evals aprobaron nueve casos y su resumen, pero admiten redacción oculta y no comprueban texto completo. El clon limpio aprobó instalación, carga, pruebas, UI e ingesta RAG. Detalles en el informe de cierre.</p>
 <p>El oráculo se produjo por el núcleo y se congeló con commit y huella en dos estados: POST_CARGA y POST_OP1_OP3. No se escriben respuestas financieras a mano; G-1 a G-3 cambian después de las operaciones. G-7 usa un corte distinto.</p>
-<div class="aviso"><strong>Pendiente de certificación:</strong> video real de 15–20 minutos, participación oral de los cuatro integrantes, legibilidad, enlace compartible, ensayo cronometrado y entrega en Canvas. Sin esa evidencia no se declara listo ni se crea entrega-pf.</div>
+<div class="aviso"><strong>Defectos activos:</strong> G-1/G-2/G-3 salieron truncadas y G-7 ocultó la redacción. Los nueve turnos G/OP-7 sumaron unos 28.4 minutos, sin operaciones ni presentación. Deben resolverse antes de certificar. Faltan video real de 15–20 minutos, cuatro voces, legibilidad, enlace compartible, ensayo y Canvas. No se declara listo ni se crea entrega-pf.</div>
 <p>El PDF se genera desde esta fuente HTML con Chrome/Playwright, usando el script versionado y sin servicios de pago. La revisión de páginas y enlaces se registra en la evidencia de fase 8.</p>
 </article>
 <article><div class="marca">06 · Decisiones y límites</div><h2>Decisiones que deben defenderse</h2>
@@ -83,6 +83,7 @@
 <tr><td>D-7 / D-8 / D-9</td><td>015/016/017: ventana de vencimientos; cierres por conceptos; protección idempotente persistente.</td></tr>
 <tr><td>Integración</td><td>019/020: sesión y evento humano; MCP vinculado sin permisos de confirmación.</td></tr>
 <tr><td>Asistente</td><td>021/022/023: RAG con citas, orquestación de sesión y evals con oráculo.</td></tr>
+<tr><td>Reproducción</td><td>024: runtime compatible, grabaciones LF y entrega de la SPA desde carpetas ocultas.</td></tr>
 </tbody></table>
 <h3>Límites observados</h3>
 <p>El modelo varía aun con temperatura cero. En una corrida histórica, G-2 se ocultó por un porcentaje no respaldado. El verificador no contrasta todos los enteros ni garantiza correspondencia semántica de cada cifra con su concepto. Las tarjetas conservan el resultado del núcleo, pero no sustituyen la auditoría de la respuesta completa.</p>

@@ -56,6 +56,8 @@ Formular las preguntas del catálogo `tests/evals/casos.ts` sin respuestas numé
 
 La evidencia histórica de fase 7 mide 58–205 s por turno. No acredita el cumplimiento del video. Se deben anotar inicio/fin de cada bloque y duración total en `08-ensayo-cronometrado.md` solo después de realizar el ensayo; no crear tiempos ficticios.
 
+El control actual de fase 8 midió 1702.5 s para G-1 a G-8 más OP-7 en chat y 1586.536 s al repetir esas consultas en evals. Las consultas solas exceden 20 minutos; el presupuesto anterior no está validado. G-1/G-2/G-3 quedaron truncadas y G-7 oculta. Resolver estos defectos antes de grabar; véase [revisión de respuestas](08-revision-respuestas.md).
+
 Si la espera impide completar el guion, registrar el bloqueo. Se puede estudiar una optimización compatible con el stack y ADR, pero exige repetir las evals afectadas. No cambiar a respuestas simuladas, saltar preguntas, apagar el verificador ni acelerar la grabación.
 
 ## Revisión y publicación pendientes
