@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>PF_AsistenteGerencial_2</title>
+<style>
+@page{size:A4;margin:17mm}*{box-sizing:border-box}body{margin:0;color:#162c3c;font:11pt/1.44 Arial,sans-serif}article{break-after:page;width:176mm;max-width:100%;padding:0 1mm}article:last-child{break-after:auto}h1{font-size:29pt;line-height:1.12;color:#143d53;margin:22px 0}h2{font-size:21pt;color:#143d53;margin:0 0 18px}h3{font-size:12pt;margin:18px 0 5px}p{margin:9px 0}table{border-collapse:collapse;width:100%;font-size:9.7pt;margin:15px 0}td,th{padding:8px;border-bottom:1px solid #d5e0e5;text-align:left;vertical-align:top}th{background:#eaf1f3}a{color:#145875}code{font-size:9.6pt;overflow-wrap:anywhere}li{margin:6px 0}.marca{font-size:10pt;text-transform:uppercase;letter-spacing:2px;color:#347085}.aviso{padding:13px;border-left:4px solid #a46b1b;background:#fff5df;margin:17px 0}.caja{padding:12px 16px;background:#edf3f5;border-radius:5px}.flecha{text-align:center;color:#347085;margin:5px}.portada{padding-top:24mm}.sub{font-size:16pt;color:#347085}.pie{font-size:9pt;color:#526575}.pequeno{font-size:9.6pt}h2,h3,tr{break-inside:avoid}figure{margin:10px 0}
+</style></head><body>
+<article class="portada">
+<div class="marca">Universidad Mariano Gálvez · Análisis de Sistemas II (037)</div>
+<h1>Sistema de microcrédito<br>con asistente gerencial</h1>
+<p class="sub">Arquitectura, integración y evidencia técnica</p>
+<p>Proyecto Final · Grupo 2 · Sección A<br>Docente: Ing. Ezequiel Urizar</p>
+<table><thead><tr><th>Integrante</th><th>Carné</th></tr></thead><tbody>
+<tr><td>Christopher David Herrera Pérez</td><td>7690-20-20773</td></tr>
+<tr><td>Erwin Alberto Ramírez Racancoj</td><td>7690-23-2387</td></tr>
+<tr><td>Gabriela Elízabeth Noemí Aguilar Vásquez</td><td>7690-23-13249</td></tr>
+<tr><td>Oliver Fernando Romero Esquite</td><td>7690-23-7366</td></tr>
+</tbody></table>
+<div class="aviso"><strong>Documento de auditoría — 15 de octubre de 2026.</strong><br>La entrega final no está certificada: video, ensayo continuo y defensa oral requieren evidencia real. El resultado actualizado de las verificaciones figura en el informe de cierre de fase 8.</div>
+<p class="pie">Base de implementación recibida: ba90a7c (fase 7). Las correcciones de reproducibilidad de fase 8 y sus resultados se identifican por commit en el informe. Repositorio: ItsRomero/Proyecto1_Analisis.</p>
+</article>
+<article><div class="marca">01 · Arquitectura</div><h2>Una sola fuente financiera</h2>
+<p>El sistema conserva el núcleo TypeScript de P1/P2 y lo conecta a persistencia, API, interfaz y asistente mediante casos de uso compartidos. El modelo decide qué consultar y redacta; el dinero y las reglas financieras se resuelven en el núcleo.</p>
+<div class="caja"><strong>Interfaz React</strong><br>Siete pantallas operativas y chat gerencial en la misma aplicación.</div>
+<div class="flecha">↓ HTTP / sesión de demostración</div>
+<div class="caja"><strong>API Express · orquestador del chat</strong><br>Contratos Zod únicos · MCP por sesión · RAG con citas</div>
+<div class="flecha">↓ casos de uso y puertos</div>
+<div class="caja"><strong>Núcleo P1/P2</strong><br>Dinero exacto · plan francés · mora · prelación · State · idempotencia · riesgo</div>
+<div class="flecha">↓ hechos y resultados persistidos</div>
+<div class="caja"><strong>PostgreSQL + pgvector</strong><br>Clientes, créditos, cuotas, pagos, log, aprobaciones, políticas, documentos y vectores</div>
+<h3>Límites que protegen las reglas</h3>
+<p>El dominio no importa React, Express, MCP ni PostgreSQL. La interfaz presenta valores exactos de la API; SQL conserva hechos y resultados. Los esquemas de <code>src/contratos/</code> evitan contratos distintos entre transportes. Las pruebas de arquitectura vigilan esas dependencias.</p>
+<p class="pie">Fuentes: ADR-001, ADR-006 y ADR-019; arquitectura de fase 1; src/aplicacion/servicios-final.ts.</p>
+</article>
+<article><div class="marca">02 · Continuidad P1/P2</div><h2>Integración y carga auténtica</h2>
+<p>Se reutilizan Dinero sobre decimal.js, amortización francesa con ajuste final, mora Actual/360, prelación de pagos, estados del crédito y protección idempotente. El calendario de vencimientos compone el plan sin copiar su fórmula.</p>
+<table><thead><tr><th>Extensión</th><th>Comportamiento y evidencia</th></tr></thead><tbody>
+<tr><td>Carga canónica</td><td>Verifica SHA-256 de eventos contra la huella del paquete; reproduce seq y registra el log separado de las proyecciones.</td></tr>
+<tr><td>Pagos históricos</td><td>Cada pago único pasa por el núcleo y la prelación. Se conserva la aplicación por concepto para cierres.</td></tr>
+<tr><td>Transacción e idempotencia</td><td>Rollback ante fallo; una segunda carga no duplica pagos ni sobrescribe operaciones posteriores.</td></tr>
+<tr><td>Políticas</td><td>Configuración versionada por JSON y otorgamiento; el gasto solo aplica a políticas habilitadas.</td></tr>
+<tr><td>Bajas y riesgo</td><td>Bajas derivadas con State, autorización de sistema y evidencia; reestructurados al día incluidos en riesgo.</td></tr>
+</tbody></table>
+<p>El paquete contiene 60 clientes, 75 créditos, seis asesores y 363 eventos, de los cuales 228 son de pago y 226 tienen efecto único. Esos conteos son contrato de carga; las cifras de cartera se consultan al núcleo sobre el estado de la demostración.</p>
+<p>La fuente se lee desde CV_DATA_DIR y permanece intacta. El rango efectivo de eventos difiere del declarado por LEEME; no se corrige el paquete. Reiniciar la base es preparación de ensayo, nunca una forma de operar la cartera.</p>
+<p class="pie">Fuentes: cierres de fases 0–3, ADR-009/011/012/013/018 y pruebas de carga/PostgreSQL.</p>
+</article>
+<article><div class="marca">03 · MCP y control humano</div><h2>Consultar, proponer, confirmar</h2>
+<p>El servidor MCP publica ocho capacidades: consultar crédito, deuda de cuota, explicación de mora, listado en mora, próximos vencimientos, cartera, cierre y propuesta de pago. Siete son lecturas; proponer no aplica dinero.</p>
+<ol><li>El asistente consulta deuda y deja una propuesta pendiente con crédito, cuota, corte, importe, versión y clave.</li><li>La interfaz muestra desglose y prelación. La persona pulsa Aprobar/Confirmar o Cancelar.</li><li>El servidor valida sesión, perfil, evento humano de un solo uso y versión; bloquea el crédito y verifica idempotencia.</li><li>RegistrarPago aplica el núcleo. Pago, aplicaciones, clave y auditoría se guardan en la misma transacción.</li></ol>
+<p>Escribir “sí, apruébalo” en el chat no confirma un pago. MCP no dispone de confirmación, originación, aprobación, desembolso ni generación de cierres. El backend fija el contexto de sesión; el modelo no elige una identidad autorizada.</p>
+<h3>Errores y reintentos</h3>
+<p>Primera aplicación: 201; replay válido: 200 con Idempotency-Replayed; misma clave con contenido diferente: 409. Se rechazan incobrables, cuota ya pagada, cuota fuera de orden, monto no exacto y fecha inválida. Los errores públicos no incluyen SQL ni credenciales.</p>
+<h3>Alcance de la seguridad</h3>
+<p>Las sesiones de demostración no equivalen a autenticación empresarial. La seguridad se verifica sobre permisos, vínculo de sesión, control de origen, eventos humanos y ausencia de escrituras financieras por herramientas.</p>
+<p class="pie">Fuentes: ADR-010/017/019/020; src/mcp/; pruebas de integración, MCP y aprobación en navegador.</p>
+</article>
+<article><div class="marca">04 · RAG y chat</div><h2>Políticas con respaldo verificable</h2>
+<p>El corpus oficial tiene siete documentos. Se fragmenta por secciones completas, sin solapamiento: la corrida de fase 5 produjo 32 fragmentos. Se preservan títulos, vigencia y tablas; el texto se limpia de datos personales antes de indexarlo.</p>
+<p>bge-m3 genera embeddings de 1024 dimensiones; pgvector guarda los vectores junto a los metadatos. Se recuperan hasta cuatro fragmentos por similitud coseno y se aplica un umbral calibrado de 0.5. Sin respaldo suficiente, el sistema lo informa y evita una respuesta normativa inventada.</p>
+<p>Las citas identifican documento y sección y se contrastan con lo recuperado. El redactor RAG usa qwen3:8b local a través de LangChain; no tiene herramientas financieras. El orquestador del chat combina resultados MCP para cifras y RAG para políticas.</p>
+<h3>Defensa ante instrucciones incrustadas</h3>
+<p>El corpus se delimita como dato no confiable. Las reglas del sistema se separan de los documentos, se detectan indicaciones dirigidas al asistente, se filtra PII y se preserva el menor privilegio. OP-7 comprueba que la nota no provoque acciones financieras ni filtraciones. Esto es mitigación comprobada en casos definidos, no una garantía universal.</p>
+<h3>Presentación y memoria</h3>
+<p>Las tarjetas del chat muestran herramienta, origen, corte, resultado y cita. Si la redacción añade un decimal o porcentaje sin respaldo, se oculta y se conserva la tarjeta del núcleo. La memoria está limitada a sesión; reiniciar el proceso pierde contexto.</p>
+<p class="pie">Fuentes: ADR-008/021/022/023; src/rag/; src/chat/; reportes y transcripciones reales.</p>
+</article>
+<article><div class="marca">05 · Validación</div><h2>Evidencia y condiciones de cierre</h2>
+<table><thead><tr><th>Nivel</th><th>Evidencia recibida de fase 7</th></tr></thead><tbody>
+<tr><td>Suite general</td><td>399 pruebas sin servicios externos; núcleo, contratos, interfaz, seguridad y evals deterministas.</td></tr>
+<tr><td>Integración / navegador</td><td>31 pruebas PostgreSQL y 10 recorridos e2e.</td></tr>
+<tr><td>Modelos reales</td><td>Seis RAG, 11 chat y 10 pruebas de evals: nueve casos y resumen.</td></tr>
+<tr><td>Total histórico</td><td>467 aprobadas con Node 22.23.3. Fuente: fase7-verificacion-node22.txt; no constituye una corrida nueva de fase 8.</td></tr>
+</tbody></table>
+<p>El control de fase 8 vuelve a ejecutar la cadena completa. Sus resultados, fallos y tiempos se conservan en fase8-preflight.txt y en 08-documentacion-defensa-cierre.md. La auditoría distingue evidencia histórica, verificación actual y grabación final.</p>
+<p>El oráculo se produjo por el núcleo y se congeló con commit y huella en dos estados: POST_CARGA y POST_OP1_OP3. No se escriben respuestas financieras a mano; G-1 a G-3 cambian después de las operaciones. G-7 usa un corte distinto.</p>
+<div class="aviso"><strong>Pendiente de certificación:</strong> video real de 15–20 minutos, participación oral de los cuatro integrantes, legibilidad, enlace compartible, ensayo cronometrado y entrega en Canvas. Sin esa evidencia no se declara listo ni se crea entrega-pf.</div>
+<p>El PDF se genera desde esta fuente HTML con Chrome/Playwright, usando el script versionado y sin servicios de pago. La revisión de páginas y enlaces se registra en la evidencia de fase 8.</p>
+</article>
+<article><div class="marca">06 · Decisiones y límites</div><h2>Decisiones que deben defenderse</h2>
+<table><thead><tr><th>Decisión</th><th>ADR y razón</th></tr></thead><tbody>
+<tr><td>D-1 / D-2</td><td>009/010: bajas con evidencia; monto exacto y propuesta antes del pago.</td></tr>
+<tr><td>D-3 / D-4</td><td>011/012: alcance del gasto por política; catálogo versionado e inyectado.</td></tr>
+<tr><td>D-5 / D-6</td><td>013/014: fin de mes contractual; comité dentro del flujo de originación.</td></tr>
+<tr><td>D-7 / D-8 / D-9</td><td>015/016/017: ventana de vencimientos; cierres por conceptos; protección idempotente persistente.</td></tr>
+<tr><td>Integración</td><td>019/020: sesión y evento humano; MCP vinculado sin permisos de confirmación.</td></tr>
+<tr><td>Asistente</td><td>021/022/023: RAG con citas, orquestación de sesión y evals con oráculo.</td></tr>
+</tbody></table>
+<h3>Límites observados</h3>
+<p>El modelo varía aun con temperatura cero. En una corrida histórica, G-2 se ocultó por un porcentaje no respaldado. El verificador no contrasta todos los enteros ni garantiza correspondencia semántica de cada cifra con su concepto. Las tarjetas conservan el resultado del núcleo, pero no sustituyen la auditoría de la respuesta completa.</p>
+<p>La latencia histórica de CPU fue de 58–205 segundos por turno. Debe ensayarse el video sin acelerar ni editar los bloques; la precarga del modelo no acredita por sí sola el tiempo total.</p>
+<h3>Documentación para revisión</h3>
+<p class="pequeno"><a href="https://github.com/ItsRomero/Proyecto1_Analisis">Repositorio oficial</a> · README · matriz de fase 7 · auditoría de fase 8 · guion · guía interna de defensa. Los resultados actuales y los pendientes se documentan con su origen, sin sustituirlos por una nota estimada sin evidencia.</p>
+<p class="pie">Herramientas de apoyo declaradas: Codex y Claude Code. La revisión, defensa oral y entrega corresponden al equipo; no se certifican como realizadas por la generación del documento.</p>
+</article></body></html>

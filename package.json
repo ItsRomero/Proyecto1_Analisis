@@ -5,7 +5,7 @@
   "description": "Núcleo de dominio del Sistema de Gestión de Microcrédito de Crédito Vecino, S. A.",
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.22.2"
   },
   "scripts": {
     "typecheck": "tsc --noEmit && tsc --noEmit -p web",
@@ -50,7 +50,8 @@
     "evals:oraculo": "npm run build:backend && node --env-file-if-exists=.env scripts/evals/congelar-oraculo.mjs",
     "evals": "node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.evals.config.ts",
     "fase7:verificar": "npm run fase6:verificar && npm run evals",
-    "fase8:preflight": "npm run fase7:verificar"
+    "fase8:preflight": "npm run fase7:verificar",
+    "docs:pdf": "node scripts/documentacion/generar-pdf.mjs"
   },
   "dependencies": {
     "@langchain/core": "^1.2.17",
