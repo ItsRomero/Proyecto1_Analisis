@@ -169,7 +169,7 @@ export function crearAplicacionHttp(opciones: OpcionesHttp): express.Express {
     app.use(express.static(raiz, { index: false }));
     app.use((req, res, next) => {
       if (req.method !== "GET") { next(); return; }
-      res.sendFile(join(raiz, "index.html"));
+      res.sendFile("index.html", { root: raiz });
     });
   }
   return app;

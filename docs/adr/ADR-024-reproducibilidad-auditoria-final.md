@@ -10,6 +10,8 @@ La configuración local antigua usaba VITE_API_BASE_URL absoluta en localhost:30
 
 La auditoría npm detectó source-map-js 1.2.1 con una vulnerabilidad alta. Se actualizó exclusivamente a su parche 1.2.2; el audit posterior informó cero vulnerabilidades conocidas.
 
+El primer clon limpio se ubicó dentro de `.npm-cache/`: Express rechazaba la ruta absoluta del index por su carpeta antecesora oculta y devolvía 404 en las rutas SPA. La nueva regresión `tests/api-estaticos.test.ts` reproduce el fallo sin base de datos. Se envía `index.html` con `root` explícito, conservando el filtrado de archivos ocultos y el 404 JSON de la API; no se habilita globalmente dotfiles.
+
 ## Decisión
 
 - `.nvmrc` fija 22.23.3; engines declara mínimo 22.22.2. No cambiar el Node global para validar otro runtime.
