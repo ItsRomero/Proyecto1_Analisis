@@ -1,0 +1,55 @@
+/* Asesor de crédito: reglas comunes basadas en las estructuras originales.
+   Se carga después de los estilos generales y no afecta Usuario o Gerencia. */
+.asesor .screen.advisor-screen{width:100%;max-width:403.113px;min-height:100svh;overflow:visible}
+.asesor .advisor-screen .advisor-root,.asesor .advisor-screen .advisor-body{width:100%;height:auto;min-height:100svh}
+.asesor .advisor-screen .advisor-app{width:100%;height:auto;min-height:100svh}
+.asesor .advisor-screen .advisor-height-auto{height:auto;min-height:0;overflow:visible}
+.asesor .advisor-screen .advisor-fluid{width:100%;max-width:100%;min-width:0}
+.asesor .advisor-screen .advisor-fluid-slot,.asesor .advisor-screen .advisor-grid-slot{width:100%;max-width:100%;min-width:0}
+.asesor .advisor-screen .advisor-text-flow{height:auto;min-height:0;max-width:100%;overflow:visible}
+.asesor .advisor-screen .advisor-field{min-width:0;max-width:100%}
+.asesor .advisor-screen .advisor-field-absolute{width:100%;left:0;right:0}
+.asesor .advisor-screen .advisor-field-slot{width:100%;max-width:100%;min-width:0}
+.asesor .advisor-screen .advisor-field input{max-width:100%;min-width:0}
+.asesor .advisor-screen .advisor-grid{width:100%;max-width:100%;height:auto;grid-template-rows:none;grid-auto-rows:auto;align-items:stretch}
+.asesor .advisor-screen .advisor-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.asesor .advisor-screen .advisor-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.asesor .advisor-screen .advisor-grid>div,.asesor .advisor-screen .advisor-grid>a{min-width:0;max-width:100%}
+.asesor .advisor-screen .advisor-grid>div>div,.asesor .advisor-screen .advisor-grid>a>div{max-width:100%;min-width:0}
+.asesor .advisor-screen .advisor-table-viewport{width:100%;max-width:100%;height:auto;min-width:0;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch;scrollbar-gutter:auto}
+.asesor .advisor-screen .advisor-table{display:flex;flex-direction:column;width:100%;min-width:369px}
+.asesor .advisor-screen .advisor-table-row{width:100%;min-width:369px;max-width:none;flex:none}
+.asesor .advisor-screen .advisor-table-row p{white-space:nowrap;overflow-wrap:normal}
+.asesor .advisor-screen .advisor-client-card{width:100%;min-width:0;max-width:100%;height:auto;align-items:center}
+.asesor .advisor-screen .advisor-avatar{flex:none}
+.asesor .advisor-screen .advisor-client-main{flex:1 1 0;min-width:0}
+.asesor .advisor-screen .advisor-client-status{flex:none;max-width:88px}
+.asesor .advisor-screen .advisor-client-main [data-name="Paragraph"]{height:auto;min-height:20px;overflow:visible;width:100%}
+.asesor .advisor-screen .advisor-client-main p{white-space:normal;overflow-wrap:break-word}
+.asesor .advisor-screen .advisor-password-toggle{left:auto;right:8px;min-width:36px;min-height:36px;cursor:pointer}
+.asesor .advisor-screen .advisor-selector-overlay{position:fixed;inset:0 auto 0 50%;transform:translateX(-50%);width:min(100%,403.113px);max-width:100%;height:100dvh;z-index:20;overflow:hidden}
+.asesor .advisor-screen .advisor-selector-sheet{position:absolute;inset:auto 0 0;width:100%;height:auto;max-height:calc(100dvh - 32px);display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.asesor .advisor-screen .advisor-selector-list{flex:1 1 auto;min-height:0;height:auto;overflow-y:auto;width:100%;overscroll-behavior:contain}
+.asesor .advisor-screen .advisor-selector-option{flex:none;max-width:100%;min-width:0}
+.asesor .advisor-screen .advisor-selector-option>div:nth-child(2){flex:1 1 0;min-width:0}
+.asesor .advisor-screen .advisor-selector-option p{white-space:normal;overflow-wrap:break-word}
+.asesor .advisor-screen .advisor-selector-close{flex:none;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center}
+@media(max-width:699px){.asesor .screen.advisor-screen{margin:0 auto}}
+@media(max-width:380px){
+  .asesor .advisor-screen p{white-space:normal;overflow-wrap:break-word;max-width:100%}
+  .asesor .advisor-screen .advisor-keep-inline{white-space:nowrap;overflow-wrap:normal}
+  .asesor .advisor-screen .advisor-table-row p{white-space:nowrap;overflow-wrap:normal}
+  .asesor .advisor-screen .advisor-large-money{font-size:clamp(24px,7.5vw,30px);line-height:1.2}
+  .asesor .advisor-screen .advisor-grid-3 p:not(.advisor-large-money){font-size:12px;line-height:1.4}
+  .asesor .advisor-screen .advisor-grid-3 [data-name="Paragraph"],.asesor .advisor-screen .advisor-grid-2 [data-name="Paragraph"]{height:auto;min-height:0;overflow:visible}
+  .asesor .advisor-screen .advisor-amount-picker{display:grid;grid-template-columns:40px minmax(0,1fr) 40px;gap:8px;width:100%;min-width:0}
+  .asesor .advisor-screen .advisor-amount-step{width:40px;height:44px;min-width:40px}
+  .asesor .advisor-screen .advisor-amount-picker>div:not(.advisor-amount-step){width:100%;min-width:0;max-width:100%;flex:none}
+  .asesor .advisor-screen .advisor-amount-picker .advisor-large-money{font-size:clamp(20px,6.3vw,24px)}
+  .asesor .advisor-screen .advisor-amount-picker [data-name="Paragraph"]{height:auto;width:100%;max-width:100%}
+}
+@media(max-width:340px){
+  .asesor .advisor-screen .advisor-client-card{gap:8px;padding:12px}
+  .asesor .advisor-screen .advisor-client-main p{font-size:13px}
+  .asesor .advisor-screen .advisor-grid-3 [data-name="Button"]{padding-left:6px;padding-right:6px}
+}

@@ -1,0 +1,51 @@
+{
+  "fuente": "docs/proyecto-final/evidencia/fase8-preflight.txt",
+  "commit": "3a4c97a11e8f117c4708cd997fa4da8fdad0b49b",
+  "node": "v22.23.3",
+  "codigoSalida": 0,
+  "duracionSegundos": 4031.01,
+  "completa": true,
+  "suites": [
+    {
+      "aprobadas": 400,
+      "fallidas": 0,
+      "omitidas": 0,
+      "linea": "400 passed (400)"
+    },
+    {
+      "aprobadas": 31,
+      "fallidas": 0,
+      "omitidas": 0,
+      "linea": "31 passed (31)"
+    },
+    {
+      "aprobadas": 10,
+      "fallidas": 0,
+      "omitidas": 0,
+      "linea": "10 passed (10)"
+    },
+    {
+      "aprobadas": 6,
+      "fallidas": 0,
+      "omitidas": 0,
+      "linea": "6 passed (6)"
+    },
+    {
+      "aprobadas": 11,
+      "fallidas": 0,
+      "omitidas": 0,
+      "linea": "11 passed (11)"
+    },
+    {
+      "aprobadas": 10,
+      "fallidas": 0,
+      "omitidas": 0,
+      "linea": "10 passed (10)"
+    }
+  ],
+  "totales": {
+    "aprobadas": 468,
+    "fallidas": 0,
+    "omitidas": 0
+  }
+}

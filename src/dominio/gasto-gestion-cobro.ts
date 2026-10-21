@@ -24,14 +24,19 @@ export function generarGastoGestion(datos: {
   readonly fechaVencimiento: FechaCivil;
   readonly fechaCorte: FechaCivil;
   readonly identificadoresRegistrados: readonly string[];
+  /** Extensión retrocompatible D-4; el llamador selecciona primero la política aplicable. */
+  readonly configuracion?: { readonly diaGeneracion: number; readonly importe: Dinero };
 }): ResultadoGastoGestion {
   if (!datos.creditoId.trim() || !datos.cuotaId.trim()) throw new Error("Crédito y cuota son obligatorios.");
   const id = JSON.stringify([datos.creditoId, datos.cuotaId, "GESTION_COBRO"]);
   const dias = DiasAtraso.entre(datos.fechaVencimiento, datos.fechaCorte);
-  const generar = dias.valor >= REGLAS_COBRO.diaGastoGestion && !datos.identificadoresRegistrados.includes(id);
+  const diaGeneracion = datos.configuracion?.diaGeneracion ?? REGLAS_COBRO.diaGastoGestion;
+  const importe = datos.configuracion?.importe ?? Dinero.desdeCadena(REGLAS_COBRO.importeGasto, REGLAS_COBRO.moneda);
+  if (!Number.isSafeInteger(diaGeneracion) || diaGeneracion < 1 || importe.esNegativo()) throw new Error("Configuración de gasto inválida.");
+  const generar = dias.valor >= diaGeneracion && !datos.identificadoresRegistrados.includes(id);
   const nuevo = generar ? Object.freeze({ id, creditoId: datos.creditoId, cuotaId: datos.cuotaId,
     concepto: "GESTION_COBRO" as const, fechaCorte: datos.fechaCorte,
-    importe: Dinero.desdeCadena(REGLAS_COBRO.importeGasto, REGLAS_COBRO.moneda) }) : null;
+    importe }) : null;
   return Object.freeze({ nuevo,
     identificadoresRegistrados: Object.freeze(generar ? [...datos.identificadoresRegistrados, id] : [...datos.identificadoresRegistrados]),
   });

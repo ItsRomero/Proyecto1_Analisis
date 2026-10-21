@@ -1,0 +1,9 @@
+{
+  "tipo": "servidor HTTP local simulado; sin inferencia real",
+  "node": "v22.23.3",
+  "devolvioRespuesta": true,
+  "texto": "respuesta parcial",
+  "signalAbortada": true,
+  "finalizacion": null,
+  "duracionMs": 440
+}

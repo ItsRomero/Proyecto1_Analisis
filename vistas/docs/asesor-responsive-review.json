@@ -1,0 +1,1020 @@
+{
+  "screens": 37,
+  "figmaRoutes": 94,
+  "resourceCallsites": 147,
+  "editableInputs": 23,
+  "cssWidthsChecked": [
+    320,
+    375,
+    403,
+    768
+  ],
+  "tests": "DOM, reference preservation, navigation, CSS cascade and two existing UI interactions",
+  "visualBrowserQA": "Pending: file:// browser inspection is blocked. CSS cascade tests do not verify rendered geometry.",
+  "changes": {
+    "autoHeightContainers": 80,
+    "responsiveGrids": 17,
+    "scrollableTables": 2
+  },
+  "results": [
+    {
+      "id": "11:196",
+      "name": "Prioridad",
+      "file": "asesor-prioridad-11-196.html",
+      "resourceCallsites": 9,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "11:393",
+      "name": "Nombre A-Z",
+      "file": "asesor-nombre-a-z-11-393.html",
+      "resourceCallsites": 9,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "11:591",
+      "name": "Detalle del crédito",
+      "file": "asesor-detalle-del-credito-11-591.html",
+      "resourceCallsites": 6,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "12:741",
+      "name": "Plan de amortización",
+      "file": "asesor-plan-de-amortizacion-12-741.html",
+      "resourceCallsites": 3,
+      "inputs": 0,
+      "tables": 1,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "12:1040",
+      "name": "Detalle de mora",
+      "file": "asesor-detalle-de-mora-12-1040.html",
+      "resourceCallsites": 2,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "12:1309",
+      "name": "Registrar pago",
+      "file": "asesor-registrar-pago-12-1309.html",
+      "resourceCallsites": 2,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "12:1388",
+      "name": "Registrar pago",
+      "file": "asesor-registrar-pago-12-1388.html",
+      "resourceCallsites": 2,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "12:1534",
+      "name": "Confirmación",
+      "file": "asesor-confirmacion-12-1534.html",
+      "resourceCallsites": 4,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "12:1646",
+      "name": "Sin señal",
+      "file": "asesor-sin-senal-12-1646.html",
+      "resourceCallsites": 4,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "15:1760",
+      "name": "Sin señal guardado 1",
+      "file": "asesor-sin-senal-guardado-1-15-1760.html",
+      "resourceCallsites": 5,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "15:1877",
+      "name": "Sin señal guardado 2",
+      "file": "asesor-sin-senal-guardado-2-15-1877.html",
+      "resourceCallsites": 5,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "15:1996",
+      "name": "Sin señal guardado 3",
+      "file": "asesor-sin-senal-guardado-3-15-1996.html",
+      "resourceCallsites": 3,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "15:2083",
+      "name": "Pago aplicado",
+      "file": "asesor-pago-aplicado-15-2083.html",
+      "resourceCallsites": 5,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "15:2405",
+      "name": "Solicitar crédito 2",
+      "file": "asesor-solicitar-credito-2-15-2405.html",
+      "resourceCallsites": 2,
+      "inputs": 0,
+      "tables": 1,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "15:2899",
+      "name": "Solicitar crédito 3",
+      "file": "asesor-solicitar-credito-3-15-2899.html",
+      "resourceCallsites": 3,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "15:3021",
+      "name": "Solicitar crédito 4",
+      "file": "asesor-solicitar-credito-4-15-3021.html",
+      "resourceCallsites": 2,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "17:3107",
+      "name": "Inicio",
+      "file": "asesor-inicio-17-3107.html",
+      "resourceCallsites": 3,
+      "inputs": 2,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "17:3391",
+      "name": "User",
+      "file": "asesor-user-17-3391.html",
+      "resourceCallsites": 10,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "17:4042",
+      "name": "Búsqueda",
+      "file": "asesor-busqueda-17-4042.html",
+      "resourceCallsites": 6,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:376",
+      "name": "Solicitar crédito 0",
+      "file": "asesor-solicitar-credito-0-85-376.html",
+      "resourceCallsites": 4,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:507",
+      "name": "Solicitar crédito 0.1",
+      "file": "asesor-solicitar-credito-0-1-85-507.html",
+      "resourceCallsites": 6,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:725",
+      "name": "Solicitar crédito 1",
+      "file": "asesor-solicitar-credito-1-85-725.html",
+      "resourceCallsites": 3,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:873",
+      "name": "Nuevo Cliente 1",
+      "file": "asesor-nuevo-cliente-1-85-873.html",
+      "resourceCallsites": 3,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:935",
+      "name": "Nuevo Cliente 2",
+      "file": "asesor-nuevo-cliente-2-85-935.html",
+      "resourceCallsites": 3,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:996",
+      "name": "Nuevo Cliente 3",
+      "file": "asesor-nuevo-cliente-3-85-996.html",
+      "resourceCallsites": 3,
+      "inputs": 5,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:1092",
+      "name": "Nuevo Cliente 4",
+      "file": "asesor-nuevo-cliente-4-85-1092.html",
+      "resourceCallsites": 3,
+      "inputs": 5,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:1188",
+      "name": "Nuevo Cliente 5",
+      "file": "asesor-nuevo-cliente-5-85-1188.html",
+      "resourceCallsites": 3,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:1294",
+      "name": "Nuevo Cliente 6",
+      "file": "asesor-nuevo-cliente-6-85-1294.html",
+      "resourceCallsites": 2,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:1397",
+      "name": "Registrar Pago V1",
+      "file": "asesor-registrar-pago-v1-85-1397.html",
+      "resourceCallsites": 2,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:1539",
+      "name": "Registrar Pago V2",
+      "file": "asesor-registrar-pago-v2-85-1539.html",
+      "resourceCallsites": 2,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:1681",
+      "name": "Registrar Pago V3",
+      "file": "asesor-registrar-pago-v3-85-1681.html",
+      "resourceCallsites": 2,
+      "inputs": 1,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:1823",
+      "name": "Registrar Pago V3.1",
+      "file": "asesor-registrar-pago-v3-1-85-1823.html",
+      "resourceCallsites": 4,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:1933",
+      "name": "Prototipo Asesor de Crédito",
+      "file": "asesor-prototipo-asesor-de-credito-85-1933.html",
+      "resourceCallsites": 5,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:2075",
+      "name": "Registrar Pago V3.2",
+      "file": "asesor-registrar-pago-v3-2-85-2075.html",
+      "resourceCallsites": 4,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:2187",
+      "name": "Registrar Pago V3.3",
+      "file": "asesor-registrar-pago-v3-3-85-2187.html",
+      "resourceCallsites": 5,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:2305",
+      "name": "Registrar Pago V3.4",
+      "file": "asesor-registrar-pago-v3-4-85-2305.html",
+      "resourceCallsites": 5,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    },
+    {
+      "id": "85:2424",
+      "name": "Registrar Pago V3.5",
+      "file": "asesor-registrar-pago-v3-5-85-2424.html",
+      "resourceCallsites": 3,
+      "inputs": 0,
+      "tables": 0,
+      "viewportChecks": [
+        {
+          "width": 320,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 375,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 403,
+          "cssCascade": "passed"
+        },
+        {
+          "width": 768,
+          "cssCascade": "passed"
+        }
+      ],
+      "checks": "passed"
+    }
+  ]
+}

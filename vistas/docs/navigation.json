@@ -1,0 +1,836 @@
+[
+  {
+    "from": "asesor-prioridad-11-196.html",
+    "node": "11:229",
+    "to": "asesor-user-17-3391.html",
+    "found": true
+  },
+  {
+    "from": "asesor-prioridad-11-196.html",
+    "node": "11:238",
+    "to": "asesor-busqueda-17-4042.html",
+    "found": true
+  },
+  {
+    "from": "asesor-prioridad-11-196.html",
+    "node": "11:244",
+    "to": "asesor-nombre-a-z-11-393.html",
+    "found": true
+  },
+  {
+    "from": "asesor-prioridad-11-196.html",
+    "node": "11:251",
+    "to": "asesor-detalle-del-credito-11-591.html",
+    "found": true
+  },
+  {
+    "from": "asesor-prioridad-11-196.html",
+    "node": "85:208",
+    "to": "asesor-nuevo-cliente-1-85-873.html",
+    "found": true
+  },
+  {
+    "from": "asesor-prioridad-11-196.html",
+    "node": "11:390",
+    "to": "asesor-solicitar-credito-0-85-376.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nombre-a-z-11-393.html",
+    "node": "11:426",
+    "to": "asesor-user-17-3391.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nombre-a-z-11-393.html",
+    "node": "11:438",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nombre-a-z-11-393.html",
+    "node": "85:232",
+    "to": "asesor-nuevo-cliente-1-85-873.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nombre-a-z-11-393.html",
+    "node": "85:240",
+    "to": "asesor-solicitar-credito-0-85-376.html",
+    "found": true
+  },
+  {
+    "from": "asesor-detalle-del-credito-11-591.html",
+    "node": "11:617",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-detalle-del-credito-11-591.html",
+    "node": "11:716",
+    "to": "asesor-registrar-pago-12-1309.html",
+    "found": true
+  },
+  {
+    "from": "asesor-detalle-del-credito-11-591.html",
+    "node": "11:723",
+    "to": "asesor-plan-de-amortizacion-12-741.html",
+    "found": true
+  },
+  {
+    "from": "asesor-detalle-del-credito-11-591.html",
+    "node": "11:732",
+    "to": "asesor-detalle-de-mora-12-1040.html",
+    "found": true
+  },
+  {
+    "from": "asesor-plan-de-amortizacion-12-741.html",
+    "node": "12:767",
+    "to": "asesor-detalle-del-credito-11-591.html",
+    "found": true
+  },
+  {
+    "from": "asesor-detalle-de-mora-12-1040.html",
+    "node": "12:1066",
+    "to": "asesor-detalle-del-credito-11-591.html",
+    "found": true
+  },
+  {
+    "from": "asesor-detalle-de-mora-12-1040.html",
+    "node": "12:1304",
+    "to": "asesor-registrar-pago-12-1309.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1309.html",
+    "node": "12:1335",
+    "to": "asesor-detalle-del-credito-11-591.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1309.html",
+    "node": "12:1357",
+    "to": "asesor-registrar-pago-v1-85-1397.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1309.html",
+    "node": "12:1364",
+    "to": "asesor-registrar-pago-v2-85-1539.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1309.html",
+    "node": "12:1371",
+    "to": "asesor-registrar-pago-v3-85-1681.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1309.html",
+    "node": "85:2545",
+    "to": "asesor-registrar-pago-12-1388.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1388.html",
+    "node": "12:1414",
+    "to": "asesor-detalle-del-credito-11-591.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1388.html",
+    "node": "12:1436",
+    "to": "asesor-registrar-pago-v1-85-1397.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1388.html",
+    "node": "12:1443",
+    "to": "asesor-registrar-pago-v2-85-1539.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1388.html",
+    "node": "12:1450",
+    "to": "asesor-registrar-pago-v3-85-1681.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-12-1388.html",
+    "node": "12:1527",
+    "to": "asesor-confirmacion-12-1534.html",
+    "found": true
+  },
+  {
+    "from": "asesor-confirmacion-12-1534.html",
+    "node": "12:1560",
+    "to": "asesor-registrar-pago-12-1309.html",
+    "found": true
+  },
+  {
+    "from": "asesor-confirmacion-12-1534.html",
+    "node": "12:1628",
+    "to": "asesor-sin-senal-12-1646.html",
+    "found": true
+  },
+  {
+    "from": "asesor-confirmacion-12-1534.html",
+    "node": "12:1636",
+    "to": "asesor-pago-aplicado-15-2083.html",
+    "found": true
+  },
+  {
+    "from": "asesor-confirmacion-12-1534.html",
+    "node": "12:1641",
+    "to": "asesor-registrar-pago-12-1388.html",
+    "found": true
+  },
+  {
+    "from": "asesor-sin-senal-12-1646.html",
+    "node": "12:1740",
+    "to": "asesor-confirmacion-12-1534.html",
+    "found": true
+  },
+  {
+    "from": "asesor-sin-senal-12-1646.html",
+    "node": "12:1749",
+    "to": "asesor-sin-senal-guardado-1-15-1760.html",
+    "found": true
+  },
+  {
+    "from": "asesor-sin-senal-12-1646.html",
+    "node": "12:1754",
+    "to": "asesor-registrar-pago-12-1388.html",
+    "found": true
+  },
+  {
+    "from": "asesor-sin-senal-guardado-1-15-1760.html",
+    "node": "15:1867",
+    "to": "asesor-sin-senal-guardado-2-15-1877.html",
+    "found": true
+  },
+  {
+    "from": "asesor-sin-senal-guardado-2-15-1877.html",
+    "node": "15:1985",
+    "to": "asesor-sin-senal-guardado-3-15-1996.html",
+    "found": true
+  },
+  {
+    "from": "asesor-sin-senal-guardado-3-15-1996.html",
+    "node": "15:2075",
+    "to": "asesor-pago-aplicado-15-2083.html",
+    "found": true
+  },
+  {
+    "from": "asesor-sin-senal-guardado-3-15-1996.html",
+    "node": "15:2078",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-pago-aplicado-15-2083.html",
+    "node": "15:2209",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-2-15-2405.html",
+    "node": "15:2431",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-2-15-2405.html",
+    "node": "15:2694",
+    "to": "asesor-solicitar-credito-1-85-725.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-2-15-2405.html",
+    "node": "15:2697",
+    "to": "asesor-solicitar-credito-3-15-2899.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-3-15-2899.html",
+    "node": "15:2925",
+    "to": "asesor-solicitar-credito-2-15-2405.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-3-15-2899.html",
+    "node": "15:3010",
+    "to": "asesor-solicitar-credito-4-15-3021.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-3-15-2899.html",
+    "node": "15:3015",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-4-15-3021.html",
+    "node": "15:3101",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-inicio-17-3107.html",
+    "node": "17:3168",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-user-17-3391.html",
+    "node": "17:3417",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-user-17-3391.html",
+    "node": "17:3578",
+    "to": "asesor-inicio-17-3107.html",
+    "found": true
+  },
+  {
+    "from": "asesor-busqueda-17-4042.html",
+    "node": "17:4075",
+    "to": "asesor-user-17-3391.html",
+    "found": true
+  },
+  {
+    "from": "asesor-busqueda-17-4042.html",
+    "node": "17:4084",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-0-85-376.html",
+    "node": "85:402",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-0-85-376.html",
+    "node": "85:427",
+    "to": "asesor-solicitar-credito-0-1-85-507.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-0-1-85-507.html",
+    "node": "85:508",
+    "to": "asesor-solicitar-credito-0-85-376.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-0-1-85-507.html",
+    "node": "85:659",
+    "to": "asesor-solicitar-credito-1-85-725.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-1-85-725.html",
+    "node": "85:751",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-solicitar-credito-1-85-725.html",
+    "node": "85:857",
+    "to": "asesor-solicitar-credito-2-15-2405.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-1-85-873.html",
+    "node": "85:899",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-1-85-873.html",
+    "node": "85:930",
+    "to": "asesor-nuevo-cliente-2-85-935.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-2-85-935.html",
+    "node": "85:961",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-2-85-935.html",
+    "node": "85:993",
+    "to": "asesor-nuevo-cliente-3-85-996.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-3-85-996.html",
+    "node": "85:1022",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-3-85-996.html",
+    "node": "85:1041",
+    "to": "asesor-nuevo-cliente-4-85-1092.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-4-85-1092.html",
+    "node": "85:1118",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-4-85-1092.html",
+    "node": "85:1185",
+    "to": "asesor-nuevo-cliente-5-85-1188.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-5-85-1188.html",
+    "node": "85:1214",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-5-85-1188.html",
+    "node": "85:1286",
+    "to": "asesor-nuevo-cliente-6-85-1294.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-5-85-1188.html",
+    "node": "85:1291",
+    "to": "asesor-nuevo-cliente-4-85-1092.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-6-85-1294.html",
+    "node": "85:1374",
+    "to": "asesor-solicitar-credito-0-85-376.html",
+    "found": true
+  },
+  {
+    "from": "asesor-nuevo-cliente-6-85-1294.html",
+    "node": "85:1377",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v1-85-1397.html",
+    "node": "85:1423",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v1-85-1397.html",
+    "node": "85:1446",
+    "to": "asesor-registrar-pago-v2-85-1539.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v1-85-1397.html",
+    "node": "85:1453",
+    "to": "asesor-registrar-pago-v3-85-1681.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v2-85-1539.html",
+    "node": "85:1565",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v2-85-1539.html",
+    "node": "85:1581",
+    "to": "asesor-registrar-pago-v1-85-1397.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v2-85-1539.html",
+    "node": "85:1595",
+    "to": "asesor-registrar-pago-v3-85-1681.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-85-1681.html",
+    "node": "85:1707",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-85-1681.html",
+    "node": "85:1723",
+    "to": "asesor-registrar-pago-v1-85-1397.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-85-1681.html",
+    "node": "85:1730",
+    "to": "asesor-registrar-pago-v2-85-1539.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-85-1681.html",
+    "node": "85:1820",
+    "to": "asesor-registrar-pago-v3-1-85-1823.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-1-85-1823.html",
+    "node": "85:1849",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-1-85-1823.html",
+    "node": "85:1917",
+    "to": "asesor-registrar-pago-v3-2-85-2075.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-1-85-1823.html",
+    "node": "85:1925",
+    "to": "asesor-prototipo-asesor-de-credito-85-1933.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-1-85-1823.html",
+    "node": "85:1930",
+    "to": "asesor-registrar-pago-v3-85-1681.html",
+    "found": true
+  },
+  {
+    "from": "asesor-prototipo-asesor-de-credito-85-1933.html",
+    "node": "85:2059",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-2-85-2075.html",
+    "node": "85:2101",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-2-85-2075.html",
+    "node": "85:2169",
+    "to": "asesor-registrar-pago-v3-1-85-1823.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-2-85-2075.html",
+    "node": "85:2178",
+    "to": "asesor-registrar-pago-v3-3-85-2187.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-2-85-2075.html",
+    "node": "85:2183",
+    "to": "asesor-registrar-pago-v3-85-1681.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-3-85-2187.html",
+    "node": "85:2294",
+    "to": "asesor-registrar-pago-v3-4-85-2305.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-3-85-2187.html",
+    "node": "85:2300",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-4-85-2305.html",
+    "node": "85:2413",
+    "to": "asesor-registrar-pago-v3-5-85-2424.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-4-85-2305.html",
+    "node": "85:2420",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "asesor-registrar-pago-v3-5-85-2424.html",
+    "node": "85:2506",
+    "to": "asesor-prioridad-11-196.html",
+    "found": true
+  },
+  {
+    "from": "usuario-ingreso-1-92-2940.html",
+    "node": "92:2982",
+    "to": "usuario-ingreso-2-92-3250.html",
+    "found": true
+  },
+  {
+    "from": "usuario-ingreso-2-92-3250.html",
+    "node": "92:3303",
+    "to": "usuario-inicio-92-3081.html",
+    "found": true
+  },
+  {
+    "from": "usuario-inicio-92-3081.html",
+    "node": "92:3233",
+    "to": "usuario-detalle-del-credito-92-3310.html",
+    "found": true
+  },
+  {
+    "from": "usuario-inicio-92-3081.html",
+    "node": "92:3241",
+    "to": "usuario-ayuda-1-92-3822.html",
+    "found": true
+  },
+  {
+    "from": "usuario-detalle-del-credito-92-3310.html",
+    "node": "92:3334",
+    "to": "usuario-ayuda-1-92-3822.html",
+    "found": true
+  },
+  {
+    "from": "usuario-detalle-del-credito-92-3310.html",
+    "node": "92:3497",
+    "to": "usuario-plan-de-cuotas-92-3528.html",
+    "found": true
+  },
+  {
+    "from": "usuario-detalle-del-credito-92-3310.html",
+    "node": "92:3500",
+    "to": "usuario-inicio-92-3081.html",
+    "found": true
+  },
+  {
+    "from": "usuario-detalle-del-credito-92-3310.html",
+    "node": "92:3517",
+    "to": "usuario-ayuda-1-92-3822.html",
+    "found": true
+  },
+  {
+    "from": "usuario-plan-de-cuotas-92-3528.html",
+    "node": "92:3546",
+    "to": "usuario-inicio-92-3081.html",
+    "found": true
+  },
+  {
+    "from": "usuario-plan-de-cuotas-92-3528.html",
+    "node": "92:3552",
+    "to": "usuario-ayuda-1-92-3822.html",
+    "found": true
+  },
+  {
+    "from": "usuario-ayuda-1-92-3822.html",
+    "node": "92:3857",
+    "to": "usuario-ayuda-2-92-3942.html",
+    "found": true
+  },
+  {
+    "from": "usuario-ayuda-1-92-3822.html",
+    "node": "92:3916",
+    "to": "usuario-inicio-92-3081.html",
+    "found": true
+  },
+  {
+    "from": "usuario-ayuda-1-92-3822.html",
+    "node": "92:3924",
+    "to": "usuario-detalle-del-credito-92-3310.html",
+    "found": true
+  },
+  {
+    "from": "usuario-ayuda-2-92-3942.html",
+    "node": "92:4041",
+    "to": "usuario-inicio-92-3081.html",
+    "found": true
+  },
+  {
+    "from": "usuario-ayuda-2-92-3942.html",
+    "node": "92:4049",
+    "to": "usuario-detalle-del-credito-92-3310.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-ingreso-1-101-4501.html",
+    "node": "101:4563",
+    "to": "gerencia-ingreso-2-107-10599.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-ingreso-2-107-10599.html",
+    "node": "107:10657",
+    "to": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "node": "103:7209",
+    "to": "gerencia-cartera-103-7580.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "node": "103:7212",
+    "to": "gerencia-clientes-103-8224.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "node": "103:7215",
+    "to": "gerencia-solicitudes-103-8780.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "node": "103:7219",
+    "to": "gerencia-cierre-1-103-9199.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "node": "103:7222",
+    "to": "gerencia-ingreso-1-101-4501.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cartera-103-7580.html",
+    "node": "103:7594",
+    "to": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cartera-103-7580.html",
+    "node": "103:7600",
+    "to": "gerencia-clientes-103-8224.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cartera-103-7580.html",
+    "node": "103:7603",
+    "to": "gerencia-solicitudes-103-8780.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cartera-103-7580.html",
+    "node": "103:7607",
+    "to": "gerencia-cierre-1-103-9199.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cartera-103-7580.html",
+    "node": "103:7610",
+    "to": "gerencia-ingreso-1-101-4501.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-clientes-103-8224.html",
+    "node": "103:8238",
+    "to": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-clientes-103-8224.html",
+    "node": "103:8241",
+    "to": "gerencia-cartera-103-7580.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-clientes-103-8224.html",
+    "node": "103:8247",
+    "to": "gerencia-solicitudes-103-8780.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-clientes-103-8224.html",
+    "node": "103:8251",
+    "to": "gerencia-cierre-1-103-9199.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-clientes-103-8224.html",
+    "node": "103:8254",
+    "to": "gerencia-ingreso-1-101-4501.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-solicitudes-103-8780.html",
+    "node": "103:8794",
+    "to": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-solicitudes-103-8780.html",
+    "node": "103:8797",
+    "to": "gerencia-cartera-103-7580.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-solicitudes-103-8780.html",
+    "node": "103:8800",
+    "to": "gerencia-clientes-103-8224.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-solicitudes-103-8780.html",
+    "node": "103:8807",
+    "to": "gerencia-cierre-1-103-9199.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-solicitudes-103-8780.html",
+    "node": "103:8810",
+    "to": "gerencia-ingreso-1-101-4501.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-solicitudes-103-8780.html",
+    "node": "103:8963",
+    "to": "gerencia-confirmar-rechazo-103-10164.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-solicitudes-103-8780.html",
+    "node": "103:8965",
+    "to": "gerencia-confirmar-aprobacion-103-9670.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cierre-1-103-9199.html",
+    "node": "103:9360",
+    "to": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cierre-1-103-9199.html",
+    "node": "103:9363",
+    "to": "gerencia-cierre-2-103-9370.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cierre-2-103-9370.html",
+    "node": "103:9409",
+    "to": "gerencia-cierre-3-103-9511.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-cierre-3-103-9511.html",
+    "node": "103:9662",
+    "to": "gerencia-prototipo-microcreditos-web-103-7192.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-confirmar-aprobacion-103-9670.html",
+    "node": "103:10157",
+    "to": "gerencia-solicitudes-103-8780.html",
+    "found": true
+  },
+  {
+    "from": "gerencia-confirmar-rechazo-103-10164.html",
+    "node": "103:10592",
+    "to": "gerencia-solicitudes-103-8780.html",
+    "found": true
+  }
+]

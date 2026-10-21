@@ -1,0 +1,11 @@
+Fase 4 · integridad de insumos y archivos heredados (2026-10-15T16:08:05Z)
+
+1d9cc4471f25f8bab795f45c1f3fae36a50b76116cb58062a5dc2b46a5c37b0b *datos/datos-proyecto-final.zip
+e2d46283de8578f19ea2eb14ace283573ebb729aaa0e9b0e65f80a348e4b9d50 *datos/datos-proyecto-final/eventos.jsonl
+
+Cambios desde 7ad45e4 en vistas/, datos/, src/dominio/, migración 001 y pruebas existentes (vacío = sin cambios):
+(fin)
+
+Base de demo tras db:migrate: migraciones y pagos
+1,2
+226

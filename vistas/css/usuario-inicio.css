@@ -1,0 +1,44 @@
+/* Inicio de Usuario (Figma 92:3081). Reglas aisladas de los Frames internos
+   que también se llaman HomeScreen en la exportación original. */
+.usuario .screen.user-home{
+  width:100%;max-width:390px;min-height:max(852px,100svh);
+  display:flex;flex-direction:column;overflow:visible;
+  background:var(--surface);font-family:Inter,Arial,sans-serif;
+}
+.user-home__header{flex:none;background:var(--ink);color:white}
+.user-home__greeting{height:87px;padding:21px 24px 0}
+.user-home__welcome{color:var(--label);font-size:16px;font-weight:500;line-height:12px}
+.user-home__name{margin-top:8px;font-size:24px;font-weight:700;line-height:24.75px;letter-spacing:0}
+.user-home__content{flex:1;display:flex;flex-direction:column;align-items:stretch;gap:16px;padding:16px}
+.user-home__notice{
+  display:flex;align-items:center;gap:12px;min-height:44px;padding:12px 16px;
+  border-radius:16px;background:var(--overdue);color:white;
+}
+.user-home__notice img{display:block;flex:none;width:19.997px;height:19.997px}
+.user-home__notice p{font-size:14px;font-weight:600;line-height:20px}
+.user-home__card{
+  flex:none;min-width:0;padding:20px;background:white;border-radius:18px;
+  filter:drop-shadow(0 1px 1.5px rgb(0 0 0 / 10%)) drop-shadow(0 1px 1px rgb(0 0 0 / 10%));
+}
+.user-home__label{color:#62748e;font-size:16px;font-weight:500;line-height:24px}
+.user-home__balance{padding-top:4px;font-size:40px;font-weight:800;line-height:40px;letter-spacing:-1px}
+.user-home__progress{height:7.995px;margin-top:16px;overflow:hidden;border-radius:999px;background:var(--surface)}
+.user-home__progress-fill{display:block;width:62.5972%;height:100%;border-radius:inherit;background:var(--ink)}
+.user-home__totals{display:flex;justify-content:space-between;gap:8px;padding-top:4px;color:var(--label);font-size:12px;line-height:16px}
+.user-home__payment{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.user-home__payment-details{min-width:0}
+.user-home__payment-amount{padding-top:2px;font-size:24px;font-weight:700;line-height:32px}
+.user-home__deadline{padding-top:2px;color:var(--label);font-size:14px;font-weight:400;line-height:20px}
+.user-home__overdue{flex:none;display:flex;align-items:center;justify-content:center;height:27.957px;padding:0 12px;border-radius:999px;background:var(--overdue);color:white;font-size:14px;font-weight:700;line-height:20px}
+.user-home__installments{display:grid;grid-template-columns:repeat(8,31.998px);gap:8px;list-style:none;margin:12px 0 0;padding:0}
+.user-home__installment{display:flex;align-items:center;justify-content:center;width:31.998px;height:31.998px;border-radius:8px;background:var(--surface);color:var(--subtle);font-size:12px;font-weight:700;line-height:16px}
+.user-home__installment.is-paid{background:var(--ink);color:white}
+.user-home__installment.is-overdue{border:1.1px solid var(--overdue);background:#fff7ed;color:var(--overdue)}
+.user-home__advance-caption{padding-top:12px;color:var(--label);font-size:12px;line-height:16px}
+.user-home__nav{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:71.544px;border-top:1.1px solid var(--line);background:white}
+.user-home__nav-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0;color:var(--subtle);font-size:11px;font-weight:600;line-height:16.5px}
+.user-home__nav-item img{display:block;flex:none;width:21.991px;height:21.991px}
+.user-home__nav-item.is-current{color:var(--ink)}
+.user-home__nav-item.is-current::after{content:"";position:absolute;top:56.46px;left:50%;transform:translateX(-50%);width:31.998px;height:1.994px;border-radius:999px;background:var(--accent)}
+@media(max-width:699px){.usuario .screen.user-home{min-height:100svh;margin:0 auto}}
+@media(max-width:380px){.user-home__installments{grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}.user-home__installment{width:100%;max-width:31.998px}.user-home__name{font-size:clamp(20px,6.15vw,24px)}.user-home__deadline{font-size:13px}.user-home__payment{gap:8px}.user-home__overdue{padding:0 10px;font-size:12px}.user-home__notice{gap:10px;padding-left:12px;padding-right:12px}.user-home__notice p{font-size:13px}}

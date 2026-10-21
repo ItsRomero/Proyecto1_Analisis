@@ -1,0 +1,113 @@
+FASE 8 — CONTROL DE ENTRADA
+Inicio UTC: 2026-10-16T01:10:37.2400742+00:00
+Node: v22.13.0
+Commit: ba90a7ce99afa61278ef668a8fec94d8f2eb0169
+Comando: npm.cmd run fase8:preflight
+
+> sistema-gestion-microcredito-p1@0.1.0 fase8:preflight
+> npm run fase7:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase7:verificar
+> npm run fase6:verificar && npm run evals
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase6:verificar
+> npm run fase5:verificar && npm run test:chat
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase5:verificar
+> npm run fase4:verificar && npm run test:rag
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase4:verificar
+> npm run fase3:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase3:verificar
+> npm run verify && npm run test:carga:postgres && npm run test:e2e && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p web
+
+src/api/aplicacion-http.ts(1,54): error TS2307: Cannot find module 'express' or its corresponding type declarations.
+src/api/aplicacion-http.ts(61,12): error TS7006: Parameter '_req' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(61,18): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(61,23): error TS7006: Parameter 'next' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(67,19): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(67,24): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(67,29): error TS7006: Parameter 'next' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(80,26): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(80,31): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(85,34): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(85,39): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(93,36): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(93,41): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(103,43): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(103,48): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(161,19): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(161,24): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(170,14): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(170,19): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/api/aplicacion-http.ts(170,24): error TS7006: Parameter 'next' implicitly has an 'any' type.
+src/api/conector-mcp.ts(2,24): error TS2307: Cannot find module '@modelcontextprotocol/sdk/client/index.js' or its corresponding type declarations.
+src/api/conector-mcp.ts(3,61): error TS2307: Cannot find module '@modelcontextprotocol/sdk/client/stdio.js' or its corresponding type declarations.
+src/chat/adaptadores.ts(3,28): error TS2307: Cannot find module '@langchain/ollama' or its corresponding type declarations.
+src/chat/adaptadores.ts(4,34): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+src/chat/adaptadores.ts(5,29): error TS2307: Cannot find module '@modelcontextprotocol/sdk/client/index.js' or its corresponding type declarations.
+src/chat/adaptadores.ts(22,82): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/chat/adaptadores.ts(23,61): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/chat/adaptadores.ts(34,53): error TS7006: Parameter 't' implicitly has an 'any' type.
+src/chat/orquestador.ts(1,87): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+src/chat/puertos.ts(1,34): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+src/chat/rutas-chat.ts(2,26): error TS2307: Cannot find module 'express' or its corresponding type declarations.
+src/chat/rutas-chat.ts(3,40): error TS2307: Cannot find module 'express' or its corresponding type declarations.
+src/chat/rutas-chat.ts(37,24): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/chat/rutas-chat.ts(37,29): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/chat/rutas-chat.ts(40,40): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/chat/rutas-chat.ts(40,45): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/chat/rutas-chat.ts(51,60): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/chat/rutas-chat.ts(51,65): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/chat/rutas-chat.ts(61,40): error TS7006: Parameter 'req' implicitly has an 'any' type.
+src/chat/rutas-chat.ts(61,45): error TS7006: Parameter 'res' implicitly has an 'any' type.
+src/mcp/principal.ts(1,38): error TS2307: Cannot find module '@modelcontextprotocol/sdk/server/stdio.js' or its corresponding type declarations.
+src/mcp/servidor-mcp.ts(2,24): error TS2307: Cannot find module '@modelcontextprotocol/sdk/server/index.js' or its corresponding type declarations.
+src/mcp/servidor-mcp.ts(3,95): error TS2307: Cannot find module '@modelcontextprotocol/sdk/types.js' or its corresponding type declarations.
+src/mcp/servidor-mcp.ts(69,60): error TS7006: Parameter 'solicitud' implicitly has an 'any' type.
+src/rag/corpus.ts(4,26): error TS2307: Cannot find module '@langchain/core/documents' or its corresponding type declarations.
+src/rag/ollama.ts(1,46): error TS2307: Cannot find module '@langchain/ollama' or its corresponding type declarations.
+src/rag/ollama.ts(2,34): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+src/rag/ollama.ts(55,75): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/rag/puertos.ts(1,42): error TS2307: Cannot find module '@langchain/core/embeddings' or its corresponding type declarations.
+src/rag/puertos.ts(2,34): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+src/rag/respuesta.ts(1,63): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+tests/apoyo/chat-dobles.ts(1,34): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+tests/apoyo/chat-dobles.ts(2,24): error TS2307: Cannot find module '@modelcontextprotocol/sdk/client/index.js' or its corresponding type declarations.
+tests/apoyo/chat-dobles.ts(3,35): error TS2307: Cannot find module '@modelcontextprotocol/sdk/inMemory.js' or its corresponding type declarations.
+tests/apoyo/entorno-chat-real.ts(6,24): error TS2307: Cannot find module '@modelcontextprotocol/sdk/client/index.js' or its corresponding type declarations.
+tests/apoyo/entorno-chat-real.ts(7,35): error TS2307: Cannot find module '@modelcontextprotocol/sdk/inMemory.js' or its corresponding type declarations.
+tests/apoyo/rag-dobles.ts(1,42): error TS2307: Cannot find module '@langchain/core/embeddings' or its corresponding type declarations.
+tests/apoyo/rag-dobles.ts(2,34): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+tests/apoyo/rag-dobles.ts(23,26): error TS7006: Parameter 'textos' implicitly has an 'any' type.
+tests/apoyo/rag-dobles.ts(24,22): error TS7006: Parameter 'texto' implicitly has an 'any' type.
+tests/chat/chat-real.chat.ts(5,40): error TS2307: Cannot find module 'playwright-core' or its corresponding type declarations.
+tests/e2e/recorridos.e2e.ts(7,72): error TS2307: Cannot find module 'playwright-core' or its corresponding type declarations.
+tests/e2e/recorridos.e2e.ts(59,25): error TS7006: Parameter 'r' implicitly has an 'any' type.
+tests/e2e/recorridos.e2e.ts(60,26): error TS7006: Parameter 'r' implicitly has an 'any' type.
+tests/evals/evals-deterministas.test.ts(3,34): error TS2307: Cannot find module '@langchain/core/messages' or its corresponding type declarations.
+tests/integracion/mcp-aprobacion.integration.ts(6,24): error TS2307: Cannot find module '@modelcontextprotocol/sdk/client/index.js' or its corresponding type declarations.
+tests/integracion/mcp-aprobacion.integration.ts(7,35): error TS2307: Cannot find module '@modelcontextprotocol/sdk/inMemory.js' or its corresponding type declarations.
+tests/integracion/mcp-stdio.integration.ts(5,29): error TS2307: Cannot find module '@modelcontextprotocol/sdk/client/index.js' or its corresponding type declarations.
+tests/integracion/mcp-stdio.integration.ts(32,23): error TS7006: Parameter 't' implicitly has an 'any' type.
+tests/mcp.test.ts(6,24): error TS2307: Cannot find module '@modelcontextprotocol/sdk/client/index.js' or its corresponding type declarations.
+tests/mcp.test.ts(7,35): error TS2307: Cannot find module '@modelcontextprotocol/sdk/inMemory.js' or its corresponding type declarations.
+tests/mcp.test.ts(33,23): error TS7006: Parameter 't' implicitly has an 'any' type.
+tests/mcp.test.ts(35,87): error TS7006: Parameter 't' implicitly has an 'any' type.
+vitest.config.ts(3,19): error TS2307: Cannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+Código de salida: 2
+Duración segundos: 10.91

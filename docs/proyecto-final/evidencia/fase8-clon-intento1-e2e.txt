@@ -1,0 +1,309 @@
+FASE 8 — CONTROL
+Inicio UTC: 2026-10-16T01:30:33.218Z
+Node: v22.23.3
+Commit: fc964175fc2310ba99d29bc5b5f481b399436bc9
+SHA-256 diff de código/configuración: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+Comando: npm run test:e2e
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:e2e
+> npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts
+
+
+> sistema-gestion-microcredito-p1@0.1.0 web:build
+> vite build --config web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 156 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.67 kB │ gzip:   0.39 kB
+dist/assets/dm-mono-DbtWzYYn.ttf   49.74 kB
+dist/assets/outfit-vXxiUg8D.ttf   110.88 kB
+dist/assets/inter-VF2RPR_K.ttf    876.58 kB
+dist/assets/index-DKIu2ggR.css     24.05 kB │ gzip:   5.84 kB
+dist/assets/index-8gwHx9LC.js     280.10 kB │ gzip:  39.32 kB
+dist/assets/terceros-Bt2fJS4E.js  573.84 kB │ gzip: 175.37 kB
+✓ built in 4.46s
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > flujo 2 — OP-1: buscar cliente, saldo/tramo, prelación, aprobación, comprobante y estado posterior
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > OP-2: detalle de mora de CV-2026-0035 y pago de su cuota vencida más antigua
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > flujo 1 — OP-3: alta sin teléfono, solicitud, simulación, confirmación, comité y desembolso
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > OP-4: reintento de OP-1 con la misma clave, sin aplicar el pago otra vez
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > OP-5: Q500.00 sobre CV-2026-0061 se rechaza y muestra el monto correcto del núcleo
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > OP-6: un pago sobre CV-2026-0015 se rechaza por crédito incobrable
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > flujo 3 — consulta gerencial: tablero, riesgo por tramo y créditos del tramo (G-1, G-4)
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > G-2, G-3 y G-5 en pantalla: cierres mensual y diario y estado de CV-2026-0030
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+stderr | tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > revisión responsive del asesor a 320, 375, 403 y 768 px sin desplazamiento horizontal de la página
+NotFoundError: Not Found
+    at createHttpError (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:861:12)
+    at SendStream.error (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:168:31)
+    at SendStream.pipe (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\send\index.js:468:14)
+    at sendfile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:1011:8)
+    at ServerResponse.sendFile (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\express\lib\response.js:408:3)
+    at C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-limpio/src/api/aplicacion-http.ts:172:11
+    at Layer.handleRequest (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:342:13)
+    at C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:297:9
+    at processParams (C:\Users\casa\Documents\umg\Proyecto1_Analisis\.npm-cache\fase8-clon-limpio\node_modules\router\index.js:582:12)
+
+ ❯ tests/e2e/recorridos.e2e.ts (10 tests | 9 failed) 304225ms
+     × flujo 2 — OP-1: buscar cliente, saldo/tramo, prelación, aprobación, comprobante y estado posterior 30074ms
+     × OP-2: detalle de mora de CV-2026-0035 y pago de su cuota vencida más antigua 30106ms
+     × flujo 1 — OP-3: alta sin teléfono, solicitud, simulación, confirmación, comité y desembolso 30049ms
+     × OP-4: reintento de OP-1 con la misma clave, sin aplicar el pago otra vez 30073ms
+     × OP-5: Q500.00 sobre CV-2026-0061 se rechaza y muestra el monto correcto del núcleo 60137ms
+     × OP-6: un pago sobre CV-2026-0015 se rechaza por crédito incobrable 30096ms
+     × flujo 3 — consulta gerencial: tablero, riesgo por tramo y créditos del tramo (G-1, G-4) 30071ms
+     × G-2, G-3 y G-5 en pantalla: cierres mensual y diario y estado de CV-2026-0030 30216ms
+     × revisión responsive del asesor a 320, 375, 403 y 768 px sin desplazamiento horizontal de la página 30038ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > flujo 2 — OP-1: buscar cliente, saldo/tramo, prelación, aprobación, comprobante y estado posterior
+TimeoutError: locator.fill: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByPlaceholder('Buscar cliente, municipio o crédito…')[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:91:75
+     89|   it("flujo 2 — OP-1: buscar cliente, saldo/tramo, prelación, aprobaci…
+     90|     await pagina.goto(`${base}/asesor/clientes`);
+     91|     await pagina.getByPlaceholder("Buscar cliente, municipio o crédito…
+       |                                                                           ^
+     92|     await pagina.getByRole("link", { name: /CV-2026-0043/ }).click();
+     93|     const ficha = await api(`/creditos/CV-2026-0043/ficha?fechaCorte=$…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > OP-2: detalle de mora de CV-2026-0035 y pago de su cuota vencida más antigua
+TimeoutError: locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('region', { name: 'Cuota 2' }).getByText('Interés moratorio (redondeado por el núcleo)') to be visible[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:105:77
+    103|     const mora = await api(`/creditos/CV-2026-0035/cuotas/2/mora?fecha…
+    104|     const tarjeta = pagina.getByRole("region", { name: "Cuota 2" });
+    105|     await tarjeta.getByText("Interés moratorio (redondeado por el núcl…
+       |                                                                             ^
+    106|     expect(await tarjeta.textContent()).toContain(textoMonto(mora.cuot…
+    107|     expect(await tarjeta.textContent()).toContain("POL-2024-01");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > flujo 1 — OP-3: alta sin teléfono, solicitud, simulación, confirmación, comité y desembolso
+TimeoutError: locator.fill: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('Código de cliente')[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:115:50
+    113|   it("flujo 1 — OP-3: alta sin teléfono, solicitud, simulación, confir…
+    114|     await pagina.goto(`${base}/asesor/creditos/nuevo`);
+    115|     await pagina.getByLabel("Código de cliente").fill("CL-9001");
+       |                                                  ^
+    116|     await pagina.getByLabel("Nombre completo").fill("Gerencia Demostra…
+    117|     await pagina.getByLabel("DPI").fill("DPI-FICT-009001");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > OP-4: reintento de OP-1 con la misma clave, sin aplicar el pago otra vez
+TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('link', { name: /Cuota 1/ })[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:149:57
+    147|     const pagos = (await api(`/creditos/CV-2026-0043/pagos?fechaCorte=…
+    148|     await pagina.goto(`${base}/asesor/creditos/CV-2026-0043`);
+    149|     await pagina.getByRole("link", { name: /Cuota 1/ }).click();
+       |                                                         ^
+    150|     await pagina.getByRole("button", { name: "Reintentar envío con la …
+    151|     await pagina.getByText("Reintento detectado: sin efecto adicional"…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > OP-5: Q500.00 sobre CV-2026-0061 se rechaza y muestra el monto correcto del núcleo
+TimeoutError: locator.inputValue: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('Monto recibido (Q)')[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:160:49
+    158|     await pagina.goto(`${base}/asesor/creditos/CV-2026-0061/pagos/nuev…
+    159|     const monto = pagina.getByLabel("Monto recibido (Q)");
+    160|     await expect.poll(() => monto.inputValue()).toBe(deuda.totalExigib…
+       |                                                 ^
+    161|     await monto.fill("500.00");
+    162|     await pagina.getByRole("button", { name: "Revisar prelación" }).cl…
+
+Caused by: Error: Matcher did not succeed in time.
+ ❯ tests/e2e/recorridos.e2e.ts:160:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > OP-6: un pago sobre CV-2026-0015 se rechaza por crédito incobrable
+TimeoutError: locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('Monto recibido (Q)') to be visible[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:171:51
+    169|   it("OP-6: un pago sobre CV-2026-0015 se rechaza por crédito incobrab…
+    170|     await pagina.goto(`${base}/asesor/creditos/CV-2026-0015/pagos/nuev…
+    171|     await pagina.getByLabel("Monto recibido (Q)").waitFor();
+       |                                                   ^
+    172|     await expect.poll(() => pagina.getByLabel("Monto recibido (Q)").in…
+    173|     await pagina.getByRole("button", { name: "Revisar prelación" }).cl…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > flujo 3 — consulta gerencial: tablero, riesgo por tramo y créditos del tramo (G-1, G-4)
+TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('group', { name: 'Perfil' }).getByRole('button', { name: 'Gerencia' })[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:183:99
+    181|     await pagina.setViewportSize({ width: 1440, height: 900 });
+    182|     await pagina.goto(`${base}/asesor/clientes`);
+    183|     await pagina.getByRole("group", { name: "Perfil" }).getByRole("but…
+       |                                                                                                   ^
+    184|     await pagina.getByRole("heading", { name: "Tablero gerencial" }).w…
+    185|     const cartera = await api(`/cartera?fechaCorte=${CORTE}&inicioPeri…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > G-2, G-3 y G-5 en pantalla: cierres mensual y diario y estado de CV-2026-0030
+TimeoutError: locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByText(/Vista previa/) to be visible[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:203:44
+    201|     await pagina.goto(`${base}/gerencia/cierres/mensual`);
+    202|     const mensual = await api(`/cierres?fechaCorte=${CORTE}&tipo=MENSU…
+    203|     await pagina.getByText(/Vista previa/).waitFor();
+       |                                            ^
+    204|     expect(await pagina.locator("main").textContent()).toContain(texto…
+    205|     await capturar("g2-cierre-mensual");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  tests/e2e/recorridos.e2e.ts > fase 3: guion OP-1 a OP-6 y flujos obligatorios en navegador > revisión responsive del asesor a 320, 375, 403 y 768 px sin desplazamiento horizontal de la página
+TimeoutError: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('group', { name: 'Perfil' }).getByRole('button', { name: 'Asesor' })[22m
+
+ ❯ tests/e2e/recorridos.e2e.ts:221:97
+    219|   it("revisión responsive del asesor a 320, 375, 403 y 768 px sin desp…
+    220|     await pagina.goto(`${base}/asesor/clientes`);
+    221|     await pagina.getByRole("group", { name: "Perfil" }).getByRole("but…
+       |                                                                                                 ^
+    222|     const rutas = ["/asesor/clientes", "/asesor/creditos/CV-2026-0043"…
+    223|       "/asesor/creditos/CV-2026-0035/mora", "/asesor/creditos/CV-2026-…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 1 passed (10)
+   Start at  19:30:42
+   Duration  307.48s (transform 468ms, setup 0ms, import 3.00s, tests 304.22s, environment 0ms)
+
+
+Código de salida: 1
+Señal: -
+Duración segundos: 316.59

@@ -1,0 +1,131 @@
+v24.19.0
+2026-10-15T19:43:15Z
+
+> sistema-gestion-microcredito-p1@0.1.0 fase6:verificar
+> npm run fase5:verificar && npm run test:chat
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase5:verificar
+> npm run fase4:verificar && npm run test:rag
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase4:verificar
+> npm run fase3:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase3:verificar
+> npm run verify && npm run test:carga:postgres && npm run test:e2e && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p web
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  27 passed (27)
+      Tests  370 passed (370)
+   Start at  13:43:30
+   Duration  8.30s (transform 4.95s, setup 740ms, import 29.76s, tests 6.01s, environment 4.93s)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:carga:postgres
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  4 passed (4)
+      Tests  30 passed (30)
+   Start at  13:43:40
+   Duration  72.77s (transform 801ms, setup 0ms, import 10.21s, tests 61.32s, environment 1ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:e2e
+> npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts
+
+
+> sistema-gestion-microcredito-p1@0.1.0 web:build
+> vite build --config web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 156 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.65 kB │ gzip:   0.37 kB
+dist/assets/dm-mono-DbtWzYYn.ttf   49.74 kB
+dist/assets/outfit-vXxiUg8D.ttf   110.88 kB
+dist/assets/inter-VF2RPR_K.ttf    876.58 kB
+dist/assets/index-DKIu2ggR.css     24.05 kB │ gzip:   5.84 kB
+dist/assets/index-DcmutSn8.js     239.78 kB │ gzip:  38.48 kB
+dist/assets/terceros-Bt2fJS4E.js  573.84 kB │ gzip: 175.37 kB
+✓ built in 3.49s
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  13:45:00
+   Duration  45.84s (transform 612ms, setup 0ms, import 3.95s, tests 41.57s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 build:backend
+> tsc --noEmit false --outDir dist
+
+Carga persistente verificada. Para aprobar fase 2 también deben pasar verify y las pruebas PostgreSQL.
+
+> sistema-gestion-microcredito-p1@0.1.0 test:rag
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.rag.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  13:45:56
+   Duration  290.03s (transform 383ms, setup 0ms, import 3.10s, tests 286.54s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:chat
+> npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.chat.config.ts
+
+
+> sistema-gestion-microcredito-p1@0.1.0 web:build
+> vite build --config web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 156 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.65 kB │ gzip:   0.37 kB
+dist/assets/dm-mono-DbtWzYYn.ttf   49.74 kB
+dist/assets/outfit-vXxiUg8D.ttf   110.88 kB
+dist/assets/inter-VF2RPR_K.ttf    876.58 kB
+dist/assets/index-DKIu2ggR.css     24.05 kB │ gzip:   5.84 kB
+dist/assets/index-DcmutSn8.js     239.78 kB │ gzip:  38.48 kB
+dist/assets/terceros-Bt2fJS4E.js  573.84 kB │ gzip: 175.37 kB
+✓ built in 3.86s
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  13:50:53
+   Duration  1556.08s (transform 737ms, setup 0ms, import 5.33s, tests 1550.37s, environment 0ms)
+
+exit=0

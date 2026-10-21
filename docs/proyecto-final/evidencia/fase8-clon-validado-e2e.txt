@@ -1,0 +1,41 @@
+FASE 8 — CONTROL
+Inicio UTC: 2026-10-16T01:35:09.035Z
+Node: v22.23.3
+Commit: 3a4c97a11e8f117c4708cd997fa4da8fdad0b49b
+SHA-256 diff de código/configuración: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+Comando: npm run test:e2e
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:e2e
+> npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts
+
+
+> sistema-gestion-microcredito-p1@0.1.0 web:build
+> vite build --config web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 156 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.67 kB │ gzip:   0.38 kB
+dist/assets/dm-mono-DbtWzYYn.ttf   49.74 kB
+dist/assets/outfit-vXxiUg8D.ttf   110.88 kB
+dist/assets/inter-VF2RPR_K.ttf    876.58 kB
+dist/assets/index-DKIu2ggR.css     24.05 kB │ gzip:   5.84 kB
+dist/assets/index-CKea9SXl.js     282.02 kB │ gzip:  39.37 kB
+dist/assets/terceros-Bt2fJS4E.js  573.84 kB │ gzip: 175.37 kB
+✓ built in 2.62s
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-validado
+
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  19:35:14
+   Duration  35.41s (transform 412ms, setup 0ms, import 2.41s, tests 32.75s, environment 0ms)
+
+
+Código de salida: 0
+Señal: -
+Duración segundos: 41.38

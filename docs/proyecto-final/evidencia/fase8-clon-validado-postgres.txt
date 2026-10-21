@@ -1,0 +1,24 @@
+FASE 8 — CONTROL
+Inicio UTC: 2026-10-16T01:49:14.805Z
+Node: v22.23.3
+Commit: 3a4c97a11e8f117c4708cd997fa4da8fdad0b49b
+SHA-256 diff de código/configuración: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+Comando: npm run test:carga:postgres
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:carga:postgres
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts
+
+
+ RUN  v4.1.11 C:/Users/casa/Documents/umg/Proyecto1_Analisis/.npm-cache/fase8-clon-validado
+
+
+ Test Files  5 passed (5)
+      Tests  31 passed (31)
+   Start at  19:49:17
+   Duration  65.11s (transform 779ms, setup 0ms, import 10.28s, tests 53.36s, environment 1ms)
+
+
+Código de salida: 0
+Señal: -
+Duración segundos: 67.78

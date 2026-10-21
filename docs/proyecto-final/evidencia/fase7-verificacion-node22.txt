@@ -1,0 +1,150 @@
+/c/Users/olive/AppData/Local/Temp/claude/c--Users-olive-Proyecto1-Analisis/41a79c98-f4a4-40b1-8841-131fa1b1d56f/scratchpad/node22/node-v22.23.3-win-x64/node
+v22.23.3
+10.9.9
+2026-10-15T22:08:52Z
+
+> sistema-gestion-microcredito-p1@0.1.0 fase7:verificar
+> npm run fase6:verificar && npm run evals
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase6:verificar
+> npm run fase5:verificar && npm run test:chat
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase5:verificar
+> npm run fase4:verificar && npm run test:rag
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase4:verificar
+> npm run fase3:verificar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 fase3:verificar
+> npm run verify && npm run test:carga:postgres && npm run test:e2e && npm run build:backend && node --env-file-if-exists=.env scripts/persistencia/ejecutar.mjs comprobar
+
+
+> sistema-gestion-microcredito-p1@0.1.0 verify
+> npm run typecheck && npm test
+
+
+> sistema-gestion-microcredito-p1@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p web
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test
+> vitest run --passWithNoTests
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  31 passed (31)
+      Tests  399 passed (399)
+   Start at  16:09:13
+   Duration  10.01s (transform 6.01s, setup 695ms, import 42.48s, tests 8.40s, environment 5.65s)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:carga:postgres
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.postgres.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  5 passed (5)
+      Tests  31 passed (31)
+   Start at  16:09:27
+   Duration  78.92s (transform 837ms, setup 0ms, import 12.38s, tests 64.84s, environment 1ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:e2e
+> npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.e2e.config.ts
+
+
+> sistema-gestion-microcredito-p1@0.1.0 web:build
+> vite build --config web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 156 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.65 kB │ gzip:   0.37 kB
+dist/assets/dm-mono-DbtWzYYn.ttf   49.74 kB
+dist/assets/outfit-vXxiUg8D.ttf   110.88 kB
+dist/assets/inter-VF2RPR_K.ttf    876.58 kB
+dist/assets/index-DKIu2ggR.css     24.05 kB │ gzip:   5.84 kB
+dist/assets/index-DcmutSn8.js     239.78 kB │ gzip:  38.48 kB
+dist/assets/terceros-Bt2fJS4E.js  573.84 kB │ gzip: 175.37 kB
+✓ built in 3.77s
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  16:10:54
+   Duration  45.66s (transform 680ms, setup 0ms, import 4.28s, tests 40.98s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 build:backend
+> tsc --noEmit false --outDir dist
+
+Carga persistente verificada. Para aprobar fase 2 también deben pasar verify y las pruebas PostgreSQL.
+
+> sistema-gestion-microcredito-p1@0.1.0 test:rag
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.rag.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  16:11:53
+   Duration  258.56s (transform 370ms, setup 0ms, import 2.95s, tests 255.28s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 test:chat
+> npm run web:build && node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.chat.config.ts
+
+
+> sistema-gestion-microcredito-p1@0.1.0 web:build
+> vite build --config web/vite.config.ts
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 156 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.65 kB │ gzip:   0.37 kB
+dist/assets/dm-mono-DbtWzYYn.ttf   49.74 kB
+dist/assets/outfit-vXxiUg8D.ttf   110.88 kB
+dist/assets/inter-VF2RPR_K.ttf    876.58 kB
+dist/assets/index-DKIu2ggR.css     24.05 kB │ gzip:   5.84 kB
+dist/assets/index-DcmutSn8.js     239.78 kB │ gzip:  38.48 kB
+dist/assets/terceros-Bt2fJS4E.js  573.84 kB │ gzip: 175.37 kB
+✓ built in 4.55s
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  16:16:22
+   Duration  1407.27s (transform 743ms, setup 0ms, import 5.19s, tests 1401.74s, environment 0ms)
+
+
+> sistema-gestion-microcredito-p1@0.1.0 evals
+> node --env-file-if-exists=.env node_modules/vitest/vitest.mjs run --config vitest.evals.config.ts
+
+
+ RUN  v4.1.11 C:/Users/olive/Proyecto1_Analisis
+
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  16:39:53
+   Duration  1169.92s (transform 753ms, setup 0ms, import 5.29s, tests 1164.20s, environment 0ms)
+
+exit=0

@@ -1,0 +1,12 @@
+Fase 3 · integridad de insumos y archivos heredados (2026-10-15T04:59:45Z)
+
+SHA-256 datos/datos-proyecto-final.zip:
+1d9cc4471f25f8bab795f45c1f3fae36a50b76116cb58062a5dc2b46a5c37b0b *datos/datos-proyecto-final.zip
+SHA-256 eventos.jsonl:
+e2d46283de8578f19ea2eb14ace283573ebb729aaa0e9b0e65f80a348e4b9d50 *datos/datos-proyecto-final/eventos.jsonl
+
+git status de vistas/ datos/ src/dominio/ y pruebas heredadas (vacío = sin cambios):
+(fin)
+
+git diff --stat contra b079945 de src/dominio y tests heredados:
+(fin)

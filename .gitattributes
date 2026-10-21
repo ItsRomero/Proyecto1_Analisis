@@ -1,0 +1,6 @@
+# El paquete canónico se conserva byte por byte, incluidos sus saltos de línea.
+datos/** -text
+# Las migraciones versionadas por SHA-256 conservan sus bytes entre plataformas.
+src/persistencia/migraciones/*.sql text eol=lf
+# Las grabaciones inmutables se analizan con delimitadores LF en las evals.
+tests/evals/grabaciones/*.txt text eol=lf

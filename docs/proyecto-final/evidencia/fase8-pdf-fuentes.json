@@ -1,0 +1,20 @@
+{
+  "fuentes": [
+    {
+      "xref": 4,
+      "nombre": "AAAAAA+ArialMT",
+      "incrustada": true
+    },
+    {
+      "xref": 5,
+      "nombre": "BAAAAA+Arial-BoldMT",
+      "incrustada": true
+    },
+    {
+      "xref": 8,
+      "nombre": "CAAAAA+Consolas",
+      "incrustada": true
+    }
+  ],
+  "todasIncrustadas": true
+}
