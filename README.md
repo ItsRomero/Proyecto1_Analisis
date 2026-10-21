@@ -89,6 +89,32 @@ Desde base vacía `carga` aplica también migraciones. Verifica preflight y SHA-
 
 En desarrollo: `npm run api` y `npm run web:dev` en terminales separadas; Vite sirve en localhost:5173. Producción local: `npm run app` compila web y sirve todo desde la API. El chat inicia su conexión al primer mensaje. La API lanza MCP por sesión como proceso hijo stdio; no requiere ejecutar otro servidor MCP manualmente. `npm run mcp` existe para clientes stdio configurados con el vínculo de sesión de ADR-020, no como vía alternativa para aprobar pagos. `npm run rag:consulta -- "pregunta normativa"` sirve para diagnóstico de RAG; el guion operativo usa la aplicación.
 
+### Perfil Usuario: inicio, crédito, cuotas y ayuda
+
+La barra superior permite seleccionar **Asesor**, **Gerencia** o **Usuario**. Para ver las pantallas del cliente, seleccionar Usuario y abrir `http://127.0.0.1:3000/usuario`.
+
+| Vista de referencia | Ruta React |
+| --- | --- |
+| Lista de usuarios (10 por página) | `/usuario` |
+| `usuario-inicio-92-3081.html` | `/usuario/inicio` |
+| `usuario-detalle-del-credito-92-3310.html` | `/usuario/creditos/:creditoId` |
+| `usuario-plan-de-cuotas-92-3528.html` | `/usuario/creditos/:creditoId/plan` |
+| `usuario-ayuda-1-92-3822.html` | `/usuario/ayuda` |
+
+`/usuario` muestra todos los clientes, incluidos quienes no tienen créditos, en páginas de 10 con botones Anterior y Siguiente. Al seleccionar una persona se vincula ese cliente a la sesión y se abre `/usuario/inicio`. El enlace **Cambiar de usuario** vuelve a la lista. El número de página se conserva en la URL (`/usuario?pagina=2`).
+
+Los enlaces de Inicio y Mi crédito usan identificadores reales de la base. El selector es de demostración, sin autenticación del cliente. La API pagina la lista sin DPI ni teléfonos y valida el cliente elegido. El perfil Usuario puede consultar ficha, resumen, pagos y plan del cliente seleccionado; se rechazan créditos de otros clientes, operaciones financieras y chat gerencial. Si tiene varios créditos, Inicio muestra todos; si no tiene créditos, se muestra un estado vacío.
+
+Se adapta el diseño móvil de los cuatro prototipos con datos del servidor, sin cargar sus HTML ni copiar cifras de ejemplo. La tasa se etiqueta como nominal anual según el contrato real; el saldo pendiente es capital, no deuda total con cargos. El teléfono ficticio del prototipo no se publica como contacto real.
+
+**Para aplicar este cambio en una instalación ya preparada:** detener la aplicación con `Ctrl+C` y ejecutar:
+
+```powershell
+npm.cmd run app
+```
+
+Este comando reconstruye React y el backend y verifica las migraciones existentes. No hay dependencias nuevas, variables nuevas ni migraciones adicionales; no hace falta recrear contenedores, repetir `carga` ni `rag:ingesta`. Si nunca se cargaron datos, completar antes el bloque «Migrar, cargar e iniciar». En desarrollo con Vite, reiniciar la API por el nuevo perfil del servidor.
+
 ## Arquitectura y pantallas
 
 ```mermaid

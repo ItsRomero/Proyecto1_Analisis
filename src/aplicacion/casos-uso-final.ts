@@ -4,7 +4,7 @@ import type { EntradaFinal, NombreOperacionFinal, SalidaFinal } from "../contrat
 export interface ContextoOperacion {
   readonly sujetoId: string;
   readonly sesionId: string;
-  readonly perfil: "ASESOR" | "GERENCIA";
+  readonly perfil: "ASESOR" | "GERENCIA" | "USUARIO";
   readonly canal: "INTERFAZ" | "MCP" | "CARGA";
   readonly traceId: string;
 }

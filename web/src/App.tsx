@@ -1,3 +1,4 @@
+import { LayoutUsuario, ListaUsuarios, InicioUsuario, DetalleUsuario, PlanUsuario, AyudaUsuario } from "./paginas/usuario/Usuario";
 import { Navigate, Route, Routes } from "react-router";
 import { LayoutAsesor, LayoutGerencia } from "./componentes/Layouts";
 import { Vacio } from "./componentes/Estados";
@@ -16,7 +17,7 @@ import { useSesion } from "./sesion/SesionContexto";
 function Inicio() {
   const { sesion } = useSesion();
   if (sesion === null) return null;
-  return <Navigate to={sesion.perfil === "GERENCIA" ? "/gerencia" : "/asesor/clientes"} replace />;
+  return <Navigate to={sesion.perfil === "USUARIO" ? "/usuario" : sesion.perfil === "GERENCIA" ? "/gerencia" : "/asesor/clientes"} replace />;
 }
 
 /** Rutas de las siete pantallas obligatorias y sus complementos (docs/proyecto-final/migracion-vistas-react.md). */
@@ -24,6 +25,13 @@ export function App() {
   return (
     <Routes>
       <Route path="/" element={<Inicio />} />
+      <Route path="/usuario" element={<LayoutUsuario />}>
+        <Route index element={<ListaUsuarios />} />
+        <Route path="inicio" element={<InicioUsuario />} />
+        <Route path="creditos/:creditoId" element={<DetalleUsuario />} />
+        <Route path="creditos/:creditoId/plan" element={<PlanUsuario />} />
+        <Route path="ayuda" element={<AyudaUsuario />} />
+      </Route>
       <Route path="/asesor" element={<LayoutAsesor />}>
         <Route index element={<Navigate to="clientes" replace />} />
         <Route path="clientes" element={<ClientesAsesor />} />

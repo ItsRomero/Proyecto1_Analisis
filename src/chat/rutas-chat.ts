@@ -22,6 +22,11 @@ export function registrarRutasChat(app: express.Express, opciones: {
   readonly almacen: AlmacenChats; readonly exigirSesion: (req: Request) => Sesion;
   readonly maxTurnos: number; readonly ttlMinutos: number;
 }) {
+  const exigirSesion = (req: Request) => {
+    const sesion = opciones.exigirSesion(req);
+    if (sesion.perfil === "USUARIO") throw new Error("SESION_NO_AUTORIZADA");
+    return { ...sesion, perfil: sesion.perfil };
+  };
   const vacio = (): EstadoChat => ({ chatId: null, mensajes: [], pendientes: [], turnos: 0, maxTurnos: opciones.maxTurnos,
     ttlMinutos: opciones.ttlMinutos, ocupado: false, modelo: null });
   const problema = (res: Response, error: unknown) => {
@@ -35,11 +40,11 @@ export function registrarRutasChat(app: express.Express, opciones: {
   const responder = (res: Response, estado: EstadoChat) => res.json(estadoChatSchema.parse(estado));
 
   app.get("/v1/chat", (req, res) => {
-    try { responder(res, opciones.almacen.existente(opciones.exigirSesion(req).sesionId)?.estado() ?? vacio()); } catch (e) { problema(res, e); }
+    try { responder(res, opciones.almacen.existente(exigirSesion(req).sesionId)?.estado() ?? vacio()); } catch (e) { problema(res, e); }
   });
   app.post("/v1/chat/mensajes", async (req, res) => {
     try {
-      const sesion = opciones.exigirSesion(req);
+      const sesion = exigirSesion(req);
       const e = enviarMensajeChatSchema.parse(req.body);
       const chat = await opciones.almacen.obtener({ sesionId: sesion.sesionId, perfil: sesion.perfil }).catch((c: unknown) => {
         throw c instanceof ErrorChat ? c : new ErrorChat("ASISTENTE_NO_DISPONIBLE", c instanceof Error ? c.message : "sin detalle");
@@ -50,7 +55,7 @@ export function registrarRutasChat(app: express.Express, opciones: {
   });
   app.post("/v1/chat/propuestas/:propuestaId/resolucion", (req, res) => {
     try {
-      const sesion = opciones.exigirSesion(req);
+      const sesion = exigirSesion(req);
       const e = resolucionPropuestaChatSchema.parse(req.body);
       const chat = opciones.almacen.existente(sesion.sesionId);
       if (chat === undefined) throw new ErrorChat("PROPUESTA_NO_PENDIENTE", "Sin conversación.");
@@ -60,7 +65,7 @@ export function registrarRutasChat(app: express.Express, opciones: {
   });
   app.post("/v1/chat/reinicio", async (req, res) => {
     try {
-      const sesion = opciones.exigirSesion(req);
+      const sesion = exigirSesion(req);
       await opciones.almacen.reiniciar(sesion.sesionId);
       responder(res, vacio());
     } catch (e) { problema(res, e); }

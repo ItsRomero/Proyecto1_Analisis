@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router";
+import { Navigate, Link, NavLink, Outlet, useLocation, useNavigate } from "react-router";
 import { useSesion } from "../sesion/SesionContexto";
 import volver from "../assets/design/iconos/volver.svg";
 import { Boton, Icono } from "./Basicos";
@@ -13,22 +13,22 @@ export function BarraSesion({ oscura = false }: { readonly oscura?: boolean }) {
   const [error, setError] = useState<string | null>(null);
   const [ocupado, setOcupado] = useState(false);
   if (sesion === null) return null;
-  const elegir = async (perfil: "ASESOR" | "GERENCIA") => {
+  const elegir = async (perfil: "ASESOR" | "GERENCIA" | "USUARIO") => {
     setOcupado(true);
     try {
       await cambiarPerfil(perfil);
       // Solo desde las pantallas de inicio: un flujo en curso (p. ej. el comité de OP-3) no se abandona.
-      if (["/", "/asesor/clientes", "/gerencia"].includes(ubicacion.pathname)) navegar(perfil === "GERENCIA" ? "/gerencia" : "/asesor/clientes");
+      if (perfil === "USUARIO" || sesion.perfil === "USUARIO" || ["/", "/asesor/clientes", "/gerencia"].includes(ubicacion.pathname)) navegar(perfil === "USUARIO" ? "/usuario" : perfil === "GERENCIA" ? "/gerencia" : "/asesor/clientes");
     } finally { setOcupado(false); }
   };
   const tono = oscura ? "text-slate-200" : "text-secundario";
   return (
     <div className={`flex flex-wrap items-center gap-x-3 gap-y-2 text-xs ${tono}`} aria-label="Sesión de demostración">
       <div role="group" aria-label="Perfil" className={`inline-flex rounded-lg p-0.5 ${oscura ? "bg-nav-activo" : "bg-superficie"}`}>
-        {(["ASESOR", "GERENCIA"] as const).map((p) => (
+        {(["ASESOR", "GERENCIA", "USUARIO"] as const).map((p) => (
           <button key={p} type="button" disabled={ocupado} aria-pressed={sesion.perfil === p} onClick={() => void elegir(p)}
             className={`rounded-md px-2.5 py-1.5 font-bold ${sesion.perfil === p ? "bg-acento text-tinta" : oscura ? "text-slate-200" : "text-secundario"}`}>
-            {p === "ASESOR" ? "Asesor" : "Gerencia"}
+            {p === "USUARIO" ? "Usuario" : p === "ASESOR" ? "Asesor" : "Gerencia"}
           </button>
         ))}
       </div>
@@ -58,7 +58,7 @@ export function LayoutAsesor() {
     <div className="min-h-svh bg-superficie font-asesor">
       <div className="mx-auto flex min-h-svh w-full max-w-[403px] flex-col bg-superficie">
         <div className="bg-tinta px-4 pt-3 pb-1"><BarraSesion oscura /></div>
-        <EsperaSesion><Outlet /></EsperaSesion>
+        <EsperaSesion><AreaAsesor /></EsperaSesion>
       </div>
     </div>
   );
@@ -145,4 +145,9 @@ export function Pasos({ pasos, actual }: { readonly pasos: readonly string[]; re
       ))}
     </ol>
   );
+}
+
+function AreaAsesor() {
+  const { sesion } = useSesion();
+  return sesion?.perfil === "USUARIO" ? <Navigate to="/usuario" replace /> : <Outlet />;
 }

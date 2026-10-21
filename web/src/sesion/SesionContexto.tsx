@@ -8,7 +8,7 @@ interface ValorSesion {
   /** Fecha de corte y de operación de la sesión; por defecto DEFAULT_SESSION_CUTOFF del servidor. */
   readonly fechaCorte: string;
   cambiarFechaCorte(fecha: string): boolean;
-  cambiarPerfil(perfil: "ASESOR" | "GERENCIA"): Promise<void>;
+  cambiarPerfil(perfil: "ASESOR" | "GERENCIA" | "USUARIO"): Promise<void>;
   reiniciar(): Promise<void>;
   reintentar(): void;
 }
@@ -36,7 +36,7 @@ export function ProveedorSesion({ children }: { readonly children: ReactNode }) 
     setFechaCorte(fecha);
     return true;
   }, []);
-  const cambiarPerfil = useCallback(async (perfil: "ASESOR" | "GERENCIA") => { setSesion(await sesionApi.cambiarPerfil(perfil)); }, []);
+  const cambiarPerfil = useCallback(async (perfil: "ASESOR" | "GERENCIA" | "USUARIO") => { setSesion(await sesionApi.cambiarPerfil(perfil)); }, []);
   const reiniciar = useCallback(async () => {
     const s = await sesionApi.reiniciar();
     setSesion(s);

@@ -2,7 +2,7 @@
 
 Inventario de los 56 archivos HTML reales de `vistas/` (55 frames y `index.html`) y su destino en `web/`. La aplicación no carga ningún HTML de `vistas/` en tiempo de ejecución: `tests/e2e/recorridos.e2e.ts` registra cada solicitud del navegador y lo verifica. Tampoco se usan `iframe` ni `dangerouslySetInnerHTML`.
 
-Recuento: CONSOLIDADO: 28, FUERA DE E1: 12, MIGRADO: 14, SOLO REFERENCIA: 2.
+Recuento: CONSOLIDADO: 28, FUERA DE E1: 8, MIGRADO: 18, SOLO REFERENCIA: 2.
 
 - **MIGRADO**: el frame tiene una pantalla o un estado React equivalente.
 - **CONSOLIDADO**: el frame es un paso, una variante o un estado resuelto dentro de otro componente.
@@ -74,13 +74,13 @@ Recuento: CONSOLIDADO: 28, FUERA DE E1: 12, MIGRADO: 14, SOLO REFERENCIA: 2.
 | `gerencia-prototipo-microcreditos-web-103-7192.html` | `/gerencia` · `Tablero` | MIGRADO | Cartera activa, en mora, riesgo por tramo e incobrable del período; desembolsos y recuperaciones del mes. Se omite el gráfico de seis meses (no hay serie del núcleo). | `tests/e2e/recorridos.e2e.ts` (G-1), `web/src/pruebas/interfaz.test.tsx` (error) |
 | `gerencia-solicitudes-103-8780.html` | `/gerencia/solicitudes` · `Solicitudes` | MIGRADO | Solicitudes pendientes de comité o desembolso. | `tests/integracion/api-http.integration.ts` |
 | `index.html` | — | SOLO REFERENCIA | Directorio de revisión del prototipo; no se migra (regla global 20). | — |
-| `usuario-ayuda-1-92-3822.html` | `/usuario/...` (no implementado) | FUERA DE E1 | Vista del cliente: complementaria según el maestro; no retrasa E1. | — |
+| `usuario-ayuda-1-92-3822.html` | `/usuario/ayuda` | MIGRADO | Preguntas frecuentes desplegables; sin teléfono ficticio. | `web/src/pruebas/usuario.test.tsx` |
 | `usuario-ayuda-2-92-3942.html` | `/usuario/...` (no implementado) | FUERA DE E1 | Vista del cliente: complementaria según el maestro; no retrasa E1. | — |
-| `usuario-detalle-del-credito-92-3310.html` | `/usuario/...` (no implementado) | FUERA DE E1 | Vista del cliente: complementaria según el maestro; no retrasa E1. | — |
+| `usuario-detalle-del-credito-92-3310.html` | `/usuario/creditos/:creditoId` | MIGRADO | Condiciones, atraso e historial real; lectura limitada al cliente de la sesión. | `tests/usuario-http.test.ts`, `web/src/pruebas/usuario.test.tsx` |
 | `usuario-ingreso-1-92-2940.html` | `/usuario/...` (no implementado) | FUERA DE E1 | Vista del cliente: complementaria según el maestro; no retrasa E1. | — |
 | `usuario-ingreso-2-92-3250.html` | `/usuario/...` (no implementado) | FUERA DE E1 | Vista del cliente: complementaria según el maestro; no retrasa E1. | — |
-| `usuario-inicio-92-3081.html` | `/usuario/...` (no implementado) | FUERA DE E1 | Vista del cliente: complementaria según el maestro; no retrasa E1. | — |
-| `usuario-plan-de-cuotas-92-3528.html` | `/usuario/...` (no implementado) | FUERA DE E1 | Vista del cliente: complementaria según el maestro; no retrasa E1. | — |
+| `usuario-inicio-92-3081.html` | `/usuario/inicio` | MIGRADO | Capital pendiente, próxima cuota y avance con datos reales. | `web/src/pruebas/usuario.test.tsx` |
+| `usuario-plan-de-cuotas-92-3528.html` | `/usuario/creditos/:creditoId/plan` | MIGRADO | Tabla móvil de cuotas contractuales y estado al corte. | `web/src/pruebas/usuario.test.tsx` |
 
 ## Sistema visual
 

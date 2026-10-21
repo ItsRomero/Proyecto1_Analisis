@@ -16,7 +16,7 @@ export class SinConexion extends Error {
   public constructor() { super("No hay conexión con el servidor."); this.name = "SinConexion"; }
 }
 
-export const sesionSchema = z.strictObject({ sesionId: z.string(), perfil: z.enum(["ASESOR", "GERENCIA"]),
+export const sesionSchema = z.strictObject({ sesionId: z.string(), perfil: z.enum(["ASESOR", "GERENCIA", "USUARIO"]),
   sujetoId: z.string(), fechaCorteDefecto: z.string() });
 export type SesionApi = z.infer<typeof sesionSchema>;
 
@@ -40,7 +40,7 @@ export async function http(metodo: "GET" | "POST", ruta: string, cuerpo?: unknow
 
 export const sesionApi = {
   async obtener() { return sesionSchema.parse((await http("GET", "/sesion")).json); },
-  async cambiarPerfil(perfil: "ASESOR" | "GERENCIA") { return sesionSchema.parse((await http("POST", "/sesion/perfil", { perfil })).json); },
+  async cambiarPerfil(perfil: "ASESOR" | "GERENCIA" | "USUARIO") { return sesionSchema.parse((await http("POST", "/sesion/perfil", { perfil })).json); },
   async reiniciar() { return sesionSchema.parse((await http("POST", "/sesion/reinicio", {})).json); },
 };
 

@@ -1,18 +1,19 @@
 import { randomBytes, randomUUID } from "node:crypto";
 import type { OperacionesHumanas } from "../aplicacion/casos-uso-final.js";
 
-export type Perfil = "ASESOR" | "GERENCIA";
+export type Perfil = "ASESOR" | "GERENCIA" | "USUARIO";
 export interface Sesion {
   /** Secreto de la cookie HttpOnly; nunca viaja en cuerpos JSON ni en propuestas. */
   readonly token: string;
   /** Identificador público que se guarda en propuestas y auditoría. */
   readonly sesionId: string;
   perfil: Perfil;
+  clienteId?: string;
 }
 interface EventoHumano { readonly sesionId: string; readonly operacion: OperacionesHumanas; readonly objetivo: string }
 
 /** Selector de perfil de demostración (ADR-014); no es IAM empresarial. */
-const SUJETOS: Readonly<Record<Perfil, string>> = { ASESOR: "ASESOR-DEMO", GERENCIA: "GERENCIA-DEMO" };
+const SUJETOS: Readonly<Record<Perfil, string>> = { USUARIO: "USUARIO-DEMO", ASESOR: "ASESOR-DEMO", GERENCIA: "GERENCIA-DEMO" };
 const MAXIMO_EVENTOS_PENDIENTES = 50;
 
 /**
@@ -39,7 +40,9 @@ export class AlmacenSesiones {
   public reiniciar(sesion: Sesion): Sesion {
     this.#sesiones.delete(sesion.token);
     for (const [id, e] of this.#eventos) if (e.sesionId === sesion.sesionId) this.#eventos.delete(id);
-    return this.crear(sesion.perfil);
+    const nueva = this.crear(sesion.perfil);
+    if (sesion.clienteId !== undefined) nueva.clienteId = sesion.clienteId;
+    return nueva;
   }
   public emitirEvento(sesion: Sesion, operacion: OperacionesHumanas, objetivo: string): string {
     const propios = [...this.#eventos].filter(([, e]) => e.sesionId === sesion.sesionId);
