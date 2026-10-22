@@ -39,8 +39,11 @@ export async function http(metodo: "GET" | "POST", ruta: string, cuerpo?: unknow
 }
 
 export const sesionApi = {
-  async obtener() { return sesionSchema.parse((await http("GET", "/sesion")).json); },
-  async cambiarPerfil(perfil: "ASESOR" | "GERENCIA" | "USUARIO") { return sesionSchema.parse((await http("POST", "/sesion/perfil", { perfil })).json); },
+  async login(perfil: "ASESOR" | "GERENCIA" | "USUARIO", usuario: string, contrasena: string) {
+    return sesionSchema.parse((await http("POST", "/sesion/login", { perfil, usuario, contrasena })).json);
+  },
+  async logout() { await http("POST", "/sesion/logout", {}); },
+  async obtener() { return sesionSchema.nullable().parse((await http("GET", "/sesion")).json); },
   async reiniciar() { return sesionSchema.parse((await http("POST", "/sesion/reinicio", {})).json); },
 };
 

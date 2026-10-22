@@ -32,11 +32,14 @@ export class AlmacenSesiones {
     this.#sesiones.set(sesion.token, sesion);
     return sesion;
   }
+  public eliminar(sesion: Sesion): void {
+    this.#sesiones.delete(sesion.token);
+    for (const [id, e] of this.#eventos) if (e.sesionId === sesion.sesionId) this.#eventos.delete(id);
+  }
   public obtener(token: string | undefined): Sesion | undefined {
     return token === undefined ? undefined : this.#sesiones.get(token);
   }
-  public sujeto(sesion: Sesion): string { return SUJETOS[sesion.perfil]; }
-  public cambiarPerfil(sesion: Sesion, perfil: Perfil): void { sesion.perfil = perfil; }
+  public sujeto(sesion: Sesion): string { return sesion.clienteId ?? SUJETOS[sesion.perfil]; }
   public reiniciar(sesion: Sesion): Sesion {
     this.#sesiones.delete(sesion.token);
     for (const [id, e] of this.#eventos) if (e.sesionId === sesion.sesionId) this.#eventos.delete(id);

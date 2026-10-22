@@ -11,6 +11,7 @@ import { presentarProblemaFinal } from "./presentar-problema-final.js";
 import type { AlmacenSesiones, Sesion } from "./sesiones.js";
 
 export interface OpcionesHttp {
+  readonly validarCliente?: (clienteId: string, dpi: string) => Promise<boolean>;
   readonly casos: CasosUsoFinal;
   readonly sesiones: AlmacenSesiones;
   /** Fecha de corte por defecto de la sesión (DEFAULT_SESSION_CUTOFF); nunca el reloj. */
@@ -77,18 +78,37 @@ export function crearAplicacionHttp(opciones: OpcionesHttp): express.Express {
   });
   app.use("/v1", express.json({ limit: "32kb" }));
 
+  const presentarSesion = (sesion: Sesion) => ({ sesionId: sesion.sesionId, perfil: sesion.perfil,
+    sujetoId: sesiones.sujeto(sesion), fechaCorteDefecto: opciones.fechaCorteDefecto });
   app.get("/v1/sesion", (req, res) => {
-    let sesion = sesionDe(req);
-    if (sesion === undefined) { sesion = sesiones.crear(); escribirCookie(res, sesion); }
-    res.json({ sesionId: sesion.sesionId, perfil: sesion.perfil, sujetoId: sesiones.sujeto(sesion), fechaCorteDefecto: opciones.fechaCorteDefecto });
+    const sesion = sesionDe(req);
+    res.json(sesion ? presentarSesion(sesion) : null);
+  });
+  app.post("/v1/sesion/login", async (req, res) => {
+    try {
+      const e = z.strictObject({ perfil: perfilSchema.shape.perfil, usuario: z.string().trim().min(1).max(200),
+        contrasena: z.string().min(1).max(200) }).parse(req.body);
+      const valida = e.perfil === "USUARIO"
+        ? await opciones.validarCliente?.(e.usuario, e.contrasena) === true
+        : e.usuario === (e.perfil === "GERENCIA" ? "gerencia" : "asesor")
+          && e.contrasena === (e.perfil === "GERENCIA" ? "Gerencia123!" : "Asesor123!");
+      if (!valida) throw new ErrorCasoUsoFinal("SESION_NO_AUTORIZADA");
+      const anterior = sesionDe(req);
+      if (anterior) { opciones.alReiniciarSesion?.(anterior.sesionId); sesiones.eliminar(anterior); }
+      const sesion = sesiones.crear(e.perfil);
+      if (e.perfil === "USUARIO") sesion.clienteId = e.usuario;
+      escribirCookie(res, sesion);
+      res.json(presentarSesion(sesion));
+    } catch (error) { problema(res, error, randomUUID(), req.originalUrl); }
+  });
+  app.post("/v1/sesion/logout", (req, res) => {
+    const sesion = sesionDe(req);
+    if (sesion) { opciones.alReiniciarSesion?.(sesion.sesionId); sesiones.eliminar(sesion); }
+    res.setHeader("Set-Cookie", `${COOKIE}=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0`);
+    res.json(null);
   });
   app.post("/v1/sesion/perfil", (req, res) => {
-    const traceId = randomUUID();
-    try {
-      const sesion = exigirSesion(req);
-      sesiones.cambiarPerfil(sesion, perfilSchema.parse(req.body).perfil);
-      res.json({ sesionId: sesion.sesionId, perfil: sesion.perfil, sujetoId: sesiones.sujeto(sesion), fechaCorteDefecto: opciones.fechaCorteDefecto });
-    } catch (error) { problema(res, error, traceId, req.originalUrl); }
+    problema(res, new ErrorCasoUsoFinal("SESION_NO_AUTORIZADA"), randomUUID(), req.originalUrl);
   });
   app.post("/v1/sesion/reinicio", (req, res) => {
     const traceId = randomUUID();
@@ -106,7 +126,7 @@ export function crearAplicacionHttp(opciones: OpcionesHttp): express.Express {
     const contexto: ContextoOperacion = { sujetoId: sesiones.sujeto(sesion), sesionId: sesion.sesionId,
       perfil: sesion.perfil, canal: "INTERFAZ", traceId: randomUUID() };
     const datos = await casos.listarClientes.ejecutar({ fechaCorte }, contexto);
-    return datos;
+    return { ...datos, clientes: datos.clientes.filter(c => c.clienteId === sesion.clienteId) };
   };
   const clienteUsuario = async (sesion: Sesion, fechaCorte: string) => {
     const datos = await clientesUsuario(sesion, fechaCorte);
@@ -132,7 +152,7 @@ export function crearAplicacionHttp(opciones: OpcionesHttp): express.Express {
       const datos = await clientesUsuario(sesion, entrada.fechaCorte);
       const cliente = datos.clientes.find(c => c.clienteId === entrada.clienteId);
       if (!cliente) throw new ErrorCasoUsoFinal("ENTRADA_INVALIDA");
-      sesion.clienteId = cliente.clienteId;
+      if (sesion.clienteId !== cliente.clienteId) throw new ErrorCasoUsoFinal("SESION_NO_AUTORIZADA");
       res.json({ cliente });
     } catch (error) { problema(res, error, randomUUID(), req.originalUrl); }
   });
@@ -161,6 +181,11 @@ export function crearAplicacionHttp(opciones: OpcionesHttp): express.Express {
       const traceId = randomUUID();
       try {
         const sesion = exigirSesion(req);
+        if (sesion.perfil === "GERENCIA" && ["altaCliente", "solicitarCredito", "desembolsarCredito", "proponerPago", "confirmarPago", "cancelarPropuesta"].includes(nombre))
+          throw new ErrorCasoUsoFinal("SESION_NO_AUTORIZADA");
+        if (sesion.perfil === "ASESOR" && ["consultarCartera", "consultarCierre", "listarCreditosMora", "proximosVencimientos", "listarSolicitudes"].includes(nombre))
+          throw new ErrorCasoUsoFinal("SESION_NO_AUTORIZADA");
+        if (ruta.gerencia && sesion.perfil !== "GERENCIA") throw new ErrorCasoUsoFinal("SESION_NO_AUTORIZADA");
         const fuente: unknown = ruta.metodo === "get" ? req.query : req.body ?? {};
         const crudo: Record<string, unknown> = { ...(typeof fuente === "object" && fuente !== null ? fuente : {}), ...req.params };
         for (const clave of NUMERICOS) {
@@ -175,7 +200,6 @@ export function crearAplicacionHttp(opciones: OpcionesHttp): express.Express {
           if (!cliente?.creditos.some(c => c.creditoId === valorEntrada["creditoId"]))
             throw new ErrorCasoUsoFinal("SESION_NO_AUTORIZADA");
         }
-        if (ruta.gerencia && sesion.perfil !== "GERENCIA") throw new ErrorCasoUsoFinal("SESION_NO_AUTORIZADA");
         let contexto: ContextoOperacion & { eventoAprobacionId?: string; claveIdempotencia?: string } = {
           sujetoId: sesiones.sujeto(sesion), sesionId: sesion.sesionId, perfil: sesion.perfil, canal: "INTERFAZ", traceId };
         if (ruta.humana) {

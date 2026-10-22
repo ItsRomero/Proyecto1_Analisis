@@ -4,6 +4,20 @@ Proyecto Final, Grupo 2, sección A, Análisis de Sistemas II (037). Continúa e
 
 **Estado de entrega: PARCIAL.** La auditoría de fase 8 está en [su informe de cierre](docs/proyecto-final/08-documentacion-defensa-cierre.md). Hay respuestas incompletas del chat y latencia superior al presupuesto del video; deben resolverse antes de certificar. Video real, ensayo continuo, defensa oral y entrega requieren evidencia externa y no se dan por realizados. No se ha creado `entrega-pf`.
 
+## Accesos por rol
+
+Iniciar el proyecto con `npm.cmd run app` y abrir el acceso correspondiente:
+
+| Rol | URL local | Usuario | Contraseña |
+| --- | --- | --- | --- |
+| Gerencia | [Login de gerencia](http://127.0.0.1:3000/login/gerencia) | `gerencia` | `Gerencia123!` |
+| Asesor | [Login de asesor](http://127.0.0.1:3000/login/asesor) | `asesor` | `Asesor123!` |
+| Cliente | [Login de cliente](http://127.0.0.1:3000/login/cliente) | Su `id_cliente` | Su DPI registrado en la base |
+
+El acceso del cliente también admite los DPI ficticios de los datos de ejemplo.
+
+Las credenciales de gerencia y asesor se rellenan al abrir su formulario para la demostración. Cada rol accede a su propia pantalla; los clientes solo pueden consultar sus propios créditos. El botón Cerrar sesión invalida la cookie en el servidor. El antiguo selector libre de perfiles queda deshabilitado.
+
 ## Instalación desde cero
 
 Requisitos: **[Node.js 22.23.3 LTS](https://nodejs.org/dist/v22.23.3/)**, npm, Git, PostgreSQL con pgvector, Ollama con `qwen3:8b` y `bge-m3`, y Chrome para PDF/recorridos automatizados. `.nvmrc` fija la revisión validada. El mínimo de dependencias es 22.22.2; Node 22.13.0 no es suficiente para el lockfile actual. Docker Desktop es opcional si PostgreSQL y Ollama ya existen de forma nativa. El directorio oficial incluye SHASUMS256.txt para comprobar la descarga.
@@ -91,19 +105,19 @@ En desarrollo: `npm run api` y `npm run web:dev` en terminales separadas; Vite s
 
 ### Perfil Usuario: inicio, crédito, cuotas y ayuda
 
-La barra superior permite seleccionar **Asesor**, **Gerencia** o **Usuario**. Para ver las pantallas del cliente, seleccionar Usuario y abrir `http://127.0.0.1:3000/usuario`.
+Para ver las pantallas del cliente, iniciar sesión en `/login/cliente` con su ID y DPI.
 
 | Vista de referencia | Ruta React |
 | --- | --- |
-| Lista de usuarios (10 por página) | `/usuario` |
+| Inicio del cliente autenticado | `/usuario` |
 | `usuario-inicio-92-3081.html` | `/usuario/inicio` |
 | `usuario-detalle-del-credito-92-3310.html` | `/usuario/creditos/:creditoId` |
 | `usuario-plan-de-cuotas-92-3528.html` | `/usuario/creditos/:creditoId/plan` |
 | `usuario-ayuda-1-92-3822.html` | `/usuario/ayuda` |
 
-`/usuario` muestra todos los clientes, incluidos quienes no tienen créditos, en páginas de 10 con botones Anterior y Siguiente. Al seleccionar una persona se vincula ese cliente a la sesión y se abre `/usuario/inicio`. El enlace **Cambiar de usuario** vuelve a la lista. El número de página se conserva en la URL (`/usuario?pagina=2`).
+`/usuario` abre `/usuario/inicio` para el cliente autenticado. Para acceder a otra cuenta se debe cerrar sesión e ingresar sus credenciales.
 
-Los enlaces de Inicio y Mi crédito usan identificadores reales de la base. El selector es de demostración, sin autenticación del cliente. La API pagina la lista sin DPI ni teléfonos y valida el cliente elegido. El perfil Usuario puede consultar ficha, resumen, pagos y plan del cliente seleccionado; se rechazan créditos de otros clientes, operaciones financieras y chat gerencial. Si tiene varios créditos, Inicio muestra todos; si no tiene créditos, se muestra un estado vacío.
+Inicio y Mi crédito usan los identificadores reales de la cuenta autenticada. El cliente puede consultar ficha, resumen, pagos y plan de sus créditos; se rechazan cuentas ajenas, operaciones financieras y chat gerencial.
 
 Se adapta el diseño móvil de los cuatro prototipos con datos del servidor, sin cargar sus HTML ni copiar cifras de ejemplo. La tasa se etiqueta como nominal anual según el contrato real; el saldo pendiente es capital, no deuda total con cargos. El teléfono ficticio del prototipo no se publica como contacto real.
 
@@ -147,7 +161,7 @@ Las siete pantallas obligatorias conservan correspondencia con P2 y `vistas/`; e
 
 ## MCP, RAG y seguridad
 
-MCP expone siete consultas y `proponer_pago`, sin confirmación ni otras escrituras financieras. Un pago solo se aplica por evento humano de un solo uso, sesión vinculada y revisión transaccional de versión/deuda/idempotencia. Escribir una aprobación en el chat no la concede. El selector de perfil es de demostración; no es autenticación empresarial.
+MCP expone siete consultas y `proponer_pago`, sin confirmación ni otras escrituras financieras. Un pago solo se aplica por evento humano de un solo uso, sesión vinculada y revisión transaccional de versión/deuda/idempotencia. Escribir una aprobación en el chat no la concede. El acceso exige iniciar sesión con el rol correspondiente.
 
 RAG usa LangChain, Ollama, qwen3:8b y bge-m3. La selección local evita enviar cartera a un proveedor externo; bge-m3 es la opción para español del enunciado. Se fragmentan los siete documentos por secciones completas (32 fragmentos en la corrida de fase 5), sin solapamiento ni corte de tablas. Se filtra PII; la recuperación usa coseno, k=4 y umbral 0.5. Las citas se contrastan con lo recuperado; sin evidencia suficiente se informa falta de respaldo.
 
