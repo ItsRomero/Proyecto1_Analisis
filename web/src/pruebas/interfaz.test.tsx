@@ -125,6 +125,6 @@ describe("estados de vacío, error y validación", () => {
   it("el área de gerencia exige el perfil Gerencia", async () => {
     simularApi({});
     montar("/gerencia/cierres/diario");
-    expect(await screen.findByText("Esta área corresponde al perfil Gerencia.")).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Mis clientes" })).toBeInTheDocument();
   });
 });

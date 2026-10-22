@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useOutletContext, useParams, useLocation, useNavigate, useSearchParams } from "react-router";
+import { Link, NavLink, Outlet, useOutletContext, useParams, useLocation } from "react-router";
 import { z } from "zod";
 import { operacionesFinales } from "@contratos/proyecto-final";
 import { http } from "../../api/cliente";
 import { BarraSesion, EncabezadoAsesor } from "../../componentes/Layouts";
-import { Boton, Dinero, FilaDato, Tarjeta } from "../../componentes/Basicos";
-import { MensajeError } from "../../componentes/Estados";
+import { Dinero, FilaDato, Tarjeta } from "../../componentes/Basicos";
 import { FranjaSituacion } from "../../componentes/Credito";
 import { SegunEstado, Vacio } from "../../componentes/Estados";
 import { useConsulta, type EstadoConsulta } from "../../hooks/useConsulta";
@@ -38,7 +37,7 @@ export function LayoutUsuario() {
       <div className="bg-tinta px-4 py-3"><BarraSesion oscura /></div>
       {sesion?.perfil !== "USUARIO" ? <div className="p-5">Selecciona el perfil Usuario en la barra superior para consultar tu crédito.</div>
         : esLista ? <Outlet /> : <SegunEstado estado={estado} onReintentar={() => setIntento(i => i + 1)}>{({ cliente }) => <>
-          <Link to="/usuario" className="border-b border-linea bg-white px-4 py-3 text-sm font-bold underline">Cambiar de usuario</Link>
+          <p className="border-b border-linea bg-white px-4 py-3 text-sm font-bold">Mi cuenta ? {sesion.sujetoId}</p>
           <div className="flex-1"><Outlet context={cliente} /></div>
           <nav aria-label="Usuario" className="sticky bottom-0 grid grid-cols-3 border-t border-linea bg-white p-3 text-center text-sm font-bold">
             <NavLink to="/usuario/inicio" end className={({ isActive }) => isActive ? "border-b-2 border-acento py-2" : "py-2"}>Inicio</NavLink>
@@ -48,58 +47,6 @@ export function LayoutUsuario() {
         </>}</SegunEstado>}
     </div>
   </div>;
-}
-
-const listaSchema = z.object({ pagina: z.number(), totalPaginas: z.number(), total: z.number(), usuarios: z.array(z.object({
-  clienteId: z.string(), nombreCompleto: z.string(), municipio: z.string(), cantidadCreditos: z.number(),
-})) });
-
-export function ListaUsuarios() {
-  const { fechaCorte } = useSesion();
-  const [consulta, setConsulta] = useSearchParams();
-  const valorPagina = Number(consulta.get("pagina") ?? 1);
-  const pagina = Number.isSafeInteger(valorPagina) && valorPagina > 0 ? valorPagina : 1;
-  const [estado, setEstado] = useState<EstadoConsulta<z.infer<typeof listaSchema>>>({ tipo: "cargando" });
-  const [intento, setIntento] = useState(0);
-  const [error, setError] = useState<unknown>(null);
-  const [ocupado, setOcupado] = useState(false);
-  const navegar = useNavigate();
-  useEffect(() => {
-    let vigente = true;
-    setEstado({ tipo: "cargando" });
-    http("GET", `/usuarios?fechaCorte=${encodeURIComponent(fechaCorte)}&pagina=${pagina}`).then(r => {
-      const datos = listaSchema.parse(r.json);
-      if (vigente) setEstado({ tipo: "listo", datos });
-    }).catch((e: unknown) => { if (vigente) setEstado({ tipo: "error", error: e }); });
-    return () => { vigente = false; };
-  }, [pagina, fechaCorte, intento]);
-  const elegir = async (clienteId: string) => {
-    setOcupado(true); setError(null);
-    try {
-      await http("POST", "/usuario/seleccion", { clienteId, fechaCorte });
-      navegar("/usuario/inicio");
-    } catch (e) { setError(e); } finally { setOcupado(false); }
-  };
-  return <><EncabezadoAsesor titulo="Usuarios" antetitulo="Selecciona un perfil" />
-    <main className="flex flex-col gap-4 p-4">
-      <p className="text-sm text-tenue">Selecciona una persona para ver su crédito y sus cuotas.</p>
-      {error !== null && <MensajeError error={error} />}
-      <SegunEstado estado={estado} onReintentar={() => setIntento(i => i + 1)}>{datos => <>
-        {datos.usuarios.length === 0 ? <Vacio titulo="Sin usuarios disponibles" /> : <ul className="flex flex-col gap-3" aria-label="Usuarios">
-          {datos.usuarios.map(u => <li key={u.clienteId}><button type="button" disabled={ocupado} onClick={() => void elegir(u.clienteId)}
-            className="tarjeta w-full p-4 text-left hover:border-sutil disabled:opacity-50">
-            <span className="block font-bold">{u.nombreCompleto}</span>
-            <span className="block text-sm text-tenue">{u.clienteId} · {u.municipio}</span>
-            <span className="mt-1 block text-xs">{u.cantidadCreditos} crédito(s)</span>
-          </button></li>)}
-        </ul>}
-        <nav aria-label="Paginación de usuarios" className="flex items-center justify-between gap-2">
-          <Boton variante="secundario" disabled={ocupado || datos.pagina <= 1} onClick={() => setConsulta({ pagina: String(datos.pagina - 1) })}>Anterior</Boton>
-          <span className="text-center text-xs" aria-live="polite">Página {datos.pagina} de {datos.totalPaginas}<br />{datos.total} usuarios</span>
-          <Boton variante="secundario" disabled={ocupado || datos.pagina >= datos.totalPaginas} onClick={() => setConsulta({ pagina: String(datos.pagina + 1) })}>Siguiente</Boton>
-        </nav>
-      </>}</SegunEstado>
-    </main></>;
 }
 
 export function InicioUsuario() {

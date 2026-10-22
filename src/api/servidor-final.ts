@@ -44,6 +44,8 @@ export function crearServidorFinal(pool: Pool, config: ConfiguracionServidor, ch
   const almacen = chat === undefined ? undefined : new AlmacenChats((sesion) => chat.fabrica(sesion, casos),
     { maxTurnos: chat.maxTurnos, ttlMinutos: chat.ttlMinutos, maxPasos: chat.maxPasos ?? 4, ahora: () => Date.now(), nuevoId: () => randomUUID() });
   const app = crearAplicacionHttp({ casos, sesiones: new AlmacenSesiones(), fechaCorteDefecto: config.fechaCorteDefecto,
+    validarCliente: async (clienteId, dpi) => (await pool.query(
+      "SELECT 1 FROM cv.clientes WHERE id=$1 AND tipo_identificacion IN ('DPI','DPI_FICTICIO') AND identificacion=$2", [clienteId, dpi])).rowCount === 1,
     origenesPermitidos: config.origenWeb ? [config.origenWeb] : [],
     ...(almacen && chat ? {
       extender: (app: Parameters<NonNullable<Parameters<typeof crearAplicacionHttp>[0]["extender"]>>[0],

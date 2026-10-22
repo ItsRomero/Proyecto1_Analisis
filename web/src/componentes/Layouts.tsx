@@ -1,37 +1,19 @@
 import { useState, type ReactNode } from "react";
-import { Navigate, Link, NavLink, Outlet, useLocation, useNavigate } from "react-router";
+import { Navigate, Link, NavLink, Outlet, useLocation } from "react-router";
 import { useSesion } from "../sesion/SesionContexto";
 import volver from "../assets/design/iconos/volver.svg";
-import { Boton, Icono } from "./Basicos";
+import { Icono } from "./Basicos";
 import { Cargando, MensajeError } from "./Estados";
 
 /** Selector de perfil de demostración y fecha de corte de la sesión (ADR-014, regla de fecha inyectada). */
 export function BarraSesion({ oscura = false }: { readonly oscura?: boolean }) {
-  const { sesion, fechaCorte, cambiarFechaCorte, cambiarPerfil, reiniciar } = useSesion();
-  const navegar = useNavigate();
-  const ubicacion = useLocation();
+  const { sesion, fechaCorte, cambiarFechaCorte, logout } = useSesion();
   const [error, setError] = useState<string | null>(null);
-  const [ocupado, setOcupado] = useState(false);
   if (sesion === null) return null;
-  const elegir = async (perfil: "ASESOR" | "GERENCIA" | "USUARIO") => {
-    setOcupado(true);
-    try {
-      await cambiarPerfil(perfil);
-      // Solo desde las pantallas de inicio: un flujo en curso (p. ej. el comité de OP-3) no se abandona.
-      if (perfil === "USUARIO" || sesion.perfil === "USUARIO" || ["/", "/asesor/clientes", "/gerencia"].includes(ubicacion.pathname)) navegar(perfil === "USUARIO" ? "/usuario" : perfil === "GERENCIA" ? "/gerencia" : "/asesor/clientes");
-    } finally { setOcupado(false); }
-  };
   const tono = oscura ? "text-slate-200" : "text-secundario";
   return (
     <div className={`flex flex-wrap items-center gap-x-3 gap-y-2 text-xs ${tono}`} aria-label="Sesión de demostración">
-      <div role="group" aria-label="Perfil" className={`inline-flex rounded-lg p-0.5 ${oscura ? "bg-nav-activo" : "bg-superficie"}`}>
-        {(["ASESOR", "GERENCIA", "USUARIO"] as const).map((p) => (
-          <button key={p} type="button" disabled={ocupado} aria-pressed={sesion.perfil === p} onClick={() => void elegir(p)}
-            className={`rounded-md px-2.5 py-1.5 font-bold ${sesion.perfil === p ? "bg-acento text-tinta" : oscura ? "text-slate-200" : "text-secundario"}`}>
-            {p === "USUARIO" ? "Usuario" : p === "ASESOR" ? "Asesor" : "Gerencia"}
-          </button>
-        ))}
-      </div>
+      <span className="font-bold">{sesion.perfil === "USUARIO" ? "Cliente" : sesion.perfil === "ASESOR" ? "Asesor" : "Gerencia"}</span>
       <label className="inline-flex items-center gap-1.5">
         <span>Corte</span>
         <input type="date" value={fechaCorte} required aria-describedby={error ? "error-corte" : undefined}
@@ -39,7 +21,7 @@ export function BarraSesion({ oscura = false }: { readonly oscura?: boolean }) {
           className="cifra rounded-md border border-linea bg-white px-1.5 py-1 text-tinta" />
       </label>
       {error && <span id="error-corte" role="alert" className="font-bold text-peligro">{error}</span>}
-      <button type="button" className="underline" onClick={() => void reiniciar()}>Reiniciar sesión</button>
+      <button type="button" className="underline" onClick={() => void logout().catch(() => setError("No se pudo cerrar la cuenta."))}>Cerrar sesión</button>
       <span className="cifra opacity-80" title="Sujeto de la sesión">{sesion.sujetoId}</span>
     </div>
   );
@@ -108,7 +90,7 @@ export function LayoutGerencia() {
           <div className="ml-auto"><BarraSesion oscura /></div>
         </div>
       </header>
-      <main className="mx-auto max-w-[1440px] px-4 py-6 sm:px-8"><EsperaSesion><RequiereGerencia><Outlet /></RequiereGerencia></EsperaSesion></main>
+      <main className="mx-auto max-w-[1440px] px-4 py-6 sm:px-8"><EsperaSesion><Outlet /></EsperaSesion></main>
       <AccesoAsistente />
     </div>
   );
@@ -119,19 +101,6 @@ function AccesoAsistente() {
   const ubicacion = useLocation();
   if (ubicacion.pathname === "/gerencia/asistente") return null;
   return <Link to="/gerencia/asistente" className="fixed right-5 bottom-5 rounded-full bg-acento px-5 py-3 text-sm font-bold text-tinta shadow-lg">Asistente</Link>;
-}
-
-function RequiereGerencia({ children }: { readonly children: ReactNode }) {
-  const { sesion } = useSesion();
-  const navegar = useNavigate();
-  if (sesion?.perfil === "GERENCIA") return <>{children}</>;
-  return (
-    <div className="tarjeta mx-auto max-w-lg p-6 text-center">
-      <p className="font-bold">Esta área corresponde al perfil Gerencia.</p>
-      <p className="mt-1 text-sm text-tenue">Cambie de perfil en la barra superior o regrese a la vista del asesor.</p>
-      <Boton variante="secundario" className="mt-4" onClick={() => navegar("/asesor/clientes")}>Ir a la vista del asesor</Boton>
-    </div>
-  );
 }
 
 export function Pasos({ pasos, actual }: { readonly pasos: readonly string[]; readonly actual: number }) {

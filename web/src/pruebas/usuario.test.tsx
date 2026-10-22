@@ -3,29 +3,12 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, it, expect } from "vitest";
 import { ficha, montar, resumen, simularApi } from "./apoyo";
 
-it("pagina de diez en diez y abre el perfil del usuario elegido", async () => {
-  const cliente = { clienteId: ficha.clienteId, nombreCompleto: ficha.nombreCliente, municipio: ficha.municipio, creditos: [resumen] };
-  const llamadas = simularApi({
-    "GET /v1/sesion": () => ({ cuerpo: { sesionId: "SES-USUARIO", perfil: "USUARIO", sujetoId: "USUARIO-DEMO", fechaCorteDefecto: "2026-10-31" } }),
-    "GET /v1/usuarios": l => {
-      const pagina = Number(new URL(l.ruta, "http://localhost").searchParams.get("pagina"));
-      return { cuerpo: { pagina, totalPaginas: 2, total: 11, usuarios: pagina === 1
-        ? Array.from({ length: 10 }, (_, i) => ({ clienteId: `CL-${i}`, nombreCompleto: `Persona ${i}`, municipio: "Municipio", cantidadCreditos: 1 }))
-        : [{ ...cliente, cantidadCreditos: 1 }] } };
-    },
-    "POST /v1/usuario/seleccion": () => ({ cuerpo: { cliente } }),
-    "GET /v1/usuario": () => ({ cuerpo: { cliente } }),
-    "GET /v1/creditos/CV-PRUEBA/ficha": () => ({ cuerpo: ficha }),
-  });
+it("abre la cuenta autenticada sin permitir seleccionar otros clientes", async () => {
+  const llamadas = preparar();
   montar("/usuario");
-  expect(await screen.findByText(/Página 1 de 2/)).toBeInTheDocument();
-  expect(screen.getByRole("button", { name: "Anterior" })).toBeDisabled();
-  await userEvent.click(screen.getByRole("button", { name: "Siguiente" }));
-  await userEvent.click(await screen.findByRole("button", { name: new RegExp(ficha.nombreCliente) }));
-  expect(await screen.findByText("Tu avance")).toBeInTheDocument();
-  expect(llamadas.find(l => l.ruta === "/v1/usuario/seleccion")?.cuerpo).toEqual({ clienteId: ficha.clienteId, fechaCorte: "2026-10-31" });
-  await userEvent.click(screen.getByRole("link", { name: "Cambiar de usuario" }));
-  expect(await screen.findByText("Selecciona un perfil")).toBeInTheDocument();
+  expect(await screen.findByText(ficha.nombreCliente)).toBeInTheDocument();
+  expect(screen.queryByRole("link", { name: "Cambiar de usuario" })).not.toBeInTheDocument();
+  expect(llamadas.some(l => l.ruta.startsWith("/v1/usuarios"))).toBe(false);
 });
 
 afterEach(cleanup);

@@ -18,7 +18,7 @@ const erroresDe = (issues: readonly z.core.$ZodIssue[], alias: Readonly<Record<s
 
 /** Pantalla obligatoria 1: solicitud de crédito con alta del cliente como primer paso (frames 85:873–15:3021). */
 export function Originacion() {
-  const { fechaCorte, sesion, cambiarPerfil } = useSesion();
+  const { fechaCorte, sesion } = useSesion();
   const [parametros] = useSearchParams();
   const [paso, setPaso] = useState(0);
   const [cliente, setCliente] = useState<{ readonly clienteId: string; readonly nombre: string } | null>(null);
@@ -77,7 +77,7 @@ export function Originacion() {
         )}
         {paso === 4 && resumen && (
           <PasoDecision titulo="Aprobación del comité" resumen={resumen} esGerencia={sesion?.perfil === "GERENCIA"} ocupado={ocupado}
-            onCambiarPerfil={() => void ejecutar(() => cambiarPerfil("GERENCIA"), () => undefined)}
+            onActualizarEstado={() => void ejecutar(() => operar("consultarCredito", { creditoId: resumen.creditoId, fechaCorte }), (r) => { setResumen(r.datos); if (r.datos.estado !== "SOLICITADO") setPaso(5); })}
             motivoInicial="Aprobación del comité de crédito"
             onAprobar={(motivo) => void ejecutar(() => operar("aprobarCredito", { creditoId: resumen.creditoId, fechaOperacion: fechaCorte, motivo }),
               (r) => { setResumen(r.datos); setPaso(5); })}
@@ -85,7 +85,6 @@ export function Originacion() {
               (r) => setResumen(r.datos))} />
         )}
         {paso === 5 && resumen && <PasoDesembolso resumen={resumen} fechaCorte={fechaCorte} ocupado={ocupado} esGerencia={sesion?.perfil === "GERENCIA"}
-          onVolverAsesor={() => void ejecutar(() => cambiarPerfil("ASESOR"), () => undefined)}
           onDesembolsar={(motivo) => void ejecutar(() => operar("desembolsarCredito", { creditoId: resumen.creditoId, fechaOperacion: fechaCorte, motivo }),
             (r) => setResumen(r.datos))} />}
         {error !== null && <MensajeError error={error} />}
@@ -235,13 +234,13 @@ export function TablaPlan({ plan, pagadas = 0, vencidas = 0 }: { readonly plan: 
   );
 }
 
-export function PasoDecision({ titulo, resumen, esGerencia, ocupado, motivoInicial, onAprobar, onRechazar, onCambiarPerfil }: {
+export function PasoDecision({ titulo, resumen, esGerencia, ocupado, motivoInicial, onAprobar, onRechazar, onActualizarEstado }: {
   readonly titulo: string; readonly resumen: Resumen; readonly esGerencia: boolean; readonly ocupado: boolean; readonly motivoInicial: string;
-  readonly onAprobar: (motivo: string) => void; readonly onRechazar: (motivo: string) => void; readonly onCambiarPerfil?: () => void }) {
+  readonly onAprobar: (motivo: string) => void; readonly onRechazar: (motivo: string) => void; readonly onActualizarEstado?: () => void }) {
   const [motivo, setMotivo] = useState(motivoInicial);
   if (resumen.estado !== "SOLICITADO") return (
     <Tarjeta titulo={titulo}><p className="text-sm">Decisión registrada: <InsigniaEstado estado={resumen.estado} /></p>
-      {resumen.estado === "RECHAZADO" && <Link to="/asesor/clientes" className="mt-3 inline-block text-sm font-bold underline">Volver a clientes</Link>}</Tarjeta>);
+      {resumen.estado === "RECHAZADO" && <Link to={esGerencia ? "/gerencia/clientes" : "/asesor/clientes"} className="mt-3 inline-block text-sm font-bold underline">Volver a clientes</Link>}</Tarjeta>);
   return (
     <Tarjeta titulo={titulo}>
       <p className="text-sm">Solicitud <span className="cifra">{resumen.creditoId}</span>: <InsigniaEstado estado={resumen.estado} /></p>
@@ -249,7 +248,7 @@ export function PasoDecision({ titulo, resumen, esGerencia, ocupado, motivoInici
         <div className="mt-3 rounded-xl border border-aviso-borde bg-aviso-fondo p-3 text-sm text-aviso-texto">
           <p className="font-bold">La aprobación corresponde al perfil Gerencia (comité).</p>
           <p className="mt-1">El servidor rechaza la aprobación desde el perfil Asesor.</p>
-          {onCambiarPerfil && <Boton variante="primario" className="mt-3" disabled={ocupado} onClick={onCambiarPerfil}>Cambiar a perfil Gerencia</Boton>}
+          {onActualizarEstado && <Boton variante="primario" className="mt-3" disabled={ocupado} onClick={onActualizarEstado}>Actualizar estado</Boton>}
         </div>
       ) : (
         <div className="mt-3 flex flex-col gap-3">
@@ -264,13 +263,12 @@ export function PasoDecision({ titulo, resumen, esGerencia, ocupado, motivoInici
   );
 }
 
-function PasoDesembolso({ resumen, fechaCorte, ocupado, esGerencia, onDesembolsar, onVolverAsesor }: { readonly resumen: Resumen; readonly fechaCorte: string;
-  readonly ocupado: boolean; readonly esGerencia: boolean; readonly onDesembolsar: (motivo: string) => void; readonly onVolverAsesor: () => void }) {
+function PasoDesembolso({ resumen, fechaCorte, ocupado, esGerencia, onDesembolsar }: { readonly resumen: Resumen; readonly fechaCorte: string;
+  readonly ocupado: boolean; readonly esGerencia: boolean; readonly onDesembolsar: (motivo: string) => void }) {
   const [motivo, setMotivo] = useState("Desembolso autorizado por el comité");
   if (resumen.estado === "APROBADO") return (
     <Tarjeta titulo="Desembolso">
       <p className="text-sm">Solicitud aprobada por el comité: <InsigniaEstado estado={resumen.estado} /></p>
-      {esGerencia && <Boton variante="secundario" className="mt-3" disabled={ocupado} onClick={onVolverAsesor}>Volver a perfil Asesor</Boton>}
       <div className="mt-3 flex flex-col gap-3">
         <Campo etiqueta="Observación del desembolso" value={motivo} onChange={(e) => setMotivo(e.target.value)} />
         <p className="text-xs text-tenue">Fecha de desembolso: <span className="cifra">{fechaCorte}</span>. El plan y la política se fijan con esa fecha.</p>

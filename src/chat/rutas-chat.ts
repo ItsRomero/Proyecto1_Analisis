@@ -24,7 +24,7 @@ export function registrarRutasChat(app: express.Express, opciones: {
 }) {
   const exigirSesion = (req: Request) => {
     const sesion = opciones.exigirSesion(req);
-    if (sesion.perfil === "USUARIO") throw new Error("SESION_NO_AUTORIZADA");
+    if (sesion.perfil !== "GERENCIA") throw new Error("SESION_NO_AUTORIZADA");
     return { ...sesion, perfil: sesion.perfil };
   };
   const vacio = (): EstadoChat => ({ chatId: null, mensajes: [], pendientes: [], turnos: 0, maxTurnos: opciones.maxTurnos,

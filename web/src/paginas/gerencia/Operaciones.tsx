@@ -105,7 +105,7 @@ export function DecisionSolicitud() {
             <PasoDecision titulo="Decisión" resumen={actual} esGerencia ocupado={ocupado} motivoInicial="Aprobación del comité de crédito"
               onAprobar={(m) => void decidir("aprobarCredito", m)} onRechazar={(m) => void decidir("rechazarCredito", m)} />
             {actual.estado === "APROBADO" && <p className="text-sm">Aprobada. El desembolso lo realiza el asesor en{" "}
-              <Link to={`/asesor/creditos/nuevo?creditoId=${solicitudId}`} className="font-bold underline">la originación</Link>.</p>}
+              el área del asesor.</p>}
             {error !== null && <MensajeError error={error} />}
           </>
         );
@@ -188,7 +188,7 @@ export function CreditoGerencia() {
             <p className="text-sm">{f.nombreCliente} · {f.municipio} · política <strong>{f.politicaId ?? "pendiente"}</strong></p>
             <FranjaSituacion resumen={f.resumen} />
             <ResumenCredito resumen={f.resumen} extra={<FilaDato etiqueta="Monto original"><Dinero valor={f.capitalOriginal} /></FilaDato>} />
-            <Link to={`/asesor/creditos/${creditoId}/plan`} className="text-sm font-bold underline">Ver plan de amortización</Link>
+            <Link to={`/gerencia/creditos/${creditoId}/plan`} className="text-sm font-bold underline">Ver plan de amortización</Link>
           </div>
           <div className="flex flex-col gap-3"><h2 className="etiqueta-seccion">Formación de la mora</h2><MoraDelCredito resumen={f.resumen} /></div>
         </div>
