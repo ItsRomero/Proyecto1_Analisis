@@ -22,6 +22,8 @@ Las credenciales de gerencia y asesor se rellenan al abrir su formulario para la
 
 Requisitos: **[Node.js 22.23.3 LTS](https://nodejs.org/dist/v22.23.3/)**, npm, Git, PostgreSQL con pgvector, Ollama con `qwen3:8b` y `bge-m3`, y Chrome para PDF/recorridos automatizados. `.nvmrc` fija la revisión validada. El mínimo de dependencias es 22.22.2; Node 22.13.0 no es suficiente para el lockfile actual. Docker Desktop es opcional si PostgreSQL y Ollama ya existen de forma nativa. El directorio oficial incluye SHASUMS256.txt para comprobar la descarga.
 
+`npm test` y `npm run test:watch` usan el Node de la terminal cuando es compatible. Si es antiguo, el lanzador busca la distribución portable fijada en `.nvmrc`, por ejemplo `.npm-cache/node-runtime/node-v22.23.3-win-x64/node.exe`. Esa distribución es local y no se incluye en Git; debe descargarse de Node.js y verificarse con su SHA-256. Si no está disponible, se muestra un mensaje para instalar la versión requerida. No hace falta cambiar el `PATH` para estos dos comandos cuando la distribución portable ya existe. Los demás comandos siguen usando el Node de la terminal.
+
 ```powershell
 git clone https://github.com/ItsRomero/Proyecto1_Analisis.git
 cd Proyecto1_Analisis
@@ -175,7 +177,7 @@ npm.cmd run fase8:preflight
 npm.cmd run docs:pdf
 ```
 
-La verificación general actual tiene **400 pruebas en 32 archivos**, incluida la regresión de la SPA en carpetas ocultas, y no requiere servicios externos, Ollama ni DB. El control completo de fase 8 aprobó **468 pruebas**, cero fallidas y cero omitidas, con Node 22.23.3 sobre el código `3a4c97a`. Véanse [log](docs/proyecto-final/evidencia/fase8-preflight.txt) y [resumen](docs/proyecto-final/evidencia/fase8-resumen-verificacion.json). El total histórico de fase 7 fue 467. No se publica un porcentaje de cobertura no medido.
+La verificación general actual tiene **409 pruebas en 36 archivos**, incluida la regresión de la SPA en carpetas ocultas y los accesos por rol, y no requiere servicios externos, Ollama ni DB. Vitest usa como máximo cuatro workers para evitar saturación y timeouts al ejecutar juntas las pruebas HTTP y React. El control completo de fase 8 aprobó **468 pruebas**, cero fallidas y cero omitidas, con Node 22.23.3 sobre el código `3a4c97a`. Véanse [log](docs/proyecto-final/evidencia/fase8-preflight.txt) y [resumen](docs/proyecto-final/evidencia/fase8-resumen-verificacion.json). El total histórico de fase 7 fue 467. No se publica un porcentaje de cobertura no medido.
 
 | Comando | Dependencias / alcance | Tiempo observado fase 8 |
 | --- | --- | ---: |
@@ -211,6 +213,7 @@ R-1/R-3: cuota pendiente más antigua completa y deuda exacta. R-2: vencimiento 
 | --- | --- |
 | TS2307: faltan Express/MCP/LangChain | node_modules no correspondía al lockfile; seleccionar el Node compatible y ejecutar npm ci. |
 | EBADENGINE o errores con jsdom en Node 22 antiguo | Usar la revisión de `.nvmrc`; no basta cualquier versión 22. |
+| Vitest: `Failed to start forks worker`, `undici/lib/interceptor/decompress.js`, lectura de `bind` | Node 22.13.0 carece de `zlib.createZstdDecompress`. Usar Node 22.23.3, cerrar y abrir la terminal del IDE y verificar `node --version` antes de `npm.cmd test`. La configuración ahora rechaza Node <22.22.2 antes de crear los workers. No modificar `node_modules` ni ignorar los errores de Vitest. |
 | La medición histórica de G-2/G-3 lee respuestas vacías | Grabación convertida a CRLF; el checkout actual fija LF sin cambiar su contenido ni aserciones. |
 | Nueve recorridos esperan controles que no aparecen | `.env` antiguo con URL absoluta a otra API: actualizar solo VITE_API_BASE_URL a `/v1` y reconstruir web. |
 | SPA devuelve 404 dentro de una carpeta con punto | Corregido en 3a4c97a usando root explícito de sendFile; no habilitar globalmente archivos ocultos. |

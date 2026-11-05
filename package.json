@@ -9,9 +9,9 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit && tsc --noEmit -p web",
-    "test": "vitest run --passWithNoTests",
+    "test": "node scripts/ejecutar-vitest.mjs run --passWithNoTests",
     "test:mora": "vitest run tests/politica-mora.test.ts tests/contrato-politica.test.ts tests/calculadora-mora.test.ts tests/regresion-p1.test.ts tests/contratos-p2.test.ts",
-    "test:watch": "vitest",
+    "test:watch": "node scripts/ejecutar-vitest.mjs",
     "test:idempotencia": "vitest run tests/gasto-gestion-cobro.test.ts tests/pago-idempotencia.test.ts",
     "test:coexistencia": "vitest run tests/politica-mora.test.ts tests/regresion-p1.test.ts",
     "test:cp04": "vitest run tests/credito-cancelacion-p2.test.ts tests/devengo-interes.test.ts tests/cartera-por-tramo.test.ts",

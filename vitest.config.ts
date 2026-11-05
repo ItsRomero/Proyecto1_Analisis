@@ -2,8 +2,14 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
+const [mayor = 0, menor = 0, parche = 0] = process.versions.node.split(".").map(Number);
+if (mayor < 22 || (mayor === 22 && (menor < 22 || (menor === 22 && parche < 2)))) {
+  throw new Error(`Node ${process.versions.node} no es compatible con las pruebas. Use Node >=22.22.2; .nvmrc fija 22.23.3. La dependencia undici necesita zlib.createZstdDecompress.`);
+}
+
 export default defineConfig({
   test: {
+    maxWorkers: 4,
     clearMocks: true,
     restoreMocks: true,
     unstubEnvs: true,
